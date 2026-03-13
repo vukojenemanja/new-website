@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Language selector (root) -->
+  <url>
+    <loc>https://vukojenemanja.com/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/index.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- English: Home -->
+  <url>
+    <loc>https://vukojenemanja.com/en/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- English: Akal Community -->
+  <url>
+    <loc>https://vukojenemanja.com/en/akal.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/akal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/akal.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/akal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/akal.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- English: Individual Work -->
+  <url>
+    <loc>https://vukojenemanja.com/en/individual.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/individual.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/individual.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/individual.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/individual.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- German: Home -->
+  <url>
+    <loc>https://vukojenemanja.com/de/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- German: Akal Community -->
+  <url>
+    <loc>https://vukojenemanja.com/de/akal.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/akal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/akal.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/akal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/akal.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- German: Individual Work -->
+  <url>
+    <loc>https://vukojenemanja.com/de/individual.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/individual.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/individual.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/individual.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/individual.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Serbian: Home -->
+  <url>
+    <loc>https://vukojenemanja.com/srb/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/index.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Serbian: Akal Community -->
+  <url>
+    <loc>https://vukojenemanja.com/srb/akal.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/akal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/akal.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/akal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/akal.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Serbian: Individual Work -->
+  <url>
+    <loc>https://vukojenemanja.com/srb/individual.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/individual.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/individual.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/individual.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/individual.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

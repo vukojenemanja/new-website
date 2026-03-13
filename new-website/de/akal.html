@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akal Community - Wöchentliches Kundalini Yoga & Meditation | Nemanja Vukoje</title>
+<meta name="description" content="Join Akal Community for weekly Kundalini-Yoga-Klassees, meditation evenings, and a warm supportive group. Online, 77 pro Monat.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --moss:   #6B7B5E;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+  --warm:   #D4B896;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--fog);
+  color: var(--bark);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,8,5,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+  transition: background 0.4s, padding 0.4s;
+}
+
+nav.scrolled {
+  background: rgba(26,18,8,0.95);
+  backdrop-filter: blur(10px);
+  padding: 14px 60px;
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--fog);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.4s;
+}
+
+nav.scrolled .nav-logo { color: var(--bark); }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a, .nav-links span {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,241,236,0.8);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav.scrolled .nav-links a,
+nav.scrolled .nav-links span { color: var(--stone); }
+.nav-links a:hover, .nav-links span:hover { color: var(--clay); }
+
+.nav-cta {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clay) !important;
+  border: 1px solid rgba(196,168,130,0.5);
+  padding: 8px 20px;
+  border-radius: 1px;
+  transition: all 0.3s !important;
+}
+
+.nav-cta:hover {
+  background: var(--clay) !important;
+  color: var(--deep) !important;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--deep);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 60%, rgba(196,168,130,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(107,123,94,0.06) 0%, transparent 50%);
+}
+
+.hero-image-placeholder {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 52%;
+  background: linear-gradient(135deg, #2a2018 0%, #1a1208 100%);
+  overflow: hidden;
+}
+
+.hero-image-placeholder::after {
+  pointer-events: none;
+  z-index: 1;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--deep) 0%, transparent 40%);
+}
+
+/* Subtle grain texture */
+.hero-image-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("../assets/images/noise.svg");
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.hero-photo-hint {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 52%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: 0.15;
+}
+
+.hero-photo-hint span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 60px 100px;
+  max-width: 660px;
+  animation: fadeUp 1s ease both;
+}
+
+.hero-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.2s both;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.0;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.4s both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--clay);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(232,221,208,0.65);
+  max-width: 480px;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.6s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.8s both;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--clay);
+  color: var(--deep);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--warm);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-block;
+  padding: 16px 40px;
+  border: 1px solid rgba(196,168,130,0.4);
+  color: var(--clay);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-ghost:hover {
+  border-color: var(--clay);
+  background: rgba(196,168,130,0.08);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.2s both;
+}
+
+.hero-scroll span {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.scroll-line {
+  width: 40px;
+  height: 1px;
+  background: var(--stone);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--clay);
+  animation: scrollLine 2s ease infinite;
+}
+
+@keyframes scrollLine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ── PAIN SECTION ── */
+.pain {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+
+.pain-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 32px;
+}
+
+.pain h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 28px;
+}
+
+.pain h2 em { font-style: italic; color: var(--accent); }
+
+.pain p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--stone);
+  margin-bottom: 16px;
+}
+
+.pain-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pain-item {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.1);
+  font-size: 15px;
+  color: var(--stone);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  line-height: 1.6;
+}
+
+.pain-item::before {
+  content: '-';
+  color: var(--clay);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── ABOUT ── */
+.about {
+  background: var(--deep);
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,168,130,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-image-box {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #2a2018, #1a1208);
+  overflow: hidden;
+}
+
+.about-image-box::after {
+  content: 'Photo: Image 11 or 7\A(studio / warm portrait)';
+  white-space: pre;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(196,168,130,0.3);
+  text-align: center;
+}
+
+.about-image-box .img-border {
+  position: absolute;
+  top: 20px; left: 20px; right: -20px; bottom: -20px;
+  border: 1px solid rgba(196,168,130,0.15);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 32px;
+}
+
+.about h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+
+.about h2 em { font-style: italic; color: var(--clay); }
+
+.about p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(232,221,208,0.65);
+  margin-bottom: 20px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+
+.stat {
+  background: rgba(196,168,130,0.06);
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--clay);
+  display: block;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+/* ── OFFERS ── */
+.offers {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+
+.offers-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.offers-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: end;
+}
+
+.offers h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.offers h2 em { font-style: italic; color: var(--accent); }
+
+.offers-desc {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--stone);
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.offer-card {
+  background: var(--sand);
+  padding: 48px 36px;
+  position: relative;
+  transition: background 0.3s;
+  cursor: default;
+}
+
+.offer-card:hover { background: #DDD0C0; }
+
+.offer-card.featured {
+  background: var(--deep);
+}
+
+.offer-card.featured:hover { background: #2a2018; }
+
+.offer-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 300;
+  color: var(--clay);
+  opacity: 0.15;
+  position: absolute;
+  top: 20px; right: 24px;
+  line-height: 1;
+}
+
+.offer-card.featured .offer-num { color: var(--clay); opacity: 0.2; }
+
+.offer-icon {
+  font-size: 24px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.offer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  color: var(--bark);
+}
+
+.offer-card.featured .offer-name { color: var(--sand); }
+
+.offer-duration {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+
+.offer-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--stone);
+  margin-bottom: 28px;
+}
+
+.offer-card.featured .offer-desc { color: rgba(232,221,208,0.55); }
+
+.offer-results {
+  list-style: none;
+  margin-bottom: 32px;
+}
+
+.offer-results li {
+  font-size: 13px;
+  color: var(--stone);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.08);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.offer-card.featured .offer-results li { color: rgba(232,221,208,0.5); border-color: rgba(255,255,255,0.06); }
+
+.offer-results li::before { content: '·'; color: var(--clay); flex-shrink: 0; }
+
+.offer-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--accent);
+  display: block;
+}
+
+.offer-card.featured .offer-price { color: var(--clay); }
+
+.offer-price-note {
+  font-size: 11px;
+  color: var(--stone);
+  letter-spacing: 1px;
+}
+
+.offer-full {
+  background: var(--bark);
+  padding: 48px 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.community-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 8px;
+}
+
+.community-name em { font-style: italic; color: var(--clay); }
+
+.community-sub {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+.community-includes {
+  list-style: none;
+}
+
+.community-includes li {
+  font-size: 14px;
+  color: rgba(232,221,208,0.6);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  gap: 12px;
+}
+
+.community-includes li::before { content: '✓'; color: var(--moss); }
+
+.community-price {
+  text-align: right;
+}
+
+.community-price .price-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--clay);
+  line-height: 1;
+  display: block;
+}
+
+.community-price .price-period {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+  background: var(--deep);
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials::before {
+  content: '"';
+  position: absolute;
+  top: -40px; left: 40px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 400px;
+  color: rgba(196,168,130,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonials h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 64px;
+  max-width: 500px;
+}
+
+.testimonials h2 em { font-style: italic; color: var(--clay); }
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.testi-card {
+  background: rgba(255,255,255,0.03);
+  padding: 40px 32px;
+  border-top: 2px solid rgba(196,168,130,0.2);
+  transition: border-color 0.3s;
+}
+
+.testi-card:hover { border-color: var(--clay); }
+
+.testi-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(232,221,208,0.85);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.testi-author {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+.testi-source {
+  font-size: 11px;
+  color: var(--stone);
+  margin-top: 4px;
+}
+
+.testi-featured {
+  background: rgba(196,168,130,0.08);
+  border-color: var(--clay);
+  grid-column: span 2;
+}
+
+.testi-featured .testi-text { font-size: 26px; }
+
+/* ── PROCESS ── */
+.process {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+
+.process-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.process h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  margin-bottom: 80px;
+  max-width: 600px;
+}
+
+.process h2 em { font-style: italic; color: var(--accent); }
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.step {
+  padding: 40px 28px;
+  background: var(--sand);
+  position: relative;
+}
+
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 300;
+  color: var(--clay);
+  opacity: 0.25;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.step h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  color: var(--bark);
+}
+
+.step p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--stone);
+}
+
+/* ── BOOKING ── */
+.booking {
+  background: var(--bark);
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.booking::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,168,130,0.06) 0%, transparent 70%);
+}
+
+.booking-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.booking h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.booking h2 em { font-style: italic; color: var(--clay); }
+
+.booking p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(232,221,208,0.6);
+  margin-bottom: 40px;
+}
+
+.booking-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.booking-option {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(196,168,130,0.15);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.booking-option:hover {
+  background: rgba(196,168,130,0.08);
+  border-color: rgba(196,168,130,0.4);
+  transform: translateX(4px);
+}
+
+.booking-option-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.booking-option-text {
+  flex: 1;
+}
+
+.booking-option-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sand);
+  margin-bottom: 4px;
+}
+
+.booking-option-sub {
+  font-size: 12px;
+  color: var(--stone);
+  letter-spacing: 1px;
+}
+
+.booking-option-arrow {
+  color: var(--clay);
+  font-size: 18px;
+}
+
+.booking-entry {
+  background: rgba(196,168,130,0.06);
+  border: 1px solid rgba(196,168,130,0.2);
+  padding: 40px;
+}
+
+.entry-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+
+.entry-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 12px;
+}
+
+.entry-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(232,221,208,0.55);
+  margin-bottom: 28px;
+}
+
+.entry-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--clay);
+  margin-bottom: 28px;
+  display: block;
+}
+
+/* ── INSTAGRAM ── */
+.instagram {
+  background: var(--fog);
+  padding: 80px 60px;
+  text-align: center;
+}
+
+.instagram-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.instagram-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 24px;
+}
+
+.instagram h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.instagram h2 em { font-style: italic; color: var(--accent); }
+
+.instagram p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--stone);
+  margin-bottom: 32px;
+}
+
+.insta-handles {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.insta-handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid rgba(61,46,30,0.15);
+  text-decoration: none;
+  color: var(--bark);
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+
+.insta-handle:hover {
+  border-color: var(--clay);
+  color: var(--accent);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep);
+  padding: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.footer-brand h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.footer-brand h3 em { font-style: italic; color: var(--clay); }
+
+.footer-brand p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--stone);
+}
+
+.footer-nav h4 {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 24px;
+}
+
+.footer-nav ul { list-style: none; }
+.footer-nav li { padding: 6px 0; }
+.footer-nav a {
+  font-size: 14px;
+  color: var(--stone);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--clay); }
+
+.footer-contact h4 {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 24px;
+}
+
+.footer-contact p {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.8;
+}
+
+.footer-contact a {
+  color: var(--clay);
+  text-decoration: none;
+}
+
+.footer-bottom {
+  background: var(--deep);
+  padding: 20px 60px;
+  border-top: 1px solid rgba(196,168,130,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--stone);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.js-loaded .reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.js-loaded .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+/* -- PAIN QUOTES -- */
+.pain-quotes {
+  display: flex;
+  flex-direction: column;
+}
+
+.pain-quote {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(196,168,130,0.15);
+  cursor: default;
+}
+
+.pain-quote:first-child { border-top: 1px solid rgba(196,168,130,0.15); }
+.pain-quote:hover .pq-text { color: var(--bark); }
+.pain-quote:hover .pq-mark { opacity: 1; color: var(--accent); }
+
+.pq-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--clay);
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: color 0.2s, opacity 0.2s;
+  margin-top: -2px;
+}
+
+.pq-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--stone);
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+/* ── DROPDOWN ── */
+.nav-dropdown { position: relative; }
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(245,241,236,0.98);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(196,168,130,0.2);
+  list-style: none;
+  min-width: 200px;
+  z-index: 999;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  padding-top: 8px;
+}
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.nav-dropdown > span {
+  padding-bottom: 16px;
+  margin-bottom: -16px;
+  display: inline-block;
+}
+.nav-dropdown > span::after { content: ''; display: block; position: absolute; height: 16px; width: 100%; left: 0; bottom: -16px; }
+.dropdown-menu li a {
+  display: block;
+  padding: 14px 24px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bark) !important;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.dropdown-menu li a:hover { background: var(--sand); color: var(--accent) !important; }
+
+/* ── SUBPAGES ── */
+.subpage {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--fog);
+  overflow-y: auto;
+}
+
+.subpage-nav {
+  position: sticky;
+  top: 0;
+  background: rgba(245,241,236,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+  padding: 18px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.subpage-back {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--stone);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.subpage-back:hover { color: var(--accent); }
+
+.subpage-hero {
+  background: var(--deep);
+  padding: 120px 60px 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.subpage-hero-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 28px;
+}
+.subpage-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.0;
+  margin-bottom: 28px;
+}
+.subpage-hero h1 em { font-style: italic; color: var(--clay); }
+.subpage-hero p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: rgba(232,221,208,0.65);
+  max-width: 560px;
+}
+
+.subpage-section {
+  padding: 80px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.subpage-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  margin-bottom: 28px;
+  line-height: 1.2;
+}
+.subpage-section h2 em { font-style: italic; color: var(--accent); }
+
+.subpage-section p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--stone);
+  margin-bottom: 20px;
+  max-width: 680px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  padding: 80px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-list {
+  list-style: none;
+  margin-top: 32px;
+}
+.feature-list li {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.1);
+  font-size: 15px;
+  color: var(--stone);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+.feature-list li::before {
+  content: '✦';
+  color: var(--clay);
+  flex-shrink: 0;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.include-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+.include-card {
+  background: var(--sand);
+  padding: 36px 28px;
+}
+.include-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: var(--bark);
+}
+.include-card p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--stone);
+  margin: 0;
+}
+.include-card .ic-icon {
+  font-size: 22px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 0;
+}
+.pkg-card {
+  background: var(--sand);
+  padding: 40px 32px;
+  position: relative;
+}
+.pkg-card.best {
+  background: var(--deep);
+}
+.pkg-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: var(--bark);
+}
+.pkg-card.best .pkg-name { color: var(--sand); }
+.pkg-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--accent);
+  margin-bottom: 24px;
+  display: block;
+  line-height: 1;
+}
+.pkg-card.best .pkg-price { color: var(--clay); }
+.pkg-includes {
+  list-style: none;
+  margin-bottom: 32px;
+}
+.pkg-includes li {
+  font-size: 13px;
+  color: var(--stone);
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.08);
+  display: flex;
+  gap: 10px;
+}
+.pkg-card.best .pkg-includes li { color: rgba(232,221,208,0.55); border-color: rgba(255,255,255,0.06); }
+.pkg-includes li::before { content: '·'; color: var(--clay); flex-shrink: 0; }
+.pkg-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--clay);
+  color: var(--deep);
+  padding: 4px 10px;
+  font-weight: 500;
+}
+
+.dark-section {
+  background: var(--deep);
+  padding: 80px 60px;
+}
+.dark-section .subpage-section {
+  padding: 0;
+}
+
+.akal-what-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 48px;
+}
+.akal-card {
+  background: rgba(255,255,255,0.03);
+  border-top: 2px solid rgba(196,168,130,0.2);
+  padding: 40px 32px;
+  transition: border-color 0.3s;
+}
+.akal-card:hover { border-color: var(--clay); }
+.akal-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--sand);
+  margin-bottom: 12px;
+}
+.akal-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(232,221,208,0.55);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .nav-hamburger { display: flex !important; }
+  nav { padding: 16px 24px; }
+  nav.scrolled { padding: 12px 24px; }
+  .nav-links { display: none; }
+
+  .hero { min-height: 100vh; display: flex; align-items: flex-end; position: relative; }
+  .hero-image-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.45; }
+  .hero-image-placeholder img { object-position: center 20%; }
+  .hero-image-placeholder::after { background: linear-gradient(to top, var(--deep) 30%, rgba(10,8,5,0.5) 100%); }
+  .hero-content { padding: 0 24px 80px; position: relative; z-index: 10; max-width: 100%; }
+
+  .pain, .about, .offers, .testimonials, .process, .booking, .instagram { padding: 80px 24px; }
+
+  .pain-inner, .about-inner, .booking-inner { grid-template-columns: 1fr; gap: 48px; }
+  .about-image-box { aspect-ratio: 4/3; display: block; overflow: hidden; }
+  .offer-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .testi-featured { grid-column: span 1; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .offer-full { grid-template-columns: 1fr; text-align: left; }
+  .community-price { text-align: left; }
+  .offers-header { grid-template-columns: 1fr; gap: 24px; }
+  footer { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+  .akal-what-grid { grid-template-columns: 1fr !important; }
+  .akal-card { min-width: 0; box-sizing: border-box; padding: 28px 20px; }
+  .include-grid { grid-template-columns: 1fr !important; }
+  .include-card { min-width: 0; box-sizing: border-box; padding: 28px 20px !important; }
+  .gallery-grid { grid-template-columns: 1fr 1fr !important; }
+  .gallery-section { padding: 60px 20px !important; }
+  .subpage-hero { padding: 100px 24px 60px !important; }
+  .subpage-section { padding: 60px 20px !important; max-width: 100% !important; }
+  .dark-section { padding: 60px 24px !important; }
+  div[style*="padding:80px 60px"] { padding: 60px 20px !important; }
+  div[style*="padding: 80px 60px"] { padding: 60px 20px !important; }
+  div[style*="padding:80px 0"] { padding: 60px 0 !important; }
+  div[style*="max-width:1100px"] { max-width: 100% !important; }
+  div[style*="max-width: 1100px"] { max-width: 100% !important; }
+}
+
+/* -- PHOTO GALLERY -- */
+.gallery-section {
+  padding: 80px 60px;
+  background: var(--fog);
+}
+.gallery-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.gallery-section h2 em { font-style: italic; color: var(--accent); }
+.gallery-section .section-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+  display: block;
+}
+.gallery-section > p {
+  font-size: 14px;
+  color: var(--stone);
+  margin-bottom: 48px;
+  line-height: 1.8;
+  max-width: 560px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--sand);
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item .gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(22,17,12,0.45);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay-icon {
+  font-size: 28px;
+  color: var(--sand);
+  opacity: 0.9;
+}
+/* Upload placeholder slots */
+.gallery-item.placeholder {
+  border: 2px dashed rgba(196,168,130,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.gallery-item.placeholder:hover {
+  border-color: var(--clay);
+  background: var(--sand);
+}
+.placeholder-icon {
+  font-size: 28px;
+  opacity: 0.3;
+}
+.placeholder-text {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--stone);
+  opacity: 0.6;
+  text-align: center;
+  padding: 0 16px;
+}
+.gallery-item.placeholder input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(22,17,12,0.92);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  cursor: default;
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px; right: 32px;
+  font-size: 32px;
+  color: var(--clay);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.lightbox-close:hover { color: var(--sand); }
+.lightbox-caption {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: rgba(232,221,208,0.6);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .gallery-section { padding: 60px 24px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+
+
+
+
+
+
+.subpage-hero {
+  position: relative;
+  overflow: hidden;
+}
+.subpage-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/images/akal-78511859969e8e37.jpg');
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.22;
+  z-index: 0;
+}
+.subpage-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* -- HAMBURGER MOBILE NAV -- */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+  background: none;
+  border: none;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--sand);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+nav.scrolled .nav-hamburger span { background: var(--bark); }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #0a0805;
+  z-index: 9999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--sand);
+  text-decoration: none;
+  padding: 16px 48px;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid rgba(196,168,130,0.08);
+}
+.nav-mobile-menu a:first-child { border-top: 1px solid rgba(196,168,130,0.08); }
+.nav-mobile-menu a:hover { color: var(--clay); }
+.nav-mobile-menu a.mobile-cta {
+  color: var(--clay);
+  font-style: italic;
+  margin-top: 8px;
+  border-bottom: none;
+}
+.nav-mobile-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-size: 28px;
+  color: rgba(245,241,236,0.5);
+  cursor: pointer;
+  background: none;
+  border: none;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.nav-mobile-close:hover { color: var(--clay); }
+
+
+</style>
+
+<link rel="alternate" hreflang="en" href="../en/akal.html" />
+<link rel="alternate" hreflang="de" href="../de/akal.html" />
+<link rel="alternate" hreflang="sr" href="../srb/akal.html" />
+<link rel="alternate" hreflang="x-default" href="../index.html" />
+</head>
+<body>
+<style>
+.subpage-hero { padding-top: 120px; }
+
+
+
+
+
+
+.subpage-hero {
+  position: relative;
+  overflow: hidden;
+}
+.subpage-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/images/akal-78511859969e8e37.jpg');
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.22;
+  z-index: 0;
+}
+.subpage-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+</style>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Nemanja Vukoje</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Über mich</a></li>
+    <li><a href="akal.html">Akal Community</a></li>
+    <li><a href="individual.html">1:1 Arbeit</a></li>
+    <li><a href="index.html#testimonials">Erfahrungen</a></li>
+    <li><a href="index.html#booking" class="nav-cta">Session buchen</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <button class="nav-mobile-close" onclick="closeMobileMenu()">×</button>
+  <a href="index.html#about" onclick="closeMobileMenu()">Über mich</a>
+  <a href="akal.html" onclick="closeMobileMenu()">Akal Community</a>
+  <a href="individual.html" onclick="closeMobileMenu()">1:1 Arbeit</a>
+  <a href="index.html#testimonials" onclick="closeMobileMenu()">Erfahrungen</a>
+  <a href="index.html#booking" class="mobile-cta" onclick="closeMobileMenu()">Session buchen</a>
+</div>
+
+
+  <!-- Hero -->
+  <div class="subpage-hero">
+    <div class="subpage-hero-label">Akal Community · 77€ / Monat</div>
+    <h1>Ein warmer Raum<br>to come back<br><em>to yourself.</em></h1>
+    <p>Akal ist ein Sanskrit-Wort und bedeutet „zeitlos“ - jenseits von Zeit, jenseits vom Ego. Diese Community ist ein lebendiger Raum dafür: ein Ort, an dem Praxis auf Präsenz trifft und an dem du genau so willkommen bist, wie du bist.</p>
+  </div>
+
+  <!-- For who -->
+  <div class="subpage-section">
+    <div class="section-label">Für wen ist das?</div>
+    <h2>Für alle, die das Gewicht<br><em>des modernen Lebens spüren.</em></h2>
+    <p>Du musst nichts über Yoga oder Meditation wissen, um dabei zu sein. Du brauchst nur eines - das ehrliche Gefühl, dass sich etwas verändern muss.</p>
+
+    <div class="akal-what-grid" style="margin-top:40px;margin-bottom:48px;">
+      <div class="akal-card" style="background:var(--sand);border-top-color:var(--clay)">
+        <h4 style="color:var(--bark)">Du spürst es im Körper</h4>
+        <p style="color:var(--stone)">Ständige Müdigkeit, die Schlaf nicht wirklich löst. Ein Körper, der sich eng, schwer oder taub anfühlt. Du funktionierst weiter, aber die Erschöpfung kommt immer wieder.</p>
+      </div>
+      <div class="akal-card" style="background:var(--sand);border-top-color:var(--moss)">
+        <h4 style="color:var(--bark)">Du spürst es im Geist</h4>
+        <p style="color:var(--stone)">Ängste, die ohne Vorwarnung auftauchen. Gedanken, die nicht still werden. Stress, der dich selbst in die Momente verfolgt, die friedlich sein sollten.</p>
+      </div>
+      <div class="akal-card" style="background:var(--sand);border-top-color:var(--accent)">
+        <h4 style="color:var(--bark)">Du spürst es emotional</h4>
+        <p style="color:var(--stone)">Stimmungsschwankungen, emotionale Taubheit oder Reaktionen, die du nicht erklären kannst. Das Gefühl, von dir selbst getrennt zu sein - du funktionierst, ohne dich wirklich lebendig zu fühlen.</p>
+      </div>
+      <div class="akal-card" style="background:var(--sand);border-top-color:var(--bark)">
+        <h4 style="color:var(--bark)">Du spürst es spirituell</h4>
+        <p style="color:var(--stone)">Eine stille Leere unter der Oberfläche. Das Leben fühlt sich flach, sinnlos oder wiederholend an. Du spürst, dass etwas Tieferes möglich ist - aber findest die Tür dorthin nicht.</p>
+      </div>
+    </div>
+
+    <p style="font-size:15px;color:var(--stone);line-height:1.9;margin-bottom:0;">Regelmäßige Praxis in der Akal Community wirkt direkt auf diese Muster. Woche für Woche trainieren Kundalini Yoga und Meditation dein Nervensystem, gespeicherten Stress loszulassen, den Geist zu beruhigen, den Körper weicher werden zu lassen und emotionale Stabilität aufzubauen, damit du dem Leben begegnen kannst - ohne dich ständig dagegen zu verspannen.</p>
+  </div>
+
+  <!-- What's inside -->
+  <div style="background:var(--deep);padding:80px 0;">
+    <div class="subpage-section" style="padding-top:0;padding-bottom:0;">
+      <div class="section-label" style="color:var(--clay)">Was enthalten ist</div>
+      <h2 style="color:var(--sand)">Alles, was du brauchst,<br><em>um eine echte Praxis aufzubauen.</em></h2>
+      <div class="include-grid" style="margin-top:48px;">
+        <div class="include-card" style="background:rgba(255,255,255,0.04);">
+          <span class="ic-icon">🧘</span>
+          <h4 style="color:var(--sand)">Wöchentliches Kundalini Yoga</h4>
+          <p style="color:rgba(232,221,208,0.55)">Jede Woche eine Live-Online-Klasse. Kundalini Yoga arbeitet gleichzeitig mit Nervensystem, Energiekörper und Geist - und baut Kraft, Flexibilität und innere Ruhe von innen nach außen auf. Du kannst nicht live dabei sein? Jede Aufzeichnung steht 7 Tage lang zur Verfügung.</p>
+        </div>
+        <div class="include-card" style="background:rgba(255,255,255,0.04);">
+          <span class="ic-icon">🌙</span>
+          <h4 style="color:var(--sand)">2 Meditationsabende / Monat</h4>
+          <p style="color:rgba(232,221,208,0.55)">Zwei besondere Abende pro Monat für eine tiefere Meditationspraxis. Diese Sessions gehen über Technik hinaus - sie sind Räume für Stille, emotionale Lösung und echte Rückverbindung mit dir selbst.</p>
+        </div>
+        <div class="include-card" style="background:rgba(255,255,255,0.04);">
+          <span class="ic-icon">💬</span>
+          <h4 style="color:var(--sand)">Private WhatsApp-Community</h4>
+          <p style="color:rgba(232,221,208,0.55)">Eine private Gruppe, in der Mitglieder zwischen den Sessions teilen, sich unterstützen und gemeinsam wachsen. Begleitung, Impulse und Gemeinschaft - immer dann verfügbar, wenn du sie brauchst.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What you get -->
+  <div class="subpage-section">
+    <div class="section-label">Was sich verändert</div>
+    <h2>Das ist nicht einfach nur Yoga.<br><em>Es ist eine Rückkehr zu dir selbst.</em></h2>
+    <p>Regelmäßige Praxis in der Akal Community bringt Veränderungen, die weit über Flexibilität oder Entspannung hinausgehen. Wenn sich das Nervensystem beruhigt, wenn emotionale Blockaden sich zu lösen beginnen und wenn du beständig für dich da bist - dann verändert sich dein Leben.</p>
+
+    <ul class="feature-list">
+      <li>Dein Nervensystem lernt, sich zu regulieren - Stress lebt nicht mehr auf dieselbe Weise in deinem Körper</li>
+      <li>Emotionale Last, die jahrelang festsaß, beginnt sich Schicht für Schicht zu lösen</li>
+      <li>Du spürst mehr Energie, mehr Präsenz und mehr Lebendigkeit im Alltag</li>
+      <li>Du entwickelst eine konstante Praxis, die zu einem Anker wird - etwas, zu dem du immer zurückkehren kannst</li>
+      <li>Du fühlst dich wirklich getragen und auf deinem Weg weniger allein</li>
+      <li>Ein sicherer Raum, um dich selbst zu erforschen - ohne Bewertung und ohne Druck, anders sein zu müssen</li>
+    </ul>
+  </div>
+
+  <!-- Testimonial -->
+  <div style="background:var(--bark);padding:80px 60px;">
+    <div style="max-width:800px;margin:0 auto;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,32px);font-weight:300;font-style:italic;color:var(--sand);line-height:1.6;margin-bottom:28px;">„40 Tage Meditation und Kundalini Yoga haben mehr für mich getan als Jahre der Therapie. Ich habe mich entschieden, enger mit Nemanja zu arbeiten - ich war bei seinem Workshop, wurde Teil der Akal Community und habe 1:1-Sessions gemacht. Vom ersten Tag an wusste ich: Hier muss ich sein.“</p>
+      <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--clay)">Akal-Community-Mitglied</div>
+    </div>
+  </div>
+
+
+  <!-- PHOTO GALLERY -->
+  <div class="gallery-section">
+    <div style="max-width:1100px;margin:0 auto;">
+      <span class="section-label">Community in Bewegung</span>
+      <h2>Momente aus <em>Akal</em></h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;font-weight:300;color:var(--stone);line-height:1.7;max-width:560px;margin-top:16px;letter-spacing:0.2px;">Echte Momente aus echten Sessions.<br>Jedes Treffen trägt seine eigene Energie.</p>
+      <div class="gallery-grid" id="akalGallery">
+        <!-- Placeholder slots - click to upload -->
+        <div class="gallery-item" id="slot-0" onclick="openLightbox('../assets/images/akal-35ba747072485c73.jpg', 'Meditation - arms open')">
+          <img src="../assets/images/akal-35ba747072485c73.jpg" alt="Meditation - arms open" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+        </div>
+        <div class="gallery-item" id="slot-1" onclick="openLightbox('../assets/images/akal-78511859969e8e37.jpg', 'Kundalini-Yoga-Klasse')">
+          <img src="../assets/images/akal-78511859969e8e37.jpg" alt="Kundalini-Yoga-Klasse" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+        </div>
+        <div class="gallery-item" id="slot-2" onclick="openLightbox('../assets/images/akal-305fc09ad124f225.jpg', 'Moving together')">
+          <img src="../assets/images/akal-305fc09ad124f225.jpg" alt="Moving together" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+        </div>
+        <div class="gallery-item" id="slot-3" onclick="openLightbox('../assets/images/akal-62fadc9f3dfa0bcf.jpg', 'Opening circle')">
+          <img src="../assets/images/akal-62fadc9f3dfa0bcf.jpg" alt="Opening circle" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+        </div>
+        <div class="gallery-item" id="slot-4" onclick="openLightbox('../assets/images/akal-68958111b4e9ad4f.jpg', 'Savasana - deep rest')">
+          <img src="../assets/images/akal-68958111b4e9ad4f.jpg" alt="Savasana - deep rest" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+        </div>
+        <div class="gallery-item" id="slot-5" onclick="openLightbox('../assets/images/akal-26baaf419da63c6a.jpg', 'Heart connection')">
+          <img src="../assets/images/akal-26baaf419da63c6a.jpg" alt="Heart connection" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+        </div>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <!-- Price + CTA -->
+  <div style="background:var(--fog);padding:80px 60px;">
+    <div style="max-width:700px;margin:0 auto;text-align:center;">
+      <div class="section-label" style="justify-content:center;">Join Akal Community</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;margin-bottom:16px;">77€ <em style="font-style:italic;color:var(--accent);font-size:0.5em;vertical-align:middle;">pro Monat</em></h2>
+      <p style="color:var(--stone);margin-bottom:12px;">Jederzeit kündbar. Keine langfristige Bindung nötig.</p>
+      <p style="color:var(--stone);margin-bottom:48px;">Die Klassen finden online statt - du kannst von überall auf der Welt teilnehmen, auf Englisch, Serbisch oder Deutsch.</p>
+      <a href="mailto:info@vukojenemanja.com?subject=Booking%20Request%20-%20Akal%20Community" class="btn-primary">Der Community beitreten</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SUBPAGE: PERSONAL WORK
+══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">
+    <h3>Nemanja<br><em>Vukoje</em></h3>
+    <p>Heiler - Coach - Kundalini-Yoga-Lehrer<br>Wien, Österreich - Online weltweit<br>English, Serbian &amp; German</p>
+  </div>
+  <div class="footer-nav">
+    <h4>Navigation</h4>
+    <ul>
+      <li><a href="index.html#about">Über mich</a></li>
+      <li><a href="akal.html">Akal Community</a></li>
+      <li><a href="individual.html">1:1 Arbeit</a></li>
+      <li><a href="index.html#testimonials">Erfahrungen</a></li>
+      <li><a href="index.html#booking">Session buchen</a></li>
+      <li><a href="impressum.html">Impressum</a></li>
+    </ul>
+  </div>
+  <div class="footer-contact">
+    <h4>Kontakt</h4>
+    <p>
+      info@vukojenemanja.com<br><br>
+      <a href="https://instagram.com/vukoje.nemanja.world">@vukoje.nemanja.world</a><br>
+      <a href="https://instagram.com/vukoje.nemanja">@vukoje.nemanja</a>
+    </p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Nemanja Vukoje - vukojenemanja.com</p>
+  <p>Alle Sessions online - Weltweit</p>
+</div>
+<script>
+window.addEventListener('scroll', function() {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('hamburgerBtn');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburgerBtn').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>

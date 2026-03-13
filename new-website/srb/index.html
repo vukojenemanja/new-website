@@ -1,0 +1,2344 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nemanja Vukoje - Iscelitelj, coach i učitelj Kundalini joge</title>
+<meta name="description" content="Otpusti emotivne blokade, poveži se ponovo sa svojom energijom i vrati se životu koji deluje istinski živ. Online sesije na engleskom, srpskom i nemačkom jeziku.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --moss:   #6B7B5E;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+  --warm:   #D4B896;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--fog);
+  color: var(--bark);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,8,5,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+  transition: background 0.4s, padding 0.4s;
+}
+
+nav.scrolled {
+  background: rgba(26,18,8,0.95);
+  backdrop-filter: blur(10px);
+  padding: 14px 60px;
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--fog);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.4s;
+}
+
+nav.scrolled .nav-logo { color: var(--bark); }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a, .nav-links span {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,241,236,0.8);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav.scrolled .nav-links a,
+nav.scrolled .nav-links span { color: var(--stone); }
+.nav-links a:hover, .nav-links span:hover { color: var(--clay); }
+
+.nav-cta {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clay) !important;
+  border: 1px solid rgba(196,168,130,0.5);
+  padding: 8px 20px;
+  border-radius: 1px;
+  transition: all 0.3s !important;
+}
+
+.nav-cta:hover {
+  background: var(--clay) !important;
+  color: var(--deep) !important;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--deep);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 60%, rgba(196,168,130,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(107,123,94,0.06) 0%, transparent 50%);
+}
+
+.hero-image-placeholder {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 52%;
+  background: linear-gradient(135deg, #2a2018 0%, #1a1208 100%);
+  overflow: hidden;
+}
+
+.hero-image-placeholder img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; display: block; position: relative; z-index: 0; }
+.hero-image-placeholder::after {
+  pointer-events: none;
+  z-index: 1;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--deep) 0%, transparent 40%);
+}
+
+/* Subtle grain texture */
+.hero-image-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("../assets/images/noise.svg'0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.hero-photo-hint {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 52%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: 0.15;
+}
+
+.hero-photo-hint span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 60px 100px;
+  max-width: 660px;
+  animation: fadeUp 1s ease both;
+}
+
+.hero-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.2s both;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.0;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.4s both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--clay);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(232,221,208,0.65);
+  max-width: 480px;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.6s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.8s both;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--clay);
+  color: var(--deep);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--warm);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-block;
+  padding: 16px 40px;
+  border: 1px solid rgba(196,168,130,0.4);
+  color: var(--clay);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-ghost:hover {
+  border-color: var(--clay);
+  background: rgba(196,168,130,0.08);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.2s both;
+}
+
+.hero-scroll span {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.scroll-line {
+  width: 40px;
+  height: 1px;
+  background: var(--stone);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--clay);
+  animation: scrollLine 2s ease infinite;
+}
+
+@keyframes scrollLine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ── PAIN SECTION ── */
+.pain {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+
+.pain-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 32px;
+}
+
+.pain h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 28px;
+}
+
+.pain h2 em { font-style: italic; color: var(--accent); }
+
+.pain p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--stone);
+  margin-bottom: 16px;
+}
+
+.pain-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pain-item {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.1);
+  font-size: 15px;
+  color: var(--stone);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  line-height: 1.6;
+}
+
+.pain-item::before {
+  content: '-';
+  color: var(--clay);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── ABOUT ── */
+.about {
+  background: var(--deep);
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,168,130,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-image-box {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #2a2018, #1a1208);
+  overflow: hidden;
+}
+
+.about-image-box::after { display: none; }
+
+.about-image-box .img-border { display: none; }
+
+.about-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 32px;
+}
+
+.about h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+
+.about h2 em { font-style: italic; color: var(--clay); }
+
+.about p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(232,221,208,0.65);
+  margin-bottom: 20px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+
+.stat {
+  background: rgba(196,168,130,0.06);
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--clay);
+  display: block;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+/* ── OFFERS ── */
+.offers {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+
+.offers-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.offers-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: end;
+}
+
+.offers h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.offers h2 em { font-style: italic; color: var(--accent); }
+
+.offers-desc {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--stone);
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.offer-card {
+  background: var(--sand);
+  padding: 48px 36px;
+  position: relative;
+  transition: background 0.3s;
+  cursor: default;
+}
+
+.offer-card:hover { background: #DDD0C0; }
+
+.offer-card.featured {
+  background: var(--deep);
+}
+
+.offer-card.featured:hover { background: #2a2018; }
+
+.offer-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 300;
+  color: var(--clay);
+  opacity: 0.15;
+  position: absolute;
+  top: 20px; right: 24px;
+  line-height: 1;
+}
+
+.offer-card.featured .offer-num { color: var(--clay); opacity: 0.2; }
+
+.offer-icon {
+  font-size: 24px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.offer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  color: var(--bark);
+}
+
+.offer-card.featured .offer-name { color: var(--sand); }
+
+.offer-duration {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+
+.offer-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--stone);
+  margin-bottom: 28px;
+}
+
+.offer-card.featured .offer-desc { color: rgba(232,221,208,0.55); }
+
+.offer-results {
+  list-style: none;
+  margin-bottom: 32px;
+}
+
+.offer-results li {
+  font-size: 13px;
+  color: var(--stone);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.08);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.offer-card.featured .offer-results li { color: rgba(232,221,208,0.5); border-color: rgba(255,255,255,0.06); }
+
+.offer-results li::before { content: '·'; color: var(--clay); flex-shrink: 0; }
+
+.offer-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--accent);
+  display: block;
+}
+
+.offer-card.featured .offer-price { color: var(--clay); }
+
+.offer-price-note {
+  font-size: 11px;
+  color: var(--stone);
+  letter-spacing: 1px;
+}
+
+.offer-full {
+  background: var(--bark);
+  padding: 48px 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.community-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 8px;
+}
+
+.community-name em { font-style: italic; color: var(--clay); }
+
+.community-sub {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+.community-includes {
+  list-style: none;
+}
+
+.community-includes li {
+  font-size: 14px;
+  color: rgba(232,221,208,0.6);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  gap: 12px;
+}
+
+.community-includes li::before { content: '✓'; color: var(--moss); }
+
+.community-price {
+  text-align: right;
+}
+
+.community-price .price-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--clay);
+  line-height: 1;
+  display: block;
+}
+
+.community-price .price-period {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+  background: var(--deep);
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials::before {
+  content: '"';
+  position: absolute;
+  top: -40px; left: 40px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 400px;
+  color: rgba(196,168,130,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonials h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 64px;
+  max-width: 500px;
+}
+
+.testimonials h2 em { font-style: italic; color: var(--clay); }
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.testi-card {
+  background: rgba(255,255,255,0.03);
+  padding: 40px 32px;
+  border-top: 2px solid rgba(196,168,130,0.2);
+  transition: border-color 0.3s;
+}
+
+.testi-card:hover { border-color: var(--clay); }
+
+.testi-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(232,221,208,0.85);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.testi-author {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+.testi-source {
+  font-size: 11px;
+  color: var(--stone);
+  margin-top: 4px;
+}
+
+.testi-featured {
+  background: rgba(196,168,130,0.08);
+  border-color: var(--clay);
+  grid-column: span 2;
+}
+
+.testi-featured .testi-text { font-size: 26px; }
+
+/* ── PROCESS ── */
+.process {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+
+.process-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.process h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  margin-bottom: 80px;
+  max-width: 600px;
+}
+
+.process h2 em { font-style: italic; color: var(--accent); }
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.step {
+  padding: 40px 28px;
+  background: var(--sand);
+  position: relative;
+}
+
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 300;
+  color: var(--clay);
+  opacity: 0.25;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.step h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  color: var(--bark);
+}
+
+.step p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--stone);
+}
+
+/* ── BOOKING ── */
+.booking {
+  background: var(--bark);
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.booking::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,168,130,0.06) 0%, transparent 70%);
+}
+
+.booking-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.booking h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.booking h2 em { font-style: italic; color: var(--clay); }
+
+.booking p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(232,221,208,0.6);
+  margin-bottom: 40px;
+}
+
+.booking-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.booking-option {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(196,168,130,0.15);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.booking-option:hover {
+  background: rgba(196,168,130,0.08);
+  border-color: rgba(196,168,130,0.4);
+  transform: translateX(4px);
+}
+
+.booking-option-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.booking-option-text {
+  flex: 1;
+}
+
+.booking-option-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sand);
+  margin-bottom: 4px;
+}
+
+.booking-option-sub {
+  font-size: 12px;
+  color: var(--stone);
+  letter-spacing: 1px;
+}
+
+.booking-option-arrow {
+  color: var(--clay);
+  font-size: 18px;
+}
+
+.booking-entry {
+  background: rgba(196,168,130,0.06);
+  border: 1px solid rgba(196,168,130,0.2);
+  padding: 40px;
+}
+
+.entry-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+
+.entry-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 12px;
+}
+
+.entry-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(232,221,208,0.55);
+  margin-bottom: 28px;
+}
+
+.entry-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--clay);
+  margin-bottom: 28px;
+  display: block;
+}
+
+/* ── INSTAGRAM ── */
+.instagram {
+  background: var(--fog);
+  padding: 80px 60px;
+  text-align: center;
+}
+
+.instagram-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.instagram-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 24px;
+}
+
+.instagram h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.instagram h2 em { font-style: italic; color: var(--accent); }
+
+.instagram p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--stone);
+  margin-bottom: 32px;
+}
+
+.insta-handles {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.insta-handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid rgba(61,46,30,0.15);
+  text-decoration: none;
+  color: var(--bark);
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+
+.insta-handle:hover {
+  border-color: var(--clay);
+  color: var(--accent);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep);
+  padding: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.footer-brand h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.footer-brand h3 em { font-style: italic; color: var(--clay); }
+
+.footer-brand p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--stone);
+}
+
+.footer-nav h4 {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 24px;
+}
+
+.footer-nav ul { list-style: none; }
+.footer-nav li { padding: 6px 0; }
+.footer-nav a {
+  font-size: 14px;
+  color: var(--stone);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--clay); }
+
+.footer-contact h4 {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 24px;
+}
+
+.footer-contact p {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.8;
+}
+
+.footer-contact a {
+  color: var(--clay);
+  text-decoration: none;
+}
+
+.footer-bottom {
+  background: var(--deep);
+  padding: 20px 60px;
+  border-top: 1px solid rgba(196,168,130,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--stone);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.js-loaded .reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.js-loaded .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+/* -- PAIN QUOTES -- */
+.pain-quotes {
+  display: flex;
+  flex-direction: column;
+}
+
+.pain-quote {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(196,168,130,0.15);
+  cursor: default;
+}
+
+.pain-quote:first-child { border-top: 1px solid rgba(196,168,130,0.15); }
+.pain-quote:hover .pq-text { color: var(--bark); }
+.pain-quote:hover .pq-mark { opacity: 1; color: var(--accent); }
+
+.pq-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--clay);
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: color 0.2s, opacity 0.2s;
+  margin-top: -2px;
+}
+
+.pq-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--stone);
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+/* ── DROPDOWN ── */
+.nav-dropdown { position: relative; }
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(245,241,236,0.98);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(196,168,130,0.2);
+  list-style: none;
+  min-width: 200px;
+  z-index: 999;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  padding-top: 8px;
+}
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.nav-dropdown > span {
+  padding-bottom: 16px;
+  margin-bottom: -16px;
+  display: inline-block;
+}
+.nav-dropdown > span::after { content: ''; display: block; position: absolute; height: 16px; width: 100%; left: 0; bottom: -16px; }
+.dropdown-menu li a {
+  display: block;
+  padding: 14px 24px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bark) !important;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.dropdown-menu li a:hover { background: var(--sand); color: var(--accent) !important; }
+
+/* ── SUBPAGES ── */
+.subpage {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--fog);
+  overflow-y: auto;
+}
+
+.subpage-nav {
+  position: sticky;
+  top: 0;
+  background: rgba(245,241,236,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+  padding: 18px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.subpage-back {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--stone);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.subpage-back:hover { color: var(--accent); }
+
+.subpage-hero {
+  background: var(--deep);
+  padding: 120px 60px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.subpage-hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,168,130,0.07) 0%, transparent 70%);
+}
+.subpage-hero-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 28px;
+}
+.subpage-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.0;
+  margin-bottom: 28px;
+}
+.subpage-hero h1 em { font-style: italic; color: var(--clay); }
+.subpage-hero p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: rgba(232,221,208,0.65);
+  max-width: 560px;
+}
+
+.subpage-section {
+  padding: 80px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.subpage-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  margin-bottom: 28px;
+  line-height: 1.2;
+}
+.subpage-section h2 em { font-style: italic; color: var(--accent); }
+
+.subpage-section p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--stone);
+  margin-bottom: 20px;
+  max-width: 680px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  padding: 80px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-list {
+  list-style: none;
+  margin-top: 32px;
+}
+.feature-list li {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.1);
+  font-size: 15px;
+  color: var(--stone);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+.feature-list li::before {
+  content: '✦';
+  color: var(--clay);
+  flex-shrink: 0;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.include-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 48px;
+}
+.include-card {
+  background: var(--sand);
+  padding: 36px 28px;
+}
+.include-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: var(--bark);
+}
+.include-card p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--stone);
+  margin: 0;
+}
+.include-card .ic-icon {
+  font-size: 22px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 0;
+}
+.pkg-card {
+  background: var(--sand);
+  padding: 40px 32px;
+  position: relative;
+}
+.pkg-card.best {
+  background: var(--deep);
+}
+.pkg-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: var(--bark);
+}
+.pkg-card.best .pkg-name { color: var(--sand); }
+.pkg-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--accent);
+  margin-bottom: 24px;
+  display: block;
+  line-height: 1;
+}
+.pkg-card.best .pkg-price { color: var(--clay); }
+.pkg-includes {
+  list-style: none;
+  margin-bottom: 32px;
+}
+.pkg-includes li {
+  font-size: 13px;
+  color: var(--stone);
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.08);
+  display: flex;
+  gap: 10px;
+}
+.pkg-card.best .pkg-includes li { color: rgba(232,221,208,0.55); border-color: rgba(255,255,255,0.06); }
+.pkg-includes li::before { content: '·'; color: var(--clay); flex-shrink: 0; }
+.pkg-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--clay);
+  color: var(--deep);
+  padding: 4px 10px;
+  font-weight: 500;
+}
+
+.dark-section {
+  background: var(--deep);
+  padding: 80px 60px;
+}
+.dark-section .subpage-section {
+  padding: 0;
+}
+
+.akal-what-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 48px;
+}
+.akal-card {
+  background: rgba(255,255,255,0.03);
+  border-top: 2px solid rgba(196,168,130,0.2);
+  padding: 40px 32px;
+  transition: border-color 0.3s;
+}
+.akal-card:hover { border-color: var(--clay); }
+.akal-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--sand);
+  margin-bottom: 12px;
+}
+.akal-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(232,221,208,0.55);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .nav-hamburger { display: flex !important; }
+  nav { padding: 16px 24px; }
+  nav.scrolled { padding: 12px 24px; }
+  .nav-links { display: none; }
+
+  .hero { min-height: 100vh; display: flex; align-items: flex-end; position: relative; }
+  .hero-image-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.45; }
+  .hero-image-placeholder img { object-position: center 20%; }
+  .hero-image-placeholder::after { background: linear-gradient(to top, var(--deep) 30%, rgba(10,8,5,0.5) 100%); }
+  .hero-content { padding: 0 24px 80px; position: relative; z-index: 10; max-width: 100%; }
+
+  .pain, .about, .offers, .testimonials, .process, .booking, .instagram { padding: 80px 24px; }
+
+  .pain-inner, .about-inner, .booking-inner { grid-template-columns: 1fr; gap: 48px; }
+  .about-image-box { aspect-ratio: 4/3; display: block; overflow: hidden; }
+  .offer-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .testi-featured { grid-column: span 1; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .offer-full { grid-template-columns: 1fr; text-align: left; }
+  .community-price { text-align: left; }
+  .offers-header { grid-template-columns: 1fr; gap: 24px; }
+  footer { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+/* -- PHOTO GALLERY -- */
+.gallery-section {
+  padding: 80px 60px;
+  background: var(--fog);
+}
+.gallery-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.gallery-section h2 em { font-style: italic; color: var(--accent); }
+.gallery-section .section-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+  display: block;
+}
+.gallery-section > p {
+  font-size: 14px;
+  color: var(--stone);
+  margin-bottom: 48px;
+  line-height: 1.8;
+  max-width: 560px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--sand);
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item .gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(22,17,12,0.45);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay-icon {
+  font-size: 28px;
+  color: var(--sand);
+  opacity: 0.9;
+}
+/* Upload placeholder slots */
+.gallery-item.placeholder {
+  border: 2px dashed rgba(196,168,130,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.gallery-item.placeholder:hover {
+  border-color: var(--clay);
+  background: var(--sand);
+}
+.placeholder-icon {
+  font-size: 28px;
+  opacity: 0.3;
+}
+.placeholder-text {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--stone);
+  opacity: 0.6;
+  text-align: center;
+  padding: 0 16px;
+}
+.gallery-item.placeholder input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(22,17,12,0.92);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  cursor: default;
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px; right: 32px;
+  font-size: 32px;
+  color: var(--clay);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.lightbox-close:hover { color: var(--sand); }
+.lightbox-caption {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: rgba(232,221,208,0.6);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .gallery-section { padding: 60px 24px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+
+
+/* -- PHOTO UPLOAD HOLDERS -- */
+.photo-upload-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
+}
+.photo-upload-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photo-upload-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(145deg, #2a1f14, #1a120a);
+  border: 2px dashed rgba(196,168,130,0.25);
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s;
+  position: relative;
+}
+.photo-upload-placeholder:hover {
+  border-color: rgba(196,168,130,0.5);
+  background: linear-gradient(145deg, #332519, #1a120a);
+}
+.photo-upload-placeholder input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.upload-icon {
+  width: 48px; height: 48px;
+  border: 1px solid rgba(196,168,130,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: rgba(196,168,130,0.5);
+  transition: all 0.3s;
+}
+.photo-upload-placeholder:hover .upload-icon {
+  border-color: var(--clay);
+  color: var(--clay);
+}
+.upload-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(196,168,130,0.4);
+  transition: color 0.3s;
+}
+.photo-upload-placeholder:hover .upload-label {
+  color: var(--clay);
+}
+.upload-sublabel {
+  font-size: 11px;
+  color: rgba(138,128,112,0.4);
+  margin-top: -6px;
+}
+.photo-remove {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: rgba(22,17,12,0.7);
+  color: var(--clay);
+  border: 1px solid rgba(196,168,130,0.3);
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 10;
+  transition: all 0.2s;
+  display: none;
+}
+.photo-upload-wrap:hover .photo-remove { display: flex; }
+.photo-remove:hover { background: rgba(196,168,130,0.2); }
+
+
+/* -- WHATSAPP POPUP -- */
+.wa-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(22,17,12,0.6);
+  z-index: 800;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  animation: fadeInOverlay 0.4s ease;
+}
+.wa-popup-overlay.open { display: flex; }
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.wa-popup {
+  background: var(--fog);
+  max-width: 480px;
+  width: 90%;
+  position: relative;
+  animation: popupSlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+
+@keyframes popupSlideUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.wa-popup-top {
+  background: var(--bark);
+  padding: 40px 40px 32px;
+  position: relative;
+}
+
+.wa-popup-close {
+  position: absolute;
+  top: 16px; right: 20px;
+  font-size: 22px;
+  color: rgba(232,221,208,0.4);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  padding: 4px 8px;
+}
+.wa-popup-close:hover { color: var(--clay); }
+
+.wa-popup-tag {
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 16px;
+  display: block;
+}
+.wa-popup-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.wa-popup-title em {
+  font-style: italic;
+  color: var(--clay);
+}
+.wa-popup-sub {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(232,221,208,0.55);
+}
+
+.wa-popup-bottom {
+  padding: 28px 40px 36px;
+}
+
+.wa-popup-perks {
+  list-style: none;
+  margin-bottom: 28px;
+}
+.wa-popup-perks li {
+  font-size: 13px;
+  color: var(--stone);
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+.wa-popup-perks li::before {
+  content: '/';
+  color: var(--clay);
+  flex-shrink: 0;
+}
+
+.wa-popup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 28px;
+  background: #25D366;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+  border: none;
+  cursor: pointer;
+}
+.wa-popup-btn:hover {
+  background: #1ebe5c;
+  transform: translateY(-1px);
+}
+.wa-popup-btn svg {
+  width: 20px; height: 20px;
+  fill: #fff;
+  flex-shrink: 0;
+}
+.wa-popup-skip {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--stone);
+  cursor: pointer;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  width: 100%;
+}
+.wa-popup-skip:hover { color: var(--bark); }
+
+
+/* -- HAMBURGER MOBILE NAV -- */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+  background: none;
+  border: none;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--sand);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+nav.scrolled .nav-hamburger span { background: var(--bark); }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #0a0805;
+  z-index: 9999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--sand);
+  text-decoration: none;
+  padding: 16px 48px;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid rgba(196,168,130,0.08);
+}
+.nav-mobile-menu a:first-child { border-top: 1px solid rgba(196,168,130,0.08); }
+.nav-mobile-menu a:hover { color: var(--clay); }
+.nav-mobile-menu a.mobile-cta {
+  color: var(--clay);
+  font-style: italic;
+  margin-top: 8px;
+  border-bottom: none;
+}
+.nav-mobile-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-size: 28px;
+  color: rgba(245,241,236,0.5);
+  cursor: pointer;
+  background: none;
+  border: none;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.nav-mobile-close:hover { color: var(--clay); }
+
+
+</style>
+
+<link rel="alternate" hreflang="en" href="../en/index.html" />
+<link rel="alternate" hreflang="de" href="../de/index.html" />
+<link rel="alternate" hreflang="sr" href="../srb/index.html" />
+<link rel="alternate" hreflang="x-default" href="../index.html" />
+</head>
+<body>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Nemanja Vukoje</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">O meni</a></li>
+    <li><a href="akal.html">Akal zajednica</a></li>
+    <li><a href="individual.html">Individualni rad</a></li>
+    <li><a href="index.html#testimonials">Utisci</a></li>
+    <li><a href="index.html#booking" class="nav-cta">Zakaži sesiju</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <button class="nav-mobile-close" onclick="closeMobileMenu()">×</button>
+  <a href="index.html#about" onclick="closeMobileMenu()">O meni</a>
+  <a href="akal.html" onclick="closeMobileMenu()">Akal zajednica</a>
+  <a href="individual.html" onclick="closeMobileMenu()">Individualni rad</a>
+  <a href="index.html#testimonials" onclick="closeMobileMenu()">Utisci</a>
+  <a href="index.html#booking" class="mobile-cta" onclick="closeMobileMenu()">Zakaži sesiju</a>
+</div>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-image-placeholder">
+    <img src="../assets/images/index-49f1958691a03ef5.jpg" alt="Nemanja Vukoje - Healer and Coach" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
+  </div>
+  <div class="hero-content">
+    <div class="hero-label">Iscelitelj · Coach · Učitelj Kundalini joge</div>
+    <h1>Vrati se<br>sebi <em>.</em></h1>
+    <p class="hero-sub">Spolja deluje kao da je sve u redu. Ali iznutra nešto deluje zaglavljeno, umorno ili izgubljeno. Pomažem ti da otpustiš ono što blokira tvoju energiju - i da se vratiš životu koji je zaista živ.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-primary">Zakaži sesiju</a>
+      <a href="#offers" class="btn-ghost">Istraži rad</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Skroluj</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain" id="pain">
+  <div class="pain-inner">
+    <div class="reveal">
+      <div class="section-label">Nisi sam/a</div>
+      <h2>Da li ti<br><em>nešto od ovoga zvuči poznato?</em></h2>
+      <p>Većina ljudi koji dođu do mene imaju stabilne poslove, funkcionalan život i sve ono što im je rečeno da treba da žele. I ipak, nešto nije kako treba.</p>
+      <p>Probali su terapiju. Čitali su knjige. Ali nešto dublje se još nije promenilo.</p>
+    </div>
+    <div class="pain-quotes reveal">
+      <div class="pain-quote">
+        <span class="pq-mark">"</span>
+        <span class="pq-text">Stalno se osećam umorno i preplavljeno.</span>
+      </div>
+      <div class="pain-quote">
+        <span class="pq-mark">"</span>
+        <span class="pq-text">Previše razmišljam i ne mogu da umirim um.</span>
+      </div>
+      <div class="pain-quote">
+        <span class="pq-mark">"</span>
+        <span class="pq-text">Osećam se zaglavljeno, ali ne znam zašto.</span>
+      </div>
+      <div class="pain-quote">
+        <span class="pq-mark">"</span>
+        <span class="pq-text">Kao da je nešto u meni blokirano.</span>
+      </div>
+      <div class="pain-quote">
+        <span class="pq-mark">"</span>
+        <span class="pq-text">Više se ne osećam povezano sa sobom.</span>
+      </div>
+      <div class="pain-quote">
+        <span class="pq-mark">"</span>
+        <span class="pq-text">Stalno ponavljam iste obrasce.</span>
+      </div>
+      <div class="pain-quote">
+        <span class="pq-mark">"</span>
+        <span class="pq-text">Osećam emocije kojih ne mogu da se oslobodim.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-image-box reveal">
+      <img src="../assets/images/index-13193d019fa51249.jpg" alt="Nemanja Vukoje" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transform:scale(0.85);transform-origin:center 35%;">
+    </div>
+    <div class="reveal">
+      <div class="about-label">O meni Nemanja</div>
+      <h2>Napustio sam karijeru da bih<br><em>izgradio nešto stvarno.</em></h2>
+      <p>Ranije sam radio u IT-u i pomagao kompanijama da rade bolje. Imao sam stabilnost, dobru platu i put koji je na papiru imao smisla. Ali nešto u meni je znalo da postoji više od toga.</p>
+      <p>Sve sam to ostavio iza sebe. Putovao sam svetom, učio od duhovnih učitelja, posećivao sveta mesta i istraživao tradicije isceljenja u različitim kulturama. Tokom više od jedne decenije završio sam brojne edukacije iz isceljenja i coachinga - ne kao kolekciju, već kao poziv.</p>
+      <p>Danas kroz energetsko isceljenje, Kundalini jogu i profesionalni coaching pomažem stotinama ljudi da oslobode svoju energiju, otpuste emotivne blokade i vrate se životu koji je zaista njihov.</p>
+      <p>Radim na engleskom, srpskom i nemačkom jeziku sa klijentima iz Beča i širom sveta - potpuno online.</p>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Godina prakse</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Godina podučavanja</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">100s</span>
+          <span class="stat-label">Ljudi kojima sam pomogao</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section class="offers" id="offers">
+  <div class="offers-inner">
+    <div class="offers-header reveal">
+      <div>
+        <div class="section-label">Radi sa mnom</div>
+        <h2>Svaka ponuda te susreće<br><em>tačno tamo gde jesi.</em></h2>
+      </div>
+      <p class="offers-desc">Bilo da ti treba blag prvi korak ili potpuna transformacija, postoji put za tebe. Svaka ponuda se prirodno nadovezuje na prethodnu.</p>
+    </div>
+
+    <div class="offer-grid reveal">
+      <!-- Aura čišćenje -->
+      <div class="offer-card">
+        <div class="offer-num">1</div>
+        
+        <div class="offer-name">Sesija čišćenja aure</div>
+        <div class="offer-duration">20 minuta · Online</div>
+        <p class="offer-desc">Energetski reset - očisti nagomilani stres, otpusti ono što nije tvoje i vrati svoju prirodnu ravnotežu.</p>
+        <ul class="offer-results">
+          <li>Osećaj više lakoće i mira</li>
+          <li>Otpuštanje emotivne težine</li>
+          <li>Više energije u telu</li>
+        </ul>
+        <span class="offer-price">44€</span>
+        <span class="offer-price-note">Savršen prvi korak</span>
+      </div>
+
+      <!-- Inner Child -->
+      <div class="offer-card">
+        <div class="offer-num">2</div>
+        
+        <div class="offer-name">Isceljenje unutrašnjeg deteta</div>
+        <div class="offer-duration">60 minuta · Online</div>
+        <p class="offer-desc">Idi do korena emotivnih obrazaca. Otpusti ono što nosiš još od detinjstva - i poveži se ponovo sa svojim autentičnim sobom.</p>
+        <ul class="offer-results">
+          <li>Emotivno olakšanje i jasnoća</li>
+          <li>Dublje razumevanje sebe</li>
+          <li>Više uzemljenosti i mira</li>
+        </ul>
+        <span class="offer-price">88€</span>
+        <span class="offer-price-note">Duboko emotivno isceljenje</span>
+      </div>
+
+      <!-- Inner Peace single -->
+      <div class="offer-card featured">
+        <div class="offer-num">3</div>
+        
+        <div class="offer-name">Inner Peace sesija</div>
+        <div class="offer-duration">60 minuta · Online</div>
+        <p class="offer-desc">Kompletna 1:1 transformaciona sesija - coaching, energetsko isceljenje i rad sa telom u jednom. Nalazimo koren. Otpuštamo ga.</p>
+        <ul class="offer-results">
+          <li>Jasnoća u životnim odlukama</li>
+          <li>Otpuštanje dubokih blokada</li>
+          <li>Ponovno povezivanje sa sobom</li>
+        </ul>
+        <span class="offer-price">144€</span>
+        <span class="offer-price-note">Pojedinačna sesija</span>
+      </div>
+    </div>
+
+    <!-- Inner Peace packages -->
+    <div class="offer-grid reveal" style="margin-top:2px;">
+      <div class="offer-card" style="background:var(--deep);">
+        <div class="offer-num" style="color:var(--clay);opacity:0.2">B</div>
+        
+        <div class="offer-name" style="color:var(--sand);">Inner Peace Basic</div>
+        <div class="offer-duration">3 sesije · Online</div>
+        <p class="offer-desc" style="color:rgba(232,221,208,0.55);">Strukturisan put od 3 sesije za otpuštanje, jasnoću i ponovno povezivanje. Najpopularniji početni program.</p>
+        <ul class="offer-results" style="">
+          <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">3 x 60-minutne 1:1 sesije</li>
+          <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Coaching + energetsko isceljenje</li>
+          <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Podrška između sesija</li>
+        </ul>
+        <span class="offer-price" style="color:var(--clay)">299€</span>
+        <span class="offer-price-note" style="color:var(--stone)">Povoljnije od pojedinačnih sesija</span>
+      </div>
+
+      <div class="offer-card" style="background:var(--deep);grid-column:span 2;">
+        <div class="offer-num" style="color:var(--clay);opacity:0.15">P</div>
+        
+        <div class="offer-name" style="color:var(--sand);">Inner Peace Plus</div>
+        <div class="offer-duration">Potpuno transformaciono putovanje</div>
+        <p class="offer-desc" style="color:rgba(232,221,208,0.55);max-width:500px">Najdublje i najpotpunije putovanje koje nudim. Ne samo sesije - već potpuna transformacija na energetskom, emotivnom i duševnom nivou.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px">
+          <ul class="offer-results">
+            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">4 × Inner Peace sessions</li>
+            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Aura tretman uključen</li>
+          </ul>
+          <ul class="offer-results">
+            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Vraćanje delova duše + isceljenje duše</li>
+            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Lično kreirana meditacija</li>
+          </ul>
+        </div>
+        <span class="offer-price" style="color:var(--clay)">777€</span>
+      </div>
+    </div>
+
+    <!-- Akal zajednica -->
+    <div class="offer-full reveal" style="margin-top:2px;">
+      <div>
+        <div class="community-name">Akal <em>Zajednica</em></div>
+        <div class="community-sub">Mesečna članarina</div>
+      </div>
+      <ul class="community-includes">
+        <li>Weekly Čas Kundalini jogees</li>
+        <li>2 meditation evenings mesečno</li>
+        <li>Privatna WhatsApp zajednica</li>
+        <li>Kontinuirano vođstvo i podrška</li>
+            <li>Snimak časa dostupan 7 dana ako ne možeš da prisustvuješ uživo</li>
+      </ul>
+      <div class="community-price">
+        <span class="price-big">77€</span>
+        <span class="price-period">mesečno</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-inner">
+    <h2 class="reveal">Šta ljudi kažu<br><em>nakon zajedničkog rada</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card testi-featured reveal">
+        <p class="testi-text">"I didn't realize how disconnected I've been lately until your class today. Something opened up in me. My body feels softer, my mind clearer, and there's this gentle warmth in my chest that's still there. I honestly haven't felt this peaceful in a long time."</p>
+        <div class="testi-author">Član Akal zajednice</div>
+        <div class="testi-source">Čas Kundalini joge</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"40 days of meditation and Kundalini Yoga did more for me than years of therapy."</p>
+        <div class="testi-author">Učesnik meditacionog programa</div>
+        <div class="testi-source">40-dnevni izazov</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"Today I felt energy moving for the first time in weeks. My shoulders dropped, my breath relaxed, and my thoughts stopped fighting me."</p>
+        <div class="testi-author">Klijent</div>
+        <div class="testi-source">Nakon meditacije</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"My fear from the marathon is gone. I finished strong. I know I don't need to prove anything to myself. My energy was amazing."</p>
+        <div class="testi-author">Međunarodni klijent</div>
+        <div class="testi-source">Nakon Inner Peace sesija</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"I am so grateful. I don't know how to say thank you because truly from my heart - you are a real human being."</p>
+        <div class="testi-author">Klijent</div>
+        <div class="testi-source">Nakon Kundalini časa</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"Through your sessions my gut feeling has got stronger and it is leading me to the right path. I am getting more intuitive about where I belong and what decisions to make."</p>
+        <div class="testi-author">Klijent</div>
+        <div class="testi-source">Nakon kontinuiranih sesija</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"Such lightness in my chest and body after just one session. This is unbelievable."</p>
+        <div class="testi-author">Bojana K., Belgrade</div>
+        <div class="testi-source">Nakon prve Inner Peace sesije</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"I came in with back pain and a spasm. After the class the discomfort in my lower back was completely gone. I'll see you on Sunday."</p>
+        <div class="testi-author">Član Akal zajednice</div>
+        <div class="testi-source">Nakon časa Kundalini joge</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"I chose to forgive who hurt me - not because I had to, but because I saw that unkindness doesn't bring me peace. The transformation happened with authenticity, not force."</p>
+        <div class="testi-author">Klijent</div>
+        <div class="testi-source">Nakon joga i meditacionih sesija</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"I had peace I haven't felt in a long time. I hadn't realized how disconnected I had become. Something opened up - and it is still there."</p>
+        <div class="testi-author">Nina P., Novi Sad</div>
+        <div class="testi-source">Nakon Inner Peace sesije</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-inner">
+    <h2 class="reveal">Kako se<br><em>rad odvija</em></h2>
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Susrećemo se</h3>
+        <p>Prva sesija da razumemo gde si sada, šta nosiš i šta želi da se promeni. Bez osude. Samo prisustvo.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3>Nalazimo koren</h3>
+        <p>Vraćamo se nazad - u podsvesno, telo i energetsko polje - da pronađemo gde je obrazac zaista počeo.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3>Otpuštamo to</h3>
+        <p>Kroz vođenu meditaciju, energetski rad i coaching - otpuštamo ono što ti više ne pripada. Telo zna kako da isceli.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h3>Vraćaš se</h3>
+        <p>Lakši/a. Jasniji/a. Više svoj/a. Rad se nastavlja u slojevima - svaka sesija otvara nova vrata dublje ka tome ko si zaista.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking-inner">
+    <div class="reveal">
+      <h2>Spreman/na da<br><em>počneš?</em></h2>
+      <p>Prvi korak je uvek najjednostavniji. Počni sa 20-minutnim čišćenjem aure - lagan i nežan način da iskusiš ovaj rad pre nego što se odlučiš za više.</p>
+      <p>Ili mi se javi direktno pa ćemo zajedno pronaći pravi početak za tebe.</p>
+      <div class="booking-options">
+        <a href="mailto:info@vukojenemanja.com" class="booking-option">
+          <span class="booking-option-icon">✉</span>
+          <div class="booking-option-text">
+            <div class="booking-option-title">Pošalji email</div>
+            <div class="booking-option-sub"><span class="__cf_email__" data-cfemail="a5cccbc3cae5d3d0cecacfc0cbc0c8c4cbcfc48bc6cac8">[email&#160;protected]</span></div>
+          </div>
+          <span class="booking-option-arrow">→</span>
+        </a>
+        <a href="https://calendar.google.com" target="_blank" class="booking-option">
+          <span class="booking-option-icon">📅</span>
+          <div class="booking-option-text">
+            <div class="booking-option-title">Zakaži termin direktno</div>
+            <div class="booking-option-sub">Izaberi termin u kalendaru</div>
+          </div>
+          <span class="booking-option-arrow">→</span>
+        </a>
+        <a href="https://www.instagram.com/vukoje.nemanja.world/" target="_blank" class="booking-option">
+          <span class="booking-option-icon">📲</span>
+          <div class="booking-option-text">
+            <div class="booking-option-title">Pošalji poruku na Instagramu</div>
+            <div class="booking-option-sub">@vukoje.nemanja.world</div>
+          </div>
+          <span class="booking-option-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="booking-entry reveal">
+      <div class="entry-label">Počni ovde</div>
+      <div class="entry-title">Sesija čišćenja aure</div>
+      <p class="entry-desc">A 20-minutna online sesija to cleanse your energy field, release accumulated stress, and restore your natural flow. The gentlest way to begin.</p>
+      <span class="entry-price">44€</span>
+      <a href="mailto:info@vukojenemanja.com?subject=Website%20Enquiry" class="btn-primary">Zakaži ovu sesiju</a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram">
+  <div class="instagram-inner reveal">
+    <div class="instagram-label">Prati putovanje</div>
+    <h2>Dnevni uvidi o<br><em>energiji i povezivanju sa sobom</em></h2>
+    <p>Razmišljanja o emotivnim obrascima, vođene prakse i iskrene misli o tome šta znači živeti istinski živ život. Na engleskom, srpskom i nemačkom.</p>
+    <div class="insta-handles">
+      <a href="https://www.instagram.com/vukoje.nemanja.world/" target="_blank" class="insta-handle">
+        📷 @vukoje.nemanja.world
+      </a>
+      <a href="https://www.instagram.com/vukoje.nemanja/" target="_blank" class="insta-handle">
+        📷 @vukoje.nemanja
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <h3>Nemanja<br><em>Vukoje</em></h3>
+    <p>Iscelitelj - Coach - Učitelj Kundalini joge<br>Beč, Austrija - Online širom sveta<br>English, Serbian &amp; German</p>
+  </div>
+  <div class="footer-nav">
+    <h4>Navigacija</h4>
+    <ul>
+      <li><a href="index.html#about">O meni</a></li>
+      <li><a href="akal.html">Akal zajednica</a></li>
+      <li><a href="individual.html">Individualni rad</a></li>
+      <li><a href="index.html#testimonials">Utisci</a></li>
+      <li><a href="index.html#booking">Zakaži sesiju</a></li>
+      <li><a href="impressum.html">Impresum</a></li>
+    </ul>
+  </div>
+  <div class="footer-contact">
+    <h4>Kontakt</h4>
+    <p>
+      info@vukojenemanja.com<br><br>
+      <a href="https://instagram.com/vukoje.nemanja.world">@vukoje.nemanja.world</a><br>
+      <a href="https://instagram.com/vukoje.nemanja">@vukoje.nemanja</a>
+    </p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Nemanja Vukoje - vukojenemanja.com</p>
+  <p>Sve sesije su online - širom sveta</p>
+</div>
+<script>
+window.addEventListener('scroll', function() {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('hamburgerBtn');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburgerBtn').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>

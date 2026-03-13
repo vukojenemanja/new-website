@@ -3,75 +3,240 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Choose Your Language | Nemanja Vukoje</title>
-  <meta name="description" content="Choose your language to enter the website of Nemanja Vukoje.">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Nemanja Vukoje | Choose Your Language</title>
+  <meta name="description" content="Choose your language and enter the website of Nemanja Vukoje.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --clay:#C4A882; --sand:#E8DDD0; --moss:#6B7B5E; --bark:#3D2E1E;
-      --fog:#F5F1EC; --stone:#8A8070; --deep:#1E1712; --accent:#9B6B3A; --warm:#D4B896;
+      --bg: #16110d;
+      --bg-soft: rgba(255,255,255,0.04);
+      --line: rgba(220, 195, 159, 0.18);
+      --line-strong: rgba(220, 195, 159, 0.36);
+      --text: #f4ede5;
+      --muted: rgba(244, 237, 229, 0.72);
+      --soft: rgba(244, 237, 229, 0.52);
+      --accent: #d7b38b;
+      --accent-2: #b98e63;
+      --glow: rgba(215, 179, 139, 0.18);
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      min-height:100vh; display:flex; align-items:center; justify-content:center;
-      background: radial-gradient(ellipse at top, rgba(196,168,130,0.08) 0%, transparent 55%), var(--deep);
-      color:var(--sand); font-family:'DM Sans',sans-serif; padding:32px;
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(215,179,139,0.12), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(185,142,99,0.12), transparent 28%),
+        linear-gradient(180deg, #1d1510 0%, #120e0b 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
     }
-    .wrap{max-width:980px;width:100%}
-    .label{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--clay);margin-bottom:28px;text-align:center}
-    h1{
-      font-family:'Cormorant Garamond',serif; font-size:clamp(44px,7vw,86px); font-weight:300;
-      line-height:1.02; text-align:center; margin-bottom:18px;
+
+    .shell {
+      width: min(1120px, 100%);
+      border: 1px solid var(--line);
+      background: rgba(18, 14, 11, 0.72);
+      backdrop-filter: blur(16px);
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
     }
-    h1 em{font-style:italic;color:var(--clay);display:block}
-    .sub{max-width:620px;margin:0 auto 54px;text-align:center;line-height:1.8;color:rgba(232,221,208,0.72);font-size:16px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(196,168,130,0.08)}
-    .card{
-      background:rgba(255,255,255,0.03); padding:44px 32px; text-decoration:none; color:inherit;
-      transition:transform .25s ease, background .25s ease, border-color .25s ease; border:1px solid rgba(196,168,130,0.12);
-      min-height:260px; display:flex; flex-direction:column; justify-content:space-between;
+
+    .hero {
+      position: relative;
+      padding: 64px 56px 32px;
+      text-align: center;
     }
-    .card:hover{transform:translateY(-4px);background:rgba(196,168,130,0.08);border-color:rgba(196,168,130,0.35)}
-    .lang{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--clay);margin-bottom:18px}
-    .title{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;margin-bottom:14px;color:var(--sand)}
-    .desc{line-height:1.8;color:rgba(232,221,208,0.68);font-size:14px}
-    .arrow{margin-top:28px;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--clay)}
-    .note{margin-top:28px;text-align:center;font-size:13px;color:var(--stone)}
-    @media (max-width: 840px){.grid{grid-template-columns:1fr}.card{min-height:auto}}
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(255,255,255,0.02);
+      margin-bottom: 26px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 9vw, 94px);
+      line-height: 0.95;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    h1 span {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .lead {
+      width: min(720px, 100%);
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      padding: 24px 32px 32px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 290px;
+      padding: 30px;
+      border-radius: 28px;
+      text-decoration: none;
+      color: inherit;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -30% auto auto -20%;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, var(--glow), transparent 68%);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--line-strong);
+      background: linear-gradient(180deg, rgba(215,179,139,0.08), rgba(255,255,255,0.025));
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+    }
+
+    .small-label {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .lang {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 46px;
+      line-height: 1;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .desc {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 30ch;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 26px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .footer-note {
+      border-top: 1px solid var(--line);
+      padding: 18px 28px 24px;
+      text-align: center;
+      color: var(--soft);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .hero { padding: 52px 28px 18px; }
+      .cards { grid-template-columns: 1fr; padding: 20px 20px 24px; }
+      .card { min-height: 240px; }
+      .lang { font-size: 42px; }
+      .lead { font-size: 16px; }
+    }
+
+    @media (max-width: 560px) {
+      body { padding: 16px; }
+      .shell { border-radius: 24px; }
+      .hero { padding: 42px 20px 10px; }
+      .badge { font-size: 11px; letter-spacing: 0.14em; }
+      .cards { padding: 18px 14px 18px; gap: 14px; }
+      .card { padding: 24px; border-radius: 22px; }
+      .lang { font-size: 38px; }
+      .desc { max-width: none; }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="label">Welcome · Willkommen · Dobrodošli</div>
-    <h1>Choose your <em>language</em></h1>
-    <p class="sub">Select the version of the website you want to enter. Choose your preferred language to enter the full website. All three versions are ready: English, Deutsch, and Srpski.</p>
-    <div class="grid">
-      <a class="card" href="/en/index.html">
+  <main class="shell">
+    <section class="hero">
+      <div class="badge">Welcome · Willkommen · Dobrodošli</div>
+      <h1>Choose your <span>language</span></h1>
+      <p class="lead">
+        Welcome to the website of Nemanja Vukoje. Choose the language that feels most natural to you and continue to the full website.
+      </p>
+    </section>
+
+    <section class="cards">
+      <a class="card" href="/en/index.html" aria-label="Enter website in English">
         <div>
+          <div class="small-label">Language</div>
           <div class="lang">English</div>
-          <div class="title">English</div>
-          <p class="desc">Enter the current English website with your homepage, individual work page, and Akal Community page.</p>
+          <p class="desc">Explore the website in English and learn more about classes, individual work, and the Akal Community.</p>
         </div>
-        <div class="arrow">Enter site →</div>
+        <div class="cta">Enter website <span>→</span></div>
       </a>
-      <a class="card" href="/de/index.html">
+
+      <a class="card" href="/de/index.html" aria-label="Website auf Deutsch öffnen">
         <div>
+          <div class="small-label">Sprache</div>
           <div class="lang">Deutsch</div>
-          <div class="title">Deutsch</div>
-          <p class="desc">German folder prepared and ready for translated pages with the same structure as the English site.</p>
+          <p class="desc">Öffne die deutsche Version der Website und entdecke Angebote, Sessions und die Akal Community.</p>
         </div>
-        <div class="arrow">Zur Seite →</div>
+        <div class="cta">Zur Website <span>→</span></div>
       </a>
-      <a class="card" href="/srb/index.html">
+
+      <a class="card" href="/srb/index.html" aria-label="Otvori sajt na srpskom">
         <div>
+          <div class="small-label">Jezik</div>
           <div class="lang">Srpski</div>
-          <div class="title">Srpski</div>
-          <p class="desc">Serbian folder prepared and ready for translated pages with the same structure as the English site.</p>
+          <p class="desc">Uđi na sajt na srpskom jeziku i saznaj više o časovima, individualnom radu i Akal zajednici.</p>
         </div>
-        <div class="arrow">Uđi na sajt →</div>
+        <div class="cta">Uđi na sajt <span>→</span></div>
       </a>
+    </section>
+
+    <div class="footer-note">
+      Awareness, healing, movement and inner connection.
     </div>
-    <p class="note">Suggested next step: add translated versions of the same pages inside <strong>/de/</strong> and <strong>/srb/</strong>.</p>
-  </div>
+  </main>
 </body>
 </html>

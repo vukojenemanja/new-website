@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Koji um upravlja tvojim životom?</title>
+<title>Koji um je trenutno najdominantniji?</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Georgia', serif; background: #faf6f0; color: #2c2416; min-height: 100vh; }
@@ -73,8 +73,8 @@
   <div id="screen-intro">
     <div class="header">
       <div class="subtitle">Kundalini Joga - Samoistraživanje</div>
-      <h1>Koji um upravlja tvojim životom?</h1>
-      <p>Prema Kundalini jogi, postoje tri uma - Negativni, Pozitivni i Neutralni. Jedan od njih tiho vodi sve tvoje odluke. Ovaj kviz od 7 pitanja otkriće koji um dominira tvojim unutrašnjim svetom i šta to znači za tvoj život.</p>
+      <h1>Koji um je trenutno najdominantniji?</h1>
+      <p>Prema Kundalini jogi, postoje tri uma - Negativni, Pozitivni i Neutralni. Jedan od njih tiho vodi tvoje odluke. Ovaj kviz od 7 pitanja otkriće koji um dominira tvojim unutrašnjim svetom i šta to znači za tvoj život.</p>
     </div>
     <p style="font-size:14px; color:#a07d50; text-align:center; margin-bottom:1.5rem;">Traje oko 2 minuta &nbsp;·&nbsp; Nema tačnih ni pogrešnih odgovora</p>
     <button class="btn" onclick="startQuiz()">Započni kviz</button>
@@ -93,8 +93,8 @@
       <h2>Tvoj rezultat je spreman</h2>
       <p>Pre nego što ga otkrijemo - pridruži se besplatnoj WhatsApp zajednici za nedeljne uvide o umu, energiji i unutrašnjem miru.</p>
       <ul class="wa-perks">
-        <li><span class="wa-perk-dot"></span>Nedeljne prakse iz Kundalini joge i meditacije</li>
-        <li><span class="wa-perk-dot"></span>Vođstvo usklađeno sa lunarnim ciklusom</li>
+        <li><span class="wa-perk-dot"></span>Prakse i saveti iz Kundalini joge i meditacije</li>
+        <li><span class="wa-perk-dot"></span>Smernice usklađene sa lunarnim ciklusom</li>
         <li><span class="wa-perk-dot"></span>Topao, privatan prostor za refleksiju i rast</li>
       </ul>
       <button class="btn btn-wa" onclick="joinWhatsApp()">Pridruži se besplatnoj zajednici</button>
@@ -108,27 +108,27 @@
 <script>
 const questions = [
   { text: "Kada stigne nova mogućnost - novi odnos, projekat ili promena - kakva je tvoja prva unutrašnja reakcija?", options: [
-    { text: "Zastanем, tiho to osetim i proverim šta mi govori intuicija.", mind: "Neu" },
-    { text: "Odmah osećam rizike i šta bi moglo da krene naopako.", mind: "N" },
+    { text: "Zastanем, tiho osetim i proverim šta mi govori intuicija.", mind: "Neu" },
+    { text: "Odmah osećam opasnosti i šta bi moglo da krene naopako.", mind: "N" },
     { text: "Uzbudim se i skočim sa entuzijazmom.", mind: "P" }
   ]},
   { text: "Posle bolnog iskustva ili neuspeha, kako ga obično obrađuješ?", options: [
     { text: "Brzo nastavim dalje i trudim se da ostanem pozitivan/na.", mind: "P" },
     { text: "Dozvolim sebi da to osetim, pa to postepeno puštam.", mind: "Neu" },
-    { text: "Vrtim to iznova i iznova, analiziram šta je pošlo krivo.", mind: "N" }
+    { text: "Vrtim to iznova i iznova, analiziram šta je pošlo naopako.", mind: "N" }
   ]},
-  { text: "Kako najčešće zvuči tvoj unutrašnji glas?", options: [
-    { text: "Kritično, oprezno - upozorava me pre nego što delam.", mind: "N" },
-    { text: "Tiho i stabilno - više posmatra nego što sudi.", mind: "Neu" },
-    { text: "Ohrabrujuće, široko - navija me napred.", mind: "P" }
+  { text: "Kako najčešće zvuči ton tvog unutrašnjeg glasa?", options: [
+    { text: "Kritična, oprezna - upozorava me pre nego što nešto uradim.", mind: "N" },
+    { text: "Tih i stabilan - više posmatra nego što sudi.", mind: "Neu" },
+    { text: "Ohrabrujući, širok - govori mi da idem napred.", mind: "P" }
   ]},
   { text: "Kako obično donosiš važne odluke?", options: [
     { text: "Sledim entuzijazam i verujem da će sve biti u redu.", mind: "P" },
     { text: "Procenim svaki rizik i moram da se osećam potpuno sigurno.", mind: "N" },
     { text: "Sedim s tim dok odgovor ne postane jasan iznutra.", mind: "Neu" }
   ]},
-  { text: "Kako se odnošiš prema riziku u svakodnevnom životu?", options: [
-    { text: "Procenjujem ga smireno - ni izbegavam ni jurdam za njim.", mind: "Neu" },
+  { text: "Kakav je tvoj odnos prema riziku u svakodnevnom životu?", options: [
+    { text: "Procenjujem ga smireno - ni izbegavam ni jurcam za njim.", mind: "Neu" },
     { text: "Prihvatam ga - život je o širenju, ne o zadržavanju.", mind: "P" },
     { text: "Sklanjam se od njega - sigurnost i izvesnost su mi važni.", mind: "N" }
   ]},
@@ -139,8 +139,8 @@ const questions = [
   ]},
   { text: "Šta tvoj um radi najčešće kada legneš uveče?", options: [
     { text: "Planira i sanja - misli o sutra.", mind: "P" },
-    { text: "Smiruje se - prilično lako klizim u tišinu.", mind: "Neu" },
-    { text: "Preplavljuje dan iznova - šta je pošlo krivo, šta sam rekao/la.", mind: "N" }
+    { text: "Umiriuje se - prilično lako dospem u tišinu.", mind: "Neu" },
+    { text: "Ponavlja dan iznova - šta je pošlo krivo, šta sam rekao/la.", mind: "N" }
   ]}
 ];
 

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Koji um upravlja tvojim životom?</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: #faf6f0; color: #2c2416; min-height: 100vh; }
+  .quiz-wrapper { max-width: 680px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .header { text-align: center; padding: 2.5rem 0 2rem; border-bottom: 1px solid #e2d8cc; margin-bottom: 2rem; }
+  .header .subtitle { font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: #a07d50; margin-bottom: 1rem; }
+  .header h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 400; color: #1e1810; line-height: 1.3; margin-bottom: 1rem; }
+  .header p { font-size: 15px; color: #6b5a42; line-height: 1.7; max-width: 480px; margin: 0 auto; }
+  .progress-bar-wrap { background: #e8dfd4; border-radius: 999px; height: 4px; margin-bottom: 2rem; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: #b8843e; border-radius: 999px; transition: width 0.4s ease; }
+  .progress-label { font-size: 12px; color: #a07d50; text-align: right; margin-bottom: 6px; }
+  .question-block { margin-bottom: 2rem; }
+  .question-text { font-size: 17px; font-weight: 400; color: #1e1810; line-height: 1.6; margin-bottom: 1.25rem; }
+  .question-number { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #b8843e; margin-bottom: 0.5rem; }
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option { background: #fff; border: 1px solid #ddd4c4; border-radius: 10px; padding: 14px 18px; cursor: pointer; font-size: 15px; color: #3a2e1e; line-height: 1.5; transition: border-color 0.2s, background 0.2s; text-align: left; }
+  .option:hover { border-color: #b8843e; background: #fdf8f2; }
+  .option.selected { border-color: #b8843e; background: #fdf3e3; color: #1e1810; }
+  .btn { display: block; width: 100%; padding: 15px 24px; background: #b8843e; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-family: 'Georgia', serif; cursor: pointer; margin-top: 1.5rem; letter-spacing: 0.5px; transition: background 0.2s, transform 0.1s; }
+  .btn:hover { background: #9e6e2e; }
+  .btn:active { transform: scale(0.99); }
+  .btn:disabled { background: #ccc5b6; cursor: not-allowed; }
+  .btn-outline { background: transparent; border: 1px solid #b8843e; color: #b8843e; margin-top: 1rem; }
+  .btn-outline:hover { background: #fdf3e3; }
+  .btn-ghost { background: transparent; border: none; color: #a07d50; font-size: 13px; text-decoration: underline; cursor: pointer; margin-top: 0.75rem; font-family: 'Georgia', serif; width: 100%; text-align: center; padding: 8px; }
+  .btn-ghost:hover { color: #6b5a42; }
+  .result-block { animation: fadeIn 0.5s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .result-header { text-align: center; padding: 2rem 0 1.5rem; border-bottom: 1px solid #e2d8cc; margin-bottom: 2rem; }
+  .result-header .eyebrow { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: #a07d50; margin-bottom: 0.75rem; }
+  .result-title { font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 400; color: #1e1810; line-height: 1.3; margin-bottom: 0.5rem; }
+  .result-subtitle { font-size: 14px; color: #a07d50; letter-spacing: 1px; }
+  .result-card { background: #fff; border: 1px solid #ddd4c4; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+  .result-card-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #b8843e; margin-bottom: 0.5rem; }
+  .result-card p { font-size: 15px; color: #3a2e1e; line-height: 1.7; }
+  .breathwork-card { background: #fdf8f0; border: 1px solid #e2d0b0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+  .breathwork-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #b8843e; margin-bottom: 0.5rem; }
+  .breathwork-card p { font-size: 15px; color: #3a2e1e; line-height: 1.7; }
+  .cta-card { background: #1e1810; border-radius: 12px; padding: 2rem 1.5rem; text-align: center; margin-top: 1.5rem; }
+  .cta-card h3 { font-size: 18px; font-weight: 400; color: #fdf8f0; margin-bottom: 0.75rem; line-height: 1.4; }
+  .cta-card p { font-size: 14px; color: #c4a97a; line-height: 1.6; margin-bottom: 1.25rem; }
+  .cta-card .btn { background: #b8843e; max-width: 320px; margin: 0 auto; }
+  .score-bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .score-bar-label { font-size: 13px; color: #6b5a42; width: 80px; flex-shrink: 0; }
+  .score-bar-track { flex: 1; background: #e8dfd4; border-radius: 999px; height: 8px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 999px; transition: width 0.8s ease; }
+  .score-bar-num { font-size: 13px; color: #a07d50; width: 28px; text-align: right; flex-shrink: 0; }
+  .scores-section { margin-bottom: 1.5rem; }
+  .scores-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #a07d50; margin-bottom: 1rem; }
+  .hidden { display: none; }
+  .wa-screen { text-align: center; padding: 1rem 0; animation: fadeIn 0.4s ease; }
+  .wa-icon { width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+  .wa-icon svg { width: 30px; height: 30px; fill: #fff; }
+  .wa-screen h2 { font-size: 1.5rem; font-weight: 400; color: #1e1810; margin-bottom: 0.75rem; line-height: 1.4; }
+  .wa-screen p { font-size: 15px; color: #6b5a42; line-height: 1.7; max-width: 440px; margin: 0 auto 0.5rem; }
+  .wa-perks { list-style: none; margin: 1.25rem auto; max-width: 360px; text-align: left; }
+  .wa-perks li { font-size: 14px; color: #3a2e1e; padding: 6px 0; border-bottom: 1px solid #ece5da; display: flex; gap: 10px; align-items: flex-start; }
+  .wa-perks li:last-child { border-bottom: none; }
+  .wa-perk-dot { width: 6px; height: 6px; background: #b8843e; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .btn-wa { background: #25D366; margin-top: 0.5rem; }
+  .btn-wa:hover { background: #1ebd5a; }
+</style>
+</head>
+<body>
+<div class="quiz-wrapper">
+
+  <div id="screen-intro">
+    <div class="header">
+      <div class="subtitle">Kundalini Joga - Samoistraživanje</div>
+      <h1>Koji um upravlja tvojim životom?</h1>
+      <p>Prema Kundalini jogi, postoje tri uma - Negativni, Pozitivni i Neutralni. Jedan od njih tiho vodi sve tvoje odluke. Ovaj kviz od 7 pitanja otkriće koji um dominira tvojim unutrašnjim svetom i šta to znači za tvoj život.</p>
+    </div>
+    <p style="font-size:14px; color:#a07d50; text-align:center; margin-bottom:1.5rem;">Traje oko 2 minuta &nbsp;·&nbsp; Nema tačnih ni pogrešnih odgovora</p>
+    <button class="btn" onclick="startQuiz()">Započni kviz</button>
+  </div>
+
+  <div id="screen-quiz" class="hidden">
+    <div class="progress-label" id="progress-label">Pitanje 1 od 7</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-bar" style="width:14%"></div></div>
+    <div id="question-container"></div>
+    <button class="btn" id="btn-next" onclick="nextQuestion()" disabled>Sledeće</button>
+  </div>
+
+  <div id="screen-wa" class="hidden">
+    <div class="wa-screen">
+      <div class="wa-icon"><svg viewBox="0 0 32 32"><path d="M16 1C7.716 1 1 7.716 1 16c0 2.627.668 5.1 1.84 7.26L1 31l7.94-1.82A15 15 0 0 0 16 31c8.284 0 15-6.716 15-15S24.284 1 16 1zm7.78 20.57c-.32.9-1.88 1.72-2.6 1.82-.68.1-1.54.14-2.48-.16-.57-.18-1.3-.42-2.24-.82-3.94-1.7-6.52-5.66-6.72-5.92-.2-.26-1.62-2.16-1.62-4.12s1.02-2.92 1.38-3.32c.36-.4.78-.5 1.04-.5.26 0 .52.002.74.012.24.01.56-.092.88.67.32.76 1.08 2.62 1.18 2.82.1.2.16.44.02.7-.14.26-.2.42-.4.64-.2.22-.42.5-.6.66-.2.18-.4.38-.18.74.22.36.98 1.62 2.1 2.62 1.44 1.28 2.66 1.68 3.02 1.86.36.18.58.16.8-.1.22-.26.94-1.1 1.2-1.48.24-.36.5-.3.84-.18.34.12 2.18 1.03 2.56 1.22.38.18.62.28.72.42.1.16.1.9-.22 1.8z"/></svg></div>
+      <h2>Tvoj rezultat je spreman</h2>
+      <p>Pre nego što ga otkrijemo - pridruži se besplatnoj WhatsApp zajednici za nedeljne uvide o umu, energiji i unutrašnjem miru.</p>
+      <ul class="wa-perks">
+        <li><span class="wa-perk-dot"></span>Nedeljne prakse iz Kundalini joge i meditacije</li>
+        <li><span class="wa-perk-dot"></span>Vođstvo usklađeno sa lunarnim ciklusom</li>
+        <li><span class="wa-perk-dot"></span>Topao, privatan prostor za refleksiju i rast</li>
+      </ul>
+      <button class="btn btn-wa" onclick="joinWhatsApp()">Pridruži se besplatnoj zajednici</button>
+      <button class="btn-ghost" onclick="skipWA()">Preskoči i pokaži mi rezultat</button>
+    </div>
+  </div>
+
+  <div id="screen-result" class="hidden result-block"><div id="result-content"></div></div>
+</div>
+
+<script>
+const questions = [
+  { text: "Kada stigne nova mogućnost - novi odnos, projekat ili promena - kakva je tvoja prva unutrašnja reakcija?", options: [
+    { text: "Zastanем, tiho to osetim i proverim šta mi govori intuicija.", mind: "Neu" },
+    { text: "Odmah osećam rizike i šta bi moglo da krene naopako.", mind: "N" },
+    { text: "Uzbudim se i skočim sa entuzijazmom.", mind: "P" }
+  ]},
+  { text: "Posle bolnog iskustva ili neuspeha, kako ga obično obrađuješ?", options: [
+    { text: "Brzo nastavim dalje i trudim se da ostanem pozitivan/na.", mind: "P" },
+    { text: "Dozvolim sebi da to osetim, pa to postepeno puštam.", mind: "Neu" },
+    { text: "Vrtim to iznova i iznova, analiziram šta je pošlo krivo.", mind: "N" }
+  ]},
+  { text: "Kako najčešće zvuči tvoj unutrašnji glas?", options: [
+    { text: "Kritično, oprezno - upozorava me pre nego što delam.", mind: "N" },
+    { text: "Tiho i stabilno - više posmatra nego što sudi.", mind: "Neu" },
+    { text: "Ohrabrujuće, široko - navija me napred.", mind: "P" }
+  ]},
+  { text: "Kako obično donosiš važne odluke?", options: [
+    { text: "Sledim entuzijazam i verujem da će sve biti u redu.", mind: "P" },
+    { text: "Procenim svaki rizik i moram da se osećam potpuno sigurno.", mind: "N" },
+    { text: "Sedim s tim dok odgovor ne postane jasan iznutra.", mind: "Neu" }
+  ]},
+  { text: "Kako se odnošiš prema riziku u svakodnevnom životu?", options: [
+    { text: "Procenjujem ga smireno - ni izbegavam ni jurdam za njim.", mind: "Neu" },
+    { text: "Prihvatam ga - život je o širenju, ne o zadržavanju.", mind: "P" },
+    { text: "Sklanjam se od njega - sigurnost i izvesnost su mi važni.", mind: "N" }
+  ]},
+  { text: "Kada te neko kritikuje ili se ne slaže s tobom, šta se dešava iznutra?", options: [
+    { text: "Shvatam to lično i to ostaje sa mnom neko vreme.", mind: "N" },
+    { text: "Razmatram to iskreno, pa puštam bez drame.", mind: "Neu" },
+    { text: "Otresem to brzo i fokusiram se na pozitivno.", mind: "P" }
+  ]},
+  { text: "Šta tvoj um radi najčešće kada legneš uveče?", options: [
+    { text: "Planira i sanja - misli o sutra.", mind: "P" },
+    { text: "Smiruje se - prilično lako klizim u tišinu.", mind: "Neu" },
+    { text: "Preplavljuje dan iznova - šta je pošlo krivo, šta sam rekao/la.", mind: "N" }
+  ]}
+];
+
+const results = {
+  N: {
+    name: "Negativni um", tagline: "Tvoj zaštitnik govori najglasnije",
+    gift: "Negativni um nije mana - to je tvoja urođena zaštitna inteligencija. Primećuješ ono što drugi propuštaju. Rano osećaš opasnost, razmišljaš pre nego što skočiš, i čuvaš ljude i stvari koje voliš. Ovaj um je razlog zašto si pažljiv/a, temeljit/a i retko iznenađen/a. To je dubok dar.",
+    shadow: "Kada Negativni um dominira bez balansa, postaje kavez. Strah prerušen u mudrost. Oklevanje prerušeno u pripremu. Možda se zatekneš zarobljenim/om u petljama brige, zadržavaš se od života ili se spremaš za bol koja nikad ne dođe. Zaštitnik postaje zatvorenik.",
+    invitation: "Tvoj put nije da utišaš ovaj um - već da prestaneš da ga puštaš da glasa sam. Kada uvedeš i ostale umove, Negativni um postaje jedan od najmudrijih glasova u prostoriji.",
+    breathwork: { name: "Duboko dugo disanje - 3 minuta", desc: "Sedni uspravno. Udišaj polako kroz nos na 4 broja, prvo širi stomak, pa grudi. Zadrži blago na 2 broja. Izdišaj polako na 6 brojeva, potpuno se oslobađajući. Ovo aktivira parasimpatički nervni sistem i signalizira sigurnost telu - omekšavajući stisak mišljenja zasnovanog na strahu." }
+  },
+  P: {
+    name: "Pozitivni um", tagline: "Tvoja sila širenja vodi napred",
+    gift: "Pozitivni um je tvoja životnost. To je deo tebe koji kaže da životu, koji vidi mogućnosti gde drugi vide zidove, koji ide napred kada drugi oklevaju. Nosiš toplinu, optimizam i prirodni magnetizam. Inspiriešeš ljude. Ostvaruješ stvari. Ovo je retka i lepa kvaliteta.",
+    shadow: "Kada Pozitivni um dominira, može zaobići ono što je stvarno. Možda se zatekneš da izbegavaš teške emocije, prelaziš preko problema ili kažeš da kada je bio potreban tih ne. Energija koja te tera napred može te takođe zadržati od ulaska dublje. Prava transformacija zahteva osećanje, ne samo uzletanje.",
+    invitation: "Tvoj rad nije da postanieš manje pozitivan/na - već da tvoje svetlo obuhvati i senke. Kada prestaneš da zaobilaziš bol, tvoja radost postaje autentičnija, veze dublje, mir trajniji.",
+    breathwork: { name: "Disanje naizmeničnim nostrilama - 3 minuta", desc: "Sedni udobno. Zatvori desnu nosnicu palcem, udišaj kroz levu na 4 broja. Zatvori obe kratko. Otvori desnu, izdišaj na 4. Udišaj desnom na 4, zatvori obe, izdišaj levom na 4. Ovo je jedan ciklus. Ponavljaj 3 minuta. Ovaj dah balansira dve hemisfere mozga i donosi uzemljenost kada um jurca ispred tela." }
+  },
+  Neu: {
+    name: "Neutralni um", tagline: "Svedok je već budan u tebi",
+    gift: "Nosiš nešto retko - sposobnost da zastaneš. Da vidiš bez trenutnog reagovanja. Neutralni um je najviši um u Kundalini jogi, i već živi u tebi. Sposoban/na si da držiš složenost, da svedočiš sopstvenim osećanjima bez da te prožderu, i da pristupaš unutrašnjoj tišini koju drugi još uvek traže.",
+    shadow: "Kada Neutralni um još nije u potpunosti integrisan, može ličiti na odvojenost. Možda se povlačiš umesto da se angažuješ, posmatraš umesto da osećaš, ili zamenjuješ emocionalnu distancu sa unutrašnjim mirom. Neutralnost kao izbegavanje nije isto što i neutralnost kao mudrost.",
+    invitation: "Tvoj put je da u potpunosti naseliš ovaj dar - da budeš prisutan/na, ne distanciran/a. Da svedočiš s toplinom. Da tvoja tišina postane most između tebe i sveta, a ne zid.",
+    breathwork: { name: "Kvadratno disanje 4-4-4-4 - 3 minuta", desc: "Udišaj kroz nos na 4 broja. Zadrži na 4. Izdišaj na 4. Zadrži prazno na 4. Ovo je jedan ciklus. Ponavljaj 3 minuta. Kvadratno disanje produbljuje pristup Neutralnom umu - tačka mirovanja između udisaja i izdisaja je gde svedok živi." }
+  }
+};
+
+let answers = [], currentQ = 0, selectedOption = null;
+
+function startQuiz() {
+  document.getElementById('screen-intro').classList.add('hidden');
+  document.getElementById('screen-quiz').classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  selectedOption = null;
+  document.getElementById('btn-next').disabled = true;
+  document.getElementById('progress-bar').style.width = Math.round((currentQ/7)*100) + '%';
+  document.getElementById('progress-label').textContent = 'Pitanje ' + (currentQ+1) + ' od 7';
+  document.getElementById('question-container').innerHTML = `
+    <div class="question-block">
+      <span class="question-number">Pitanje ${currentQ+1}</span>
+      <p class="question-text">${q.text}</p>
+      <div class="options">${q.options.map((o,i) => `<button class="option" onclick="selectOption(${i})" id="opt-${i}">${o.text}</button>`).join('')}</div>
+    </div>`;
+}
+
+function selectOption(i) {
+  document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+  document.getElementById('opt-'+i).classList.add('selected');
+  selectedOption = i;
+  document.getElementById('btn-next').disabled = false;
+}
+
+function nextQuestion() {
+  if (selectedOption === null) return;
+  answers.push(questions[currentQ].options[selectedOption].mind);
+  currentQ++;
+  if (currentQ < questions.length) {
+    if (currentQ === questions.length-1) document.getElementById('btn-next').textContent = 'Vidi moj rezultat';
+    renderQuestion();
+  } else {
+    document.getElementById('screen-quiz').classList.add('hidden');
+    document.getElementById('screen-wa').classList.remove('hidden');
+  }
+}
+
+function joinWhatsApp() {
+  window.open('https://chat.whatsapp.com/D0JVUvidaGAEFtMYLBG3bW', '_blank');
+  setTimeout(showResult, 800);
+}
+function skipWA() { showResult(); }
+
+function showResult() {
+  document.getElementById('screen-wa').classList.add('hidden');
+  document.getElementById('screen-result').classList.remove('hidden');
+  const counts = {N:0,P:0,Neu:0};
+  answers.forEach(a => counts[a]++);
+  let dominant = Object.keys(counts).reduce((a,b) => counts[a]>=counts[b]?a:b);
+  const r = results[dominant];
+  const scoreColors = {N:'#8a6db5',P:'#b8843e',Neu:'#4a8c72'};
+  const scoreNames = {N:'Negativni',P:'Pozitivni',Neu:'Neutralni'};
+  document.getElementById('result-content').innerHTML = `
+    <div class="result-header">
+      <div class="eyebrow">Tvoj rezultat</div>
+      <div class="result-title">${r.name}</div>
+      <div class="result-subtitle">${r.tagline}</div>
+    </div>
+    <div class="scores-section">
+      <div class="scores-title">Tvoj profil uma</div>
+      ${['N','P','Neu'].map(m=>`<div class="score-bar-row"><div class="score-bar-label">${scoreNames[m]}</div><div class="score-bar-track"><div class="score-bar-fill" style="width:${Math.round((counts[m]/7)*100)}%;background:${scoreColors[m]};"></div></div><div class="score-bar-num">${counts[m]}/7</div></div>`).join('')}
+    </div>
+    <div class="result-card"><div class="result-card-label">Dar</div><p>${r.gift}</p></div>
+    <div class="result-card"><div class="result-card-label">Obrazac senke</div><p>${r.shadow}</p></div>
+    <div class="result-card"><div class="result-card-label">Poziv</div><p>${r.invitation}</p></div>
+    <div class="breathwork-card"><div class="breathwork-title">Tvoja praksa disanja - ${r.breathwork.name}</div><p>${r.breathwork.desc}</p></div>
+    <div class="cta-card">
+      <h3>Želiš da ideš dublje?</h3>
+      <p>Piši Nemaniji direktno i dobij <em>Vodič za Um i Meditaciju</em> kao poklon kada zakažeš besplatnu sesiju.</p>
+      <button class="btn" onclick="window.location.href='mailto:info@vukojenemanja.com?subject=Besplatna sesija'">Zakaži besplatnu sesiju</button>
+    </div>
+    <button class="btn btn-outline" style="margin-top:1.5rem;" onclick="retakeQuiz()">Ponovi kviz</button>`;
+}
+
+function retakeQuiz() {
+  answers=[]; currentQ=0; selectedOption=null;
+  document.getElementById('screen-result').classList.add('hidden');
+  document.getElementById('screen-quiz').classList.remove('hidden');
+  document.getElementById('btn-next').textContent='Sledeće';
+  renderQuestion();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Which Mind Runs Your Life?</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: #faf6f0; color: #2c2416; min-height: 100vh; }
+  .quiz-wrapper { max-width: 680px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .header { text-align: center; padding: 2.5rem 0 2rem; border-bottom: 1px solid #e2d8cc; margin-bottom: 2rem; }
+  .header .subtitle { font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: #a07d50; margin-bottom: 1rem; }
+  .header h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 400; color: #1e1810; line-height: 1.3; margin-bottom: 1rem; }
+  .header p { font-size: 15px; color: #6b5a42; line-height: 1.7; max-width: 480px; margin: 0 auto; }
+  .progress-bar-wrap { background: #e8dfd4; border-radius: 999px; height: 4px; margin-bottom: 2rem; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: #b8843e; border-radius: 999px; transition: width 0.4s ease; }
+  .progress-label { font-size: 12px; color: #a07d50; text-align: right; margin-bottom: 6px; }
+  .question-block { margin-bottom: 2rem; }
+  .question-text { font-size: 17px; font-weight: 400; color: #1e1810; line-height: 1.6; margin-bottom: 1.25rem; }
+  .question-number { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #b8843e; margin-bottom: 0.5rem; }
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option { background: #fff; border: 1px solid #ddd4c4; border-radius: 10px; padding: 14px 18px; cursor: pointer; font-size: 15px; color: #3a2e1e; line-height: 1.5; transition: border-color 0.2s, background 0.2s; text-align: left; }
+  .option:hover { border-color: #b8843e; background: #fdf8f2; }
+  .option.selected { border-color: #b8843e; background: #fdf3e3; color: #1e1810; }
+  .btn { display: block; width: 100%; padding: 15px 24px; background: #b8843e; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-family: 'Georgia', serif; cursor: pointer; margin-top: 1.5rem; letter-spacing: 0.5px; transition: background 0.2s, transform 0.1s; }
+  .btn:hover { background: #9e6e2e; }
+  .btn:active { transform: scale(0.99); }
+  .btn:disabled { background: #ccc5b6; cursor: not-allowed; }
+  .btn-outline { background: transparent; border: 1px solid #b8843e; color: #b8843e; margin-top: 1rem; }
+  .btn-outline:hover { background: #fdf3e3; }
+  .btn-ghost { background: transparent; border: none; color: #a07d50; font-size: 13px; text-decoration: underline; cursor: pointer; margin-top: 0.75rem; font-family: 'Georgia', serif; width: 100%; text-align: center; padding: 8px; }
+  .btn-ghost:hover { color: #6b5a42; }
+  .result-block { animation: fadeIn 0.5s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .result-header { text-align: center; padding: 2rem 0 1.5rem; border-bottom: 1px solid #e2d8cc; margin-bottom: 2rem; }
+  .result-header .eyebrow { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: #a07d50; margin-bottom: 0.75rem; }
+  .result-title { font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 400; color: #1e1810; line-height: 1.3; margin-bottom: 0.5rem; }
+  .result-subtitle { font-size: 14px; color: #a07d50; letter-spacing: 1px; }
+  .result-card { background: #fff; border: 1px solid #ddd4c4; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+  .result-card-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #b8843e; margin-bottom: 0.5rem; }
+  .result-card p { font-size: 15px; color: #3a2e1e; line-height: 1.7; }
+  .breathwork-card { background: #fdf8f0; border: 1px solid #e2d0b0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+  .breathwork-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #b8843e; margin-bottom: 0.5rem; }
+  .breathwork-card p { font-size: 15px; color: #3a2e1e; line-height: 1.7; }
+  .cta-card { background: #1e1810; border-radius: 12px; padding: 2rem 1.5rem; text-align: center; margin-top: 1.5rem; }
+  .cta-card h3 { font-size: 18px; font-weight: 400; color: #fdf8f0; margin-bottom: 0.75rem; line-height: 1.4; }
+  .cta-card p { font-size: 14px; color: #c4a97a; line-height: 1.6; margin-bottom: 1.25rem; }
+  .cta-card .btn { background: #b8843e; max-width: 320px; margin: 0 auto; }
+  .score-bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .score-bar-label { font-size: 13px; color: #6b5a42; width: 70px; flex-shrink: 0; }
+  .score-bar-track { flex: 1; background: #e8dfd4; border-radius: 999px; height: 8px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 999px; transition: width 0.8s ease; }
+  .score-bar-num { font-size: 13px; color: #a07d50; width: 28px; text-align: right; flex-shrink: 0; }
+  .scores-section { margin-bottom: 1.5rem; }
+  .scores-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #a07d50; margin-bottom: 1rem; }
+  .hidden { display: none; }
+  .wa-screen { text-align: center; padding: 1rem 0; animation: fadeIn 0.4s ease; }
+  .wa-icon { width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+  .wa-icon svg { width: 30px; height: 30px; fill: #fff; }
+  .wa-screen h2 { font-size: 1.5rem; font-weight: 400; color: #1e1810; margin-bottom: 0.75rem; line-height: 1.4; }
+  .wa-screen p { font-size: 15px; color: #6b5a42; line-height: 1.7; max-width: 440px; margin: 0 auto 0.5rem; }
+  .wa-perks { list-style: none; margin: 1.25rem auto; max-width: 360px; text-align: left; }
+  .wa-perks li { font-size: 14px; color: #3a2e1e; padding: 6px 0; border-bottom: 1px solid #ece5da; display: flex; gap: 10px; align-items: flex-start; }
+  .wa-perks li:last-child { border-bottom: none; }
+  .wa-perk-dot { width: 6px; height: 6px; background: #b8843e; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .btn-wa { background: #25D366; margin-top: 0.5rem; }
+  .btn-wa:hover { background: #1ebd5a; }
+</style>
+</head>
+<body>
+<div class="quiz-wrapper">
+
+  <div id="screen-intro">
+    <div class="header">
+      <div class="subtitle">Kundalini Yoga - Self-Discovery</div>
+      <h1>Which Mind Runs Your Life?</h1>
+      <p>According to Kundalini Yoga, you have three minds - Negative, Positive, and Neutral. One of them is quietly running the show. This 7-question quiz will reveal which one dominates your inner world, and what it means for your life.</p>
+    </div>
+    <p style="font-size:14px; color:#a07d50; text-align:center; margin-bottom:1.5rem;">Takes about 2 minutes &nbsp;·&nbsp; No right or wrong answers</p>
+    <button class="btn" onclick="startQuiz()">Begin the quiz</button>
+  </div>
+
+  <div id="screen-quiz" class="hidden">
+    <div class="progress-label" id="progress-label">Question 1 of 7</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-bar" style="width:14%"></div></div>
+    <div id="question-container"></div>
+    <button class="btn" id="btn-next" onclick="nextQuestion()" disabled>Next</button>
+  </div>
+
+  <div id="screen-wa" class="hidden">
+    <div class="wa-screen">
+      <div class="wa-icon"><svg viewBox="0 0 32 32"><path d="M16 1C7.716 1 1 7.716 1 16c0 2.627.668 5.1 1.84 7.26L1 31l7.94-1.82A15 15 0 0 0 16 31c8.284 0 15-6.716 15-15S24.284 1 16 1zm7.78 20.57c-.32.9-1.88 1.72-2.6 1.82-.68.1-1.54.14-2.48-.16-.57-.18-1.3-.42-2.24-.82-3.94-1.7-6.52-5.66-6.72-5.92-.2-.26-1.62-2.16-1.62-4.12s1.02-2.92 1.38-3.32c.36-.4.78-.5 1.04-.5.26 0 .52.002.74.012.24.01.56-.092.88.67.32.76 1.08 2.62 1.18 2.82.1.2.16.44.02.7-.14.26-.2.42-.4.64-.2.22-.42.5-.6.66-.2.18-.4.38-.18.74.22.36.98 1.62 2.1 2.62 1.44 1.28 2.66 1.68 3.02 1.86.36.18.58.16.8-.1.22-.26.94-1.1 1.2-1.48.24-.36.5-.3.84-.18.34.12 2.18 1.03 2.56 1.22.38.18.62.28.72.42.1.16.1.9-.22 1.8z"/></svg></div>
+      <h2>Your result is ready</h2>
+      <p>Before we reveal it - join the free WhatsApp community for weekly insights on the mind, energy, and inner peace.</p>
+      <ul class="wa-perks">
+        <li><span class="wa-perk-dot"></span>Weekly practices from Kundalini Yoga and meditation</li>
+        <li><span class="wa-perk-dot"></span>Guidance aligned with the lunar cycle</li>
+        <li><span class="wa-perk-dot"></span>A warm, private space for reflection and growth</li>
+      </ul>
+      <button class="btn btn-wa" onclick="joinWhatsApp()">Join the free community</button>
+      <button class="btn-ghost" onclick="skipWA()">Skip and show my result</button>
+    </div>
+  </div>
+
+  <div id="screen-result" class="hidden result-block"><div id="result-content"></div></div>
+</div>
+
+<script>
+const questions = [
+  { text: "When a new opportunity arrives - a new relationship, project, or change - what is your first inner response?", options: [
+    { text: "I pause, feel it quietly, and check in with my gut.", mind: "Neu" },
+    { text: "I immediately sense the risks and what could go wrong.", mind: "N" },
+    { text: "I feel excited and jump in with enthusiasm.", mind: "P" }
+  ]},
+  { text: "After a painful experience or setback, how do you typically process it?", options: [
+    { text: "I move on quickly and try to stay positive.", mind: "P" },
+    { text: "I let myself feel it, then release it gradually.", mind: "Neu" },
+    { text: "I replay it over and over, analysing what went wrong.", mind: "N" }
+  ]},
+  { text: "What does your inner voice most often sound like?", options: [
+    { text: "Critical, cautious - it warns me before I act.", mind: "N" },
+    { text: "Quiet and steady - it observes more than it judges.", mind: "Neu" },
+    { text: "Encouraging, expansive - it cheers me forward.", mind: "P" }
+  ]},
+  { text: "How do you usually make important decisions?", options: [
+    { text: "I follow my enthusiasm and trust things will work out.", mind: "P" },
+    { text: "I weigh every risk and need to feel fully safe first.", mind: "N" },
+    { text: "I sit with it until the answer feels clear from within.", mind: "Neu" }
+  ]},
+  { text: "How do you relate to risk in your daily life?", options: [
+    { text: "I assess it calmly - neither avoiding nor chasing it.", mind: "Neu" },
+    { text: "I embrace it - life is about expanding, not holding back.", mind: "P" },
+    { text: "I tend to avoid it - safety and certainty matter to me.", mind: "N" }
+  ]},
+  { text: "When someone criticises you or disagrees with you, what happens inside?", options: [
+    { text: "I take it personally and it stays with me for a while.", mind: "N" },
+    { text: "I consider it honestly, then let it go without drama.", mind: "Neu" },
+    { text: "I brush it off quickly and focus on the positive.", mind: "P" }
+  ]},
+  { text: "What does your mind do most when you lie down at night?", options: [
+    { text: "It plans and dreams - thinking about tomorrow.", mind: "P" },
+    { text: "It quiets down - I drift into stillness fairly easily.", mind: "Neu" },
+    { text: "It replays the day - what went wrong, what I said.", mind: "N" }
+  ]}
+];
+
+const results = {
+  N: {
+    name: "The Negative Mind", tagline: "Your protector is speaking loudest",
+    gift: "Your Negative Mind is not a flaw - it is your built-in protective intelligence. You notice what others miss. You sense danger early, you think before you leap, and you guard the people and things you love. This mind is the reason you are careful, thorough, and rarely blindsided. It is a profound gift.",
+    shadow: "When the Negative Mind dominates without balance, it becomes a cage. Fear disguised as wisdom. Hesitation disguised as preparation. You may find yourself stuck in loops of worry, holding back from life, or bracing for pain that never comes. The protector becomes the prisoner.",
+    invitation: "Your path is not to silence this mind - but to stop letting it vote alone. When you bring in the other minds, the Negative Mind becomes one of the wisest voices in the room.",
+    breathwork: { name: "Long Deep Breathing - 3 minutes", desc: "Sit tall. Inhale slowly through the nose for a count of 4, expanding the belly first, then the chest. Hold gently for a count of 2. Exhale slowly for a count of 6, releasing completely. This activates the parasympathetic nervous system and signals safety to the body - softening the grip of fear-based thinking." }
+  },
+  P: {
+    name: "The Positive Mind", tagline: "Your expansive force is in the lead",
+    gift: "Your Positive Mind is your aliveness. It is the part of you that says yes to life, that sees possibility where others see walls, that moves forward when others hesitate. You carry warmth, optimism, and a natural magnetism. You inspire people. You make things happen. This is a rare and beautiful quality.",
+    shadow: "When the Positive Mind dominates, it can bypass what is real. You may find yourself avoiding difficult emotions, glossing over problems, or saying yes when a quiet no was needed. The energy that drives you forward can also keep you from going deeper. Real transformation requires feeling, not just rising.",
+    invitation: "Your work is not to become less positive - but to let your light include the shadows. When you stop bypassing pain, your joy becomes more authentic, your connections deeper, your peace more lasting.",
+    breathwork: { name: "Alternate Nostril Breathing - 3 minutes", desc: "Sit comfortably. Close your right nostril with your thumb, inhale through the left for a count of 4. Close both briefly. Open the right, exhale for 4. Inhale right for 4, close both, exhale left for 4. This is one cycle. Repeat for 3 minutes. This breath balances the two hemispheres of the brain and brings grounding when the mind runs ahead of the body." }
+  },
+  Neu: {
+    name: "The Neutral Mind", tagline: "The witness is already awake in you",
+    gift: "You carry something rare - the capacity to pause. To see without immediately reacting. The Neutral Mind is the highest mind in Kundalini Yoga, and it already lives in you. You are able to hold complexity, to witness your own feelings without being consumed by them, and to access an inner stillness that others are still searching for.",
+    shadow: "When the Neutral Mind is not yet fully integrated, it can look like detachment. You may withdraw instead of engaging, observe instead of feeling, or mistake emotional distance for inner peace. Neutrality as avoidance is not the same as neutrality as wisdom.",
+    invitation: "Your path is to inhabit this gift fully - to be present, not distant. To witness with warmth. To let your stillness become a bridge between you and the world, not a wall.",
+    breathwork: { name: "4-4-4-4 Box Breathing - 3 minutes", desc: "Inhale through the nose for a count of 4. Hold for 4. Exhale for 4. Hold empty for 4. This is one cycle. Repeat for 3 minutes. Box breathing deepens access to the Neutral Mind - the still point between inhale and exhale is where the witness lives." }
+  }
+};
+
+let answers = [], currentQ = 0, selectedOption = null;
+
+function startQuiz() {
+  document.getElementById('screen-intro').classList.add('hidden');
+  document.getElementById('screen-quiz').classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  selectedOption = null;
+  document.getElementById('btn-next').disabled = true;
+  document.getElementById('progress-bar').style.width = Math.round((currentQ/7)*100) + '%';
+  document.getElementById('progress-label').textContent = 'Question ' + (currentQ+1) + ' of 7';
+  document.getElementById('question-container').innerHTML = `
+    <div class="question-block">
+      <span class="question-number">Question ${currentQ+1}</span>
+      <p class="question-text">${q.text}</p>
+      <div class="options">${q.options.map((o,i) => `<button class="option" onclick="selectOption(${i})" id="opt-${i}">${o.text}</button>`).join('')}</div>
+    </div>`;
+}
+
+function selectOption(i) {
+  document.querySelectorAll('.option').forEach(el => el.classList.remove('selected'));
+  document.getElementById('opt-'+i).classList.add('selected');
+  selectedOption = i;
+  document.getElementById('btn-next').disabled = false;
+}
+
+function nextQuestion() {
+  if (selectedOption === null) return;
+  answers.push(questions[currentQ].options[selectedOption].mind);
+  currentQ++;
+  if (currentQ < questions.length) {
+    if (currentQ === questions.length-1) document.getElementById('btn-next').textContent = 'See my result';
+    renderQuestion();
+  } else {
+    document.getElementById('screen-quiz').classList.add('hidden');
+    document.getElementById('screen-wa').classList.remove('hidden');
+  }
+}
+
+function joinWhatsApp() {
+  window.open('https://chat.whatsapp.com/HBOR4YChYQkHiXGpWsFPJe', '_blank');
+  setTimeout(showResult, 800);
+}
+function skipWA() { showResult(); }
+
+function showResult() {
+  document.getElementById('screen-wa').classList.add('hidden');
+  document.getElementById('screen-result').classList.remove('hidden');
+  const counts = {N:0,P:0,Neu:0};
+  answers.forEach(a => counts[a]++);
+  let dominant = Object.keys(counts).reduce((a,b) => counts[a]>=counts[b]?a:b);
+  const r = results[dominant];
+  const scoreColors = {N:'#8a6db5',P:'#b8843e',Neu:'#4a8c72'};
+  const scoreNames = {N:'Negative',P:'Positive',Neu:'Neutral'};
+  document.getElementById('result-content').innerHTML = `
+    <div class="result-header">
+      <div class="eyebrow">Your result</div>
+      <div class="result-title">${r.name}</div>
+      <div class="result-subtitle">${r.tagline}</div>
+    </div>
+    <div class="scores-section">
+      <div class="scores-title">Your mind profile</div>
+      ${['N','P','Neu'].map(m=>`<div class="score-bar-row"><div class="score-bar-label">${scoreNames[m]}</div><div class="score-bar-track"><div class="score-bar-fill" style="width:${Math.round((counts[m]/7)*100)}%;background:${scoreColors[m]};"></div></div><div class="score-bar-num">${counts[m]}/7</div></div>`).join('')}
+    </div>
+    <div class="result-card"><div class="result-card-label">The gift</div><p>${r.gift}</p></div>
+    <div class="result-card"><div class="result-card-label">The shadow pattern</div><p>${r.shadow}</p></div>
+    <div class="result-card"><div class="result-card-label">The invitation</div><p>${r.invitation}</p></div>
+    <div class="breathwork-card"><div class="breathwork-title">Your breathwork practice - ${r.breathwork.name}</div><p>${r.breathwork.desc}</p></div>
+    <div class="cta-card">
+      <h3>Want to go deeper?</h3>
+      <p>Write to Nemanja directly and receive <em>The Mind & Meditation Guide</em> as a gift when you book a free session.</p>
+      <button class="btn" onclick="window.location.href='mailto:info@vukojenemanja.com?subject=Free Discovery Session'">Book your free session</button>
+    </div>
+    <button class="btn btn-outline" style="margin-top:1.5rem;" onclick="retakeQuiz()">Retake the quiz</button>`;
+}
+
+function retakeQuiz() {
+  answers=[]; currentQ=0; selectedOption=null;
+  document.getElementById('screen-result').classList.add('hidden');
+  document.getElementById('screen-quiz').classList.remove('hidden');
+  document.getElementById('btn-next').textContent='Next';
+  renderQuestion();
+}
+</script>
+</body>
+</html>

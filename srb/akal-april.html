@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Um Koji Te Ne Sabotira - Akal Zajednica | Nemanja Vukoje</title>
+<meta name="description" content="Mesečni ciklus u Akal zajednici: nauči kako da um postane tvoja podrška, a ne prepreka. Kundalini joga i meditacija, online, 77€.">
+<link rel="canonical" href="https://vukojenemanja.com/srb/akal-april.html" />
+<link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/akal-april.html" />
+<meta property="og:title" content="Um Koji Te Ne Sabotira - Akal Zajednica | Nemanja Vukoje" />
+<meta property="og:description" content="Mesečni ciklus u Akal zajednici: nauči kako da um postane tvoja podrška, a ne prepreka. Kundalini joga i meditacija, online, 77€." />
+<meta property="og:url" content="https://vukojenemanja.com/srb/akal-april.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Nemanja Vukoje" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Um Koji Te Ne Sabotira - Akal Zajednica | Nemanja Vukoje" />
+<meta name="twitter:description" content="Mesečni ciklus u Akal zajednici: nauči kako da um postane tvoja podrška, a ne prepreka." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --clay:   #C4A882;
+    --sand:   #E8DDD0;
+    --moss:   #6B7B5E;
+    --bark:   #3D2E1E;
+    --fog:    #F5F1EC;
+    --stone:  #8A8070;
+    --deep:   #1E1712;
+    --accent: #9B6B3A;
+    --warm:   #D4B896;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--fog);
+    color: var(--bark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,8,5,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196,168,130,0.12);
+    transition: background 0.4s, padding 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(26,18,8,0.95);
+    padding: 14px 40px;
+    border-bottom: 1px solid rgba(196,168,130,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--fog);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(245,241,236,0.75);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--clay); }
+  .nav-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--clay) !important;
+    text-decoration: none;
+    border: 1px solid var(--clay);
+    padding: 9px 20px;
+    transition: all 0.3s ease;
+  }
+  .nav-cta:hover {
+    background: var(--clay);
+    color: var(--deep) !important;
+  }
+  /* hamburger */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--fog);
+    transition: all 0.3s;
+  }
+  /* mobile menu */
+  .nav-mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: var(--deep);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-menu a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--fog);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+  }
+  .nav-mobile-menu a:hover { color: var(--clay); }
+  .nav-mobile-menu .mobile-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--clay) !important;
+    border: 1px solid var(--clay);
+    padding: 14px 36px;
+    margin-top: 8px;
+  }
+  .nav-mobile-close {
+    position: absolute;
+    top: 24px; right: 28px;
+    background: none;
+    border: none;
+    color: var(--fog);
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: var(--deep);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 40px 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 15% 60%, rgba(196,168,130,0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 80% 30%, rgba(155,107,58,0.10) 0%, transparent 60%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .hero-overline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 7vw, 78px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--fog);
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--clay);
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-style: italic;
+    color: var(--warm);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.55s forwards;
+    letter-spacing: 0.3px;
+  }
+  .hero-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: rgba(245,241,236,0.72);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.7s forwards;
+  }
+  .hero-body p + p {
+    margin-top: 14px;
+  }
+  .btn-primary {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--deep);
+    background: var(--clay);
+    padding: 16px 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.85s forwards;
+  }
+  .btn-primary:hover {
+    background: var(--warm);
+  }
+  .btn-outline {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--clay);
+    border: 1px solid var(--clay);
+    padding: 16px 40px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .btn-outline:hover {
+    background: var(--clay);
+    color: var(--deep);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--clay);
+    margin: 0 auto 60px;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 100px 40px;
+  }
+  .section-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 24px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--bark);
+    margin-bottom: 32px;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .section-body {
+    font-size: 15px;
+    color: var(--stone);
+    line-height: 1.85;
+  }
+  .section-body p + p {
+    margin-top: 16px;
+  }
+
+  /* ─── RECOGNITION SECTION ─── */
+  .recognition {
+    background: var(--sand);
+  }
+  .recognition .section-title {
+    color: var(--bark);
+  }
+  .pain-list {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .pain-item {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(61,46,30,0.12);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--bark);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .pain-item::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--clay);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .pain-close {
+    margin-top: 40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+
+  /* ─── REFRAME SECTION ─── */
+  .reframe {
+    background: var(--fog);
+  }
+  .three-minds {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(61,46,30,0.15);
+  }
+  .mind-card {
+    background: var(--fog);
+    padding: 36px 28px;
+    text-align: center;
+  }
+  .mind-card-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 12px;
+  }
+  .mind-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--bark);
+    margin-bottom: 10px;
+  }
+  .mind-card-desc {
+    font-size: 13px;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+  .imbalance-list {
+    margin-top: 44px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .imbalance-item {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--stone);
+    position: relative;
+    padding-left: 16px;
+  }
+  .imbalance-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 6px; height: 1px;
+    background: var(--clay);
+  }
+  .reframe-close {
+    margin-top: 40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--bark);
+    border-left: 2px solid var(--clay);
+    padding-left: 24px;
+    line-height: 1.6;
+  }
+
+  /* ─── VALUE SECTION ─── */
+  .value-section {
+    background: var(--deep);
+  }
+  .value-section .section-label { color: var(--clay); }
+  .value-section .section-title { color: var(--fog); }
+  .value-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(245,241,236,0.1);
+  }
+  .value-item {
+    background: var(--deep);
+    padding: 28px 24px;
+    border-bottom: none;
+  }
+  .value-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--clay);
+    margin-bottom: 8px;
+  }
+  .value-item-desc {
+    font-size: 13px;
+    color: rgba(245,241,236,0.55);
+    line-height: 1.7;
+  }
+  .value-close {
+    margin-top: 44px;
+    font-size: 14px;
+    color: rgba(245,241,236,0.60);
+    line-height: 1.8;
+  }
+
+  /* ─── FORMAT SECTION ─── */
+  .format-section {
+    background: var(--sand);
+  }
+  .format-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .format-card {
+    background: var(--fog);
+    padding: 32px 28px;
+    border-top: 2px solid var(--clay);
+  }
+  .format-card-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 10px;
+  }
+  .format-card-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--bark);
+    line-height: 1.4;
+  }
+  .format-card-value em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ─── FOR WHO SECTION ─── */
+  .forwhom {
+    background: var(--fog);
+  }
+  .forwhom-list {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .forwhom-item {
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(61,46,30,0.10);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-style: italic;
+    color: var(--bark);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .forwhom-item:first-child { border-top: 1px solid rgba(61,46,30,0.10); }
+  .forwhom-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--clay);
+    flex-shrink: 0;
+    width: 28px;
+  }
+
+  /* ─── CLOSE SECTION ─── */
+  .close-section {
+    background: var(--deep);
+    text-align: center;
+  }
+  .close-section .section-inner {
+    max-width: 640px;
+  }
+  .close-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4.5vw, 48px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--fog);
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+  .close-quote em {
+    color: var(--clay);
+    font-style: normal;
+  }
+  .close-sub {
+    font-size: 14px;
+    color: rgba(245,241,236,0.55);
+    margin-bottom: 50px;
+    line-height: 1.8;
+  }
+  .close-sub p + p { margin-top: 12px; }
+
+  /* ─── CTA SECTION ─── */
+  .cta-section {
+    background: var(--fog);
+    text-align: center;
+    padding: 100px 40px 80px;
+  }
+  .cta-section .section-inner {
+    max-width: 560px;
+  }
+  .cta-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 300;
+    color: var(--bark);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .cta-price span {
+    font-size: 28px;
+    color: var(--stone);
+    vertical-align: super;
+  }
+  .cta-price-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 40px;
+  }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--bark);
+    margin-bottom: 14px;
+  }
+  .cta-body {
+    font-size: 14px;
+    color: var(--stone);
+    margin-bottom: 44px;
+    line-height: 1.8;
+  }
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .ps-note {
+    margin-top: 60px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--stone);
+    border-top: 1px solid rgba(61,46,30,0.12);
+    padding-top: 36px;
+    line-height: 1.7;
+  }
+  .ps-note strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--bark);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--deep);
+    padding: 60px 40px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  .footer-brand h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--sand);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .footer-brand h3 em { font-style: italic; color: var(--clay); }
+  .footer-brand p {
+    font-size: 13px;
+    color: rgba(245,241,236,0.45);
+    line-height: 1.8;
+  }
+  .footer-nav h4, .footer-contact h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 20px;
+  }
+  .footer-nav ul { list-style: none; }
+  .footer-nav li { padding: 6px 0; }
+  .footer-nav a, .footer-contact a {
+    font-size: 13px;
+    color: rgba(245,241,236,0.55);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-nav a:hover, .footer-contact a:hover { color: var(--clay); }
+  .footer-contact p {
+    font-size: 13px;
+    color: rgba(245,241,236,0.55);
+    line-height: 2;
+  }
+  .footer-bottom {
+    background: var(--deep);
+    padding: 20px 40px;
+    border-top: 1px solid rgba(196,168,130,0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-bottom p {
+    font-size: 11px;
+    color: rgba(245,241,236,0.25);
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 680px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    section { padding: 72px 24px; }
+    .hero { padding: 100px 24px 72px; }
+    .pain-list { grid-template-columns: 1fr; }
+    .three-minds { grid-template-columns: 1fr; }
+    .value-grid { grid-template-columns: 1fr; }
+    .format-grid { grid-template-columns: 1fr; }
+    .imbalance-list { gap: 16px; }
+    footer { grid-template-columns: 1fr; padding: 40px 24px; }
+    .footer-bottom { padding: 16px 24px; flex-direction: column; }
+    .cta-section { padding: 72px 24px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="index.html">Nemanja Vukoje</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">O meni</a></li>
+    <li><a href="akal.html">Akal zajednica</a></li>
+    <li><a href="individual.html">Individualni rad</a></li>
+    <li><a href="index.html#testimonials">Utisci</a></li>
+    <li><a href="mailto:info@vukojenemanja.com?subject=Prijava%20-%20Akal%20april%20ciklus" class="nav-cta">Prijavi se</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Meni"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <button class="nav-mobile-close" onclick="closeMobileMenu()">×</button>
+  <a href="index.html#about" onclick="closeMobileMenu()">O meni</a>
+  <a href="akal.html" onclick="closeMobileMenu()">Akal zajednica</a>
+  <a href="individual.html" onclick="closeMobileMenu()">Individualni rad</a>
+  <a href="index.html#testimonials" onclick="closeMobileMenu()">Utisci</a>
+  <a href="mailto:info@vukojenemanja.com?subject=Prijava%20-%20Akal%20april%20ciklus" class="mobile-cta" onclick="closeMobileMenu()">Prijavi se</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-overline">Akal zajednica - mesečni ciklus</div>
+    <h1 class="hero-title">Um koji te<br><em>ne sabotira</em></h1>
+    <p class="hero-subtitle">mesečni ciklus u Akal zajednici</p>
+    <div class="hero-body">
+      <p>Tvoj um nije problem. Ali način na koji ga koristiš - te iscrpljuje.</p>
+      <p>Ako stalno razmišljaš... ako ne možeš da se opustiš... ako uvek postoji još jedan glas koji sumnja...</p>
+      <p>Možda nije da radiš previše. Možda samo nemaš mir u sebi.</p>
+      <p>U ovom ciklusu učimo kako da um postane tvoja podrška - a ne prepreka.</p>
+    </div>
+    <a class="btn-primary" href="mailto:info@vukojenemanja.com?subject=Prijava%20-%20Akal%20april%20ciklus">Prijavi se</a>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section class="recognition">
+  <div class="section-inner">
+    <h2 class="section-title">Spolja sve<br><em>funkcioniše</em></h2>
+    <div class="section-body">
+      <p>Radiš. Završavaš obaveze. Držiš stvari pod kontrolom.</p>
+      <p>Ali iznutra...</p>
+    </div>
+    <div class="pain-list">
+      <div class="pain-item">stalno razmišljaš</div>
+      <div class="pain-item">vrtiš iste scenarije</div>
+      <div class="pain-item">analiziraš šta si rekao/la</div>
+      <div class="pain-item">preispituješ svaku odluku</div>
+      <div class="pain-item">teško se isključuješ</div>
+      <div class="pain-item">telo ti je napeto i kada odmараš</div>
+    </div>
+    <p class="pain-close">I čak i kada staneš - um ne staje.<br>To je ono što te najviše umara.</p>
+  </div>
+</section>
+
+<!-- VALUE -->
+<section class="value-section">
+  <div class="section-inner">
+    <h2 class="section-title" style="color:var(--fog);">Kroz ovaj mesec<br><em style="color:var(--clay);">radimo na:</em></h2>
+    <div class="value-grid">
+      <div class="value-item">
+        <div class="value-item-title">Smirenje mentalne buke</div>
+        <div class="value-item-desc">Učimo konkretne tehnike koje zaustavljaju spiralu razmišljanja</div>
+      </div>
+      <div class="value-item">
+        <div class="value-item-title">Fokus i jasnoću</div>
+        <div class="value-item-desc">Vraća se sposobnost donošenja odluka bez preopterećenja</div>
+      </div>
+      <div class="value-item">
+        <div class="value-item-title">Unutrašnji mir</div>
+        <div class="value-item-desc">Jačamo oslonac u sebi koji nije uslovljen spoljašnjim okolnostima</div>
+      </div>
+      <div class="value-item">
+        <div class="value-item-title">Veza sa intuicijom</div>
+        <div class="value-item-desc">Kada um utihne, intuicija postaje jasnija i pristupačnija</div>
+      </div>
+      <div class="value-item">
+        <div class="value-item-title">Izlaz iz overthinking-a</div>
+        <div class="value-item-desc">Razumevamo okidače i gradimo novi obrazac reagovanja</div>
+      </div>
+      <div class="value-item">
+        <div class="value-item-title">Lakoća u telu</div>
+        <div class="value-item-desc">Mentalna napetost živi u telu - oslobađamo je kroz praksu</div>
+      </div>
+    </div>
+    <p class="value-close">Kroz Kundalini jogu, rad sa telom i meditaciju, postepeno vraćamo balans između tri uma.</p>
+  </div>
+</section>
+
+<!-- REFRAME -->
+<section class="reframe">
+  <div class="section-inner">
+    <h2 class="section-title">Problem nije što<br><em>previše razmišljaš</em></h2>
+    <div class="section-body">
+      <p>Problem je što tvoj um nema balans.</p>
+      <p>U Kundalini jogi govorimo o tri uma:</p>
+    </div>
+    <div class="three-minds">
+      <div class="mind-card">
+        <div class="mind-card-label">prvi um</div>
+        <div class="mind-card-title">Pozitivni um</div>
+        <div class="mind-card-desc">koji vidi mogućnosti</div>
+      </div>
+      <div class="mind-card">
+        <div class="mind-card-label">drugi um</div>
+        <div class="mind-card-title">Negativni um</div>
+        <div class="mind-card-desc">koji te štiti i analizira</div>
+      </div>
+      <div class="mind-card">
+        <div class="mind-card-label">treći um</div>
+        <div class="mind-card-title">Neutralni um</div>
+        <div class="mind-card-desc">koji donosi jasnoću</div>
+      </div>
+    </div>
+    <div class="section-body" style="margin-top:36px;">
+      <p>Kada nisu u balansu - jedan glas postaje preglasan.</p>
+      <p>I tada počinje:</p>
+    </div>
+    <div class="imbalance-list">
+      <span class="imbalance-item">sumnja</span>
+      <span class="imbalance-item">konfuzija</span>
+      <span class="imbalance-item">preopterećenost</span>
+      <span class="imbalance-item">samosabotaža</span>
+    </div>
+    <p class="reframe-close">Ovaj ciklus nije o "gašenju uma". Već o tome da naučiš kako da ga koristiš.</p>
+  </div>
+</section>
+
+<!-- FORMAT -->
+<section class="format-section">
+  <div class="section-inner">
+    <h2 class="section-title">Kako izgledaju<br><em>naši susreti</em></h2>
+    <div class="format-grid">
+      <div class="format-card">
+        <div class="format-card-label">Časovi</div>
+        <div class="format-card-value">Online, jednom nedeljno<br><em>svake nedelje u 20:00</em></div>
+      </div>
+      <div class="format-card">
+        <div class="format-card-label">Meditativne večeri</div>
+        <div class="format-card-value">8. i 29. u 21:00<br><em>posebni susreti za dublje prakse</em></div>
+      </div>
+      <div class="format-card">
+        <div class="format-card-label">Snimci</div>
+        <div class="format-card-value">Svaki čas dostupan kao snimak<br><em>ako ne stigneš uživo</em></div>
+      </div>
+      <div class="format-card">
+        <div class="format-card-label">Zajednica</div>
+        <div class="format-card-value">WhatsApp grupa<br><em>dnevne smernice, podrška, refleksija</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section class="forwhom">
+  <div class="section-inner">
+    <h2 class="section-title">Ovaj ciklus je<br><em>za tebe ako...</em></h2>
+    <div class="forwhom-list">
+      <div class="forwhom-item"><span class="forwhom-num">01</span>osećaš mentalni umor</div>
+      <div class="forwhom-item"><span class="forwhom-num">02</span>stalno si "u glavi"</div>
+      <div class="forwhom-item"><span class="forwhom-num">03</span>teško donošiš odluke</div>
+      <div class="forwhom-item"><span class="forwhom-num">04</span>sumnja te često zaustavi</div>
+      <div class="forwhom-item"><span class="forwhom-num">05</span>želiš više mira, a ne još tehnika</div>
+      <div class="forwhom-item"><span class="forwhom-num">06</span>osećaš da si izgubio/la kontakt sa sobom</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close-section">
+  <div class="section-inner">
+    <p class="close-quote">Ne treba ti još informacija.<br>Ne treba ti još <em>razmišljanja</em>.</p>
+    <div class="close-sub">
+      <p>Treba ti prostor da staneš. Da udahneš. Da se vratiš sebi.</p>
+      <p>Jer mir nije nešto što stvaraš.<br>To je nešto čega se setiš - kada um prestane da te vuče na sve strane.</p>
+    </div>
+    <a class="btn-outline" style="color:var(--clay); border-color:var(--clay);" href="mailto:info@vukojenemanja.com?subject=Prijava%20-%20Akal%20april%20ciklus">Pošalji poruku</a>
+  </div>
+</section>
+
+<!-- CTA / PRICE -->
+<section class="cta-section">
+  <div class="section-inner">
+    <div class="cta-title">Spreman/na si</div>
+    <div class="cta-price"><span>€</span>77</div>
+    <div class="cta-price-label">mesečni ciklus - pun pristup</div>
+    <p class="cta-body">Ako osećaš da je ovo za tebe - javi mi se. Bez komplikacija, bez pritiska.</p>
+    <div class="cta-buttons">
+      <a class="btn-primary" href="mailto:info@vukojenemanja.com?subject=Prijava%20-%20Akal%20april%20ciklus">Pošalji poruku</a>
+    </div>
+    <div class="ps-note">
+      <strong>P.S.</strong> Možeš otkazati bilo kada. Nema dugoročne obaveze. Jedino što se od tebe traži je da dođeš.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <h3>Nemanja<br><em>Vukoje</em></h3>
+    <p>Iscelitelj - Coach - Učitelj Kundalini joge<br>Beč, Austrija - online širom sveta<br>English, Serbian &amp; German</p>
+  </div>
+  <div class="footer-nav">
+    <h4>Navigacija</h4>
+    <ul>
+      <li><a href="index.html#about">O meni</a></li>
+      <li><a href="akal.html">Akal zajednica</a></li>
+      <li><a href="individual.html">Individualni rad</a></li>
+      <li><a href="index.html#testimonials">Utisci</a></li>
+      <li><a href="index.html#booking">Zakaži sesiju</a></li>
+      <li><a href="impressum.html">Impresum</a></li>
+    </ul>
+  </div>
+  <div class="footer-contact">
+    <h4>Kontakt</h4>
+    <p>
+      info@vukojenemanja.com<br><br>
+      <a href="https://instagram.com/vukoje.nemanja.world">@vukoje.nemanja.world</a><br>
+      <a href="https://instagram.com/vukoje.nemanja">@vukoje.nemanja</a>
+    </p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Nemanja Vukoje - vukojenemanja.com</p>
+  <p>Sve sesije su online — dostupne širom sveta</p>
+</div>
+
+<script>
+window.addEventListener('scroll', function() {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('hamburgerBtn');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburgerBtn').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>

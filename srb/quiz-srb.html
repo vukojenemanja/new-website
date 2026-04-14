@@ -230,10 +230,6 @@ function showResult() {
       <div class="result-title">${r.name}</div>
       <div class="result-subtitle">${r.tagline}</div>
     </div>
-    <div class="scores-section">
-      <div class="scores-title">Tvoj profil uma</div>
-      ${['N','P','Neu'].map(m=>`<div class="score-bar-row"><div class="score-bar-label">${scoreNames[m]}</div><div class="score-bar-track"><div class="score-bar-fill" style="width:${Math.round((counts[m]/7)*100)}%;background:${scoreColors[m]};"></div></div><div class="score-bar-num">${counts[m]}/7</div></div>`).join('')}
-    </div>
     <div class="result-card"><div class="result-card-label">Dar</div><p>${r.gift}</p></div>
     <div class="result-card"><div class="result-card-label">Obrazac senke</div><p>${r.shadow}</p></div>
     <div class="result-card"><div class="result-card-label">Poziv</div><p>${r.invitation}</p></div>

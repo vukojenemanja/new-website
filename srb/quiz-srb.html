@@ -98,7 +98,6 @@
         <li><span class="wa-perk-dot"></span>Topao, privatan prostor za refleksiju i rast</li>
       </ul>
       <button class="btn btn-wa" onclick="joinWhatsApp()">Pridruži se besplatnoj zajednici</button>
-      <button class="btn-ghost" onclick="skipWA()">Preskoči i pokaži mi rezultat</button>
     </div>
   </div>
 
@@ -109,12 +108,12 @@
 const questions = [
   { text: "Kada stigne nova mogućnost - novi odnos, projekat ili promena - kakva je tvoja prva unutrašnja reakcija?", options: [
     { text: "Zastanем, tiho osetim i proverim šta mi govori intuicija.", mind: "Neu" },
-    { text: "Odmah osećam opasnosti i šta bi moglo da krene naopako.", mind: "N" },
-    { text: "Uzbudim se i skočim sa entuzijazmom.", mind: "P" }
+    { text: "Preplavi me strah. Osetim napetost i nervozu, šta ako krene nešto loše?", mind: "N" },
+    { text: "Uzbudim se, osetim nalet energije i jedva čekam da počnem.", mind: "P" }
   ]},
   { text: "Posle bolnog iskustva ili neuspeha, kako ga obično obrađuješ?", options: [
     { text: "Brzo nastavim dalje i trudim se da ostanem pozitivan/na.", mind: "P" },
-    { text: "Dozvolim sebi da to osetim, pa to postepeno puštam.", mind: "Neu" },
+    { text: "Osetim i tugu i bol i razočaranje i puštam da traje.", mind: "Neu" },
     { text: "Vrtim to iznova i iznova, analiziram šta je pošlo naopako.", mind: "N" }
   ]},
   { text: "Kako najčešće zvuči ton tvog unutrašnjeg glasa?", options: [
@@ -123,18 +122,18 @@ const questions = [
     { text: "Ohrabrujući, širok - govori mi da idem napred.", mind: "P" }
   ]},
   { text: "Kako obično donosiš važne odluke?", options: [
-    { text: "Sledim entuzijazam i verujem da će sve biti u redu.", mind: "P" },
+    { text: "Lako, brzo, hrabro, i verujem da će sve biti u redu.", mind: "P" },
     { text: "Procenim svaki rizik i moram da se osećam potpuno sigurno.", mind: "N" },
-    { text: "Sedim s tim dok odgovor ne postane jasan iznutra.", mind: "Neu" }
+    { text: "Ne odlučujem dok mi odgovor ne postane jasan.", mind: "Neu" }
   ]},
   { text: "Kakav je tvoj odnos prema riziku u svakodnevnom životu?", options: [
     { text: "Procenjujem ga smireno - ni izbegavam ni jurcam za njim.", mind: "Neu" },
-    { text: "Prihvatam ga - život je o širenju, ne o zadržavanju.", mind: "P" },
+    { text: "Volim izazove i oni su sastavni deo mog života.", mind: "P" },
     { text: "Sklanjam se od njega - sigurnost i izvesnost su mi važni.", mind: "N" }
   ]},
   { text: "Kada te neko kritikuje ili se ne slaže s tobom, šta se dešava iznutra?", options: [
-    { text: "Shvatam to lično i to ostaje sa mnom neko vreme.", mind: "N" },
-    { text: "Razmatram to iskreno, pa puštam bez drame.", mind: "Neu" },
+    { text: "Shvatam to lično i ne prija mi uopšte.", mind: "N" },
+    { text: "Iako mi ne prija, trudim se da vidim da li to ima veze stavno sa mnom.", mind: "Neu" },
     { text: "Otresem to brzo i fokusiram se na pozitivno.", mind: "P" }
   ]},
   { text: "Šta tvoj um radi najčešće kada legneš uveče?", options: [

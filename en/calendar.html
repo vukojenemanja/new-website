@@ -506,7 +506,7 @@
 
 <script>
   const API_KEY     = 'AIzaSyDR5BWnAB1gC-OFYZufLUBA-1C5-cFa27o';
-  const CALENDAR_ID = 'info@vukojenemanja.com';
+  const CALENDAR_ID = 'c_c830c6bde4a5299be0fd3d3a4fc238723c973775e2b0474b95521c01755f1306@group.calendar.google.com';
   const EMAIL       = 'info@vukojenemanja.com';
 
   const SR_MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -558,7 +558,8 @@
       + `&timeMax=${timeMax}`
       + `&singleEvents=true`
       + `&orderBy=startTime`
-      + `&maxResults=50`;
+      + `&maxResults=50`
+      + `&fields=items(id,summary,description,location,start,end,status)`;
 
     try {
       const res  = await fetch(url);

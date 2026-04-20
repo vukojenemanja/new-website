@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Schedule - Nemanja Vukoje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --clay:   #C4A882;
+    --sand:   #E8DDD0;
+    --bark:   #3D2E1E;
+    --fog:    #F5F1EC;
+    --stone:  #8A8070;
+    --deep:   #1E1712;
+    --accent: #9B6B3A;
+    --warm:   #D4B896;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--fog);
+    color: var(--bark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,8,5,0.88);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--fog);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .nav-back {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--stone);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-back:hover { color: var(--clay); }
+
+  /* ─── HEADER ─── */
+  .page-header {
+    background: var(--deep);
+    padding: 140px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 15% 60%, rgba(196,168,130,0.12) 0%, transparent 65%);
+  }
+  .page-header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .page-header-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 20px;
+  }
+  .page-header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5.5vw, 62px);
+    font-weight: 400;
+    color: var(--fog);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .page-header-title em {
+    font-style: italic;
+    color: var(--clay);
+  }
+  .page-header-sub {
+    font-size: 14px;
+    color: rgba(245,241,236,0.5);
+    letter-spacing: 0.3px;
+  }
+
+  /* ─── MAIN CONTENT ─── */
+  .main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 40px 120px;
+  }
+
+  /* ─── MONTH NAV ─── */
+  .month-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(61,46,30,0.12);
+  }
+  .month-nav button {
+    background: none;
+    border: 1px solid rgba(61,46,30,0.20);
+    color: var(--stone);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .month-nav button:hover {
+    border-color: var(--clay);
+    color: var(--clay);
+  }
+  .month-nav button:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+  .month-nav button:disabled:hover {
+    border-color: rgba(61,46,30,0.20);
+    color: var(--stone);
+  }
+  .month-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--bark);
+    text-align: center;
+  }
+
+  /* ─── LOADING ─── */
+  .loading {
+    text-align: center;
+    padding: 60px 0;
+    color: var(--stone);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .loading-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--clay);
+    border-radius: 50%;
+    margin: 0 3px;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+  .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes pulse {
+    0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+    40% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ─── NO EVENTS ─── */
+  .no-events {
+    text-align: center;
+    padding: 60px 0;
+    color: var(--stone);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+  }
+
+  /* ─── ERROR ─── */
+  .error-msg {
+    text-align: center;
+    padding: 40px;
+    background: var(--sand);
+    color: var(--stone);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* ─── WEEK GROUP ─── */
+  .week-group { margin-bottom: 48px; }
+  .week-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(196,168,130,0.25);
+  }
+
+  /* ─── EVENT CARD ─── */
+  .event-card {
+    background: var(--fog);
+    border: 1px solid rgba(61,46,30,0.10);
+    border-left: 3px solid var(--clay);
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+  }
+  .event-card:hover {
+    border-color: var(--clay);
+    box-shadow: 0 4px 20px rgba(61,46,30,0.08);
+    transform: translateY(-1px);
+  }
+  .event-date-col {
+    background: var(--sand);
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .event-day-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--bark);
+    line-height: 1;
+  }
+  .event-day-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-top: 3px;
+  }
+  .event-body {
+    padding: 18px 24px;
+    flex: 1;
+  }
+  .event-time {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--clay);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .event-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--bark);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .event-location {
+    font-size: 12px;
+    color: var(--stone);
+    letter-spacing: 0.3px;
+  }
+  .event-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    color: var(--clay);
+    font-size: 18px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .event-card:hover .event-arrow { opacity: 1; }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,8,5,0.7);
+    z-index: 200;
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal {
+    background: var(--fog);
+    max-width: 520px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalIn 0.3s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal-header {
+    background: var(--deep);
+    padding: 36px 36px 28px;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: none;
+    border: none;
+    color: rgba(245,241,236,0.4);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--fog); }
+
+  .modal-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 12px;
+  }
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 400;
+    color: var(--fog);
+    line-height: 1.2;
+  }
+
+  .modal-body {
+    padding: 32px 36px;
+  }
+  .modal-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(61,46,30,0.12);
+  }
+  .modal-meta-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .modal-meta-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--clay);
+    flex-shrink: 0;
+    width: 72px;
+    padding-top: 2px;
+  }
+  .modal-meta-value {
+    font-size: 14px;
+    color: var(--bark);
+    line-height: 1.6;
+  }
+
+  .modal-description {
+    font-size: 14px;
+    color: var(--stone);
+    line-height: 1.85;
+    margin-bottom: 32px;
+    white-space: pre-line;
+  }
+
+  .modal-cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--deep);
+    background: var(--clay);
+    padding: 16px 32px;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  .modal-cta:hover { background: var(--warm); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--deep);
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--clay);
+    text-decoration: none;
+  }
+  .footer-note {
+    font-size: 12px;
+    color: rgba(245,241,236,0.30);
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 600px) {
+    nav { padding: 16px 20px; }
+    .page-header { padding: 110px 24px 60px; }
+    .main { padding: 40px 20px 80px; }
+    .month-title { font-size: 22px; }
+    .modal-header { padding: 28px 24px 22px; }
+    .modal-body { padding: 24px 24px; }
+    .event-date-col { min-width: 60px; padding: 16px 12px; }
+    footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="https://vukojenemanja.com">Nemanja Vukoje</a>
+  <a class="nav-back" href="https://vukojenemanja.com">← Back</a>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-label">Akal Community</div>
+    <h1 class="page-header-title">Schedule<br><em>of Classes</em></h1>
+    <p class="page-header-sub">Click on a class for more information</p>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- MONTH NAV -->
+  <div class="month-nav">
+    <button id="prevBtn" onclick="changeMonth(-1)">← Previous</button>
+    <div class="month-title" id="monthTitle"></div>
+    <button id="nextBtn" onclick="changeMonth(1)">Next →</button>
+  </div>
+
+  <!-- EVENTS -->
+  <div id="eventsContainer">
+    <div class="loading">
+      <span class="loading-dot"></span>
+      <span class="loading-dot"></span>
+      <span class="loading-dot"></span>
+    </div>
+  </div>
+
+</main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-date" id="modalDate"></div>
+      <div class="modal-title" id="modalTitle"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta" id="modalMeta"></div>
+      <div class="modal-description" id="modalDesc"></div>
+      <a class="modal-cta" id="modalCta" href="#">Register</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="https://vukojenemanja.com">Nemanja Vukoje</a>
+  <span class="footer-note">vukojenemanja.com</span>
+</footer>
+
+<script>
+  const API_KEY     = 'AIzaSyDR5BWnAB1gC-OFYZufLUBA-1C5-cFa27o';
+  const CALENDAR_ID = 'info@vukojenemanja.com';
+  const EMAIL       = 'info@vukojenemanja.com';
+
+  const SR_MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const SR_DAYS   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const SR_DAYS_FULL = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  let currentDate = new Date();
+  let currentYear  = currentDate.getFullYear();
+  let currentMonth = currentDate.getMonth();
+  let allEvents    = [];
+
+  // ─── Init ───
+  updateMonthTitle();
+  fetchEvents();
+
+  function updateMonthTitle() {
+    document.getElementById('monthTitle').textContent =
+      SR_MONTHS[currentMonth] + ' ' + currentYear;
+
+    // disable prev if current month
+    const now = new Date();
+    document.getElementById('prevBtn').disabled =
+      (currentYear === now.getFullYear() && currentMonth === now.getMonth());
+  }
+
+  function changeMonth(dir) {
+    currentMonth += dir;
+    if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+    if (currentMonth < 0)  { currentMonth = 11; currentYear--; }
+    updateMonthTitle();
+    fetchEvents();
+  }
+
+  // ─── Fetch ───
+  async function fetchEvents() {
+    const container = document.getElementById('eventsContainer');
+    container.innerHTML = `<div class="loading">
+      <span class="loading-dot"></span>
+      <span class="loading-dot"></span>
+      <span class="loading-dot"></span>
+    </div>`;
+
+    const timeMin = new Date(currentYear, currentMonth, 1).toISOString();
+    const timeMax = new Date(currentYear, currentMonth + 1, 0, 23, 59, 59).toISOString();
+
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events`
+      + `?key=${API_KEY}`
+      + `&timeMin=${timeMin}`
+      + `&timeMax=${timeMax}`
+      + `&singleEvents=true`
+      + `&orderBy=startTime`
+      + `&maxResults=50`;
+
+    try {
+      const res  = await fetch(url);
+      const data = await res.json();
+
+      if (data.error) {
+        showError(data.error.message);
+        return;
+      }
+
+      allEvents = (data.items || []).filter(e => e.status !== 'cancelled');
+      renderEvents(allEvents);
+
+    } catch (err) {
+      showError('Could not load events. Please try again.');
+    }
+  }
+
+  function showError(msg) {
+    document.getElementById('eventsContainer').innerHTML =
+      `<div class="error-msg">
+        <p>Error loading events: ${msg}</p>
+        <p style="margin-top:8px;font-size:12px;">Make sure your calendar is set to public in Google Calendar settings.</p>
+      </div>`;
+  }
+
+  // ─── Render ───
+  function renderEvents(events) {
+    const container = document.getElementById('eventsContainer');
+
+    if (!events.length) {
+      container.innerHTML = `<div class="no-events">No classes scheduled this month.</div>`;
+      return;
+    }
+
+    // Group by week
+    const weeks = {};
+    events.forEach(ev => {
+      const start = ev.start.dateTime ? new Date(ev.start.dateTime) : new Date(ev.start.date);
+      const weekKey = getWeekLabel(start);
+      if (!weeks[weekKey]) weeks[weekKey] = [];
+      weeks[weekKey].push(ev);
+    });
+
+    let html = '';
+    for (const [weekLabel, evs] of Object.entries(weeks)) {
+      html += `<div class="week-group">
+        <div class="week-label">${weekLabel}</div>`;
+      evs.forEach((ev, i) => {
+        html += buildEventCard(ev, i);
+      });
+      html += `</div>`;
+    }
+
+    container.innerHTML = html;
+  }
+
+  function getWeekLabel(date) {
+    const day = date.getDate();
+    if (day <= 7)  return '1 - 7 ' + SR_MONTHS[date.getMonth()];
+    if (day <= 14) return '8 - 14 ' + SR_MONTHS[date.getMonth()];
+    if (day <= 21) return '15 - 21 ' + SR_MONTHS[date.getMonth()];
+    return '22 - 31 ' + SR_MONTHS[date.getMonth()];
+  }
+
+  function buildEventCard(ev, idx) {
+    const start    = ev.start.dateTime ? new Date(ev.start.dateTime) : new Date(ev.start.date);
+    const isAllDay = !ev.start.dateTime;
+    const dayNum   = start.getDate();
+    const dayName  = SR_DAYS[start.getDay()];
+    const timeStr  = isAllDay ? 'All day' : formatTime(start);
+    const title    = ev.summary || 'Class';
+    const location = ev.location ? `<div class="event-location">${ev.location}</div>` : '';
+
+    return `<div class="event-card" onclick="openModal(${idx}, ${allEvents.indexOf(ev)})">
+      <div class="event-date-col">
+        <div class="event-day-num">${dayNum}</div>
+        <div class="event-day-name">${dayName}</div>
+      </div>
+      <div class="event-body">
+        <div class="event-time">${timeStr}</div>
+        <div class="event-title">${title}</div>
+        ${location}
+      </div>
+      <div class="event-arrow">›</div>
+    </div>`;
+  }
+
+  function formatTime(date) {
+    return date.toLocaleTimeString('sr-RS', { hour: '2-digit', minute: '2-digit', hour12: false });
+  }
+
+  function formatTimeRange(start, end) {
+    if (!start.dateTime) return 'All day';
+    const s = new Date(start.dateTime);
+    const e = new Date(end.dateTime);
+    return formatTime(s) + ' - ' + formatTime(e) + 'h';
+  }
+
+  // ─── Modal ───
+  function openModal(cardIdx, evIdx) {
+    const ev    = allEvents[evIdx];
+    const start = ev.start.dateTime ? new Date(ev.start.dateTime) : new Date(ev.start.date);
+
+    const dayFull  = SR_DAYS_FULL[start.getDay()];
+    const dayNum   = start.getDate();
+    const monthStr = SR_MONTHS[start.getMonth()];
+    const year     = start.getFullYear();
+
+    document.getElementById('modalDate').textContent =
+      `${dayFull}, ${dayNum}. ${monthStr} ${year}`;
+    document.getElementById('modalTitle').textContent = ev.summary || 'Class';
+
+    // Meta
+    let metaHtml = '';
+
+    const timeRange = formatTimeRange(ev.start, ev.end);
+    metaHtml += `<div class="modal-meta-item">
+      <div class="modal-meta-label">Time</div>
+      <div class="modal-meta-value">${timeRange}</div>
+    </div>`;
+
+    if (ev.location) {
+      metaHtml += `<div class="modal-meta-item">
+        <div class="modal-meta-label">Location</div>
+        <div class="modal-meta-value">${ev.location}</div>
+      </div>`;
+    }
+
+    document.getElementById('modalMeta').innerHTML = metaHtml;
+
+    // Description
+    const desc = ev.description
+      ? ev.description.replace(/<[^>]+>/g, '').trim()
+      : 'For more information or to register, send a message.';
+    document.getElementById('modalDesc').textContent = desc;
+
+    // CTA email
+    const subject = encodeURIComponent('Registration - ' + (ev.summary || 'Class'));
+    const body    = encodeURIComponent(`Hello Nemanja,\n\nI would like to register for: ${ev.summary || 'class'}\nDate: ${dayNum}. ${monthStr} ${year}\n\nBest regards`);
+    document.getElementById('modalCta').href =
+      `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOnOverlay(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  // ESC to close
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+</script>
+</body>
+</html>

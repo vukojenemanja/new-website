@@ -42,10 +42,11 @@
   .breathwork-card { background: #fdf8f0; border: 1px solid #e2d0b0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
   .breathwork-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #b8843e; margin-bottom: 0.5rem; }
   .breathwork-card p { font-size: 15px; color: #3a2e1e; line-height: 1.7; }
-  .cta-card { background: #1e1810; border-radius: 12px; padding: 2rem 1.5rem; text-align: center; margin-top: 1.5rem; }
+  .cta-card { background: #2D0F0E; border-radius: 12px; padding: 2rem 1.5rem; text-align: center; margin-top: 1.5rem; border: 1px solid rgba(180,60,50,0.25); }
   .cta-card h3 { font-size: 18px; font-weight: 400; color: #fdf8f0; margin-bottom: 0.75rem; line-height: 1.4; }
-  .cta-card p { font-size: 14px; color: #c4a97a; line-height: 1.6; margin-bottom: 1.25rem; }
-  .cta-card .btn { background: #b8843e; max-width: 320px; margin: 0 auto; }
+  .cta-card p { font-size: 14px; color: #D4A59A; line-height: 1.6; margin-bottom: 1.25rem; }
+  .cta-card .btn { background: #A83228; max-width: 320px; margin: 0 auto; }
+  .cta-card .btn:hover { background: #8E2820; }
   .score-bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
   .score-bar-label { font-size: 13px; color: #6b5a42; width: 80px; flex-shrink: 0; }
   .score-bar-track { flex: 1; background: #e8dfd4; border-radius: 999px; height: 8px; overflow: hidden; }
@@ -109,12 +110,12 @@
 const questions = [
   { text: "Wenn eine neue Moglichkeit auftaucht - eine neue Beziehung, ein Projekt oder eine Veranderung - was ist deine erste innere Reaktion?", options: [
     { text: "Ich halte inne, fuhle es still und frage meine Intuition.", mind: "Neu" },
-    { text: "Ich spure sofort die Risiken und was schiefgehen konnte.", mind: "N" },
-    { text: "Ich bin aufgeregt und springe mit Begeisterung rein.", mind: "P" }
+    { text: "Angst überwältigt mich. Ich fühle Anspannung und Nervosität - was, wenn etwas schiefläuft?", mind: "N" },
+    { text: "Ich bin aufgeregt, spüre einen Energieschub und kann kaum erwarten, anzufangen.", mind: "P" }
   ]},
   { text: "Nach einer schmerzhaften Erfahrung oder einem Ruckschlag - wie verarbeitest du das normalerweise?", options: [
     { text: "Ich mache schnell weiter und versuche positiv zu bleiben.", mind: "P" },
-    { text: "Ich erlaube mir, es zu fuhlen, und lasse es dann allmahlich los.", mind: "Neu" },
+    { text: "Ich lasse die Trauer, den Schmerz und die Enttäuschung zu - und gebe mir Zeit.", mind: "Neu" },
     { text: "Ich gruble immer wieder daruber nach und analysiere, was falsch lief.", mind: "N" }
   ]},
   { text: "Wie klingt deine innere Stimme meistens?", options: [
@@ -123,18 +124,18 @@ const questions = [
     { text: "Ermutigend, weit - sie feuert mich an.", mind: "P" }
   ]},
   { text: "Wie triffst du normalerweise wichtige Entscheidungen?", options: [
-    { text: "Ich folge meiner Begeisterung und vertraue darauf, dass alles gut wird.", mind: "P" },
+    { text: "Leicht, schnell, mutig - ich vertraue darauf, dass alles gut wird.", mind: "P" },
     { text: "Ich wage jedes Risiko ab und muss mich vollstandig sicher fuhlen.", mind: "N" },
-    { text: "Ich sitze damit, bis die Antwort von innen klar wird.", mind: "Neu" }
+    { text: "Ich entscheide nicht, bis mir die Antwort klar wird.", mind: "Neu" }
   ]},
   { text: "Wie gehst du im Alltag mit Risiko um?", options: [
     { text: "Ich beurteile es ruhig - weder ausweichend noch jagend.", mind: "Neu" },
-    { text: "Ich nehme es an - Leben bedeutet Wachstum, nicht Zuruckhalten.", mind: "P" },
+    { text: "Ich liebe Herausforderungen - sie gehören zu dem, was das Leben lebendig macht.", mind: "P" },
     { text: "Ich weiche ihm aus - Sicherheit und Gewissheit sind mir wichtig.", mind: "N" }
   ]},
   { text: "Wenn jemand dich kritisiert oder anderer Meinung ist - was passiert in dir?", options: [
-    { text: "Ich nehme es personlich und es bleibt eine Weile bei mir.", mind: "N" },
-    { text: "Ich betrachte es ehrlich, dann lasse ich es ohne Drama los.", mind: "Neu" },
+    { text: "Ich nehme es persönlich - es gefällt mir überhaupt nicht.", mind: "N" },
+    { text: "Auch wenn es unangenehm ist, versuche ich zu sehen, ob es wirklich mit mir zu tun hat.", mind: "Neu" },
     { text: "Ich schuttle es schnell ab und konzentriere mich auf das Positive.", mind: "P" }
   ]},
   { text: "Was macht dein Geist am meisten, wenn du abends liegst?", options: [

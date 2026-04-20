@@ -42,10 +42,11 @@
   .breathwork-card { background: #fdf8f0; border: 1px solid #e2d0b0; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
   .breathwork-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #b8843e; margin-bottom: 0.5rem; }
   .breathwork-card p { font-size: 15px; color: #3a2e1e; line-height: 1.7; }
-  .cta-card { background: #1e1810; border-radius: 12px; padding: 2rem 1.5rem; text-align: center; margin-top: 1.5rem; }
+  .cta-card { background: #2D0F0E; border-radius: 12px; padding: 2rem 1.5rem; text-align: center; margin-top: 1.5rem; border: 1px solid rgba(180,60,50,0.25); }
   .cta-card h3 { font-size: 18px; font-weight: 400; color: #fdf8f0; margin-bottom: 0.75rem; line-height: 1.4; }
-  .cta-card p { font-size: 14px; color: #c4a97a; line-height: 1.6; margin-bottom: 1.25rem; }
-  .cta-card .btn { background: #b8843e; max-width: 320px; margin: 0 auto; }
+  .cta-card p { font-size: 14px; color: #D4A59A; line-height: 1.6; margin-bottom: 1.25rem; }
+  .cta-card .btn { background: #A83228; max-width: 320px; margin: 0 auto; }
+  .cta-card .btn:hover { background: #8E2820; }
   .score-bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
   .score-bar-label { font-size: 13px; color: #6b5a42; width: 70px; flex-shrink: 0; }
   .score-bar-track { flex: 1; background: #e8dfd4; border-radius: 999px; height: 8px; overflow: hidden; }
@@ -109,12 +110,12 @@
 const questions = [
   { text: "When a new opportunity arrives - a new relationship, project, or change - what is your first inner response?", options: [
     { text: "I pause, feel it quietly, and check in with my gut.", mind: "Neu" },
-    { text: "I immediately sense the risks and what could go wrong.", mind: "N" },
-    { text: "I feel excited and jump in with enthusiasm.", mind: "P" }
+    { text: "Fear takes over. I feel tense and anxious - what if something goes wrong?", mind: "N" },
+    { text: "I feel a rush of excitement and energy - I can't wait to start.", mind: "P" }
   ]},
   { text: "After a painful experience or setback, how do you typically process it?", options: [
     { text: "I move on quickly and try to stay positive.", mind: "P" },
-    { text: "I let myself feel it, then release it gradually.", mind: "Neu" },
+    { text: "I let myself feel the sadness, pain and disappointment - and let it take its time.", mind: "Neu" },
     { text: "I replay it over and over, analysing what went wrong.", mind: "N" }
   ]},
   { text: "What does your inner voice most often sound like?", options: [
@@ -123,18 +124,18 @@ const questions = [
     { text: "Encouraging, expansive - it cheers me forward.", mind: "P" }
   ]},
   { text: "How do you usually make important decisions?", options: [
-    { text: "I follow my enthusiasm and trust things will work out.", mind: "P" },
+    { text: "Easily, quickly, boldly - I trust it will all work out.", mind: "P" },
     { text: "I weigh every risk and need to feel fully safe first.", mind: "N" },
-    { text: "I sit with it until the answer feels clear from within.", mind: "Neu" }
+    { text: "I don't decide until the answer becomes clear to me.", mind: "Neu" }
   ]},
   { text: "How do you relate to risk in your daily life?", options: [
     { text: "I assess it calmly - neither avoiding nor chasing it.", mind: "Neu" },
-    { text: "I embrace it - life is about expanding, not holding back.", mind: "P" },
+    { text: "I love challenges - they are part of what makes life alive.", mind: "P" },
     { text: "I tend to avoid it - safety and certainty matter to me.", mind: "N" }
   ]},
   { text: "When someone criticises you or disagrees with you, what happens inside?", options: [
-    { text: "I take it personally and it stays with me for a while.", mind: "N" },
-    { text: "I consider it honestly, then let it go without drama.", mind: "Neu" },
+    { text: "I take it personally - it doesn't sit well with me at all.", mind: "N" },
+    { text: "Even though it's uncomfortable, I try to see if it's actually about me.", mind: "Neu" },
     { text: "I brush it off quickly and focus on the positive.", mind: "P" }
   ]},
   { text: "What does your mind do most when you lie down at night?", options: [

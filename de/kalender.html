@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Class Schedule - Nemanja Vukoje</title>
+<title>Kursplan - Nemanja Vukoje</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -328,23 +328,23 @@
 
 <nav>
   <a class="nav-logo" href="https://vukojenemanja.com">Nemanja Vukoje</a>
-  <a class="nav-back" href="https://vukojenemanja.com">← Back</a>
+  <a class="nav-back" href="https://vukojenemanja.com">← Zurück</a>
 </nav>
 
 <div class="page-header">
   <div class="page-header-inner">
-    <div class="page-header-label">Akal Community</div>
-    <h1 class="page-header-title">Schedule<br><em>of Classes</em></h1>
-    <p class="page-header-sub">Click on a class for more information</p>
+    <div class="page-header-label">Akal Gemeinschaft</div>
+    <h1 class="page-header-title">Kursplan<br><em>der Stunden</em></h1>
+    <p class="page-header-sub">Klicke auf eine Stunde für mehr Informationen</p>
   </div>
 </div>
 
 <main class="main">
   <div class="controls-bar">
     <div class="period-nav">
-      <button id="prevBtn" onclick="changePeriod(-1)">← Prev</button>
+      <button id="prevBtn" onclick="changePeriod(-1)">← Zurück</button>
       <div class="period-title" id="periodTitle"></div>
-      <button id="nextBtn" onclick="changePeriod(1)">Next →</button>
+      <button id="nextBtn" onclick="changePeriod(1)">Weiter →</button>
     </div>
     <div class="view-toggle">
       <button id="btnAgenda" class="active" onclick="setView('agenda')">List</button>
@@ -372,7 +372,7 @@
     <div class="modal-body">
       <div class="modal-meta"        id="modalMeta"></div>
       <div class="modal-description" id="modalDesc"></div>
-      <a class="modal-cta" id="modalCta" href="#">Register</a>
+      <a class="modal-cta" id="modalCta" href="#">Anmelden</a>
     </div>
   </div>
 </div>
@@ -387,9 +387,9 @@ const API_KEY     = 'AIzaSyDR5BWnAB1gC-OFYZufLUBA-1C5-cFa27o';
 const CALENDAR_ID = 'c_279396258b548dafb28ba41b687430b47fdb55daf7793f6fd7809105c1a3b609@group.calendar.google.com';
 const EMAIL       = 'info@vukojenemanja.com';
 
-const MONTHS  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const DAYS_SH = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-const DAYS_FL = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS  = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+const DAYS_SH = ['So','Mo','Di','Mi','Do','Fr','Sa'];
+const DAYS_FL = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
 
 const DAY_START   = 8;   // default week view start (fallback)
 const DAY_END     = 22;  // default week view end (fallback)
@@ -489,7 +489,7 @@ async function fetchEvents() {
     else if (currentView === 'week')   renderWeek();
     else if (currentView === 'agenda') renderAgenda();
   } catch(e) {
-    showError('Could not load events. Please try again.');
+    showError('Ereignisse konnten nicht geladen werden. Bitte versuche es erneut.');
   }
 }
 
@@ -499,7 +499,7 @@ function showLoading() {
   document.getElementById(id).innerHTML = html;
 }
 function showError(msg) {
-  const html = `<div class="error-msg"><p>Error: ${msg}</p><p style="margin-top:6px;font-size:12px;">Make sure your calendar is set to public.</p></div>`;
+  const html = `<div class="error-msg"><p>Error: ${msg}</p><p style="margin-top:6px;font-size:12px;">Stelle sicher, dass der Kalender öffentlich zugänglich ist.</p></div>`;
   const id = currentView === 'week' ? 'weekView' : 'agendaView';
   document.getElementById(id).innerHTML = html;
 }
@@ -510,7 +510,7 @@ function renderAgenda() {
   const today = new Date(); today.setHours(0,0,0,0);
 
   if (!allEvents.length) {
-    c.innerHTML = '<div class="no-events">No classes scheduled this month.</div>';
+    c.innerHTML = '<div class="no-events">Keine Kurse in diesem Monat.</div>';
     return;
   }
 
@@ -527,7 +527,7 @@ function renderAgenda() {
   for (const [key, group] of Object.entries(byDay)) {
     const d       = group.date;
     const isToday = d.setHours(0,0,0,0) === today.getTime();
-    const label   = `${DAYS_SH[new Date(key).getDay()]} · ${new Date(key).getDate()} ${MONTHS[new Date(key).getMonth()]}${isToday ? ' — Today' : ''}`;
+    const label   = `${DAYS_SH[new Date(key).getDay()]} · ${new Date(key).getDate()} ${MONTHS[new Date(key).getMonth()]}${isToday ? ' — Heute' : ''}`;
 
     html += `<div class="agenda-group">
       <div class="agenda-date-header">${label}</div>`;
@@ -537,7 +537,7 @@ function renderAgenda() {
       const idx = allEvents.indexOf(ev);
       const loc = ev.location ? `<span class="agenda-location">${ev.location}</span>` : '';
       html += `<div class="agenda-row" onclick="openModal(${idx})">
-        <span class="agenda-time">${ev.start.dateTime ? fmtTime(s) : 'All day'}</span>
+        <span class="agenda-time">${ev.start.dateTime ? fmtTime(s) : 'Ganztägig'}</span>
         <span class="agenda-title">${ev.summary || 'Class'}</span>
         ${loc}
         <span class="agenda-arrow">›</span>
@@ -669,21 +669,21 @@ function openModal(idx) {
   document.getElementById('modalTitle').textContent = ev.summary || 'Class';
 
   let meta = `<div class="modal-meta-item">
-    <div class="modal-meta-label">Time</div>
+    <div class="modal-meta-label">Uhrzeit</div>
     <div class="modal-meta-value">${fmtRange(ev)}</div>
   </div>`;
   if (ev.location) meta += `<div class="modal-meta-item">
-    <div class="modal-meta-label">Location</div>
+    <div class="modal-meta-label">Ort</div>
     <div class="modal-meta-value">${ev.location}</div>
   </div>`;
   document.getElementById('modalMeta').innerHTML = meta;
 
   document.getElementById('modalDesc').textContent =
     ev.description ? ev.description.replace(/<[^>]+>/g,'').trim()
-                   : 'For more information or to register, send a message.';
+                   : 'Für mehr Informationen oder zur Anmeldung, schreib mir eine Nachricht.';
 
-  const subj = encodeURIComponent('Registration - ' + (ev.summary || 'Class'));
-  const body = encodeURIComponent(`Hello Nemanja,\n\nI would like to register for: ${ev.summary || 'class'}\nDate: ${d}. ${m} ${y}\n\nBest regards`);
+  const subj = encodeURIComponent('Anmeldung - ' + (ev.summary || 'Class'));
+  const body = encodeURIComponent(`Hallo Nemanja,\n\nIch möchte mich anmelden für: ${ev.summary || 'Kurs'}\nDatum: ${d}. ${m} ${y}\n\nMit freundlichen Grüßen`);
   document.getElementById('modalCta').href = `mailto:${EMAIL}?subject=${subj}&body=${body}`;
 
   document.getElementById('modalOverlay').classList.add('active');
@@ -704,7 +704,7 @@ function evStart(ev) { return ev.start.dateTime ? new Date(ev.start.dateTime) : 
 function evEnd(ev)   { return ev.end.dateTime   ? new Date(ev.end.dateTime)   : new Date(ev.end.date);   }
 function fmtTime(d)  { return d.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit',hour12:false}); }
 function fmtRange(ev) {
-  if (!ev.start.dateTime) return 'All day';
+  if (!ev.start.dateTime) return 'Ganztägig';
   return fmtTime(new Date(ev.start.dateTime)) + ' – ' + fmtTime(new Date(ev.end.dateTime));
 }
 </script>

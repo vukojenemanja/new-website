@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raspored časova - Nemanja Vukoje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --clay:   #C4A882;
+    --sand:   #E8DDD0;
+    --bark:   #3D2E1E;
+    --fog:    #F5F1EC;
+    --stone:  #8A8070;
+    --deep:   #1E1712;
+    --accent: #9B6B3A;
+    --warm:   #D4B896;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--fog);
+    color: var(--bark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,8,5,0.88); backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 18px;
+    letter-spacing: 2px; color: var(--fog); text-decoration: none; text-transform: uppercase;
+  }
+  .nav-back {
+    font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.3s;
+  }
+  .nav-back:hover { color: var(--clay); }
+
+  /* HEADER */
+  .page-header {
+    background: var(--deep); padding: 140px 40px 80px;
+    position: relative; overflow: hidden;
+  }
+  .page-header::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 15% 60%, rgba(196,168,130,0.12) 0%, transparent 65%);
+  }
+  .page-header-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+  .page-header-label {
+    font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--clay); margin-bottom: 20px;
+  }
+  .page-header-title {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5.5vw, 62px);
+    font-weight: 400; color: var(--fog); line-height: 1.1; margin-bottom: 16px;
+  }
+  .page-header-title em { font-style: italic; color: var(--clay); }
+  .page-header-sub { font-size: 14px; color: rgba(245,241,236,0.5); }
+
+  /* MAIN */
+  .main { max-width: 1100px; margin: 0 auto; padding: 48px 40px 120px; }
+
+  /* CONTROLS BAR */
+  .controls-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 36px; padding-bottom: 24px;
+    border-bottom: 1px solid rgba(61,46,30,0.12);
+    gap: 16px; flex-wrap: wrap;
+  }
+  .period-nav { display: flex; align-items: center; gap: 12px; }
+  .period-nav button {
+    background: none; border: 1px solid rgba(61,46,30,0.20);
+    color: var(--stone); font-family: 'DM Sans', sans-serif; font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase; padding: 9px 16px;
+    cursor: pointer; transition: all 0.25s; line-height: 1;
+  }
+  .period-nav button:hover { border-color: var(--clay); color: var(--clay); }
+  .period-nav button:disabled { opacity: 0.3; cursor: default; }
+  .period-nav button:disabled:hover { border-color: rgba(61,46,30,0.20); color: var(--stone); }
+  .period-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic;
+    color: var(--bark); min-width: 200px; text-align: center;
+  }
+  .view-toggle { display: flex; border: 1px solid rgba(61,46,30,0.20); overflow: hidden; }
+  .view-toggle button {
+    background: none; border: none; font-family: 'DM Sans', sans-serif;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 9px 18px; cursor: pointer; color: var(--stone); transition: all 0.25s;
+    border-right: 1px solid rgba(61,46,30,0.20); line-height: 1;
+  }
+  .view-toggle button:last-child { border-right: none; }
+  .view-toggle button.active { background: var(--clay); color: var(--deep); }
+  .view-toggle button:not(.active):hover { color: var(--clay); }
+
+  /* LOADING / EMPTY / ERROR */
+  .loading { text-align: center; padding: 80px 0; }
+  .loading-dot {
+    display: inline-block; width: 6px; height: 6px; background: var(--clay);
+    border-radius: 50%; margin: 0 3px; animation: pulse 1.2s ease-in-out infinite;
+  }
+  .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+  .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes pulse {
+    0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+    40%           { opacity: 1;   transform: scale(1); }
+  }
+  .no-events {
+    text-align: center; padding: 80px 0;
+    font-family: 'Cormorant Garamond', serif; font-size: 22px;
+    font-style: italic; color: var(--stone);
+  }
+  .error-msg {
+    padding: 32px 40px; background: var(--sand); color: var(--stone);
+    font-size: 13px; line-height: 1.7;
+  }
+
+  /* AGENDA (LIST) VIEW */
+  .agenda-group { margin-bottom: 36px; }
+  .agenda-date-header {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--clay);
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(196,168,130,0.25);
+  }
+  .agenda-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 16px;
+    background: var(--fog);
+    border: 1px solid rgba(61,46,30,0.08);
+    border-left: 3px solid var(--clay);
+    margin-bottom: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .agenda-row:hover {
+    border-color: var(--clay);
+    box-shadow: 0 2px 12px rgba(61,46,30,0.07);
+    transform: translateX(2px);
+  }
+  .agenda-time {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--clay);
+    flex-shrink: 0;
+    width: 90px;
+  }
+  .agenda-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    color: var(--bark);
+    flex: 1;
+  }
+  .agenda-location {
+    font-size: 12px;
+    color: var(--stone);
+    flex-shrink: 0;
+  }
+  .agenda-arrow {
+    color: var(--clay);
+    font-size: 16px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+  }
+  .agenda-row:hover .agenda-arrow { opacity: 1; }
+
+  /* WEEK VIEW */
+  .week-view { display: block; }
+  .week-view.hidden { display: none; }
+  .week-grid-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  .week-grid {
+    display: grid;
+    grid-template-columns: 52px repeat(7, 1fr);
+    min-width: 680px;
+    position: relative;
+  }
+
+  /* header cells */
+  .wg-corner { background: var(--fog); border-bottom: 2px solid rgba(61,46,30,0.10); }
+  .wg-day-header {
+    background: var(--fog); padding: 14px 8px 12px; text-align: center;
+    border-bottom: 2px solid rgba(61,46,30,0.10);
+    border-left: 1px solid rgba(61,46,30,0.07);
+  }
+  .wg-day-header.today { background: var(--sand); }
+  .wg-day-name {
+    font-family: 'DM Sans', sans-serif; font-size: 9px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--stone); margin-bottom: 4px;
+  }
+  .wg-day-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 22px;
+    color: var(--bark); line-height: 1;
+  }
+  .wg-day-header.today .wg-day-num { color: var(--accent); }
+
+  /* hour row */
+  .wg-time-label {
+    background: var(--fog); padding: 0 8px;
+    display: flex; align-items: flex-start; justify-content: flex-end;
+    padding-top: 5px; border-bottom: 1px solid rgba(61,46,30,0.05);
+  }
+  .wg-time-label span {
+    font-family: 'DM Sans', sans-serif; font-size: 9px;
+    letter-spacing: 1px; color: var(--stone); opacity: 0.6; white-space: nowrap;
+  }
+  .wg-cell {
+    background: var(--fog); position: relative;
+    border-bottom: 1px solid rgba(61,46,30,0.05);
+    border-left: 1px solid rgba(61,46,30,0.07);
+  }
+  .wg-cell.today { background: rgba(232,221,208,0.22); }
+
+  /* events inside week */
+  .wg-event {
+    position: absolute; left: 3px; right: 3px;
+    background: var(--clay); border-left: 3px solid var(--accent);
+    padding: 5px 7px; cursor: pointer; overflow: hidden;
+    transition: all 0.2s; z-index: 2;
+  }
+  .wg-event:hover { background: var(--warm); box-shadow: 0 2px 12px rgba(61,46,30,0.15); z-index: 3; }
+  .wg-event-time {
+    font-family: 'DM Sans', sans-serif; font-size: 9px;
+    letter-spacing: 1px; color: rgba(30,23,18,0.65); margin-bottom: 2px;
+  }
+  .wg-event-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 13px;
+    color: var(--deep); line-height: 1.2; font-weight: 500;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(10,8,5,0.72); z-index: 200;
+    backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 24px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--fog); max-width: 520px; width: 100%;
+    max-height: 90vh; overflow-y: auto; animation: modalIn 0.28s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .modal-header { background: var(--deep); padding: 36px 36px 28px; position: relative; }
+  .modal-close {
+    position: absolute; top: 14px; right: 14px;
+    background: none; border: none; color: rgba(245,241,236,0.35);
+    font-size: 18px; cursor: pointer; padding: 8px; line-height: 1; transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--fog); }
+  .modal-date {
+    font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--clay); margin-bottom: 12px;
+  }
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 34px);
+    color: var(--fog); line-height: 1.2;
+  }
+  .modal-body { padding: 30px 36px; }
+  .modal-meta {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-bottom: 26px; padding-bottom: 26px;
+    border-bottom: 1px solid rgba(61,46,30,0.12);
+  }
+  .modal-meta-item { display: flex; gap: 14px; align-items: flex-start; }
+  .modal-meta-label {
+    font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--clay); flex-shrink: 0; width: 72px; padding-top: 2px;
+  }
+  .modal-meta-value { font-size: 14px; color: var(--bark); line-height: 1.6; }
+  .modal-description {
+    font-size: 14px; color: var(--stone); line-height: 1.85;
+    margin-bottom: 30px; white-space: pre-line;
+  }
+  .modal-cta {
+    display: block; width: 100%; text-align: center;
+    font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--deep); background: var(--clay);
+    padding: 16px 32px; text-decoration: none; transition: background 0.3s;
+  }
+  .modal-cta:hover { background: var(--warm); }
+
+  /* FOOTER */
+  footer {
+    background: var(--deep); padding: 32px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 15px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--clay); text-decoration: none;
+  }
+  .footer-note { font-size: 12px; color: rgba(245,241,236,0.30); }
+
+  /* MOBILE */
+  @media (max-width: 680px) {
+    nav { padding: 16px 20px; }
+    .page-header { padding: 110px 24px 60px; }
+    .main { padding: 36px 16px 80px; }
+    .controls-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .period-title { min-width: 140px; font-size: 20px; }
+    .modal-header { padding: 28px 24px 22px; }
+    .modal-body { padding: 22px 24px; }
+    footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://vukojenemanja.com">Nemanja Vukoje</a>
+  <a class="nav-back" href="https://vukojenemanja.com">← Nazad</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-label">Akal Zajednica</div>
+    <h1 class="page-header-title">Raspored<br><em>časova</em></h1>
+    <p class="page-header-sub">Klikni na čas za više informacija</p>
+  </div>
+</div>
+
+<main class="main">
+  <div class="controls-bar">
+    <div class="period-nav">
+      <button id="prevBtn" onclick="changePeriod(-1)">← Preth.</button>
+      <div class="period-title" id="periodTitle"></div>
+      <button id="nextBtn" onclick="changePeriod(1)">Sledeći →</button>
+    </div>
+    <div class="view-toggle">
+      <button id="btnAgenda" class="active" onclick="setView('agenda')">List</button>
+      <button id="btnWeek" onclick="setView('week')">Week</button>
+
+    </div>
+  </div>
+
+    </div>
+  <div id="weekView" class="week-view hidden"></div>
+  <div id="agendaView" class="list-view">
+    <div class="loading">
+      <span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span>
+    </div>
+  </div>
+</main>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-date"  id="modalDate"></div>
+      <div class="modal-title" id="modalTitle"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta"        id="modalMeta"></div>
+      <div class="modal-description" id="modalDesc"></div>
+      <a class="modal-cta" id="modalCta" href="#">Prijavi se</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a class="footer-logo" href="https://vukojenemanja.com">Nemanja Vukoje</a>
+  <span class="footer-note">vukojenemanja.com/raspored</span>
+</footer>
+
+<script>
+const API_KEY     = 'AIzaSyDR5BWnAB1gC-OFYZufLUBA-1C5-cFa27o';
+const CALENDAR_ID = 'c_c830c6bde4a5299be0fd3d3a4fc238723c973775e2b0474b95521c01755f1306@group.calendar.google.com';
+const EMAIL       = 'info@vukojenemanja.com';
+
+const MONTHS  = ['Januar','Februar','Mart','April','Maj','Jun','Jul','Avgust','Septembar','Oktobar','Novembar','Decembar'];
+const DAYS_SH = ['Ned','Pon','Uto','Sre','Čet','Pet','Sub'];
+const DAYS_FL = ['Nedelja','Ponedeljak','Utorak','Sreda','Četvrtak','Petak','Subota'];
+
+const DAY_START   = 8;   // default week view start (fallback)
+const DAY_END     = 22;  // default week view end (fallback)
+const PX_PER_MIN  = 1.4; // height per minute in week view
+
+let now          = new Date();
+let currentView  = 'agenda';
+let currentYear  = now.getFullYear();
+let currentMonth = now.getMonth();
+let weekStart    = getWeekStart(now);
+let allEvents    = [];
+
+updatePeriodTitle();
+fetchEvents();
+
+/* ── View toggle ── */
+function setView(v) {
+  currentView = v;
+
+  document.getElementById('btnWeek').classList.toggle('active',   v === 'week');
+  document.getElementById('btnAgenda').classList.toggle('active', v === 'agenda');
+
+  document.getElementById('weekView').classList.toggle('hidden',   v !== 'week');
+  document.getElementById('agendaView').classList.toggle('hidden', v !== 'agenda');
+  updatePeriodTitle();
+  fetchEvents();
+}
+
+/* ── Navigation ── */
+function changePeriod(dir) {
+  if (currentView === 'week') {
+    weekStart = new Date(weekStart);
+    weekStart.setDate(weekStart.getDate() + dir * 7);
+  } else {
+    currentMonth += dir;
+    if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+    if (currentMonth < 0)  { currentMonth = 11; currentYear--; }
+  }
+  updatePeriodTitle();
+  fetchEvents();
+}
+
+function updatePeriodTitle() {
+  const n = new Date();
+  if (currentView === 'week') {
+    const we = new Date(weekStart); we.setDate(we.getDate() + 6);
+    const label = weekStart.getMonth() === we.getMonth()
+      ? weekStart.getDate() + ' – ' + we.getDate() + ' ' + MONTHS[weekStart.getMonth()]
+      : weekStart.getDate() + ' ' + MONTHS[weekStart.getMonth()].slice(0,3) + ' – ' + we.getDate() + ' ' + MONTHS[we.getMonth()].slice(0,3);
+    document.getElementById('periodTitle').textContent = label;
+    const thisMonday = getWeekStart(n);
+    document.getElementById('prevBtn').disabled = weekStart <= thisMonday;
+  } else {
+    document.getElementById('periodTitle').textContent = MONTHS[currentMonth] + ' ' + currentYear;
+    document.getElementById('prevBtn').disabled =
+      currentYear === n.getFullYear() && currentMonth === n.getMonth();
+  }
+}
+
+function getWeekStart(date) {
+  const d   = new Date(date);
+  const day = d.getDay();
+  d.setDate(d.getDate() + (day === 0 ? -6 : 1 - day));
+  d.setHours(0,0,0,0);
+  return d;
+}
+
+/* ── Fetch ── */
+async function fetchEvents() {
+  let timeMin, timeMax;
+  if (currentView === 'week') {
+    const we = new Date(weekStart); we.setDate(we.getDate() + 6); we.setHours(23,59,59);
+    timeMin = weekStart.toISOString();
+    timeMax = we.toISOString();
+  } else {
+    // month and agenda: fetch whole month
+    timeMin = new Date(currentYear, currentMonth, 1).toISOString();
+    timeMax = new Date(currentYear, currentMonth + 1, 0, 23, 59, 59).toISOString();
+  }
+
+  showLoading();
+
+  const url = 'https://www.googleapis.com/calendar/v3/calendars/'
+    + encodeURIComponent(CALENDAR_ID) + '/events'
+    + '?key=' + API_KEY
+    + '&timeMin=' + encodeURIComponent(timeMin)
+    + '&timeMax=' + encodeURIComponent(timeMax)
+    + '&singleEvents=true&orderBy=startTime&maxResults=100'
+    + '&fields=items(id,summary,description,location,start,end,status)';
+
+  try {
+    const res  = await fetch(url);
+    const data = await res.json();
+    if (data.error) { showError(data.error.message); return; }
+    allEvents = (data.items || []).filter(e => e.status !== 'cancelled');
+
+    else if (currentView === 'week')   renderWeek();
+    else if (currentView === 'agenda') renderAgenda();
+  } catch(e) {
+    showError('Nije moguće učitati događaje. Pokušaj ponovo.');
+  }
+}
+
+function showLoading() {
+  const html = '<div class="loading"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></div>';
+  const id = currentView === 'week' ? 'weekView' : 'agendaView';
+  document.getElementById(id).innerHTML = html;
+}
+function showError(msg) {
+  const html = `<div class="error-msg"><p>Error: ${msg}</p><p style="margin-top:6px;font-size:12px;">Proveri da li je kalendar postavljen kao javan.</p></div>`;
+  const id = currentView === 'week' ? 'weekView' : 'agendaView';
+  document.getElementById(id).innerHTML = html;
+}
+
+/* ── Agenda (list) render ── */
+function renderAgenda() {
+  const c     = document.getElementById('agendaView');
+  const today = new Date(); today.setHours(0,0,0,0);
+
+  if (!allEvents.length) {
+    c.innerHTML = '<div class="no-events">Nema zakazanih časova ovog meseca.</div>';
+    return;
+  }
+
+  // Group by day
+  const byDay = {};
+  allEvents.forEach(ev => {
+    const s   = evStart(ev);
+    const key = `${s.getFullYear()}-${String(s.getMonth()).padStart(2,'0')}-${String(s.getDate()).padStart(2,'0')}`;
+    if (!byDay[key]) byDay[key] = { date: s, evs: [] };
+    byDay[key].evs.push(ev);
+  });
+
+  let html = '';
+  for (const [key, group] of Object.entries(byDay)) {
+    const d       = group.date;
+    const isToday = d.setHours(0,0,0,0) === today.getTime();
+    const label   = `${DAYS_SH[new Date(key).getDay()]} · ${new Date(key).getDate()} ${MONTHS[new Date(key).getMonth()]}${isToday ? ' — Danas' : ''}`;
+
+    html += `<div class="agenda-group">
+      <div class="agenda-date-header">${label}</div>`;
+
+    group.evs.forEach(ev => {
+      const s   = evStart(ev);
+      const idx = allEvents.indexOf(ev);
+      const loc = ev.location ? `<span class="agenda-location">${ev.location}</span>` : '';
+      html += `<div class="agenda-row" onclick="openModal(${idx})">
+        <span class="agenda-time">${ev.start.dateTime ? fmtTime(s) : 'Ceo dan'}</span>
+        <span class="agenda-title">${ev.summary || 'Class'}</span>
+        ${loc}
+        <span class="agenda-arrow">›</span>
+      </div>`;
+    });
+
+    html += `</div>`;
+  }
+
+  c.innerHTML = html;
+}
+
+/* ── Week render ── */
+function renderWeek() {
+  const c     = document.getElementById('weekView');
+  const today = new Date(); today.setHours(0,0,0,0);
+
+  // Days Mon–Sun
+  const days = Array.from({length:7}, (_, i) => {
+    const d = new Date(weekStart); d.setDate(d.getDate() + i); return d;
+  });
+
+  // Find earliest start and latest end among this week's events
+  // Default: 08:00 - 22:00 if no events
+  let minHour = 8;
+  let maxHour = 22;
+
+  const weekEvs = allEvents.filter(ev => {
+    if (!ev.start.dateTime) return false;
+    const s = new Date(ev.start.dateTime); s.setHours(0,0,0,0);
+    return days.some(d => d.getTime() === s.getTime());
+  });
+
+  if (weekEvs.length) {
+    let earliest = 23;
+    let latest   = 0;
+    weekEvs.forEach(ev => {
+      const s = new Date(ev.start.dateTime);
+      const e = new Date(ev.end.dateTime);
+      const sh = s.getHours() + s.getMinutes() / 60;
+      const eh = e.getHours() + e.getMinutes() / 60;
+      if (sh < earliest) earliest = sh;
+      if (eh > latest)   latest   = eh;
+    });
+    // 2h buffer before and after, clamped to 0-24
+    minHour = Math.max(0,  Math.floor(earliest) - 2);
+    maxHour = Math.min(24, Math.ceil(latest)    + 2);
+  }
+
+  const hours = maxHour - minHour;
+  const rowH  = PX_PER_MIN * 60;
+
+  // Header
+  let html = '<div class="wg-corner"></div>';
+  days.forEach(d => {
+    const tod = d.getTime() === today.getTime();
+    html += `<div class="wg-day-header${tod?' today':''}">
+      <div class="wg-day-name">${DAYS_SH[d.getDay()]}</div>
+      <div class="wg-day-num">${d.getDate()}</div>
+    </div>`;
+  });
+
+  // Hour rows
+  for (let h = 0; h < hours; h++) {
+    const hr = minHour + h;
+    html += `<div class="wg-time-label"><span>${String(hr).padStart(2,'0')}:00</span></div>`;
+    days.forEach(d => {
+      const tod = d.getTime() === today.getTime();
+      html += `<div class="wg-cell${tod?' today':''}"></div>`;
+    });
+  }
+
+  c.innerHTML = `<div class="week-grid-wrapper"><div style="position:relative;">
+    <div class="week-grid" id="wgGrid"
+      style="grid-template-rows:auto repeat(${hours},${rowH}px);">
+      ${html}
+    </div>
+    <div id="wgEvents" style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;"></div>
+  </div></div>`;
+
+  // Place events after DOM paint
+  requestAnimationFrame(() => {
+    const grid  = document.getElementById('wgGrid');
+    const layer = document.getElementById('wgEvents');
+    if (!grid || !layer) return;
+
+    const hdrH   = grid.querySelector('.wg-day-header').offsetHeight;
+    const timeW  = 52;
+    const colW   = (grid.offsetWidth - timeW) / 7;
+    const totalM = hours * 60;
+
+    weekEvs.forEach(ev => {
+      const s    = new Date(ev.start.dateTime);
+      const e    = new Date(ev.end.dateTime);
+      const sDay = new Date(s); sDay.setHours(0,0,0,0);
+      const col  = days.findIndex(d => d.getTime() === sDay.getTime());
+      if (col < 0) return;
+
+      const sMin = (s.getHours() - minHour) * 60 + s.getMinutes();
+      const eMin = (e.getHours() - minHour) * 60 + e.getMinutes();
+      const cs   = Math.max(0, sMin);
+      const ce   = Math.min(totalM, eMin);
+      if (ce <= cs) return;
+
+      const top  = hdrH + cs * PX_PER_MIN;
+      const h    = Math.max(22, (ce - cs) * PX_PER_MIN);
+      const left = timeW + col * colW + 3;
+      const w    = colW - 6;
+      const idx  = allEvents.indexOf(ev);
+
+      const el = document.createElement('div');
+      el.className     = 'wg-event';
+      el.style.cssText = `top:${top}px;left:${left}px;width:${w}px;height:${h}px;pointer-events:auto;`;
+      el.innerHTML     = `<div class="wg-event-time">${fmtTime(s)}</div>
+        <div class="wg-event-title">${ev.summary || 'Class'}</div>`;
+      el.onclick = () => openModal(idx);
+      layer.appendChild(el);
+    });
+  });
+}
+
+/* ── Modal ── */
+function openModal(idx) {
+  const ev  = allEvents[idx];
+  const s   = evStart(ev);
+  const d   = s.getDate(), m = MONTHS[s.getMonth()], y = s.getFullYear();
+
+  document.getElementById('modalDate').textContent  = `${DAYS_FL[s.getDay()]}, ${d}. ${m} ${y}`;
+  document.getElementById('modalTitle').textContent = ev.summary || 'Class';
+
+  let meta = `<div class="modal-meta-item">
+    <div class="modal-meta-label">Vreme</div>
+    <div class="modal-meta-value">${fmtRange(ev)}</div>
+  </div>`;
+  if (ev.location) meta += `<div class="modal-meta-item">
+    <div class="modal-meta-label">Lokacija</div>
+    <div class="modal-meta-value">${ev.location}</div>
+  </div>`;
+  document.getElementById('modalMeta').innerHTML = meta;
+
+  document.getElementById('modalDesc').textContent =
+    ev.description ? ev.description.replace(/<[^>]+>/g,'').trim()
+                   : 'Za više informacija ili prijavu, pošalji poruku.';
+
+  const subj = encodeURIComponent('Prijava - ' + (ev.summary || 'Class'));
+  const body = encodeURIComponent(`Zdravo Nemanja,\n\nŽelim da se prijavim za: ${ev.summary || 'čas'}\nDatum: ${d}. ${m} ${y}\n\nBest regards`);
+  document.getElementById('modalCta').href = `mailto:${EMAIL}?subject=${subj}&body=${body}`;
+
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeModalOnOverlay(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ── Helpers ── */
+function evStart(ev) { return ev.start.dateTime ? new Date(ev.start.dateTime) : new Date(ev.start.date); }
+function evEnd(ev)   { return ev.end.dateTime   ? new Date(ev.end.dateTime)   : new Date(ev.end.date);   }
+function fmtTime(d)  { return d.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit',hour12:false}); }
+function fmtRange(ev) {
+  if (!ev.start.dateTime) return 'Ceo dan';
+  return fmtTime(new Date(ev.start.dateTime)) + ' – ' + fmtTime(new Date(ev.end.dateTime));
+}
+</script>
+</body>
+</html>

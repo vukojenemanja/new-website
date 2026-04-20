@@ -158,8 +158,8 @@
     border-bottom: 1px solid rgba(61,46,30,0.10);
   }
   .month-cell {
-    min-height: 96px;
-    padding: 8px 6px 6px;
+    min-height: 72px;
+    padding: 6px 5px 5px;
     border-right: 1px solid rgba(61,46,30,0.10);
     background: var(--fog);
     vertical-align: top;
@@ -227,6 +227,63 @@
     padding: 2px 0;
     cursor: default;
   }
+
+  /* AGENDA (LIST) VIEW */
+  .agenda-group { margin-bottom: 36px; }
+  .agenda-date-header {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--clay);
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(196,168,130,0.25);
+  }
+  .agenda-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 16px;
+    background: var(--fog);
+    border: 1px solid rgba(61,46,30,0.08);
+    border-left: 3px solid var(--clay);
+    margin-bottom: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .agenda-row:hover {
+    border-color: var(--clay);
+    box-shadow: 0 2px 12px rgba(61,46,30,0.07);
+    transform: translateX(2px);
+  }
+  .agenda-time {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--clay);
+    flex-shrink: 0;
+    width: 90px;
+  }
+  .agenda-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    color: var(--bark);
+    flex: 1;
+  }
+  .agenda-location {
+    font-size: 12px;
+    color: var(--stone);
+    flex-shrink: 0;
+  }
+  .agenda-arrow {
+    color: var(--clay);
+    font-size: 16px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+  }
+  .agenda-row:hover .agenda-arrow { opacity: 1; }
 
   /* WEEK VIEW */
   .week-view { display: block; }
@@ -394,17 +451,23 @@
       <button id="nextBtn" onclick="changePeriod(1)">Next →</button>
     </div>
     <div class="view-toggle">
-      <button id="btnList" class="active" onclick="setView('list')">Month</button>
+      <button id="btnAgenda" class="active" onclick="setView('agenda')">List</button>
       <button id="btnWeek" onclick="setView('week')">Week</button>
+      <button id="btnList" onclick="setView('list')">Month</button>
     </div>
   </div>
 
-  <div id="listView" class="list-view">
+  <div id="listView" class="list-view hidden">
     <div class="loading">
       <span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span>
     </div>
   </div>
   <div id="weekView" class="week-view hidden"></div>
+  <div id="agendaView" class="list-view">
+    <div class="loading">
+      <span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span>
+    </div>
+  </div>
 </main>
 
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
@@ -436,12 +499,12 @@ const MONTHS  = ['January','February','March','April','May','June','July','Augus
 const DAYS_SH = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const DAYS_FL = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
-const DAY_START   = 7;   // grid starts at 07:00
-const DAY_END     = 23;  // grid ends at 23:00
+const DAY_START   = 8;   // default week view start (fallback)
+const DAY_END     = 22;  // default week view end (fallback)
 const PX_PER_MIN  = 1.4; // height per minute in week view
 
 let now          = new Date();
-let currentView  = 'list';
+let currentView  = 'agenda';
 let currentYear  = now.getFullYear();
 let currentMonth = now.getMonth();
 let weekStart    = getWeekStart(now);
@@ -453,23 +516,26 @@ fetchEvents();
 /* ── View toggle ── */
 function setView(v) {
   currentView = v;
-  document.getElementById('btnList').classList.toggle('active', v === 'list');
-  document.getElementById('btnWeek').classList.toggle('active', v === 'week');
-  document.getElementById('listView').classList.toggle('hidden', v !== 'list');
-  document.getElementById('weekView').classList.toggle('hidden', v !== 'week');
+  document.getElementById('btnList').classList.toggle('active',   v === 'list');
+  document.getElementById('btnWeek').classList.toggle('active',   v === 'week');
+  document.getElementById('btnAgenda').classList.toggle('active', v === 'agenda');
+  document.getElementById('listView').classList.toggle('hidden',   v !== 'list');
+  document.getElementById('weekView').classList.toggle('hidden',   v !== 'week');
+  document.getElementById('agendaView').classList.toggle('hidden', v !== 'agenda');
   updatePeriodTitle();
   fetchEvents();
 }
 
 /* ── Navigation ── */
 function changePeriod(dir) {
-  if (currentView === 'list') {
+  if (currentView === 'week') {
+    weekStart = new Date(weekStart);
+    weekStart.setDate(weekStart.getDate() + dir * 7);
+  } else {
+    // list and agenda both navigate by month
     currentMonth += dir;
     if (currentMonth > 11) { currentMonth = 0; currentYear++; }
     if (currentMonth < 0)  { currentMonth = 11; currentYear--; }
-  } else {
-    weekStart = new Date(weekStart);
-    weekStart.setDate(weekStart.getDate() + dir * 7);
   }
   updatePeriodTitle();
   fetchEvents();
@@ -477,11 +543,7 @@ function changePeriod(dir) {
 
 function updatePeriodTitle() {
   const n = new Date();
-  if (currentView === 'list') {
-    document.getElementById('periodTitle').textContent = MONTHS[currentMonth] + ' ' + currentYear;
-    document.getElementById('prevBtn').disabled =
-      currentYear === n.getFullYear() && currentMonth === n.getMonth();
-  } else {
+  if (currentView === 'week') {
     const we = new Date(weekStart); we.setDate(we.getDate() + 6);
     const label = weekStart.getMonth() === we.getMonth()
       ? `${weekStart.getDate()} – ${we.getDate()} ${MONTHS[weekStart.getMonth()]}`
@@ -489,6 +551,10 @@ function updatePeriodTitle() {
     document.getElementById('periodTitle').textContent = label;
     const thisMonday = getWeekStart(n);
     document.getElementById('prevBtn').disabled = weekStart <= thisMonday;
+  } else {
+    document.getElementById('periodTitle').textContent = MONTHS[currentMonth] + ' ' + currentYear;
+    document.getElementById('prevBtn').disabled =
+      currentYear === n.getFullYear() && currentMonth === n.getMonth();
   }
 }
 
@@ -503,13 +569,14 @@ function getWeekStart(date) {
 /* ── Fetch ── */
 async function fetchEvents() {
   let timeMin, timeMax;
-  if (currentView === 'list') {
-    timeMin = new Date(currentYear, currentMonth, 1).toISOString();
-    timeMax = new Date(currentYear, currentMonth + 1, 0, 23, 59, 59).toISOString();
-  } else {
+  if (currentView === 'week') {
     const we = new Date(weekStart); we.setDate(we.getDate() + 6); we.setHours(23,59,59);
     timeMin = weekStart.toISOString();
     timeMax = we.toISOString();
+  } else {
+    // month and agenda: fetch whole month
+    timeMin = new Date(currentYear, currentMonth, 1).toISOString();
+    timeMax = new Date(currentYear, currentMonth + 1, 0, 23, 59, 59).toISOString();
   }
 
   showLoading();
@@ -527,7 +594,9 @@ async function fetchEvents() {
     const data = await res.json();
     if (data.error) { showError(data.error.message); return; }
     allEvents = (data.items || []).filter(e => e.status !== 'cancelled');
-    currentView === 'list' ? renderList() : renderWeek();
+    if      (currentView === 'list')   renderList();
+    else if (currentView === 'week')   renderWeek();
+    else if (currentView === 'agenda') renderAgenda();
   } catch(e) {
     showError('Could not load events. Please try again.');
   }
@@ -535,11 +604,13 @@ async function fetchEvents() {
 
 function showLoading() {
   const html = '<div class="loading"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></div>';
-  document.getElementById(currentView === 'week' ? 'weekView' : 'listView').innerHTML = html;
+  const id = currentView === 'week' ? 'weekView' : currentView === 'agenda' ? 'agendaView' : 'listView';
+  document.getElementById(id).innerHTML = html;
 }
 function showError(msg) {
   const html = `<div class="error-msg"><p>Error: ${msg}</p><p style="margin-top:6px;font-size:12px;">Make sure your calendar is set to public.</p></div>`;
-  document.getElementById(currentView === 'week' ? 'weekView' : 'listView').innerHTML = html;
+  const id = currentView === 'week' ? 'weekView' : currentView === 'agenda' ? 'agendaView' : 'listView';
+  document.getElementById(id).innerHTML = html;
 }
 
 /* ── Month render ── */
@@ -632,17 +703,91 @@ function renderList() {
   c.innerHTML = html;
 }
 
+/* ── Agenda (list) render ── */
+function renderAgenda() {
+  const c     = document.getElementById('agendaView');
+  const today = new Date(); today.setHours(0,0,0,0);
+
+  if (!allEvents.length) {
+    c.innerHTML = '<div class="no-events">No classes scheduled this month.</div>';
+    return;
+  }
+
+  // Group by day
+  const byDay = {};
+  allEvents.forEach(ev => {
+    const s   = evStart(ev);
+    const key = `${s.getFullYear()}-${String(s.getMonth()).padStart(2,'0')}-${String(s.getDate()).padStart(2,'0')}`;
+    if (!byDay[key]) byDay[key] = { date: s, evs: [] };
+    byDay[key].evs.push(ev);
+  });
+
+  let html = '';
+  for (const [key, group] of Object.entries(byDay)) {
+    const d       = group.date;
+    const isToday = d.setHours(0,0,0,0) === today.getTime();
+    const label   = `${DAYS_SH[new Date(key).getDay()]} · ${new Date(key).getDate()} ${MONTHS[new Date(key).getMonth()]}${isToday ? ' — Today' : ''}`;
+
+    html += `<div class="agenda-group">
+      <div class="agenda-date-header">${label}</div>`;
+
+    group.evs.forEach(ev => {
+      const s   = evStart(ev);
+      const idx = allEvents.indexOf(ev);
+      const loc = ev.location ? `<span class="agenda-location">${ev.location}</span>` : '';
+      html += `<div class="agenda-row" onclick="openModal(${idx})">
+        <span class="agenda-time">${ev.start.dateTime ? fmtTime(s) : 'All day'}</span>
+        <span class="agenda-title">${ev.summary || 'Class'}</span>
+        ${loc}
+        <span class="agenda-arrow">›</span>
+      </div>`;
+    });
+
+    html += `</div>`;
+  }
+
+  c.innerHTML = html;
+}
+
 /* ── Week render ── */
 function renderWeek() {
   const c     = document.getElementById('weekView');
   const today = new Date(); today.setHours(0,0,0,0);
-  const hours = DAY_END - DAY_START;
-  const rowH  = PX_PER_MIN * 60;
 
   // Days Mon–Sun
   const days = Array.from({length:7}, (_, i) => {
     const d = new Date(weekStart); d.setDate(d.getDate() + i); return d;
   });
+
+  // Find earliest start and latest end among this week's events
+  // Default: 08:00 - 22:00 if no events
+  let minHour = 8;
+  let maxHour = 22;
+
+  const weekEvs = allEvents.filter(ev => {
+    if (!ev.start.dateTime) return false;
+    const s = new Date(ev.start.dateTime); s.setHours(0,0,0,0);
+    return days.some(d => d.getTime() === s.getTime());
+  });
+
+  if (weekEvs.length) {
+    let earliest = 23;
+    let latest   = 0;
+    weekEvs.forEach(ev => {
+      const s = new Date(ev.start.dateTime);
+      const e = new Date(ev.end.dateTime);
+      const sh = s.getHours() + s.getMinutes() / 60;
+      const eh = e.getHours() + e.getMinutes() / 60;
+      if (sh < earliest) earliest = sh;
+      if (eh > latest)   latest   = eh;
+    });
+    // 2h buffer before and after, clamped to 0-24
+    minHour = Math.max(0,  Math.floor(earliest) - 2);
+    maxHour = Math.min(24, Math.ceil(latest)    + 2);
+  }
+
+  const hours = maxHour - minHour;
+  const rowH  = PX_PER_MIN * 60;
 
   // Header
   let html = '<div class="wg-corner"></div>';
@@ -656,7 +801,7 @@ function renderWeek() {
 
   // Hour rows
   for (let h = 0; h < hours; h++) {
-    const hr = DAY_START + h;
+    const hr = minHour + h;
     html += `<div class="wg-time-label"><span>${String(hr).padStart(2,'0')}:00</span></div>`;
     days.forEach(d => {
       const tod = d.getTime() === today.getTime();
@@ -674,27 +819,26 @@ function renderWeek() {
 
   // Place events after DOM paint
   requestAnimationFrame(() => {
-    const grid   = document.getElementById('wgGrid');
-    const layer  = document.getElementById('wgEvents');
+    const grid  = document.getElementById('wgGrid');
+    const layer = document.getElementById('wgEvents');
     if (!grid || !layer) return;
 
-    const hdrH    = grid.querySelector('.wg-day-header').offsetHeight;
-    const timeW   = 52;
-    const colW    = (grid.offsetWidth - timeW) / 7;
-    const totalM  = hours * 60;
+    const hdrH   = grid.querySelector('.wg-day-header').offsetHeight;
+    const timeW  = 52;
+    const colW   = (grid.offsetWidth - timeW) / 7;
+    const totalM = hours * 60;
 
-    allEvents.forEach(ev => {
-      if (!ev.start.dateTime) return;
+    weekEvs.forEach(ev => {
       const s    = new Date(ev.start.dateTime);
       const e    = new Date(ev.end.dateTime);
       const sDay = new Date(s); sDay.setHours(0,0,0,0);
       const col  = days.findIndex(d => d.getTime() === sDay.getTime());
       if (col < 0) return;
 
-      const sMin  = (s.getHours() - DAY_START) * 60 + s.getMinutes();
-      const eMin  = (e.getHours() - DAY_START) * 60 + e.getMinutes();
-      const cs    = Math.max(0, sMin);
-      const ce    = Math.min(totalM, eMin);
+      const sMin = (s.getHours() - minHour) * 60 + s.getMinutes();
+      const eMin = (e.getHours() - minHour) * 60 + e.getMinutes();
+      const cs   = Math.max(0, sMin);
+      const ce   = Math.min(totalM, eMin);
       if (ce <= cs) return;
 
       const top  = hdrH + cs * PX_PER_MIN;
@@ -704,9 +848,9 @@ function renderWeek() {
       const idx  = allEvents.indexOf(ev);
 
       const el = document.createElement('div');
-      el.className   = 'wg-event';
+      el.className     = 'wg-event';
       el.style.cssText = `top:${top}px;left:${left}px;width:${w}px;height:${h}px;pointer-events:auto;`;
-      el.innerHTML   = `<div class="wg-event-time">${fmtTime(s)}</div>
+      el.innerHTML     = `<div class="wg-event-time">${fmtTime(s)}</div>
         <div class="wg-event-title">${ev.summary || 'Class'}</div>`;
       el.onclick = () => openModal(idx);
       layer.appendChild(el);

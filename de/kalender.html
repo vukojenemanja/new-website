@@ -485,8 +485,7 @@ async function fetchEvents() {
     const data = await res.json();
     if (data.error) { showError(data.error.message); return; }
     allEvents = (data.items || []).filter(e => e.status !== 'cancelled');
-
-    else if (currentView === 'week')   renderWeek();
+    if (currentView === 'week')   renderWeek();
     else if (currentView === 'agenda') renderAgenda();
   } catch(e) {
     showError('Ereignisse konnten nicht geladen werden. Bitte versuche es erneut.');

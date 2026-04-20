@@ -124,52 +124,109 @@
     font-size: 13px; line-height: 1.7;
   }
 
-  /* LIST VIEW */
+  /* MONTH VIEW */
   .list-view { display: block; }
   .list-view.hidden { display: none; }
-  .week-group { margin-bottom: 44px; }
-  .week-label {
-    font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--clay); margin-bottom: 14px;
-    padding-bottom: 10px; border-bottom: 1px solid rgba(196,168,130,0.25);
+
+  /* Month grid */
+  .month-grid {
+    width: 100%;
+    border: 1px solid rgba(61,46,30,0.10);
+    border-bottom: none;
   }
-  .event-card {
-    background: var(--fog); border: 1px solid rgba(61,46,30,0.10);
-    border-left: 3px solid var(--clay); margin-bottom: 10px; cursor: pointer;
-    transition: all 0.25s; display: flex; align-items: stretch; overflow: hidden;
+  .month-day-names {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: var(--deep);
   }
-  .event-card:hover {
-    border-color: var(--clay);
-    box-shadow: 0 4px 20px rgba(61,46,30,0.08); transform: translateY(-1px);
+  .month-day-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--clay);
+    text-align: center;
+    padding: 12px 4px;
+    border-right: 1px solid rgba(245,241,236,0.06);
   }
-  .event-date-col {
-    background: var(--sand); padding: 18px 16px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    min-width: 68px; flex-shrink: 0; text-align: center;
+  .month-day-name:last-child { border-right: none; }
+
+  .month-weeks { display: flex; flex-direction: column; }
+  .month-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid rgba(61,46,30,0.10);
   }
-  .event-day-num {
-    font-family: 'Cormorant Garamond', serif; font-size: 28px;
-    color: var(--bark); line-height: 1;
+  .month-cell {
+    min-height: 96px;
+    padding: 8px 6px 6px;
+    border-right: 1px solid rgba(61,46,30,0.10);
+    background: var(--fog);
+    vertical-align: top;
+    position: relative;
   }
-  .event-day-name {
-    font-family: 'DM Sans', sans-serif; font-size: 9px; letter-spacing: 1.5px;
-    text-transform: uppercase; color: var(--stone); margin-top: 3px;
+  .month-cell:last-child { border-right: none; }
+  .month-cell.other-month { background: rgba(245,241,236,0.45); }
+  .month-cell.today { background: rgba(232,221,208,0.5); }
+  .month-cell.today .month-cell-num {
+    background: var(--clay);
+    color: var(--deep);
+    border-radius: 50%;
+    width: 22px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
   }
-  .event-body { padding: 16px 22px; flex: 1; }
-  .event-time {
-    font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 1.5px;
-    color: var(--clay); margin-bottom: 5px; text-transform: uppercase;
+  .month-cell-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--stone);
+    margin-bottom: 5px;
+    line-height: 1;
+    width: 22px;
+    text-align: center;
   }
-  .event-title {
-    font-family: 'Cormorant Garamond', serif; font-size: 20px;
-    color: var(--bark); line-height: 1.3; margin-bottom: 3px;
+  .month-cell.other-month .month-cell-num { opacity: 0.35; }
+
+  /* event pill inside month cell */
+  .month-event {
+    display: block;
+    width: 100%;
+    background: var(--clay);
+    border-left: 2px solid var(--accent);
+    padding: 3px 5px;
+    margin-bottom: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+    overflow: hidden;
   }
-  .event-location { font-size: 12px; color: var(--stone); }
-  .event-arrow {
-    display: flex; align-items: center; padding: 0 18px;
-    color: var(--clay); font-size: 18px; opacity: 0.5; transition: opacity 0.2s;
+  .month-event:hover { background: var(--warm); }
+  .month-event-time {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    color: rgba(30,23,18,0.6);
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .event-card:hover .event-arrow { opacity: 1; }
+  .month-event-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    color: var(--deep);
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+  }
+  .month-more {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--stone);
+    padding: 2px 0;
+    cursor: default;
+  }
 
   /* WEEK VIEW */
   .week-view { display: block; }
@@ -337,7 +394,7 @@
       <button id="nextBtn" onclick="changePeriod(1)">Next →</button>
     </div>
     <div class="view-toggle">
-      <button id="btnList" class="active" onclick="setView('list')">List</button>
+      <button id="btnList" class="active" onclick="setView('list')">Month</button>
       <button id="btnWeek" onclick="setView('week')">Week</button>
     </div>
   </div>
@@ -478,59 +535,101 @@ async function fetchEvents() {
 
 function showLoading() {
   const html = '<div class="loading"><span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></div>';
-  document.getElementById(currentView === 'list' ? 'listView' : 'weekView').innerHTML = html;
+  document.getElementById(currentView === 'week' ? 'weekView' : 'listView').innerHTML = html;
 }
 function showError(msg) {
   const html = `<div class="error-msg"><p>Error: ${msg}</p><p style="margin-top:6px;font-size:12px;">Make sure your calendar is set to public.</p></div>`;
-  document.getElementById(currentView === 'list' ? 'listView' : 'weekView').innerHTML = html;
+  document.getElementById(currentView === 'week' ? 'weekView' : 'listView').innerHTML = html;
 }
 
-/* ── List render ── */
+/* ── Month render ── */
 function renderList() {
-  const c = document.getElementById('listView');
-  if (!allEvents.length) { c.innerHTML = '<div class="no-events">No classes scheduled this month.</div>'; return; }
+  const c     = document.getElementById('listView');
+  const today = new Date(); today.setHours(0,0,0,0);
 
-  const weeks = {};
+  // Build a map: dateKey -> events
+  const evMap = {};
   allEvents.forEach(ev => {
-    const s = evStart(ev);
-    const k = weekRangeLabel(s);
-    if (!weeks[k]) weeks[k] = [];
-    weeks[k].push(ev);
+    const s   = evStart(ev);
+    const key = `${s.getFullYear()}-${s.getMonth()}-${s.getDate()}`;
+    if (!evMap[key]) evMap[key] = [];
+    evMap[key].push(ev);
   });
 
-  let html = '';
-  for (const [label, evs] of Object.entries(weeks)) {
-    html += `<div class="week-group"><div class="week-label">${label}</div>`;
-    evs.forEach(ev => { html += listCard(ev); });
-    html += '</div>';
+  // First day of month, determine starting weekday (Mon=0 … Sun=6)
+  const firstDay = new Date(currentYear, currentMonth, 1);
+  const lastDay  = new Date(currentYear, currentMonth + 1, 0);
+  // Mon-based offset: if getDay()=0(Sun) offset=6, else offset=getDay()-1
+  const startOffset = firstDay.getDay() === 0 ? 6 : firstDay.getDay() - 1;
+
+  // Day name header
+  const dayNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  let html = `<div class="month-grid">
+    <div class="month-day-names">`;
+  dayNames.forEach(n => { html += `<div class="month-day-name">${n}</div>`; });
+  html += `</div><div class="month-weeks">`;
+
+  // Build calendar cells
+  let cells = [];
+  // Leading days from prev month
+  for (let i = startOffset - 1; i >= 0; i--) {
+    const d = new Date(currentYear, currentMonth, -i);
+    cells.push({ date: d, otherMonth: true });
+  }
+  // Current month days
+  for (let d = 1; d <= lastDay.getDate(); d++) {
+    cells.push({ date: new Date(currentYear, currentMonth, d), otherMonth: false });
+  }
+  // Trailing days to complete last row
+  while (cells.length % 7 !== 0) {
+    const last = cells[cells.length - 1].date;
+    const next = new Date(last); next.setDate(last.getDate() + 1);
+    cells.push({ date: next, otherMonth: true });
+  }
+
+  // Render weeks
+  for (let w = 0; w < cells.length / 7; w++) {
+    html += `<div class="month-week">`;
+    for (let d = 0; d < 7; d++) {
+      const cell   = cells[w * 7 + d];
+      const date   = cell.date;
+      const isToday = date.getTime() === today.getTime();
+      const key    = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+      const dayEvs = evMap[key] || [];
+
+      let cls = 'month-cell';
+      if (cell.otherMonth) cls += ' other-month';
+      if (isToday)         cls += ' today';
+
+      html += `<div class="${cls}">
+        <div class="month-cell-num">${date.getDate()}</div>`;
+
+      // Show up to 3 events, then "+N more"
+      const MAX = 3;
+      dayEvs.slice(0, MAX).forEach(ev => {
+        const idx = allEvents.indexOf(ev);
+        const s   = evStart(ev);
+        const time = ev.start.dateTime ? fmtTime(s) : '';
+        html += `<div class="month-event" onclick="openModal(${idx})">
+          ${time ? `<span class="month-event-time">${time}</span>` : ''}
+          <span class="month-event-title">${ev.summary || 'Class'}</span>
+        </div>`;
+      });
+      if (dayEvs.length > MAX) {
+        html += `<div class="month-more">+${dayEvs.length - MAX} more</div>`;
+      }
+
+      html += `</div>`;
+    }
+    html += `</div>`;
+  }
+
+  html += `</div></div>`;
+
+  if (!allEvents.length) {
+    // Still render the grid, just empty
   }
   c.innerHTML = html;
-}
-
-function weekRangeLabel(d) {
-  const n = d.getDate(), m = MONTHS[d.getMonth()];
-  if (n <= 7)  return `1 – 7 ${m}`;
-  if (n <= 14) return `8 – 14 ${m}`;
-  if (n <= 21) return `15 – 21 ${m}`;
-  return `22 – 31 ${m}`;
-}
-
-function listCard(ev) {
-  const s   = evStart(ev);
-  const idx = allEvents.indexOf(ev);
-  const loc = ev.location ? `<div class="event-location">${ev.location}</div>` : '';
-  return `<div class="event-card" onclick="openModal(${idx})">
-    <div class="event-date-col">
-      <div class="event-day-num">${s.getDate()}</div>
-      <div class="event-day-name">${DAYS_SH[s.getDay()]}</div>
-    </div>
-    <div class="event-body">
-      <div class="event-time">${ev.start.dateTime ? fmtTime(s) : 'All day'}</div>
-      <div class="event-title">${ev.summary || 'Class'}</div>
-      ${loc}
-    </div>
-    <div class="event-arrow">›</div>
-  </div>`;
 }
 
 /* ── Week render ── */

@@ -581,7 +581,7 @@ function renderAgenda() {
   for (const [key, group] of Object.entries(byDay)) {
     const d       = group.date;
     const isToday = d.setHours(0,0,0,0) === today.getTime();
-    const label   = `${DAYS_SH[new Date(key).getDay()]} · ${new Date(key).getDate()} ${MONTHS[new Date(key).getMonth()]}${isToday ? ' — Heute' : ''}`;
+    const label   = `${DAYS_SH[new Date(key).getDay()]} · ${new Date(key).getDate()} ${MONTHS[new Date(key).getMonth()]}${isToday ? ' - Heute' : ''}`;
 
     html += `<div class="agenda-group">
       <div class="agenda-date-header">${label}</div>`;

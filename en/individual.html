@@ -188,12 +188,12 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 
 /* ── HERO ── */
 .hero {
-  min-height: 100vh;
   background: var(--deep);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   position: relative;
   overflow: hidden;
+  padding: 140px 60px 80px;
 }
 
 .hero-bg {
@@ -206,7 +206,6 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 .hero-content {
   position: relative;
   z-index: 10;
-  padding: 0 60px 100px;
   max-width: 680px;
 }
 
@@ -222,10 +221,10 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 
 .hero h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(52px, 7vw, 88px);
+  font-size: clamp(36px, 5vw, 62px);
   font-weight: 300;
   color: var(--sand);
-  line-height: 1.0;
+  line-height: 1.1;
   margin-bottom: 32px;
   opacity: 0;
   animation: fadeUp 1s ease 0.4s both;
@@ -717,7 +716,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 .hero-photo-placeholder {
   position: absolute;
   right: 0; top: 0; bottom: 0;
-  width: 30%;
+  width: 45%;
   background: linear-gradient(135deg, #2a2018 0%, #1a1208 100%);
   overflow: hidden;
 }
@@ -795,16 +794,15 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
   align-items: start;
   margin-top: 40px;
 }
-.about-me-left h2 {
+.about-me-right h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(32px, 3.5vw, 48px);
+  font-size: clamp(28px, 3vw, 40px);
   font-weight: 300;
   color: var(--bark);
   line-height: 1.15;
-  position: sticky;
-  top: 120px;
+  margin-bottom: 28px;
 }
-.about-me-left h2 em {
+.about-me-right h2 em {
   font-style: italic;
   color: var(--accent);
   display: block;
@@ -1121,12 +1119,12 @@ footer ul a:hover { color: var(--clay); }
     <div class="section-label reveal">Nemanja Vukoje</div>
     <div class="about-me-grid">
       <div class="about-me-left reveal">
-        <h2>I was good at my job.<br><em>I was also slowly disappearing.</em></h2>
         <div class="about-me-photo reveal">
           <img src="assets/images/index-13193d019fa51249.jpg" alt="Nemanja Vukoje" style="width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0;">
         </div>
       </div>
       <div class="about-me-right">
+        <h2 class="reveal">I was good at my job.<br><em>I was also slowly disappearing.</em></h2>
         <p class="reveal">Years in corporate consulting. A career that made sense on paper. And then one day the feeling arrived - quietly, clearly - that my life was passing by. And I was stuck with it, for quite some time. But in the end I needed to make a decision: will I respect myself and fully live my life, or should I just wait here and watch it pass by?</p>
         <p class="reveal">I left. I traveled. I sat with teachers in places I had never imagined I would go.</p>
         <p class="reveal">I collected not qualifications but experiences - what actually moves people, what actually heals, what talk alone cannot reach.</p>

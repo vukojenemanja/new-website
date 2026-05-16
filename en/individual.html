@@ -3,641 +3,1329 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Individual Sessions - Nemanja Vukoje</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>The Inner Shift Method - 1:1 Sessions | Nemanja Vukoje</title>
+<meta name="description" content="A method that combines coaching and energy healing to find the root cause of what is holding you back - and release it. Online sessions worldwide.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --clay:   #C4A882;
-    --sand:   #E8DDD0;
-    --bark:   #3D2E1E;
-    --fog:    #F5F1EC;
-    --stone:  #8A8070;
-    --deep:   #1E1712;
-    --accent: #9B6B3A;
-    --warm:   #D4B896;
+
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --moss:   #6B7B5E;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+  --warm:   #D4B896;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--fog);
+  color: var(--bark);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,8,5,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+  transition: background 0.4s, padding 0.4s;
+}
+
+nav.scrolled {
+  background: rgba(26,18,8,0.95);
+  padding: 14px 60px;
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--fog);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.4s;
+}
+
+nav.scrolled .nav-logo { color: var(--bark); }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,241,236,0.8);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav.scrolled .nav-links a { color: var(--stone); }
+.nav-links a:hover { color: var(--clay); }
+
+.nav-cta {
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  color: var(--clay) !important;
+  border: 1px solid rgba(196,168,130,0.5);
+  padding: 8px 20px;
+  border-radius: 1px;
+  transition: all 0.3s !important;
+}
+
+.nav-cta:hover {
+  background: var(--clay) !important;
+  color: var(--deep) !important;
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-hamburger span {
+  width: 22px; height: 1px;
+  background: var(--fog);
+  transition: all 0.3s;
+  display: block;
+}
+nav.scrolled .nav-hamburger span { background: var(--bark); }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--fog);
+  z-index: 99;
+  flex-direction: column;
+  padding: 100px 40px 40px;
+  gap: 0;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--bark);
+  text-decoration: none;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(196,168,130,0.15);
+  transition: color 0.3s;
+}
+.nav-mobile-menu a:first-child { border-top: 1px solid rgba(196,168,130,0.08); }
+.nav-mobile-menu a:hover { color: var(--clay); }
+.nav-mobile-menu a.mobile-cta { color: var(--clay); }
+.nav-mobile-close {
+  position: absolute;
+  top: 24px; right: 24px;
+  background: none; border: none;
+  font-size: 28px;
+  color: var(--bark);
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--clay);
+  color: var(--deep);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.btn-primary:hover { background: var(--warm); transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-block;
+  padding: 16px 40px;
+  border: 1px solid rgba(196,168,130,0.4);
+  color: var(--clay);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-ghost:hover { border-color: var(--clay); background: rgba(196,168,130,0.08); }
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 32px;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--deep);
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 70%, rgba(196,168,130,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 25%, rgba(107,123,94,0.06) 0%, transparent 50%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 60px 100px;
+  max-width: 680px;
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.2s both;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.0;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.4s both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--clay);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 16px;
+  line-height: 1.85;
+  color: rgba(232,221,208,0.6);
+  max-width: 500px;
+  margin-bottom: 52px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.6s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.8s both;
+}
+
+.hero-method-tag {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.2s both;
+}
+.hero-method-tag span {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(196,168,130,0.4);
+}
+.hero-method-line {
+  width: 60px; height: 1px;
+  background: rgba(196,168,130,0.2);
+}
+
+/* ── RECOGNITION SECTION ── */
+.recognition {
+  background: var(--fog);
+  padding: 100px 60px;
+}
+
+.recognition-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.recognition h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+
+.recognition h2 em { font-style: italic; color: var(--accent); }
+
+.recognition p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--stone);
+  margin-bottom: 20px;
+}
+
+.pain-list {
+  list-style: none;
+  margin-top: 12px;
+}
+
+.pain-list li {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.1);
+  font-size: 15px;
+  color: var(--stone);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  line-height: 1.6;
+}
+
+.pain-list li::before {
+  content: '-';
+  color: var(--clay);
+  flex-shrink: 0;
+}
+
+/* ── METHOD SECTION ── */
+.method {
+  background: var(--deep);
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.method::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,168,130,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.method-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.method-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: end;
+}
+
+.method h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.15;
+}
+
+.method h2 em { font-style: italic; color: var(--clay); }
+
+.method-intro {
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(232,221,208,0.6);
+}
+
+.method-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.method-step {
+  background: rgba(255,255,255,0.03);
+  padding: 48px 36px;
+  border-top: 2px solid rgba(196,168,130,0.15);
+  transition: border-color 0.3s;
+}
+
+.method-step:hover { border-color: var(--clay); }
+
+.step-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--clay);
+  opacity: 0.2;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--sand);
+  margin-bottom: 16px;
+}
+
+.step-body {
+  font-size: 14px;
+  line-height: 1.85;
+  color: rgba(232,221,208,0.55);
+}
+
+.method-difference {
+  margin-top: 2px;
+  background: rgba(196,168,130,0.06);
+  border: 1px solid rgba(196,168,130,0.12);
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.difference-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--clay);
+  line-height: 1.4;
+}
+
+.difference-body {
+  font-size: 14px;
+  line-height: 1.9;
+  color: rgba(232,221,208,0.55);
+}
+
+/* ── OFFERS ── */
+.offers {
+  background: var(--sand);
+  padding: 120px 60px;
+}
+
+.offers-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.offers-header {
+  margin-bottom: 60px;
+}
+
+.offers h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.offers h2 em { font-style: italic; color: var(--accent); }
+
+.offers-sub {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--stone);
+  max-width: 560px;
+}
+
+
+.offer-grid-2col {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.offer-card {
+  background: var(--fog);
+  padding: 48px 36px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.offer-card:hover { background: #EDE8DF; }
+
+.offer-card.featured {
+  background: var(--deep);
+}
+.offer-card.featured:hover { background: #2a2018; }
+
+.offer-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 300;
+  color: var(--clay);
+  opacity: 0.12;
+  position: absolute;
+  top: 16px; right: 24px;
+  line-height: 1;
+}
+
+.offer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--bark);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.offer-card.featured .offer-name { color: var(--sand); }
+
+.offer-duration {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 24px;
+}
+
+.offer-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--stone);
+  margin-bottom: 28px;
+}
+
+.offer-card.featured .offer-desc { color: rgba(232,221,208,0.5); }
+
+.offer-includes {
+  list-style: none;
+  margin-bottom: 36px;
+}
+
+.offer-includes li {
+  font-size: 13px;
+  color: var(--stone);
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.08);
+  display: flex;
+  gap: 10px;
+}
+
+.offer-card.featured .offer-includes li {
+  color: rgba(232,221,208,0.45);
+  border-color: rgba(255,255,255,0.05);
+}
+
+.offer-includes li::before { content: '·'; color: var(--clay); flex-shrink: 0; }
+
+.offer-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.offer-card.featured .offer-price { color: var(--clay); }
+
+.offer-price-note {
+  font-size: 11px;
+  color: var(--stone);
+  letter-spacing: 1px;
+}
+
+.offer-cta {
+  margin-top: 24px;
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(155,107,58,0.3);
+  padding-bottom: 2px;
+  transition: all 0.3s;
+}
+
+.offer-card.featured .offer-cta { color: var(--clay); border-color: rgba(196,168,130,0.3); }
+.offer-cta:hover { border-color: currentColor; }
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+  background: var(--deep);
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials::before {
+  content: '"';
+  position: absolute;
+  top: -40px; left: 40px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 400px;
+  color: rgba(196,168,130,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonials h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 64px;
+  max-width: 500px;
+}
+
+.testimonials h2 em { font-style: italic; color: var(--clay); }
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.testi-card {
+  background: rgba(255,255,255,0.03);
+  padding: 40px 32px;
+  border-top: 2px solid rgba(196,168,130,0.2);
+  transition: border-color 0.3s;
+}
+
+.testi-card:hover { border-color: var(--clay); }
+
+.testi-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(232,221,208,0.85);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.testi-author {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+.testi-source {
+  font-size: 11px;
+  color: var(--stone);
+  margin-top: 4px;
+}
+
+.testi-featured {
+  background: rgba(196,168,130,0.07);
+  border-color: var(--clay);
+  grid-column: span 2;
+}
+
+.testi-featured .testi-text { font-size: 26px; }
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--bark);
+  padding: 100px 60px;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.cta-section h2 em { font-style: italic; color: var(--clay); }
+
+.cta-section p {
+  font-size: 15px;
+  color: rgba(232,221,208,0.55);
+  margin-bottom: 48px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.cta-note {
+  margin-top: 24px;
+  font-size: 12px;
+  color: rgba(196,168,130,0.35);
+  letter-spacing: 1px;
+}
+
+
+
+
+
+/* ── PHOTO PLACEHOLDERS ── */
+.hero-photo-placeholder {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 45%;
+  background: linear-gradient(135deg, #2a2018 0%, #1a1208 100%);
+  overflow: hidden;
+}
+
+.hero-photo-placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--deep) 0%, transparent 40%);
+  z-index: 1;
+}
+
+.hero-photo-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.hero-photo-inner span {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(196,168,130,0.25);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.about-me-photo {
+  margin-top: 40px;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #d4c4b0 0%, #c4a882 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-me-photo::after {
+  content: '';
+  position: absolute;
+  top: 12px; left: 12px; right: -12px; bottom: -12px;
+  border: 1px solid rgba(61,46,30,0.15);
+  pointer-events: none;
+}
+
+.about-me-photo span {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(61,46,30,0.35);
+}
+
+@media (max-width: 900px) {
+  .hero-photo-placeholder { display: none; }
+  .about-me-photo { aspect-ratio: 4/3; }
+}
+
+/* ── ABOUT ME ── */
+.about-me {
+  background: var(--sand);
+  padding: 120px 60px;
+}
+.about-me-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.about-me-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 40px;
+}
+.about-me-left h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 300;
+  color: var(--bark);
+  line-height: 1.15;
+  position: sticky;
+  top: 120px;
+}
+.about-me-left h2 em {
+  font-style: italic;
+  color: var(--accent);
+  display: block;
+}
+.about-me-right p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--stone);
+  margin-bottom: 24px;
+}
+.about-me-closing {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 22px !important;
+  font-style: italic;
+  color: var(--bark) !important;
+  margin-top: 8px;
+}
+@media (max-width: 900px) {
+  .about-me { padding: 80px 24px; }
+  .about-me-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-me-left h2 { position: static; }
+}
+
+/* ── WHY IT WORKS ── */
+.why-works {
+  background: var(--bark);
+  padding: 120px 60px;
+}
+
+.why-works-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.why-works-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 56px;
+}
+
+.why-works-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.why-works-heading h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.15;
+  position: sticky;
+  top: 120px;
+}
+
+.why-works-heading h2 em {
+  font-style: italic;
+  color: var(--clay);
+}
+
+.why-works-body p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: rgba(232,221,208,0.6);
+  margin-bottom: 24px;
+}
+
+.why-works-closing {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 22px !important;
+  font-style: italic;
+  color: var(--clay) !important;
+  margin-top: 16px;
+}
+
+/* ── DISCOUNT PRICE ── */
+.offer-price-was {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--stone);
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 900px) {
+  .why-works { padding: 80px 24px; }
+  .why-works-grid { grid-template-columns: 1fr; gap: 40px; }
+  .why-works-heading h2 { position: static; }
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep);
+  padding: 80px 60px 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  border-top: 1px solid rgba(196,168,130,0.08);
+}
+
+footer h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+footer h3 em { font-style: italic; color: var(--clay); }
+
+footer h4 {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+
+.footer-brand p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(232,221,208,0.3);
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer ul li { margin-bottom: 10px; }
+
+footer ul a {
+  font-size: 13px;
+  color: rgba(232,221,208,0.3);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer ul a:hover { color: var(--clay); }
+
+.footer-contact p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(232,221,208,0.3);
+}
+
+.footer-contact a {
+  color: rgba(232,221,208,0.3);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-contact a:hover { color: var(--clay); }
+
+.footer-bottom {
+  background: var(--deep);
+  padding: 20px 60px;
+  border-top: 1px solid rgba(196,168,130,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--stone);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.js-loaded .reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.js-loaded .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .hero-content { padding: 0 24px 80px; }
+  .hero-method-tag { display: none; }
+
+  .recognition-inner,
+  .method-header,
+  .results-inner,
+  .method-difference,
+  .difference-quote { grid-template-columns: 1fr; gap: 40px; }
+
+  .method-steps,
+  .offer-grid,
+  .offer-grid-2col,
+  .testi-grid { grid-template-columns: 1fr; }
+
+  .testi-featured { grid-column: span 1; }
+
+  .recognition, .method, .results, .offers, .testimonials, .cta-section {
+    padding: 80px 24px;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--fog);
-    color: var(--bark);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 20px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(10,8,5,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(196,168,130,0.12);
-    transition: background 0.4s, padding 0.4s;
-  }
-  nav.scrolled {
-    background: rgba(26,18,8,0.95);
-    backdrop-filter: blur(10px);
-    padding: 14px 60px;
-    border-bottom: 1px solid rgba(196,168,130,0.2);
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--fog);
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: color 0.4s;
-  }
-  nav.scrolled .nav-logo { color: var(--bark); }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,241,236,0.8); text-decoration: none; transition: color 0.3s; }
-  nav.scrolled .nav-links a { color: var(--stone); }
-  .nav-links a:hover { color: var(--clay); }
-  .nav-cta { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--clay) !important; border: 1px solid rgba(196,168,130,0.5); padding: 8px 20px; border-radius: 1px; transition: all 0.3s !important; }
-  .nav-cta:hover { background: var(--clay) !important; color: var(--deep) !important; }
-  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; z-index: 1001; }
-  .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--sand); transition: all 0.3s ease; transform-origin: center; }
-  nav.scrolled .nav-hamburger span { background: var(--bark); }
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-  .nav-mobile-menu { display: none; position: fixed; inset: 0; background: #0a0805; z-index: 9999; flex-direction: column; align-items: center; justify-content: center; gap: 0; }
-  .nav-mobile-menu.open { display: flex; }
-  .nav-mobile-menu a { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--sand); text-decoration: none; padding: 16px 48px; letter-spacing: 1px; transition: color 0.2s; text-align: center; width: 100%; border-bottom: 1px solid rgba(196,168,130,0.08); }
-  .nav-mobile-menu a:first-child { border-top: 1px solid rgba(196,168,130,0.08); }
-  .nav-mobile-menu a:hover { color: var(--clay); }
-  .nav-mobile-menu a.mobile-cta { color: var(--clay); font-style: italic; margin-top: 8px; border-bottom: none; }
-  .nav-mobile-close { position: absolute; top: 24px; right: 28px; font-size: 28px; color: rgba(245,241,236,0.5); cursor: pointer; background: none; border: none; line-height: 1; transition: color 0.2s; }
-  .nav-mobile-close:hover { color: var(--clay); }
-
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100vh;
-    background: var(--deep);
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    padding: 140px 40px 100px;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 10% 70%, rgba(196,168,130,0.14) 0%, transparent 65%),
-      radial-gradient(ellipse 40% 40% at 85% 25%, rgba(155,107,58,0.08) 0%, transparent 60%);
-  }
-  .hero-photo {
-    position: absolute;
-    right: 0; top: 0; bottom: 0;
-    width: 45%;
-    overflow: hidden;
-  }
-  .hero-photo img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    opacity: 0.35;
-  }
-  .hero-photo::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, var(--deep) 0%, transparent 40%);
-  }
-  .hero-inner {
-    position: relative;
-    z-index: 2;
-    max-width: 620px;
-  }
-  .hero-overline {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--clay);
-    margin-bottom: 36px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.2s forwards;
-  }
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(38px, 6.5vw, 72px);
-    font-weight: 400;
-    line-height: 1.1;
-    color: var(--fog);
-    margin-bottom: 48px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.4s forwards;
-  }
-  .hero-title em { font-style: italic; color: var(--clay); }
-  .hero-line {
-    width: 40px; height: 1px;
-    background: var(--clay);
-    margin-bottom: 36px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.55s forwards;
-  }
-  .hero-body {
-    font-size: 15px;
-    color: rgba(245,241,236,0.65);
-    max-width: 480px;
-    line-height: 1.85;
-    margin-bottom: 52px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.65s forwards;
-  }
-  .btn-primary {
-    display: inline-block;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--deep);
-    background: var(--clay);
-    padding: 16px 40px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.8s forwards;
-  }
-  .btn-primary:hover { background: var(--warm); }
-  .btn-outline {
-    display: inline-block;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--clay);
-    border: 1px solid var(--clay);
-    padding: 16px 40px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .btn-outline:hover { background: var(--clay); color: var(--deep); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ─── SECTIONS ─── */
-  section { padding: 100px 40px; }
-  .section-inner { max-width: 720px; margin: 0 auto; }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(30px, 4.5vw, 50px);
-    font-weight: 400;
-    line-height: 1.15;
-    color: var(--bark);
-    margin-bottom: 32px;
-  }
-  .section-title em { font-style: italic; color: var(--accent); }
-  .section-body { font-size: 15px; color: var(--stone); line-height: 1.85; }
-  .section-body p + p { margin-top: 16px; }
-
-  /* ─── PAIN ─── */
-  .uvod { background: var(--sand); }
-  .pain-list { margin: 32px 0; display: flex; flex-direction: column; gap: 0; }
-  .pain-item {
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(61,46,30,0.10);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-style: italic; color: var(--bark);
-    display: flex; align-items: center; gap: 16px;
-  }
-  .pain-item:first-child { border-top: 1px solid rgba(61,46,30,0.10); }
-  .pain-item::before {
-    content: ''; width: 4px; height: 4px;
-    background: var(--clay); border-radius: 50%; flex-shrink: 0;
-  }
-  .reframe-block {
-    margin-top: 44px; padding: 40px 44px;
-    background: var(--deep); position: relative;
-  }
-  .reframe-block::before {
-    content: ''; position: absolute;
-    left: 0; top: 0; bottom: 0; width: 2px; background: var(--clay);
-  }
-  .reframe-block p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 3vw, 28px);
-    font-style: italic; color: var(--fog); line-height: 1.5;
-  }
-  .reframe-block p + p {
-    margin-top: 12px;
-    font-size: clamp(16px, 2.2vw, 20px);
-    color: var(--clay); font-style: normal;
-  }
-
-  /* ─── WHAT IT IS ─── */
-  .zajednica { background: var(--fog); }
-  .zajednica-body { font-size: 16px; color: var(--stone); line-height: 1.9; }
-  .zajednica-body p + p { margin-top: 14px; }
-  .no-list { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
-  .no-tag {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px; letter-spacing: 1.5px; color: var(--stone);
-    border: 1px solid rgba(61,46,30,0.20); padding: 8px 18px;
-  }
-
-  /* ─── RESULTS ─── */
-  .rezultati { background: var(--deep); }
-  .rezultati .section-title { color: var(--fog); }
-  .result-list {
-    margin-top: 40px; display: flex; flex-direction: column;
-    gap: 1px; background: rgba(245,241,236,0.08);
-  }
-  .result-item {
-    background: var(--deep); padding: 28px 32px;
-    display: flex; gap: 24px; align-items: flex-start;
-  }
-  .result-num {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; letter-spacing: 1.5px; color: var(--clay);
-    flex-shrink: 0; padding-top: 4px;
-  }
-  .result-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-style: italic; color: var(--fog); line-height: 1.4;
-  }
-  .result-text span {
-    display: block;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px; font-style: normal;
-    color: rgba(245,241,236,0.45); margin-top: 4px;
-  }
-  .result-close {
-    margin-top: 44px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; font-style: italic; color: var(--clay); line-height: 1.5;
-  }
-
-  /* ─── PROGRAM ─── */
-  .program { background: var(--sand); }
-  .program-grid {
-    margin-top: 40px; display: grid;
-    grid-template-columns: 1fr 1fr; gap: 16px;
-  }
-  .program-card {
-    background: var(--fog); padding: 28px 24px;
-    border-top: 2px solid var(--clay);
-  }
-  .program-card-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--stone); margin-bottom: 10px;
-  }
-  .program-card-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; color: var(--bark); line-height: 1.4;
-  }
-  .program-card-value em {
-    font-style: italic; color: var(--accent);
-    display: block; font-size: 15px; margin-top: 4px;
-  }
-
-  /* ─── FOR WHOM ─── */
-  .zagkoga { background: var(--fog); }
-  .forwhom-list { margin-top: 36px; display: flex; flex-direction: column; }
-  .forwhom-item {
-    padding: 20px 0; border-bottom: 1px solid rgba(61,46,30,0.10);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-style: italic; color: var(--bark);
-    display: flex; gap: 20px; align-items: flex-start;
-  }
-  .forwhom-item:first-child { border-top: 1px solid rgba(61,46,30,0.10); }
-  .forwhom-num {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px; letter-spacing: 1px; color: var(--clay);
-    flex-shrink: 0; padding-top: 5px;
-  }
-  .nije-za-tebe {
-    margin-top: 60px; padding: 36px 40px;
-    background: var(--sand); border-left: 2px solid rgba(61,46,30,0.20);
-  }
-  .nije-za-tebe p { font-size: 14px; color: var(--stone); line-height: 1.8; }
-  .nije-za-tebe strong {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px; font-style: italic; color: var(--bark);
-    display: block; margin-bottom: 10px; font-weight: 400;
-  }
-
-  /* ─── OBJECTION ─── */
-  .prigovor { background: var(--deep); text-align: center; }
-  .prigovor .section-inner { max-width: 580px; }
-  .prigovor-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(22px, 3.5vw, 36px);
-    font-style: italic; color: rgba(245,241,236,0.5);
-    margin-bottom: 36px; line-height: 1.4;
-  }
-  .prigovor-answer { font-size: 15px; color: rgba(245,241,236,0.65); line-height: 1.9; margin-bottom: 16px; }
-  .prigovor-answer p + p { margin-top: 14px; }
-  .prigovor-strong {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-style: italic; color: var(--clay); line-height: 1.5;
-  }
-
-  /* ─── CTA ─── */
-  .cta-section { background: var(--fog); text-align: center; padding: 100px 40px 80px; }
-  .cta-section .section-inner { max-width: 520px; }
-  .cta-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 72px; font-weight: 300; color: var(--bark); line-height: 1; margin-bottom: 6px;
-  }
-  .cta-price sup { font-size: 28px; color: var(--stone); vertical-align: super; }
-  .cta-price-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--stone); margin-bottom: 8px;
-  }
-  .cta-start {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px; font-style: italic; color: var(--clay); margin-bottom: 44px;
-  }
-  .cta-body { font-size: 14px; color: var(--stone); margin-bottom: 40px; line-height: 1.8; }
-  .ps-note {
-    margin-top: 64px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px; font-style: italic; color: var(--stone);
-    border-top: 1px solid rgba(61,46,30,0.12); padding-top: 36px; line-height: 1.7;
-  }
-  .ps-note strong { font-style: normal; font-weight: 500; color: var(--bark); }
-
-  /* ─── FOOTER ─── */
   footer {
-    background: var(--deep); padding: 60px;
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 60px; align-items: start;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 24px 40px;
   }
-  .footer-brand h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 40px; font-weight: 300; color: var(--sand); line-height: 1.1; margin-bottom: 16px;
-  }
-  .footer-brand h3 em { font-style: italic; color: var(--clay); }
-  .footer-brand p { font-size: 13px; line-height: 1.8; color: var(--stone); }
-  .footer-nav h4 { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--clay); margin-bottom: 24px; }
-  .footer-nav ul { list-style: none; }
-  .footer-nav li { padding: 6px 0; }
-  .footer-nav a { font-size: 14px; color: var(--stone); text-decoration: none; transition: color 0.2s; }
-  .footer-nav a:hover { color: var(--clay); }
-  .footer-contact h4 { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--clay); margin-bottom: 24px; }
-  .footer-contact p { font-size: 14px; color: var(--stone); line-height: 1.8; }
-  .footer-contact a { color: var(--clay); text-decoration: none; }
-  .footer-bottom {
-    background: var(--deep); padding: 20px 60px;
-    border-top: 1px solid rgba(196,168,130,0.1);
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .footer-bottom p { font-size: 11px; letter-spacing: 1px; color: var(--stone); }
 
-  /* ─── MOBILE ─── */
-  @media (max-width: 860px) {
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 20px 24px;
   }
-  @media (max-width: 680px) {
-    nav { padding: 16px 20px; }
-    nav.scrolled { padding: 14px 20px; }
-    section { padding: 72px 24px; }
-    .hero { padding: 110px 24px 80px; }
-    .hero-photo { display: none; }
-    .program-grid { grid-template-columns: 1fr; }
-    .reframe-block { padding: 28px 24px; }
-    .nije-za-tebe { padding: 28px 24px; }
-    .result-item { padding: 22px 20px; }
-    footer { grid-template-columns: 1fr; gap: 2rem; padding: 40px 24px; }
-    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
-    .cta-section { padding: 72px 24px 60px; }
-    .cta-price { font-size: 60px; }
+
+  .stat-row { grid-template-columns: 1fr 1fr; }
+
+  .method-difference {
+    padding: 40px 28px;
   }
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" href="index.html">Nemanja Vukoje</a>
+  <a href="index.html" class="nav-logo">Nemanja Vukoje</a>
   <ul class="nav-links">
     <li><a href="index.html#about">About</a></li>
-    <li><a href="calendar.html">Calendar</a></li>
     <li><a href="akal.html">Akal Community</a></li>
     <li><a href="individual.html">Individual Work</a></li>
     <li><a href="index.html#testimonials">Testimonials</a></li>
-    <li><a href="index.html#booking" class="nav-cta">Book a session</a></li>
+    <li><a href="mailto:info@vukojenemanja.com?subject=Book%20a%20Session" class="nav-cta">Book a session</a></li>
   </ul>
-  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
 <div class="nav-mobile-menu" id="mobileMenu">
   <button class="nav-mobile-close" onclick="closeMobileMenu()">×</button>
   <a href="index.html#about" onclick="closeMobileMenu()">About</a>
-  <a href="calendar.html" onclick="closeMobileMenu()">Calendar</a>
   <a href="akal.html" onclick="closeMobileMenu()">Akal Community</a>
   <a href="individual.html" onclick="closeMobileMenu()">Individual Work</a>
   <a href="index.html#testimonials" onclick="closeMobileMenu()">Testimonials</a>
-  <a href="index.html#booking" class="mobile-cta" onclick="closeMobileMenu()">Book a session</a>
+  <a href="mailto:info@vukojenemanja.com?subject=Book%20a%20Session" class="mobile-cta" onclick="closeMobileMenu()">Book a session</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-photo">
-    <img src="assets/images/index-49f1958691a03ef5.jpg" alt="Nemanja Vukoje">
+  <div class="hero-bg"></div>
+  <div class="hero-photo-placeholder">
+    <img src="assets/images/index-49f1958691a03ef5.jpg" alt="Nemanja Vukoje" style="width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0;">
   </div>
-  <div class="hero-inner">
-    <div class="hero-overline">Individual Sessions - 1:1 Work</div>
-    <h1 class="hero-title">You're not tired<br>of too much.<br><em>You're tired of<br>not being YOU.</em></h1>
-    <div class="hero-line"></div>
-    <div class="hero-body">
-      <p>Energy doesn't come from adding more.<br>It comes from releasing what blocks you.</p>
+  <div class="hero-content">
+    <div class="hero-eyebrow">The Inner Shift Method - 1:1 Sessions</div>
+    <h1>You don't know<br>what to do.<br><em>You just know something<br>has to change.</em></h1>
+    <p class="hero-sub">You have tried to think your way through it. The weight is still there.</p>
+    <p class="hero-sub" style="margin-top:-24px;font-style:italic;color:rgba(196,168,130,0.6);">This is where we start.</p>
+    <div class="hero-actions">
+      <a href="mailto:info@vukojenemanja.com?subject=Book%20a%20Session%20-%20Inner%20Shift" class="btn-primary">Book a session</a>
+      <a href="#method" class="btn-ghost">How it works</a>
     </div>
-    <a class="btn-primary" href="mailto:info@vukojenemanja.com?subject=Individual%20Session%20Enquiry">Get in touch</a>
   </div>
-</section>
-
-<!-- PAIN -->
-<section class="uvod">
-  <div class="section-inner">
-    <h2 class="section-title">On the outside<br><em>everything looks fine</em></h2>
-    <div class="section-body">
-      <p>You work, function, achieve.</p>
-      <p>But inside there is a weight. A mind that won't stop. And a feeling that somewhere along the way, you lost yourself.</p>
-    </div>
-
-    <div class="pain-list">
-      <div class="pain-item">you overthink everything and struggle to make decisions</div>
-      <div class="pain-item">you feel tired in a way that rest doesn't fix</div>
-      <div class="pain-item">you keep everything under control, but inside there is no ease</div>
-    </div>
-
-    <div class="reframe-block">
-      <p>And so you wait for things to get easier. For rest. For energy. For change.</p>
-      <p>Energy doesn't come from adding more. It comes from releasing what blocks you.</p>
-    </div>
+  <div class="hero-method-tag">
+    <span>Coaching + Energy Healing</span>
+    <div class="hero-method-line"></div>
+    <span>Online - Worldwide</span>
   </div>
 </section>
 
-<!-- WHAT IT IS -->
-<section class="zajednica">
-  <div class="section-inner">
-    <h2 class="section-title">Individual work is not<br><em>just another appointment</em></h2>
-    <div class="zajednica-body">
-      <p>It is a space where you stop - and slowly come back to yourself.</p>
-      <p>One session at a time. At your own pace.</p>
+<!-- RECOGNITION -->
+<section class="recognition">
+  <div class="recognition-inner">
+    <div>
+      <div class="section-label reveal">Who this is for</div>
+      <h2 class="reveal">You have tried.<br><em>Something still hasn't shifted.</em></h2>
+      <p class="reveal">You have read the books. You have worked on yourself. Maybe you have seen a therapist. And yet the same heaviness is there. The same fear. The same pattern that keeps repeating.</p>
+      <p class="reveal">That is not a failure of willpower or understanding. It is because what holds us back does not live in the mind. It lives deeper - in the body, in the energy field, in places that thinking alone cannot reach.</p>
     </div>
-    <div class="no-list">
-      <span class="no-tag">no pressure</span>
-      <span class="no-tag">no perfection</span>
-      <span class="no-tag">no "how it should be"</span>
-    </div>
-    <div class="zajednica-body" style="margin-top:28px;">
-      <p>Just you, your body, and a mind that begins to settle.</p>
+    <div>
+      <ul class="pain-list">
+        <li class="reveal">There is a heaviness in your chest that follows you everywhere. You have learned to carry it, but it never really leaves.</li>
+        <li class="reveal">You understand your patterns. You can name them, trace them, explain them. And yet here you are, living them again.</li>
+        <li class="reveal">Fear stops you from moving forward - fear of failure, of judgment, of being truly seen. You know what you want. You cannot make yourself go there.</li>
+        <li class="reveal">Life looks fine from the outside. On the inside something is hollow. You cannot explain it to anyone because on paper, everything is okay.</li>
+        <li class="reveal">You feel emotionally exhausted. Not from doing too much - but from holding too much, for too long, alone.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- RESULTS -->
-<section class="rezultati">
-  <div class="section-inner">
-    <h2 class="section-title">After<br>a few sessions</h2>
-    <div class="result-list">
-      <div class="result-item">
-        <span class="result-num">01</span>
-        <div class="result-text">
-          the mind begins to quiet
-          <span>without forcing it</span>
-        </div>
-      </div>
-      <div class="result-item">
-        <span class="result-num">02</span>
-        <div class="result-text">
-          the body starts to release
-          <span>even when the day was hard</span>
-        </div>
-      </div>
-      <div class="result-item">
-        <span class="result-num">03</span>
-        <div class="result-text">
-          decisions come more easily
-          <span>because you are back in contact with yourself</span>
-        </div>
-      </div>
-      <div class="result-item">
-        <span class="result-num">04</span>
-        <div class="result-text">
-          you feel energy that isn't from coffee or adrenaline
-          <span>natural, yours</span>
-        </div>
-      </div>
-    </div>
-    <p class="result-close">And most importantly - you begin to feel that things can be different.</p>
-  </div>
-</section>
 
-<!-- HOW IT WORKS -->
-<section class="program">
-  <div class="section-inner">
-    <h2 class="section-title">How the<br><em>process works</em></h2>
-    <div class="program-grid">
-      <div class="program-card">
-        <div class="program-card-label">Sessions</div>
-        <div class="program-card-value">
-          1:1 online sessions
-          <em>at your pace</em>
+<!-- ME -->
+<section class="about-me">
+  <div class="about-me-inner">
+    <div class="section-label reveal">Nemanja Vukoje</div>
+    <div class="about-me-grid">
+      <div class="about-me-left reveal">
+        <h2>I was good at my job.<br><em>I was also slowly disappearing.</em></h2>
+        <div class="about-me-photo reveal">
+          <img src="assets/images/index-13193d019fa51249.jpg" alt="Nemanja Vukoje" style="width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0;">
         </div>
       </div>
-      <div class="program-card">
-        <div class="program-card-label">Energy Work</div>
-        <div class="program-card-value">
-          deep healing work
-          <em>body, mind and soul</em>
-        </div>
-      </div>
-      <div class="program-card">
-        <div class="program-card-label">Support</div>
-        <div class="program-card-value">
-          between-session support
-          <em>you are not alone in the process</em>
-        </div>
-      </div>
-      <div class="program-card">
-        <div class="program-card-label">Practices</div>
-        <div class="program-card-value">
-          personalised tools
-          <em>meditations, breathwork, kundalini</em>
-        </div>
+      <div class="about-me-right">
+        <p class="reveal">Years in corporate consulting. A career that made sense on paper. And then one day the feeling arrived - quietly, clearly - that my life was passing by. And I was stuck with it, for quite some time. But in the end I needed to make a decision: will I respect myself and fully live my life, or should I just wait here and watch it pass by?</p>
+        <p class="reveal">I left. I traveled. I sat with teachers in places I had never imagined I would go.</p>
+        <p class="reveal">I collected not qualifications but experiences - what actually moves people, what actually heals, what talk alone cannot reach.</p>
+        <p class="about-me-closing reveal">That search became this work.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOR WHOM -->
-<section class="zagkoga">
-  <div class="section-inner">
-    <h2 class="section-title">This work is<br><em>for you if...</em></h2>
-    <div class="forwhom-list">
-      <div class="forwhom-item">
-        <span class="forwhom-num">01</span>
-        you feel a heaviness or fatigue you don't know how to carry
+<!-- METHOD -->
+<section class="method" id="method">
+  <div class="method-inner">
+    <div class="method-header">
+      <div>
+        <div class="section-label reveal" style="color:var(--clay)">The Inner Shift Method</div>
+        <h2 class="reveal">Coaching and energy healing<br><em>working as one.</em></h2>
       </div>
-      <div class="forwhom-item">
-        <span class="forwhom-num">02</span>
-        you notice you've lost contact with yourself - and it troubles you
-      </div>
-      <div class="forwhom-item">
-        <span class="forwhom-num">03</span>
-        you know something needs to change from within, because you've tried everything from the outside
-      </div>
-      <div class="forwhom-item">
-        <span class="forwhom-num">04</span>
-        you are ready to return to yourself, even if you don't know what that looks like
+      <div>
+        <p class="method-intro reveal">After years of working with individuals, teams, and people in corporate environments - I developed this approach because I saw what talk alone could not do. The mind understands. The body and energy field are where the real holding is. We work at both levels in every session.</p>
       </div>
     </div>
 
-    <div class="nije-za-tebe">
-      <strong>This is not for you if...</strong>
-      <p>If you are looking for quick fixes, instant motivation, or another item on the to-do list - this is not for you.</p>
+    <div class="method-steps">
+      <div class="method-step reveal">
+        <div class="step-number">01</div>
+        <div class="step-title">We find the root</div>
+        <p class="step-body">Through conversation and meditative techniques, we go below the surface story to find where the pattern actually began. Not just what happened - but where it is still held inside you today.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="step-number">02</div>
+        <div class="step-title">We release it completely</div>
+        <p class="step-body">With energy healing, we release what was found - from the emotional, physical, and energetic levels of your being. Not by force. By finally giving it the space it has always been asking for.</p>
+      </div>
+      <div class="method-step reveal">
+        <div class="step-number">03</div>
+        <div class="step-title">You return to yourself</div>
+        <p class="step-body">The weight you carried in does not leave with you. What was trapped releases - and that energy comes back to you. People feel it immediately. Lighter. Freer. More themselves.</p>
+      </div>
+    </div>
+
+    <div class="method-difference reveal">
+      <div class="difference-quote">"I don't just help you understand what is holding you back. We actually remove it."</div>
+      <div class="difference-body">
+        <p style="margin-bottom:16px;">This is what makes this method different from regular coaching and from energy healing alone.</p>
+        <p>Coaching without energy work leaves the root untouched. Energy work without coaching can miss the meaning. Together, they create a complete process - one that works on every level of who you are.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- OBJECTION -->
-<section class="prigovor">
-  <div class="section-inner">
-    <p class="prigovor-quote">"I don't have the energy for this either."</p>
-    <div class="prigovor-answer">
-      <p>And that's true.</p>
-      <p>Because you are spending your energy in the wrong places.</p>
+
+
+<!-- WHY IT WORKS -->
+<section class="why-works">
+  <div class="why-works-inner">
+    <div class="why-works-label reveal">Why this combination works</div>
+    <div class="why-works-grid">
+      <div class="why-works-heading reveal">
+        <h2>Coaching shows you the root.<br><em>Energy healing removes it.</em></h2>
+      </div>
+      <div class="why-works-body">
+        <p class="reveal">That is why this combination works where everything else only goes halfway.</p>
+        <p class="reveal">With coaching alone, you understand your patterns - but they stay in the body. With energy healing alone, you feel better - but you do not know why or how to build on it.</p>
+        <p class="reveal">Together, they create a complete process. We find exactly where the weight lives. Then we release it - not just from your mind, but from your body, your energy field, every level where it has been held. What was trapped comes back to you as energy, calm, and clarity.</p>
+        <p class="why-works-closing reveal">That is the shift people feel when they leave a session.</p>
+      </div>
     </div>
-    <p class="prigovor-strong">This is not one more thing on the list.<br>This is where you begin to get it back.</p>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- OFFERS -->
+<section class="offers" id="sessions">
+  <div class="offers-inner">
+    <div class="offers-header">
+      <div class="section-label reveal">Sessions and programs</div>
+      <h2 class="reveal">Choose where<br><em>you want to begin.</em></h2>
+      <p class="offers-sub reveal">Whether you want to try one session first or commit to a full process - there is a right entry point for you.</p>
+    </div>
+
+    <div class="offer-grid offer-grid-2col">
+      <!-- Aura Treatment -->
+      <div class="offer-card reveal">
+        <div class="offer-num">1</div>
+        <div class="offer-name">Aura Treatment</div>
+        <div class="offer-duration">20 min - Online</div>
+        <p class="offer-desc">A focused energy session to clear, strengthen and reset your field. The lightest entry into the work - and often a turning point in itself.</p>
+        <ul class="offer-includes">
+          <li>Energetic cleanse and recharge</li>
+          <li>Intuitive work tailored to you</li>
+          <li>Immediate sense of relief and clarity</li>
+        </ul>
+        <div class="offer-price-was">€66</div>
+        <span class="offer-price">€44</span>
+        <div class="offer-price-note">Single session - introductory price</div>
+        <a href="mailto:info@vukojenemanja.com?subject=Aura%20Treatment%20Session" class="offer-cta">Book this session -></a>
+      </div>
+
+      <!-- Inner Shift Single -->
+      <div class="offer-card reveal">
+        <div class="offer-num">2</div>
+        <div class="offer-name">Inner Shift Session</div>
+        <div class="offer-duration">60 min - Online</div>
+        <p class="offer-desc">One complete session of The Inner Shift Method. We find the root. We release it. You leave different from how you arrived.</p>
+        <ul class="offer-includes">
+          <li>Coaching to identify the root cause</li>
+          <li>Meditative techniques for deep access</li>
+          <li>Energy healing on all levels</li>
+          <li>Integration and clarity</li>
+        </ul>
+        <span class="offer-price">€144</span>
+        <div class="offer-price-note">Single session</div>
+        <a href="mailto:info@vukojenemanja.com?subject=Inner%20Shift%20Session" class="offer-cta">Book this session -></a>
+      </div>
+
+      <!-- Inner Shift Process -->
+      <div class="offer-card reveal">
+        <div class="offer-num">3</div>
+        <div class="offer-name">Inner Shift Process</div>
+        <div class="offer-duration">3 Sessions - 60 min each - Online</div>
+        <p class="offer-desc">The complete process. Three sessions that allow us to go deeper, release more fully, and integrate what changes so it stays changed.</p>
+        <ul class="offer-includes">
+          <li>3 Inner Shift sessions</li>
+          <li>Root cause identified and fully released</li>
+          <li>Support between sessions</li>
+          <li>Structured transformation arc</li>
+        </ul>
+        <span class="offer-price">€299</span>
+        <div class="offer-price-note">Full process - save €133</div>
+        <a href="mailto:info@vukojenemanja.com?subject=Inner%20Shift%20Process%20-%203%20Sessions" class="offer-cta">Book this process -></a>
+      </div>
+
+      <!-- Inner Shift Premium - FEATURED -->
+      <div class="offer-card featured reveal">
+        <div class="offer-num">4</div>
+        <div class="offer-name">Inner Shift Premium</div>
+        <div class="offer-duration">6 Sessions - 60 min each - Online</div>
+        <p class="offer-desc">The deepest level of the work. Six sessions that move through every layer of your being - emotional, energetic, and soul-level. For those who are ready for a complete shift.</p>
+        <ul class="offer-includes">
+          <li>6 Inner Shift sessions</li>
+          <li>Aura cleansing and full energetic reset</li>
+          <li>Soul retrieval - returning lost fragments</li>
+          <li>Healing on the deepest soul level</li>
+          <li>Personalised meditation created for you</li>
+          <li>Support between sessions</li>
+        </ul>
+        <span class="offer-price">€777</span>
+        <div class="offer-price-note">Full premium journey</div>
+        <a href="mailto:info@vukojenemanja.com?subject=Inner%20Shift%20Premium" class="offer-cta">Book this journey -></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <h2 class="reveal">What people say<br><em>after the sessions.</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card testi-featured reveal">
+        <p class="testi-text">"Such lightness in my chest and body after just one session. This is unbelievable."</p>
+        <div class="testi-author">Bojana K., Belgrade</div>
+        <div class="testi-source">After first Inner Shift session</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"My fear from the marathon is gone. I finished strong. I know I don't need to prove anything to myself. My energy was amazing."</p>
+        <div class="testi-author">Sarah M., Toronto</div>
+        <div class="testi-source">After Inner Peace sessions</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"40 days of meditation and Kundalini Yoga did more for me than years of therapy."</p>
+        <div class="testi-author">Marija T., Vienna</div>
+        <div class="testi-source">40-day challenge</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"Through your sessions my gut feeling has got stronger and it is leading me to the right path. I am getting more intuitive about where I belong and what decisions to make."</p>
+        <div class="testi-author">Elena R., Berlin</div>
+        <div class="testi-source">After ongoing sessions</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"I had peace I haven't felt in a long time. I hadn't realized how disconnected I had become. Something opened up - and it is still there."</p>
+        <div class="testi-author">Nina P., Buenos Aires</div>
+        <div class="testi-source">After Inner Peace session</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"I chose to forgive who hurt me - not because I had to, but because I saw that unkindness doesn't bring me peace. The transformation happened with authenticity, not force."</p>
+        <div class="testi-author">Thomas K., Vienna</div>
+        <div class="testi-source">After coaching and energy sessions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
 <section class="cta-section">
-  <div class="section-inner">
-    <div class="cta-price"><sup>€</sup>77</div>
-    <div class="cta-price-label">per session</div>
-    <div class="cta-start">First session is a free discovery call</div>
-    <p class="cta-body">If you feel this is for you - reach out.</p>
-    <a class="btn-primary" href="mailto:info@vukojenemanja.com?subject=Individual%20Session%20Enquiry">Get in touch</a>
-
-    <div class="ps-note">
-      <strong>P.S.</strong> You don't need to silence your mind by force. There is a way to understand it - and then it naturally settles.
-    </div>
-  </div>
+  <h2 class="reveal">Not sure where to start?<br><em>Just reach out.</em></h2>
+  <p class="reveal">Tell me where you are right now. We will find the right first step together. There is no wrong place to begin.</p>
+  <a href="mailto:info@vukojenemanja.com?subject=Inner%20Shift%20-%20I%20want%20to%20start" class="btn-primary reveal">Send a message</a>
+  <p class="cta-note reveal">Sessions are online · English and Serbian · Worldwide</p>
 </section>
 
 <!-- FOOTER -->
@@ -653,7 +1341,7 @@
       <li><a href="akal.html">Akal Community</a></li>
       <li><a href="individual.html">Individual Work</a></li>
       <li><a href="index.html#testimonials">Testimonials</a></li>
-      <li><a href="index.html#booking">Book a session</a></li>
+      <li><a href="mailto:info@vukojenemanja.com?subject=Book%20a%20Session">Book a session</a></li>
       <li><a href="agb.html">Terms</a></li>
       <li><a href="datenschutz.html">Privacy</a></li>
       <li><a href="impressum.html">Imprint</a></li>
@@ -674,10 +1362,13 @@
 </div>
 
 <script>
+// Nav scroll
 window.addEventListener('scroll', function() {
   const nav = document.getElementById('nav');
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
+
+// Mobile menu
 function toggleMobileMenu() {
   const menu = document.getElementById('mobileMenu');
   const btn = document.getElementById('hamburgerBtn');
@@ -690,6 +1381,21 @@ function closeMobileMenu() {
   document.getElementById('hamburgerBtn').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+// Reveal on scroll
+document.body.classList.add('js-loaded');
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(function(el) {
+  observer.observe(el);
+});
 </script>
 </body>
 </html>

@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Confidence & Self-Trust — Nemanja Vukoje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #EDE8DF;
+    --dark:    #2C2416;
+    --gold:    #B48C3C;
+    --gold-lt: #D4A84B;
+    --mid:     #6B5B3E;
+    --pale:    #F0EBE1;
+    --light:   #D4CCBA;
+    --sand:    #C8BFA8;
+    --white:   #FAF8F4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  /* ── ANNOUNCEMENT BAR ── */
+  .announcement {
+    background: var(--dark);
+    color: var(--light);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    position: relative;
+    z-index: 10;
+  }
+  .announcement span { color: var(--gold); font-weight: 500; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-left {
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: #3A2F1E;
+    top: -100px; right: -100px;
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: #3A2F1E;
+    bottom: -60px; left: -60px;
+  }
+
+  .hero-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 5.5vw, 72px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.0;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 8px;
+  }
+  .hero-title .gold { color: var(--gold); }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--light);
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+    margin-top: 24px;
+    max-width: 380px;
+  }
+
+  .hero-rule {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 32px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    color: var(--sand);
+    max-width: 360px;
+    line-height: 1.8;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── HERO RIGHT ── */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 80px 80px 60px;
+    gap: 0;
+  }
+
+  /* ── SALE BADGE ── */
+  .sale-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    width: fit-content;
+    animation: pulse-badge 2s ease-in-out infinite;
+  }
+  @keyframes pulse-badge {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+  }
+  .sale-badge::before {
+    content: '◆';
+    font-size: 7px;
+  }
+
+  /* ── PRICING ── */
+  .pricing-block {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .price-new {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .price-old {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--sand);
+    text-decoration: line-through;
+    text-decoration-color: var(--gold);
+  }
+  .price-save {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+  }
+
+  /* ── COUNTDOWN ── */
+  .countdown-wrap {
+    background: var(--dark);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .countdown-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .countdown {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+  }
+  .cd-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .cd-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    min-width: 56px;
+    text-align: center;
+  }
+  .cd-label {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--sand);
+    font-weight: 400;
+  }
+  .cd-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--gold);
+    padding-bottom: 8px;
+    line-height: 1;
+  }
+
+  /* ── CTA BUTTON ── */
+  .cta-btn {
+    display: block;
+    background: var(--gold);
+    color: var(--dark);
+    text-align: center;
+    padding: 20px 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0);
+    transition: background 0.25s ease;
+  }
+  .cta-btn:hover::after { background: rgba(255,255,255,0.1); }
+  .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(180,140,60,0.3); }
+
+  .cta-sub {
+    text-align: center;
+    font-size: 11px;
+    color: var(--mid);
+    letter-spacing: 0.05em;
+  }
+  .cta-sub span { color: var(--gold); }
+
+  /* ── WHAT'S INSIDE ── */
+  .section {
+    padding: 100px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: var(--mid);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 64px;
+  }
+
+  /* ── DAYS GRID ── */
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-bottom: 20px;
+  }
+
+  .day-card {
+    background: var(--pale);
+    padding: 28px 20px;
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+  .day-card:hover { transform: translateY(-4px); background: var(--white); }
+
+  .day-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .day-desc {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.7;
+  }
+  .day-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-top: 14px;
+  }
+
+  /* ── BONUS CARD ── */
+  .bonus-card {
+    background: var(--dark);
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .bonus-left {}
+  .bonus-tag {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .bonus-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .bonus-desc {
+    font-size: 13px;
+    color: var(--sand);
+    margin-top: 6px;
+  }
+  .bonus-right {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--gold);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── STORY SECTION ── */
+  .story-section {
+    background: var(--dark);
+    padding: 100px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .story-section::before {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: #3A2F1E;
+    right: -150px; top: -150px;
+  }
+
+  .story-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .story-label::before {
+    content: ''; display: block;
+    width: 32px; height: 1px;
+    background: var(--gold);
+  }
+
+  .story-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+
+  .story-text p {
+    font-size: 15px;
+    color: var(--light);
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .story-text em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--white);
+    font-size: 17px;
+  }
+
+  .story-quote {
+    position: relative;
+    z-index: 2;
+    border-left: 2px solid var(--gold);
+    padding: 32px 40px;
+    background: rgba(255,255,255,0.03);
+  }
+  .story-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .story-quote cite {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  /* ── FOR YOU SECTION ── */
+  .for-you {
+    padding: 100px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .pain-item {
+    background: var(--pale);
+    padding: 32px 36px;
+    transition: background 0.2s ease;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .pain-item:hover { background: var(--white); }
+
+  .pain-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--light);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+  }
+  .pain-content {}
+  .pain-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .pain-text {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.75;
+    font-style: italic;
+  }
+
+  /* ── WHAT YOU GET ── */
+  .includes-section {
+    background: var(--pale);
+    padding: 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .includes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 48px;
+  }
+
+  .include-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .include-icon {
+    width: 36px; height: 1px;
+    background: var(--gold);
+  }
+  .include-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .include-text {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.75;
+  }
+
+  /* ── BOTTOM CTA ── */
+  .bottom-cta {
+    background: var(--dark);
+    padding: 100px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .bottom-cta::after {
+    content: '';
+    position: absolute;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: #3A2F1E;
+    left: -100px; bottom: -100px;
+  }
+
+  .bcta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+  .bcta-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .bcta-text {
+    font-size: 15px;
+    color: var(--light);
+    line-height: 1.8;
+  }
+
+  .bcta-right {
+    position: relative;
+    z-index: 2;
+  }
+
+  .bcta-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(180,140,60,0.3);
+    padding: 40px;
+    border-radius: 4px;
+  }
+
+  .bcta-price {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .bcta-price-new {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+  .bcta-price-old {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--sand);
+    text-decoration: line-through;
+    text-decoration-color: var(--gold);
+  }
+  .bcta-save {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 28px;
+  }
+
+  .bcta-features {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+  .bcta-features li {
+    font-size: 13px;
+    color: var(--light);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .bcta-features li::before {
+    content: '·';
+    color: var(--gold);
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  footer p {
+    font-size: 11px;
+    color: var(--sand);
+    letter-spacing: 0.08em;
+  }
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 11px;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 32px; }
+    .hero-right { padding: 48px 32px; }
+    .section { padding: 64px 32px; }
+    .story-section { grid-template-columns: 1fr; padding: 64px 32px; gap: 48px; }
+    .days-grid { grid-template-columns: 1fr 1fr; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .includes-grid { grid-template-columns: 1fr 1fr; }
+    .bottom-cta { grid-template-columns: 1fr; padding: 64px 32px; gap: 48px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px; }
+    .for-you { padding: 64px 32px; }
+    .includes-section { padding: 64px 32px; }
+    .bonus-card { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="announcement">
+  LIMITED OFFER &nbsp;·&nbsp; <span>50% OFF</span> &nbsp;·&nbsp; Price goes back to €22 when the timer hits zero
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Nemanja Vukoje</div>
+    <h1 class="hero-title">
+      Build Your<br>
+      <span class="gold">Confidence</span><br>
+      & Self-Trust
+    </h1>
+    <p class="hero-subtitle">A 5-day journey to discover your strength, trust yourself, and step into your life.</p>
+    <div class="hero-rule"></div>
+    <p class="hero-desc">Writing. Reflection. Meditation. Each day builds gently on the last. Not a quick fix. A real beginning.</p>
+  </div>
+
+  <div class="hero-right">
+    <div class="sale-badge">SPECIAL OFFER — 50% OFF</div>
+
+    <div class="pricing-block">
+      <div class="price-new">€11</div>
+      <div class="price-old">€22</div>
+    </div>
+    <div class="price-save">YOU SAVE €11 — TODAY ONLY</div>
+
+    <!-- Countdown -->
+    <div class="countdown-wrap">
+      <div class="countdown-label">OFFER ENDS IN</div>
+      <div class="countdown">
+        <div class="cd-unit">
+          <div class="cd-num" id="cd-h">00</div>
+          <div class="cd-label">HOURS</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <div class="cd-num" id="cd-m">00</div>
+          <div class="cd-label">MINUTES</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <div class="cd-num" id="cd-s">00</div>
+          <div class="cd-label">SECONDS</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="mailto:info@vukojenemanja.com?subject=Build Your Confidence PDF" class="cta-btn">
+      GET INSTANT ACCESS — €11
+    </a>
+    <p class="cta-sub">Instant PDF download &nbsp;·&nbsp; <span>Pay once, keep forever</span></p>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="for-you fade-up">
+  <div class="section-label">This is for you if</div>
+  <h2 class="section-title">You know something<br>needs to change.</h2>
+  <p class="section-intro">You don't lack intelligence, talent, or effort. You lack the felt sense that you are allowed to be here, fully, without apology.</p>
+
+  <div class="pain-grid">
+    <div class="pain-item">
+      <div class="pain-num">01</div>
+      <div class="pain-content">
+        <div class="pain-title">You hold yourself back</div>
+        <div class="pain-text">You know what you want to do. You just can't make yourself do it. The fear wins, every time.</div>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">02</div>
+      <div class="pain-content">
+        <div class="pain-title">You compare constantly</div>
+        <div class="pain-text">Everyone else seems to move through the world with ease. You wonder what is wrong with you.</div>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">03</div>
+      <div class="pain-content">
+        <div class="pain-title">You wait to feel ready</div>
+        <div class="pain-text">One more skill. One more year. One more reason. Ready never seems to arrive.</div>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">04</div>
+      <div class="pain-content">
+        <div class="pain-title">You are your own worst critic</div>
+        <div class="pain-text">The voice in your head is relentless. You would never speak to someone else the way you speak to yourself.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="story-text">
+    <div class="story-label">Who made this</div>
+    <h2 class="story-title">I was a competitive dancer who couldn't make himself dance.</h2>
+    <p>I trained for years. I competed. I performed. Tango became my world. And then I would arrive at a milonga — a social tango gathering — find a seat near the wall, and just watch.</p>
+    <p>Afraid of making a mistake. Afraid of being seen. Afraid of not being enough. <em>I didn't believe in myself.</em></p>
+    <p>And it wasn't only tango. That same fear lived in my career, in my relationships, in every room I walked into. The confidence I showed on the outside was not what I felt on the inside.</p>
+    <p>Finding my way back — not through willpower, but through a deeper process of learning to feel safe in my own body — changed everything. This guide is the path I walked.</p>
+  </div>
+  <div class="story-quote">
+    <p>"Confidence doesn't live in the mind. It lives in the body. And it can be found again."</p>
+    <cite>NEMANJA VUKOJE · Energy Healer · Soul Coach · Vienna</cite>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="section fade-up">
+  <div class="section-label">What's inside</div>
+  <h2 class="section-title">5 days.<br>5 real practices.</h2>
+  <p class="section-intro">Each day has a short teaching that reframes how you think about confidence, a practical exercise you do in your notebook, and reflection prompts that go deeper than journaling prompts usually dare.</p>
+
+  <div class="days-grid">
+    <div class="day-card">
+      <div class="day-num">DAY 01</div>
+      <div class="day-title">What Confidence Actually Is</div>
+      <div class="day-desc">Reframe everything you were taught about confidence — and discover where it actually lives.</div>
+      <div class="day-tag">TEACHING + EXERCISE</div>
+    </div>
+    <div class="day-card">
+      <div class="day-num">DAY 02</div>
+      <div class="day-title">Discovering Your Strengths</div>
+      <div class="day-desc">See yourself clearly for the first time. Not the edited version. The real one.</div>
+      <div class="day-tag">TEACHING + EXERCISE</div>
+    </div>
+    <div class="day-card">
+      <div class="day-num">DAY 03</div>
+      <div class="day-title">The Body Knows</div>
+      <div class="day-desc">Your body carries more than your mind realises. Learn to listen to what it's been trying to tell you.</div>
+      <div class="day-tag">TEACHING + EXERCISE</div>
+    </div>
+    <div class="day-card">
+      <div class="day-num">DAY 04</div>
+      <div class="day-title">The Inner Critic</div>
+      <div class="day-desc">Meet the voice that's been holding you back — and finally understand what it's actually protecting you from.</div>
+      <div class="day-tag">TEACHING + EXERCISE</div>
+    </div>
+    <div class="day-card">
+      <div class="day-num">DAY 05</div>
+      <div class="day-title">Who You Are Now</div>
+      <div class="day-desc">Integrate everything. Write your confidence statement. Take the next step.</div>
+      <div class="day-tag">TEACHING + EXERCISE</div>
+    </div>
+  </div>
+
+  <div class="bonus-card" style="margin-top:2px;">
+    <div class="bonus-left">
+      <div class="bonus-tag">BONUS</div>
+      <div class="bonus-title">A Letter to Your Future Self</div>
+      <div class="bonus-desc">A visualisation exercise to step into the version of you who has already arrived.</div>
+    </div>
+    <div class="bonus-right">Included free</div>
+  </div>
+</section>
+
+<!-- INCLUDES -->
+<section class="includes-section fade-up">
+  <div class="section-label">Every day includes</div>
+  <h2 class="section-title">More than journaling.<br>A real practice.</h2>
+  <div class="includes-grid">
+    <div class="include-item">
+      <div class="include-icon"></div>
+      <div class="include-title">A short teaching</div>
+      <div class="include-text">Each day opens with a reframe. Something that shifts how you see yourself — not with motivation, but with understanding.</div>
+    </div>
+    <div class="include-item">
+      <div class="include-icon"></div>
+      <div class="include-title">A practical exercise</div>
+      <div class="include-text">Four clear steps. Done in your notebook. Each one designed to move something, not just describe it.</div>
+    </div>
+    <div class="include-item">
+      <div class="include-icon"></div>
+      <div class="include-title">Reflection prompts</div>
+      <div class="include-text">Three questions that go where most journaling prompts don't dare. Honest answers build self-knowledge.</div>
+    </div>
+    <div class="include-item">
+      <div class="include-icon"></div>
+      <div class="include-title">Daily meditation</div>
+      <div class="include-text">A guided meditation practice to use after every single day. With affirmations for self-confidence built in.</div>
+    </div>
+    <div class="include-item">
+      <div class="include-icon"></div>
+      <div class="include-title">Affirmations</div>
+      <div class="include-text">Six affirmations for the full five days. Not to perform. To remember something that was always true.</div>
+    </div>
+    <div class="include-item">
+      <div class="include-icon"></div>
+      <div class="include-title">A bonus exercise</div>
+      <div class="include-text">The future self letter. A body-based visualisation that trains your nervous system to recognise who you are becoming.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <div>
+    <h2 class="bcta-title">You already have<br>what you are<br><em>looking for.</em></h2>
+    <p class="bcta-text">This guide will not give you confidence from the outside. It will help you find what has been buried inside all along. The spark was never gone. It just needs the right conditions to surface again.</p>
+  </div>
+  <div class="bcta-right">
+    <div class="bcta-box">
+      <div class="sale-badge" style="margin-bottom:20px;">50% OFF — LIMITED TIME</div>
+      <div class="bcta-price">
+        <div class="bcta-price-new">€11</div>
+        <div class="bcta-price-old">€22</div>
+      </div>
+      <div class="bcta-save">YOU SAVE €11 TODAY</div>
+      <ul class="bcta-features">
+        <li>5-day guided PDF program</li>
+        <li>Daily meditation & affirmations page</li>
+        <li>Bonus future self exercise</li>
+        <li>Instant download, keep forever</li>
+        <li>Written by a certified coach & healer</li>
+      </ul>
+      <a href="mailto:info@vukojenemanja.com?subject=Build Your Confidence PDF" class="cta-btn">
+        GET INSTANT ACCESS — €11
+      </a>
+      <p class="cta-sub">Questions? <span><a href="mailto:info@vukojenemanja.com" style="color:var(--gold)">info@vukojenemanja.com</a></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Nemanja Vukoje &nbsp;·&nbsp; vukojenemanja.com</p>
+  <p>Instagram: <a href="#">@vukoje.nemanja.world</a></p>
+  <p><a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
+</footer>
+
+<script>
+  // ── COUNTDOWN TIMER ──
+  // Set deadline to 48 hours from first visit, stored in localStorage
+  const DURATION = 48 * 60 * 60 * 1000;
+  let deadline = localStorage.getItem('conf_deadline');
+  if (!deadline) {
+    deadline = Date.now() + DURATION;
+    localStorage.setItem('conf_deadline', deadline);
+  } else {
+    deadline = parseInt(deadline);
+  }
+
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = Math.max(0, deadline - now);
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
+    if (diff === 0) clearInterval(timer);
+  }
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+
+  // ── SCROLL ANIMATIONS ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

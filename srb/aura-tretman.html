@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tretman čišćenja i jačanja aure | Nemanja Vukoje</title>
+<meta name="description" content="Online sesija čišćenja, jačanja i punjenja aure. 30 minuta. 44€. Oseti razliku odmah nakon prve sesije.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+  --warm:   #D4B896;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--fog);
+  color: var(--bark);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,8,5,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--fog);
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.nav-cta {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clay);
+  border: 1px solid rgba(196,168,130,0.5);
+  padding: 8px 20px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: var(--clay); color: var(--deep); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 40px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(196,168,130,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 740px; }
+.hero-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.2s both;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.1;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.4s both;
+}
+.hero h1 em { font-style: italic; color: var(--clay); }
+.hero-sub {
+  font-size: 17px;
+  line-height: 1.85;
+  color: rgba(232,221,208,0.55);
+  max-width: 560px;
+  margin: 0 auto 52px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.6s both;
+}
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.8s both;
+}
+.btn-primary {
+  display: inline-block;
+  padding: 18px 44px;
+  background: var(--clay);
+  color: var(--deep);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-primary:hover { background: var(--warm); }
+.btn-ghost {
+  display: inline-block;
+  padding: 18px 44px;
+  border: 1px solid rgba(196,168,130,0.35);
+  color: var(--clay);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-ghost:hover { border-color: var(--clay); background: rgba(196,168,130,0.06); }
+
+.hero-price-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+  padding: 12px 24px;
+  border: 1px solid rgba(196,168,130,0.15);
+  opacity: 0;
+  animation: fadeUp 1s ease 1s both;
+}
+.price-was {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: rgba(196,168,130,0.3);
+  text-decoration: line-through;
+}
+.price-now {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--clay);
+}
+.price-divider {
+  width: 1px; height: 28px;
+  background: rgba(196,168,130,0.2);
+}
+.price-note {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(196,168,130,0.4);
+}
+
+/* RECOGNITION */
+.recognition {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+.recognition-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+.section-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 32px;
+}
+.recognition h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: var(--bark);
+}
+.recognition h2 em { font-style: italic; color: var(--accent); }
+.recognition-intro {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--stone);
+  max-width: 640px;
+  margin: 0 auto 64px;
+}
+.recognition-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  text-align: left;
+}
+.recognition-item {
+  background: var(--sand);
+  padding: 36px 32px;
+  border-top: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+.recognition-item:hover { border-color: var(--clay); }
+.recognition-item p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--stone);
+}
+.recognition-item p strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--bark);
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+/* WHAT IS AURA */
+.what-is {
+  background: var(--bark);
+  padding: 120px 60px;
+}
+.what-is-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.what-is h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+.what-is h2 em { font-style: italic; color: var(--clay); }
+.what-is p {
+  font-size: 15px;
+  line-height: 1.95;
+  color: rgba(232,221,208,0.6);
+  margin-bottom: 20px;
+}
+.what-is-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 340px;
+}
+.aura-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(196,168,130,0.15);
+}
+.aura-ring:nth-child(1) { width: 120px; height: 120px; background: rgba(196,168,130,0.12); }
+.aura-ring:nth-child(2) { width: 200px; height: 200px; border-color: rgba(196,168,130,0.1); }
+.aura-ring:nth-child(3) { width: 280px; height: 280px; border-color: rgba(196,168,130,0.07); }
+.aura-ring:nth-child(4) { width: 340px; height: 340px; border-color: rgba(196,168,130,0.04); }
+.aura-center {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+.aura-center span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--clay);
+  letter-spacing: 1px;
+}
+
+/* HOW IT WORKS */
+.how {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+.how-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.how h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: var(--bark);
+}
+.how h2 em { font-style: italic; color: var(--accent); }
+.how-intro {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--stone);
+  max-width: 560px;
+  margin-bottom: 64px;
+}
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-bottom: 60px;
+}
+.how-step {
+  background: var(--sand);
+  padding: 36px 28px;
+  border-top: 2px solid rgba(196,168,130,0.2);
+  transition: border-color 0.3s;
+}
+.how-step:hover { border-color: var(--clay); }
+.how-step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--clay);
+  opacity: 0.25;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.how-step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--bark);
+  margin-bottom: 10px;
+}
+.how-step p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--stone);
+}
+.how-details {
+  background: var(--sand);
+  padding: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.how-detail-item {
+  text-align: center;
+}
+.how-detail-icon {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--clay);
+  margin-bottom: 10px;
+}
+.how-detail-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 6px;
+}
+.how-detail-value {
+  font-size: 14px;
+  color: var(--bark);
+  line-height: 1.6;
+}
+
+/* RESULTS */
+.results {
+  background: var(--sand);
+  padding: 120px 60px;
+  text-align: center;
+}
+.results-inner { max-width: 960px; margin: 0 auto; }
+.results h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: var(--bark);
+}
+.results h2 em { font-style: italic; color: var(--accent); }
+.results-intro {
+  font-size: 15px;
+  color: var(--stone);
+  max-width: 480px;
+  margin: 0 auto 60px;
+  line-height: 1.8;
+}
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  text-align: left;
+}
+.result-item {
+  background: var(--fog);
+  padding: 36px 32px;
+}
+.result-item p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--stone);
+}
+.result-item p strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--bark);
+  margin-bottom: 8px;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  background: var(--deep);
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.testimonials::before {
+  content: '"';
+  position: absolute;
+  top: -40px; left: 40px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 400px;
+  color: rgba(196,168,130,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+.testimonials-inner { max-width: 960px; margin: 0 auto; }
+.testimonials h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 64px;
+}
+.testimonials h2 em { font-style: italic; color: var(--clay); }
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+.testi-card {
+  background: rgba(255,255,255,0.03);
+  padding: 40px 36px;
+  border-top: 2px solid rgba(196,168,130,0.15);
+  transition: border-color 0.3s;
+}
+.testi-card:hover { border-color: var(--clay); }
+.testi-card.featured {
+  background: rgba(196,168,130,0.06);
+  border-color: var(--clay);
+  grid-column: span 2;
+}
+.testi-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(232,221,208,0.85);
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+.testi-card.featured .testi-text { font-size: 26px; }
+.testi-author {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+.testi-source {
+  font-size: 11px;
+  color: var(--stone);
+  margin-top: 4px;
+}
+
+/* OFFER */
+.offer {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+.offer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+.offer h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: var(--bark);
+}
+.offer h2 em { font-style: italic; color: var(--accent); }
+.offer-intro {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--stone);
+  margin-bottom: 56px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.offer-card {
+  background: var(--deep);
+  padding: 60px;
+  margin-bottom: 20px;
+}
+.offer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 8px;
+}
+.offer-duration {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 36px;
+}
+.offer-includes {
+  list-style: none;
+  margin-bottom: 44px;
+  text-align: left;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.offer-includes li {
+  font-size: 14px;
+  color: rgba(232,221,208,0.5);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+.offer-includes li::before { content: '·'; color: var(--clay); flex-shrink: 0; }
+.offer-pricing {
+  margin-bottom: 36px;
+}
+.offer-price-was {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: rgba(196,168,130,0.25);
+  text-decoration: line-through;
+  margin-bottom: 6px;
+}
+.offer-price-now {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--clay);
+  line-height: 1;
+}
+.offer-price-note {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(196,168,130,0.35);
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+.offer-note {
+  background: var(--sand);
+  padding: 28px 36px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--stone);
+  text-align: left;
+}
+
+/* CTA */
+.cta-section {
+  background: var(--bark);
+  padding: 100px 60px;
+  text-align: center;
+}
+.cta-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.cta-section h2 em { font-style: italic; color: var(--clay); }
+.cta-section p {
+  font-size: 15px;
+  color: rgba(232,221,208,0.45);
+  margin-bottom: 48px;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+.cta-note {
+  margin-top: 24px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: rgba(196,168,130,0.3);
+}
+
+/* FOOTER */
+footer {
+  background: var(--deep);
+  padding: 60px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  border-top: 1px solid rgba(196,168,130,0.08);
+}
+footer h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 12px;
+}
+footer h3 em { font-style: italic; color: var(--clay); }
+footer h4 {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+footer p { font-size: 13px; color: rgba(232,221,236,0.3); line-height: 1.8; }
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 10px; }
+footer ul a {
+  font-size: 13px;
+  color: rgba(232,221,236,0.3);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+footer ul a:hover { color: var(--clay); }
+footer a { color: rgba(232,221,236,0.3); text-decoration: none; transition: color 0.3s; }
+footer a:hover { color: var(--clay); }
+.footer-bottom {
+  background: var(--deep);
+  padding: 20px 60px;
+  border-top: 1px solid rgba(196,168,130,0.06);
+  display: flex;
+  justify-content: space-between;
+}
+.footer-bottom p { font-size: 11px; color: var(--stone); }
+
+
+/* BONUS */
+.how-bonus {
+  margin-top: 2px;
+  background: rgba(196,168,130,0.08);
+  border: 1px solid rgba(196,168,130,0.2);
+  padding: 36px 48px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.bonus-label {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  background: rgba(196,168,130,0.12);
+  padding: 8px 16px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.bonus-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--bark);
+  margin-bottom: 8px;
+}
+.bonus-content p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--stone);
+}
+@media (max-width: 900px) {
+  .how-bonus { flex-direction: column; gap: 20px; padding: 28px 24px; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.js-loaded .reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.js-loaded .reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .hero { padding: 120px 24px 80px; }
+  .recognition, .what-is, .how, .results, .testimonials, .offer, .cta-section { padding: 80px 24px; }
+  .recognition-grid, .results-grid { grid-template-columns: 1fr; }
+  .what-is-inner { grid-template-columns: 1fr; }
+  .what-is-visual { height: 240px; }
+  .aura-ring:nth-child(4) { display: none; }
+  .how-steps { grid-template-columns: 1fr 1fr; }
+  .how-details { grid-template-columns: 1fr; gap: 24px; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .testi-card.featured { grid-column: span 1; }
+  .offer-card { padding: 40px 24px; }
+  footer { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px; }
+  .footer-bottom { flex-direction: column; gap: 8px; padding: 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://vukojenemanja.com" class="nav-logo">Nemanja Vukoje</a>
+  <a href="mailto:info@vukojenemanja.com?subject=Tretman aure" class="nav-cta">Zakaži sesiju</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Online sesija · Zoom · 30 minuta</div>
+    <h1>Oseti se lakše.<br><em>Već nakon prve sesije.</em></h1>
+    <p class="hero-sub">Tretman čišćenja i jačanja aure uklanja ono što te opterećuje i vraća ti energiju koja je oduvek bila tvoja.</p>
+    <div class="hero-actions">
+      <a href="mailto:info@vukojenemanja.com?subject=Tretman aure - zakazivanje" class="btn-primary">Zakaži tretman</a>
+      <a href="#kako" class="btn-ghost">Kako funkcioniše</a>
+    </div>
+    <div class="hero-price-tag">
+      <span class="price-was">66€</span>
+      <div class="price-divider"></div>
+      <span class="price-now">44€</span>
+      <div class="price-divider"></div>
+      <span class="price-note">Uvodni period</span>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section class="recognition">
+  <div class="recognition-inner">
+    <div class="section-label reveal">Prepoznaješ li se</div>
+    <h2 class="reveal">Nešto te opterećuje.<br><em>Ali ne znaš šta tačno.</em></h2>
+    <p class="recognition-intro reveal">Ne mora da bude ništa dramatično. Ponekad je to samo osećaj koji ne prolazi. Pritisak koji ostaje. Energija koja nedostaje.</p>
+    <div class="recognition-grid">
+      <div class="recognition-item reveal">
+        <p><strong>Osećaš se iscrpljeno</strong>Spavaš, odmoriš se, ali umor ne prolazi. Kao da nešto stalno troši tvoju energiju iznutra, a ne znaš odakle dolazi.</p>
+      </div>
+      <div class="recognition-item reveal">
+        <p><strong>Neraspoloženje bez razloga</strong>Spoljašnje stvari su okej. Ali iznutra nešto nije na svom mestu. Teško ti je da objasniš kome, jer na papiru sve izgleda dobro.</p>
+      </div>
+      <div class="recognition-item reveal">
+        <p><strong>Osećaj težine</strong>U grudima, u ramenima, u telu. Kao da nosiš nešto što nije tvoje, ili nešto što ti je davno trebalo da pustiš, ali nisi znao kako.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS AURA -->
+<section class="what-is">
+  <div class="what-is-inner">
+    <div>
+      <div class="section-label reveal" style="color:var(--clay)">Šta je aura</div>
+      <h2 class="reveal">Energetsko polje<br>koje odražava<br><em>sve što nosiš.</em></h2>
+      <p class="reveal">Aura je energetsko polje koje okružuje tvoje telo. Odražava tvoje fizičko, emocionalno i duhovno stanje. Kada je opterećena negativnim energijama ili blokadama, to se oseća u telu, u raspoloženju, u vitalnosti.</p>
+      <p class="reveal">Tretman čišćenja, jačanja i punjenja aure uklanja te blokade. Vraća ti svežu energiju i osećaj unutrašnje ravnoteže koji si možda dugo tražio.</p>
+    </div>
+    <div class="what-is-visual reveal">
+      <div class="aura-ring"></div>
+      <div class="aura-ring"></div>
+      <div class="aura-ring"></div>
+      <div class="aura-ring"></div>
+      <div class="aura-center">
+        <span>tvoje energetsko polje</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="kako">
+  <div class="how-inner">
+    <div class="section-label reveal">Tok sesije</div>
+    <h2 class="reveal">Kako izgleda<br><em>tretman iznutra.</em></h2>
+    <p class="how-intro reveal">Sesija je vođena, online, i u potpunosti prilagođena tvom stanju tog dana. Ne treba ništa da znaš unapred. Treba samo da budeš prisutan/na.</p>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="how-step-num">01</div>
+        <div class="how-step-title">Povezujemo se</div>
+        <p>Kratko razgovaramo o tome kako se osećaš. Šta te opterećuje. Gde osećaš blokadu ili težinu.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">02</div>
+        <div class="how-step-title">Vođena meditacija</div>
+        <p>Uvodim te u stanje duboke relaksacije kroz vođenu meditaciju. Telo se opušta. Um se smiruje.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">03</div>
+        <div class="how-step-title">Energetsko isceljenje</div>
+        <p>Čistimo, jačamo i punimo tvoju auru svežom energijom na svim nivoima bića.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">04</div>
+        <div class="how-step-title">Osećaš razliku</div>
+        <p>Većina ljudi oseti olakšanje već tokom sesije. Lakše u telu. Mirnije iznutra. Jasnije u glavi.</p>
+      </div>
+    </div>
+    <div class="how-details reveal">
+      <div class="how-detail-item">
+        <div class="how-detail-icon">30'</div>
+        <div class="how-detail-label">Trajanje</div>
+        <div class="how-detail-value">Oko 30 minuta, u zavisnosti od tvog stanja</div>
+      </div>
+      <div class="how-detail-item">
+        <div class="how-detail-icon">Zoom</div>
+        <div class="how-detail-label">Gde</div>
+        <div class="how-detail-value">Online, iz udobnosti svog prostora</div>
+      </div>
+      <div class="how-detail-item">
+        <div class="how-detail-icon">+</div>
+        <div class="how-detail-label">Bonus</div>
+        <div class="how-detail-value">Personalizovana meditacija za praksu nakon sesije</div>
+      </div>
+    </div>
+
+    <div class="how-bonus reveal">
+      <div class="bonus-label">Bonus</div>
+      <div class="bonus-content">
+        <div class="bonus-title">Meditacija za integraciju</div>
+        <p>Nakon sesije dobijaš personalizovanu meditaciju kreiranu posebno za tebe, za praksu u danima koji slede. Da promena ostane i produbi se.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results">
+  <div class="results-inner">
+    <div class="section-label reveal">Šta se menja</div>
+    <h2 class="reveal">Ono što ljudi osete<br><em>nakon tretmana.</em></h2>
+    <p class="results-intro reveal">Promena nije u glavi. Oseća se u telu. U grudima. U načinu na koji dišeš kada izađeš iz sesije.</p>
+    <div class="results-grid">
+      <div class="result-item reveal">
+        <p><strong>Osećaj lakoće</strong>Težina koja je bila tu, jednostavno nije više tu. Telo se oseća drugačije. Lakše. Slobodnije.</p>
+      </div>
+      <div class="result-item reveal">
+        <p><strong>Više energije</strong>Ne motivacije, nego prave energije. Ono što je bilo zarobljeno vraća se tebi.</p>
+      </div>
+      <div class="result-item reveal">
+        <p><strong>Unutrašnji mir</strong>Smirenost koja ne dolazi od spolja. Dolazi od toga što si pustio/la ono što si dugo nosio/la.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <h2 class="reveal">Šta kažu<br><em>nakon sesije.</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card featured reveal">
+        <p class="testi-text">"Takva lakoća u grudima i telu nakon samo jedne sesije. Ovo je neverovatno."</p>
+        <div class="testi-author">Bojana K., Beograd</div>
+        <div class="testi-source">Nakon prvog tretmana aure</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"Nisam znala šta da očekujem. Izašla sam osećajući se kao da sam skinula kaput koji sam nosila godinama."</p>
+        <div class="testi-author">Marija T., Beč</div>
+        <div class="testi-source">Nakon tretmana aure</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">"Energija mi se vratila odmah. Već sutradan sam se osećala drugačije, mirnije, prisutnije."</p>
+        <div class="testi-author">Ana S., Novi Sad</div>
+        <div class="testi-source">Nakon tretmana aure</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer" id="rezervisi">
+  <div class="offer-inner">
+    <div class="section-label reveal">Tretman</div>
+    <h2 class="reveal">Sve što dobijaš<br><em>u jednoj sesiji.</em></h2>
+    <p class="offer-intro reveal">Jedna sesija je dovoljna da osetis/osetite razliku. Bez obaveza. Bez dugih procesa. Samo 30 minuta koje mogu da promene kako se osećaš.</p>
+    <div class="offer-card reveal">
+      <div class="offer-name">Tretman čišćenja i jačanja aure</div>
+      <div class="offer-duration">Online sesija · Zoom · 30 minuta</div>
+      <ul class="offer-includes">
+        <li>Vođena meditacija za duboku relaksaciju</li>
+        <li>Energetsko isceljenje aure na svim nivoima</li>
+        <li>Jačanje i punjenje energetskog polja</li>
+        <li>Intuitivni rad prilagođen tvom stanju</li>
+        <li>Meditacija za integraciju — za praksu u danima nakon sesije</li>
+        <li>Detaljna uputstva pre sesije na email</li>
+      </ul>
+      <div class="offer-pricing">
+        <div class="offer-price-was">66€</div>
+        <div class="offer-price-now">44€</div>
+        <div class="offer-price-note">Uvodni period · Ograničeno</div>
+      </div>
+      <a href="mailto:info@vukojenemanja.com?subject=Tretman aure - zakazivanje" class="btn-primary">Zakaži tretman</a>
+    </div>
+    <div class="offer-note reveal">
+      Nakon uplate dobićeš email sa detaljnim uputstvima i videom koji objašnjava kako da se pripremiš/pripremite. Termin zakazujemo individualno, prema tvom i mom rasporedu.
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="reveal">Nisi siguran/na da li je ovo za tebe?<br><em>Napiši mi.</em></h2>
+  <p class="reveal">Odgovoriću ti i zajedno ćemo videti da li je ovo pravi korak za tebe upravo sada. Bez pritiska.</p>
+  <a href="mailto:info@vukojenemanja.com?subject=Pitanje o tretmanu aure" class="btn-primary reveal">Pošalji poruku</a>
+  <p class="cta-note reveal">Sesije su online · Na srpskom i engleskom · Svugde u svetu</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <h3>Nemanja<br><em>Vukoje</em></h3>
+    <p>Energy Healer · Soul Coach · Kundalini Yoga Teacher<br>Beč, Austrija · Online svugde<br>Srpski i engleski</p>
+  </div>
+  <div>
+    <h4>Istraži</h4>
+    <ul>
+      <li><a href="https://vukojenemanja.com">Početna</a></li>
+      <li><a href="https://vukojenemanja.com/akal.html">Akal zajednica</a></li>
+      <li><a href="https://vukojenemanja.com/individual.html">Individualni rad</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Kontakt</h4>
+    <p>
+      <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a><br><br>
+      <a href="https://instagram.com/vukoje.nemanja">@vukoje.nemanja</a>
+    </p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Nemanja Vukoje · vukojenemanja.com</p>
+  <p>Online sesije · Svugde u svetu</p>
+</div>
+
+<script>
+document.body.classList.add('js-loaded');
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) {
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

@@ -40,6 +40,12 @@ nav {
   background: rgba(10,8,5,0.85);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(196,168,130,0.12);
+  transition: background 0.4s, padding 0.4s;
+}
+nav.scrolled {
+  background: rgba(26,18,8,0.95);
+  padding: 14px 60px;
+  border-bottom: 1px solid rgba(196,168,130,0.2);
 }
 .nav-logo {
   font-family: 'Cormorant Garamond', serif;
@@ -48,18 +54,92 @@ nav {
   color: var(--fog);
   text-decoration: none;
   letter-spacing: 1px;
+  transition: color 0.4s;
 }
-.nav-cta {
-  font-size: 11px;
+nav.scrolled .nav-logo { color: var(--bark); }
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--clay);
+  color: rgba(245,241,236,0.8);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+nav.scrolled .nav-links a { color: var(--stone); }
+.nav-links a:hover { color: var(--clay); }
+.nav-cta {
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  color: var(--clay) !important;
   border: 1px solid rgba(196,168,130,0.5);
   padding: 8px 20px;
+  border-radius: 1px;
   text-decoration: none;
-  transition: all 0.3s;
+  transition: all 0.3s !important;
 }
-.nav-cta:hover { background: var(--clay); color: var(--deep); }
+.nav-cta:hover { background: var(--clay) !important; color: var(--deep) !important; }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-hamburger span {
+  width: 22px; height: 1px;
+  background: var(--fog);
+  transition: all 0.3s;
+  display: block;
+}
+nav.scrolled .nav-hamburger span { background: var(--bark); }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--fog);
+  z-index: 99;
+  flex-direction: column;
+  padding: 100px 40px 40px;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--bark);
+  text-decoration: none;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(196,168,130,0.15);
+  transition: color 0.3s;
+}
+.nav-mobile-menu a:first-child { border-top: 1px solid rgba(196,168,130,0.08); }
+.nav-mobile-menu a:hover { color: var(--clay); }
+.nav-mobile-menu a.mobile-cta { color: var(--clay); }
+.nav-mobile-close {
+  position: absolute;
+  top: 24px; right: 24px;
+  background: none; border: none;
+  font-size: 28px;
+  color: var(--bark);
+  cursor: pointer;
+  line-height: 1;
+}
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
 
 /* HERO */
 .hero {
@@ -744,10 +824,31 @@ footer a:hover { color: var(--clay); }
 </head>
 <body>
 
-<nav>
-  <a href="https://vukojenemanja.com" class="nav-logo">Nemanja Vukoje</a>
-  <a href="mailto:info@vukojenemanja.com?subject=Tretman aure" class="nav-cta">Zakaži sesiju</a>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Nemanja Vukoje</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">O meni</a></li>
+    <li><a href="raspored.html">Kalendar</a></li>
+    <li><a href="akal.html">Akal zajednica</a></li>
+    <li><a href="individual.html">Individualni rad</a></li>
+    <li><a href="index.html#testimonials">Utisci</a></li>
+    <li><a href="mailto:vukoje.nemanja4@gmail.com?subject=Aura%20Tretman%20-%20Zakazivanje" class="nav-cta">Zakaži sesiju</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Meni">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mobileMenu">
+  <button class="nav-mobile-close" onclick="closeMobileMenu()">×</button>
+  <a href="index.html#about" onclick="closeMobileMenu()">O meni</a>
+  <a href="raspored.html" onclick="closeMobileMenu()">Kalendar</a>
+  <a href="akal.html" onclick="closeMobileMenu()">Akal zajednica</a>
+  <a href="individual.html" onclick="closeMobileMenu()">Individualni rad</a>
+  <a href="index.html#testimonials" onclick="closeMobileMenu()">Utisci</a>
+  <a href="mailto:vukoje.nemanja4@gmail.com?subject=Aura%20Tretman%20-%20Zakazivanje" class="mobile-cta" onclick="closeMobileMenu()">Zakaži sesiju</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -971,6 +1072,21 @@ footer a:hover { color: var(--clay); }
 </div>
 
 <script>
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('hamburgerBtn');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburgerBtn').classList.remove('open');
+  document.body.style.overflow = '';
+}
 document.body.classList.add('js-loaded');
 const observer = new IntersectionObserver(function(entries) {
   entries.forEach(function(entry) {

@@ -379,36 +379,43 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 }
 
 .method-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .method-step {
-  background: rgba(255,255,255,0.03);
-  padding: 48px 36px;
-  border-top: 2px solid rgba(196,168,130,0.15);
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  padding: 48px 0;
+  border-top: 1px solid rgba(196,168,130,0.12);
   transition: border-color 0.3s;
 }
 
-.method-step:hover { border-color: var(--clay); }
+.method-step:hover { border-color: rgba(196,168,130,0.3); }
+
+.step-content { flex: 1; }
 
 .step-number {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 64px;
+  font-size: 80px;
   font-weight: 300;
+  font-style: italic;
   color: var(--clay);
-  opacity: 0.2;
+  opacity: 0.25;
   line-height: 1;
-  margin-bottom: 24px;
+  min-width: 80px;
+  text-align: right;
+  flex-shrink: 0;
 }
 
 .step-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 400;
   color: var(--sand);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .step-body {
@@ -476,7 +483,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 }
 
 .offer-grid-2col {
-  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-columns: repeat(2, 1fr);
 }
 .offer-grid {
   display: grid;
@@ -746,6 +753,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 @media (max-width: 900px) {
   .hero-photo-placeholder { display: none; }
   .about-me-photo { aspect-ratio: 4/3; }
+  .about-me-photo img { object-position: center 80%; }
 }
 
 /* ── ABOUT ME ── */
@@ -939,12 +947,30 @@ footer ul a:hover { color: var(--clay); }
   nav.scrolled { padding: 14px 24px; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
-  .hero-content { padding: 0 24px 80px; }
+
+  .hero {
+    min-height: auto;
+    padding: 100px 24px 60px;
+  }
+  .hero-content { padding: 0; max-width: 100%; }
   .hero-method-tag { display: none; }
-  .recognition-inner, .method-header, .method-difference, .difference-quote { grid-template-columns: 1fr; gap: 40px; }
-  .method-steps, .offer-grid, .offer-grid-2col, .testi-grid { grid-template-columns: 1fr; }
+
+  .hero-eyebrow { font-size: 9px; letter-spacing: 3px; margin-bottom: 20px; }
+  .hero h1 { font-size: 34px; margin-bottom: 24px; }
+  .hero-sub { font-size: 15px; margin-bottom: 36px; }
+
+  .hero-actions { flex-direction: column; gap: 12px; align-items: stretch; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost { text-align: center; width: 100%; }
+
+  .recognition-inner, .method-header, .method-difference, .difference-quote { grid-template-columns: 1fr; gap: 32px; }
+  .offer-grid, .offer-grid-2col, .testi-grid { grid-template-columns: 1fr; }
   .testi-featured { grid-column: span 1; }
-  .recognition, .method, .offers, .testimonials, .cta-section { padding: 80px 24px; }
+  .section-label { letter-spacing: 3px; font-size: 9px; }
+
+  .recognition, .about-me, .method, .why-works, .offers, .testimonials, .cta-section { padding: 60px 24px; }
+  .about-me-inner { padding: 0; }
+
   footer { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px 40px; }
   .footer-bottom { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
   .method-difference { padding: 40px 28px; }
@@ -1020,6 +1046,8 @@ footer ul a:hover { color: var(--clay); }
         <li class="reveal">Das Leben sieht von außen gut aus. Innen ist etwas hohl. Du kannst es niemandem erklären, weil auf dem Papier alles in Ordnung ist.</li>
         <li class="reveal">Du fühlst dich emotional erschöpft. Nicht davon, zu viel zu tun – sondern davon, zu viel zu tragen, zu lange, allein.</li>
       </ul>
+      <p class="reveal" style="margin-top:32px;">Nichts davon ist, wer du bist. Es ist das, was lange auf dem gesessen hat, wer du bist.</p>
+      <p class="reveal">Diese Arbeit geht nicht darum, das Gewicht besser zu tragen. Es geht darum, es abzulegen - damit du herausfinden kannst, was du wirklich mit dem Leben darunter anfangen willst.</p>
     </div>
   </div>
 </section>
@@ -1040,6 +1068,7 @@ footer ul a:hover { color: var(--clay); }
         <p class="reveal">Ich ging. Ich reiste. Ich saß bei Lehrern an Orten, die ich mir nie vorgestellt hatte zu besuchen.</p>
         <p class="reveal">Ich sammelte keine Zertifikate, sondern Erfahrungen – was Menschen wirklich bewegt, was wirklich heilt, was Gespräche allein nicht erreichen können.</p>
         <p class="about-me-closing reveal">Diese Suche wurde zu dieser Arbeit.</p>
+        <p class="reveal" style="margin-top:24px;">Was ich auf dieser Suche gefunden habe, biete ich dir jetzt an. Keine Technik, um dein Leben besser zu managen. Einen Weg, es wirklich zu leben - und in deinem Körper zu wissen, dass du nicht mehr verschwindest.</p>
       </div>
     </div>
   </div>
@@ -1061,27 +1090,43 @@ footer ul a:hover { color: var(--clay); }
     <div class="method-steps">
       <div class="method-step reveal">
         <div class="step-number">01</div>
-        <div class="step-title">Wir finden die Wurzel</div>
-        <p class="step-body">Durch Gespräche und meditative Techniken gehen wir unter die Oberfläche, um zu finden, wo das Muster tatsächlich begonnen hat. Nicht nur was passiert ist – sondern wo es heute noch in dir gehalten wird.</p>
+        <div class="step-content">
+          <div class="step-title">Wir definieren das Ziel</div>
+          <p class="step-body">Bevor wir irgendwohin gehen, werden wir klar, wo du wirklich landen willst. Kein vager Wunsch. Ein echtes, gespürtes Gefühl des Lebens, auf das du zubewegst. Diese Klarheit wird der Kompass für alles, was folgt.</p>
+        </div>
       </div>
       <div class="method-step reveal">
         <div class="step-number">02</div>
-        <div class="step-title">Wir lösen es vollständig</div>
-        <p class="step-body">Mit Energiearbeit lösen wir, was gefunden wurde – von den emotionalen, körperlichen und energetischen Ebenen deines Wesens. Nicht durch Kraft. Sondern dadurch, dass wir ihm endlich den Raum geben, den es immer gesucht hat.</p>
+        <div class="step-content">
+          <div class="step-title">Wir finden die Wurzel</div>
+          <p class="step-body">Durch Gespräche und meditative Techniken gehen wir unter die Oberfläche, um zu finden, wo das Muster tatsächlich begonnen hat. Nicht nur was passiert ist – sondern wo es heute noch in dir gehalten wird.</p>
+        </div>
       </div>
       <div class="method-step reveal">
         <div class="step-number">03</div>
-        <div class="step-title">Du kehrst zu dir zurück</div>
-        <p class="step-body">Das Gewicht, das du mitgebracht hast, verlässt dich nicht mehr. Was festgehalten war, löst sich – und diese Energie kommt zurück zu dir. Menschen spüren es sofort. Leichter. Freier. Mehr sie selbst.</p>
+        <div class="step-content">
+          <div class="step-title">Wir lösen es vollständig</div>
+          <p class="step-body">Mit Energiearbeit lösen wir, was gefunden wurde – von den emotionalen, körperlichen und energetischen Ebenen deines Wesens. Nicht durch Kraft. Sondern dadurch, dass wir ihm endlich den Raum geben, den es immer gesucht hat.</p>
+        </div>
+      </div>
+      <div class="method-step reveal">
+        <div class="step-number">04</div>
+        <div class="step-content">
+          <div class="step-title">Wir lenken die freie Energie in echte Handlung</div>
+          <p class="step-body">Was sich löst, verschwindet nicht einfach - es wird dir verfügbar. Wir nutzen diese Energie, um Klarheit, Schwung und die ersten echten Schritte in Richtung des Lebens aufzubauen, das wir in Schritt eins definiert haben.</p>
+        </div>
+      </div>
+      <div class="method-step reveal">
+        <div class="step-number">05</div>
+        <div class="step-content">
+          <div class="step-title">Du wirst mehr du selbst</div>
+          <p class="step-body">Nicht eine andere Person. Mehr von dem, wer du schon warst, unter dem, was dich blockiert hat. Leichter, klarer und in Bewegung - auf das Leben zu, das die ganze Zeit auf dich gewartet hat.</p>
+        </div>
       </div>
     </div>
 
     <div class="method-difference reveal">
       <div class="difference-quote">„Ich helfe dir nicht nur zu verstehen, was dich zurückhält. Wir entfernen es wirklich."</div>
-      <div class="difference-body">
-        <p style="margin-bottom:16px;">Das ist es, was diese Methode von regulärem Coaching und von Energiearbeit allein unterscheidet.</p>
-        <p>Coaching ohne Energiearbeit lässt die Wurzel unberührt. Energiearbeit ohne Coaching kann die Bedeutung verfehlen. Zusammen schaffen sie einen vollständigen Prozess – einen, der auf jeder Ebene dessen wirkt, wer du bist.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -1111,6 +1156,7 @@ footer ul a:hover { color: var(--clay); }
       <div class="section-label reveal">Sessions und Programme</div>
       <h2 class="reveal">Wähle, wo du<br><em>beginnen möchtest.</em></h2>
       <p class="offers-sub reveal">Ob du zuerst eine Session ausprobieren oder dich einem vollständigen Prozess widmen möchtest – es gibt einen richtigen Einstiegspunkt für dich.</p>
+      <p class="offers-sub reveal" style="margin-top:12px;font-style:italic;color:var(--clay);">Jeder Weg hier führt zum selben Ort: du, wieder in der Kontrolle deines eigenen Lebens. Die einzige Frage ist, wie viel Unterstützung du auf dem Weg dorthin möchtest.</p>
     </div>
 
     <div class="offer-grid offer-grid-2col">
@@ -1197,7 +1243,7 @@ footer ul a:hover { color: var(--clay); }
       <div class="testi-card reveal">
         <p class="testi-text">„Meine Angst vor dem Marathon ist weg. Ich habe stark beendet. Ich weiß, dass ich mir nichts mehr beweisen muss. Meine Energie war unglaublich."</p>
         <div class="testi-author">Sarah M., Toronto</div>
-        <div class="testi-source">Nach Inner Peace Sessions</div>
+        <div class="testi-source">Nach Inner Shift Sessions</div>
       </div>
       <div class="testi-card reveal">
         <p class="testi-text">„40 Tage Meditation und Kundalini Yoga haben mir mehr gebracht als Jahre der Therapie."</p>
@@ -1212,7 +1258,7 @@ footer ul a:hover { color: var(--clay); }
       <div class="testi-card reveal">
         <p class="testi-text">„Ich hatte Frieden, den ich lange nicht gespürt hatte. Ich hatte nicht gemerkt, wie abgetrennt ich geworden war. Etwas hat sich geöffnet – und es ist noch da."</p>
         <div class="testi-author">Nina P., Buenos Aires</div>
-        <div class="testi-source">Nach Inner Peace Session</div>
+        <div class="testi-source">Nach Inner Shift Session</div>
       </div>
       <div class="testi-card reveal">
         <p class="testi-text">„Ich entschied mich, dem zu vergeben, der mir wehgetan hat – nicht weil ich musste, sondern weil ich sah, dass Unfreundlichkeit mir keinen Frieden bringt. Die Transformation geschah mit Authentizität, nicht mit Zwang."</p>
@@ -1226,7 +1272,7 @@ footer ul a:hover { color: var(--clay); }
 <!-- FINAL CTA -->
 <section class="cta-section">
   <h2 class="reveal">Nicht sicher, wo du anfangen sollst?<br><em>Melde dich einfach.</em></h2>
-  <p class="reveal">Erzähl mir, wo du gerade stehst. Wir finden gemeinsam den richtigen ersten Schritt. Es gibt keinen falschen Ort, um zu beginnen.</p>
+  <p class="reveal">Erzähl mir, wo du gerade stehst. Wir finden gemeinsam den richtigen ersten Schritt. Es gibt keinen falschen Ort, um zu beginnen - nur den Schritt, den du noch nicht gemacht hast.</p>
   <a href="mailto:info@vukojenemanja.com?subject=Inner%20Shift%20-%20Ich%20m%C3%B6chte%20beginnen" class="btn-primary reveal">Nachricht senden</a>
   <p class="cta-note reveal">Sessions sind online · Englisch, Deutsch und Serbisch · Weltweit</p>
 </section>

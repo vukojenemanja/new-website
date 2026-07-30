@@ -3,7 +3,7 @@ backend:
   repo: vukojenemanja/new-website
   branch: main
   auth_type: pkce
-  app_id: DEIN_GITHUB_OAUTH_CLIENT_ID
+  app_id: Ov23liuhmWrBiNyDqNaZ
 
 media_folder: "assets/images"
 public_folder: "/assets/images"

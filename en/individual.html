@@ -882,6 +882,67 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
   margin-top: 16px;
 }
 
+/* ── METHOD STEPS - VERTICAL ── */
+.method-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.method-step {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 48px;
+  padding: 52px 0;
+  border-top: 1px solid rgba(196,168,130,0.12);
+  background: none;
+  transition: none;
+}
+
+.method-step:last-child {
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+}
+
+.method-step:hover { border-top-color: rgba(196,168,130,0.12); }
+
+.step-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--clay);
+  opacity: 0.35;
+  line-height: 1;
+  margin-bottom: 0;
+  padding-top: 4px;
+}
+
+.step-content {}
+
+.step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--sand);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.step-body {
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(232,221,208,0.55);
+}
+
+@media (max-width: 900px) {
+  .method-step {
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    padding: 36px 0;
+  }
+  .step-number { font-size: 44px; }
+}
+
 /* ── DISCOUNT PRICE ── */
 .offer-price-was {
   font-family: 'Cormorant Garamond', serif;
@@ -1009,7 +1070,6 @@ footer ul a:hover { color: var(--clay); }
   .method-difference,
   .difference-quote { grid-template-columns: 1fr; gap: 40px; }
 
-  .method-steps,
   .offer-grid,
   .offer-grid-2col,
   .testi-grid { grid-template-columns: 1fr; }
@@ -1110,6 +1170,8 @@ footer ul a:hover { color: var(--clay); }
         <li class="reveal">Life looks fine from the outside. On the inside something is hollow. You cannot explain it to anyone because on paper, everything is okay.</li>
         <li class="reveal">You feel emotionally exhausted. Not from doing too much - but from holding too much, for too long, alone.</li>
       </ul>
+      <p class="reveal" style="margin-top:32px;">None of that is who you are. It is what has been sitting on top of who you are, for a long time now.</p>
+      <p class="reveal">This work is not about learning to manage the weight better. It is about putting it down - so you can find out what you actually want to do with the life underneath it.</p>
     </div>
   </div>
 </section>
@@ -1131,6 +1193,7 @@ footer ul a:hover { color: var(--clay); }
         <p class="reveal">I left. I traveled. I sat with teachers in places I had never imagined I would go.</p>
         <p class="reveal">I collected not qualifications but experiences - what actually moves people, what actually heals, what talk alone cannot reach.</p>
         <p class="about-me-closing reveal">That search became this work.</p>
+        <p class="reveal" style="margin-top:24px;">What I found on that search is what I now offer you. Not a technique to manage your life better. A way to actually live it - and to know, in your body, that you are not disappearing anymore.</p>
       </div>
     </div>
   </div>
@@ -1152,18 +1215,38 @@ footer ul a:hover { color: var(--clay); }
     <div class="method-steps">
       <div class="method-step reveal">
         <div class="step-number">01</div>
-        <div class="step-title">We find the root</div>
-        <p class="step-body">Through conversation and meditative techniques, we go below the surface story to find where the pattern actually began. Not just what happened - but where it is still held inside you today.</p>
+        <div class="step-content">
+          <div class="step-title">We define the goal</div>
+          <p class="step-body">Before we go anywhere, we get clear on where you actually want to end up. Not a vague wish. A real, felt sense of the life you are moving toward. That clarity becomes the compass for everything that follows.</p>
+        </div>
       </div>
       <div class="method-step reveal">
         <div class="step-number">02</div>
-        <div class="step-title">We release it completely</div>
-        <p class="step-body">With energy healing, we release what was found - from the emotional, physical, and energetic levels of your being. Not by force. By finally giving it the space it has always been asking for.</p>
+        <div class="step-content">
+          <div class="step-title">We find the root</div>
+          <p class="step-body">Through conversation and meditative techniques, we go below the surface story to find where the pattern actually began. Not just what happened - but where it is still held inside you today.</p>
+        </div>
       </div>
       <div class="method-step reveal">
         <div class="step-number">03</div>
-        <div class="step-title">You return to yourself</div>
-        <p class="step-body">The weight you carried in does not leave with you. What was trapped releases - and that energy comes back to you. People feel it immediately. Lighter. Freer. More themselves.</p>
+        <div class="step-content">
+          <div class="step-title">We release it completely</div>
+          <p class="step-body">With energy healing, we release what was found - from the emotional, physical, and energetic levels of your being. Not by force. By finally giving it the space it has always been asking for.</p>
+        </div>
+      </div>
+      <div class="method-step reveal">
+        <div class="step-number">04</div>
+        <div class="step-content">
+          <div class="step-title">We direct the free energy into real action</div>
+          <p class="step-body">What releases does not just disappear - it becomes available to you. We use that energy to build clarity, momentum, and the first real steps toward the life we defined in step one.</p>
+        </div>
+      </div>
+      <div class="method-step reveal">
+        <div class="step-number">05</div>
+        <div class="step-content">
+          <div class="step-title">You become more of yourself</div>
+          <p class="step-body">Not a different person. More of who you already were, underneath what was blocking you. Lighter, clearer, and moving - toward the life that was waiting for you the whole time.</p>
+        </div>
       </div>
     </div>
 
@@ -1192,6 +1275,7 @@ footer ul a:hover { color: var(--clay); }
         <p class="reveal">With coaching alone, you understand your patterns - but they stay in the body. With energy healing alone, you feel better - but you do not know why or how to build on it.</p>
         <p class="reveal">Together, they create a complete process. We find exactly where the weight lives. Then we release it - not just from your mind, but from your body, your energy field, every level where it has been held. What was trapped comes back to you as energy, calm, and clarity.</p>
         <p class="why-works-closing reveal">That is the shift people feel when they leave a session.</p>
+        <p class="reveal" style="margin-top:20px;font-style:italic;">It is not a memory of a good hour. It is still there Monday morning - in how you show up for the people who need you, in the way your own days start to feel like they belong to you again.</p>
       </div>
     </div>
   </div>
@@ -1204,6 +1288,7 @@ footer ul a:hover { color: var(--clay); }
       <div class="section-label reveal">Sessions and programs</div>
       <h2 class="reveal">Choose where<br><em>you want to begin.</em></h2>
       <p class="offers-sub reveal">Whether you want to try one session first or commit to a full process - there is a right entry point for you.</p>
+      <p class="offers-sub reveal" style="margin-top:12px;font-style:italic;color:var(--clay);">Every path here leads to the same place: you, back in charge of your own life. The only question is how much support you want on the way there.</p>
     </div>
 
     <div class="offer-grid offer-grid-2col">
@@ -1295,7 +1380,7 @@ footer ul a:hover { color: var(--clay); }
       <div class="testi-card reveal">
         <p class="testi-text">"My fear from the marathon is gone. I finished strong. I know I don't need to prove anything to myself. My energy was amazing."</p>
         <div class="testi-author">Sarah M., Toronto</div>
-        <div class="testi-source">After Inner Peace sessions</div>
+        <div class="testi-source">After Inner Shift sessions</div>
       </div>
       <div class="testi-card reveal">
         <p class="testi-text">"40 days of meditation and Kundalini Yoga did more for me than years of therapy."</p>
@@ -1310,7 +1395,7 @@ footer ul a:hover { color: var(--clay); }
       <div class="testi-card reveal">
         <p class="testi-text">"I had peace I haven't felt in a long time. I hadn't realized how disconnected I had become. Something opened up - and it is still there."</p>
         <div class="testi-author">Nina P., Buenos Aires</div>
-        <div class="testi-source">After Inner Peace session</div>
+        <div class="testi-source">After Inner Shift session</div>
       </div>
       <div class="testi-card reveal">
         <p class="testi-text">"I chose to forgive who hurt me - not because I had to, but because I saw that unkindness doesn't bring me peace. The transformation happened with authenticity, not force."</p>
@@ -1324,7 +1409,7 @@ footer ul a:hover { color: var(--clay); }
 <!-- FINAL CTA -->
 <section class="cta-section">
   <h2 class="reveal">Not sure where to start?<br><em>Just reach out.</em></h2>
-  <p class="reveal">Tell me where you are right now. We will find the right first step together. There is no wrong place to begin.</p>
+  <p class="reveal">Tell me where you are right now. We will find the right first step together. There is no wrong place to begin - only the step you haven't taken yet.</p>
   <a href="mailto:info@vukojenemanja.com?subject=Inner%20Shift%20-%20I%20want%20to%20start" class="btn-primary reveal">Send a message</a>
   <p class="cta-note reveal">Sessions are online · English, German and Serbian · Worldwide</p>
 </section>

@@ -1,0 +1,6 @@
+title: Nemanja Vukoje
+url: "https://vukojenemanja.com"
+baseurl: ""
+exclude:
+  - README.txt
+  - node_modules

@@ -1,23 +1,25 @@
+---
+---
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nemanja Vukoje - Heiler, Coach & Kundalini-Yoga-Lehrer</title>
-<meta name="description" content="Löse emotionale Blockaden, verbinde dich wieder mit deiner Energie und finde zurück in ein Leben, das sich wirklich lebendig anfühlt. Online-Sessions auf Englisch, Serbisch und Deutsch.">
+<title>{{ site.data.de_index.meta_title }}</title>
+<meta name="description" content="{{ site.data.de_index.meta_desc }}">
 <link rel="canonical" href="https://vukojenemanja.com/de/index.html" />
 <link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/index.html" />
 <link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/index.html" />
 <link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/index.html" />
 <link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/" />
-<meta property="og:title" content="Nemanja Vukoje - Heiler, Coach & Kundalini-Yoga-Lehrer" />
-<meta property="og:description" content="Löse emotionale Blockaden, verbinde dich wieder mit deiner Energie und finde zurück in ein Leben, das sich wirklich lebendig anfühlt. Online-Sessions auf Englisch, Serbisch und Deutsch." />
+<meta property="og:title" content="{{ site.data.de_index.meta_title }}" />
+<meta property="og:description" content="{{ site.data.de_index.meta_desc }}" />
 <meta property="og:url" content="https://vukojenemanja.com/de/index.html" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Nemanja Vukoje" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Nemanja Vukoje - Heiler, Coach & Kundalini-Yoga-Lehrer" />
-<meta name="twitter:description" content="Löse emotionale Blockaden, verbinde dich wieder mit deiner Energie und finde zurück in ein Leben, das sich wirklich lebendig anfühlt." />
+<meta name="twitter:title" content="{{ site.data.de_index.meta_title }}" />
+<meta name="twitter:description" content="{{ site.data.de_index.meta_desc }}" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,8 +27,8 @@
   "name": "Nemanja Vukoje",
   "url": "https://vukojenemanja.com/de/index.html",
   "email": "info@vukojenemanja.com",
-  "jobTitle": "Heiler, Coach & Kundalini-Yoga-Lehrer",
-  "description": "Löse emotionale Blockaden, verbinde dich wieder mit deiner Energie und finde zurück in ein Leben, das sich wirklich lebendig anfühlt.",
+  "jobTitle": "{{ site.data.de_index.footer.tagline }}",
+  "description": "{{ site.data.de_index.meta_desc }}",
   "sameAs": []
 }
 </script>
@@ -164,7 +166,6 @@ nav.scrolled .nav-links span { color: var(--stone); }
   background: linear-gradient(to right, var(--deep) 0%, transparent 40%);
 }
 
-/* Subtle grain texture */
 .hero-image-placeholder::before {
   content: '';
   position: absolute;
@@ -1120,7 +1121,6 @@ footer {
 }
 
 /* ── RESPONSIVE ── */
-/* -- PAIN QUOTES -- */
 .pain-quotes {
   display: flex;
   flex-direction: column;
@@ -1197,668 +1197,7 @@ footer {
 }
 .dropdown-menu li a:hover { background: var(--sand); color: var(--accent) !important; }
 
-/* ── SUBPAGES ── */
-.subpage {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  background: var(--fog);
-  overflow-y: auto;
-}
-
-.subpage-nav {
-  position: sticky;
-  top: 0;
-  background: rgba(245,241,236,0.96);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(196,168,130,0.2);
-  padding: 18px 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 10;
-}
-
-.subpage-back {
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--stone);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.subpage-back:hover { color: var(--accent); }
-
-.subpage-hero {
-  background: var(--deep);
-  padding: 120px 60px 100px;
-  position: relative;
-  overflow: hidden;
-}
-.subpage-hero::before {
-  content: '';
-  position: absolute;
-  top: -200px; right: -200px;
-  width: 600px; height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(196,168,130,0.07) 0%, transparent 70%);
-}
-.subpage-hero-label {
-  font-size: 10px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--clay);
-  margin-bottom: 28px;
-}
-.subpage-hero h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(48px, 7vw, 88px);
-  font-weight: 300;
-  color: var(--sand);
-  line-height: 1.0;
-  margin-bottom: 28px;
-}
-.subpage-hero h1 em { font-style: italic; color: var(--clay); }
-.subpage-hero p {
-  font-size: 17px;
-  line-height: 1.9;
-  color: rgba(232,221,208,0.65);
-  max-width: 560px;
-}
-
-.subpage-section {
-  padding: 80px 60px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.subpage-section h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(32px, 4vw, 48px);
-  font-weight: 300;
-  margin-bottom: 28px;
-  line-height: 1.2;
-}
-.subpage-section h2 em { font-style: italic; color: var(--accent); }
-
-.subpage-section p {
-  font-size: 16px;
-  line-height: 1.9;
-  color: var(--stone);
-  margin-bottom: 20px;
-  max-width: 680px;
-}
-
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-  padding: 80px 60px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.feature-list {
-  list-style: none;
-  margin-top: 32px;
-}
-.feature-list li {
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(61,46,30,0.1);
-  font-size: 15px;
-  color: var(--stone);
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  line-height: 1.6;
-}
-.feature-list li::before {
-  content: '✦';
-  color: var(--clay);
-  flex-shrink: 0;
-  font-size: 10px;
-  margin-top: 4px;
-}
-
-.include-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  margin-top: 48px;
-}
-.include-card {
-  background: var(--sand);
-  padding: 36px 28px;
-}
-.include-card h4 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 400;
-  margin-bottom: 10px;
-  color: var(--bark);
-}
-.include-card p {
-  font-size: 13px;
-  line-height: 1.8;
-  color: var(--stone);
-  margin: 0;
-}
-.include-card .ic-icon {
-  font-size: 22px;
-  margin-bottom: 16px;
-  display: block;
-}
-
-.pkg-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  margin-top: 0;
-}
-.pkg-card {
-  background: var(--sand);
-  padding: 40px 32px;
-  position: relative;
-}
-.pkg-card.best {
-  background: var(--deep);
-}
-.pkg-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  font-weight: 400;
-  margin-bottom: 8px;
-  color: var(--bark);
-}
-.pkg-card.best .pkg-name { color: var(--sand); }
-.pkg-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 48px;
-  font-weight: 300;
-  color: var(--accent);
-  margin-bottom: 24px;
-  display: block;
-  line-height: 1;
-}
-.pkg-card.best .pkg-price { color: var(--clay); }
-.pkg-includes {
-  list-style: none;
-  margin-bottom: 32px;
-}
-.pkg-includes li {
-  font-size: 13px;
-  color: var(--stone);
-  padding: 7px 0;
-  border-bottom: 1px solid rgba(61,46,30,0.08);
-  display: flex;
-  gap: 10px;
-}
-.pkg-card.best .pkg-includes li { color: rgba(232,221,208,0.55); border-color: rgba(255,255,255,0.06); }
-.pkg-includes li::before { content: '·'; color: var(--clay); flex-shrink: 0; }
-.pkg-badge {
-  position: absolute;
-  top: 16px; right: 16px;
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  background: var(--clay);
-  color: var(--deep);
-  padding: 4px 10px;
-  font-weight: 500;
-}
-
-.dark-section {
-  background: var(--deep);
-  padding: 80px 60px;
-}
-.dark-section .subpage-section {
-  padding: 0;
-}
-
-.akal-what-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  margin-top: 48px;
-}
-.akal-card {
-  background: rgba(255,255,255,0.03);
-  border-top: 2px solid rgba(196,168,130,0.2);
-  padding: 40px 32px;
-  transition: border-color 0.3s;
-}
-.akal-card:hover { border-color: var(--clay); }
-.akal-card h4 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
-  font-weight: 400;
-  color: var(--sand);
-  margin-bottom: 12px;
-}
-.akal-card p {
-  font-size: 14px;
-  line-height: 1.8;
-  color: rgba(232,221,208,0.55);
-  margin: 0;
-}
-
-@media (max-width: 900px) {
-  .nav-hamburger { display: flex !important; }
-  nav { padding: 16px 24px; }
-  nav.scrolled { padding: 12px 24px; }
-  .nav-links { display: none; }
-
-  .hero { min-height: 100vh; display: flex; align-items: flex-end; position: relative; }
-  .hero-image-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.45; }
-  .hero-image-placeholder img { object-position: center 20%; }
-  .hero-image-placeholder::after { background: linear-gradient(to top, var(--deep) 30%, rgba(10,8,5,0.5) 100%); }
-  .hero-content { padding: 0 24px 80px; position: relative; z-index: 10; max-width: 100%; }
-
-  .pain, .about, .offers, .testimonials, .process, .booking, .instagram { padding: 80px 24px; }
-
-  .pain-inner, .about-inner, .booking-inner { grid-template-columns: 1fr; gap: 48px; }
-  .about-image-box { aspect-ratio: 4/3; display: block; overflow: hidden; }
-  .offer-grid { grid-template-columns: 1fr; }
-  .testi-grid { grid-template-columns: 1fr; }
-  .testi-featured { grid-column: span 1; }
-  .process-steps { grid-template-columns: 1fr 1fr; }
-  .offer-full { grid-template-columns: 1fr; text-align: left; }
-  .community-price { text-align: left; }
-  .offers-header { grid-template-columns: 1fr; gap: 24px; }
-  footer { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-}
-
-/* -- PHOTO GALLERY -- */
-.gallery-section {
-  padding: 80px 60px;
-  background: var(--fog);
-}
-.gallery-section h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(32px, 4vw, 48px);
-  font-weight: 300;
-  margin-bottom: 12px;
-  line-height: 1.2;
-}
-.gallery-section h2 em { font-style: italic; color: var(--accent); }
-.gallery-section .section-label {
-  font-size: 10px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--clay);
-  margin-bottom: 20px;
-  display: block;
-}
-.gallery-section > p {
-  font-size: 14px;
-  color: var(--stone);
-  margin-bottom: 48px;
-  line-height: 1.8;
-  max-width: 560px;
-}
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-}
-.gallery-item {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background: var(--sand);
-  cursor: pointer;
-}
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-.gallery-item:hover img { transform: scale(1.04); }
-.gallery-item .gallery-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(22,17,12,0.45);
-  opacity: 0;
-  transition: opacity 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.gallery-item:hover .gallery-overlay { opacity: 1; }
-.gallery-overlay-icon {
-  font-size: 28px;
-  color: var(--sand);
-  opacity: 0.9;
-}
-/* Upload placeholder slots */
-.gallery-item.placeholder {
-  border: 2px dashed rgba(196,168,130,0.3);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: border-color 0.3s, background 0.3s;
-}
-.gallery-item.placeholder:hover {
-  border-color: var(--clay);
-  background: var(--sand);
-}
-.placeholder-icon {
-  font-size: 28px;
-  opacity: 0.3;
-}
-.placeholder-text {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--stone);
-  opacity: 0.6;
-  text-align: center;
-  padding: 0 16px;
-}
-.gallery-item.placeholder input[type="file"] {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-}
-
-/* Lightbox */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(22,17,12,0.92);
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.lightbox.open { display: flex; }
-.lightbox img {
-  max-width: 90vw;
-  max-height: 88vh;
-  object-fit: contain;
-  cursor: default;
-}
-.lightbox-close {
-  position: absolute;
-  top: 24px; right: 32px;
-  font-size: 32px;
-  color: var(--clay);
-  cursor: pointer;
-  line-height: 1;
-  transition: color 0.2s;
-}
-.lightbox-close:hover { color: var(--sand); }
-.lightbox-caption {
-  position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  font-style: italic;
-  color: rgba(232,221,208,0.6);
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
-
-@media (max-width: 900px) {
-  .gallery-section { padding: 60px 24px; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-
-
-/* -- PHOTO UPLOAD HOLDERS -- */
-.photo-upload-wrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
-  overflow: hidden;
-}
-.photo-upload-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.photo-upload-placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: linear-gradient(145deg, #2a1f14, #1a120a);
-  border: 2px dashed rgba(196,168,130,0.25);
-  cursor: pointer;
-  transition: border-color 0.3s, background 0.3s;
-  position: relative;
-}
-.photo-upload-placeholder:hover {
-  border-color: rgba(196,168,130,0.5);
-  background: linear-gradient(145deg, #332519, #1a120a);
-}
-.photo-upload-placeholder input[type="file"] {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-}
-.upload-icon {
-  width: 48px; height: 48px;
-  border: 1px solid rgba(196,168,130,0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  color: rgba(196,168,130,0.5);
-  transition: all 0.3s;
-}
-.photo-upload-placeholder:hover .upload-icon {
-  border-color: var(--clay);
-  color: var(--clay);
-}
-.upload-label {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(196,168,130,0.4);
-  transition: color 0.3s;
-}
-.photo-upload-placeholder:hover .upload-label {
-  color: var(--clay);
-}
-.upload-sublabel {
-  font-size: 11px;
-  color: rgba(138,128,112,0.4);
-  margin-top: -6px;
-}
-.photo-remove {
-  position: absolute;
-  top: 12px; right: 12px;
-  background: rgba(22,17,12,0.7);
-  color: var(--clay);
-  border: 1px solid rgba(196,168,130,0.3);
-  width: 32px; height: 32px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  font-size: 16px;
-  z-index: 10;
-  transition: all 0.2s;
-  display: none;
-}
-.photo-upload-wrap:hover .photo-remove { display: flex; }
-.photo-remove:hover { background: rgba(196,168,130,0.2); }
-
-
-/* -- WHATSAPP POPUP -- */
-.wa-popup-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(22,17,12,0.6);
-  z-index: 800;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(4px);
-  animation: fadeInOverlay 0.4s ease;
-}
-.wa-popup-overlay.open { display: flex; }
-
-@keyframes fadeInOverlay {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.wa-popup {
-  background: var(--fog);
-  max-width: 480px;
-  width: 90%;
-  position: relative;
-  animation: popupSlideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  overflow: hidden;
-}
-
-@keyframes popupSlideUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.wa-popup-top {
-  background: var(--bark);
-  padding: 40px 40px 32px;
-  position: relative;
-}
-
-.wa-popup-close {
-  position: absolute;
-  top: 16px; right: 20px;
-  font-size: 22px;
-  color: rgba(232,221,208,0.4);
-  cursor: pointer;
-  line-height: 1;
-  transition: color 0.2s;
-  background: none;
-  border: none;
-  padding: 4px 8px;
-}
-.wa-popup-close:hover { color: var(--clay); }
-
-.wa-popup-tag {
-  font-size: 9px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--clay);
-  margin-bottom: 16px;
-  display: block;
-}
-.wa-popup-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
-  font-weight: 300;
-  color: var(--sand);
-  line-height: 1.1;
-  margin-bottom: 12px;
-}
-.wa-popup-title em {
-  font-style: italic;
-  color: var(--clay);
-}
-.wa-popup-sub {
-  font-size: 14px;
-  line-height: 1.8;
-  color: rgba(232,221,208,0.55);
-}
-
-.wa-popup-bottom {
-  padding: 28px 40px 36px;
-}
-
-.wa-popup-perks {
-  list-style: none;
-  margin-bottom: 28px;
-}
-.wa-popup-perks li {
-  font-size: 13px;
-  color: var(--stone);
-  padding: 9px 0;
-  border-bottom: 1px solid rgba(196,168,130,0.12);
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  line-height: 1.5;
-}
-.wa-popup-perks li::before {
-  content: '/';
-  color: var(--clay);
-  flex-shrink: 0;
-}
-
-.wa-popup-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  padding: 16px 28px;
-  background: #25D366;
-  color: #fff;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.3s, transform 0.2s;
-  border: none;
-  cursor: pointer;
-}
-.wa-popup-btn:hover {
-  background: #1ebe5c;
-  transform: translateY(-1px);
-}
-.wa-popup-btn svg {
-  width: 20px; height: 20px;
-  fill: #fff;
-  flex-shrink: 0;
-}
-.wa-popup-skip {
-  display: block;
-  text-align: center;
-  margin-top: 14px;
-  font-size: 11px;
-  letter-spacing: 1px;
-  color: var(--stone);
-  cursor: pointer;
-  transition: color 0.2s;
-  background: none;
-  border: none;
-  width: 100%;
-}
-.wa-popup-skip:hover { color: var(--bark); }
-
-
-/* -- HAMBURGER MOBILE NAV -- */
+/* ── HAMBURGER MOBILE NAV ── */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -1929,6 +1268,32 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 }
 .nav-mobile-close:hover { color: var(--clay); }
 
+@media (max-width: 900px) {
+  .nav-hamburger { display: flex !important; }
+  nav { padding: 16px 24px; }
+  nav.scrolled { padding: 12px 24px; }
+  .nav-links { display: none; }
+
+  .hero { min-height: 100vh; display: flex; align-items: flex-end; position: relative; }
+  .hero-image-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.45; }
+  .hero-image-placeholder img { object-position: center 20%; }
+  .hero-image-placeholder::after { background: linear-gradient(to top, var(--deep) 30%, rgba(10,8,5,0.5) 100%); }
+  .hero-content { padding: 0 24px 80px; position: relative; z-index: 10; max-width: 100%; }
+
+  .pain, .about, .offers, .testimonials, .process, .booking, .instagram { padding: 80px 24px; }
+
+  .pain-inner, .about-inner, .booking-inner { grid-template-columns: 1fr; gap: 48px; }
+  .about-image-box { aspect-ratio: 4/3; display: block; overflow: hidden; }
+  .offer-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .testi-featured { grid-column: span 1; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .offer-full { grid-template-columns: 1fr; text-align: left; }
+  .community-price { text-align: left; }
+  .offers-header { grid-template-columns: 1fr; gap: 24px; }
+  footer { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
 
 </style>
 
@@ -1969,12 +1334,12 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
     <img src="../assets/images/index-49f1958691a03ef5.jpg" alt="Nemanja Vukoje - Healer and Coach" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
   </div>
   <div class="hero-content">
-    <div class="hero-label">Heiler · Coach · Kundalini-Yoga-Lehrer</div>
-    <h1>Komm zurück<br>zu <em>dir selbst.</em></h1>
-    <p class="hero-sub">Nach außen scheint alles in Ordnung. Aber innerlich fühlt sich etwas festgefahren, müde oder verloren an. Ich helfe dir, das zu lösen, was deine Energie blockiert - damit du in ein wirklich lebendiges Leben zurückfindest.</p>
+    <div class="hero-label">{{ site.data.de_index.hero.label }}</div>
+    <h1>{{ site.data.de_index.hero.heading_1 }}<br>zu <em>{{ site.data.de_index.hero.heading_2 }}</em></h1>
+    <p class="hero-sub">{{ site.data.de_index.hero.subtitle }}</p>
     <div class="hero-actions">
-      <a href="#booking" class="btn-primary">Session buchen</a>
-      <a href="#offers" class="btn-ghost">Die Angebote entdecken</a>
+      <a href="#booking" class="btn-primary">{{ site.data.de_index.hero.btn_primary }}</a>
+      <a href="#offers" class="btn-ghost">{{ site.data.de_index.hero.btn_ghost }}</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -1987,40 +1352,18 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <section class="pain" id="pain">
   <div class="pain-inner">
     <div class="reveal">
-      <div class="section-label">Du bist nicht allein</div>
-      <h2>Kommt dir<br><em>etwas davon bekannt vor?</em></h2>
-      <p>Die meisten Menschen, die zu mir finden, haben stabile Jobs, funktionierende Leben und alles, was man ihnen beigebracht hat zu wollen. Und trotzdem fühlt sich etwas nicht richtig an.</p>
-      <p>Sie haben Therapie ausprobiert. Sie haben die Bücher gelesen. Aber etwas Tieferes hat sich noch nicht verändert.</p>
+      <div class="section-label">{{ site.data.de_index.pain.label }}</div>
+      <h2>{{ site.data.de_index.pain.heading }}<br><em>{{ site.data.de_index.pain.heading_italic }}</em></h2>
+      <p>{{ site.data.de_index.pain.intro_1 }}</p>
+      <p>{{ site.data.de_index.pain.intro_2 }}</p>
     </div>
     <div class="pain-quotes reveal">
+      {% for quote in site.data.de_index.pain.quotes %}
       <div class="pain-quote">
         <span class="pq-mark">"</span>
-        <span class="pq-text">Ich bin ständig müde und überfordert.</span>
+        <span class="pq-text">{{ quote }}</span>
       </div>
-      <div class="pain-quote">
-        <span class="pq-mark">"</span>
-        <span class="pq-text">Ich denke zu viel nach und bekomme meinen Kopf nicht zur Ruhe.</span>
-      </div>
-      <div class="pain-quote">
-        <span class="pq-mark">"</span>
-        <span class="pq-text">Ich fühle mich festgefahren, aber ich weiß nicht warum.</span>
-      </div>
-      <div class="pain-quote">
-        <span class="pq-mark">"</span>
-        <span class="pq-text">In mir fühlt sich etwas blockiert an.</span>
-      </div>
-      <div class="pain-quote">
-        <span class="pq-mark">"</span>
-        <span class="pq-text">Ich fühle mich nicht mehr mit mir selbst verbunden.</span>
-      </div>
-      <div class="pain-quote">
-        <span class="pq-mark">"</span>
-        <span class="pq-text">Ich wiederhole immer wieder dieselben Muster.</span>
-      </div>
-      <div class="pain-quote">
-        <span class="pq-mark">"</span>
-        <span class="pq-text">Ich spüre Gefühle, die einfach nicht verschwinden.</span>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -2032,24 +1375,24 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
       <img src="../assets/images/index-13193d019fa51249.jpg" alt="Nemanja Vukoje" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transform:scale(0.85);transform-origin:center 35%;">
     </div>
     <div class="reveal">
-      <div class="about-label">Über mich Nemanja</div>
-      <h2>Ich habe eine Karriere verlassen, um<br><em>etwas Echtes aufzubauen.</em></h2>
-      <p>Früher habe ich in der IT gearbeitet und Unternehmen dabei begleitet, besser zusammenzuarbeiten. Ich hatte Stabilität, ein gutes Einkommen und einen Weg, der auf dem Papier Sinn ergab. Aber innerlich wusste ich, dass da mehr ist.</p>
-      <p>Ich habe all das hinter mir gelassen. Ich bin um die Welt gereist, habe von spirituellen Lehrer*innen gelernt, heilige Orte besucht und Heiltraditionen in verschiedenen Kulturen erforscht. Über ein Jahrzehnt hinweg habe ich viele Heilmethoden und Coaching-Ausbildungen absolviert - nicht als Sammlung, sondern aus einer inneren Berufung heraus.</p>
-      <p>Heute habe ich durch Energieheilung, Kundalini Yoga und professionelles Coaching Hunderten von Menschen geholfen, ihre Energie zu öffnen, emotionale Blockaden zu lösen und in ein Leben zurückzufinden, das sich wirklich nach ihrem anfühlt.</p>
-      <p>Ich arbeite auf Englisch, Serbisch und Deutsch mit Klient*innen aus Wien und international - komplett online.</p>
+      <div class="about-label">{{ site.data.de_index.about.label }}</div>
+      <h2>{{ site.data.de_index.about.heading }}<br><em>{{ site.data.de_index.about.heading_italic }}</em></h2>
+      <p>{{ site.data.de_index.about.para_1 }}</p>
+      <p>{{ site.data.de_index.about.para_2 }}</p>
+      <p>{{ site.data.de_index.about.para_3 }}</p>
+      <p>{{ site.data.de_index.about.para_4 }}</p>
       <div class="about-stats">
         <div class="stat">
-          <span class="stat-num">10+</span>
-          <span class="stat-label">Jahre Praxis</span>
+          <span class="stat-num">{{ site.data.de_index.about.stat_1_num }}</span>
+          <span class="stat-label">{{ site.data.de_index.about.stat_1_label }}</span>
         </div>
         <div class="stat">
-          <span class="stat-num">5+</span>
-          <span class="stat-label">Jahre Unterricht</span>
+          <span class="stat-num">{{ site.data.de_index.about.stat_2_num }}</span>
+          <span class="stat-label">{{ site.data.de_index.about.stat_2_label }}</span>
         </div>
         <div class="stat">
-          <span class="stat-num">100s</span>
-          <span class="stat-label">Menschen begleitet</span>
+          <span class="stat-num">{{ site.data.de_index.about.stat_3_num }}</span>
+          <span class="stat-label">{{ site.data.de_index.about.stat_3_label }}</span>
         </div>
       </div>
     </div>
@@ -2061,100 +1404,99 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
   <div class="offers-inner">
     <div class="offers-header reveal">
       <div>
-        <div class="section-label">Arbeite mit mir</div>
-        <h2>Jedes Angebot holt dich<br><em>genau dort ab, wo du gerade bist.</em></h2>
+        <div class="section-label">{{ site.data.de_index.offers.label }}</div>
+        <h2>{{ site.data.de_index.offers.heading }}<br><em>{{ site.data.de_index.offers.heading_italic }}</em></h2>
       </div>
-      <p class="offers-desc">Ob du einen sanften ersten Schritt oder eine tiefgreifende Transformation brauchst - es gibt einen Weg für dich. Jedes Angebot baut stimmig auf dem vorherigen auf.</p>
+      <p class="offers-desc">{{ site.data.de_index.offers.description }}</p>
     </div>
 
     <div class="offer-grid reveal" style="grid-template-columns:repeat(2,1fr);">
-      <!-- Aura-Reinigung -->
+      <!-- Aura Treatment -->
       <div class="offer-card">
         <div class="offer-num">1</div>
-        
-        <div class="offer-name">Aura Treatment</div>
-        <div class="offer-duration">20 Minuten · Online</div>
-        <p class="offer-desc">Ein energetischer Reset - angesammelten Stress reinigen, Fremdes loslassen und deine natürliche Balance wiederherstellen.</p>
+        <div class="offer-name">{{ site.data.de_index.offers.aura.name }}</div>
+        <div class="offer-duration">{{ site.data.de_index.offers.aura.duration }}</div>
+        <p class="offer-desc">{{ site.data.de_index.offers.aura.desc }}</p>
         <ul class="offer-results">
-          <li>Dich leichter und ruhiger fühlen</li>
-          <li>Emotionale Schwere lösen</li>
-          <li>Mehr Energie im Körper</li>
+          <li>{{ site.data.de_index.offers.aura.result_1 }}</li>
+          <li>{{ site.data.de_index.offers.aura.result_2 }}</li>
+          <li>{{ site.data.de_index.offers.aura.result_3 }}</li>
         </ul>
-        <span class="offer-price-was">66€</span>
-        <span class="offer-price">44€</span>
-        <span class="offer-price-note">Perfekter Einstieg</span>
+        <span class="offer-price-was">{{ site.data.de_index.offers.aura.price_was }}</span>
+        <span class="offer-price">{{ site.data.de_index.offers.aura.price }}</span>
+        <span class="offer-price-note">{{ site.data.de_index.offers.aura.price_note }}</span>
       </div>
 
-      <!-- Inner Peace single -->
+      <!-- Inner Shift Session -->
       <div class="offer-card featured">
         <div class="offer-num">2</div>
-        
-        <div class="offer-name">Inner Shift Session</div>
-        <div class="offer-duration">60 Minuten · Online</div>
-        <p class="offer-desc">Eine vollständige 1:1-Transformationssession - Coaching, Energieheilung und Körperbewusstsein in einem. Wir finden die Wurzel. Wir lösen sie.</p>
+        <div class="offer-name">{{ site.data.de_index.offers.session.name }}</div>
+        <div class="offer-duration">{{ site.data.de_index.offers.session.duration }}</div>
+        <p class="offer-desc">{{ site.data.de_index.offers.session.desc }}</p>
         <ul class="offer-results">
-          <li>Klarheit bei Lebensentscheidungen</li>
-          <li>Tiefe Blockaden lösen</li>
-          <li>Wieder mit dir selbst verbinden</li>
+          <li>{{ site.data.de_index.offers.session.result_1 }}</li>
+          <li>{{ site.data.de_index.offers.session.result_2 }}</li>
+          <li>{{ site.data.de_index.offers.session.result_3 }}</li>
         </ul>
-        <span class="offer-price">144€</span>
-        <span class="offer-price-note">Einzelsession</span>
+        <span class="offer-price">{{ site.data.de_index.offers.session.price }}</span>
+        <span class="offer-price-note">{{ site.data.de_index.offers.session.price_note }}</span>
       </div>
     </div>
 
-    <!-- Inner Peace packages -->
+    <!-- Packages -->
     <div class="offer-grid reveal" style="margin-top:2px;">
+      <!-- Inner Shift Reset -->
       <div class="offer-card" style="background:var(--deep);">
         <div class="offer-num" style="color:var(--clay);opacity:0.2">B</div>
-        
-        <div class="offer-name" style="color:var(--sand);">Inner Shift Reset</div>
-        <div class="offer-duration">3 Sessions · Online</div>
-        <p class="offer-desc" style="color:rgba(232,221,208,0.55);">Eine strukturierte Reise über 3 Sessions, um loszulassen, Klarheit zu gewinnen und dich neu zu verbinden. Das beliebteste Einstiegsprogramm.</p>
-        <ul class="offer-results" style="">
-          <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">3 × 60-minütige 1:1-Sessions</li>
-          <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Coaching + Energieheilung</li>
-          <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Laufende Unterstützung zwischen den Sessions</li>
+        <div class="offer-name" style="color:var(--sand);">{{ site.data.de_index.offers.reset.name }}</div>
+        <div class="offer-duration">{{ site.data.de_index.offers.reset.duration }}</div>
+        <p class="offer-desc" style="color:rgba(232,221,208,0.55);">{{ site.data.de_index.offers.reset.desc }}</p>
+        <ul class="offer-results">
+          <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">{{ site.data.de_index.offers.reset.result_1 }}</li>
+          <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">{{ site.data.de_index.offers.reset.result_2 }}</li>
+          <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">{{ site.data.de_index.offers.reset.result_3 }}</li>
         </ul>
-        <span class="offer-price" style="color:var(--clay)">299€</span>
-        <span class="offer-price-note" style="color:var(--stone)">Günstiger als Einzelsessions</span>
+        <span class="offer-price" style="color:var(--clay)">{{ site.data.de_index.offers.reset.price }}</span>
+        <span class="offer-price-note" style="color:var(--stone)">{{ site.data.de_index.offers.reset.price_note }}</span>
       </div>
 
+      <!-- Inner Shift Transform -->
       <div class="offer-card" style="background:var(--deep);grid-column:span 2;">
         <div class="offer-num" style="color:var(--clay);opacity:0.15">P</div>
-        
-        <div class="offer-name" style="color:var(--sand);">Inner Shift Transform</div>
-        <div class="offer-duration">Komplette Transformationsreise</div>
-        <p class="offer-desc" style="color:rgba(232,221,208,0.55);max-width:500px">Die tiefste und umfassendste Reise, die ich anbiete. Nicht nur Sessions - sondern eine vollständige Transformation auf energetischer, emotionaler und Seelenebene.</p>
+        <div class="offer-name" style="color:var(--sand);">{{ site.data.de_index.offers.transform.name }}</div>
+        <div class="offer-duration">{{ site.data.de_index.offers.transform.duration }}</div>
+        <p class="offer-desc" style="color:rgba(232,221,208,0.55);max-width:500px">{{ site.data.de_index.offers.transform.desc }}</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px">
           <ul class="offer-results">
-            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">6 x 60-minütige 1:1 Sessions</li>
-            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Aura-Behandlung inklusive</li>
+            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">{{ site.data.de_index.offers.transform.result_1 }}</li>
+            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">{{ site.data.de_index.offers.transform.result_2 }}</li>
           </ul>
           <ul class="offer-results">
-            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Rückholung von Seelenfragmenten + Seelenheilung</li>
-            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Personalisierte Meditation</li>
+            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">{{ site.data.de_index.offers.transform.result_3 }}</li>
+            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">{{ site.data.de_index.offers.transform.result_4 }}</li>
           </ul>
         </div>
-        <span class="offer-price" style="color:var(--clay)">777€</span>
+        <span class="offer-price-was" style="color:var(--stone)">{{ site.data.de_index.offers.transform.price_was }}</span>
+        <span class="offer-price" style="color:var(--clay)">{{ site.data.de_index.offers.transform.price }}</span>
       </div>
     </div>
 
     <!-- Akal Community -->
     <div class="offer-full reveal" style="margin-top:2px;">
       <div>
-        <div class="community-name">Akal <em>Community</em></div>
-        <div class="community-sub">Monatliche Mitgliedschaft</div>
+        <div class="community-name">{{ site.data.de_index.offers.community.name }} <em>{{ site.data.de_index.offers.community.name_italic }}</em></div>
+        <div class="community-sub">{{ site.data.de_index.offers.community.sub }}</div>
       </div>
       <ul class="community-includes">
-        <li>Weekly Kundalini-Yoga-Klassees</li>
-        <li>2 meditation evenings pro Monat</li>
-        <li>Private WhatsApp-Community</li>
-        <li>Laufende Begleitung und Unterstützung</li>
-            <li>Klassenaufzeichnung 7 Tage verfügbar, falls du nicht live dabei sein kannst</li>
+        <li>{{ site.data.de_index.offers.community.include_1 }}</li>
+        <li>{{ site.data.de_index.offers.community.include_2 }}</li>
+        <li>{{ site.data.de_index.offers.community.include_3 }}</li>
+        <li>{{ site.data.de_index.offers.community.include_4 }}</li>
+        <li>{{ site.data.de_index.offers.community.include_5 }}</li>
       </ul>
       <div class="community-price">
-        <span class="price-big">77€</span>
-        <span class="price-period">pro Monat</span>
+        <span class="price-big">{{ site.data.de_index.offers.community.price }}</span>
+        <span class="price-period">{{ site.data.de_index.offers.community.period }}</span>
       </div>
     </div>
   </div>
@@ -2163,58 +1505,15 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="testimonials-inner">
-    <h2 class="reveal">Was Menschen sagen<br><em>nach der Zusammenarbeit</em></h2>
+    <h2 class="reveal">{{ site.data.de_index.testimonials.heading }}<br><em>{{ site.data.de_index.testimonials.heading_italic }}</em></h2>
     <div class="testi-grid">
-      <div class="testi-card testi-featured reveal">
-        <p class="testi-text">"I didn't realize how disconnected I've been lately until your class today. Something opened up in me. My body feels softer, my mind clearer, and there's this gentle warmth in my chest that's still there. I honestly haven't felt this peaceful in a long time."</p>
-        <div class="testi-author">Akal-Community-Mitglied</div>
-        <div class="testi-source">Kundalini-Yoga-Klasse</div>
+      {% for item in site.data.de_index.testimonials.items %}
+      <div class="testi-card{% if item.featured %} testi-featured{% endif %} reveal">
+        <p class="testi-text">"{{ item.text }}"</p>
+        <div class="testi-author">{{ item.author }}</div>
+        <div class="testi-source">{{ item.source }}</div>
       </div>
-      <div class="testi-card reveal">
-        <p class="testi-text">"40 days of meditation and Kundalini Yoga did more for me than years of therapy."</p>
-        <div class="testi-author">Teilnehmer*in des Meditationsprogramms</div>
-        <div class="testi-source">40-Tage-Challenge</div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text">"Today I felt energy moving for the first time in weeks. My shoulders dropped, my breath relaxed, and my thoughts stopped fighting me."</p>
-        <div class="testi-author">Klient*in</div>
-        <div class="testi-source">Nach dem Meditationsabend</div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text">"My fear from the marathon is gone. I finished strong. I know I don't need to prove anything to myself. My energy was amazing."</p>
-        <div class="testi-author">Internationale*r Klient*in</div>
-        <div class="testi-source">Nach den Inner Shift Sessions</div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text">"I am so grateful. I don't know how to say thank you because truly from my heart - you are a real human being."</p>
-        <div class="testi-author">Klient*in</div>
-        <div class="testi-source">Nach der Kundalini-Klasse</div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text">"Through your sessions my gut feeling has got stronger and it is leading me to the right path. I am getting more intuitive about where I belong and what decisions to make."</p>
-        <div class="testi-author">Klient*in</div>
-        <div class="testi-source">Nach fortlaufenden Sessions</div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text">"Such lightness in my chest and body after just one session. This is unbelievable."</p>
-        <div class="testi-author">Bojana K., Belgrade</div>
-        <div class="testi-source">Nach der ersten Inner Shift Session</div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text">"I came in with back pain and a spasm. After the class the discomfort in my lower back was completely gone. I'll see you on Sunday."</p>
-        <div class="testi-author">Akal-Community-Mitglied</div>
-        <div class="testi-source">Nach der Kundalini-Yoga-Klasse</div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text">"I chose to forgive who hurt me - not because I had to, but because I saw that unkindness doesn't bring me peace. The transformation happened with authenticity, not force."</p>
-        <div class="testi-author">Klient*in</div>
-        <div class="testi-source">Nach Yoga- und Meditationssessions</div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text">"I had peace I haven't felt in a long time. I hadn't realized how disconnected I had become. Something opened up - and it is still there."</p>
-        <div class="testi-author">Nina P., Novi Sad</div>
-        <div class="testi-source">Nach der Inner Shift Session</div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -2222,28 +1521,15 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <!-- PROCESS -->
 <section class="process">
   <div class="process-inner">
-    <h2 class="reveal">Wie sich die<br><em>Arbeit entfaltet</em></h2>
+    <h2 class="reveal">{{ site.data.de_index.process.heading }}<br><em>{{ site.data.de_index.process.heading_italic }}</em></h2>
     <div class="process-steps">
+      {% for step in site.data.de_index.process.steps %}
       <div class="step reveal">
-        <div class="step-num">01</div>
-        <h3>Wir treffen uns</h3>
-        <p>Eine erste Session, um zu verstehen, wo du gerade stehst, was du mit dir trägst und was sich verändern möchte. Ohne Bewertung. Nur Präsenz.</p>
+        <div class="step-num">{{ step.num }}</div>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.desc }}</p>
       </div>
-      <div class="step reveal">
-        <div class="step-num">02</div>
-        <h3>Wir finden die Wurzel</h3>
-        <p>Wir gehen zurück - ins Unterbewusstsein, in den Körper, ins Energiefeld - um herauszufinden, wo das Muster wirklich begonnen hat.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">03</div>
-        <h3>Wir lösen es</h3>
-        <p>Durch geführte Meditation, Energiearbeit und Coaching lösen wir, was nicht länger zu dir gehört. Der Körper weiß, wie Heilung geht.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">04</div>
-        <h3>Du kehrst zurück</h3>
-        <p>Leichter. Klarer. Mehr du selbst. Die Arbeit geht in Schichten weiter - jede Session öffnet eine neue Tür tiefer zu dem, wer du wirklich bist.</p>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -2252,15 +1538,15 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <section class="booking" id="booking">
   <div class="booking-inner">
     <div class="reveal">
-      <h2>Bereit<br><em>zu beginnen?</em></h2>
-      <p>Der erste Schritt ist immer der einfachste. Beginne mit einer 20-minütigen Aura-Reinigung - eine sanfte und leichte Möglichkeit, die Arbeit kennenzulernen, bevor du dich auf mehr einlässt.</p>
-      <p>Oder melde dich direkt - gemeinsam finden wir den richtigen Einstieg für dich.</p>
+      <h2>{{ site.data.de_index.booking.heading }}<br><em>{{ site.data.de_index.booking.heading_italic }}</em></h2>
+      <p>{{ site.data.de_index.booking.intro_1 }}</p>
+      <p>{{ site.data.de_index.booking.intro_2 }}</p>
       <div class="booking-options">
         <a href="mailto:info@vukojenemanja.com" class="booking-option">
           <span class="booking-option-icon">✉</span>
           <div class="booking-option-text">
             <div class="booking-option-title">E-Mail senden</div>
-            <div class="booking-option-sub"><span class="__cf_email__" data-cfemail="a5cccbc3cae5d3d0cecacfc0cbc0c8c4cbcfc48bc6cac8">[email&#160;protected]</span></div>
+            <div class="booking-option-sub">info@vukojenemanja.com</div>
           </div>
           <span class="booking-option-arrow">→</span>
         </a>
@@ -2283,11 +1569,11 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
       </div>
     </div>
     <div class="booking-entry reveal">
-      <div class="entry-label">Hier beginnen</div>
-      <div class="entry-title">Aura Treatment</div>
-      <p class="entry-desc">A 20-minütige Online-Session to cleanse your energy field, release accumulated stress, and restore your natural flow. The gentlest way to begin.</p>
-      <span class="entry-price">44€</span>
-      <a href="mailto:info@vukojenemanja.com?subject=Website%20Enquiry" class="btn-primary">Diese Session buchen</a>
+      <div class="entry-label">{{ site.data.de_index.booking.entry_label }}</div>
+      <div class="entry-title">{{ site.data.de_index.booking.entry_title }}</div>
+      <p class="entry-desc">{{ site.data.de_index.booking.entry_desc }}</p>
+      <span class="entry-price">{{ site.data.de_index.booking.entry_price }}</span>
+      <a href="mailto:info@vukojenemanja.com?subject=Website%20Enquiry" class="btn-primary">{{ site.data.de_index.booking.entry_btn }}</a>
     </div>
   </div>
 </section>
@@ -2295,9 +1581,9 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <!-- INSTAGRAM -->
 <section class="instagram">
   <div class="instagram-inner reveal">
-    <div class="instagram-label">Begleite die Reise</div>
-    <h2>Tägliche Impulse zu<br><em>Energie und Selbstverbindung</em></h2>
-    <p>Gedanken zu emotionalen Mustern, geführte Praktiken und ehrliche Impulse darüber, was es bedeutet, wirklich lebendig zu leben. Auf Englisch, Serbisch und Deutsch.</p>
+    <div class="instagram-label">{{ site.data.de_index.instagram.label }}</div>
+    <h2>{{ site.data.de_index.instagram.heading }}<br><em>{{ site.data.de_index.instagram.heading_italic }}</em></h2>
+    <p>{{ site.data.de_index.instagram.desc }}</p>
     <div class="insta-handles">
       <a href="https://www.instagram.com/vukoje.nemanja.world/" target="_blank" class="insta-handle">
         📷 @vukoje.nemanja.world
@@ -2312,7 +1598,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <footer>
   <div class="footer-brand">
     <h3>Nemanja<br><em>Vukoje</em></h3>
-    <p>Heiler - Coach - Kundalini-Yoga-Lehrer<br>Wien, Österreich - Online weltweit<br>English, Serbian &amp; German</p>
+    <p>{{ site.data.de_index.footer.tagline }}<br>{{ site.data.de_index.footer.location }}<br>{{ site.data.de_index.footer.languages }}</p>
   </div>
   <div class="footer-nav">
     <h4>Navigation</h4>
@@ -2337,10 +1623,11 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
   </div>
 </footer>
 <div class="footer-bottom">
-  <p>© 2025 Nemanja Vukoje - vukojenemanja.com</p>
-  <p>Alle Sessions online - Weltweit</p>
+  <p>{{ site.data.de_index.footer.copyright }}</p>
+  <p>{{ site.data.de_index.footer.sessions_note }}</p>
 </div>
 <script>
+document.body.classList.add('js-loaded');
 window.addEventListener('scroll', function() {
   const nav = document.getElementById('nav');
   if (window.scrollY > 50) {
@@ -2362,6 +1649,11 @@ function closeMobileMenu() {
   document.getElementById('hamburgerBtn').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>

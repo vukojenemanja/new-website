@@ -1,0 +1,203 @@
+backend:
+  name: github
+  repo: vukojenemanja/new-website
+  branch: main
+  auth_type: pkce
+  app_id: DEIN_GITHUB_OAUTH_CLIENT_ID
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "deutsch"
+    label: "Deutsch - Startseite"
+    files:
+      - name: "de_index"
+        label: "Startseite (DE)"
+        file: "_data/de_index.yml"
+        fields:
+          - { label: "Meta Titel", name: "meta_title", widget: "string" }
+          - { label: "Meta Beschreibung", name: "meta_desc", widget: "text" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Label (kleiner Text oben)", name: "label", widget: "string" }
+              - { label: "Überschrift Zeile 1", name: "heading_1", widget: "string" }
+              - { label: "Überschrift Zeile 2 (kursiv)", name: "heading_2", widget: "string" }
+              - { label: "Untertitel", name: "subtitle", widget: "text" }
+              - { label: "Button 1 Text", name: "btn_primary", widget: "string" }
+              - { label: "Button 2 Text", name: "btn_ghost", widget: "string" }
+
+          - label: "Erkennungsabschnitt"
+            name: "pain"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Überschrift", name: "heading", widget: "string" }
+              - { label: "Überschrift kursiv", name: "heading_italic", widget: "string" }
+              - { label: "Einleitungstext 1", name: "intro_1", widget: "text" }
+              - { label: "Einleitungstext 2", name: "intro_2", widget: "text" }
+              - label: "Zitate"
+                name: "quotes"
+                widget: "list"
+                field: { label: "Zitat", name: "item", widget: "string" }
+
+          - label: "Über mich"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Überschrift", name: "heading", widget: "string" }
+              - { label: "Überschrift kursiv", name: "heading_italic", widget: "string" }
+              - { label: "Absatz 1", name: "para_1", widget: "text" }
+              - { label: "Absatz 2", name: "para_2", widget: "text" }
+              - { label: "Absatz 3", name: "para_3", widget: "text" }
+              - { label: "Absatz 4", name: "para_4", widget: "text" }
+              - { label: "Statistik 1 - Zahl", name: "stat_1_num", widget: "string" }
+              - { label: "Statistik 1 - Label", name: "stat_1_label", widget: "string" }
+              - { label: "Statistik 2 - Zahl", name: "stat_2_num", widget: "string" }
+              - { label: "Statistik 2 - Label", name: "stat_2_label", widget: "string" }
+              - { label: "Statistik 3 - Zahl", name: "stat_3_num", widget: "string" }
+              - { label: "Statistik 3 - Label", name: "stat_3_label", widget: "string" }
+
+          - label: "Angebote"
+            name: "offers"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Überschrift", name: "heading", widget: "string" }
+              - { label: "Überschrift kursiv", name: "heading_italic", widget: "string" }
+              - { label: "Beschreibung", name: "description", widget: "text" }
+
+              - label: "Aura Treatment"
+                name: "aura"
+                widget: "object"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Dauer", name: "duration", widget: "string" }
+                  - { label: "Beschreibung", name: "desc", widget: "text" }
+                  - { label: "Ergebnis 1", name: "result_1", widget: "string" }
+                  - { label: "Ergebnis 2", name: "result_2", widget: "string" }
+                  - { label: "Ergebnis 3", name: "result_3", widget: "string" }
+                  - { label: "Alter Preis (durchgestrichen)", name: "price_was", widget: "string" }
+                  - { label: "Preis", name: "price", widget: "string" }
+                  - { label: "Preisnotiz", name: "price_note", widget: "string" }
+
+              - label: "Inner Shift Session"
+                name: "session"
+                widget: "object"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Dauer", name: "duration", widget: "string" }
+                  - { label: "Beschreibung", name: "desc", widget: "text" }
+                  - { label: "Ergebnis 1", name: "result_1", widget: "string" }
+                  - { label: "Ergebnis 2", name: "result_2", widget: "string" }
+                  - { label: "Ergebnis 3", name: "result_3", widget: "string" }
+                  - { label: "Preis", name: "price", widget: "string" }
+                  - { label: "Preisnotiz", name: "price_note", widget: "string" }
+
+              - label: "Inner Shift Reset"
+                name: "reset"
+                widget: "object"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Dauer", name: "duration", widget: "string" }
+                  - { label: "Beschreibung", name: "desc", widget: "text" }
+                  - { label: "Ergebnis 1", name: "result_1", widget: "string" }
+                  - { label: "Ergebnis 2", name: "result_2", widget: "string" }
+                  - { label: "Ergebnis 3", name: "result_3", widget: "string" }
+                  - { label: "Preis", name: "price", widget: "string" }
+                  - { label: "Preisnotiz", name: "price_note", widget: "string" }
+
+              - label: "Inner Shift Transform"
+                name: "transform"
+                widget: "object"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Dauer", name: "duration", widget: "string" }
+                  - { label: "Beschreibung", name: "desc", widget: "text" }
+                  - { label: "Ergebnis 1 (links)", name: "result_1", widget: "string" }
+                  - { label: "Ergebnis 2 (links)", name: "result_2", widget: "string" }
+                  - { label: "Ergebnis 3 (rechts)", name: "result_3", widget: "string" }
+                  - { label: "Ergebnis 4 (rechts)", name: "result_4", widget: "string" }
+                  - { label: "Preis", name: "price", widget: "string" }
+                  - { label: "Alter Preis (durchgestrichen)", name: "price_was", widget: "string" }
+
+              - label: "Akal Community"
+                name: "community"
+                widget: "object"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Name kursiv", name: "name_italic", widget: "string" }
+                  - { label: "Untertitel", name: "sub", widget: "string" }
+                  - { label: "Inhalt 1", name: "include_1", widget: "string" }
+                  - { label: "Inhalt 2", name: "include_2", widget: "string" }
+                  - { label: "Inhalt 3", name: "include_3", widget: "string" }
+                  - { label: "Inhalt 4", name: "include_4", widget: "string" }
+                  - { label: "Inhalt 5", name: "include_5", widget: "string" }
+                  - { label: "Preis", name: "price", widget: "string" }
+                  - { label: "Zeitraum", name: "period", widget: "string" }
+
+          - label: "Erfahrungen"
+            name: "testimonials"
+            widget: "object"
+            fields:
+              - { label: "Überschrift", name: "heading", widget: "string" }
+              - { label: "Überschrift kursiv", name: "heading_italic", widget: "string" }
+              - label: "Erfahrungsberichte"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Text", name: "text", widget: "text" }
+                  - { label: "Autor", name: "author", widget: "string" }
+                  - { label: "Quelle", name: "source", widget: "string" }
+                  - { label: "Hervorgehoben (groß)", name: "featured", widget: "boolean", default: false }
+
+          - label: "Prozess"
+            name: "process"
+            widget: "object"
+            fields:
+              - { label: "Überschrift", name: "heading", widget: "string" }
+              - { label: "Überschrift kursiv", name: "heading_italic", widget: "string" }
+              - label: "Schritte"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Nummer", name: "num", widget: "string" }
+                  - { label: "Titel", name: "title", widget: "string" }
+                  - { label: "Beschreibung", name: "desc", widget: "text" }
+
+          - label: "Buchung"
+            name: "booking"
+            widget: "object"
+            fields:
+              - { label: "Überschrift", name: "heading", widget: "string" }
+              - { label: "Überschrift kursiv", name: "heading_italic", widget: "string" }
+              - { label: "Text 1", name: "intro_1", widget: "text" }
+              - { label: "Text 2", name: "intro_2", widget: "text" }
+              - { label: "Einstieg Label", name: "entry_label", widget: "string" }
+              - { label: "Einstieg Titel", name: "entry_title", widget: "string" }
+              - { label: "Einstieg Beschreibung", name: "entry_desc", widget: "text" }
+              - { label: "Einstieg Preis", name: "entry_price", widget: "string" }
+              - { label: "Button Text", name: "entry_btn", widget: "string" }
+
+          - label: "Instagram"
+            name: "instagram"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Überschrift", name: "heading", widget: "string" }
+              - { label: "Überschrift kursiv", name: "heading_italic", widget: "string" }
+              - { label: "Beschreibung", name: "desc", widget: "text" }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Berufsbezeichnung", name: "tagline", widget: "string" }
+              - { label: "Standort", name: "location", widget: "string" }
+              - { label: "Sprachen", name: "languages", widget: "string" }
+              - { label: "Copyright", name: "copyright", widget: "string" }
+              - { label: "Sessions Notiz", name: "sessions_note", widget: "string" }

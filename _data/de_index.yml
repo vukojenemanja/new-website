@@ -1,0 +1,186 @@
+meta_title: "Nemanja Vukoje - Heiler, Coach & Kundalini-Yoga-Lehrer"
+meta_desc: "Löse emotionale Blockaden, verbinde dich wieder mit deiner Energie und finde zurück in ein Leben, das sich wirklich lebendig anfühlt. Online-Sessions auf Englisch, Serbisch und Deutsch."
+
+hero:
+  label: "Heiler · Coach · Kundalini-Yoga-Lehrer"
+  heading_1: "Komm zurück"
+  heading_2: "dir selbst."
+  subtitle: "Nach außen scheint alles in Ordnung. Aber innerlich fühlt sich etwas festgefahren, müde oder verloren an. Ich helfe dir, das zu lösen, was deine Energie blockiert - damit du in ein wirklich lebendiges Leben zurückfindest."
+  btn_primary: "Session buchen"
+  btn_ghost: "Die Angebote entdecken"
+
+pain:
+  label: "Du bist nicht allein"
+  heading: "Kommt dir"
+  heading_italic: "etwas davon bekannt vor?"
+  intro_1: "Die meisten Menschen, die zu mir finden, haben stabile Jobs, funktionierende Leben und alles, was man ihnen beigebracht hat zu wollen. Und trotzdem fühlt sich etwas nicht richtig an."
+  intro_2: "Sie haben Therapie ausprobiert. Sie haben die Bücher gelesen. Aber etwas Tieferes hat sich noch nicht verändert."
+  quotes:
+    - "Ich bin ständig müde und überfordert."
+    - "Ich denke zu viel nach und bekomme meinen Kopf nicht zur Ruhe."
+    - "Ich fühle mich festgefahren, aber ich weiß nicht warum."
+    - "In mir fühlt sich etwas blockiert an."
+    - "Ich fühle mich nicht mehr mit mir selbst verbunden."
+    - "Ich wiederhole immer wieder dieselben Muster."
+    - "Ich spüre Gefühle, die einfach nicht verschwinden."
+
+about:
+  label: "Über mich Nemanja"
+  heading: "Ich habe eine Karriere verlassen, um"
+  heading_italic: "etwas Echtes aufzubauen."
+  para_1: "Früher habe ich in der IT gearbeitet und Unternehmen dabei begleitet, besser zusammenzuarbeiten. Ich hatte Stabilität, ein gutes Einkommen und einen Weg, der auf dem Papier Sinn ergab. Aber innerlich wusste ich, dass da mehr ist."
+  para_2: "Ich habe all das hinter mir gelassen. Ich bin um die Welt gereist, habe von spirituellen Lehrer*innen gelernt, heilige Orte besucht und Heiltraditionen in verschiedenen Kulturen erforscht. Über ein Jahrzehnt hinweg habe ich viele Heilmethoden und Coaching-Ausbildungen absolviert - nicht als Sammlung, sondern aus einer inneren Berufung heraus."
+  para_3: "Heute habe ich durch Energieheilung, Kundalini Yoga und professionelles Coaching Hunderten von Menschen geholfen, ihre Energie zu öffnen, emotionale Blockaden zu lösen und in ein Leben zurückzufinden, das sich wirklich nach ihrem anfühlt."
+  para_4: "Ich arbeite auf Englisch, Serbisch und Deutsch mit Klient*innen aus Wien und international - komplett online."
+  stat_1_num: "10+"
+  stat_1_label: "Jahre Praxis"
+  stat_2_num: "5+"
+  stat_2_label: "Jahre Unterricht"
+  stat_3_num: "100s"
+  stat_3_label: "Menschen begleitet"
+
+offers:
+  label: "Arbeite mit mir"
+  heading: "Jedes Angebot holt dich"
+  heading_italic: "genau dort ab, wo du gerade bist."
+  description: "Ob du einen sanften ersten Schritt oder eine tiefgreifende Transformation brauchst - es gibt einen Weg für dich. Jedes Angebot baut stimmig auf dem vorherigen auf."
+
+  aura:
+    name: "Aura Treatment"
+    duration: "20 Minuten · Online"
+    desc: "Ein energetischer Reset - angesammelten Stress reinigen, Fremdes loslassen und deine natürliche Balance wiederherstellen."
+    result_1: "Dich leichter und ruhiger fühlen"
+    result_2: "Emotionale Schwere lösen"
+    result_3: "Mehr Energie im Körper"
+    price_was: "66€"
+    price: "44€"
+    price_note: "Perfekter Einstieg"
+
+  session:
+    name: "Inner Shift Session"
+    duration: "60 Minuten · Online"
+    desc: "Eine vollständige 1:1-Transformationssession - Coaching, Energieheilung und Körperbewusstsein in einem. Wir finden die Wurzel. Wir lösen sie."
+    result_1: "Klarheit bei Lebensentscheidungen"
+    result_2: "Tiefe Blockaden lösen"
+    result_3: "Wieder mit dir selbst verbinden"
+    price: "144€"
+    price_note: "Einzelsession"
+
+  reset:
+    name: "Inner Shift Reset"
+    duration: "3 Sessions · Online"
+    desc: "Eine strukturierte Reise über 3 Sessions, um loszulassen, Klarheit zu gewinnen und dich neu zu verbinden. Das beliebteste Einstiegsprogramm."
+    result_1: "3 × 60-minütige 1:1-Sessions"
+    result_2: "Coaching + Energieheilung"
+    result_3: "Laufende Unterstützung zwischen den Sessions"
+    price: "299€"
+    price_note: "Günstiger als Einzelsessions"
+
+  transform:
+    name: "Inner Shift Transform"
+    duration: "Komplette Transformationsreise"
+    desc: "Die tiefste und umfassendste Reise, die ich anbiete. Nicht nur Sessions - sondern eine vollständige Transformation auf energetischer, emotionaler und Seelenebene."
+    result_1: "6 x 60-minütige 1:1 Sessions"
+    result_2: "Aura-Behandlung inklusive"
+    result_3: "Rückholung von Seelenfragmenten + Seelenheilung"
+    result_4: "Personalisierte Meditation"
+    price: "777€"
+    price_was: "999€"
+
+  community:
+    name: "Akal"
+    name_italic: "Community"
+    sub: "Monatliche Mitgliedschaft"
+    include_1: "Weekly Kundalini-Yoga-Klassen"
+    include_2: "2 Meditationsabende pro Monat"
+    include_3: "Private WhatsApp-Community"
+    include_4: "Laufende Begleitung und Unterstützung"
+    include_5: "Klassenaufzeichnung 7 Tage verfügbar, falls du nicht live dabei sein kannst"
+    price: "77€"
+    period: "pro Monat"
+
+testimonials:
+  heading: "Was Menschen sagen"
+  heading_italic: "nach der Zusammenarbeit"
+  items:
+    - text: "I didn't realize how disconnected I've been lately until your class today. Something opened up in me. My body feels softer, my mind clearer, and there's this gentle warmth in my chest that's still there. I honestly haven't felt this peaceful in a long time."
+      author: "Akal-Community-Mitglied"
+      source: "Kundalini-Yoga-Klasse"
+      featured: true
+    - text: "40 days of meditation and Kundalini Yoga did more for me than years of therapy."
+      author: "Teilnehmer*in des Meditationsprogramms"
+      source: "40-Tage-Challenge"
+      featured: false
+    - text: "Today I felt energy moving for the first time in weeks. My shoulders dropped, my breath relaxed, and my thoughts stopped fighting me."
+      author: "Klient*in"
+      source: "Nach dem Meditationsabend"
+      featured: false
+    - text: "My fear from the marathon is gone. I finished strong. I know I don't need to prove anything to myself. My energy was amazing."
+      author: "Internationale*r Klient*in"
+      source: "Nach den Inner Shift Sessions"
+      featured: false
+    - text: "I am so grateful. I don't know how to say thank you because truly from my heart - you are a real human being."
+      author: "Klient*in"
+      source: "Nach der Kundalini-Klasse"
+      featured: false
+    - text: "Through your sessions my gut feeling has got stronger and it is leading me to the right path. I am getting more intuitive about where I belong and what decisions to make."
+      author: "Klient*in"
+      source: "Nach fortlaufenden Sessions"
+      featured: false
+    - text: "Such lightness in my chest and body after just one session. This is unbelievable."
+      author: "Bojana K., Belgrade"
+      source: "Nach der ersten Inner Shift Session"
+      featured: false
+    - text: "I came in with back pain and a spasm. After the class the discomfort in my lower back was completely gone. I'll see you on Sunday."
+      author: "Akal-Community-Mitglied"
+      source: "Nach der Kundalini-Yoga-Klasse"
+      featured: false
+    - text: "I chose to forgive who hurt me - not because I had to, but because I saw that unkindness doesn't bring me peace. The transformation happened with authenticity, not force."
+      author: "Klient*in"
+      source: "Nach Yoga- und Meditationssessions"
+      featured: false
+    - text: "I had peace I haven't felt in a long time. I hadn't realized how disconnected I had become. Something opened up - and it is still there."
+      author: "Nina P., Novi Sad"
+      source: "Nach der Inner Shift Session"
+      featured: false
+
+process:
+  heading: "Wie sich die"
+  heading_italic: "Arbeit entfaltet"
+  steps:
+    - num: "01"
+      title: "Wir treffen uns"
+      desc: "Eine erste Session, um zu verstehen, wo du gerade stehst, was du mit dir trägst und was sich verändern möchte. Ohne Bewertung. Nur Präsenz."
+    - num: "02"
+      title: "Wir finden die Wurzel"
+      desc: "Wir gehen zurück - ins Unterbewusstsein, in den Körper, ins Energiefeld - um herauszufinden, wo das Muster wirklich begonnen hat."
+    - num: "03"
+      title: "Wir lösen es"
+      desc: "Durch geführte Meditation, Energiearbeit und Coaching lösen wir, was nicht länger zu dir gehört. Der Körper weiß, wie Heilung geht."
+    - num: "04"
+      title: "Du kehrst zurück"
+      desc: "Leichter. Klarer. Mehr du selbst. Die Arbeit geht in Schichten weiter - jede Session öffnet eine neue Tür tiefer zu dem, wer du wirklich bist."
+
+booking:
+  heading: "Bereit"
+  heading_italic: "zu beginnen?"
+  intro_1: "Der erste Schritt ist immer der einfachste. Beginne mit einer 20-minütigen Aura-Reinigung - eine sanfte und leichte Möglichkeit, die Arbeit kennenzulernen, bevor du dich auf mehr einlässt."
+  intro_2: "Oder melde dich direkt - gemeinsam finden wir den richtigen Einstieg für dich."
+  entry_label: "Hier beginnen"
+  entry_title: "Aura Treatment"
+  entry_desc: "Eine 20-minütige Online-Session, um dein Energiefeld zu reinigen, angesammelten Stress loszulassen und deinen natürlichen Fluss wiederherzustellen. Die sanfteste Art, anzufangen."
+  entry_price: "44€"
+  entry_btn: "Diese Session buchen"
+
+instagram:
+  label: "Begleite die Reise"
+  heading: "Tägliche Impulse zu"
+  heading_italic: "Energie und Selbstverbindung"
+  desc: "Gedanken zu emotionalen Mustern, geführte Praktiken und ehrliche Impulse darüber, was es bedeutet, wirklich lebendig zu leben. Auf Englisch, Serbisch und Deutsch."
+
+footer:
+  tagline: "Heiler - Coach - Kundalini-Yoga-Lehrer"
+  location: "Wien, Österreich - Online weltweit"
+  languages: "English, Serbian & German"
+  copyright: "© 2025 Nemanja Vukoje - vukojenemanja.com"
+  sessions_note: "Alle Sessions online - Weltweit"

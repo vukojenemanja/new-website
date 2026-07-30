@@ -477,7 +477,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 
 
 .offer-grid-2col {
-  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-columns: repeat(2, 1fr);
 }
 .offer-grid {
   display: grid;
@@ -1062,14 +1062,45 @@ footer ul a:hover { color: var(--clay); }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
 
-  .hero-content { padding: 0 24px 80px; }
+  .hero {
+    min-height: auto;
+    padding: 100px 24px 60px;
+  }
+  .hero-content { padding: 0; max-width: 100%; }
   .hero-method-tag { display: none; }
+
+  .hero-eyebrow {
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+    margin-bottom: 24px;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    margin-bottom: 36px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost {
+    text-align: center;
+    width: 100%;
+  }
 
   .recognition-inner,
   .method-header,
   .results-inner,
   .method-difference,
-  .difference-quote { grid-template-columns: 1fr; gap: 40px; }
+  .difference-quote { grid-template-columns: 1fr; gap: 32px; }
 
   .offer-grid,
   .offer-grid-2col,
@@ -1077,9 +1108,13 @@ footer ul a:hover { color: var(--clay); }
 
   .testi-featured { grid-column: span 1; }
 
-  .recognition, .method, .results, .offers, .testimonials, .cta-section {
-    padding: 80px 24px;
+  .section-label { letter-spacing: 3px; font-size: 9px; }
+
+  .recognition, .about-me, .method, .why-works, .results, .offers, .testimonials, .cta-section {
+    padding: 60px 24px;
   }
+
+  .about-me-inner { padding: 0; }
 
   footer {
     grid-template-columns: 1fr;

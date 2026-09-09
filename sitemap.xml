@@ -112,4 +112,37 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- English: Aura Treatment -->
+  <url>
+    <loc>https://vukojenemanja.com/en/aura-treatment.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/aura-treatment.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/aura-treatment.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/aura-tretman.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/aura-treatment.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- German: Aura Treatment -->
+  <url>
+    <loc>https://vukojenemanja.com/de/aura-treatment.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/aura-treatment.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/aura-treatment.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/aura-tretman.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/aura-treatment.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Serbian: Aura Treatment -->
+  <url>
+    <loc>https://vukojenemanja.com/srb/aura-tretman.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/aura-treatment.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/aura-treatment.html"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/aura-tretman.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/aura-treatment.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

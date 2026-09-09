@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Die Inner Shift Methode - 1:1 Sessions | Nemanja Vukoje</title>
-<meta name="description" content="Eine Methode, die Coaching und Energiearbeit verbindet, um die Wurzel dessen zu finden, was dich zurückhält – und sie zu lösen. Online-Sessions weltweit.">
+<meta name="description" content="Eine Methode, die Coaching und Energiearbeit verbindet, um die Wurzel dessen zu finden, was dich zurückhält - und sie zu lösen. Online-Sessions weltweit.">
+<link rel="canonical" href="https://vukojenemanja.com/de/individual.html">
+<link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/individual.html">
+<link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/individual.html">
+<link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/individual.html">
+<link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/individual.html">
+<meta property="og:title" content="Die Inner Shift Methode - 1:1 Sessions | Nemanja Vukoje">
+<meta property="og:description" content="Eine Methode, die Coaching und Energiearbeit verbindet, um die Wurzel dessen zu finden, was dich zurückhält - und sie zu lösen. Online-Sessions weltweit.">
+<meta property="og:url" content="https://vukojenemanja.com/de/individual.html">
+<meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 
@@ -928,6 +937,52 @@ footer ul a:hover { color: var(--clay); }
   color: var(--stone);
 }
 
+/* ════════════════════════════════════════
+   ARC OF CHANGE
+   ════════════════════════════════════════ */
+.arc-of-change { background: var(--fog); padding: 120px 60px; }
+.arc-inner { max-width: 1100px; margin: 0 auto; }
+.arc-header { max-width: 660px; margin-bottom: 80px; }
+.arc-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 3.5vw, 48px); font-weight: 300; line-height: 1.15; color: var(--bark); margin-bottom: 20px; text-wrap: balance; }
+.arc-header h2 em { font-style: italic; color: var(--accent); }
+.arc-intro { font-size: 15px; line-height: 1.9; color: var(--stone); max-width: 560px; }
+.arc-stages-wrap { position: relative; margin-bottom: 0; }
+.arc-rail { position: absolute; top: 20px; left: 20px; right: 20px; height: 1px; background: rgba(61,46,30,0.12); }
+.arc-rail-fill { height: 100%; background: var(--clay); transition: width 0.5s ease; width: 0%; }
+.arc-stages { display: flex; justify-content: space-between; position: relative; z-index: 2; padding-bottom: 0; }
+.arc-stage-btn { display: flex; flex-direction: column; align-items: center; gap: 14px; background: none; border: none; cursor: pointer; padding: 0 8px; min-width: 90px; }
+.arc-dot { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid rgba(61,46,30,0.2); background: var(--fog); display: flex; align-items: center; justify-content: center; transition: all 0.35s ease; position: relative; }
+.arc-dot-inner { width: 10px; height: 10px; border-radius: 50%; background: transparent; transition: all 0.35s ease; }
+.arc-stage-btn.active .arc-dot, .arc-stage-btn.passed .arc-dot { border-color: var(--clay); background: var(--clay); }
+.arc-stage-btn.active .arc-dot-inner, .arc-stage-btn.passed .arc-dot-inner { background: var(--fog); }
+.arc-stage-btn.active .arc-dot { box-shadow: 0 0 0 6px rgba(196,168,130,0.18); }
+.arc-stage-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--stone); text-align: center; line-height: 1.4; transition: color 0.3s; max-width: 90px; white-space: pre-line; }
+.arc-stage-btn.active .arc-stage-label { color: var(--bark); font-weight: 500; }
+.arc-detail { margin-top: 52px; border: 1px solid rgba(61,46,30,0.1); background: white; opacity: 0; transform: translateY(12px); transition: opacity 0.4s ease, transform 0.4s ease; pointer-events: none; }
+.arc-detail.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.arc-detail-inner { padding: 52px 60px; }
+.arc-detail-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 2.2vw, 28px); font-style: italic; font-weight: 300; color: var(--bark); line-height: 1.4; margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(61,46,30,0.08); }
+.arc-detail-cols { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 40px; }
+.arc-detail-col h4 { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: var(--clay); margin-bottom: 12px; }
+.arc-detail-col p { font-size: 14px; line-height: 1.8; color: var(--stone); }
+.arc-bridge { margin-top: 72px; padding-top: 56px; border-top: 1px solid rgba(61,46,30,0.1); }
+.arc-bridge-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--clay); margin-bottom: 40px; }
+.arc-pkg-list { display: flex; flex-direction: column; gap: 0; }
+.arc-pkg-row { display: grid; grid-template-columns: 200px 1fr 1fr; gap: 40px; align-items: center; padding: 32px 0; border-bottom: 1px solid rgba(61,46,30,0.07); }
+.arc-pkg-row:first-child { border-top: 1px solid rgba(61,46,30,0.07); }
+.arc-pkg-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--bark); }
+.arc-pkg-desc { font-size: 13px; line-height: 1.7; color: var(--stone); }
+.mini-arc { display: flex; align-items: center; gap: 0; }
+.mini-dot { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid rgba(61,46,30,0.18); background: var(--fog); flex-shrink: 0; transition: all 0.3s; }
+.mini-dot.on { background: var(--clay); border-color: var(--clay); }
+.mini-line { height: 1.5px; width: 20px; background: rgba(61,46,30,0.12); flex-shrink: 0; }
+.mini-line.on { background: var(--clay); }
+.arc-pkg-cta { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--clay); text-decoration: none; border-bottom: 1px solid rgba(196,168,130,0.3); padding-bottom: 2px; transition: border-color 0.3s; margin-top: 8px; }
+.arc-pkg-cta:hover { border-color: var(--clay); }
+@media (max-width: 1024px) { .arc-pkg-row { grid-template-columns: 1fr 1fr; gap: 32px; } .arc-pkg-row .mini-arc { grid-column: span 2; justify-content: flex-start; } }
+@media (max-width: 900px) { .arc-of-change { padding: 80px 24px; } .arc-stages { overflow-x: auto; padding-bottom: 8px; } .arc-stage-btn { min-width: 80px; } .arc-detail-inner { padding: 32px 24px; } .arc-detail-cols { grid-template-columns: 1fr; gap: 28px; } .arc-bridge { margin-top: 56px; padding-top: 40px; } .arc-pkg-row { grid-template-columns: 1fr; gap: 20px; padding: 28px 24px; } .mini-arc { justify-content: flex-start; } }
+@media (prefers-reduced-motion: reduce) { .arc-detail { transition: none; } .arc-rail-fill { transition: none; } .arc-dot { transition: none; } }
+
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -1136,6 +1191,53 @@ footer ul a:hover { color: var(--clay); }
     <div class="method-difference reveal">
       <div class="difference-quote"><!--CMS:method_quote-->„Ich helfe dir nicht nur zu verstehen, was dich zurückhält. Wir lösen es wirklich aus deinem System."<!--/CMS--></div>
     </div>
+  </div>
+</section>
+
+<!-- ARC OF CHANGE -->
+<section class="arc-of-change" id="arc">
+  <div class="arc-inner">
+
+    <div class="arc-header reveal">
+      <div class="section-label">Veränderungsprozess</div>
+      <h2>Fünf Schritte dieses Prozesses.<br><em>Wo stehst du gerade?</em></h2>
+      <p class="arc-intro">Jede Sitzung bewegt dich durch diesen Prozess vorwärts. Klicke auf einen beliebigen Schritt, um zu sehen, wie er sich wirklich anfühlt - im Körper, im Geist und in den Emotionen.</p>
+    </div>
+
+    <div class="arc-stages-wrap reveal">
+      <div class="arc-rail"><div class="arc-rail-fill" id="arcRailFill"></div></div>
+      <div class="arc-stages" id="arcStages" role="tablist" aria-label="Schritte der Veränderung"></div>
+    </div>
+
+    <div class="arc-detail reveal" id="arcDetail" role="tabpanel">
+      <div class="arc-detail-inner">
+        <div class="arc-detail-quote" id="arcQuote"></div>
+        <div class="arc-detail-cols">
+          <div class="arc-detail-col">
+            <h4>Körper</h4>
+            <p id="arcBody"></p>
+          </div>
+          <div class="arc-detail-col">
+            <h4>Gedanken</h4>
+            <p id="arcMind"></p>
+          </div>
+          <div class="arc-detail-col">
+            <h4>Gefühle</h4>
+            <p id="arcEmotions"></p>
+          </div>
+          <div class="arc-detail-col">
+            <h4>Was das bedeutet</h4>
+            <p id="arcKey"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arc-bridge">
+      <div class="arc-bridge-label">Wie viele Schritte deckt jedes Programm ab</div>
+      <div class="arc-pkg-list" id="arcPkgs"></div>
+    </div>
+
   </div>
 </section>
 
@@ -1351,6 +1453,111 @@ const observer = new IntersectionObserver(function(entries) {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+/* ── ARC OF CHANGE ── */
+const stages = [
+  {
+    label: "Ich erkenne\nmich nicht",
+    quote: '"Ich weiß, dass etwas nicht stimmt. Aber ich weiß nicht was."',
+    body: 'Anspannung, Taubheit oder ein Gewicht, das du nicht benennen kannst. Der Körper gibt Signale - du weißt noch nicht, wie du sie lesen sollst.',
+    mind: 'Ständige Analyse ohne klare Antwort. Der Verstand dreht sich im Kreis.',
+    emotions: 'Eine Mischung aus Angst, Leere und Taubheit. Manchmal alles auf einmal.',
+    key: 'Hier beginnen die meisten. Du bist nicht verloren - du stehst am Anfang des Prozesses.'
+  },
+  {
+    label: "Ich verstehe\nwas passiert",
+    quote: '"Ich weiß, Dinge wiederholen sich. Ich bemerke sie."',
+    body: 'Etwas leichter. Gedanken klarer, aber der Körper ist noch schwer.',
+    mind: 'Du siehst Verbindungen - zwischen Vergangenheit und Gegenwart. Das Muster wird erkennbar.',
+    emotions: 'Klarer, aber alter Schmerz kommt hoch. Das ist ein Zeichen, dass sich etwas bewegt.',
+    key: 'Verstehen allein ändert noch nichts. Aber du weißt jetzt, womit wir arbeiten.'
+  },
+  {
+    label: "Ich spüre\nErleichterung",
+    quote: '"Das Gewicht ist weg. Nicht alles, aber etwas Echtes hat sich gelöst."',
+    body: 'Echte Leichtigkeit im Körper. Raum dort, wo Druck war.',
+    mind: 'Klarer. Du kreist nicht mehr um denselben Gedanken.',
+    emotions: 'Ruhiger. Geerdet. Echte Erleichterung, die bleibt.',
+    key: 'Das ist keine vorübergehende Stimmung. Das ist der Körper, der loslässt, was er festgehalten hat.'
+  },
+  {
+    label: "Ich vertraue\nmeinem nächsten Schritt",
+    quote: '"Ich weiß, wohin ich gehe. Ich zögere nicht mehr."',
+    body: 'Der Körper fühlt sich fest an, nicht ängstlich. Du stehst anders in dir.',
+    mind: 'Weniger Zweifel. Du weißt, was du willst und warum.',
+    emotions: 'Stille Zuversicht. Ein Gefühl von Ausrichtung.',
+    key: 'Vertrauen kommt nicht aus dem Denken. Es kommt, wenn das, was dich aufgehalten hat, nicht mehr da ist.'
+  },
+  {
+    label: "Ich handle\nentschlossen",
+    quote: '"Ich bewege mich auf mein Leben zu, nicht weg von meinen Ängsten."',
+    body: 'Energie ohne Angst. Du handelst aus dir heraus, nicht gegen etwas.',
+    mind: 'Klare Richtung. Kleine Schritte, die sich aufaddieren.',
+    emotions: 'Stolz. Noch nicht angekommen, aber in Bewegung.',
+    key: 'Das ist, wofür diese Arbeit da ist. Nicht eine bessere Version des alten Lebens - das Leben, das die ganze Zeit auf dich gewartet hat.'
+  }
+];
+const packages = [
+  { name: 'Inner Shift Clarity', sessions: '1 Sitzung', from: 1, to: 3, desc: 'Eine Sitzung, um aus der Verwirrung in Erleichterung zu gelangen.', href: 'mailto:info@vukojenemanja.com?subject=Inner%20Shift%20Session' },
+  { name: 'Inner Shift Reset', sessions: '3 Sitzungen', from: 2, to: 4, desc: 'Muster durchbrechen und Richtung finden.', href: 'mailto:info@vukojenemanja.com?subject=Inner%20Shift%20Reset%20-%203%20Sessions' },
+  { name: 'Inner Shift Transform', sessions: '6 Sitzungen', from: 1, to: 5, desc: 'Vollständige Transformation - jede Ebene deines Wesens.', href: 'mailto:info@vukojenemanja.com?subject=Inner%20Shift%20Transform' },
+  { name: 'Aura-Sitzung', sessions: '1 Sitzung', from: 3, to: 3, desc: 'Erleichterung und Energie-Reset in einer Sitzung.', href: 'mailto:info@vukojenemanja.com?subject=Aura%20Treatment%20Session' }
+];
+function buildMiniArc(from, to) {
+  let h = '';
+  for (let i = 1; i <= 5; i++) {
+    const on = i >= from && i <= to;
+    h += '<div class="mini-dot' + (on ? ' on' : '') + '"></div>';
+    if (i < 5) h += '<div class="mini-line' + (i >= from && i < to ? ' on' : '') + '"></div>';
+  }
+  return '<div class="mini-arc">' + h + '</div>';
+}
+function renderPackages() {
+  document.getElementById('arcPkgs').innerHTML = packages.map(function(p) {
+    return '<div class="arc-pkg-row">' +
+      '<div><div class="arc-pkg-name">' + p.name + '</div><div style="font-size:11px;letter-spacing:1px;color:var(--stone);margin-top:4px;">' + p.sessions + '</div></div>' +
+      '<div>' + buildMiniArc(p.from, p.to) + '</div>' +
+      '<div><p class="arc-pkg-desc">' + p.desc + '</p><a class="arc-pkg-cta" href="' + p.href + '">Buchen -></a></div>' +
+      '</div>';
+  }).join('');
+}
+let currentStage = 0;
+function updateRail(idx) {
+  const pct = idx === 0 ? 0 : (idx / (stages.length - 1)) * 100;
+  document.getElementById('arcRailFill').style.width = pct + '%';
+}
+function updateDetail(idx) {
+  const s = stages[idx];
+  document.getElementById('arcQuote').textContent = s.quote;
+  document.getElementById('arcBody').textContent = s.body;
+  document.getElementById('arcMind').textContent = s.mind;
+  document.getElementById('arcEmotions').textContent = s.emotions;
+  document.getElementById('arcKey').textContent = s.key;
+  const d = document.getElementById('arcDetail');
+  d.classList.remove('visible');
+  requestAnimationFrame(function() { requestAnimationFrame(function() { d.classList.add('visible'); }); });
+}
+function setStage(idx) {
+  currentStage = idx;
+  document.querySelectorAll('.arc-stage-btn').forEach(function(b, i) {
+    b.classList.toggle('active', i === idx);
+    b.classList.toggle('passed', i < idx);
+    b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+  });
+  updateRail(idx);
+  updateDetail(idx);
+}
+function renderArc() {
+  document.getElementById('arcStages').innerHTML = stages.map(function(s, i) {
+    return '<button class="arc-stage-btn" role="tab" aria-selected="false" onclick="setStage(' + i + ')">' +
+      '<div class="arc-dot"><div class="arc-dot-inner"></div></div>' +
+      '<span class="arc-stage-label">' + s.label + '</span>' +
+      '</button>';
+  }).join('');
+  renderPackages();
+  setStage(0);
+}
+renderArc();
 </script>
 </body>
 </html>

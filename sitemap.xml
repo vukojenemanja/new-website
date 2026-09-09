@@ -112,6 +112,15 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- English: Confidence Landing -->
+  <url>
+    <loc>https://vukojenemanja.com/en/confidence-landing.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/confidence-landing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/confidence-landing.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- English: Aura Treatment -->
   <url>
     <loc>https://vukojenemanja.com/en/aura-treatment.html</loc>

@@ -1936,56 +1936,75 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 
 
 <!-- FAQ -->
+<style>
+.faq-item { border-bottom: 1px solid rgba(61,46,30,0.1); }
+.faq-item:first-child { border-top: 1px solid rgba(61,46,30,0.1); }
+.faq-btn { width:100%; background:none; border:none; cursor:pointer; padding:28px 0; display:flex; justify-content:space-between; align-items:center; gap:24px; text-align:left; }
+.faq-btn-q { font-size:15px; font-weight:500; color:var(--bark); line-height:1.4; }
+.faq-icon { width:20px; height:20px; flex-shrink:0; position:relative; }
+.faq-icon::before, .faq-icon::after { content:''; position:absolute; background:var(--clay); border-radius:1px; transition:transform 0.3s ease, opacity 0.3s ease; }
+.faq-icon::before { width:12px; height:1.5px; top:50%; left:50%; transform:translate(-50%,-50%); }
+.faq-icon::after { width:1.5px; height:12px; top:50%; left:50%; transform:translate(-50%,-50%); }
+.faq-item.open .faq-icon::after { transform:translate(-50%,-50%) rotate(90deg); opacity:0; }
+.faq-answer { overflow:hidden; max-height:0; transition:max-height 0.4s ease; }
+.faq-answer-inner { padding:0 0 28px 0; font-size:15px; line-height:1.85; color:var(--stone); }
+</style>
 <section style="background:var(--sand);padding:100px 60px;">
   <div style="max-width:780px;margin:0 auto;">
     <div class="section-label" style="margin-bottom:32px;">Questions & Answers</div>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,42px);font-weight:300;line-height:1.2;margin-bottom:60px;color:var(--bark);">Things you might want to know<br><em style="font-style:italic;color:var(--accent);">before you join.</em></h2>
 
-    <div style="display:flex;flex-direction:column;gap:0;">
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">What days and times are the classes?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Regular classes are every Sunday at 8:00 PM. Meditation evenings are every Wednesday at 8:00 PM.</p>
+    <div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">What days and times are the classes?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Regular classes are every Sunday at 8:00 PM. Meditation evenings are every Wednesday at 8:00 PM.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Which time zone?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Vienna time (CET/CEST - Central European Time).</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Which time zone?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Vienna time (CET/CEST - Central European Time).</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Can I join at any time, or are there cycles?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Each month is one cycle. You can join at the start of any month.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Can I join at any time, or are there cycles?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Each month is one cycle. You can join at the start of any month.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">When do I get access to the WhatsApp group?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">You get access at the beginning of the monthly cycle, together with everyone else joining that month.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">When do I get access to the WhatsApp group?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">You get access at the beginning of the monthly cycle, together with everyone else joining that month.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">How do I cancel my membership?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Simply let me know after the month ends and you won't be renewed. It is month to month - no long-term commitment.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">How do I cancel my membership?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Simply let me know after the month ends and you won't be renewed. It is month to month - no long-term commitment.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">What do I need for class?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">The Zoom app, a stable internet connection, and a little space and quiet. That is all you need.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">What do I need for class?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">The Zoom app, a stable internet connection, and a little space and quiet. That is all you need.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">What if I have never practiced Kundalini yoga?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">No problem at all. All cycles are beginner friendly. Just let me know before you join and you will receive instructions on everything you need to know before your first class.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">What if I have never practiced Kundalini yoga?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">No problem at all. All cycles are beginner friendly. Just let me know before you join and you will receive instructions on everything you need to know before your first class.</div></div>
       </div>
-
-      <div style="padding:32px 0;">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Are recordings available?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Recordings of all sessions - both Sunday classes and Wednesday meditation evenings - are available until the end of the monthly cycle. If you cannot make it live, you can watch whenever it suits you.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Are recordings available?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Recordings of all sessions - both Sunday classes and Wednesday meditation evenings - are available until the end of the monthly cycle. If you cannot make it live, you can watch whenever it suits you.</div></div>
       </div>
-
     </div>
   </div>
 </section>
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el) {
+    el.classList.remove('open');
+    el.querySelector('.faq-answer').style.maxHeight = '0';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+</script>
 
 <footer>
   <div class="footer-brand">

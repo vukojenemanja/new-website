@@ -1936,56 +1936,75 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 
 
 <!-- FAQ -->
+<style>
+.faq-item { border-bottom: 1px solid rgba(61,46,30,0.1); }
+.faq-item:first-child { border-top: 1px solid rgba(61,46,30,0.1); }
+.faq-btn { width:100%; background:none; border:none; cursor:pointer; padding:28px 0; display:flex; justify-content:space-between; align-items:center; gap:24px; text-align:left; }
+.faq-btn-q { font-size:15px; font-weight:500; color:var(--bark); line-height:1.4; }
+.faq-icon { width:20px; height:20px; flex-shrink:0; position:relative; }
+.faq-icon::before, .faq-icon::after { content:''; position:absolute; background:var(--clay); border-radius:1px; transition:transform 0.3s ease, opacity 0.3s ease; }
+.faq-icon::before { width:12px; height:1.5px; top:50%; left:50%; transform:translate(-50%,-50%); }
+.faq-icon::after { width:1.5px; height:12px; top:50%; left:50%; transform:translate(-50%,-50%); }
+.faq-item.open .faq-icon::after { transform:translate(-50%,-50%) rotate(90deg); opacity:0; }
+.faq-answer { overflow:hidden; max-height:0; transition:max-height 0.4s ease; }
+.faq-answer-inner { padding:0 0 28px 0; font-size:15px; line-height:1.85; color:var(--stone); }
+</style>
 <section style="background:var(--sand);padding:100px 60px;">
   <div style="max-width:780px;margin:0 auto;">
     <div class="section-label" style="margin-bottom:32px;">Fragen &amp; Antworten</div>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,42px);font-weight:300;line-height:1.2;margin-bottom:60px;color:var(--bark);">Was du vielleicht wissen möchtest,<br><em style="font-style:italic;color:var(--accent);">bevor du dich anmeldest.</em></h2>
 
-    <div style="display:flex;flex-direction:column;gap:0;">
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">An welchen Tagen und zu welcher Uhrzeit finden die Stunden statt?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Die regulären Stunden sind jeden Sonntag um 20:00 Uhr. Die Meditationsabende sind jeden Mittwoch um 20:00 Uhr.</p>
+    <div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">An welchen Tagen und zu welcher Uhrzeit finden die Stunden statt?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Die regulären Stunden sind jeden Sonntag um 20:00 Uhr. Die Meditationsabende sind jeden Mittwoch um 20:00 Uhr.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">In welcher Zeitzone?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Wiener Zeit (CET/CEST - Mitteleuropäische Zeit).</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">In welcher Zeitzone?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Wiener Zeit (CET/CEST - Mitteleuropäische Zeit).</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Kann ich jederzeit einsteigen oder gibt es Zyklen?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Jeder Monat ist ein Zyklus. Du kannst zu Beginn jedes Monats einsteigen.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Kann ich jederzeit einsteigen oder gibt es Zyklen?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Jeder Monat ist ein Zyklus. Du kannst zu Beginn jedes Monats einsteigen.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Wann bekomme ich Zugang zur WhatsApp-Gruppe?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Du bekommst Zugang zu Beginn des monatlichen Zyklus, zusammen mit allen anderen Teilnehmenden dieses Monats.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Wann bekomme ich Zugang zur WhatsApp-Gruppe?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Du bekommst Zugang zu Beginn des monatlichen Zyklus, zusammen mit allen anderen Teilnehmenden dieses Monats.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Wie kündige ich die Mitgliedschaft?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Einfach nach Ende des Monats Bescheid geben und nicht verlängern. Es wird monatlich bezahlt - keine langfristigen Verpflichtungen.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Wie kündige ich die Mitgliedschaft?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Einfach nach Ende des Monats Bescheid geben und nicht verlängern. Es wird monatlich bezahlt - keine langfristigen Verpflichtungen.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Was brauche ich für die Stunde?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Die Zoom-App, eine stabile Internetverbindung und etwas Platz und Ruhe. Das ist alles.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Was brauche ich für die Stunde?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Die Zoom-App, eine stabile Internetverbindung und etwas Platz und Ruhe. Das ist alles.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Was, wenn ich noch nie Kundalini Yoga praktiziert habe?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Kein Problem. Alle Zyklen sind auch für Anfänger geeignet. Gib mir einfach vor dem Einsteigen Bescheid und du erhältst Anweisungen zu allem, was du vor der ersten Stunde wissen musst.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Was, wenn ich noch nie Kundalini Yoga praktiziert habe?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Kein Problem. Alle Zyklen sind auch für Anfänger geeignet. Gib mir einfach vor dem Einsteigen Bescheid und du erhältst Anweisungen zu allem, was du vor der ersten Stunde wissen musst.</div></div>
       </div>
-
-      <div style="padding:32px 0;">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Sind Aufzeichnungen verfügbar?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Aufzeichnungen aller Treffen - sowohl der Sonntagsstunden als auch der Mittwoch-Meditationsabende - sind bis zum Ende des monatlichen Zyklus verfügbar. Wenn du nicht live dabei sein kannst, kannst du alles nachholen, wann es dir passt.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Sind Aufzeichnungen verfügbar?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Aufzeichnungen aller Treffen - sowohl der Sonntagsstunden als auch der Mittwoch-Meditationsabende - sind bis zum Ende des monatlichen Zyklus verfügbar. Wenn du nicht live dabei sein kannst, kannst du alles nachholen, wann es dir passt.</div></div>
       </div>
-
     </div>
   </div>
 </section>
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el) {
+    el.classList.remove('open');
+    el.querySelector('.faq-answer').style.maxHeight = '0';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+</script>
 
 <footer>
   <div class="footer-brand">

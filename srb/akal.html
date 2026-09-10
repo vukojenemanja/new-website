@@ -1936,56 +1936,75 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 
 
 <!-- FAQ -->
+<style>
+.faq-item { border-bottom: 1px solid rgba(61,46,30,0.1); }
+.faq-item:first-child { border-top: 1px solid rgba(61,46,30,0.1); }
+.faq-btn { width:100%; background:none; border:none; cursor:pointer; padding:28px 0; display:flex; justify-content:space-between; align-items:center; gap:24px; text-align:left; }
+.faq-btn-q { font-size:15px; font-weight:500; color:var(--bark); line-height:1.4; }
+.faq-icon { width:20px; height:20px; flex-shrink:0; position:relative; }
+.faq-icon::before, .faq-icon::after { content:''; position:absolute; background:var(--clay); border-radius:1px; transition:transform 0.3s ease, opacity 0.3s ease; }
+.faq-icon::before { width:12px; height:1.5px; top:50%; left:50%; transform:translate(-50%,-50%); }
+.faq-icon::after { width:1.5px; height:12px; top:50%; left:50%; transform:translate(-50%,-50%); }
+.faq-item.open .faq-icon::after { transform:translate(-50%,-50%) rotate(90deg); opacity:0; }
+.faq-answer { overflow:hidden; max-height:0; transition:max-height 0.4s ease; }
+.faq-answer-inner { padding:0 0 28px 0; font-size:15px; line-height:1.85; color:var(--stone); }
+</style>
 <section style="background:var(--sand);padding:100px 60px;">
   <div style="max-width:780px;margin:0 auto;">
     <div class="section-label" style="margin-bottom:32px;">Pitanja i odgovori</div>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,42px);font-weight:300;line-height:1.2;margin-bottom:60px;color:var(--bark);">Informacije koje su ti možda<br><em style="font-style:italic;color:var(--accent);">potrebne pre nego što se priključiš.</em></h2>
 
-    <div style="display:flex;flex-direction:column;gap:0;">
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Kojim danom i u koliko sati su časovi?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Redovni časovi su nedeljom u 20:00. Večeri meditacije su sredom u 20:00.</p>
+    <div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Kojim danom i u koliko sati su časovi?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Redovni časovi su nedeljom u 20:00. Večeri meditacije su sredom u 20:00.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">U kojoj vremenskoj zoni?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Bečko vreme (CET/CEST - Centralna Evropa).</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">U kojoj vremenskoj zoni?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Bečko vreme (CET/CEST - Centralna Evropa).</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Može li da se priključi bilo kada ili postoje ciklusi?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Svaki mesec je jedan ciklus. Možeš se priključiti na početku svakog meseca.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Može li da se priključi bilo kada ili postoje ciklusi?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Svaki mesec je jedan ciklus. Možeš se priključiti na početku svakog meseca.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Kada dobijam pristup WhatsApp grupi?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Pristup dobijaš na početku mesečnog ciklusa, zajedno sa svim ostalim učesnicima tog ciklusa.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Kada dobijam pristup WhatsApp grupi?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Pristup dobijaš na početku mesečnog ciklusa, zajedno sa svim ostalim učesnicima tog ciklusa.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Kako se otkazuje članstvo?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Jednostavno - javiš mi se nakon što se mesec završi i ne obnavljaš. Plaća se mesec po mesec, bez dugoročnih obaveza.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Kako se otkazuje članstvo?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Jednostavno - javiš mi se nakon što se mesec završi i ne obnavljaš. Plaća se mesec po mesec, bez dugoročnih obaveza.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Šta je potrebno za čas?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Zoom aplikacija, stabilna internet konekcija, malo prostora i mira. To je sve što ti treba.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Šta je potrebno za čas?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Zoom aplikacija, stabilna internet konekcija, malo prostora i mira. To je sve što ti treba.</div></div>
       </div>
-
-      <div style="padding:32px 0;border-bottom:1px solid rgba(61,46,30,0.1);">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Šta ako nikada nisam praktikovao/la Kundalini jogu?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Nije nikakav problem. Svi ciklusi su prilagođeni i početnicima. Samo me obavesti pre nego što se priključiš i dobijaš uputstva za sve što treba da znaš pre prvog časa.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Šta ako nikada nisam praktikovao/la Kundalini jogu?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Nije nikakav problem. Svi ciklusi su prilagođeni i početnicima. Samo me obavesti pre nego što se priključiš i dobijaš uputstva za sve što treba da znaš pre prvog časa.</div></div>
       </div>
-
-      <div style="padding:32px 0;">
-        <div style="font-size:13px;letter-spacing:1px;font-weight:500;color:var(--bark);margin-bottom:12px;">Da li su snimci dostupni?</div>
-        <p style="font-size:15px;line-height:1.85;color:var(--stone);">Snimci svih susreta - i nedeljnih časova i večeri meditacije - dostupni su do kraja mesečnog ciklusa. Ako ne možeš uživo, možeš odgledati kada ti odgovara.</p>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-btn-q">Da li su snimci dostupni?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Snimci svih susreta - i nedeljnih časova i večeri meditacije - dostupni su do kraja mesečnog ciklusa. Ako ne možeš uživo, možeš odgledati kada ti odgovara.</div></div>
       </div>
-
     </div>
   </div>
 </section>
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el) {
+    el.classList.remove('open');
+    el.querySelector('.faq-answer').style.maxHeight = '0';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+</script>
 
 <footer>
   <div class="footer-brand">

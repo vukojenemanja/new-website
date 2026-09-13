@@ -42,6 +42,64 @@ body {
 
 .serif { font-family: 'Cormorant Garamond', serif; }
 
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,8,5,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+  transition: background 0.4s, padding 0.4s;
+}
+nav.scrolled {
+  background: rgba(26,18,8,0.95);
+  padding: 14px 60px;
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--fog);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+.nav-logo:hover { color: var(--clay); }
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,241,236,0.8);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--clay); }
+.nav-cta {
+  color: var(--clay) !important;
+  border: 1px solid rgba(196,168,130,0.5);
+  padding: 8px 20px;
+  transition: all 0.3s !important;
+}
+.nav-cta:hover {
+  background: var(--clay) !important;
+  color: var(--deep) !important;
+}
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+}
+
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
@@ -814,6 +872,17 @@ body {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Nemanja Vukoje</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">O meni</a></li>
+    <li><a href="raspored.html">Kalendar</a></li>
+    <li><a href="akal.html">Akal zajednica</a></li>
+    <li><a href="individual.html">Individualni rad</a></li>
+    <li><a href="mailto:info@vukojenemanja.com?subject=Prijava%20za%20radionicu%2023.%20septembra&body=Zdravo%20Nemanja%2C%0A%0AZelim%20da%20se%20prijavim%20za%20radionicu%2023.%20septembra.%0A%0AMoje%20ime%20je%3A%0A%0APozdrav" class="nav-cta">Rezerviši mesto</a></li>
+  </ul>
+</nav>
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
@@ -1051,6 +1120,10 @@ body {
 </footer>
 
 <script>
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   const answer = item.querySelector('.faq-answer');

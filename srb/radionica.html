@@ -843,11 +843,12 @@ nav.scrolled {
 }
 .testimonial-img {
   flex-shrink: 0;
-  width: 300px;
-  height: 420px;
-  object-fit: cover;
-  object-position: top;
+  width: 260px;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
   border-radius: 2px;
+  background: #111;
 }
 .testimonials-nav {
   display: flex;
@@ -870,7 +871,7 @@ nav.scrolled {
 .t-btn:hover { background: var(--clay); color: var(--deep); border-color: var(--clay); }
 @media (max-width: 900px) {
   .testimonials { padding: 80px 24px; }
-  .testimonial-img { width: 260px; height: 360px; }
+  .testimonial-img { width: 220px; }
 }
 
 /* ── FOOTER ── */

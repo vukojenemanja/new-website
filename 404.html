@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Nemanja Vukoje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg:   #0D0A07;
+  --sand: #E8DDD0;
+  --clay: #C4A882;
+  --muted: rgba(232,221,208,0.5);
+  --subtle: rgba(232,221,208,0.2);
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--sand);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 10vw;
+  position: relative;
+}
+
+.bg-number {
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(200px, 35vw, 480px);
+  font-weight: 300;
+  color: rgba(196,168,130,0.04);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+.label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 6vw, 86px);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--sand);
+  margin-bottom: 32px;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--clay);
+}
+
+.sub {
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 480px;
+  margin-bottom: 56px;
+}
+
+.divider {
+  width: 48px;
+  height: 1px;
+  background: rgba(196,168,130,0.25);
+  margin-bottom: 56px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(196,168,130,0.08);
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: color 0.3s, gap 0.3s;
+}
+
+.link-item:first-child { border-top: 1px solid rgba(196,168,130,0.08); }
+
+.link-item:hover {
+  color: var(--clay);
+  gap: 28px;
+}
+
+.link-arrow {
+  font-size: 16px;
+  transition: transform 0.3s;
+}
+
+.link-item:hover .link-arrow { transform: translateX(4px); }
+
+.link-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--sand);
+  margin-left: auto;
+  transition: color 0.3s;
+}
+
+.link-item:hover .link-name { color: var(--clay); }
+
+@media (max-width: 600px) {
+  .container { padding: 0 24px; }
+  .bg-number { right: -20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="bg-number">404</div>
+
+  <p class="label">Greška 404</p>
+
+  <h1>Ova stranica<br>ne <em>postoji.</em></h1>
+
+  <div class="divider"></div>
+
+  <p class="sub">Možda si ukucao pogrešan link, ili je stranica premeštena. Evo gde možeš da nastaviš.</p>
+
+  <nav class="links">
+    <a href="/srb/index.html" class="link-item">
+      <span class="link-arrow">→</span>
+      <span>Početna</span>
+      <span class="link-name">Nazad kući</span>
+    </a>
+    <a href="/srb/radionica.html" class="link-item">
+      <span class="link-arrow">→</span>
+      <span>Radionica</span>
+      <span class="link-name">23. septembra</span>
+    </a>
+    <a href="/srb/akal.html" class="link-item">
+      <span class="link-arrow">→</span>
+      <span>Akal zajednica</span>
+      <span class="link-name">Mesečna praksa</span>
+    </a>
+    <a href="/srb/individual.html" class="link-item">
+      <span class="link-arrow">→</span>
+      <span>Individualni rad</span>
+      <span class="link-name">Inner Shift</span>
+    </a>
+  </nav>
+</div>
+
+</body>
+</html>

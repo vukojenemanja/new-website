@@ -816,6 +816,63 @@ nav.scrolled {
   color: var(--muted);
 }
 
+/* ── TESTIMONIALS ── */
+.testimonials {
+  background: var(--s2);
+  padding: 100px 60px;
+  overflow: hidden;
+}
+.testimonials-inner { max-width: 900px; margin: 0 auto; }
+.testimonials-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.15;
+  margin-bottom: 48px;
+}
+.testimonials-title em { font-style: italic; color: var(--clay); }
+.testimonials-track-wrap {
+  overflow: hidden;
+  width: 100%;
+}
+.testimonials-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s ease;
+}
+.testimonial-img {
+  flex-shrink: 0;
+  width: 300px;
+  height: 420px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 2px;
+}
+.testimonials-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+.t-btn {
+  background: none;
+  border: 1px solid rgba(196,168,130,0.3);
+  color: var(--clay);
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.t-btn:hover { background: var(--clay); color: var(--deep); border-color: var(--clay); }
+@media (max-width: 900px) {
+  .testimonials { padding: 80px 24px; }
+  .testimonial-img { width: 260px; height: 360px; }
+}
+
 /* ── FOOTER ── */
 .footer {
   background: var(--bg);
@@ -1037,6 +1094,27 @@ nav.scrolled {
   </div>
 </section>
 
+<!-- UTISCI -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <span class="label" style="color:var(--clay);">Utisci</span>
+    <h2 class="testimonials-title">Šta kažu oni koji su<br><em>već radili sa mnom.</em></h2>
+    <div class="testimonials-track-wrap">
+      <div class="testimonials-track">
+        <img src="../assets/images/IMG_8553.jpg" alt="Utisak klijenta" class="testimonial-img">
+        <img src="../assets/images/IMG_9272.jpg" alt="Utisak klijenta" class="testimonial-img">
+        <img src="../assets/images/IMG_9273.jpg" alt="Utisak klijenta" class="testimonial-img">
+        <img src="../assets/images/IMG_9274.jpg" alt="Utisak klijenta" class="testimonial-img">
+        <img src="../assets/images/IMG_9617.jpg" alt="Utisak klijenta" class="testimonial-img">
+      </div>
+    </div>
+    <div class="testimonials-nav">
+      <button class="t-btn" id="tPrev" onclick="slideTestimonials(-1)">←</button>
+      <button class="t-btn" id="tNext" onclick="slideTestimonials(1)">→</button>
+    </div>
+  </div>
+</section>
+
 <!-- MALA GRUPA -->
 <section class="smallgroup">
   <div class="smallgroup-inner">
@@ -1120,6 +1198,16 @@ nav.scrolled {
 </footer>
 
 <script>
+var tIndex = 0;
+function slideTestimonials(dir) {
+  var imgs = document.querySelectorAll('.testimonial-img');
+  var wrap = document.querySelector('.testimonials-track-wrap');
+  var imgW = imgs[0].offsetWidth + 20;
+  var max = imgs.length - Math.floor(wrap.offsetWidth / imgW);
+  tIndex = Math.max(0, Math.min(tIndex + dir, max));
+  document.querySelector('.testimonials-track').style.transform = 'translateX(-' + (tIndex * imgW) + 'px)';
+}
+
 window.addEventListener('scroll', function() {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
 });

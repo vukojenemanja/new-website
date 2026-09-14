@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-
 :root {
-  --bg:   #0D0A07;
+  --bg: #0D0A07;
   --sand: #E8DDD0;
   --clay: #C4A882;
   --muted: rgba(232,221,208,0.5);
-  --subtle: rgba(232,221,208,0.2);
 }
-
 html, body {
   height: 100%;
   background: var(--bg);
@@ -25,7 +22,6 @@ html, body {
   font-weight: 300;
   overflow: hidden;
 }
-
 .container {
   height: 100vh;
   display: flex;
@@ -35,7 +31,6 @@ html, body {
   padding: 0 10vw;
   position: relative;
 }
-
 .bg-number {
   position: absolute;
   right: -40px;
@@ -49,7 +44,6 @@ html, body {
   user-select: none;
   pointer-events: none;
 }
-
 .label {
   font-size: 10px;
   letter-spacing: 5px;
@@ -57,7 +51,6 @@ html, body {
   color: var(--clay);
   margin-bottom: 40px;
 }
-
 h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(42px, 6vw, 86px);
@@ -66,12 +59,7 @@ h1 {
   color: var(--sand);
   margin-bottom: 32px;
 }
-
-h1 em {
-  font-style: italic;
-  color: var(--clay);
-}
-
+h1 em { font-style: italic; color: var(--clay); }
 .sub {
   font-size: clamp(15px, 1.5vw, 18px);
   line-height: 1.8;
@@ -79,20 +67,13 @@ h1 em {
   max-width: 480px;
   margin-bottom: 56px;
 }
-
 .divider {
   width: 48px;
   height: 1px;
   background: rgba(196,168,130,0.25);
   margin-bottom: 56px;
 }
-
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
+.links { display: flex; flex-direction: column; gap: 0; }
 .link-item {
   display: flex;
   align-items: center;
@@ -105,21 +86,10 @@ h1 em {
   letter-spacing: 1px;
   transition: color 0.3s, gap 0.3s;
 }
-
 .link-item:first-child { border-top: 1px solid rgba(196,168,130,0.08); }
-
-.link-item:hover {
-  color: var(--clay);
-  gap: 28px;
-}
-
-.link-arrow {
-  font-size: 16px;
-  transition: transform 0.3s;
-}
-
+.link-item:hover { color: var(--clay); gap: 28px; }
+.link-arrow { font-size: 16px; transition: transform 0.3s; }
 .link-item:hover .link-arrow { transform: translateX(4px); }
-
 .link-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 20px;
@@ -128,9 +98,7 @@ h1 em {
   margin-left: auto;
   transition: color 0.3s;
 }
-
 .link-item:hover .link-name { color: var(--clay); }
-
 @media (max-width: 600px) {
   .container { padding: 0 24px; }
   .bg-number { right: -20px; }
@@ -138,36 +106,29 @@ h1 em {
 </style>
 </head>
 <body>
-
 <div class="container">
   <div class="bg-number">404</div>
-
   <p class="label">Error 404</p>
-
   <h1>This page<br>doesn't <em>exist.</em></h1>
-
   <div class="divider"></div>
-
-  <p class="sub">The link may be broken or the page has moved. Choose your language to continue.</p>
-
+  <p class="sub">You may have followed a broken link or the page has moved. Here's where you can go instead.</p>
   <nav class="links">
-    <a href="/srb/index.html" class="link-item">
-      <span class="link-arrow">→</span>
-      <span>Srpski</span>
-      <span class="link-name">Početna</span>
-    </a>
     <a href="/en/index.html" class="link-item">
       <span class="link-arrow">→</span>
-      <span>English</span>
-      <span class="link-name">Home</span>
+      <span>Home</span>
+      <span class="link-name">Back to start</span>
     </a>
-    <a href="/de/index.html" class="link-item">
+    <a href="/en/individual.html" class="link-item">
       <span class="link-arrow">→</span>
-      <span>Deutsch</span>
-      <span class="link-name">Startseite</span>
+      <span>Individual work</span>
+      <span class="link-name">Inner Shift</span>
+    </a>
+    <a href="/en/akal.html" class="link-item">
+      <span class="link-arrow">→</span>
+      <span>Akal community</span>
+      <span class="link-name">Monthly practice</span>
     </a>
   </nav>
 </div>
-
 </body>
 </html>

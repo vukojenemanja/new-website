@@ -820,6 +820,50 @@ nav.scrolled {
   color: var(--muted);
 }
 
+/* ── ABOUT ME ── */
+.about-me {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+.about-me-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-me-img-wrap {
+  position: relative;
+}
+.about-me-img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.about-me-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--bark);
+  line-height: 1.1;
+  margin-bottom: 32px;
+}
+.about-me-title em { font-style: italic; color: var(--accent); }
+.about-me-text p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--stone);
+  margin-bottom: 20px;
+}
+@media (max-width: 900px) {
+  .about-me { padding: 80px 24px; }
+  .about-me-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about-me-img { height: 360px; }
+}
+
 /* ── TESTIMONIALS ── */
 .testimonials {
   background: var(--s2);
@@ -1115,6 +1159,22 @@ nav.scrolled {
     <div class="testimonials-nav">
       <button class="t-btn" id="tPrev" onclick="slideTestimonials(-1)">←</button>
       <button class="t-btn" id="tNext" onclick="slideTestimonials(1)">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- O MENI -->
+<section class="about-me">
+  <div class="about-me-inner">
+    <div class="about-me-img-wrap">
+      <img src="../assets/images/hero-new-test.jpg" alt="Nemanja Vukoje" class="about-me-img">
+    </div>
+    <div class="about-me-text">
+      <span class="label" style="color:var(--clay);">Ko sam ja</span>
+      <h2 class="about-me-title">Nemanja<br><em>Vukoje</em></h2>
+      <p>Radim sa ljudima koji u većini slučajeva već razumeju šta treba da promene i kako reaguju - a i dalje ostaju na istom mestu.</p>
+      <p>Moj pristup, Inner Shift metoda, kombinuje rad na racionalnom i energetskom nivou sa konkretnim akcijama ka promeni. Nakon sedam godina rada sa klijentima, uočio sam da znanje ponekad može i da blokira. Zato je ovaj pristup orjentisan ka iskustvu i akciji - ne ka još jednom uvidu.</p>
+      <p>Pre toga sam proveo mnogo godina u korporativnom svetu. Ta promena mi je dala jasan uvid u to šta znači zaglaviti se između onoga što znaš i onoga što živiš.</p>
     </div>
   </div>
 </section>

@@ -838,17 +838,16 @@ nav.scrolled {
 .testimonials-track-wrap {
   overflow: hidden;
   width: 100%;
+  border-radius: 2px;
 }
 .testimonials-track {
   display: flex;
-  gap: 20px;
   transition: transform 0.4s ease;
 }
 .testimonial-img {
   flex-shrink: 0;
-  width: 260px;
+  width: 100%;
   height: auto;
-  max-height: 500px;
   object-fit: contain;
   border-radius: 2px;
   background: #111;
@@ -1205,11 +1204,10 @@ nav.scrolled {
 var tIndex = 0;
 function slideTestimonials(dir) {
   var imgs = document.querySelectorAll('.testimonial-img');
-  var wrap = document.querySelector('.testimonials-track-wrap');
-  var imgW = imgs[0].offsetWidth + 20;
-  var max = imgs.length - Math.floor(wrap.offsetWidth / imgW);
+  var max = imgs.length - 1;
   tIndex = Math.max(0, Math.min(tIndex + dir, max));
-  document.querySelector('.testimonials-track').style.transform = 'translateX(-' + (tIndex * imgW) + 'px)';
+  var pct = tIndex * 100;
+  document.querySelector('.testimonials-track').style.transform = 'translateX(-' + pct + '%)';
 }
 
 window.addEventListener('scroll', function() {

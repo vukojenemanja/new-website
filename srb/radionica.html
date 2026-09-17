@@ -547,24 +547,22 @@ nav.scrolled {
 
 /* ── FOR WHO ── */
 .forwho {
-  background: var(--bg);
+  background: var(--fog);
   padding: 120px 60px;
 }
 
 .forwho-inner { max-width: 900px; margin: 0 auto; }
 
-.forwho > .forwho-inner > .label { color: var(--clay); }
-
 .forwho h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 4.5vw, 56px);
+  font-size: clamp(36px, 4.5vw, 52px);
   font-weight: 300;
-  color: var(--sand);
+  color: var(--bark);
   line-height: 1.15;
   margin-bottom: 56px;
 }
 
-.forwho h2 em { font-style: italic; color: var(--clay); }
+.forwho h2 em { font-style: italic; color: var(--accent); }
 
 .recog-quotes {
   display: flex;
@@ -574,18 +572,18 @@ nav.scrolled {
 
 .recog-q {
   padding: 22px 0;
-  border-bottom: 1px solid rgba(196,168,130,0.12);
+  border-bottom: 1px solid rgba(61,46,30,0.1);
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(17px, 2vw, 22px);
+  font-size: clamp(17px, 2vw, 21px);
   font-style: italic;
-  color: var(--sand);
+  color: var(--bark);
   line-height: 1.5;
   display: flex;
   gap: 20px;
   align-items: flex-start;
 }
 
-.recog-q:first-child { border-top: 1px solid rgba(196,168,130,0.12); }
+.recog-q:first-child { border-top: 1px solid rgba(61,46,30,0.1); }
 
 .recog-q::before {
   content: '"';
@@ -600,35 +598,33 @@ nav.scrolled {
 .forwho-close {
   font-size: 16px;
   line-height: 1.9;
-  color: rgba(232,221,208,0.6);
+  color: var(--stone);
   margin-bottom: 64px;
 }
 
 .forwho-close em {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  color: var(--sand);
+  color: var(--bark);
   font-size: 1.1em;
 }
 
 /* FOR */
-.foryes { background: none; border: none; padding: 0; }
-.foryes li { color: var(--sand); border-bottom-color: rgba(196,168,130,0.1); }
-.foryes li::before { content: '✓'; color: var(--clay); opacity: 1; }
+.foryes li::before { content: '✓'; color: var(--accent); opacity: 1; }
 
 /* NOT FOR */
 .notfor {
-  background: rgba(196,168,130,0.05);
-  border: 1px solid rgba(196,168,130,0.12);
+  background: rgba(61,46,30,0.06);
+  border: 1px solid rgba(61,46,30,0.1);
   padding: 40px 48px;
   margin-top: 0;
 }
 
 .notfor h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(20px, 2vw, 26px);
+  font-size: 24px;
   font-weight: 400;
-  color: var(--clay);
+  color: var(--bark);
   margin-bottom: 24px;
 }
 
@@ -636,20 +632,20 @@ nav.scrolled {
 
 .notfor li {
   font-size: 15px;
-  color: rgba(232,221,208,0.7);
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(196,168,130,0.08);
+  color: var(--stone);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.08);
   display: flex;
   gap: 14px;
   align-items: flex-start;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .notfor li:last-child { border-bottom: none; }
 
 .notfor li::before {
-  content: '—';
-  color: var(--clay);
+  content: '×';
+  color: var(--stone);
   flex-shrink: 0;
   opacity: 0.5;
 }

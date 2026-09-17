@@ -299,6 +299,56 @@ nav.scrolled {
   color: var(--bark);
 }
 
+/* ── BRING ── */
+.bring {
+  background: var(--bg);
+  padding: 120px 60px;
+}
+.bring-inner { max-width: 900px; margin: 0 auto; }
+.bring .label { color: var(--accent); }
+.bring-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 56px;
+  border-top: 1px solid rgba(196,168,130,0.12);
+}
+.bring-item {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+}
+.bring-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--clay);
+  flex-shrink: 0;
+  width: 28px;
+}
+.bring-item p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--sand);
+  line-height: 1.3;
+  margin: 0;
+}
+.bring-cta {
+  padding-top: 40px;
+  border-bottom: none;
+}
+.bring-cta p {
+  font-style: normal;
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--clay);
+  letter-spacing: 0.5px;
+}
+
 /* ── WHY ── */
 .why {
   background: var(--s1);
@@ -963,7 +1013,7 @@ nav.scrolled {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .hero, .recognition, .why, .what, .takehome, .forwho, .smallgroup, .price, .faq { padding: 80px 24px; }
+  .hero, .recognition, .bring, .why, .what, .takehome, .forwho, .smallgroup, .price, .faq { padding: 80px 24px; }
   .what-header { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
   .what-grid { grid-template-columns: 1fr; }
   .takehome-inner { grid-template-columns: 1fr; margin-top: 48px; }
@@ -1039,6 +1089,26 @@ nav.scrolled {
       </div>
     </div>
   </div>  
+</section>
+
+<!-- ŠTA DONOSIŠ -->
+<section class="bring">
+  <div class="bring-inner">
+    <span class="label">Šta donosiš na radionicu</span>
+    <div class="bring-questions">
+      <div class="bring-item">
+        <span class="bring-num">01</span>
+        <p>Koji razgovor odlažeš?</p>
+      </div>
+      <div class="bring-item">
+        <span class="bring-num">02</span>
+        <p>Pred kojim korakom stalno staneš?</p>
+      </div>
+      <div class="bring-item bring-cta">
+        <p>Donesi upravo tu situaciju na radionicu.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ZAŠTO -->

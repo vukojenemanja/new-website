@@ -113,6 +113,15 @@ nav.scrolled .nav-links span { color: var(--stone); }
   background: var(--clay) !important;
   color: var(--deep) !important;
 }
+.nav-cta-btn {
+  background: var(--clay) !important;
+  color: var(--deep) !important;
+  border-color: var(--clay) !important;
+}
+.nav-cta-btn:hover {
+  background: var(--warm) !important;
+  border-color: var(--warm) !important;
+}
 
 /* ── HERO ── */
 .hero {
@@ -1775,7 +1784,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
       </ul>
     </li>
     <li><a href="index.html#testimonials">Testimonials</a></li>
-    <li><a href="index.html#booking" class="nav-cta">Book a session</a></li>
+    <li><a href="mailto:info@vukojenemanja.com?subject=Joining%20Akal%20Community" class="nav-cta nav-cta-btn">Join Akal</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
@@ -1793,37 +1802,23 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 
   <!-- Hero -->
   <div class="subpage-hero">
-    <div class="subpage-hero-label"><!--CMS:hero_label-->Akal Community · 77€ / month<!--/CMS--></div>
-    <h1><!--CMS:hero_h1-->A safe space<br>to reconnect<br><em>with yourself.</em><!--/CMS--></h1>
-    <p><!--CMS:hero_p-->Akal is a Sanskrit word meaning "timeless" - beyond time, beyond ego. This community is a living container for that: a place where practice meets presence, and where you are met exactly as you are.<!--/CMS--></p>
+    <div class="subpage-hero-label"><!--CMS:hero_label-->Akal Community · Kundalini yoga, meditation and energy healing.<!--/CMS--></div>
+    <h1><!--CMS:hero_h1-->Regular practice,<br>community and<br><em>continuity.</em><!--/CMS--></h1>
+    <p><!--CMS:hero_p-->Akal is for you if you want to build a regular practice, regulate the rhythm of everyday life, and have a community you can return to - without needing to dive into an intensive individual process right away.<!--/CMS--></p>
+    <div style="margin-top:40px;">
+      <a href="mailto:info@vukojenemanja.com?subject=Joining%20Akal%20Community&body=Hello%20Nemanja%2C%0A%0AI%20would%20like%20to%20join%20the%20Akal%20Community.%0A%0AMy%20name%20is%3A%0A%0ABest%20regards" class="btn-primary">Join Akal - 77 € per month</a>
+      <p style="font-size:13px;color:rgba(232,221,208,0.5);margin-top:16px;letter-spacing:0.5px;">You can cancel your membership at any time.</p>
+    </div>
   </div>
 
   <!-- For who -->
   <div class="subpage-section">
     <div class="section-label">Who is this for</div>
     <h2><!--CMS:forwho_h2-->For anyone who feels the weight<br><em>of modern life.</em><!--/CMS--></h2>
-    <p><!--CMS:forwho_p-->You don't need to know anything about yoga or meditation to join. You only need one thing - the honest feeling that something needs to change.<!--/CMS--></p>
+    <p><!--CMS:forwho_p-->Akal is for you if you want a regular practice, a sense of grounding and balance in daily life, and a community to return to - without needing to dive into an intensive individual process right away.<!--/CMS--></p>
 
-    <div class="akal-what-grid" style="margin-top:40px;margin-bottom:48px;">
-      <div class="akal-card" style="background:var(--sand);border-top-color:var(--clay)">
-        <h4 style="color:var(--bark)"><!--CMS:card1_title-->You feel it in your body<!--/CMS--></h4>
-        <p style="color:var(--stone)"><!--CMS:card1_text-->Constant tiredness that sleep does not fix. A body that feels tight, heavy, or numb. You push through each day but the fatigue just keeps returning.<!--/CMS--></p>
-      </div>
-      <div class="akal-card" style="background:var(--sand);border-top-color:var(--moss)">
-        <h4 style="color:var(--bark)"><!--CMS:card2_title-->You feel it in your mind<!--/CMS--></h4>
-        <p style="color:var(--stone)"><!--CMS:card2_text-->Anxiety that surfaces without warning. Thoughts that will not quiet down. Stress that follows you even into the moments that should feel peaceful.<!--/CMS--></p>
-      </div>
-      <div class="akal-card" style="background:var(--sand);border-top-color:var(--accent)">
-        <h4 style="color:var(--bark)"><!--CMS:card3_title-->You feel it emotionally<!--/CMS--></h4>
-        <p style="color:var(--stone)"><!--CMS:card3_text-->Mood swings, emotional numbness, or reactions you cannot explain. A sense of being disconnected from yourself - going through the motions without feeling truly alive.<!--/CMS--></p>
-      </div>
-      <div class="akal-card" style="background:var(--sand);border-top-color:var(--bark)">
-        <h4 style="color:var(--bark)"><!--CMS:card4_title-->You feel it spiritually<!--/CMS--></h4>
-        <p style="color:var(--stone)"><!--CMS:card4_text-->A quiet emptiness underneath the surface. Life feels flat, purposeless, or repetitive. You sense there is something deeper available - but you cannot find the door back to it.<!--/CMS--></p>
-      </div>
-    </div>
-
-    <p style="font-size:15px;color:var(--stone);line-height:1.9;margin-bottom:0;">Regular practice in Akal Community directly addresses these patterns. Week by week, Kundalini Yoga and meditation train your nervous system to release stored stress, calm the mind, soften the body, and build the emotional steadiness that lets you meet life - without bracing against it.</p>
+    <p style="font-size:clamp(20px,2.5vw,28px);font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;color:var(--bark);line-height:1.6;margin-top:40px;margin-bottom:32px;"><!--CMS:forwho_tension-->You know practice helps you - but you can't maintain it when you need it most.<!--/CMS--></p>
+    <p style="font-size:15px;color:var(--stone);line-height:1.9;margin-bottom:0;"><!--CMS:forwho_body-->Akal exists precisely for that. Week by week, Kundalini yoga and meditation teach your nervous system to regulate, your mind to settle, and your body to release what it carries. You don't need to find the motivation - the community and the schedule do that for you.<!--/CMS--></p>
   </div>
 
   <!-- What's inside -->
@@ -1875,6 +1870,35 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
     </div>
   </div>
 
+<!-- Akal is / is not -->
+<section style="background:var(--fog);padding:100px 60px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label" style="margin-bottom:48px;">Building the foundation</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+      <div style="background:var(--sand);padding:56px 48px;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--bark);margin-bottom:36px;">Akal <em style="font-style:italic;color:var(--accent);">is</em></h3>
+        <ul style="list-style:none;">
+          <li style="padding:14px 0;border-bottom:1px solid rgba(61,46,30,0.1);font-size:15px;color:var(--stone);display:flex;gap:14px;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;margin-top:2px;">✓</span> a regular practice</li>
+          <li style="padding:14px 0;border-bottom:1px solid rgba(61,46,30,0.1);font-size:15px;color:var(--stone);display:flex;gap:14px;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;margin-top:2px;">✓</span> regulation and grounding</li>
+          <li style="padding:14px 0;border-bottom:1px solid rgba(61,46,30,0.1);font-size:15px;color:var(--stone);display:flex;gap:14px;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;margin-top:2px;">✓</span> continuity and stability</li>
+          <li style="padding:14px 0;border-bottom:1px solid rgba(61,46,30,0.1);font-size:15px;color:var(--stone);display:flex;gap:14px;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;margin-top:2px;">✓</span> community support</li>
+          <li style="padding:14px 0;border-bottom:1px solid rgba(61,46,30,0.1);font-size:15px;color:var(--stone);display:flex;gap:14px;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;margin-top:2px;">✓</span> maintaining a relationship with yourself</li>
+          <li style="padding:14px 0;font-size:15px;color:var(--stone);display:flex;gap:14px;align-items:flex-start;"><span style="color:var(--accent);flex-shrink:0;margin-top:2px;">✓</span> an entry point or complementary offering</li>
+        </ul>
+      </div>
+      <div style="background:var(--bark);padding:56px 48px;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--sand);margin-bottom:36px;">Akal <em style="font-style:italic;color:var(--clay);">is not</em></h3>
+        <ul style="list-style:none;">
+          <li style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:15px;color:rgba(232,221,208,0.6);display:flex;gap:14px;align-items:flex-start;"><span style="color:var(--stone);flex-shrink:0;margin-top:2px;">×</span> an individually tailored process</li>
+          <li style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:15px;color:rgba(232,221,208,0.6);display:flex;gap:14px;align-items:flex-start;"><span style="color:var(--stone);flex-shrink:0;margin-top:2px;">×</span> one-on-one work on a specific pattern</li>
+          <li style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:15px;color:rgba(232,221,208,0.6);display:flex;gap:14px;align-items:flex-start;"><span style="color:var(--stone);flex-shrink:0;margin-top:2px;">×</span> a replacement for RESET or Transform</li>
+          <li style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:15px;color:rgba(232,221,208,0.6);display:flex;gap:14px;align-items:flex-start;"><span style="color:var(--stone);flex-shrink:0;margin-top:2px;">×</span> psychotherapy or medical treatment</li>
+          <li style="padding:14px 0;font-size:15px;color:rgba(232,221,208,0.6);display:flex;gap:14px;align-items:flex-start;"><span style="color:var(--stone);flex-shrink:0;margin-top:2px;">×</span> a space for resolving acute issues through personalized support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- PHOTO GALLERY -->
   <div class="gallery-section">

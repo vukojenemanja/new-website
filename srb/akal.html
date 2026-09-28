@@ -1824,7 +1824,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
     <h1><!--CMS:hero_h1-->Redovna praksa,<br>zajednica i<br><em>kontinuitet.</em><!--/CMS--></h1>
     <p><!--CMS:hero_p-->Akal je za tebe ako želiš da izgradiš redovnu praksu, regulišeš tempo svakodnevnog života i imaš zajednicu kojoj možeš da se vraćaš - bez potrebe da odmah ulaziš u intenzivan individualni proces.<!--/CMS--></p>
     <div style=”margin-top:40px;”>
-      <a href=”mailto:info@vukojenemanja.com?subject=Pridru%C5%BEivanje%20Akal%20zajednici” class=”btn-primary”>Pridruži se Akalu - 77 € mesečno</a>
+      <a href=”mailto:info@vukojenemanja.com?subject=Pridru%C5%BEivanje%20Akal%20zajednici” class=”btn-primary” style=”display:inline-block;background:#C4A882;color:#1E1712;padding:16px 40px;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;font-weight:500;”>Pridruži se Akalu - 77 € mesečno</a>
       <p style=”font-size:13px;color:rgba(232,221,208,0.5);margin-top:16px;letter-spacing:0.5px;”>Članstvo možeš da otkažeš bilo kada.</p>
     </div>
   </div>
@@ -1889,10 +1889,17 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 
 
 <!-- Akal jeste / nije -->
-<section style="background:var(--fog);padding:100px 60px;">
+<style>
+@media (max-width: 680px) {
+  .akal-compare { padding: 60px 24px !important; }
+  .akal-compare-grid { grid-template-columns: 1fr !important; }
+  .akal-compare-grid > div { padding: 40px 28px !important; }
+}
+</style>
+<section class="akal-compare" style="background:var(--fog);padding:100px 60px;">
   <div style="max-width:1100px;margin:0 auto;">
     <div class="section-label" style="margin-bottom:48px;">Postavljamo temelje</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+    <div class="akal-compare-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
       <div style="background:var(--sand);padding:56px 48px;">
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--bark);margin-bottom:36px;">Akal <em style="font-style:italic;color:var(--accent);">jeste</em></h3>
         <ul style="list-style:none;">
@@ -2037,7 +2044,7 @@ function toggleFaq(btn) {
       <div class="section-label" style="justify-content:center;">Pridruži se Akal zajednici</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;margin-bottom:24px;"><!--CMS:cta_price-->77€<!--/CMS--> <em style="font-style:italic;color:var(--accent);font-size:0.5em;vertical-align:middle;"><!--CMS:cta_period-->mesečno<!--/CMS--></em></h2>
       <p style="font-size:15px;color:var(--stone);line-height:1.8;max-width:520px;margin:0 auto 40px;">Svakog meseca dobijaš najmanje šest vođenih susreta: četiri časa Kundalini joge i dve meditativne večeri, uz snimke i podršku privatne zajednice.</p>
-      <a href="mailto:info@vukojenemanja.com?subject=Pridru%C5%BEivanje%20Akal%20zajednici" class="btn-primary">Pridruži se Akalu - 77 € mesečno</a>
+      <a href="mailto:info@vukojenemanja.com?subject=Pridru%C5%BEivanje%20Akal%20zajednici" class="btn-primary" style="display:inline-block;background:#C4A882;color:#1E1712;padding:16px 40px;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;font-weight:500;">Pridruži se Akalu - 77 € mesečno</a>
       <p style="font-size:13px;color:var(--stone);margin-top:20px;letter-spacing:0.5px;">Članstvo možeš da otkažeš bilo kada.</p>
     </div>
   </div>

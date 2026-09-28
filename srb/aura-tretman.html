@@ -87,6 +87,14 @@ nav.scrolled .nav-logo { color: var(--bark); }
 }
 nav.scrolled .nav-links a { color: var(--stone); }
 .nav-links a:hover { color: var(--clay); }
+.nav-links span { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,241,236,0.8); cursor: default; transition: color 0.3s; }
+.nav-links span:hover { color: var(--clay); }
+.nav-dropdown { position: relative; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 50%; transform: translateX(-50%); background: var(--deep); border: 1px solid rgba(196,168,130,0.15); min-width: 200px; list-style: none; z-index: 200; }
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.nav-dropdown > span::after { content: ''; display: block; position: absolute; height: 16px; width: 100%; left: 0; bottom: -16px; }
+.dropdown-menu li a { display: block; padding: 14px 20px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,241,236,0.7); text-decoration: none; transition: background 0.2s, color 0.2s; border: none; }
+.dropdown-menu li a:hover { background: var(--sand); color: var(--accent) !important; }
 .nav-cta {
   font-size: 11px !important;
   letter-spacing: 2px !important;
@@ -853,7 +861,7 @@ footer a:hover { color: var(--clay); }
       </ul>
     </li>
     <li><a href="index.html#testimonials">Utisci</a></li>
-    <li><a href="mailto:info@vukojenemanja.com?subject=Aura%20Tretman%20-%20Zakazivanje" class="nav-cta">Zakaži sesiju</a></li>
+    <li><a href="mailto:info@vukojenemanja.com?subject=Aura%20Tretman%20-%20Zakazivanje" class="nav-cta">Kontaktiraj me</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Meni">
     <span></span><span></span><span></span>

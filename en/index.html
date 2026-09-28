@@ -1938,6 +1938,205 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 .nav-mobile-close:hover { color: var(--clay); }
 
 
+
+/* ── WORK SPLIT (zamena za staru offers sekciju) ── */
+.work-split {
+  padding: 100px 60px;
+  background: var(--fog);
+}
+.work-header {
+  margin-bottom: 56px;
+}
+.work-eyebrow {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.work-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--bark);
+  text-wrap: balance;
+}
+.work-title em { font-style: italic; color: var(--accent); }
+
+.split-panels {
+  display: flex;
+  min-height: clamp(460px, 58vh, 600px);
+  border: 1px solid rgba(61,46,30,0.12);
+}
+.work-panel {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex 0.6s cubic-bezier(0.77, 0, 0.18, 1), background 0.4s;
+  padding: 48px 44px 44px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(61,46,30,0.1);
+  background: #fff;
+}
+.work-panel:last-child { border-right: none; }
+.work-panel.active { flex: 1.7; background: var(--deep); }
+
+.work-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 15% 85%, rgba(196,168,130,0.08) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.6s;
+  pointer-events: none;
+}
+.work-panel.active::after { opacity: 1; }
+
+.work-panel-letter {
+  position: absolute;
+  top: -16px;
+  right: -8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 200px;
+  font-weight: 300;
+  line-height: 1;
+  color: rgba(61,46,30,0.04);
+  user-select: none;
+  pointer-events: none;
+  transition: color 0.5s;
+}
+.work-panel.active .work-panel-letter { color: rgba(196,168,130,0.07); }
+
+.work-panel-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.work-panel-eyebrow {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 16px;
+  transition: color 0.4s;
+}
+.work-panel.active .work-panel-eyebrow { color: var(--clay); }
+
+.work-panel-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 300;
+  line-height: 1.08;
+  color: rgba(61,46,30,0.35);
+  transition: color 0.45s;
+  margin-bottom: 20px;
+}
+.work-panel-title em { font-style: italic; }
+.work-panel.active .work-panel-title { color: var(--sand); }
+
+.work-panel-desc {
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(61,46,30,0.3);
+  max-width: 400px;
+  transition: color 0.45s;
+}
+.work-panel.active .work-panel-desc { color: rgba(232,221,208,0.6); }
+
+.work-panel-spacer { flex: 1; }
+
+.work-subitems {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  opacity: 0.25;
+  transition: opacity 0.45s;
+}
+.work-panel.active .work-subitems { opacity: 1; }
+
+.work-subitem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-top: 1px solid rgba(196,168,130,0.15);
+  text-decoration: none;
+  transition: border-color 0.3s;
+}
+.work-subitem:last-child { border-bottom: 1px solid rgba(196,168,130,0.15); }
+.work-subitem:hover { border-color: rgba(196,168,130,0.4); }
+.work-subitem:hover .work-sub-arrow { transform: translateX(4px); }
+
+.work-sub-left { display: flex; flex-direction: column; gap: 3px; }
+.work-sub-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--sand);
+}
+.work-sub-tag {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.work-sub-arrow {
+  color: var(--clay);
+  font-size: 16px;
+  transition: transform 0.3s;
+}
+
+.work-panel-cta {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 13px 28px;
+  background: var(--clay);
+  color: var(--deep);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  align-self: flex-start;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s, background 0.2s;
+  pointer-events: none;
+}
+.work-panel.active .work-panel-cta {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.work-panel-cta:hover { background: var(--warm); }
+
+@media (max-width: 700px) {
+  .work-split { padding: 80px 24px; }
+  .split-panels { flex-direction: column; min-height: auto; }
+  .work-panel {
+    flex: unset !important;
+    border-right: none;
+    border-bottom: 1px solid rgba(61,46,30,0.1);
+    min-height: auto;
+    padding: 36px 24px 32px;
+  }
+  .work-panel:last-child { border-bottom: none; }
+  .work-panel-letter { font-size: 130px; }
+  .work-panel-desc { color: rgba(61,46,30,0.45); }
+  .work-subitems { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-panel, .work-panel-title, .work-panel-desc, .work-panel-cta, .work-subitems { transition: none; }
+}
+
 </style>
 
 <link rel="alternate" hreflang="en" href="../en/index.html" />
@@ -2071,104 +2270,45 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 </section>
 
 <!-- OFFERS -->
-<section class="offers" id="offers">
-  <div class="offers-inner">
-    <div class="offers-header reveal">
-      <div>
-        <div class="section-label">Work with me</div>
-        <h2><!--CMS:offers_h2-->Every offer meets you<br><em>where you are.</em><!--/CMS--></h2>
-      </div>
-      <p class="offers-desc"><!--CMS:offers_desc-->Whether you need a gentle first step or a complete transformation, there is a path for you. Each offering builds naturally on the last.<!--/CMS--></p>
-    </div>
-
-    <div class="offer-grid reveal" style="grid-template-columns:repeat(2,1fr);">
-      <!-- Aura Cleansing -->
-      <div class="offer-card">
-        <div class="offer-num">1</div>
-
-        <div class="offer-name"><!--CMS:o1_name-->Aura Treatment<!--/CMS--></div>
-        <div class="offer-duration"><!--CMS:o1_duration-->30 minutes · Online<!--/CMS--></div>
-        <p class="offer-desc"><!--CMS:o1_desc-->An energetic reset - cleanse accumulated stress, release what isn't yours, and restore your natural balance.<!--/CMS--></p>
-        <ul class="offer-results"><!--CMS:o1_includes-->
-<li>Feel lighter and calmer</li>
-          <li>Release emotional heaviness</li>
-          <li>More energy in the body</li>
-        <!--/CMS--></ul>
-        <span class="offer-price-was"><!--CMS:o1_price_was-->66€<!--/CMS--></span>
-        <span class="offer-price"><!--CMS:o1_price-->44€<!--/CMS--></span>
-        <span class="offer-price-note"><!--CMS:o1_price_note-->Perfect entry point<!--/CMS--></span>
-      </div>
-
-      <!-- Inner Peace single -->
-      <div class="offer-card featured">
-        <div class="offer-num">2</div>
-
-        <div class="offer-name"><!--CMS:o2_name-->Inner Shift Session<!--/CMS--></div>
-        <div class="offer-duration"><!--CMS:o2_duration-->60 minutes · Online<!--/CMS--></div>
-        <p class="offer-desc"><!--CMS:o2_desc-->A full 1:1 transformation session - coaching, energy healing, and body awareness combined. We find the root. We release it.<!--/CMS--></p>
-        <ul class="offer-results"><!--CMS:o2_includes-->
-<li>Clarity in life decisions</li>
-          <li>Release of deep blocks</li>
-          <li>Reconnect with yourself</li>
-        <!--/CMS--></ul>
-        <span class="offer-price"><!--CMS:o2_price-->144€<!--/CMS--></span>
-        <span class="offer-price-note"><!--CMS:o2_price_note-->Single session<!--/CMS--></span>
+<section class="work-split" id="offers">
+  <div class="work-header">
+    <p class="work-eyebrow">Work with me</p>
+    <h2 class="work-title">Choose the path that<br><em>fits you.</em></h2>
+  </div>
+  <div class="split-panels">
+    <div class="work-panel active" id="panelInner" onclick="activatePanel('panelInner')" role="button" tabindex="0">
+      <span class="work-panel-letter">I</span>
+      <div class="work-panel-content">
+        <p class="work-panel-eyebrow">Individual work</p>
+        <h3 class="work-panel-title">Inner<br><em>Shift</em></h3>
+        <p class="work-panel-desc">Deep 1:1 work combining coaching, energy healing and body work. We address the specific block, pattern or fear holding you back - and release it.</p>
+        <div class="work-panel-spacer"></div>
+        <a href="individual.html" class="work-panel-cta" onclick="event.stopPropagation()">Learn more</a>
       </div>
     </div>
-
-    <!-- Inner Peace packages -->
-    <div class="offer-grid reveal" style="margin-top:2px;">
-      <div class="offer-card" style="background:var(--deep);">
-        <div class="offer-num" style="color:var(--clay);opacity:0.2">B</div>
-
-        <div class="offer-name" style="color:var(--sand);"><!--CMS:o3_name-->Inner Shift Reset<!--/CMS--></div>
-        <div class="offer-duration"><!--CMS:o3_duration-->3 sessions · Online<!--/CMS--></div>
-        <p class="offer-desc" style="color:rgba(232,221,208,0.55);"><!--CMS:o3_desc-->A structured 3-session journey to release, clarify, and reconnect. The most popular starting program.<!--/CMS--></p>
-        <ul class="offer-results" style=""><!--CMS:o3_includes-->
-<li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">3 x 60-min 1:1 sessions</li>
-          <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Coaching + energy healing</li>
-          <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Ongoing support between sessions</li>
-        <!--/CMS--></ul>
-        <span class="offer-price" style="color:var(--clay)"><!--CMS:o3_price-->299€<!--/CMS--></span>
-        <span class="offer-price-note" style="color:var(--stone)"><!--CMS:o3_price_note-->Save vs. single sessions<!--/CMS--></span>
-      </div>
-
-      <div class="offer-card" style="background:var(--deep);grid-column:span 2;">
-        <div class="offer-num" style="color:var(--clay);opacity:0.15">P</div>
-
-        <div class="offer-name" style="color:var(--sand);"><!--CMS:o4_name-->Inner Shift Transform<!--/CMS--></div>
-        <div class="offer-duration"><!--CMS:o4_duration-->Complete transformation journey<!--/CMS--></div>
-        <p class="offer-desc" style="color:rgba(232,221,208,0.55);max-width:500px"><!--CMS:o4_desc-->The deepest, most complete journey I offer. Not just sessions - a full energetic, emotional, and soul-level transformation.<!--/CMS--></p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px">
-          <ul class="offer-results">
-            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">6 x 60-minute 1:1 sessions</li>
-            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Aura Treatment included</li>
-          </ul>
-          <ul class="offer-results">
-            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Returning Soul Fragments + Soul Healing</li>
-            <li style="color:rgba(232,221,208,0.5);border-color:rgba(255,255,255,0.06)">Personalised meditation</li>
-          </ul>
+    <div class="work-panel" id="panelGroup" onclick="activatePanel('panelGroup')" role="button" tabindex="0">
+      <span class="work-panel-letter">G</span>
+      <div class="work-panel-content">
+        <p class="work-panel-eyebrow">Group work</p>
+        <h3 class="work-panel-title">Community<br>and <em>workshops</em></h3>
+        <p class="work-panel-desc">Regular practice or a themed workshop - a safe place for your growth where you're not alone.</p>
+        <div class="work-panel-spacer"></div>
+        <div class="work-subitems">
+          <a href="akal.html" class="work-subitem" onclick="event.stopPropagation()">
+            <div class="work-sub-left">
+              <span class="work-sub-name">Akal Community</span>
+              <span class="work-sub-tag">Monthly · Online</span>
+            </div>
+            <span class="work-sub-arrow">→</span>
+          </a>
+          <a href="individual.html" class="work-subitem" onclick="event.stopPropagation()">
+            <div class="work-sub-left">
+              <span class="work-sub-name">Workshops</span>
+              <span class="work-sub-tag">One-time · Online</span>
+            </div>
+            <span class="work-sub-arrow">→</span>
+          </a>
         </div>
-        <span class="offer-price" style="color:var(--clay)"><!--CMS:o4_price-->777€<!--/CMS--></span>
-      </div>
-    </div>
-
-    <!-- Akal Community -->
-    <div class="offer-full reveal" style="margin-top:2px;">
-      <div>
-        <div class="community-name"><!--CMS:akal_name-->Akal <em>Community</em><!--/CMS--></div>
-        <div class="community-sub"><!--CMS:akal_sub-->Monthly membership<!--/CMS--></div>
-      </div>
-      <ul class="community-includes"><!--CMS:akal_includes-->
-<li>Weekly Kundalini Yoga classes</li>
-        <li>2 meditation evenings per month</li>
-        <li>Private WhatsApp community</li>
-        <li>Ongoing guidance and support</li>
-            <li>Class recording available for 7 days if you can't attend</li>
-      <!--/CMS--></ul>
-      <div class="community-price">
-        <span class="price-big"><!--CMS:akal_price-->77€<!--/CMS--></span>
-        <span class="price-period"><!--CMS:akal_period-->per month<!--/CMS--></span>
       </div>
     </div>
   </div>
@@ -2385,6 +2525,20 @@ function closeMobileMenu() {
   document.getElementById('hamburgerBtn').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+function activatePanel(id) {
+  document.querySelectorAll('.work-panel').forEach(p => p.classList.remove('active'));
+  var el = document.getElementById(id);
+  if (el) el.classList.add('active');
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.work-panel').forEach(function(panel) {
+    panel.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activatePanel(panel.id); }
+    });
+  });
+});
+
 </script>
 </body>
 </html>

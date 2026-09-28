@@ -704,82 +704,60 @@ nav.scrolled .nav-links span { color: var(--stone); }
 .testimonials {
   background: var(--deep);
   padding: 120px 60px;
-  position: relative;
   overflow: hidden;
 }
-
-.testimonials::before {
-  content: '"';
-  position: absolute;
-  top: -40px; left: 40px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 400px;
-  color: rgba(196,168,130,0.04);
-  line-height: 1;
-  pointer-events: none;
-}
-
 .testimonials-inner {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
 }
-
 .testimonials h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(36px, 4vw, 52px);
   font-weight: 300;
   color: var(--sand);
-  margin-bottom: 64px;
+  margin-bottom: 48px;
   max-width: 500px;
 }
-
 .testimonials h2 em { font-style: italic; color: var(--clay); }
-
-.testi-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
+.testimonials-track-wrap {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 2px;
 }
-
-.testi-card {
-  background: rgba(255,255,255,0.03);
-  padding: 40px 32px;
-  border-top: 2px solid rgba(196,168,130,0.2);
-  transition: border-color 0.3s;
+.testimonials-track {
+  display: flex;
+  transition: transform 0.4s ease;
 }
-
-.testi-card:hover { border-color: var(--clay); }
-
-.testi-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 300;
-  font-style: italic;
-  color: rgba(232,221,208,0.85);
-  line-height: 1.6;
-  margin-bottom: 28px;
+.testimonial-img {
+  flex-shrink: 0;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 2px;
+  background: #111;
 }
-
-.testi-author {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+.testimonials-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+.t-btn {
+  background: none;
+  border: 1px solid rgba(196,168,130,0.3);
   color: var(--clay);
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-.testi-source {
-  font-size: 11px;
-  color: var(--stone);
-  margin-top: 4px;
+.t-btn:hover { background: var(--clay); color: var(--deep); border-color: var(--clay); }
+@media (max-width: 768px) {
+  .testimonials { padding: 80px 24px; }
 }
-
-.testi-featured {
-  background: rgba(196,168,130,0.08);
-  border-color: var(--clay);
-  grid-column: span 2;
-}
-
-.testi-featured .testi-text { font-size: 26px; }
 
 /* ── PROCESS ── */
 .process {
@@ -2177,58 +2155,22 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="testimonials-inner">
-    <h2 class="reveal"><!--CMS:testi_h2-->Šta ljudi kažu<br><em>nakon zajedničkog rada</em><!--/CMS--></h2>
-    <div class="testi-grid">
-      <div class="testi-card testi-featured reveal">
-        <p class="testi-text"><!--CMS:t1_text-->"Nisam ni shvatila koliko sam u poslednje vreme bila nepovezana sa sobom, sve do tvog časa danas. Nešto se u meni otvorilo. Telo mi je mekše, um jasniji, a u grudima i dalje osećam jednu blagu toplinu. Iskreno, dugo se nisam osećala ovako mirno."<!--/CMS--></p>
-        <div class="testi-author"><!--CMS:t1_author-->Član Akal zajednice<!--/CMS--></div>
-        <div class="testi-source"><!--CMS:t1_source-->Nakon časa u AKAL zajednici<!--/CMS--></div>
+    <h2 class="reveal">Šta ljudi kažu<br><em>nakon zajedničkog rada</em></h2>
+    <div class="testimonials-track-wrap">
+      <div class="testimonials-track" id="testiTrackHome">
+        <img src="../assets/images/IMG_8553.jpg" alt="Utisak klijenta" class="testimonial-img">
+        <img src="../assets/images/IMG_9272.jpg" alt="Utisak klijenta" class="testimonial-img">
+        <img src="../assets/images/IMG_9273.jpg" alt="Utisak klijenta" class="testimonial-img">
+        <img src="../assets/images/IMG_9274.jpg" alt="Utisak klijenta" class="testimonial-img">
+        <img src="../assets/images/IMG_9617.jpg" alt="Utisak klijenta" class="testimonial-img">
+        <img src="../assets/images/IMG_testi_1.jpg" alt="Utisak klijenta" class="testimonial-img">
+        <img src="../assets/images/IMG_testi_2.jpg" alt="Utisak klijenta" class="testimonial-img">
+        <img src="../assets/images/IMG_testi_3.jpg" alt="Utisak klijenta" class="testimonial-img">
       </div>
-      <div class="testi-card reveal">
-        <p class="testi-text"><!--CMS:t2_text-->"40 dana meditacije i Kundalini joge uradili su za mene više nego godine terapije."<!--/CMS--></p>
-        <div class="testi-author"><!--CMS:t2_author-->Učesnik radionice<!--/CMS--></div>
-        <div class="testi-source"><!--CMS:t2_source-->Kundalini radionica za otkrivanje unutrašnje snage<!--/CMS--></div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text"><!--CMS:t3_text-->"Danas sam prvi put posle više nedelja osetila kako se energija pokreće. Ramena su mi se spustila, dah omekšao, a misli su prestale da se bore."<!--/CMS--></p>
-        <div class="testi-author"><!--CMS:t3_author-->Klijent<!--/CMS--></div>
-        <div class="testi-source"><!--CMS:t3_source-->Nakon Inner Shift sesije<!--/CMS--></div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text"><!--CMS:t4_text-->"Moj strah u vezi sa maratonom je nestao. Završila sam snažno. Sada znam da ne moram ništa da dokazujem sebi. Energija mi je bila neverovatna."<!--/CMS--></p>
-        <div class="testi-author"><!--CMS:t4_author-->Međunarodni klijent<!--/CMS--></div>
-        <div class="testi-source"><!--CMS:t4_source-->Nakon Inner Shift sesije<!--/CMS--></div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text"><!--CMS:t5_text-->"Neizmerno sam zahvalna. Ne znam ni kako da kažem hvala, jer zaista iz srca osećam da si istinski čovek."<!--/CMS--></p>
-        <div class="testi-author"><!--CMS:t5_author-->Klijent<!--/CMS--></div>
-        <div class="testi-source"><!--CMS:t5_source-->Nakon časa u AKAL zajednici<!--/CMS--></div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text"><!--CMS:t6_text-->"Kroz tvoj rad moj unutrašnji osećaj je ojačao i vodi me pravim putem. Sve više intuitivno osećam gde pripadam i koje odluke treba da donesem."<!--/CMS--></p>
-        <div class="testi-author"><!--CMS:t6_author-->Klijent<!--/CMS--></div>
-        <div class="testi-source"><!--CMS:t6_source-->Nakon Inner Shift sesija<!--/CMS--></div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text"><!--CMS:t7_text-->"Takva lakoća u grudima i telu već nakon samo jedne sesije. Ovo je neverovatno."<!--/CMS--></p>
-        <div class="testi-author"><!--CMS:t7_author-->Bojana K., Belgrade<!--/CMS--></div>
-        <div class="testi-source"><!--CMS:t7_source-->Nakon prve Inner Shift sesije<!--/CMS--></div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text"><!--CMS:t8_text-->"Došla sam sa bolom u leđima i grčem. Posle časa je nelagodnost u donjem delu leđa potpuno nestala. Vidimo se u nedelju."<!--/CMS--></p>
-        <div class="testi-author"><!--CMS:t8_author-->Član Akal zajednice<!--/CMS--></div>
-        <div class="testi-source"><!--CMS:t8_source-->Nakon časa u AKAL Zajednici<!--/CMS--></div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text"><!--CMS:t9_text-->"Odabrala sam da oprostim onome ko me je povredio - ne zato što sam morala, već zato što sam videla da grubost ne donosi mir. Promena se dogodila kroz autentičnost, a ne kroz silu."<!--/CMS--></p>
-        <div class="testi-author"><!--CMS:t9_author-->Klijent<!--/CMS--></div>
-        <div class="testi-source"><!--CMS:t9_source-->Nakon časa u AKAL Zajednici<!--/CMS--></div>
-      </div>
-      <div class="testi-card reveal">
-        <p class="testi-text"><!--CMS:t10_text-->"Osetila sam mir koji dugo nisam osetila. Nisam ni primetila koliko sam se udaljila od sebe. Nešto se otvorilo - i taj osećaj je i dalje tu."<!--/CMS--></p>
-        <div class="testi-author"><!--CMS:t10_author-->Nina P., Novi Sad<!--/CMS--></div>
-        <div class="testi-source"><!--CMS:t10_source-->Nakon Inner Shift sesije<!--/CMS--></div>
-      </div>
+    </div>
+    <div class="testimonials-nav">
+      <button class="t-btn" onclick="slideHome(-1)">←</button>
+      <button class="t-btn" onclick="slideHome(1)">→</button>
     </div>
   </div>
 </section>
@@ -2381,6 +2323,14 @@ function closeMobileMenu() {
   document.getElementById('mobileMenu').classList.remove('open');
   document.getElementById('hamburgerBtn').classList.remove('open');
   document.body.style.overflow = '';
+}
+
+let homeTestiIdx = 0;
+function slideHome(dir) {
+  const track = document.getElementById('testiTrackHome');
+  const total = track.children.length;
+  homeTestiIdx = (homeTestiIdx + dir + total) % total;
+  track.style.transform = `translateX(-${homeTestiIdx * 100}%)`;
 }
 </script>
 </body>

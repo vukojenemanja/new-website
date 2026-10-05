@@ -30,6 +30,24 @@
     return n;
   }
 
+  function wantsSoul() {
+    var ch = document.getElementById('nv-popup-soul-check');
+    return ch ? ch.checked : false;
+  }
+
+  function updateDobVisibility() {
+    var wrap = document.getElementById('nv-popup-dob-wrap');
+    var btn = document.getElementById('nv-popup-submit');
+    if (!wrap) return;
+    if (wantsSoul()) {
+      wrap.style.display = 'block';
+      if (btn) btn.textContent = 'Otkrij broj';
+    } else {
+      wrap.style.display = 'none';
+      if (btn) btn.textContent = 'Prijavi se';
+    }
+  }
+
   function showPopup() {
     if (triggered) return;
     triggered = true;
@@ -64,10 +82,10 @@
     e.preventDefault();
     var email = document.getElementById('nv-popup-email').value.trim();
     var name = document.getElementById('nv-popup-name').value.trim();
-    var dob = document.getElementById('nv-popup-dob').value.trim();
     var btn = document.getElementById('nv-popup-submit');
     var errEl = document.getElementById('nv-popup-error');
     var consent = document.getElementById('nv-popup-consent-check');
+    var soul = null;
 
     errEl.style.display = 'none';
 
@@ -83,11 +101,16 @@
       return;
     }
 
-    var soul = calcSoul(dob);
-    if (!soul) {
-      errEl.textContent = 'Unesi datum rodjenja u formatu DD.MM.GGGG (npr. 15.03.1990)';
-      errEl.style.display = 'block';
-      return;
+    var dob = '';
+    if (wantsSoul()) {
+      var dobEl = document.getElementById('nv-popup-dob');
+      dob = dobEl ? dobEl.value.trim() : '';
+      soul = calcSoul(dob);
+      if (!soul) {
+        errEl.textContent = 'Unesi datum rodjenja u formatu DD.MM.GGGG (npr. 15.03.1990)';
+        errEl.style.display = 'block';
+        return;
+      }
     }
 
     btn.disabled = true;
@@ -111,7 +134,7 @@
       })
       .catch(function () {
         btn.disabled = false;
-        btn.textContent = 'Otkrij broj';
+        btn.textContent = wantsSoul() ? 'Otkrij broj' : 'Prijavi se';
         errEl.textContent = 'Doslo je do greske. Pokusaj ponovo ili me kontaktiraj direktno.';
         errEl.style.display = 'block';
       });
@@ -122,10 +145,22 @@
     document.getElementById('nv-popup-sub').style.display = 'none';
     var sEl = document.getElementById('nv-popup-success');
     sEl.style.display = 'block';
-    var numEl = document.getElementById('nv-popup-soul-num');
-    var linkEl = document.getElementById('nv-popup-soul-link');
-    if (numEl) numEl.textContent = soul;
-    if (linkEl) linkEl.href = '/srb/hvala.html?soul=' + soul;
+
+    var soulResult = document.getElementById('nv-popup-soul-result');
+    var newsletterResult = document.getElementById('nv-popup-newsletter-result');
+
+    if (soul) {
+      var numEl = document.getElementById('nv-popup-soul-num');
+      var linkEl = document.getElementById('nv-popup-soul-link');
+      if (numEl) numEl.textContent = soul;
+      if (linkEl) linkEl.href = '/srb/hvala.html?soul=' + soul;
+      if (soulResult) soulResult.style.display = 'block';
+      if (newsletterResult) newsletterResult.style.display = 'none';
+    } else {
+      if (soulResult) soulResult.style.display = 'none';
+      if (newsletterResult) newsletterResult.style.display = 'block';
+    }
+
     try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
   }
 
@@ -142,6 +177,12 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') dismissPopup(false);
     });
+
+    var soulCheck = document.getElementById('nv-popup-soul-check');
+    if (soulCheck) {
+      soulCheck.addEventListener('change', updateDobVisibility);
+      updateDobVisibility();
+    }
 
     window.addEventListener('scroll', onScroll, { passive: true });
     timer = setTimeout(showPopup, TRIGGER_SECONDS * 1000);

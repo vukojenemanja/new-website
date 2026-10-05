@@ -1258,8 +1258,14 @@ reveals.forEach(el => observer.observe(el));
     <p id="nv-popup-sub">Unesi datum rodjenja i otkrij sta tvoj broj duse govori o tebi. Besplatno, odmah.</p>
     <form id="nv-popup-form" novalidate>
       <input type="text" id="nv-popup-name" name="first_name" placeholder="Tvoje ime" autocomplete="given-name">
-      <input type="text" id="nv-popup-dob" name="dob" placeholder="Datum rodjenja (DD.MM.GGGG)" autocomplete="bday" inputmode="numeric">
       <input type="email" id="nv-popup-email" name="email" placeholder="Tvoj email" required autocomplete="email">
+      <label id="nv-popup-soul-opt">
+        <input type="checkbox" id="nv-popup-soul-check" checked>
+        <span id="nv-popup-soul-opt-label">Zelim da saznam i broj duse</span>
+      </label>
+      <div id="nv-popup-dob-wrap">
+        <input type="text" id="nv-popup-dob" name="dob" placeholder="Datum rodjenja (DD.MM.GGGG)" autocomplete="bday" inputmode="numeric">
+      </div>
       <label id="nv-popup-consent">
         <input type="checkbox" id="nv-popup-consent-check" required>
         <span id="nv-popup-consent-label">Slazem se da primam emailove i razumem da mogu da se odjavim u svakom trenutku. Procitao/la sam <a href="/srb/datenschutz.html" target="_blank">Politiku privatnosti</a>.</span>
@@ -1269,11 +1275,17 @@ reveals.forEach(el => observer.observe(el));
     </form>
     <p id="nv-popup-note">Bez spama. Odjava u svakom trenutku.</p>
     <div id="nv-popup-success">
-      <p>Tvoj broj duse je <strong id="nv-popup-soul-num" style="font-style:normal;color:#9B6B3A"></strong>.</p>
-      <span class="success-sub" style="display:block;margin-top:12px">
-        <a id="nv-popup-soul-link" href="/srb/hvala.html" style="color:#9B6B3A;text-decoration:underline;font-family:'DM Sans',sans-serif;font-size:13px">Citaj svoju analizu &rarr;</a>
-      </span>
-      <span class="success-sub" style="display:block;margin-top:8px">Provjeri inbox (i spam folder) - stize za koji trenutak.</span>
+      <div id="nv-popup-soul-result">
+        <p>Tvoj broj duse je <strong id="nv-popup-soul-num" style="font-style:normal;color:#9B6B3A"></strong>.</p>
+        <span class="success-sub" style="display:block;margin-top:12px">
+          <a id="nv-popup-soul-link" href="/srb/hvala.html" style="color:#9B6B3A;text-decoration:underline;font-family:'DM Sans',sans-serif;font-size:13px">Citaj svoju analizu &rarr;</a>
+        </span>
+        <span class="success-sub" style="display:block;margin-top:8px">Provjeri inbox (i spam folder) - stize za koji trenutak.</span>
+      </div>
+      <div id="nv-popup-newsletter-result" style="display:none">
+        <p>Hvala na prijavi!</p>
+        <span class="success-sub" style="display:block;margin-top:8px">Provjeri inbox (i spam folder) - stize za koji trenutak.</span>
+      </div>
     </div>
   </div>
 </div>

@@ -21,7 +21,7 @@
 <link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--clay:#C4A882;--sand:#E8DDD0;--bark:#3D2E1E;--fog:#F5F1EC;--deep:#1E1712;--stone:#8A8070}
+:root{--clay:#C4A882;--sand:#E8DDD0;--bark:#3D2E1E;--fog:#F5F1EC;--deep:#1E1712;--stone:#8A8070;--accent:#9B6B3A}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--fog);color:var(--bark);line-height:1.7}
 nav{padding:22px 40px;background:var(--deep);display:flex;justify-content:space-between;align-items:center}
@@ -29,16 +29,21 @@ nav a{color:var(--sand);text-decoration:none;font-size:12px;letter-spacing:2px;t
 nav a:hover{color:var(--clay)}
 main{max-width:760px;margin:0 auto;padding:80px 28px 100px}
 .eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--stone);margin-bottom:16px}
-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5vw,58px);font-weight:300;line-height:1.1;margin-bottom:48px}
-.card{background:#fff;border:1px solid rgba(61,46,30,.08);padding:36px 40px;margin-bottom:2px}
-.card:first-of-type{border-radius:4px 4px 0 0}
-.card:last-of-type{border-radius:0 0 4px 4px;margin-bottom:0}
-.card p{font-size:15px;line-height:1.85;color:var(--stone);margin-bottom:16px}
-.card p:last-child{margin-bottom:0}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,52px);font-weight:300;line-height:1.1;margin-bottom:12px}
+.updated{font-size:12px;color:var(--stone);margin-bottom:56px}
+.section{margin-bottom:40px}
+.section h2{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--bark);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(61,46,30,.1)}
+.section p{font-size:14px;line-height:1.85;color:var(--stone);margin-bottom:12px}
+.section p:last-child{margin-bottom:0}
+.section ul{font-size:14px;line-height:1.85;color:var(--stone);margin:8px 0 12px 20px}
+.section ul li{margin-bottom:6px}
+.section a{color:var(--accent);text-decoration:none}
+.section a:hover{text-decoration:underline}
+.highlight{background:#fff;border-left:3px solid var(--clay);padding:16px 20px;margin:16px 0;font-size:14px;line-height:1.8;color:var(--stone)}
 footer{margin-top:64px;padding-top:28px;border-top:1px solid rgba(61,46,30,.1);font-size:12px;color:var(--stone);display:flex;gap:24px;flex-wrap:wrap}
 footer a{color:var(--clay);text-decoration:none}
 footer a:hover{text-decoration:underline}
-@media(max-width:600px){main{padding:60px 20px 80px}nav{padding:18px 20px}.card{padding:24px 20px}}
+@media(max-width:600px){main{padding:60px 20px 80px}nav{padding:18px 20px}}
 </style>
 </head>
 <body>
@@ -49,18 +54,104 @@ footer a:hover{text-decoration:underline}
 <main>
   <div class="eyebrow">Pravne informacije</div>
   <h1>Politika privatnosti</h1>
+  <p class="updated">Poslednja izmena: oktobar 2026.</p>
 
-  <div class="card">
-    <p>Zaštita vaših ličnih podataka nam je veoma važna. Obrada ličnih podataka vrši se u skladu sa važećim propisima o zaštiti podataka, posebno Opštom uredbom o zaštiti podataka (GDPR).</p>
+  <div class="section">
+    <h2>1. Odgovorno lice</h2>
+    <p>Odgovorno lice za obradu ličnih podataka u smislu Opšte uredbe o zaštiti podataka (GDPR, Uredba EU 2016/679) i austrijskog Zakona o zaštiti podataka (DSG 2018) je:</p>
+    <div class="highlight">
+      Sat Nam Vienna<br>
+      Zastupa: Nemanja Vukoje<br>
+      Sachsenplatz 9, 1200 Beč, Austrija<br>
+      Email: <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a>
+    </div>
   </div>
-  <div class="card">
-    <p>Lični podaci se obrađuju isključivo u svrhu organizacije i sprovođenja aktivnosti udruženja, komunikacije i administracije.</p>
+
+  <div class="section">
+    <h2>2. Koje podatke prikupljamo</h2>
+    <p>Prikupljamo sledeće kategorije ličnih podataka:</p>
+    <ul>
+      <li><strong>Kontakt podaci:</strong> ime, email adresa</li>
+      <li><strong>Datum rođenja</strong> (dan i mesec) - isključivo za izračunavanje broja duše po tantričkoj numerologiji, ako to korisnik izabere</li>
+      <li><strong>Podaci o korišćenju sajta:</strong> IP adresa (anonimizovana), tip pregledača, posećene stranice, vreme posete</li>
+    </ul>
+    <p>Podatke prikupljamo isključivo u onoj meri u kojoj je to neophodno za navedene svrhe.</p>
   </div>
-  <div class="card">
-    <p>Učešćem u našim aktivnostima, učesnici pristaju na korišćenje fotografija nastalih tokom događaja u svrhe udruženja (npr. veb sajt, društvene mreže).</p>
+
+  <div class="section">
+    <h2>3. Svrha i pravni osnov obrade</h2>
+
+    <p><strong>Email lista i newsletter</strong></p>
+    <p>Pravni osnov: saglasnost (čl. 6 st. 1 tač. a GDPR). Ako se prijavite na email listu putem obrasca na sajtu, vaša email adresa i ime se čuvaju radi slanja newslettera i informacija o uslugama. Saglasnost možete povući u svakom trenutku klikom na link za odjavu u svakom emailu.</p>
+
+    <p><strong>Broj duše - personalizovano čitanje</strong></p>
+    <p>Pravni osnov: saglasnost (čl. 6 st. 1 tač. a GDPR). Datum rođenja (dan) prikupljamo isključivo za izračunavanje broja duše po tantričkoj numerologiji, ako to korisnik izričito izabere. Ovaj podatak se čuva kao deo profila pretplatnika i koristi se samo u tu svrhu.</p>
+
+    <p><strong>Analiza korišćenja sajta</strong></p>
+    <p>Pravni osnov: legitimni interes (čl. 6 st. 1 tač. f GDPR). Koristimo Google Analytics za anonimizovanu analizu poseta sajtu u cilju poboljšanja sadržaja. IP adrese se anonimizuju pre čuvanja. Podaci se ne koriste za identifikaciju pojedinaca.</p>
   </div>
-  <div class="card">
-    <p>U svakom trenutku imate pravo na uvid, ispravku, brisanje i ograničenje obrade vaših podataka. Data saglasnost se takođe može povući u bilo kom trenutku.</p>
+
+  <div class="section">
+    <h2>4. Primaoci podataka i treće strane</h2>
+    <p>Vaše podatke delimo isključivo sa sledećim trećim stranama u meri neophodnoj za pružanje usluga:</p>
+    <ul>
+      <li><strong>Kit (ConvertKit, Inc.)</strong> - platforma za email marketing, SAD. Prenos podataka u SAD vrši se na osnovu standardnih ugovornih klauzula EU (SCC). Kit politiku privatnosti možete pronaći na <a href="https://kit.com/privacy" target="_blank" rel="noopener">kit.com/privacy</a>.</li>
+      <li><strong>Google LLC</strong> - Google Analytics za analizu poseta sajtu, SAD. Prenos podataka u SAD vrši se na osnovu standardnih ugovornih klauzula EU. Google politiku privatnosti možete pronaći na <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</li>
+      <li><strong>GitHub, Inc.</strong> - hosting sajta putem GitHub Pages, SAD. GitHub politiku privatnosti možete pronaći na <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">docs.github.com</a>.</li>
+    </ul>
+    <p>Vaše podatke ne prodajemo i ne ustupamo trećim stranama u komercijalne svrhe.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. Čuvanje podataka</h2>
+    <p>Vaše podatke čuvamo onoliko dugo koliko je neophodno za ispunjenje navedenih svrha:</p>
+    <ul>
+      <li><strong>Email pretplatnici:</strong> dok ne povučete saglasnost i odjavite se sa liste</li>
+      <li><strong>Datum rođenja i broj duše:</strong> čuvaju se zajedno sa pretplatom; brišu se na vašu zahtev ili odjavom</li>
+      <li><strong>Podaci o poseti sajtu (Google Analytics):</strong> anonimizovani podaci, čuvaju se 14 meseci</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>6. Vaša prava</h2>
+    <p>U skladu sa GDPR i austrijskim DSG 2018, imate sledeća prava:</p>
+    <ul>
+      <li><strong>Pravo na pristup</strong> (čl. 15 GDPR) - možete zatražiti informacije o tome koje podatke obrađujemo</li>
+      <li><strong>Pravo na ispravku</strong> (čl. 16 GDPR) - možete zatražiti ispravku netačnih podataka</li>
+      <li><strong>Pravo na brisanje</strong> (čl. 17 GDPR) - možete zatražiti brisanje vaših podataka</li>
+      <li><strong>Pravo na ograničenje obrade</strong> (čl. 18 GDPR)</li>
+      <li><strong>Pravo na prenosivost podataka</strong> (čl. 20 GDPR)</li>
+      <li><strong>Pravo na prigovor</strong> (čl. 21 GDPR) - na obradu zasnovanu na legitimnom interesu</li>
+      <li><strong>Pravo na povlačenje saglasnosti</strong> - u svakom trenutku, bez uticaja na zakonitost obrade pre povlačenja</li>
+    </ul>
+    <p>Zahteve možete uputiti na: <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
+  </div>
+
+  <div class="section">
+    <h2>7. Pravo na pritužbu nadzornom organu</h2>
+    <p>Imate pravo da uložite pritužbu austrijskom organu za zaštitu podataka:</p>
+    <div class="highlight">
+      Datenschutzbehörde (DSB)<br>
+      Barichgasse 40-42, 1030 Beč, Austrija<br>
+      Web: <a href="https://www.dsb.gv.at" target="_blank" rel="noopener">dsb.gv.at</a><br>
+      Email: dsb@dsb.gv.at
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>8. Kolačići (cookies)</h2>
+    <p>Ovaj sajt koristi tehnički neophodne kolačiće za osnovno funkcionisanje (npr. pamćenje da ste zatvorili popup). Ne koristimo kolačiće za praćenje u reklamne svrhe.</p>
+    <p>Google Analytics je konfigurisan sa anonimizacijom IP adrese i bez kolačića za skladištenje. Vaša poseta sajtu ne rezultira personalizovanim profilom.</p>
+  </div>
+
+  <div class="section">
+    <h2>9. Bezbednost podataka</h2>
+    <p>Sajt koristi SSL/TLS enkripciju (HTTPS) za svu komunikaciju. Preduzimamo odgovarajuće tehničke i organizacione mere zaštite podataka u skladu sa čl. 32 GDPR.</p>
+  </div>
+
+  <div class="section">
+    <h2>10. Izmene politike privatnosti</h2>
+    <p>Zadržavamo pravo izmene ove politike privatnosti u skladu sa promenama zakona ili naših usluga. Aktuelna verzija uvek je dostupna na ovoj stranici sa datumom poslednje izmene.</p>
   </div>
 
   <footer>

@@ -255,92 +255,212 @@ footer a { color: var(--clay); text-decoration: none; font-size: 12px; }
 var SOULS = {
   1: {
     name: 'jedan',
-    sub: 'Snaga, inicijativa i sposobnost da krenes prvi.',
+    sub: 'Telo duse. Intuicija, iskrenost i sposobnost da znas pre nego sto razumes zasto.',
     kvalitet: {
       label: 'Tvoje kvalitete',
-      title: 'Prirodni lider.',
-      text: '<p>[ PLACEHOLDER - stavi tekst iz PDF-a za broj 1, sekcija Kvalitete ]</p>'
+      title: 'Intuicija kao kompas.',
+      text: '<p>Znas stvari pre nego sto ih razumes. Ne mozes uvek da objasnis kako, ali osecas kada nesto nije u redu i kada jeste. Taj unutrasnji kompas ti dolazi pre misli.</p><p>Imas i dar iskrenosti koji je redak - kada govoris ono sto zaista osecas, bez filtera i ukrasavanja. Ljudi to primecuju i cene, cak i kada im nije uvek prijatno da cuju.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
-      title: 'Gde se zapinjes.',
-      text: '<p>[ PLACEHOLDER - stavi tekst iz PDF-a za broj 1, sekcija Izazovi ]</p>'
+      title: 'Kada ne verujes sebi.',
+      text: '<p>Tvoj izazov je kada zaobilaziš ono što osetiš i počneš da vrtiš odluke u glavi. Osećaj je tu, jasan, ali onda kreneš da ga analiziraš i na kraju se zaglaviš između onoga što znaš i onoga što misliš da bi trebalo da znaš.</p><p>U odnosima s drugima to izgleda ovako: osetiš nešto, ali se upitas da li si preterana ili previše osetljiva, pa pricekás da vidiš. Cekanje nekada ima smisla, ali kada dolazi iz nepoverenja u sebe - skupo te kosta.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
-      title: 'Na cemu vredi raditi.',
-      text: '<p>[ PLACEHOLDER - stavi tekst iz PDF-a za broj 1, sekcija Fokus ]</p>'
+      title: 'Veruj srcu.',
+      text: '<p>Tvoja lekcija je da verujes onome sto osetiš pre nego sto to objasnish sebi ili nekome drugom. Osecaj dolazi pre razumevanja - i to je u redu. Ne moras da znas zasto da bi znala sta.</p><p>Akcija za sutra: jedna odluka srcem. Sutra kad te nesto zapita, ne daj sebi vise od tri sekunde. Koji god odgovor dodje prvi - to je tvoj. Ides na rucanok sa prijateljicom? Tri sekunde. Da ili ne? Vera u sebe gradi se malim izborima.</p>'
     }
   },
   2: {
     name: 'dva',
-    sub: 'Intuicija, osecajnost i duboka veza sa drugima.',
-    kvalitet: { label: 'Tvoje kvalitete', title: 'Intuitivna snaga.', text: '<p>[ PLACEHOLDER - broj 2, Kvalitete ]</p>' },
-    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 2, Izazovi ]</p>' },
-    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 2, Fokus ]</p>' }
+    sub: 'Negativni um. Lojalnost, procena i dubok osecaj za ono sto moze da podje naopako.',
+    kvalitet: {
+      label: 'Tvoje kvalitete',
+      title: 'Mislís pre nego sto krenés.',
+      text: '<p>Pre nego sto udes u nesto novo, vec si proverila sve strane. Vidis sta moze da podje naopako pre nego sto krene i to ti daje prednost. Kada kazes da si za nesto, znaci da si to zaista promislila.</p><p>Imaš i tanak osecaj za lojalnost. Kada si uz nekoga, zaista si tu. Tvoji bliski to znaju i u to veruju.</p>'
+    },
+    izazov: {
+      label: 'Tvoji izazovi',
+      title: 'Kazes da, mislis ne.',
+      text: '<p>Tvoj izazov je kada iznutra znas da ne zelis nesto, ali kazes da jer ne zelis da razočaras ili zakomplicujes. I onda nosiš taj teret umesto da si rekla ne od pocetka.</p><p>Drugi izazov je kada zamisljaš sta sve moze da krene naopako i onda staneš - pre nego sto si ni pocela. Negativni um je dar kada te cuva od pravih opasnosti. Postaje tezak kada te cuva i od stvari koje bi ti dobro dosle.</p>'
+    },
+    fokus: {
+      label: 'Tvoj fokus',
+      title: 'Pripadanje ne zavisi od prilagodjavanja.',
+      text: '<p>Tvoja lekcija je da ti nije potrebno da se prilagodiš da bi bila voljena i prihvacena. Tvoje ne je isto toliko vredan odgovor kao tvoje da. A brige koje zamisljaš unapred cesto su teze od onoga sto se zaista desi.</p><p>Akcija za sutra: daj sebi sat vremena pre odgovora. Sledeci put kad te neko pita za nesto, ne odgovaraj odmah. Kazi: "Mogu li ti javiti za sat vremena?" I u tom satu pitaj sebe sta zaista hoces.</p>'
+    }
   },
   3: {
     name: 'tri',
-    sub: 'Kreativnost, radost i sposobnost da inspirijes.',
-    kvalitet: { label: 'Tvoje kvalitete', title: 'Kreativna energija.', text: '<p>[ PLACEHOLDER - broj 3, Kvalitete ]</p>' },
-    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 3, Izazovi ]</p>' },
-    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 3, Fokus ]</p>' }
+    sub: 'Pozitivni um. Radost, hrabrost i sposobnost da krenes i onda kada jos nisi sigurna.',
+    kvalitet: {
+      label: 'Tvoje kvalitete',
+      title: 'Kreces i kad drugi cekaju.',
+      text: '<p>Vidis mogucnosti gde drugi vide prepreke. Tvoja prirodna pozitivnost nije naivnost - to je hrabrost da pocnes pre nego sto sve znas. Zato si cesto ta koja pokrece stvari.</p><p>Imas i dar da ohraburis ljude oko sebe. Kada si u sobi, atmosfera je drukcija. Tvoja energija je zarazna i to nije slucajnost - to je tvoja trojka na delu.</p>'
+    },
+    izazov: {
+      label: 'Tvoji izazovi',
+      title: 'Kada kazes da na sve.',
+      text: '<p>Tvoj izazov je kada kazes da na sve sto ti se ponudi, jer ne zelis da promasís nista, i onda ostanes bez energije za ono sto ti je zaista vazno. Pozitivnost je tvoja snaga, ali bez granice postaje teret.</p><p>Drugi izazov su jutra. Kada si umorna ili ti je tesko, ta lakoca kojom obicno pokreces stvari - odsustvuje. I onda sebe optuzujes da nisi dovoljno pozitivna, sto samo pogoršava stvar.</p>'
+    },
+    fokus: {
+      label: 'Tvoj fokus',
+      title: 'Pozitivnost treba tlo pod nogama.',
+      text: '<p>Tvoja lekcija je da pozitivnost ne znaci uvek da. Ponekad znaci da odaberem ovo, a ne ono - i da cuvas energiju za ono sto ti je zaista vazno. Granica nije negativnost. Granica je sta ti goji.</p><p>Akcija za sutra: sledeci put kad te neko pita za nesto, umesto automatskog da, reci: "Da proverim, pa ti javim." I zaista proveri - hoces li to? Ili bi wolela nesto drugo?</p>'
+    }
   },
   4: {
     name: 'cetiri',
-    sub: 'Stabilnost, disciplina i sposobnost da gradis.',
-    kvalitet: { label: 'Tvoje kvalitete', title: 'Temeljna snaga.', text: '<p>[ PLACEHOLDER - broj 4, Kvalitete ]</p>' },
-    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 4, Izazovi ]</p>' },
-    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 4, Fokus ]</p>' }
+    sub: 'Neutralni um. Tišina, prisutnost i sposobnost da saslušas bez osude.',
+    kvalitet: {
+      label: 'Tvoje kvalitete',
+      title: 'Saslušas bez osude.',
+      text: '<p>Ljudi ti pricaju stvari koje ne pricaju drugima. Znas da sluvaš na nacin koji je redak - bez brzog saveta, bez osude, bez potrebe da odmah popraviš. Samo si tu. I to je nekome koji prica sa tobom vise od bilo kojeg saveta.</p><p>Imas i sposobnost da ostanes miran kada je oko tebe haos. Dok drugi paniče, ti nekako pronalaziš srediste. To je tvoj neutralni um - dar da vidis jasno kada je sve zamagljeno.</p>'
+    },
+    izazov: {
+      label: 'Tvoji izazovi',
+      title: 'Nosiš tudje price.',
+      text: '<p>Tvoj izazov je sto lako postaješ "kontejner" za tudje emocije i brige. Slušas, upijаš, nosiš - i ne primetiš uvek kada prestane biti tvoje. Na kraju dana si umorna bez jasnog razloga.</p><p>Drugi izazov je unutrašnja rasprava. U glavi ti se vode razgovori i pre i posle stvarnih razgovora. Premaluješ scenarije, trazis idealan odgovor koji si trebala da das, preispitujes ono sto si rekla.</p>'
+    },
+    fokus: {
+      label: 'Tvoj fokus',
+      title: 'Tišina svakog dana.',
+      text: '<p>Tvoja lekcija je da ti za ravnotezu treba tišina svakog dana - ne kao luksuz, nego kao neophodnost. Kao punjenje telefona. Bez toga, neutralnost koja je tvoja snaga pocinje da se pretváра u umor.</p><p>Akcija za sutra: jedna odluka sa rokom. Uzmi nesto sto odlažeš i daj joj rok - do sutra uvece odgovorim, do petka odlucim. Odluka sa datumom je laksa od odluke bez njega.</p>'
+    }
   },
   5: {
     name: 'pet',
-    sub: 'Sloboda, promena i zivot u pokretu.',
-    kvalitet: { label: 'Tvoje kvalitete', title: 'Energija promene.', text: '<p>[ PLACEHOLDER - broj 5, Kvalitete ]</p>' },
-    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 5, Izazovi ]</p>' },
-    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 5, Fokus ]</p>' }
+    sub: 'Fizicko telo. Ravnoteza, ucenje kroz iskustvo i sposobnost da podučavaš iz onoga sto si zivela.',
+    kvalitet: {
+      label: 'Tvoje kvalitete',
+      title: 'Ucis radeci.',
+      text: '<p>Ne ucis iz knjiga pre nego sto krenes - ucis tako sto krenes. Tvoje telo zna pre nego sto um obradi. I kada nesto naučis na taj nacin, zaista ti ostane.</p><p>Imas i talenat da objasniš kompleksne stvari jednostavno. Jer si ih sama prosla, ne samo procitala. Tvoje iskustvo postaje dar drugima - zato si prirodno dobar ucitelj, trener, vodic.</p>'
+    },
+    izazov: {
+      label: 'Tvoji izazovi',
+      title: 'Preskaces signale umora.',
+      text: '<p>Tvoj izazov je sto cesto ignorisuješ telo dok ti ne vikne dovoljno glasno. Ides do granice, ponekad i preko, a onda ti treba vise vremena da se oporavis nego sto bi trebalo da si se odmorila ranije.</p><p>Iza toga cesto stoji uverenje da odmor treba zasluziti - da mora biti urađeno nesto vazno pre nego sto ti dopustis pauzu. Ali telo ne čeka na zasluge. Trazi sta trazi.</p>'
+    },
+    fokus: {
+      label: 'Tvoj fokus',
+      title: 'Ritam je osnova.',
+      text: '<p>Tvoja lekcija je ritam. Ne savrsena rutina - ritam. Nešto sto se ponavlja dovoljno cesto da telo zna sta dolazi. Spavanje u slicno vreme. Hrana koja hrani, ne samo puni. Pokret koji ti prijа.</p><p>Akcija za sutra: postavi podsetnik za kraj dana - recimo u 21h - koji pita: "Sta mi telo treba veceras?" I odgovori. Nije vazno sta odgovoris. Vazno je da pitaš.</p>'
+    }
   },
   6: {
     name: 'sest',
-    sub: 'Lepota, harmonija i briga za druge.',
-    kvalitet: { label: 'Tvoje kvalitete', title: 'Srce koje neguje.', text: '<p>[ PLACEHOLDER - broj 6, Kvalitete ]</p>' },
-    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 6, Izazovi ]</p>' },
-    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 6, Fokus ]</p>' }
+    sub: 'Arkline (oreol telo). Intuicija, fokus i sposobnost da osetas ono sto jos nije izgovoreno.',
+    kvalitet: {
+      label: 'Tvoje kvalitete',
+      title: 'Tvoja intuicija je glasna.',
+      text: '<p>Pomisliš na nekoga i baš tada ti se javi. Znáš kako ce se nesto završiti pre nego što počne. Osetiš raspoloženje u prostoriji čim udes, pre nego sto iko progovori. To je tvoje Arkline telo na delu.</p><p>Kada se posvétiš nečemu, možeš satima da budeš u jednoj stvari i da je dovedeš do kraja. Tvoje reči i namere imaju težinu - kada nekome kazeš da ce sve biti u redu, ta osoba to zaista oseti.</p>'
+    },
+    izazov: {
+      label: 'Tvoji izazovi',
+      title: 'Nedoslednost i tuđa osecanja.',
+      text: '<p>Počneš nešto sa velikim žarom - novu naviku, kurs ili projekat - i prvih nekoliko nedelja sve ide sjajno. Onda dode loš dan, pa jos jedan, i nit se izgubi. Ta nedoslednost nema veze sa lenjošcu, nego sa tim sto tvoje emocije snažno utiču na tvoju energiju.</p><p>Lako upijás i tuđa osecanja. Posle razgovora sa nekim ko je tužan, jos dugo nosiš tu tugu i ne primecuješ da nije tvoja. A misli koje stalno vrtiš u glavi lako počnu da boje ono sto vidis.</p>'
+    },
+    fokus: {
+      label: 'Tvoj fokus',
+      title: 'Doslednost u malom.',
+      text: '<p>Tvoja lekcija je doslednost u malom. Jedna mala praksa koju ponavljas svaki dan, i u dobre i u lose dane, jača te više od velikih planova. I pazi kako govoriš o sebi - jer te reči kod tebe imaju posebnu težinu.</p><p>Akcija za sutra: tri minuta svako jutro. Pre telefona, sedi tri minuta i diši polako, sa pažnjom na tački između obrva. Tri minuta je dovoljno malo da to možeš da ponavljas svaki dan - a upravo ta doslednost čini tvoju sesticu jakom.</p>'
+    }
   },
   7: {
     name: 'sedam',
-    sub: 'Mudrost, analiza i potraga za dubljim smislom.',
-    kvalitet: { label: 'Tvoje kvalitete', title: 'Dubina i mudrost.', text: '<p>[ PLACEHOLDER - broj 7, Kvalitete ]</p>' },
-    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 7, Izazovi ]</p>' },
-    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 7, Fokus ]</p>' }
+    sub: 'Telo aure. Prisustvo koje menja atmosferu i sposobnost da podignes ljude oko sebe.',
+    kvalitet: {
+      label: 'Tvoje kvalitete',
+      title: 'Tvoje prisustvo menja atmosferu.',
+      text: '<p>Kada si tu, svada se lakse smiri, a prijateljica u krizi oseti da nije sama. Cesto ne moraš ništa ni da kazes - ljudi se pored tebe jednostavno osecaju sigurnije.</p><p>Imaš dar da uzdigneš druge. Vidiš dobro u ljudima i umeš da ga izvuces na površinu. Kada si u svojoj snazi, tuđa negativnost te manje dotiče - i možeš da budeš uz ljude i u teškim trenucima, a da se pri tom ne izgubiš.</p>'
+    },
+    izazov: {
+      label: 'Tvoji izazovi',
+      title: 'Kada je aura umorna.',
+      text: '<p>Kada je aura umorna, sve te lakše dotakne. Jedna kriticka recenica može da ti ostane u mislima duze nego sto bi zelela, a tuđe loše raspoloženje lako postane i tvoje. U prostorima punim ljudi brze se umoriš.</p><p>Kada te stres pritisne, prirodno ti dođe da se povuceš i budeš malo sama - jer ti ljudi i prostori postanu previše. U takvim danima najteže ti je da podigneš upravo sebe.</p>'
+    },
+    fokus: {
+      label: 'Tvoj fokus',
+      title: 'Punjenje aure svakog dana.',
+      text: '<p>Tvoja lekcija je da svoje polje puniš svakog dana, kao bateriju - a ne tek kada se potpuno isprazni. Tišina, priroda, pokret i glas su ono što hrani tvoju auru. I učiš da biraš sta i koga pustáš unutra.</p><p>Akcija za sutra: deset minuta pre telefona. Pre nego sto pogledáš telefon, izađi na deset minuta napolje - na terasu, u dvoriste ili samo do prvog drveta u ulici. Ne moraš ništa da radiš. Diši polako i primeti kako se oseéaš kada se vratiš.</p>'
+    }
   },
   8: {
     name: 'osam',
-    sub: 'Moc, vodstvo i sposobnost da ostavljas trag.',
-    kvalitet: { label: 'Tvoje kvalitete', title: 'Snaga i autoritet.', text: '<p>[ PLACEHOLDER - broj 8, Kvalitete ]</p>' },
-    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 8, Izazovi ]</p>' },
-    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 8, Fokus ]</p>' }
+    sub: 'Pranicno telo. Životna snaga, sposobnost oporavka i hrabrost da pokrenéš i sebe i druge.',
+    kvalitet: {
+      label: 'Tvoje kvalitete',
+      title: 'Pokrecéš i sebe i druge.',
+      text: '<p>Imaš snagu da pokrenéš i sebe i druge. Kada nešto mora da se uradi, ti prva zasučeš rukave. Tvoja energija je zarazna - i mnogi se pored tebe osecaju življe i hrabrije.</p><p>Imaš i prirodnu sposobnost oporavka. Posle teških perioda i razočaranja umeš da se podigneš brže nego što drugi očekuju, a u kriznim trenucima ostaješ hrabra dok drugi paniče.</p>'
+    },
+    izazov: {
+      label: 'Tvoji izazovi',
+      title: 'Energiju trošiš brže nego sto je obnavljáš.',
+      text: '<p>Dan počneš punom brzinom, ideš od obaveze do obaveze, a onda uvece ili posle nekoliko nedelja ostaneš bez snage. Tada posegneš za nečim spolja da te održi: jos jedna kafa, nešto slatko, skrolovanje.</p><p>Ponekad se iza potrebe da sve drzis pod kontrolom krije briga - jer kada sve drzis u rukama, ništa ne može da te iznenadi. Ta kontrola je nekada bila nacin da se snadeš kada je oko tebe bilo previše nesigurnosti, a danas troši baš onu energiju koja ti je najdragocenija.</p>'
+    },
+    fokus: {
+      label: 'Tvoj fokus',
+      title: 'Obnavljaj se pre nego sto ostaneš bez snage.',
+      text: '<p>Tvoja lekcija je dah. Svesno, duboko disanje nekoliko puta dnevno menja tvoje stanje brze od skoro bilo čega drugog. I učiš da se obnavljáš pre nego što ostaneš bez snage.</p><p>Akcija za sutra: tri podsetnika za dah. Postavi tri podsetnika u telefonu - ujutru, u podne i popodne. Kada zazvone, udahni polako kroz nos i izdahni duze nego što si udahnula, pet puta zaredom. Za jedan minut se vratiš sebi.</p>'
+    }
   },
   9: {
     name: 'devet',
-    sub: 'Idealizam, sluzenje i zivot koji inspirise.',
-    kvalitet: { label: 'Tvoje kvalitete', title: 'Siroko srce.', text: '<p>[ PLACEHOLDER - broj 9, Kvalitete ]</p>' },
-    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 9, Izazovi ]</p>' },
-    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 9, Fokus ]</p>' }
+    sub: 'Suptilno telo. Tananost, mudrost i sposobnost da vidiš ono sto drugi ne vide.',
+    kvalitet: {
+      label: 'Tvoje kvalitete',
+      title: 'Vidiš suštinu.',
+      text: '<p>Imaš tanano osecanje za ljude i situacije. Brzo uhvatiš suštinu i vidiš sta se krije iza reci. U razgovoru si cesto ona koja kaže: "čekaj, ovo se ponavlja" - i svi odjednom vide obrazac.</p><p>Kada daš sebi dovoljno vremena sa nečim - sa zanatom, veštinom ili odnosom - to dobije pravu dubinu, i ljudi to primete. Imaš i dobar osecaj za pravi trenutak: kada treba nešto reci, a kada sacekati.</p>'
+    },
+    izazov: {
+      label: 'Tvoji izazovi',
+      title: 'Mnogo zapocetih priča.',
+      text: '<p>Počneš nešto novo sa oduševljenjem, a kada postane teško ili dosadno, pozeliš da predes na sledeće. Kada stvari ne idu brzo, lako se razočaraš - pa na kraju imaš mnogo zapocetih priča.</p><p>Posto vidiš potencijal u ljudima, ponekad im veruješ pre nego što ih zaista upoznaš, pa te kasnije iznenadi ono što vidiš. Iza oba obrasca cesto stoji nemir, osecaj da negde postoji nešto bolje.</p>'
+    },
+    fokus: {
+      label: 'Tvoj fokus',
+      title: 'Ostani.',
+      text: '<p>Tvoja lekcija je da ostaneš. Izaberi jednu stvar i nastavi i posle trenutka kada postane dosadno ili teško - jer tu obično počinje da postaje dobro. I budi blaga prema sebi usput.</p><p>Akcija za sutra: datum za četrdeset dana. Izaberi jednu stvar od koje ti se odustaje - praksu, vestinu ili kurs - i u kalendar upiši datum koji je četrdeset dana od danas. Do tada ne odlucuješ da li vredi, samo nastavljáš. Tek tog dana odluci.</p>'
+    }
   },
   10: {
     name: 'deset',
-    sub: 'Radijantna energija i sposobnost da svetlis.',
-    kvalitet: { label: 'Tvoje kvalitete', title: 'Zraceca prisutnost.', text: '<p>[ PLACEHOLDER - broj 10, Kvalitete ]</p>' },
-    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 10, Izazovi ]</p>' },
-    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 10, Fokus ]</p>' }
+    sub: 'Telo koje zraci. Prisustvo, hrabrost i sposobnost da vodiš - cesto bez ikakve titule.',
+    kvalitet: {
+      label: 'Tvoje kvalitete',
+      title: 'Dostojanstvo koje ne zavisi od okolnosti.',
+      text: '<p>Imaš hrabrost da staneš ispred drugih i dostojanstvo koje ne zavisi od okolnosti. Cak i kada ti je teško, ljudi te vide kao nekoga ko nosi snagu.</p><p>Kada se posvetiš, daješ sve - i tvoja posvécenost inspiriše druge da i sami daju više. Umeš da vodiš u porodici, na poslu i medu prijateljima, cesto bez ikakve titule.</p>'
+    },
+    izazov: {
+      label: 'Tvoji izazovi',
+      title: 'Sve ili ništa ume da se pretvori u ništa.',
+      text: '<p>Ako ne može savrseno, ne počinješ. Dugo čekaš pravi trenutak da pokreneš svoj projekat ili da kazeš nešto vazno, a u međuvremenu ono o čemu sanjaš stoji i ceka.</p><p>Ponekad se povuceš i umanjiš sebe, iako ti scena pripada. Iza toga cesto stoji naučeno uverenje da nije sigurno biti previše vidljiva, previše uspešna, previše svoja.</p>'
+    },
+    fokus: {
+      label: 'Tvoj fokus',
+      title: 'Pojavi se i kada nije savrseno.',
+      text: '<p>Tvoja lekcija je posvécenost bez uslova. Pojavi se i kada nije savrseno. Tvoj sjaj raste kada ga daješ, a ne kada ga cuváš za pravi trenutak.</p><p>Akcija za sutra: jedna stvar, dovoljno dobro. Uradi jednu stvar koju odlazeš dok ne bude savrsena: posalji poruku, prijavi se, objavi, zapocni. Neka bude dovoljno dobro. Tvoja desetka sija onda kada se pojaviš.</p>'
+    }
   },
   11: {
     name: 'jedanaest',
-    sub: 'Svest, transcendencija i zivot kao ucitelj.',
-    kvalitet: { label: 'Tvoje kvalitete', title: 'Probudjena svest.', text: '<p>[ PLACEHOLDER - broj 11, Kvalitete ]</p>' },
-    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 11, Izazovi ]</p>' },
-    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 11, Fokus ]</p>' }
+    sub: 'Jedanaesto telo. Reci imaju težinu, a ti spojiš ono sto drugi ne mogu da vide zajedno.',
+    kvalitet: {
+      label: 'Tvoje kvalitete',
+      title: 'Tvoja rec ima težinu.',
+      text: '<p>Tvoja rec ima težinu. Kada govoris iz istine, ljudi slušaju i nešto se u njima pomeri. Umeš da izgovoriš ono sto drugi osecaju, a ne umeju da kažu.</p><p>Umeš da spojiš suprotnosti i vidiš celinu. Tamo gde drugi vide sukob, ti vidiš dva dela iste price - pa lako postaješ most medu ljudima koji se ne razumeju.</p>'
+    },
+    izazov: {
+      label: 'Tvoji izazovi',
+      title: 'Rasutost i traženje odgovora spolja.',
+      text: '<p>Jedanaestica nosi mnogo, pa se lako javi rasutost. Zanima te previše stvari odjednom, osecáš sve - i na kraju dana ne znaš sta si zapravo uradila. Ponekad imaš osecaj da nigde ne pripadáš sasvim.</p><p>Drugi izazov je traženje odgovora spolja. Ideš od učitelja do učitelja, od knjige do knjige, u nadi da ce ti neko konacno reci sta je istina za tebe. Istina koju tražiš najcesce je vec u tebi i ceka da je izgovoriš.</p>'
+    },
+    fokus: {
+      label: 'Tvoj fokus',
+      title: 'Zvuk i rec.',
+      text: '<p>Tvoja lekcija je zvuk i rec: pevanje, mantra, naglas izgovoreno ono sto osecáš. I pazi kako govoris o sebi - jer reci koje ponavljas o sebi kod tebe imaju posebnu težinu.</p><p>Akcija za sutra: tvoj odgovor naglas. Pre nego sto bilo koga pitáš za savet, zapiši jedno pitanje koje te muci i odmah ispod napiši sta bi sebi odgovorila. Onda tu recenicu izgovori naglas. Tvoja jedanaestica jaca kroz rec - i to baš kroz tvoju.</p>'
+    }
   }
 };
 

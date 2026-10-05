@@ -1,0 +1,223 @@
+/* Email popup kit */
+
+#nv-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 8, 5, 0.72);
+  z-index: 9000;
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+#nv-popup-overlay.open {
+  display: flex;
+  animation: nvFadeIn 0.35s ease both;
+}
+
+#nv-popup {
+  background: #F5F1EC;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  padding: 56px 52px 48px;
+  animation: nvSlideUp 0.35s ease both;
+}
+
+#nv-popup-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: #8A8070;
+  line-height: 1;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+#nv-popup-close:hover {
+  color: #3D2E1E;
+}
+
+#nv-popup-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #C4A882;
+  margin-bottom: 16px;
+}
+
+#nv-popup h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 300;
+  color: #3D2E1E;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+#nv-popup h2 em {
+  font-style: italic;
+  color: #9B6B3A;
+}
+
+#nv-popup-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #8A8070;
+  margin-bottom: 32px;
+}
+
+#nv-popup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#nv-popup-form input {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #3D2E1E;
+  background: #fff;
+  border: 1px solid rgba(61, 46, 30, 0.15);
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+#nv-popup-form input::placeholder {
+  color: #8A8070;
+}
+
+#nv-popup-form input:focus {
+  border-color: #C4A882;
+}
+
+#nv-popup-submit {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #1E1712;
+  background: #C4A882;
+  border: none;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+  border-radius: 0;
+}
+
+#nv-popup-submit:hover {
+  background: #D4B896;
+}
+
+#nv-popup-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#nv-popup-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+#nv-popup-consent input[type="checkbox"] {
+  width: 16px !important;
+  min-width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #C4A882;
+  padding: 0 !important;
+  flex-shrink: 0;
+  -webkit-appearance: checkbox !important;
+  appearance: checkbox !important;
+}
+
+#nv-popup-consent-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #8A8070;
+  cursor: pointer;
+  user-select: none;
+}
+
+#nv-popup-consent-label a {
+  color: #9B6B3A;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+#nv-popup-note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: #8A8070;
+  margin-top: 12px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+#nv-popup-success {
+  display: none;
+  text-align: center;
+  padding: 16px 0 8px;
+}
+
+#nv-popup-success p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: #3D2E1E;
+  line-height: 1.5;
+}
+
+#nv-popup-success .success-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #8A8070;
+  margin-top: 10px;
+  font-style: normal;
+  font-size: 13px;
+}
+
+#nv-popup-error {
+  display: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: #9B3A3A;
+  text-align: center;
+  margin-top: 8px;
+}
+
+@keyframes nvFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes nvSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  #nv-popup {
+    padding: 44px 28px 36px;
+  }
+}

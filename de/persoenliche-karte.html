@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSMHMQD13N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NSMHMQD13N', { 'anonymize_ip': true, 'storage': 'none', 'client_storage': 'none' });
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deine persönliche Karte - Tantrische Numerologie | Nemanja Vukoje</title>
+<meta name="description" content="Eine personalisierte Analyse, die genau nach deinen Zahlen erstellt wird. Verstehe deine Muster, erkenne dein Potenzial und richte deine Energie auf das aus, was dir wirklich wichtig ist.">
+<link rel="canonical" href="https://vukojenemanja.com/de/persoenliche-karte.html" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+  --warm:   #D4B896;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--fog);
+  color: var(--bark);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,8,5,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+  transition: background 0.4s, padding 0.4s;
+}
+nav.scrolled { background: rgba(26,18,8,0.95); padding: 14px 60px; border-bottom: 1px solid rgba(196,168,130,0.2); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--fog); text-decoration: none; letter-spacing: 1px; transition: color 0.4s; }
+.nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+.nav-links a { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,241,236,0.8); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover { color: var(--clay); }
+.nav-cta { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--clay) !important; border: 1px solid rgba(196,168,130,0.5); padding: 8px 20px; transition: all 0.3s !important; }
+.nav-cta:hover { background: var(--clay) !important; color: var(--deep) !important; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 1px; background: var(--fog); transition: all 0.3s; }
+.nav-mobile-menu { display: none; position: fixed; inset: 0; background: #0a0805; z-index: 9999; flex-direction: column; align-items: center; justify-content: center; }
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--sand); text-decoration: none; padding: 16px 48px; letter-spacing: 1px; transition: color 0.2s; text-align: center; width: 100%; border-bottom: 1px solid rgba(196,168,130,0.08); }
+.nav-mobile-menu a:hover { color: var(--clay); }
+.nav-mobile-menu a.mobile-cta { color: var(--clay); font-style: italic; margin-top: 8px; border-bottom: none; }
+.nav-mobile-close { position: absolute; top: 24px; right: 28px; font-size: 28px; color: rgba(245,241,236,0.5); cursor: pointer; background: none; border: none; line-height: 1; }
+
+.hero { background: var(--deep); min-height: 100vh; display: flex; align-items: flex-end; position: relative; overflow: hidden; padding: 0 60px 100px; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 70%, rgba(196,168,130,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 25%, rgba(155,107,58,0.05) 0%, transparent 50%); pointer-events: none; }
+.hero-ornament { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); font-family: 'Cormorant Garamond', serif; font-size: clamp(200px, 25vw, 380px); font-weight: 300; font-style: italic; color: rgba(196,168,130,0.04); line-height: 1; user-select: none; pointer-events: none; }
+.hero-content { position: relative; z-index: 2; max-width: 680px; animation: fadeUp 1s ease both; }
+.hero-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--clay); margin-bottom: 32px; opacity: 0; animation: fadeUp 1s ease 0.2s both; white-space: nowrap; }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 7vw, 88px); font-weight: 300; color: var(--sand); line-height: 1.05; margin-bottom: 28px; opacity: 0; animation: fadeUp 1s ease 0.4s both; }
+.hero h1 em { font-style: italic; color: var(--clay); }
+.hero-sub { font-size: 16px; line-height: 1.8; color: rgba(232,221,208,0.65); max-width: 500px; margin-bottom: 52px; opacity: 0; animation: fadeUp 1s ease 0.6s both; }
+.hero-actions { opacity: 0; animation: fadeUp 1s ease 0.8s both; }
+.btn-main { display: inline-block; padding: 18px 52px; background: var(--clay); color: var(--deep); font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: background 0.3s, transform 0.2s; font-family: 'DM Sans', sans-serif; }
+.btn-main:hover { background: var(--warm); transform: translateY(-2px); }
+.hero-price-note { margin-top: 20px; font-size: 13px; color: rgba(232,221,208,0.45); letter-spacing: 0.5px; }
+.hero-price-note s { color: rgba(232,221,208,0.3); }
+.hero-delivery { margin-top: 10px; font-size: 12px; color: rgba(232,221,236,0.35); letter-spacing: 0.5px; }
+
+.pain-section { background: var(--fog); padding: 120px 60px; }
+.pain-inner { max-width: 900px; margin: 0 auto; }
+.section-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 24px; }
+.pain-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; color: var(--bark); line-height: 1.2; margin-bottom: 48px; }
+.pain-section h2 em { font-style: italic; color: var(--accent); }
+.pain-quotes { display: flex; flex-direction: column; }
+.pain-quote { display: flex; align-items: baseline; gap: 20px; padding: 22px 0; border-bottom: 1px solid rgba(61,46,30,0.12); }
+.pain-quote:first-of-type { border-top: 1px solid rgba(61,46,30,0.12); }
+.pq-mark { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--clay); opacity: 0.45; flex-shrink: 0; line-height: 1; }
+.pq-text { font-size: 17px; line-height: 1.7; color: var(--stone); transition: color 0.2s; }
+.pain-quote:hover .pq-text { color: var(--bark); }
+.pain-quote:hover .pq-mark { opacity: 1; }
+
+.bridge { background: var(--bark); padding: 120px 60px; }
+.bridge-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.bridge-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 24px; }
+.bridge h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 300; color: var(--sand); line-height: 1.1; }
+.bridge h2 em { font-style: italic; color: var(--clay); display: block; }
+.bridge-text { font-size: 15px; line-height: 1.9; color: rgba(232,221,208,0.65); }
+.bridge-text p + p { margin-top: 20px; }
+.bridge-numbers { display: flex; gap: 24px; margin-top: 32px; flex-wrap: wrap; }
+.bridge-num-item { text-align: center; }
+.bridge-num-item .num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--clay); line-height: 1; display: block; }
+.bridge-num-item .num-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(232,221,208,0.4); margin-top: 4px; display: block; }
+
+.contents { background: var(--fog); padding: 120px 60px; }
+.contents-inner { max-width: 1100px; margin: 0 auto; }
+.contents h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 52px); font-weight: 300; color: var(--bark); margin-bottom: 16px; }
+.contents h2 em { font-style: italic; color: var(--accent); }
+.contents-sub { font-size: 15px; color: var(--stone); margin-bottom: 56px; max-width: 560px; line-height: 1.7; }
+.contents-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.contents-card { background: var(--sand); padding: 36px 32px; border-top: 2px solid transparent; transition: border-color 0.3s; }
+.contents-card:hover { border-color: var(--clay); }
+.contents-card .cc-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; color: var(--clay); opacity: 0.5; line-height: 1; margin-bottom: 12px; display: block; }
+.contents-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--bark); margin-bottom: 10px; }
+.contents-card p { font-size: 13px; line-height: 1.8; color: var(--stone); }
+
+.sound { background: var(--deep); padding: 120px 60px; position: relative; overflow: hidden; }
+.sound::before { content: '"'; position: absolute; top: -40px; left: 40px; font-family: 'Cormorant Garamond', serif; font-size: 400px; color: rgba(196,168,130,0.04); line-height: 1; pointer-events: none; }
+.sound-inner { max-width: 1100px; margin: 0 auto; }
+.sound-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 16px; }
+.sound h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--sand); margin-bottom: 56px; max-width: 560px; }
+.sound h2 em { font-style: italic; color: var(--clay); }
+.sound-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.sound-card { background: rgba(255,255,255,0.03); padding: 40px 32px; border-top: 2px solid rgba(196,168,130,0.15); transition: border-color 0.3s; }
+.sound-card:hover { border-color: var(--clay); }
+.sound-type { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--clay); opacity: 0.7; margin-bottom: 16px; display: block; }
+.sound-quote { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; font-style: italic; color: rgba(232,221,208,0.85); line-height: 1.65; }
+
+.how { background: var(--fog); padding: 120px 60px; }
+.how-inner { max-width: 800px; margin: 0 auto; }
+.how h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--bark); margin-bottom: 56px; }
+.how h2 em { font-style: italic; color: var(--accent); }
+.how-steps { display: flex; flex-direction: column; }
+.how-step { display: flex; gap: 32px; align-items: flex-start; padding: 32px 0; border-bottom: 1px solid rgba(61,46,30,0.1); }
+.how-step:first-child { border-top: 1px solid rgba(61,46,30,0.1); }
+.how-step-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--clay); opacity: 0.4; line-height: 1; flex-shrink: 0; width: 56px; text-align: right; }
+.how-step-body h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--bark); margin-bottom: 8px; }
+.how-step-body p { font-size: 14px; line-height: 1.8; color: var(--stone); }
+
+.forwhom { background: var(--sand); padding: 120px 60px; }
+.forwhom-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.forwhom-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+.forwhom h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--bark); line-height: 1.2; }
+.forwhom h2 em { font-style: italic; color: var(--accent); }
+.forwhom-list { list-style: none; margin-top: 8px; }
+.forwhom-list li { padding: 16px 0; border-bottom: 1px solid rgba(61,46,30,0.1); font-size: 15px; color: var(--stone); display: flex; gap: 16px; align-items: flex-start; line-height: 1.6; }
+.forwhom-list li:first-child { border-top: 1px solid rgba(61,46,30,0.1); }
+.forwhom-list li::before { content: '✦'; color: var(--clay); flex-shrink: 0; font-size: 10px; margin-top: 4px; }
+.forwhom-note { margin-top: 32px; font-size: 13px; font-style: italic; color: var(--stone); line-height: 1.7; padding: 20px; border-left: 2px solid rgba(196,168,130,0.4); }
+
+.testimonials { background: var(--deep); padding: 120px 60px; position: relative; overflow: hidden; }
+.testimonials::before { content: '"'; position: absolute; top: -40px; left: 40px; font-family: 'Cormorant Garamond', serif; font-size: 400px; color: rgba(196,168,130,0.04); line-height: 1; pointer-events: none; }
+.testimonials-inner { max-width: 900px; margin: 0 auto; }
+.testimonials-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 48px; }
+.testi-card { background: rgba(255,255,255,0.03); padding: 52px 48px; border-top: 2px solid var(--clay); }
+.testi-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 300; font-style: italic; color: rgba(232,221,208,0.88); line-height: 1.6; margin-bottom: 32px; }
+.testi-author { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--clay); }
+
+.about { background: var(--bark); padding: 120px 60px; }
+.about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 24px; }
+.about h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--sand); line-height: 1.1; }
+.about h2 em { font-style: italic; color: var(--clay); display: block; }
+.about-text { font-size: 15px; line-height: 1.9; color: rgba(232,221,208,0.65); }
+.about-text p + p { margin-top: 20px; }
+
+.faq { background: var(--fog); padding: 120px 60px; }
+.faq-inner { max-width: 800px; margin: 0 auto; }
+.faq h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--bark); margin-bottom: 56px; }
+.faq-list { display: flex; flex-direction: column; }
+.faq-item { border-bottom: 1px solid rgba(61,46,30,0.12); padding: 28px 0; }
+.faq-item:first-of-type { border-top: 1px solid rgba(61,46,30,0.12); }
+.faq-q { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--bark); margin-bottom: 12px; }
+.faq-a { font-size: 14px; line-height: 1.8; color: var(--stone); }
+
+.cta-section { background: var(--deep); padding: 120px 60px; text-align: center; }
+.cta-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 32px; }
+.cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 300; color: var(--sand); line-height: 1.1; margin-bottom: 24px; }
+.cta-section h2 em { font-style: italic; color: var(--clay); display: block; }
+.cta-sub { font-size: 16px; color: rgba(232,221,208,0.5); max-width: 480px; margin: 0 auto 52px; line-height: 1.7; }
+.cta-price { margin-bottom: 36px; }
+.cta-price .old { font-size: 16px; color: rgba(232,221,208,0.25); text-decoration: line-through; margin-right: 12px; }
+.cta-price .new { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; color: var(--clay); line-height: 1; }
+.cta-price .new-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--stone); display: block; margin-top: 4px; }
+.cta-note { font-size: 13px; color: rgba(232,221,208,0.35); margin-top: 20px; }
+
+footer { background: var(--deep); padding: 60px 60px 0; border-top: 1px solid rgba(196,168,130,0.1); }
+.footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 60px; }
+.footer-brand h3 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--sand); line-height: 1.1; margin-bottom: 16px; }
+.footer-brand h3 em { font-style: italic; color: var(--clay); }
+.footer-brand p { font-size: 13px; line-height: 1.8; color: var(--stone); }
+.footer-nav h4, .footer-contact h4 { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--clay); margin-bottom: 24px; }
+.footer-nav ul { list-style: none; }
+.footer-nav li { padding: 6px 0; }
+.footer-nav a { font-size: 14px; color: var(--stone); text-decoration: none; transition: color 0.2s; }
+.footer-nav a:hover { color: var(--clay); }
+.footer-contact p { font-size: 14px; color: var(--stone); line-height: 1.8; }
+.footer-contact a { color: var(--clay); text-decoration: none; }
+.footer-bottom { border-top: 1px solid rgba(196,168,130,0.1); padding: 20px 0; display: flex; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
+.footer-bottom p { font-size: 11px; letter-spacing: 1px; color: var(--stone); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.js-loaded .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.js-loaded .reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero { padding: 0 24px 80px; min-height: 100svh; }
+  .hero-ornament { display: none; }
+  .pain-section, .bridge, .contents, .sound, .how, .forwhom, .testimonials, .about, .faq, .cta-section { padding: 80px 24px; }
+  .bridge-inner { grid-template-columns: 1fr; gap: 40px; }
+  .contents-grid { grid-template-columns: 1fr; }
+  .sound-grid { grid-template-columns: 1fr; }
+  .forwhom-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about-inner { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  footer { padding: 60px 24px 0; }
+  .footer-bottom { padding: 20px 0; flex-direction: column; gap: 8px; }
+  .testi-card { padding: 36px 28px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Nemanja Vukoje</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Uber mich</a></li>
+    <li><a href="kalender.html">Kalender</a></li>
+    <li><a href="akal.html">Akal Community</a></li>
+    <li><a href="individual.html">Einzelarbeit</a></li>
+    <li><a href="persoenliche-karte.html">Persönliche Karte</a></li>
+    <li><a href="index.html#testimonials">Erfahrungen</a></li>
+    <li><a href="mailto:info@vukojenemanja.com?subject=Pers%C3%B6nliche%20Karte%20-%20Bestellung" class="nav-cta">Ich will meine Karte</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile-menu" id="mobileMenu">
+  <button class="nav-mobile-close" onclick="closeMobileMenu()">x</button>
+  <a href="index.html#about" onclick="closeMobileMenu()">Uber mich</a>
+  <a href="kalender.html" onclick="closeMobileMenu()">Kalender</a>
+  <a href="akal.html" onclick="closeMobileMenu()">Akal Community</a>
+  <a href="individual.html" onclick="closeMobileMenu()">Einzelarbeit</a>
+  <a href="index.html#testimonials" onclick="closeMobileMenu()">Erfahrungen</a>
+  <a href="mailto:info@vukojenemanja.com?subject=Pers%C3%B6nliche%20Karte%20-%20Bestellung" class="mobile-cta" onclick="closeMobileMenu()">Ich will meine Karte</a>
+</div>
+
+<section class="hero">
+  <div class="hero-ornament">5</div>
+  <div class="hero-content">
+    <div class="hero-label">Tantrische Numerologie · Kundalini Yoga</div>
+    <h1>Deine persönliche <em>Karte.</em></h1>
+    <p class="hero-sub">Eine personalisierte Analyse, die genau nach deinen Zahlen erstellt wird. Verstehe deine Muster, erkenne dein Potenzial und richte deine Energie auf das aus, was dir wirklich wichtig ist.</p>
+    <div class="hero-actions">
+      <a href="mailto:info@vukojenemanja.com?subject=Pers%C3%B6nliche%20Karte%20-%20Bestellung&body=Vor-%20und%20Nachname%3A%0AGeburtsdatum%3A" class="btn-main">Ich will meine Karte</a>
+      <div>
+        <p class="hero-price-note"><s>55 €</s> &nbsp;→&nbsp; 33 € · Einfuhrungspreis</p>
+        <p class="hero-delivery">PDF kommt per E-Mail innerhalb von 72 Stunden · fur immer deins</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pain-section">
+  <div class="pain-inner">
+    <div class="section-label reveal">Wiedererkennnung</div>
+    <h2 class="reveal">Hast du dich je gefragt,<br><em>warum du so bist, wie du bist?</em></h2>
+    <div class="pain-quotes">
+      <div class="pain-quote reveal">
+        <span class="pq-mark">—</span>
+        <p class="pq-text">Warum manche Dinge dir leicht fallen, warum andere dich immer wieder stolpern lassen.</p>
+      </div>
+      <div class="pain-quote reveal">
+        <span class="pq-mark">—</span>
+        <p class="pq-text">Warum du in Beziehungen immer wieder in dieselbe Rolle gerätst, auch wenn die Menschen wechseln.</p>
+      </div>
+      <div class="pain-quote reveal">
+        <span class="pq-mark">—</span>
+        <p class="pq-text">Warum ein Jahr sich leicht anfuhlt und das nächste alles von dir verlangt.</p>
+      </div>
+    </div>
+    <p style="margin-top: 48px; font-size: 16px; line-height: 1.9; color: var(--stone); max-width: 640px;" class="reveal">
+      Das sind keine Zufälle. In jedem von uns gibt es Muster, Stärken und Themen, die sich durchs Leben ziehen. Wenn du sie klar siehst, ergibt vieles auf einmal Sinn.
+    </p>
+  </div>
+</section>
+
+<section class="bridge">
+  <div class="bridge-inner">
+    <div class="reveal">
+      <div class="bridge-label">Deine Personlichkeitskarte</div>
+      <h2>Funf Zahlen,<br>funf Teile<br><em>von dir.</em></h2>
+      <div class="bridge-numbers">
+        <div class="bridge-num-item"><span class="num">5</span><span class="num-label">Zahlen</span></div>
+        <div class="bridge-num-item"><span class="num">13</span><span class="num-label">Seiten</span></div>
+        <div class="bridge-num-item"><span class="num">72h</span><span class="num-label">Lieferung</span></div>
+      </div>
+    </div>
+    <div class="bridge-text reveal">
+      <p>Im Kundalini Yoga wird dein Geburtsdatum als Karte gelesen. Es ergibt funf Zahlen, jede verbunden mit einem anderen Teil deiner Personlichkeit - deine Beziehung zu dir selbst, die Lektion, die sich in Beziehungen wiederholt, ein Talent, das dir leicht fällt, was andere als Erstes an dir wahrnehmen, und die Richtung, in der du dich erfullt fuhlst.</p>
+      <p>Fur jede Zahl findest du drei Dinge: deine Qualitäten, wo deine Herausforderungen liegen, und worauf es sich lohnt, den Fokus zu richten.</p>
+      <p>Die Karte gibt dir eine Sprache fur das, was du ohnehin schon uber dich spurst. Oft reicht ein Satz - du hältst inne und denkst: ja, das bin ich.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contents">
+  <div class="contents-inner">
+    <div class="section-label reveal">Inhalt</div>
+    <h2 class="reveal">Was in<br><em>deiner Karte</em> steht</h2>
+    <p class="contents-sub reveal">Jeder Abschnitt wird speziell fur deine Zahlen geschrieben. Kein Vorwissen notwendig.</p>
+    <div class="contents-grid">
+      <div class="contents-card reveal">
+        <span class="cc-num">01</span>
+        <h4>Deine funf Zahlen</h4>
+        <p>Seelenzahl, Karmazahl, Geschenkzahl, Schicksalszahl und Wegzahl. Fur jede: Qualitäten, Herausforderungen und Fokus - je auf einer eigenen Seite.</p>
+      </div>
+      <div class="contents-card reveal">
+        <span class="cc-num">02</span>
+        <h4>Deine Geschichte</h4>
+        <p>Alle funf Zahlen gemeinsam als ein Ganzes gelesen. Personlich fur dich geschrieben, nicht aus einer Vorlage.</p>
+      </div>
+      <div class="contents-card reveal">
+        <span class="cc-num">03</span>
+        <h4>Sieben-Jahres-Zyklus</h4>
+        <p>In welchem Zyklus du gerade bist, was er bringt und warum sich gerade jetzt bestimmte Dinge verschieben.</p>
+      </div>
+      <div class="contents-card reveal">
+        <span class="cc-num">04</span>
+        <h4>Personliches Jahr</h4>
+        <p>Dein personliches Jahr fur dieses und nächstes Jahr, mit einer einfachen Formel, um es selbst zu berechnen.</p>
+      </div>
+      <div class="contents-card reveal">
+        <span class="cc-num">05</span>
+        <h4>Drei Empfehlungen</h4>
+        <p>Speziell fur deine Zahlenkombination gewählt - kleine Schritte fur den Alltag.</p>
+      </div>
+      <div class="contents-card reveal">
+        <span class="cc-num">06</span>
+        <h4>Journalfragen</h4>
+        <p>Fur Momente, wenn du tiefer in das eintauchen möchtest, was du in der Karte erkannt hast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sound">
+  <div class="sound-inner">
+    <div class="sound-label reveal">Ton der Karte</div>
+    <h2 class="reveal">Ein paar Sätze aus echten Karten,<br>damit du spuren kannst, <em>wie es klingt</em></h2>
+    <div class="sound-grid">
+      <div class="sound-card reveal">
+        <span class="sound-type">Qualitat</span>
+        <p class="sound-quote">"Deine Anwesenheit verändert die Atmosphäre. Wenn du da bist, legt sich ein Streit leichter, schläft ein Kind leichter ein, fuhlt eine Freundin in der Krise sich weniger allein. Oft musst du gar nichts sagen."</p>
+      </div>
+      <div class="sound-card reveal">
+        <span class="sound-type">Herausforderung</span>
+        <p class="sound-quote">"Du kennst diesen Moment, wenn du abends im Bett liegst und dieselbe Entscheidung zum zehnten Mal im Kreis drehst? Du machst Listen, fragst Freunde, liest im Internet - und irgendwo tief drin weisst du die Antwort längst. Du vertraust ihr nur noch nicht, weil du sie nicht beweisen kannst."</p>
+      </div>
+      <div class="sound-card reveal">
+        <span class="sound-type">Fokus</span>
+        <p class="sound-quote">"Wenn du jeden Tag auch nur eine Entscheidung aus dem Gefuhl heraus triffst statt aus der Berechnung, baust du Vertrauen in deine eigene innere Stimme auf. Wo dieses Vertrauen im Kleinen existiert, hören grosse Entscheidungen auf, Qual zu sein."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="how-inner">
+    <div class="section-label reveal">Ablauf</div>
+    <h2 class="reveal">Wie du<br><em>deine Karte bekommst</em></h2>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="how-step-num">1</div>
+        <div class="how-step-body">
+          <h4>Karte bestellen</h4>
+          <p>Klick auf den Button - eine E-Mail öffnet sich mit einer Vorlage fur deinen Namen und dein Geburtsdatum. Schick sie an info@vukojenemanja.com.</p>
+        </div>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">2</div>
+        <div class="how-step-body">
+          <h4>Dein PDF kommt innerhalb von 72 Stunden</h4>
+          <p>Deine personliche Karte landet als PDF in deinem Posteingang. Sie gehört dir und du kannst jederzeit zu ihr zuruckkehren.</p>
+        </div>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">3</div>
+        <div class="how-step-body">
+          <h4>Nimm dir eine halbe Stunde fur dich</h4>
+          <p>Koch dir einen Tee und lies langsam. Manche Sätze erkennen dich sofort; andere öffnen sich erst ein paar Tage später.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="forwhom">
+  <div class="forwhom-inner">
+    <div class="reveal">
+      <div class="forwhom-label">Fur wen die Karte ist</div>
+      <h2>Die Karte ist<br>fur dich,<br><em>wenn...</em></h2>
+    </div>
+    <div class="reveal">
+      <ul class="forwhom-list">
+        <li>Du dich besser verstehen möchtest - wie du funktionierts, was dir leicht fällt, wo du hängen bleibst und warum.</li>
+        <li>Du am Anfang deiner Selbsterforschung stehst und einen einfachen, aber tiefen Einstieg suchst.</li>
+        <li>Du schon lange auf diesem Weg bist und alles, was du weisst, einmal an einem Ort gesammelt sehen möchtest.</li>
+      </ul>
+      <p class="forwhom-note">Die Karte ist keine Vorhersage der Zukunft. Sie hilft dir, dich selbst und deinen Moment im Leben klarer zu sehen - was du mit diesem Wissen machst, bleibt immer deine Wahl.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-label reveal">Erfahrung</div>
+    <div class="testi-card reveal">
+      <p class="testi-text">"Danke fur die Personliche Karte. Mir gefällt sehr, wie alles gestaltet ist, und sie resoniert perfekt mit mir. Besonders nutzlich sind die Ratschläge und konkreten Vorschläge, die du gegeben hast, was und wie ich in der nächsten Zeit tun soll."</p>
+      <div class="testi-author">Aida</div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-inner">
+    <div class="reveal">
+      <div class="about-label">Wer hinter der Karte steckt</div>
+      <h2>Nemanja<br><em>Vukoje</em></h2>
+    </div>
+    <div class="about-text reveal">
+      <p>KRI-zertifizierter Kundalini-Yoga-Lehrer in Wien. Ich praktiziere seit uber zehn Jahren und arbeite seit funf Jahren mit Menschen durch Yoga, Meditation und Einzelsitzungen.</p>
+      <p>Tantrische Numerologie ist eines der schonsten Werkzeuge, die ich kenne - sie gibt Menschen eine Sprache fur das, was sie schon lange uber sich spuren. Ich schreibe jede Karte so, dass jemand, der der Numerologie zum ersten Mal begegnet, sie verstehen kann.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="faq-inner">
+    <h2 class="reveal">Haufig gestellte<br>Fragen</h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <p class="faq-q">Muss ich etwas uber Numerologie wissen?</p>
+        <p class="faq-a">Nein. Die Karte ist fur jemanden geschrieben, der der Numerologie zum ersten Mal begegnet. Alles wird einfach erklart, durch Alltagsbeispiele.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">Ist das eine Vorhersage der Zukunft?</p>
+        <p class="faq-a">Nein. Die Karte ist ein Werkzeug zur Selbsterkenntnis. Die Zahlen zeigen deine Qualitäten, Herausforderungen und Themen - wie du sie lebst, liegt bei dir.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">Was muss ich angeben?</p>
+        <p class="faq-a">Nur deinen Namen und dein Geburtsdatum.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">Wann kommt die Karte an?</p>
+        <p class="faq-a">Innerhalb von 72 Stunden, als PDF an deine E-Mail. Sie gehört dir fur immer.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">Kann die Karte ein Geschenk sein?</p>
+        <p class="faq-a">Ja. Beim Bestellen einfach Namen und Geburtsdatum der Person angeben, die du beschenkst, und vermerken, dass es ein Geschenk ist.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">Ist die Karte auch fur Männer?</p>
+        <p class="faq-a">Ja. Jede Karte wird individuell geschrieben, im entsprechenden Geschlecht.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">In welcher Sprache ist sie?</p>
+        <p class="faq-a">Auf Deutsch. Auf Wunsch auch auf Serbisch oder Englisch erhältlich.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-label">Bestellen</div>
+  <h2>Lerne dich selbst kennen<br><em>durch deine Karte</em></h2>
+  <p class="cta-sub">Deine Qualitäten, deine Herausforderungen und der Fokus, der dir hilft zu wachsen - nur fur dich geschrieben.</p>
+  <div class="cta-price">
+    <span class="old">55 €</span>
+    <span class="new">33 €</span>
+    <span class="new-label">Einfuhrungspreis</span>
+  </div>
+  <a href="mailto:info@vukojenemanja.com?subject=Pers%C3%B6nliche%20Karte%20-%20Bestellung&body=Vor-%20und%20Nachname%3A%0AGeburtsdatum%3A" class="btn-main">Ich will meine Karte</a>
+  <p class="cta-note">PDF kommt innerhalb von 72 Stunden · fur immer deins</p>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Nemanja<br><em>Vukoje</em></h3>
+      <p>Kundalini Yoga, Meditation und Energiearbeit aus Wien. Online und vor Ort.</p>
+    </div>
+    <div class="footer-nav">
+      <h4>Seiten</h4>
+      <ul>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="index.html#about">Uber mich</a></li>
+        <li><a href="kalender.html">Kalender</a></li>
+        <li><a href="akal.html">Akal Community</a></li>
+        <li><a href="individual.html">Einzelarbeit</a></li>
+        <li><a href="persoenliche-karte.html">Persönliche Karte</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Kontakt</h4>
+      <p><a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Nemanja Vukoje</p>
+    <p>Wien, Osterreich</p>
+  </div>
+</footer>
+
+<script>
+document.body.classList.add('js-loaded');
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : ''; }
+function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

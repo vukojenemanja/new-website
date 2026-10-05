@@ -933,7 +933,7 @@ footer {
   <div class="hero-ornament">5</div>
   <div class="hero-content">
     <div class="hero-label">Tantrička numerologija · Kundalini joga</div>
-    <h1>Tvoja<br>lična<br><em>mapa.</em></h1>
+    <h1>Tvoja lična <em>mapa.</em></h1>
     <p class="hero-sub">Personalizovana analiza napravljena baš po tvojim brojevima. Razumi svoje obrasce, prepoznaj potencijal i usmeri energiju na ono što ti je zaista važno.</p>
     <div class="hero-actions">
       <a href="mailto:info@vukojenemanja.com?subject=Licna%20mapa%20-%20porudzbina&body=Ime%20i%20prezime%3A%0ADatum%20rodjenja%3A" class="btn-main">Zelim svoju mapu</a>
@@ -1202,7 +1202,6 @@ footer {
         <li><a href="raspored.html">Kalendar</a></li>
         <li><a href="akal.html">Akal zajednica</a></li>
         <li><a href="individual.html">Individualni rad</a></li>
-    <li><a href="licna-mapa.html">Lična mapa</a></li>
         <li><a href="licna-mapa.html">Lična mapa</a></li>
       </ul>
     </div>
@@ -1248,5 +1247,32 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 reveals.forEach(el => observer.observe(el));
 </script>
+
+<!-- Email popup -->
+<link rel="stylesheet" href="../popup.css">
+<div id="nv-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="nv-popup-title">
+  <div id="nv-popup">
+    <button id="nv-popup-close" aria-label="Zatvori">&#215;</button>
+    <div id="nv-popup-label">Besplatno za tebe</div>
+    <h2 id="nv-popup-title">[ OVDE STAVI NAZIV<br><em>LEAD MAGNETA ]</em></h2>
+    <p id="nv-popup-sub">Kratki opis sta dobijaju - jedna do dve recenice, konkretno i jednostavno. Npr. "Saznaj sta tvoj Soul broj govori o tebi." ili "Besplatan PDF vodic kroz Kundalini jogu."</p>
+    <form id="nv-popup-form" novalidate>
+      <input type="text" id="nv-popup-name" name="first_name" placeholder="Tvoje ime" autocomplete="given-name">
+      <input type="email" id="nv-popup-email" name="email" placeholder="Tvoj email" required autocomplete="email">
+      <label id="nv-popup-consent">
+        <input type="checkbox" id="nv-popup-consent-check" required>
+        <span id="nv-popup-consent-label">Slazem se da primam emailove i razumem da mogu da se odjavim u svakom trenutku. Procitao/la sam <a href="/srb/datenschutz.html" target="_blank">Politiku privatnosti</a>.</span>
+      </label>
+      <button type="submit" id="nv-popup-submit">Prijavi se</button>
+      <div id="nv-popup-error"></div>
+    </form>
+    <p id="nv-popup-note">Bez spama. Odjava u svakom trenutku.</p>
+    <div id="nv-popup-success">
+      <p>Hvala ti.</p>
+      <span class="success-sub">Provjeri inbox - stize za koji trenutak.</span>
+    </div>
+  </div>
+</div>
+<script src="../popup.js"></script>
 </body>
 </html>

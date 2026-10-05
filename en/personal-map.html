@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSMHMQD13N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NSMHMQD13N', { 'anonymize_ip': true, 'storage': 'none', 'client_storage': 'none' });
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Personal Map - Tantric Numerology | Nemanja Vukoje</title>
+<meta name="description" content="A personalised analysis made from your unique numbers. Understand your patterns, recognise your potential, and direct your energy towards what truly matters.">
+<link rel="canonical" href="https://vukojenemanja.com/en/personal-map.html" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+  --warm:   #D4B896;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--fog);
+  color: var(--bark);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,8,5,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+  transition: background 0.4s, padding 0.4s;
+}
+nav.scrolled { background: rgba(26,18,8,0.95); padding: 14px 60px; border-bottom: 1px solid rgba(196,168,130,0.2); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--fog); text-decoration: none; letter-spacing: 1px; transition: color 0.4s; }
+.nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+.nav-links a { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,241,236,0.8); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover { color: var(--clay); }
+.nav-cta { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--clay) !important; border: 1px solid rgba(196,168,130,0.5); padding: 8px 20px; transition: all 0.3s !important; }
+.nav-cta:hover { background: var(--clay) !important; color: var(--deep) !important; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 1px; background: var(--fog); transition: all 0.3s; }
+.nav-mobile-menu { display: none; position: fixed; inset: 0; background: #0a0805; z-index: 9999; flex-direction: column; align-items: center; justify-content: center; }
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--sand); text-decoration: none; padding: 16px 48px; letter-spacing: 1px; transition: color 0.2s; text-align: center; width: 100%; border-bottom: 1px solid rgba(196,168,130,0.08); }
+.nav-mobile-menu a:hover { color: var(--clay); }
+.nav-mobile-menu a.mobile-cta { color: var(--clay); font-style: italic; margin-top: 8px; border-bottom: none; }
+.nav-mobile-close { position: absolute; top: 24px; right: 28px; font-size: 28px; color: rgba(245,241,236,0.5); cursor: pointer; background: none; border: none; line-height: 1; }
+
+.hero { background: var(--deep); min-height: 100vh; display: flex; align-items: flex-end; position: relative; overflow: hidden; padding: 0 60px 100px; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 70%, rgba(196,168,130,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 25%, rgba(155,107,58,0.05) 0%, transparent 50%); pointer-events: none; }
+.hero-ornament { position: absolute; right: 80px; top: 50%; transform: translateY(-50%); font-family: 'Cormorant Garamond', serif; font-size: clamp(200px, 25vw, 380px); font-weight: 300; font-style: italic; color: rgba(196,168,130,0.04); line-height: 1; user-select: none; pointer-events: none; }
+.hero-content { position: relative; z-index: 2; max-width: 680px; animation: fadeUp 1s ease both; }
+.hero-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--clay); margin-bottom: 32px; opacity: 0; animation: fadeUp 1s ease 0.2s both; white-space: nowrap; }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 7vw, 88px); font-weight: 300; color: var(--sand); line-height: 1.05; margin-bottom: 28px; opacity: 0; animation: fadeUp 1s ease 0.4s both; }
+.hero h1 em { font-style: italic; color: var(--clay); }
+.hero-sub { font-size: 16px; line-height: 1.8; color: rgba(232,221,208,0.65); max-width: 500px; margin-bottom: 52px; opacity: 0; animation: fadeUp 1s ease 0.6s both; }
+.hero-actions { opacity: 0; animation: fadeUp 1s ease 0.8s both; }
+.btn-main { display: inline-block; padding: 18px 52px; background: var(--clay); color: var(--deep); font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: background 0.3s, transform 0.2s; font-family: 'DM Sans', sans-serif; }
+.btn-main:hover { background: var(--warm); transform: translateY(-2px); }
+.hero-price-note { margin-top: 20px; font-size: 13px; color: rgba(232,221,208,0.45); letter-spacing: 0.5px; }
+.hero-price-note s { color: rgba(232,221,208,0.3); }
+.hero-delivery { margin-top: 10px; font-size: 12px; color: rgba(232,221,236,0.35); letter-spacing: 0.5px; }
+
+.pain-section { background: var(--fog); padding: 120px 60px; }
+.pain-inner { max-width: 900px; margin: 0 auto; }
+.section-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 24px; }
+.pain-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; color: var(--bark); line-height: 1.2; margin-bottom: 48px; }
+.pain-section h2 em { font-style: italic; color: var(--accent); }
+.pain-quotes { display: flex; flex-direction: column; }
+.pain-quote { display: flex; align-items: baseline; gap: 20px; padding: 22px 0; border-bottom: 1px solid rgba(61,46,30,0.12); }
+.pain-quote:first-of-type { border-top: 1px solid rgba(61,46,30,0.12); }
+.pq-mark { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--clay); opacity: 0.45; flex-shrink: 0; line-height: 1; }
+.pq-text { font-size: 17px; line-height: 1.7; color: var(--stone); transition: color 0.2s; }
+.pain-quote:hover .pq-text { color: var(--bark); }
+.pain-quote:hover .pq-mark { opacity: 1; }
+
+.bridge { background: var(--bark); padding: 120px 60px; }
+.bridge-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.bridge-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 24px; }
+.bridge h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 300; color: var(--sand); line-height: 1.1; }
+.bridge h2 em { font-style: italic; color: var(--clay); display: block; }
+.bridge-text { font-size: 15px; line-height: 1.9; color: rgba(232,221,208,0.65); }
+.bridge-text p + p { margin-top: 20px; }
+.bridge-numbers { display: flex; gap: 24px; margin-top: 32px; flex-wrap: wrap; }
+.bridge-num-item { text-align: center; }
+.bridge-num-item .num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--clay); line-height: 1; display: block; }
+.bridge-num-item .num-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(232,221,208,0.4); margin-top: 4px; display: block; }
+
+.contents { background: var(--fog); padding: 120px 60px; }
+.contents-inner { max-width: 1100px; margin: 0 auto; }
+.contents h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 52px); font-weight: 300; color: var(--bark); margin-bottom: 16px; }
+.contents h2 em { font-style: italic; color: var(--accent); }
+.contents-sub { font-size: 15px; color: var(--stone); margin-bottom: 56px; max-width: 560px; line-height: 1.7; }
+.contents-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.contents-card { background: var(--sand); padding: 36px 32px; border-top: 2px solid transparent; transition: border-color 0.3s; }
+.contents-card:hover { border-color: var(--clay); }
+.contents-card .cc-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; color: var(--clay); opacity: 0.5; line-height: 1; margin-bottom: 12px; display: block; }
+.contents-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--bark); margin-bottom: 10px; }
+.contents-card p { font-size: 13px; line-height: 1.8; color: var(--stone); }
+
+.sound { background: var(--deep); padding: 120px 60px; position: relative; overflow: hidden; }
+.sound::before { content: '"'; position: absolute; top: -40px; left: 40px; font-family: 'Cormorant Garamond', serif; font-size: 400px; color: rgba(196,168,130,0.04); line-height: 1; pointer-events: none; }
+.sound-inner { max-width: 1100px; margin: 0 auto; }
+.sound-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 16px; }
+.sound h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--sand); margin-bottom: 56px; max-width: 560px; }
+.sound h2 em { font-style: italic; color: var(--clay); }
+.sound-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.sound-card { background: rgba(255,255,255,0.03); padding: 40px 32px; border-top: 2px solid rgba(196,168,130,0.15); transition: border-color 0.3s; }
+.sound-card:hover { border-color: var(--clay); }
+.sound-type { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--clay); opacity: 0.7; margin-bottom: 16px; display: block; }
+.sound-quote { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; font-style: italic; color: rgba(232,221,208,0.85); line-height: 1.65; }
+
+.how { background: var(--fog); padding: 120px 60px; }
+.how-inner { max-width: 800px; margin: 0 auto; }
+.how h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--bark); margin-bottom: 56px; }
+.how h2 em { font-style: italic; color: var(--accent); }
+.how-steps { display: flex; flex-direction: column; }
+.how-step { display: flex; gap: 32px; align-items: flex-start; padding: 32px 0; border-bottom: 1px solid rgba(61,46,30,0.1); }
+.how-step:first-child { border-top: 1px solid rgba(61,46,30,0.1); }
+.how-step-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--clay); opacity: 0.4; line-height: 1; flex-shrink: 0; width: 56px; text-align: right; }
+.how-step-body h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--bark); margin-bottom: 8px; }
+.how-step-body p { font-size: 14px; line-height: 1.8; color: var(--stone); }
+
+.forwhom { background: var(--sand); padding: 120px 60px; }
+.forwhom-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.forwhom-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+.forwhom h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--bark); line-height: 1.2; }
+.forwhom h2 em { font-style: italic; color: var(--accent); }
+.forwhom-list { list-style: none; margin-top: 8px; }
+.forwhom-list li { padding: 16px 0; border-bottom: 1px solid rgba(61,46,30,0.1); font-size: 15px; color: var(--stone); display: flex; gap: 16px; align-items: flex-start; line-height: 1.6; }
+.forwhom-list li:first-child { border-top: 1px solid rgba(61,46,30,0.1); }
+.forwhom-list li::before { content: '✦'; color: var(--clay); flex-shrink: 0; font-size: 10px; margin-top: 4px; }
+.forwhom-note { margin-top: 32px; font-size: 13px; font-style: italic; color: var(--stone); line-height: 1.7; padding: 20px; border-left: 2px solid rgba(196,168,130,0.4); }
+
+.testimonials { background: var(--deep); padding: 120px 60px; position: relative; overflow: hidden; }
+.testimonials::before { content: '"'; position: absolute; top: -40px; left: 40px; font-family: 'Cormorant Garamond', serif; font-size: 400px; color: rgba(196,168,130,0.04); line-height: 1; pointer-events: none; }
+.testimonials-inner { max-width: 900px; margin: 0 auto; }
+.testimonials-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 48px; }
+.testi-card { background: rgba(255,255,255,0.03); padding: 52px 48px; border-top: 2px solid var(--clay); }
+.testi-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 300; font-style: italic; color: rgba(232,221,208,0.88); line-height: 1.6; margin-bottom: 32px; }
+.testi-author { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--clay); }
+
+.about { background: var(--bark); padding: 120px 60px; }
+.about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 24px; }
+.about h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--sand); line-height: 1.1; }
+.about h2 em { font-style: italic; color: var(--clay); display: block; }
+.about-text { font-size: 15px; line-height: 1.9; color: rgba(232,221,208,0.65); }
+.about-text p + p { margin-top: 20px; }
+
+.faq { background: var(--fog); padding: 120px 60px; }
+.faq-inner { max-width: 800px; margin: 0 auto; }
+.faq h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; color: var(--bark); margin-bottom: 56px; }
+.faq-list { display: flex; flex-direction: column; }
+.faq-item { border-bottom: 1px solid rgba(61,46,30,0.12); padding: 28px 0; }
+.faq-item:first-of-type { border-top: 1px solid rgba(61,46,30,0.12); }
+.faq-q { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--bark); margin-bottom: 12px; }
+.faq-a { font-size: 14px; line-height: 1.8; color: var(--stone); }
+
+.cta-section { background: var(--deep); padding: 120px 60px; text-align: center; }
+.cta-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 32px; }
+.cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 300; color: var(--sand); line-height: 1.1; margin-bottom: 24px; }
+.cta-section h2 em { font-style: italic; color: var(--clay); display: block; }
+.cta-sub { font-size: 16px; color: rgba(232,221,208,0.5); max-width: 480px; margin: 0 auto 52px; line-height: 1.7; }
+.cta-price { margin-bottom: 36px; }
+.cta-price .old { font-size: 16px; color: rgba(232,221,208,0.25); text-decoration: line-through; margin-right: 12px; }
+.cta-price .new { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; color: var(--clay); line-height: 1; }
+.cta-price .new-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--stone); display: block; margin-top: 4px; }
+.cta-note { font-size: 13px; color: rgba(232,221,208,0.35); margin-top: 20px; }
+
+footer { background: var(--deep); padding: 60px 60px 0; border-top: 1px solid rgba(196,168,130,0.1); }
+.footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 60px; }
+.footer-brand h3 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--sand); line-height: 1.1; margin-bottom: 16px; }
+.footer-brand h3 em { font-style: italic; color: var(--clay); }
+.footer-brand p { font-size: 13px; line-height: 1.8; color: var(--stone); }
+.footer-nav h4, .footer-contact h4 { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--clay); margin-bottom: 24px; }
+.footer-nav ul { list-style: none; }
+.footer-nav li { padding: 6px 0; }
+.footer-nav a { font-size: 14px; color: var(--stone); text-decoration: none; transition: color 0.2s; }
+.footer-nav a:hover { color: var(--clay); }
+.footer-contact p { font-size: 14px; color: var(--stone); line-height: 1.8; }
+.footer-contact a { color: var(--clay); text-decoration: none; }
+.footer-bottom { border-top: 1px solid rgba(196,168,130,0.1); padding: 20px 0; display: flex; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
+.footer-bottom p { font-size: 11px; letter-spacing: 1px; color: var(--stone); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.js-loaded .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.js-loaded .reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero { padding: 0 24px 80px; min-height: 100svh; }
+  .hero-ornament { display: none; }
+  .pain-section, .bridge, .contents, .sound, .how, .forwhom, .testimonials, .about, .faq, .cta-section { padding: 80px 24px; }
+  .bridge-inner { grid-template-columns: 1fr; gap: 40px; }
+  .contents-grid { grid-template-columns: 1fr; }
+  .sound-grid { grid-template-columns: 1fr; }
+  .forwhom-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about-inner { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  footer { padding: 60px 24px 0; }
+  .footer-bottom { padding: 20px 0; flex-direction: column; gap: 8px; }
+  .testi-card { padding: 36px 28px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Nemanja Vukoje</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About me</a></li>
+    <li><a href="calendar.html">Calendar</a></li>
+    <li><a href="akal.html">Akal Community</a></li>
+    <li><a href="individual.html">Individual Work</a></li>
+    <li><a href="personal-map.html">Personal Map</a></li>
+    <li><a href="index.html#testimonials">Testimonials</a></li>
+    <li><a href="mailto:info@vukojenemanja.com?subject=Personal%20Map%20-%20Order" class="nav-cta">I want my map</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile-menu" id="mobileMenu">
+  <button class="nav-mobile-close" onclick="closeMobileMenu()">x</button>
+  <a href="index.html#about" onclick="closeMobileMenu()">About me</a>
+  <a href="calendar.html" onclick="closeMobileMenu()">Calendar</a>
+  <a href="akal.html" onclick="closeMobileMenu()">Akal Community</a>
+  <a href="individual.html" onclick="closeMobileMenu()">Individual Work</a>
+  <a href="index.html#testimonials" onclick="closeMobileMenu()">Testimonials</a>
+  <a href="mailto:info@vukojenemanja.com?subject=Personal%20Map%20-%20Order" class="mobile-cta" onclick="closeMobileMenu()">I want my map</a>
+</div>
+
+<section class="hero">
+  <div class="hero-ornament">5</div>
+  <div class="hero-content">
+    <div class="hero-label">Tantric Numerology · Kundalini Yoga</div>
+    <h1>Your personal <em>map.</em></h1>
+    <p class="hero-sub">A personalised analysis made from your unique numbers. Understand your patterns, recognise your potential and direct your energy towards what truly matters to you.</p>
+    <div class="hero-actions">
+      <a href="mailto:info@vukojenemanja.com?subject=Personal%20Map%20-%20Order&body=Full%20name%3A%0ADate%20of%20birth%3A" class="btn-main">I want my map</a>
+      <div>
+        <p class="hero-price-note"><s>55 €</s> &nbsp;→&nbsp; 33 € · Introductory price</p>
+        <p class="hero-delivery">PDF arrives by email within 72 hours · yours to keep forever</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pain-section">
+  <div class="pain-inner">
+    <div class="section-label reveal">Recognition</div>
+    <h2 class="reveal">Have you ever wondered<br><em>why you are the way you are?</em></h2>
+    <div class="pain-quotes">
+      <div class="pain-quote reveal">
+        <span class="pq-mark">—</span>
+        <p class="pq-text">Why some things come naturally to you, while others always trip you up.</p>
+      </div>
+      <div class="pain-quote reveal">
+        <span class="pq-mark">—</span>
+        <p class="pq-text">Why you keep ending up in the same role in relationships, even when the people change.</p>
+      </div>
+      <div class="pain-quote reveal">
+        <span class="pq-mark">—</span>
+        <p class="pq-text">Why one year feels easy, and the next asks everything of you.</p>
+      </div>
+    </div>
+    <p style="margin-top: 48px; font-size: 16px; line-height: 1.9; color: var(--stone); max-width: 640px;" class="reveal">
+      These are not coincidences. In each of us there are patterns, strengths and themes that repeat throughout life. Once you see them clearly, many things start to make sense.
+    </p>
+  </div>
+</section>
+
+<section class="bridge">
+  <div class="bridge-inner">
+    <div class="reveal">
+      <div class="bridge-label">Your personality map</div>
+      <h2>Five numbers,<br>five parts<br><em>of you.</em></h2>
+      <div class="bridge-numbers">
+        <div class="bridge-num-item"><span class="num">5</span><span class="num-label">Numbers</span></div>
+        <div class="bridge-num-item"><span class="num">13</span><span class="num-label">Pages</span></div>
+        <div class="bridge-num-item"><span class="num">72h</span><span class="num-label">Delivery</span></div>
+      </div>
+    </div>
+    <div class="bridge-text reveal">
+      <p>In Kundalini Yoga, your date of birth is read as a map. It produces five numbers, each describing a different part of your personality - your relationship with yourself, the lesson that repeats in relationships, a talent that comes easily, what others notice first, and the direction where you feel fulfilled.</p>
+      <p>For each number you find three things: your qualities, where your challenges lie, and what is worth focusing on.</p>
+      <p>The map gives you a language for what you already sense about yourself. Often one sentence is enough - you pause and think: yes, that is me.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contents">
+  <div class="contents-inner">
+    <div class="section-label reveal">Contents</div>
+    <h2 class="reveal">What is in<br><em>your map</em></h2>
+    <p class="contents-sub reveal">Every section is written specifically for your numbers. No prior knowledge needed.</p>
+    <div class="contents-grid">
+      <div class="contents-card reveal">
+        <span class="cc-num">01</span>
+        <h4>Your five numbers</h4>
+        <p>Soul number, karma number, gift number, destiny number and path number. For each: qualities, challenges and focus - each on its own page.</p>
+      </div>
+      <div class="contents-card reveal">
+        <span class="cc-num">02</span>
+        <h4>Your story</h4>
+        <p>All five numbers read together as one whole. Written personally for you, not from a template.</p>
+      </div>
+      <div class="contents-card reveal">
+        <span class="cc-num">03</span>
+        <h4>Seven-year cycle</h4>
+        <p>Which cycle you are in now, what it brings, and why certain things are shifting for you right now.</p>
+      </div>
+      <div class="contents-card reveal">
+        <span class="cc-num">04</span>
+        <h4>Personal year</h4>
+        <p>Your personal year for this year and next, with a simple formula for calculating it yourself.</p>
+      </div>
+      <div class="contents-card reveal">
+        <span class="cc-num">05</span>
+        <h4>Three pieces of advice</h4>
+        <p>Chosen specifically for your combination of numbers - small steps for everyday life.</p>
+      </div>
+      <div class="contents-card reveal">
+        <span class="cc-num">06</span>
+        <h4>Journal questions</h4>
+        <p>For moments when you want to go deeper into what you recognised in the map.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sound">
+  <div class="sound-inner">
+    <div class="sound-label reveal">Tone of the map</div>
+    <h2 class="reveal">A few sentences from actual maps,<br>so you can feel <em>how it sounds</em></h2>
+    <div class="sound-grid">
+      <div class="sound-card reveal">
+        <span class="sound-type">Quality</span>
+        <p class="sound-quote">"Your presence changes the atmosphere. When you are there, an argument settles more easily, a child falls asleep more easily, a friend in crisis feels less alone. Often you do not need to say anything at all."</p>
+      </div>
+      <div class="sound-card reveal">
+        <span class="sound-type">Challenge</span>
+        <p class="sound-quote">"You know that moment when you lie in bed at night turning the same decision over for the tenth time? You make lists, ask friends, read online - and somewhere deep down the answer is already there. You just do not trust it yet, because you cannot prove it."</p>
+      </div>
+      <div class="sound-card reveal">
+        <span class="sound-type">Focus</span>
+        <p class="sound-quote">"When you make even one choice a day from feeling rather than calculation, you build trust in your own inner voice. Once that trust exists in small things, big decisions stop being a struggle."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="how-inner">
+    <div class="section-label reveal">Process</div>
+    <h2 class="reveal">How to<br><em>get your map</em></h2>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="how-step-num">1</div>
+        <div class="how-step-body">
+          <h4>Order your map</h4>
+          <p>Click the button - an email opens with a template for your name and date of birth. Send it to info@vukojenemanja.com.</p>
+        </div>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">2</div>
+        <div class="how-step-body">
+          <h4>Your PDF arrives within 72 hours</h4>
+          <p>Your personal map lands in your inbox as a PDF. It is yours to keep and return to whenever you need.</p>
+        </div>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">3</div>
+        <div class="how-step-body">
+          <h4>Set aside half an hour for yourself</h4>
+          <p>Make a cup of tea and read slowly. Some sentences will recognise you right away; others open up a few days later.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="forwhom">
+  <div class="forwhom-inner">
+    <div class="reveal">
+      <div class="forwhom-label">Who the map is for</div>
+      <h2>The map is<br>for you<br><em>if...</em></h2>
+    </div>
+    <div class="reveal">
+      <ul class="forwhom-list">
+        <li>You want to understand yourself better - how you function, what comes naturally, where you get stuck and why.</li>
+        <li>You are at the beginning of working on yourself and looking for a simple but deep entry point.</li>
+        <li>You have been on this path for a long time and want to see everything you know gathered in one place.</li>
+      </ul>
+      <p class="forwhom-note">The map is not a prediction of the future. It helps you see yourself and your moment in life more clearly - what you do with that knowledge is always your choice.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-label reveal">Testimonial</div>
+    <div class="testi-card reveal">
+      <p class="testi-text">"Thank you for the Personal Map. I love how everything is put together and it resonates with me perfectly. The advice and concrete suggestions you gave about what to focus on in the period ahead are especially useful."</p>
+      <div class="testi-author">Aida</div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-inner">
+    <div class="reveal">
+      <div class="about-label">Who is behind the map</div>
+      <h2>Nemanja<br><em>Vukoje</em></h2>
+    </div>
+    <div class="about-text reveal">
+      <p>KRI Certified Kundalini Yoga Teacher based in Vienna. I have been practising for over ten years and working with people through yoga, meditation and individual sessions for five.</p>
+      <p>Tantric Numerology is one of the most beautiful tools I know - it gives people a language for what they have been sensing about themselves for a long time. I write every map so that someone encountering numerology for the first time can understand it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="faq-inner">
+    <h2 class="reveal">Frequently asked<br>questions</h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <p class="faq-q">Do I need to know anything about numerology?</p>
+        <p class="faq-a">No. The map is written for someone encountering numerology for the first time. Everything is explained simply, through everyday examples.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">Is this a prediction of the future?</p>
+        <p class="faq-a">No. The map is a tool for understanding yourself. The numbers show your qualities, challenges and themes - how you live them is up to you.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">What do I need to provide?</p>
+        <p class="faq-a">Just your name and date of birth.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">When does the map arrive?</p>
+        <p class="faq-a">Within 72 hours, as a PDF to your email. It is yours to keep forever.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">Can the map be a gift?</p>
+        <p class="faq-a">Yes. When ordering, include the name and date of birth of the person you are gifting it to, and note that it is a gift.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">Is the map for men too?</p>
+        <p class="faq-a">Yes. Every map is written individually, in the appropriate gender.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">What language is it in?</p>
+        <p class="faq-a">In English. On request it is also available in Serbian or German.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-label">Order</div>
+  <h2>Get to know yourself<br><em>through your map</em></h2>
+  <p class="cta-sub">Your qualities, your challenges and the focus that helps you grow - written only for you.</p>
+  <div class="cta-price">
+    <span class="old">55 €</span>
+    <span class="new">33 €</span>
+    <span class="new-label">Introductory price</span>
+  </div>
+  <a href="mailto:info@vukojenemanja.com?subject=Personal%20Map%20-%20Order&body=Full%20name%3A%0ADate%20of%20birth%3A" class="btn-main">I want my map</a>
+  <p class="cta-note">PDF arrives within 72 hours · yours to keep forever</p>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Nemanja<br><em>Vukoje</em></h3>
+      <p>Kundalini Yoga, meditation and energy work from Vienna. Online and in person.</p>
+    </div>
+    <div class="footer-nav">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About me</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+        <li><a href="akal.html">Akal Community</a></li>
+        <li><a href="individual.html">Individual Work</a></li>
+        <li><a href="personal-map.html">Personal Map</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p><a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Nemanja Vukoje</p>
+    <p>Vienna, Austria</p>
+  </div>
+</footer>
+
+<script>
+document.body.classList.add('js-loaded');
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : ''; }
+function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

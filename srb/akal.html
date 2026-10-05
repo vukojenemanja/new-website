@@ -2146,23 +2146,27 @@ function closeMobileMenu() {
 <div id="nv-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="nv-popup-title">
   <div id="nv-popup">
     <button id="nv-popup-close" aria-label="Zatvori">&#215;</button>
-    <div id="nv-popup-label">Besplatno za tebe</div>
-    <h2 id="nv-popup-title">[ OVDE STAVI NAZIV<br><em>LEAD MAGNETA ]</em></h2>
-    <p id="nv-popup-sub">Kratki opis sta dobijaju - jedna do dve recenice, konkretno i jednostavno. Npr. "Saznaj sta tvoj Soul broj govori o tebi." ili "Besplatan PDF vodic kroz Kundalini jogu."</p>
+    <div id="nv-popup-label">Broj duse - besplatno</div>
+    <h2 id="nv-popup-title">Saznaj svoj<br><em>broj duse.</em></h2>
+    <p id="nv-popup-sub">Unesi datum rodjenja i otkrij sta tvoj broj duse govori o tebi. Besplatno, odmah.</p>
     <form id="nv-popup-form" novalidate>
       <input type="text" id="nv-popup-name" name="first_name" placeholder="Tvoje ime" autocomplete="given-name">
+      <input type="text" id="nv-popup-dob" name="dob" placeholder="Datum rodjenja (DD.MM.GGGG)" autocomplete="bday" inputmode="numeric">
       <input type="email" id="nv-popup-email" name="email" placeholder="Tvoj email" required autocomplete="email">
       <label id="nv-popup-consent">
         <input type="checkbox" id="nv-popup-consent-check" required>
         <span id="nv-popup-consent-label">Slazem se da primam emailove i razumem da mogu da se odjavim u svakom trenutku. Procitao/la sam <a href="/srb/datenschutz.html" target="_blank">Politiku privatnosti</a>.</span>
       </label>
-      <button type="submit" id="nv-popup-submit">Prijavi se</button>
+      <button type="submit" id="nv-popup-submit">Otkrij broj</button>
       <div id="nv-popup-error"></div>
     </form>
     <p id="nv-popup-note">Bez spama. Odjava u svakom trenutku.</p>
     <div id="nv-popup-success">
-      <p>Hvala ti.</p>
-      <span class="success-sub">Provjeri inbox (i spam folder) - stize za koji trenutak.</span>
+      <p>Tvoj broj duse je <strong id="nv-popup-soul-num" style="font-style:normal;color:#9B6B3A"></strong>.</p>
+      <span class="success-sub" style="display:block;margin-top:12px">
+        <a id="nv-popup-soul-link" href="/srb/hvala.html" style="color:#9B6B3A;text-decoration:underline;font-family:'DM Sans',sans-serif;font-size:13px">Citaj svoju analizu &rarr;</a>
+      </span>
+      <span class="success-sub" style="display:block;margin-top:8px">Provjeri inbox (i spam folder) - stize za koji trenutak.</span>
     </div>
   </div>
 </div>

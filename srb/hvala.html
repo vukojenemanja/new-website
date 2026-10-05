@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSMHMQD13N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NSMHMQD13N', { 'anonymize_ip': true, 'storage': 'none', 'client_storage': 'none' });
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tvoj broj duse - Nemanja Vukoje</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+  --warm:   #D4B896;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--fog); color: var(--bark); font-family: 'DM Sans', sans-serif; font-weight: 300; }
+
+nav {
+  padding: 24px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--deep);
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--fog); text-decoration: none; letter-spacing: 1px; }
+
+.hero {
+  background: var(--deep);
+  padding: 100px 60px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 80%, rgba(196,168,130,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 24px;
+}
+.soul-number-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(100px, 20vw, 180px);
+  font-weight: 300;
+  color: var(--clay);
+  line-height: 1;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 300;
+  color: var(--sand);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.hero h1 em { font-style: italic; color: var(--clay); }
+.hero-sub {
+  font-size: 15px;
+  color: rgba(232,221,208,0.5);
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 60px 40px;
+}
+
+.soul-section {
+  margin-bottom: 64px;
+}
+.soul-section-label {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 16px;
+  display: block;
+}
+.soul-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 400;
+  color: var(--bark);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.soul-section h2 em { font-style: italic; color: var(--accent); }
+.soul-text {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--stone);
+}
+.soul-text p + p { margin-top: 16px; }
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(61,46,30,0.12);
+  margin: 64px 0;
+}
+
+.cta-box {
+  background: var(--bark);
+  padding: 52px 48px;
+  text-align: center;
+  margin: 0 60px 80px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-box-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+.cta-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.cta-box h3 em { font-style: italic; color: var(--clay); display: block; }
+.cta-box p {
+  font-size: 14px;
+  color: rgba(232,221,208,0.55);
+  line-height: 1.7;
+  max-width: 420px;
+  margin: 0 auto 36px;
+}
+.btn-main {
+  display: inline-block;
+  padding: 16px 48px;
+  background: var(--clay);
+  color: var(--deep);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+.btn-main:hover { background: var(--warm); }
+.cta-price {
+  margin-top: 16px;
+  font-size: 13px;
+  color: rgba(232,221,208,0.35);
+}
+.cta-price s { color: rgba(232,221,208,0.2); }
+
+/* Fallback kad nema soul parametra */
+.no-soul {
+  display: none;
+  text-align: center;
+  padding: 80px 60px;
+}
+.no-soul h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--bark);
+  margin-bottom: 16px;
+}
+.no-soul p { font-size: 15px; color: var(--stone); line-height: 1.7; }
+
+footer {
+  background: var(--deep);
+  padding: 40px 60px;
+  border-top: 1px solid rgba(196,168,130,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer p { font-size: 12px; color: var(--stone); }
+footer a { color: var(--clay); text-decoration: none; font-size: 12px; }
+
+@media (max-width: 700px) {
+  nav { padding: 20px 24px; }
+  .hero { padding: 80px 24px 60px; }
+  .content { padding: 60px 24px 40px; }
+  .cta-box { margin: 0 24px 60px; padding: 40px 28px; }
+  footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Nemanja Vukoje</a>
+</nav>
+
+<!-- Hero - popunjava JS -->
+<section class="hero" id="hero-section">
+  <div class="hero-label">Tvoj broj duse</div>
+  <div class="soul-number-display" id="soul-display"></div>
+  <h1>Broj <em id="soul-name-display"></em></h1>
+  <p class="hero-sub" id="hero-sub-text"></p>
+</section>
+
+<!-- Sadrzaj po broju - popunjava JS -->
+<div class="content" id="soul-content"></div>
+
+<!-- Fallback -->
+<div class="no-soul" id="no-soul">
+  <h2>Ups, nesto nije u redu.</h2>
+  <p>Nije prosledjen broj duse. Vrati se na pocetnu stranicu i prijavi se ponovo.</p>
+</div>
+
+<!-- CTA -->
+<div class="cta-box" id="cta-box" style="display:none">
+  <div class="cta-box-label">Sledeci korak</div>
+  <h3>Cela tvoja<br><em>Licna mapa.</em></h3>
+  <p>Soul broj je samo jedan od pet delova. Licna mapa otkriva sve - tvoje obrasce, talente, izazove i period u kome si sad.</p>
+  <a href="licna-mapa.html" class="btn-main">Saznaj vise o Licnoj mapi</a>
+  <p class="cta-price"><s>55 €</s> &nbsp;·&nbsp; 33 € uvodna cena</p>
+</div>
+
+<footer>
+  <p>© 2025 Nemanja Vukoje</p>
+  <a href="index.html">Pocetna stranica</a>
+</footer>
+
+<script>
+// ── Sadrzaj po brojevima (placeholder - zameni sa pravim tekstovima iz PDFova) ──
+
+var SOULS = {
+  1: {
+    name: 'jedan',
+    sub: 'Snaga, inicijativa i sposobnost da krenes prvi.',
+    kvalitet: {
+      label: 'Tvoje kvalitete',
+      title: 'Prirodni lider.',
+      text: '<p>[ PLACEHOLDER - stavi tekst iz PDF-a za broj 1, sekcija Kvalitete ]</p>'
+    },
+    izazov: {
+      label: 'Tvoji izazovi',
+      title: 'Gde se zapinjes.',
+      text: '<p>[ PLACEHOLDER - stavi tekst iz PDF-a za broj 1, sekcija Izazovi ]</p>'
+    },
+    fokus: {
+      label: 'Tvoj fokus',
+      title: 'Na cemu vredi raditi.',
+      text: '<p>[ PLACEHOLDER - stavi tekst iz PDF-a za broj 1, sekcija Fokus ]</p>'
+    }
+  },
+  2: {
+    name: 'dva',
+    sub: 'Intuicija, osecajnost i duboka veza sa drugima.',
+    kvalitet: { label: 'Tvoje kvalitete', title: 'Intuitivna snaga.', text: '<p>[ PLACEHOLDER - broj 2, Kvalitete ]</p>' },
+    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 2, Izazovi ]</p>' },
+    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 2, Fokus ]</p>' }
+  },
+  3: {
+    name: 'tri',
+    sub: 'Kreativnost, radost i sposobnost da inspirijes.',
+    kvalitet: { label: 'Tvoje kvalitete', title: 'Kreativna energija.', text: '<p>[ PLACEHOLDER - broj 3, Kvalitete ]</p>' },
+    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 3, Izazovi ]</p>' },
+    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 3, Fokus ]</p>' }
+  },
+  4: {
+    name: 'cetiri',
+    sub: 'Stabilnost, disciplina i sposobnost da gradis.',
+    kvalitet: { label: 'Tvoje kvalitete', title: 'Temeljna snaga.', text: '<p>[ PLACEHOLDER - broj 4, Kvalitete ]</p>' },
+    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 4, Izazovi ]</p>' },
+    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 4, Fokus ]</p>' }
+  },
+  5: {
+    name: 'pet',
+    sub: 'Sloboda, promena i zivot u pokretu.',
+    kvalitet: { label: 'Tvoje kvalitete', title: 'Energija promene.', text: '<p>[ PLACEHOLDER - broj 5, Kvalitete ]</p>' },
+    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 5, Izazovi ]</p>' },
+    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 5, Fokus ]</p>' }
+  },
+  6: {
+    name: 'sest',
+    sub: 'Lepota, harmonija i briga za druge.',
+    kvalitet: { label: 'Tvoje kvalitete', title: 'Srce koje neguje.', text: '<p>[ PLACEHOLDER - broj 6, Kvalitete ]</p>' },
+    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 6, Izazovi ]</p>' },
+    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 6, Fokus ]</p>' }
+  },
+  7: {
+    name: 'sedam',
+    sub: 'Mudrost, analiza i potraga za dubljim smislom.',
+    kvalitet: { label: 'Tvoje kvalitete', title: 'Dubina i mudrost.', text: '<p>[ PLACEHOLDER - broj 7, Kvalitete ]</p>' },
+    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 7, Izazovi ]</p>' },
+    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 7, Fokus ]</p>' }
+  },
+  8: {
+    name: 'osam',
+    sub: 'Moc, vodstvo i sposobnost da ostavljas trag.',
+    kvalitet: { label: 'Tvoje kvalitete', title: 'Snaga i autoritet.', text: '<p>[ PLACEHOLDER - broj 8, Kvalitete ]</p>' },
+    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 8, Izazovi ]</p>' },
+    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 8, Fokus ]</p>' }
+  },
+  9: {
+    name: 'devet',
+    sub: 'Idealizam, sluzenje i zivot koji inspirise.',
+    kvalitet: { label: 'Tvoje kvalitete', title: 'Siroko srce.', text: '<p>[ PLACEHOLDER - broj 9, Kvalitete ]</p>' },
+    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 9, Izazovi ]</p>' },
+    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 9, Fokus ]</p>' }
+  },
+  10: {
+    name: 'deset',
+    sub: 'Radijantna energija i sposobnost da svetlis.',
+    kvalitet: { label: 'Tvoje kvalitete', title: 'Zraceca prisutnost.', text: '<p>[ PLACEHOLDER - broj 10, Kvalitete ]</p>' },
+    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 10, Izazovi ]</p>' },
+    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 10, Fokus ]</p>' }
+  },
+  11: {
+    name: 'jedanaest',
+    sub: 'Svest, transcendencija i zivot kao ucitelj.',
+    kvalitet: { label: 'Tvoje kvalitete', title: 'Probudjena svest.', text: '<p>[ PLACEHOLDER - broj 11, Kvalitete ]</p>' },
+    izazov: { label: 'Tvoji izazovi', title: 'Gde se zapinjes.', text: '<p>[ PLACEHOLDER - broj 11, Izazovi ]</p>' },
+    fokus: { label: 'Tvoj fokus', title: 'Na cemu vredi raditi.', text: '<p>[ PLACEHOLDER - broj 11, Fokus ]</p>' }
+  }
+};
+
+function getParam(name) {
+  try {
+    return new URLSearchParams(window.location.search).get(name);
+  } catch(e) { return null; }
+}
+
+function renderSoul(n) {
+  var data = SOULS[n];
+  if (!data) {
+    document.getElementById('no-soul').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('soul-display').textContent = n;
+  document.getElementById('soul-name-display').textContent = data.name;
+  document.getElementById('hero-sub-text').textContent = data.sub;
+
+  var sections = [data.kvalitet, data.izazov, data.fokus];
+  var html = '';
+  sections.forEach(function(s, i) {
+    if (i > 0) html += '<hr class="divider">';
+    html += '<div class="soul-section">';
+    html += '<span class="soul-section-label">' + s.label + '</span>';
+    html += '<h2>' + s.title + '</h2>';
+    html += '<div class="soul-text">' + s.text + '</div>';
+    html += '</div>';
+  });
+
+  document.getElementById('soul-content').innerHTML = html;
+  document.getElementById('cta-box').style.display = 'block';
+}
+
+var soul = parseInt(getParam('soul'), 10);
+if (soul >= 1 && soul <= 11) {
+  renderSoul(soul);
+} else {
+  document.getElementById('no-soul').style.display = 'block';
+}
+</script>
+</body>
+</html>

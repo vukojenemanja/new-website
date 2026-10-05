@@ -1,21 +1,34 @@
 // ─── Email popup kit ───────────────────────────────────────────────────────
-// ConvertKit form ID: zameni YOUR_FORM_ID sa pravim ID-jem tvog forma
-// Nas ConvertKit form URL: https://app.convertkit.com/forms/YOUR_FORM_ID/subscriptions
+// ConvertKit form ID: app.convertkit.com/forms/10004467/edit
 // ───────────────────────────────────────────────────────────────────────────
 
 (function () {
   var FORM_ID = '10004467';
   var STORAGE_KEY = 'nv_popup_hidden';
-  var TRIGGER_SCROLL = 0.50;            // 50% stranice
-  var TRIGGER_SECONDS = 45;             // 45 sekundi
+  var TRIGGER_SCROLL = 0.50;
+  var TRIGGER_SECONDS = 45;
 
-  // Ne pokazuj ako je vec odradjen
   try {
     if (localStorage.getItem(STORAGE_KEY)) return;
   } catch (e) {}
 
   var triggered = false;
   var timer = null;
+
+  // ── Soul broj kalkulacija ──────────────────────────────────────────────
+  function calcSoul(dobStr) {
+    var parts = dobStr.trim().split('.');
+    if (parts.length < 1) return null;
+    var day = parseInt(parts[0], 10);
+    if (isNaN(day) || day < 1 || day > 31) return null;
+    var n = day;
+    while (n > 11) {
+      var s = 0, tmp = n;
+      while (tmp > 0) { s += tmp % 10; tmp = Math.floor(tmp / 10); }
+      n = s;
+    }
+    return n;
+  }
 
   function showPopup() {
     if (triggered) return;
@@ -49,15 +62,15 @@
 
   function onSubmit(e) {
     e.preventDefault();
-    var form = document.getElementById('nv-popup-form');
     var email = document.getElementById('nv-popup-email').value.trim();
     var name = document.getElementById('nv-popup-name').value.trim();
+    var dob = document.getElementById('nv-popup-dob').value.trim();
     var btn = document.getElementById('nv-popup-submit');
     var errEl = document.getElementById('nv-popup-error');
+    var consent = document.getElementById('nv-popup-consent-check');
 
     errEl.style.display = 'none';
 
-    var consent = document.getElementById('nv-popup-consent-check');
     if (consent && !consent.checked) {
       errEl.textContent = 'Potrebno je da prihvatis uslove pre prijave.';
       errEl.style.display = 'block';
@@ -70,9 +83,10 @@
       return;
     }
 
-    if (FORM_ID === 'YOUR_FORM_ID') {
-      // Dev mode: pokazi success bez slanja
-      showSuccess();
+    var soul = calcSoul(dob);
+    if (!soul) {
+      errEl.textContent = 'Unesi datum rodjenja u formatu DD.MM.GGGG (npr. 15.03.1990)';
+      errEl.style.display = 'block';
       return;
     }
 
@@ -81,6 +95,7 @@
 
     var data = new URLSearchParams({ email_address: email });
     if (name) data.append('fields[first_name]', name);
+    if (dob) data.append('fields[datum_rodjenja]', dob);
 
     fetch('https://app.convertkit.com/forms/' + FORM_ID + '/subscriptions', {
       method: 'POST',
@@ -89,28 +104,31 @@
     })
       .then(function (res) {
         if (res.ok || res.status === 200) {
-          showSuccess();
+          showSuccess(soul, name);
         } else {
           throw new Error('server error');
         }
       })
       .catch(function () {
         btn.disabled = false;
-        btn.textContent = 'Prijavi se';
+        btn.textContent = 'Otkrij broj';
         errEl.textContent = 'Doslo je do greske. Pokusaj ponovo ili me kontaktiraj direktno.';
         errEl.style.display = 'block';
       });
   }
 
-  function showSuccess() {
+  function showSuccess(soul, name) {
     document.getElementById('nv-popup-form').style.display = 'none';
     document.getElementById('nv-popup-sub').style.display = 'none';
-    document.getElementById('nv-popup-success').style.display = 'block';
+    var sEl = document.getElementById('nv-popup-success');
+    sEl.style.display = 'block';
+    var numEl = document.getElementById('nv-popup-soul-num');
+    var linkEl = document.getElementById('nv-popup-soul-link');
+    if (numEl) numEl.textContent = soul;
+    if (linkEl) linkEl.href = '/srb/hvala.html?soul=' + soul;
     try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
-    setTimeout(function () { dismissPopup(true); }, 3500);
   }
 
-  // Init kad se DOM ucita
   function init() {
     var overlay = document.getElementById('nv-popup-overlay');
     if (!overlay) return;
@@ -120,9 +138,7 @@
     });
 
     overlay.addEventListener('click', onOverlayClick);
-
     document.getElementById('nv-popup-form').addEventListener('submit', onSubmit);
-
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') dismissPopup(false);
     });

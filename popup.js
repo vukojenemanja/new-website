@@ -118,8 +118,8 @@
 
     var data = new URLSearchParams({ email_address: email });
     if (name) data.append('fields[first_name]', name);
-    if (dob) data.append('fields[datum_rodjenja]', dob);
-    if (soul) data.append('fields[soul_broj]', soul);
+    if (dob) data.append('fields[date_of_birth]', dob);
+    if (soul) data.append('fields[soul_number]', soul);
 
     fetch('https://app.convertkit.com/forms/' + FORM_ID + '/subscriptions', {
       method: 'POST',

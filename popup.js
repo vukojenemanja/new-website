@@ -48,7 +48,7 @@
       if (btn) btn.textContent = 'Otkrij broj';
     } else {
       wrap.style.display = 'none';
-      if (btn) btn.textContent = 'Prijavi se';
+      if (btn) btn.textContent = 'Prijavi se na listu';
     }
   }
 
@@ -139,7 +139,7 @@
       })
       .catch(function () {
         btn.disabled = false;
-        btn.textContent = wantsSoul() ? 'Otkrij broj' : 'Prijavi se';
+        btn.textContent = wantsSoul() ? 'Otkrij broj' : 'Prijavi se na listu';
         // 'Prijavi se' already correct Serbian
         errEl.textContent = 'Došlo je do greške. Pokušaj ponovo ili me kontaktiraj direktno.';
         errEl.style.display = 'block';

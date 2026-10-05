@@ -159,7 +159,7 @@
       var numEl = document.getElementById('nv-popup-soul-num');
       var linkEl = document.getElementById('nv-popup-soul-link');
       if (numEl) numEl.textContent = soul;
-      if (linkEl) linkEl.href = '/srb/hvala.html?soul=' + soul;
+      if (linkEl) linkEl.href = 'https://vukojenemanja.com/pdfs/broj-duse/Broj_Duse_' + soul + '.pdf';
       if (soulResult) soulResult.style.display = 'block';
       if (newsletterResult) newsletterResult.style.display = 'none';
     } else {

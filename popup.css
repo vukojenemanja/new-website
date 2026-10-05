@@ -163,6 +163,20 @@
   overflow: hidden;
 }
 
+#nv-popup-dob-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--stone, #8A8070);
+  display: block;
+  margin-bottom: 6px;
+}
+
+#nv-popup-dob {
+  color-scheme: light;
+}
+
 #nv-popup-consent {
   display: flex;
   align-items: flex-start;

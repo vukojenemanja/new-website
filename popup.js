@@ -17,9 +17,13 @@
 
   // ── Soul broj kalkulacija ──────────────────────────────────────────────
   function calcSoul(dobStr) {
-    var parts = dobStr.trim().split('.');
-    if (parts.length < 1) return null;
-    var day = parseInt(parts[0], 10);
+    var s = dobStr.trim();
+    var day;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) {
+      day = parseInt(s.split('-')[2], 10);
+    } else {
+      day = parseInt(s.split('.')[0], 10);
+    }
     if (isNaN(day) || day < 1 || day > 31) return null;
     var n = day;
     while (n > 11) {
@@ -107,7 +111,7 @@
       dob = dobEl ? dobEl.value.trim() : '';
       soul = calcSoul(dob);
       if (!soul) {
-        errEl.textContent = 'Unesi datum rođenja u formatu DD.MM.GGGG (npr. 15.03.1990)';
+        errEl.textContent = 'Izaberi datum rođenja.';
         errEl.style.display = 'block';
         return;
       }

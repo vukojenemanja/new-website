@@ -90,7 +90,7 @@
     errEl.style.display = 'none';
 
     if (consent && !consent.checked) {
-      errEl.textContent = 'Potrebno je da prihvatis uslove pre prijave.';
+      errEl.textContent = 'Potrebno je da prihvatiš uslove pre prijave.';
       errEl.style.display = 'block';
       return;
     }
@@ -107,7 +107,7 @@
       dob = dobEl ? dobEl.value.trim() : '';
       soul = calcSoul(dob);
       if (!soul) {
-        errEl.textContent = 'Unesi datum rodjenja u formatu DD.MM.GGGG (npr. 15.03.1990)';
+        errEl.textContent = 'Unesi datum rođenja u formatu DD.MM.GGGG (npr. 15.03.1990)';
         errEl.style.display = 'block';
         return;
       }
@@ -136,7 +136,8 @@
       .catch(function () {
         btn.disabled = false;
         btn.textContent = wantsSoul() ? 'Otkrij broj' : 'Prijavi se';
-        errEl.textContent = 'Doslo je do greske. Pokusaj ponovo ili me kontaktiraj direktno.';
+        // 'Prijavi se' already correct Serbian
+        errEl.textContent = 'Došlo je do greške. Pokušaj ponovo ili me kontaktiraj direktno.';
         errEl.style.display = 'block';
       });
   }

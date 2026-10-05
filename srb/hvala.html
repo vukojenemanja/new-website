@@ -10,7 +10,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tvoj broj duse - Nemanja Vukoje</title>
+<title>Tvoj broj duše - Nemanja Vukoje</title>
 <meta name="robots" content="noindex">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -170,12 +170,12 @@ nav {
   transition: background 0.3s;
 }
 .btn-main:hover { background: var(--warm); }
-.cta-price {
+.cta-priče {
   margin-top: 16px;
   font-size: 13px;
   color: rgba(232,221,208,0.35);
 }
-.cta-price s { color: rgba(232,221,208,0.2); }
+.cta-priče s { color: rgba(232,221,208,0.2); }
 
 /* Fallback kad nema soul parametra */
 .no-soul {
@@ -220,7 +220,7 @@ footer a { color: var(--clay); text-decoration: none; font-size: 12px; }
 
 <!-- Hero - popunjava JS -->
 <section class="hero" id="hero-section">
-  <div class="hero-label">Tvoj broj duse</div>
+  <div class="hero-label">Tvoj broj duše</div>
   <div class="soul-number-display" id="soul-display"></div>
   <h1>Broj <em id="soul-name-display"></em></h1>
   <p class="hero-sub" id="hero-sub-text"></p>
@@ -231,22 +231,22 @@ footer a { color: var(--clay); text-decoration: none; font-size: 12px; }
 
 <!-- Fallback -->
 <div class="no-soul" id="no-soul">
-  <h2>Ups, nesto nije u redu.</h2>
-  <p>Nije prosledjen broj duse. Vrati se na pocetnu stranicu i prijavi se ponovo.</p>
+  <h2>Ups, nešto nije u redu.</h2>
+  <p>Nije prosledjen broj duše. Vrati se na pocetnu stranicu i prijavi se ponovo.</p>
 </div>
 
 <!-- CTA -->
 <div class="cta-box" id="cta-box" style="display:none">
-  <div class="cta-box-label">Sledeci korak</div>
-  <h3>Cela tvoja<br><em>Licna mapa.</em></h3>
-  <p>Soul broj je samo jedan od pet delova. Licna mapa otkriva sve - tvoje obrasce, talente, izazove i period u kome si sad.</p>
-  <a href="licna-mapa.html" class="btn-main">Saznaj vise o Licnoj mapi</a>
-  <p class="cta-price"><s>55 €</s> &nbsp;·&nbsp; 33 € uvodna cena</p>
+  <div class="cta-box-label">Sledeći korak</div>
+  <h3>Cela tvoja<br><em>Lična mapa.</em></h3>
+  <p>Soul broj je samo jedan od pet delova. Lična mapa otkriva sve - tvoje obrasce, talente, izazove i period u kome si sad.</p>
+  <a href="licna-mapa.html" class="btn-main">Saznaj vise o Ličnoj mapi</a>
+  <p class="cta-priče"><s>55 €</s> &nbsp;·&nbsp; 33 € uvodna cena</p>
 </div>
 
 <footer>
   <p>© 2025 Nemanja Vukoje</p>
-  <a href="index.html">Pocetna stranica</a>
+  <a href="index.html">Početna stranica</a>
 </footer>
 
 <script>
@@ -255,59 +255,59 @@ footer a { color: var(--clay); text-decoration: none; font-size: 12px; }
 var SOULS = {
   1: {
     name: 'jedan',
-    sub: 'Telo duse. Intuicija, iskrenost i sposobnost da znas pre nego sto razumes zasto.',
+    sub: 'Telo duse. Intuicija, iskrenost i sposobnost da znaš pre nego što razumes zasto.',
     kvalitet: {
       label: 'Tvoje kvalitete',
       title: 'Intuicija kao kompas.',
-      text: '<p>Znas stvari pre nego sto ih razumes. Ne mozes uvek da objasnis kako, ali osecas kada nesto nije u redu i kada jeste. Taj unutrasnji kompas ti dolazi pre misli.</p><p>Imas i dar iskrenosti koji je redak - kada govoris ono sto zaista osecas, bez filtera i ukrasavanja. Ljudi to primecuju i cene, cak i kada im nije uvek prijatno da cuju.</p>'
+      text: '<p>Znaš stvari pre nego što ih razumes. Ne možeš uvek da objasnis kako, ali osećaš kada nesto nije u redu i kada jeste. Taj unutrasnji kompas ti dolazi pre misli.</p><p>Imaš i dar iskrenosti koji je redak - kada govoriš ono što zaišta osećaš, bez filtera i ukrasavanja. Ljudi to primecuju i cene, čak i kada im nije uvek prijatno da cuju.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
       title: 'Kada ne verujes sebi.',
-      text: '<p>Tvoj izazov je kada zaobilaziš ono što osetiš i počneš da vrtiš odluke u glavi. Osećaj je tu, jasan, ali onda kreneš da ga analiziraš i na kraju se zaglaviš između onoga što znaš i onoga što misliš da bi trebalo da znaš.</p><p>U odnosima s drugima to izgleda ovako: osetiš nešto, ali se upitas da li si preterana ili previše osetljiva, pa pricekás da vidiš. Cekanje nekada ima smisla, ali kada dolazi iz nepoverenja u sebe - skupo te kosta.</p>'
+      text: '<p>Tvoj izazov je kada zaobilaziš ono što osetiš i počneš da vrtiš odluke u glavi. Osećaj je tu, jasan, ali onda kreneš da ga analiziraš i na kraju se zaglaviš između onoga što znaš i onoga što misliš da bi trebalo da znaš.</p><p>U odnosima s drugima to izgleda ovako: osetiš nešto, ali se upitaš da li si preterana ili previše osetljiva, pa pričekás da vidiš. Čekanje nekada ima smisla, ali kada dolazi iz nepoverenja u sebe - skupo te kosta.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
       title: 'Veruj srcu.',
-      text: '<p>Tvoja lekcija je da verujes onome sto osetiš pre nego sto to objasnish sebi ili nekome drugom. Osecaj dolazi pre razumevanja - i to je u redu. Ne moras da znas zasto da bi znala sta.</p><p>Akcija za sutra: jedna odluka srcem. Sutra kad te nesto zapita, ne daj sebi vise od tri sekunde. Koji god odgovor dodje prvi - to je tvoj. Ides na rucanok sa prijateljicom? Tri sekunde. Da ili ne? Vera u sebe gradi se malim izborima.</p>'
+      text: '<p>Tvoja lekcija je da verujes onome što osetiš pre nego što to objasniš sebi ili nekome drugom. Osećaj dolazi pre razumevanja - i to je u redu. Ne moras da znaš zasto da bi znala sta.</p><p>Akcija za sutra: jedna odluka srcem. Sutra kad te nesto zapita, ne daj sebi vise od tri sekunde. Koji god odgovor dodje prvi - to je tvoj. Ides na rucanok sa prijateljicom? Tri sekunde. Da ili ne? Vera u sebe gradi se malim izborima.</p>'
     }
   },
   2: {
     name: 'dva',
-    sub: 'Negativni um. Lojalnost, procena i dubok osecaj za ono sto moze da podje naopako.',
+    sub: 'Negativni um. Lojalnost, procena i dubok osećaj za ono što moze da podje naopako.',
     kvalitet: {
       label: 'Tvoje kvalitete',
-      title: 'Mislís pre nego sto krenés.',
-      text: '<p>Pre nego sto udes u nesto novo, vec si proverila sve strane. Vidis sta moze da podje naopako pre nego sto krene i to ti daje prednost. Kada kazes da si za nesto, znaci da si to zaista promislila.</p><p>Imaš i tanak osecaj za lojalnost. Kada si uz nekoga, zaista si tu. Tvoji bliski to znaju i u to veruju.</p>'
+      title: 'Mislís pre nego što kreneš.',
+      text: '<p>Pre nego što udes u nesto novo, vec si proverila sve strane. Vidis šta moze da podje naopako pre nego što krene i to ti daje prednost. Kada kažeš da si za nesto, znaci da si to zaišta promislila.</p><p>Imaš i tanak osećaj za lojalnost. Kada si uz nekoga, zaišta si tu. Tvoji bliski to znaju i u to veruju.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
-      title: 'Kazes da, mislis ne.',
-      text: '<p>Tvoj izazov je kada iznutra znas da ne zelis nesto, ali kazes da jer ne zelis da razočaras ili zakomplicujes. I onda nosiš taj teret umesto da si rekla ne od pocetka.</p><p>Drugi izazov je kada zamisljaš sta sve moze da krene naopako i onda staneš - pre nego sto si ni pocela. Negativni um je dar kada te cuva od pravih opasnosti. Postaje tezak kada te cuva i od stvari koje bi ti dobro dosle.</p>'
+      title: 'Kažeš da, mislis ne.',
+      text: '<p>Tvoj izazov je kada iznutra znaš da ne želiš nesto, ali kažeš da jer ne želiš da razočaras ili zakompličuješ. I onda nosiš taj teret umesto da si rekla ne od pocetka.</p><p>Drugi izazov je kada zamisljaš šta sve moze da krene naopako i onda staneš - pre nego što si ni počela. Negativni um je dar kada te cuva od pravih opasnosti. Postaje tezak kada te cuva i od stvari koje bi ti dobro dosle.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
       title: 'Pripadanje ne zavisi od prilagodjavanja.',
-      text: '<p>Tvoja lekcija je da ti nije potrebno da se prilagodiš da bi bila voljena i prihvacena. Tvoje ne je isto toliko vredan odgovor kao tvoje da. A brige koje zamisljaš unapred cesto su teze od onoga sto se zaista desi.</p><p>Akcija za sutra: daj sebi sat vremena pre odgovora. Sledeci put kad te neko pita za nesto, ne odgovaraj odmah. Kazi: "Mogu li ti javiti za sat vremena?" I u tom satu pitaj sebe sta zaista hoces.</p>'
+      text: '<p>Tvoja lekcija je da ti nije potrebno da se prilagodiš da bi bila voljena i prihvacena. Tvoje ne je isto toliko vredan odgovor kao tvoje da. A brige koje zamisljaš unapred često su teze od onoga što se zaišta desi.</p><p>Akcija za sutra: daj sebi sat vremena pre odgovora. Sledeći put kad te neko pita za nesto, ne odgovaraj odmah. Kazi: "Mogu li ti javiti za sat vremena?" I u tom satu pitaj sebe šta zaišta hoćeš.</p>'
     }
   },
   3: {
     name: 'tri',
-    sub: 'Pozitivni um. Radost, hrabrost i sposobnost da krenes i onda kada jos nisi sigurna.',
+    sub: 'Pozitivni um. Radost, hrabrost i sposobnost da kreneš i onda kada jos nisi sigurna.',
     kvalitet: {
       label: 'Tvoje kvalitete',
-      title: 'Kreces i kad drugi cekaju.',
-      text: '<p>Vidis mogucnosti gde drugi vide prepreke. Tvoja prirodna pozitivnost nije naivnost - to je hrabrost da pocnes pre nego sto sve znas. Zato si cesto ta koja pokrece stvari.</p><p>Imas i dar da ohraburis ljude oko sebe. Kada si u sobi, atmosfera je drukcija. Tvoja energija je zarazna i to nije slucajnost - to je tvoja trojka na delu.</p>'
+      title: 'Krećeš i kad drugi čekaju.',
+      text: '<p>Vidis mogucnosti gde drugi vide prepreke. Tvoja prirodna pozitivnost nije naivnost - to je hrabrost da počnes pre nego što sve znas. Zato si često ta koja pokrece stvari.</p><p>Imaš i dar da ohraburis ljude oko sebe. Kada si u sobi, atmosfera je drukcija. Tvoja energija je zarazna i to nije slucajnost - to je tvoja trojka na delu.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
-      title: 'Kada kazes da na sve.',
-      text: '<p>Tvoj izazov je kada kazes da na sve sto ti se ponudi, jer ne zelis da promasís nista, i onda ostanes bez energije za ono sto ti je zaista vazno. Pozitivnost je tvoja snaga, ali bez granice postaje teret.</p><p>Drugi izazov su jutra. Kada si umorna ili ti je tesko, ta lakoca kojom obicno pokreces stvari - odsustvuje. I onda sebe optuzujes da nisi dovoljno pozitivna, sto samo pogoršava stvar.</p>'
+      title: 'Kada kažeš da na sve.',
+      text: '<p>Tvoj izazov je kada kažeš da na sve što ti se ponudi, jer ne želiš da promasís nista, i onda ostaneš bez energije za ono što ti je zaišta vazno. Pozitivnost je tvoja snaga, ali bez granice postaje teret.</p><p>Drugi izazov su jutra. Kada si umorna ili ti je tesko, ta lakoca kojom obicno pokrećeš stvari - odsustvuje. I onda sebe optuzujes da nisi dovoljno pozitivna, što samo pogoršava stvar.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
       title: 'Pozitivnost treba tlo pod nogama.',
-      text: '<p>Tvoja lekcija je da pozitivnost ne znaci uvek da. Ponekad znaci da odaberem ovo, a ne ono - i da cuvas energiju za ono sto ti je zaista vazno. Granica nije negativnost. Granica je sta ti goji.</p><p>Akcija za sutra: sledeci put kad te neko pita za nesto, umesto automatskog da, reci: "Da proverim, pa ti javim." I zaista proveri - hoces li to? Ili bi wolela nesto drugo?</p>'
+      text: '<p>Tvoja lekcija je da pozitivnost ne znaci uvek da. Ponekad znaci da odaberem ovo, a ne ono - i da čuvaš energiju za ono što ti je zaišta vazno. Granica nije negativnost. Granica je šta ti goji.</p><p>Akcija za sutra: sledeci put kad te neko pita za nesto, umesto automatskog da, reci: "Da proverim, pa ti javim." I zaišta proveri - hoćeš li to? Ili bi wolela nesto drugo?</p>'
     }
   },
   4: {
@@ -316,74 +316,74 @@ var SOULS = {
     kvalitet: {
       label: 'Tvoje kvalitete',
       title: 'Saslušas bez osude.',
-      text: '<p>Ljudi ti pricaju stvari koje ne pricaju drugima. Znas da sluvaš na nacin koji je redak - bez brzog saveta, bez osude, bez potrebe da odmah popraviš. Samo si tu. I to je nekome koji prica sa tobom vise od bilo kojeg saveta.</p><p>Imas i sposobnost da ostanes miran kada je oko tebe haos. Dok drugi paniče, ti nekako pronalaziš srediste. To je tvoj neutralni um - dar da vidis jasno kada je sve zamagljeno.</p>'
+      text: '<p>Ljudi ti pricaju stvari koje ne pricaju drugima. Znaš da sluvaš na nacin koji je redak - bez brzog saveta, bez osude, bez potrebe da odmah popraviš. Samo si tu. I to je nekome koji priča sa tobom vise od bilo kojeg saveta.</p><p>Imaš i sposobnost da ostaneš miran kada je oko tebe haos. Dok drugi paniče, ti nekako pronalaziš srediste. To je tvoj neutralni um - dar da vidis jasno kada je sve zamagljeno.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
-      title: 'Nosiš tudje price.',
-      text: '<p>Tvoj izazov je sto lako postaješ "kontejner" za tudje emocije i brige. Slušas, upijаš, nosiš - i ne primetiš uvek kada prestane biti tvoje. Na kraju dana si umorna bez jasnog razloga.</p><p>Drugi izazov je unutrašnja rasprava. U glavi ti se vode razgovori i pre i posle stvarnih razgovora. Premaluješ scenarije, trazis idealan odgovor koji si trebala da das, preispitujes ono sto si rekla.</p>'
+      title: 'Nosiš tudje priče.',
+      text: '<p>Tvoj izazov je što lako postaješ "kontejner" za tudje emocije i brige. Slušas, upijаš, nosiš - i ne primetiš uvek kada prestane biti tvoje. Na kraju dana si umorna bez jasnog razloga.</p><p>Drugi izazov je unutrašnja rasprava. U glavi ti se vode razgovori i pre i posle stvarnih razgovora. Premaluješ scenarije, tražiš idealan odgovor koji si trebala da das, preispituješ ono što si rekla.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
       title: 'Tišina svakog dana.',
-      text: '<p>Tvoja lekcija je da ti za ravnotezu treba tišina svakog dana - ne kao luksuz, nego kao neophodnost. Kao punjenje telefona. Bez toga, neutralnost koja je tvoja snaga pocinje da se pretváра u umor.</p><p>Akcija za sutra: jedna odluka sa rokom. Uzmi nesto sto odlažeš i daj joj rok - do sutra uvece odgovorim, do petka odlucim. Odluka sa datumom je laksa od odluke bez njega.</p>'
+      text: '<p>Tvoja lekcija je da ti za ravnotezu treba tišina svakog dana - ne kao luksuz, nego kao neophodnost. Kao punjenje telefona. Bez toga, neutralnost koja je tvoja snaga počinje da se pretváра u umor.</p><p>Akcija za sutra: jedna odluka sa rokom. Uzmi nesto što odlažeš i daj joj rok - do sutra uvece odgovorim, do petka odlučim. Odluka sa datumom je laksa od odluke bez njega.</p>'
     }
   },
   5: {
     name: 'pet',
-    sub: 'Fizicko telo. Ravnoteza, ucenje kroz iskustvo i sposobnost da podučavaš iz onoga sto si zivela.',
+    sub: 'Fizicko telo. Ravnoteza, ucenje kroz iskustvo i sposobnost da podučavaš iz onoga što si živela.',
     kvalitet: {
       label: 'Tvoje kvalitete',
       title: 'Ucis radeci.',
-      text: '<p>Ne ucis iz knjiga pre nego sto krenes - ucis tako sto krenes. Tvoje telo zna pre nego sto um obradi. I kada nesto naučis na taj nacin, zaista ti ostane.</p><p>Imas i talenat da objasniš kompleksne stvari jednostavno. Jer si ih sama prosla, ne samo procitala. Tvoje iskustvo postaje dar drugima - zato si prirodno dobar ucitelj, trener, vodic.</p>'
+      text: '<p>Ne ucis iz knjiga pre nego što kreneš - ucis tako što kreneš. Tvoje telo zna pre nego što um obradi. I kada nesto naučiš na taj nacin, zaišta ti ostane.</p><p>Imaš i talenat da objasniš kompleksne stvari jednostavno. Jer si ih sama prosla, ne samo procitala. Tvoje iskustvo postaje dar drugima - zato si prirodno dobar ucitelj, trener, vodic.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
-      title: 'Preskaces signale umora.',
-      text: '<p>Tvoj izazov je sto cesto ignorisuješ telo dok ti ne vikne dovoljno glasno. Ides do granice, ponekad i preko, a onda ti treba vise vremena da se oporavis nego sto bi trebalo da si se odmorila ranije.</p><p>Iza toga cesto stoji uverenje da odmor treba zasluziti - da mora biti urađeno nesto vazno pre nego sto ti dopustis pauzu. Ali telo ne čeka na zasluge. Trazi sta trazi.</p>'
+      title: 'Preskaćeš signale umora.',
+      text: '<p>Tvoj izazov je što često ignorisuješ telo dok ti ne vikne dovoljno glasno. Ides do granice, ponekad i preko, a onda ti treba vise vremena da se oporavis nego što bi trebalo da si se odmorila ranije.</p><p>Iza toga često stoji uverenje da odmor treba zasluziti - da mora biti urađeno nesto vazno pre nego što ti dopustiš pauzu. Ali telo ne čeka na zasluge. Traži šta traži.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
       title: 'Ritam je osnova.',
-      text: '<p>Tvoja lekcija je ritam. Ne savrsena rutina - ritam. Nešto sto se ponavlja dovoljno cesto da telo zna sta dolazi. Spavanje u slicno vreme. Hrana koja hrani, ne samo puni. Pokret koji ti prijа.</p><p>Akcija za sutra: postavi podsetnik za kraj dana - recimo u 21h - koji pita: "Sta mi telo treba veceras?" I odgovori. Nije vazno sta odgovoris. Vazno je da pitaš.</p>'
+      text: '<p>Tvoja lekcija je ritam. Ne savrsena rutina - ritam. Nešto što se ponavlja dovoljno često da telo zna šta dolazi. Spavanje u slicno vreme. Hrana koja hrani, ne samo puni. Pokret koji ti prijа.</p><p>Akcija za sutra: postavi podsetnik za kraj dana - recimo u 21h - koji pita: "Šta mi telo treba veceras?" I odgovori. Nije vazno šta odgovoriš. Vazno je da pitaš.</p>'
     }
   },
   6: {
     name: 'sest',
-    sub: 'Arkline (oreol telo). Intuicija, fokus i sposobnost da osetas ono sto jos nije izgovoreno.',
+    sub: 'Arkline (oreol telo). Intuicija, fokus i sposobnost da osetas ono što jos nije izgovoreno.',
     kvalitet: {
       label: 'Tvoje kvalitete',
       title: 'Tvoja intuicija je glasna.',
-      text: '<p>Pomisliš na nekoga i baš tada ti se javi. Znáš kako ce se nesto završiti pre nego što počne. Osetiš raspoloženje u prostoriji čim udes, pre nego sto iko progovori. To je tvoje Arkline telo na delu.</p><p>Kada se posvétiš nečemu, možeš satima da budeš u jednoj stvari i da je dovedeš do kraja. Tvoje reči i namere imaju težinu - kada nekome kazeš da ce sve biti u redu, ta osoba to zaista oseti.</p>'
+      text: '<p>Pomisliš na nekoga i baš tada ti se javi. Znáš kako ce se nesto završiti pre nego što počne. Osetiš raspoloženje u prostoriji čim udes, pre nego što iko progovori. To je tvoje Arkline telo na delu.</p><p>Kada se posvetiš nečemu, možeš satima da budeš u jednoj stvari i da je dovedeš do kraja. Tvoje reči i namere imaju težinu - kada nekome kazeš da ce sve biti u redu, ta osoba to zaišta oseti.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
-      title: 'Nedoslednost i tuđa osecanja.',
-      text: '<p>Počneš nešto sa velikim žarom - novu naviku, kurs ili projekat - i prvih nekoliko nedelja sve ide sjajno. Onda dode loš dan, pa jos jedan, i nit se izgubi. Ta nedoslednost nema veze sa lenjošcu, nego sa tim sto tvoje emocije snažno utiču na tvoju energiju.</p><p>Lako upijás i tuđa osecanja. Posle razgovora sa nekim ko je tužan, jos dugo nosiš tu tugu i ne primecuješ da nije tvoja. A misli koje stalno vrtiš u glavi lako počnu da boje ono sto vidis.</p>'
+      title: 'Nedoslednost i tuđa osećanja.',
+      text: '<p>Počneš nešto sa velikim žarom - novu naviku, kurs ili projekat - i prvih nekoliko nedelja sve ide sjajno. Onda dode loš dan, pa jos jedan, i nit se izgubi. Ta nedoslednost nema veze sa lenjošcu, nego sa tim što tvoje emocije snažno utiču na tvoju energiju.</p><p>Lako upijaš i tuđa osećanja. Posle razgovora sa nekim ko je tužan, jos dugo nosiš tu tugu i ne primećuješ da nije tvoja. A misli koje stalno vrtiš u glavi lako počnu da boje ono što vidis.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
       title: 'Doslednost u malom.',
-      text: '<p>Tvoja lekcija je doslednost u malom. Jedna mala praksa koju ponavljas svaki dan, i u dobre i u lose dane, jača te više od velikih planova. I pazi kako govoriš o sebi - jer te reči kod tebe imaju posebnu težinu.</p><p>Akcija za sutra: tri minuta svako jutro. Pre telefona, sedi tri minuta i diši polako, sa pažnjom na tački između obrva. Tri minuta je dovoljno malo da to možeš da ponavljas svaki dan - a upravo ta doslednost čini tvoju sesticu jakom.</p>'
+      text: '<p>Tvoja lekcija je doslednost u malom. Jedna mala praksa koju ponavljaš svaki dan, i u dobre i u lose dane, jača te više od velikih planova. I pazi kako govoriš o sebi - jer te reči kod tebe imaju posebnu težinu.</p><p>Akcija za sutra: tri minuta svako jutro. Pre telefona, sedi tri minuta i diši polako, sa pažnjom na tački između obrva. Tri minuta je dovoljno malo da to možeš da ponavljaš svaki dan - a upravo ta doslednost čini tvoju sesticu jakom.</p>'
     }
   },
   7: {
     name: 'sedam',
-    sub: 'Telo aure. Prisustvo koje menja atmosferu i sposobnost da podignes ljude oko sebe.',
+    sub: 'Telo aure. Prisustvo koje menja atmosferu i sposobnost da podignеš ljude oko sebe.',
     kvalitet: {
       label: 'Tvoje kvalitete',
       title: 'Tvoje prisustvo menja atmosferu.',
-      text: '<p>Kada si tu, svada se lakse smiri, a prijateljica u krizi oseti da nije sama. Cesto ne moraš ništa ni da kazes - ljudi se pored tebe jednostavno osecaju sigurnije.</p><p>Imaš dar da uzdigneš druge. Vidiš dobro u ljudima i umeš da ga izvuces na površinu. Kada si u svojoj snazi, tuđa negativnost te manje dotiče - i možeš da budeš uz ljude i u teškim trenucima, a da se pri tom ne izgubiš.</p>'
+      text: '<p>Kada si tu, svada se lakse smiri, a prijateljica u krizi oseti da nije sama. Često ne moraš ništa ni da kažeš - ljudi se pored tebe jednostavno osećaju sigurnije.</p><p>Imaš dar da uzdigneš druge. Vidiš dobro u ljudima i umeš da ga izvućeš na površinu. Kada si u svojoj snazi, tuđa negativnost te manje dotiče - i možeš da budeš uz ljude i u teškim trenucima, a da se pri tom ne izgubiš.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
       title: 'Kada je aura umorna.',
-      text: '<p>Kada je aura umorna, sve te lakše dotakne. Jedna kriticka recenica može da ti ostane u mislima duze nego sto bi zelela, a tuđe loše raspoloženje lako postane i tvoje. U prostorima punim ljudi brze se umoriš.</p><p>Kada te stres pritisne, prirodno ti dođe da se povuceš i budeš malo sama - jer ti ljudi i prostori postanu previše. U takvim danima najteže ti je da podigneš upravo sebe.</p>'
+      text: '<p>Kada je aura umorna, sve te lakše dotakne. Jedna kriticka recenica može da ti ostane u mislima duze nego što bi zelela, a tuđe loše raspoloženje lako postane i tvoje. U prostorima punim ljudi brze se umoriš.</p><p>Kada te stres pritisne, prirodno ti dođe da se povuceš i budeš malo sama - jer ti ljudi i prostori postanu previše. U takvim danima najteže ti je da podigneš upravo sebe.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
       title: 'Punjenje aure svakog dana.',
-      text: '<p>Tvoja lekcija je da svoje polje puniš svakog dana, kao bateriju - a ne tek kada se potpuno isprazni. Tišina, priroda, pokret i glas su ono što hrani tvoju auru. I učiš da biraš sta i koga pustáš unutra.</p><p>Akcija za sutra: deset minuta pre telefona. Pre nego sto pogledáš telefon, izađi na deset minuta napolje - na terasu, u dvoriste ili samo do prvog drveta u ulici. Ne moraš ništa da radiš. Diši polako i primeti kako se oseéaš kada se vratiš.</p>'
+      text: '<p>Tvoja lekcija je da svoje polje puniš svakog dana, kao bateriju - a ne tek kada se potpuno isprazni. Tišina, priroda, pokret i glas su ono što hrani tvoju auru. I učiš da biraš šta i koga puštaš unutra.</p><p>Akcija za sutra: deset minuta pre telefona. Pre nego što pogledáš telefon, izađi na deset minuta napolje - na terasu, u dvoriste ili samo do prvog drveta u ulici. Ne moraš ništa da radiš. Diši polako i primeti kako se oseéaš kada se vratiš.</p>'
     }
   },
   8: {
@@ -392,74 +392,74 @@ var SOULS = {
     kvalitet: {
       label: 'Tvoje kvalitete',
       title: 'Pokrecéš i sebe i druge.',
-      text: '<p>Imaš snagu da pokrenéš i sebe i druge. Kada nešto mora da se uradi, ti prva zasučeš rukave. Tvoja energija je zarazna - i mnogi se pored tebe osecaju življe i hrabrije.</p><p>Imaš i prirodnu sposobnost oporavka. Posle teških perioda i razočaranja umeš da se podigneš brže nego što drugi očekuju, a u kriznim trenucima ostaješ hrabra dok drugi paniče.</p>'
+      text: '<p>Imaš snagu da pokrenéš i sebe i druge. Kada nešto mora da se uradi, ti prva zasučeš rukave. Tvoja energija je zarazna - i mnogi se pored tebe osećaju življe i hrabrije.</p><p>Imaš i prirodnu sposobnost oporavka. Posle teških perioda i razočaranja umeš da se podigneš brže nego što drugi očekuju, a u kriznim trenucima ostaješ hrabra dok drugi paniče.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
-      title: 'Energiju trošiš brže nego sto je obnavljáš.',
-      text: '<p>Dan počneš punom brzinom, ideš od obaveze do obaveze, a onda uvece ili posle nekoliko nedelja ostaneš bez snage. Tada posegneš za nečim spolja da te održi: jos jedna kafa, nešto slatko, skrolovanje.</p><p>Ponekad se iza potrebe da sve drzis pod kontrolom krije briga - jer kada sve drzis u rukama, ništa ne može da te iznenadi. Ta kontrola je nekada bila nacin da se snadeš kada je oko tebe bilo previše nesigurnosti, a danas troši baš onu energiju koja ti je najdragocenija.</p>'
+      title: 'Energiju trošiš brže nego što je obnavljáš.',
+      text: '<p>Dan počneš punom brzinom, ideš od obaveze do obaveze, a onda uvece ili posle nekoliko nedelja ostaneš bez snage. Tada posegneš za nečim spolja da te održi: jos jedna kafa, nešto slatko, skrolovanje.</p><p>Ponekad se iza potrebe da sve drzis pod kontrolom krije briga - jer kada sve drzis u rukama, ništa ne može da te iznenadi. Ta kontrola je nekada bila nacin da se snađeš kada je oko tebe bilo previše nesigurnosti, a danas troši baš onu energiju koja ti je najdragocenija.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
-      title: 'Obnavljaj se pre nego sto ostaneš bez snage.',
+      title: 'Obnavljaj se pre nego što ostaneš bez snage.',
       text: '<p>Tvoja lekcija je dah. Svesno, duboko disanje nekoliko puta dnevno menja tvoje stanje brze od skoro bilo čega drugog. I učiš da se obnavljáš pre nego što ostaneš bez snage.</p><p>Akcija za sutra: tri podsetnika za dah. Postavi tri podsetnika u telefonu - ujutru, u podne i popodne. Kada zazvone, udahni polako kroz nos i izdahni duze nego što si udahnula, pet puta zaredom. Za jedan minut se vratiš sebi.</p>'
     }
   },
   9: {
     name: 'devet',
-    sub: 'Suptilno telo. Tananost, mudrost i sposobnost da vidiš ono sto drugi ne vide.',
+    sub: 'Suptilno telo. Tananost, mudrost i sposobnost da vidiš ono što drugi ne vide.',
     kvalitet: {
       label: 'Tvoje kvalitete',
       title: 'Vidiš suštinu.',
-      text: '<p>Imaš tanano osecanje za ljude i situacije. Brzo uhvatiš suštinu i vidiš sta se krije iza reci. U razgovoru si cesto ona koja kaže: "čekaj, ovo se ponavlja" - i svi odjednom vide obrazac.</p><p>Kada daš sebi dovoljno vremena sa nečim - sa zanatom, veštinom ili odnosom - to dobije pravu dubinu, i ljudi to primete. Imaš i dobar osecaj za pravi trenutak: kada treba nešto reci, a kada sacekati.</p>'
+      text: '<p>Imaš tanano osećanje za ljude i situacije. Brzo uhvatiš suštinu i vidiš šta se krije iza reci. U razgovoru si često ona koja kaže: "čekaj, ovo se ponavlja" - i svi odjednom vide obrazac.</p><p>Kada daš sebi dovoljno vremena sa nečim - sa zanatom, veštinom ili odnosom - to dobije pravu dubinu, i ljudi to primete. Imaš i dobar osećaj za pravi trenutak: kada treba nešto reci, a kada sačekati.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
-      title: 'Mnogo zapocetih priča.',
-      text: '<p>Počneš nešto novo sa oduševljenjem, a kada postane teško ili dosadno, pozeliš da predes na sledeće. Kada stvari ne idu brzo, lako se razočaraš - pa na kraju imaš mnogo zapocetih priča.</p><p>Posto vidiš potencijal u ljudima, ponekad im veruješ pre nego što ih zaista upoznaš, pa te kasnije iznenadi ono što vidiš. Iza oba obrasca cesto stoji nemir, osecaj da negde postoji nešto bolje.</p>'
+      title: 'Mnogo započetih priča.',
+      text: '<p>Počneš nešto novo sa oduševljenjem, a kada postane teško ili dosadno, poželiš da predes na sledeće. Kada stvari ne idu brzo, lako se razočaraš - pa na kraju imaš mnogo započetih priča.</p><p>Posto vidiš potencijal u ljudima, ponekad im veruješ pre nego što ih zaišta upoznaš, pa te kasnije iznenadi ono što vidiš. Iza oba obrasca često stoji nemir, osećaj da negde postoji nešto bolje.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
       title: 'Ostani.',
-      text: '<p>Tvoja lekcija je da ostaneš. Izaberi jednu stvar i nastavi i posle trenutka kada postane dosadno ili teško - jer tu obično počinje da postaje dobro. I budi blaga prema sebi usput.</p><p>Akcija za sutra: datum za četrdeset dana. Izaberi jednu stvar od koje ti se odustaje - praksu, vestinu ili kurs - i u kalendar upiši datum koji je četrdeset dana od danas. Do tada ne odlucuješ da li vredi, samo nastavljáš. Tek tog dana odluci.</p>'
+      text: '<p>Tvoja lekcija je da ostaneš. Izaberi jednu stvar i nastavi i posle trenutka kada postane dosadno ili teško - jer tu obično počinje da postaje dobro. I budi blaga prema sebi usput.</p><p>Akcija za sutra: datum za četrdeset dana. Izaberi jednu stvar od koje ti se odustaje - praksu, vestinu ili kurs - i u kalendar upiši datum koji je četrdeset dana od danas. Do tada ne odlučuješ da li vredi, samo nastavljaš. Tek tog dana odluči.</p>'
     }
   },
   10: {
     name: 'deset',
-    sub: 'Telo koje zraci. Prisustvo, hrabrost i sposobnost da vodiš - cesto bez ikakve titule.',
+    sub: 'Telo koje zraci. Prisustvo, hrabrost i sposobnost da vodiš - često bez ikakve titule.',
     kvalitet: {
       label: 'Tvoje kvalitete',
       title: 'Dostojanstvo koje ne zavisi od okolnosti.',
-      text: '<p>Imaš hrabrost da staneš ispred drugih i dostojanstvo koje ne zavisi od okolnosti. Cak i kada ti je teško, ljudi te vide kao nekoga ko nosi snagu.</p><p>Kada se posvetiš, daješ sve - i tvoja posvécenost inspiriše druge da i sami daju više. Umeš da vodiš u porodici, na poslu i medu prijateljima, cesto bez ikakve titule.</p>'
+      text: '<p>Imaš hrabrost da staneš ispred drugih i dostojanstvo koje ne zavisi od okolnosti. Čak i kada ti je teško, ljudi te vide kao nekoga ko nosi snagu.</p><p>Kada se posvetiš, daješ sve - i tvoja posvećenost inspiriše druge da i sami daju više. Umeš da vodiš u porodici, na poslu i medu prijateljima, često bez ikakve titule.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
       title: 'Sve ili ništa ume da se pretvori u ništa.',
-      text: '<p>Ako ne može savrseno, ne počinješ. Dugo čekaš pravi trenutak da pokreneš svoj projekat ili da kazeš nešto vazno, a u međuvremenu ono o čemu sanjaš stoji i ceka.</p><p>Ponekad se povuceš i umanjiš sebe, iako ti scena pripada. Iza toga cesto stoji naučeno uverenje da nije sigurno biti previše vidljiva, previše uspešna, previše svoja.</p>'
+      text: '<p>Ako ne može savrseno, ne počinješ. Dugo čekaš pravi trenutak da pokreneš svoj projekat ili da kazeš nešto vazno, a u međuvremenu ono o čemu sanjaš stoji i čeka.</p><p>Ponekad se povuceš i umanjiš sebe, iako ti scena pripada. Iza toga često stoji naučeno uverenje da nije sigurno biti previše vidljiva, previše uspešna, previše svoja.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
       title: 'Pojavi se i kada nije savrseno.',
-      text: '<p>Tvoja lekcija je posvécenost bez uslova. Pojavi se i kada nije savrseno. Tvoj sjaj raste kada ga daješ, a ne kada ga cuváš za pravi trenutak.</p><p>Akcija za sutra: jedna stvar, dovoljno dobro. Uradi jednu stvar koju odlazeš dok ne bude savrsena: posalji poruku, prijavi se, objavi, zapocni. Neka bude dovoljno dobro. Tvoja desetka sija onda kada se pojaviš.</p>'
+      text: '<p>Tvoja lekcija je posvećenost bez uslova. Pojavi se i kada nije savrseno. Tvoj sjaj raste kada ga daješ, a ne kada ga cuváš za pravi trenutak.</p><p>Akcija za sutra: jedna stvar, dovoljno dobro. Uradi jednu stvar koju odlazeš dok ne bude savrsena: pošalji poruku, prijavi se, objavi, započni. Neka bude dovoljno dobro. Tvoja desetka sija onda kada se pojaviš.</p>'
     }
   },
   11: {
     name: 'jedanaest',
-    sub: 'Jedanaesto telo. Reci imaju težinu, a ti spojiš ono sto drugi ne mogu da vide zajedno.',
+    sub: 'Jedanaesto telo. Reci imaju težinu, a ti spojiš ono što drugi ne mogu da vide zajedno.',
     kvalitet: {
       label: 'Tvoje kvalitete',
       title: 'Tvoja rec ima težinu.',
-      text: '<p>Tvoja rec ima težinu. Kada govoris iz istine, ljudi slušaju i nešto se u njima pomeri. Umeš da izgovoriš ono sto drugi osecaju, a ne umeju da kažu.</p><p>Umeš da spojiš suprotnosti i vidiš celinu. Tamo gde drugi vide sukob, ti vidiš dva dela iste price - pa lako postaješ most medu ljudima koji se ne razumeju.</p>'
+      text: '<p>Tvoja rec ima težinu. Kada govoriš iz istine, ljudi slušaju i nešto se u njima pomeri. Umeš da izgovoriš ono što drugi osećaju, a ne umeju da kažu.</p><p>Umeš da spojiš suprotnosti i vidiš celinu. Tamo gde drugi vide sukob, ti vidiš dva dela iste priče - pa lako postaješ most medu ljudima koji se ne razumeju.</p>'
     },
     izazov: {
       label: 'Tvoji izazovi',
       title: 'Rasutost i traženje odgovora spolja.',
-      text: '<p>Jedanaestica nosi mnogo, pa se lako javi rasutost. Zanima te previše stvari odjednom, osecáš sve - i na kraju dana ne znaš sta si zapravo uradila. Ponekad imaš osecaj da nigde ne pripadáš sasvim.</p><p>Drugi izazov je traženje odgovora spolja. Ideš od učitelja do učitelja, od knjige do knjige, u nadi da ce ti neko konacno reci sta je istina za tebe. Istina koju tražiš najcesce je vec u tebi i ceka da je izgovoriš.</p>'
+      text: '<p>Jedanaestica nosi mnogo, pa se lako javi rasutost. Zanima te previše stvari odjednom, osećaš sve - i na kraju dana ne znaš šta si zapravo uradila. Ponekad imaš osećaj da nigde ne pripadáš sasvim.</p><p>Drugi izazov je traženje odgovora spolja. Ideš od učitelja do učitelja, od knjige do knjige, u nadi da ce ti neko konacno reci šta je istina za tebe. Istina koju tražiš najcesce je vec u tebi i čeka da je izgovoriš.</p>'
     },
     fokus: {
       label: 'Tvoj fokus',
       title: 'Zvuk i rec.',
-      text: '<p>Tvoja lekcija je zvuk i rec: pevanje, mantra, naglas izgovoreno ono sto osecáš. I pazi kako govoris o sebi - jer reci koje ponavljas o sebi kod tebe imaju posebnu težinu.</p><p>Akcija za sutra: tvoj odgovor naglas. Pre nego sto bilo koga pitáš za savet, zapiši jedno pitanje koje te muci i odmah ispod napiši sta bi sebi odgovorila. Onda tu recenicu izgovori naglas. Tvoja jedanaestica jaca kroz rec - i to baš kroz tvoju.</p>'
+      text: '<p>Tvoja lekcija je zvuk i rec: pevanje, mantra, naglas izgovoreno ono što osećaš. I pazi kako govoriš o sebi - jer reci koje ponavljaš o sebi kod tebe imaju posebnu težinu.</p><p>Akcija za sutra: tvoj odgovor naglas. Pre nego što bilo koga pitáš za savet, zapiši jedno pitanje koje te muči i odmah ispod napiši šta bi sebi odgovorila. Onda tu recenicu izgovori naglas. Tvoja jedanaestica jaca kroz rec - i to baš kroz tvoju.</p>'
     }
   }
 };

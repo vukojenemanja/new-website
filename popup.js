@@ -4,7 +4,7 @@
 // ───────────────────────────────────────────────────────────────────────────
 
 (function () {
-  var FORM_ID = 'YOUR_FORM_ID';         // <-- ovde stavi svoj ConvertKit Form ID
+  var FORM_ID = '10004467';
   var STORAGE_KEY = 'nv_popup_hidden';
   var TRIGGER_SCROLL = 0.50;            // 50% stranice
   var TRIGGER_SECONDS = 45;             // 45 sekundi

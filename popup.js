@@ -124,6 +124,7 @@
     if (name) data.append('fields[first_name]', name);
     if (dob) data.append('fields[date_of_birth]', dob);
     if (soul) data.append('fields[soul_number]', soul);
+    data.append('tags[]', '24330687');
 
     fetch('https://app.convertkit.com/forms/' + FORM_ID + '/subscriptions', {
       method: 'POST',

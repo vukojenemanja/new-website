@@ -163,48 +163,37 @@ nav.scrolled {
 
 /* ── HERO ── */
 .hero {
-  background: var(--deep);
+  background: var(--fog);
   min-height: 100vh;
-  display: flex;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 0 60px 100px;
+  padding: 120px 60px 100px;
+  gap: 60px;
 }
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 70%, rgba(196,168,130,0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 25%, rgba(155,107,58,0.05) 0%, transparent 50%);
-  pointer-events: none;
-}
-.hero-ornament {
-  position: absolute;
-  right: 80px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(200px, 25vw, 380px);
-  font-weight: 300;
-  font-style: italic;
-  color: rgba(196,168,130,0.04);
-  line-height: 1;
-  user-select: none;
-  pointer-events: none;
-}
+.hero-ornament { display: none; }
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 680px;
   animation: fadeUp 1s ease both;
+}
+.hero-image {
+  position: relative;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.5s both;
+}
+.hero-image img {
+  width: 100%;
+  max-width: 580px;
+  display: block;
 }
 .hero-label {
   font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--clay);
+  color: var(--stone);
   margin-bottom: 32px;
   opacity: 0;
   animation: fadeUp 1s ease 0.2s both;
@@ -214,7 +203,7 @@ nav.scrolled {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(48px, 7vw, 88px);
   font-weight: 300;
-  color: var(--sand);
+  color: var(--deep);
   line-height: 1.05;
   margin-bottom: 28px;
   opacity: 0;
@@ -222,13 +211,13 @@ nav.scrolled {
 }
 .hero h1 em {
   font-style: italic;
-  color: var(--clay);
+  color: var(--accent);
   display: block;
 }
 .hero-sub {
   font-size: 16px;
   line-height: 1.8;
-  color: rgba(232,221,208,0.65);
+  color: var(--stone);
   max-width: 500px;
   margin-bottom: 52px;
   opacity: 0;
@@ -252,22 +241,24 @@ nav.scrolled {
   font-family: 'DM Sans', sans-serif;
 }
 .btn-main:hover {
-  background: var(--warm);
+  background: var(--accent);
+  color: #fff;
   transform: translateY(-2px);
 }
 .hero-price-note {
   margin-top: 20px;
   font-size: 13px;
-  color: rgba(232,221,208,0.45);
+  color: var(--stone);
   letter-spacing: 0.5px;
 }
 .hero-price-note s {
-  color: rgba(232,221,208,0.3);
+  color: rgba(138,128,112,0.5);
 }
 .hero-delivery {
   margin-top: 10px;
   font-size: 12px;
-  color: rgba(232,221,208,0.35);
+  color: var(--stone);
+  opacity: 0.6;
   letter-spacing: 0.5px;
 }
 
@@ -875,8 +866,9 @@ footer {
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
 
-  .hero { padding: 0 24px 80px; min-height: 100svh; }
-  .hero-ornament { display: none; }
+  .hero { padding: 120px 24px 80px; min-height: auto; grid-template-columns: 1fr; gap: 40px; }
+  .hero-image { order: -1; }
+  .hero-image img { max-width: 100%; }
 
   .pain-section, .bridge, .contents, .sound,
   .how, .forwhom, .testimonials, .about, .faq, .cta-section { padding: 80px 24px; }
@@ -930,7 +922,6 @@ footer {
 
 <!-- ── HERO ── -->
 <section class="hero">
-  <div class="hero-ornament">5</div>
   <div class="hero-content">
     <div class="hero-label">Tantrička numerologija · Kundalini joga</div>
     <h1>Tvoja lična <em>mapa.</em></h1>
@@ -942,6 +933,9 @@ footer {
         <p class="hero-delivery">PDF stiže na mejl u roku od 72 sata · ostaje tvoj zauvek</p>
       </div>
     </div>
+  </div>
+  <div class="hero-image">
+    <img src="../assets/images/licna-mapa-mockup.webp" alt="Lična numerološka mapa - primer" loading="eager">
   </div>
 </section>
 

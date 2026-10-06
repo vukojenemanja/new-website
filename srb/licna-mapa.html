@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tvoja licna mapa - Tantrička numerologija | Nemanja Vukoje</title>
-<meta name="description" content="Razumi svoje obrasce, prepoznaj potencijal i usmeri energiju na ono sto ti je zaista vazno. Licno citanje kroz Tantricku numerologiju - trinaest strana pisanih samo za tebe.">
+<meta name="description" content="Personalizovana analiza napravljena baš po tvojim brojevima. Razumi svoje obrasce, prepoznaj potencijal i usmeri energiju na ono što ti je zaista važno. Lično čitanje kroz Tantričku numerologiju.">
 <link rel="canonical" href="https://vukojenemanja.com/srb/licna-mapa.html" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -81,6 +81,50 @@ nav.scrolled {
   transition: color 0.3s;
 }
 .nav-links a:hover { color: var(--clay); }
+.nav-links span {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,241,236,0.8);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.nav-links span:hover { color: var(--clay); }
+.nav-dropdown { position: relative; }
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(245,241,236,0.98);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(196,168,130,0.2);
+  list-style: none;
+  min-width: 200px;
+  z-index: 999;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  padding-top: 8px;
+}
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.nav-dropdown > span {
+  padding-bottom: 16px;
+  margin-bottom: -16px;
+  display: inline-block;
+}
+.nav-dropdown > span::after { content: ''; display: block; position: absolute; height: 16px; width: 100%; left: 0; bottom: -16px; }
+.dropdown-menu li a {
+  display: block;
+  padding: 14px 24px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bark) !important;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.dropdown-menu li a:hover { background: var(--sand); color: var(--accent) !important; }
+.dropdown-menu li a.nav-active { color: var(--accent) !important; font-weight: 500; }
 .nav-cta {
   font-size: 11px;
   letter-spacing: 2px;
@@ -180,19 +224,21 @@ nav.scrolled {
   animation: fadeUp 1s ease both;
 }
 .hero-image {
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 52%;
+  height: 100%;
   opacity: 0;
   animation: fadeUp 1s ease 0.5s both;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%, black 85%, transparent 100%),
-                      linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 18%, black 85%, transparent 100%),
-              linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 38%);
+  mask-image: linear-gradient(to right, transparent 0%, black 38%);
 }
 .hero-image img {
   width: 100%;
-  max-width: 580px;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
 }
 .hero-label {
@@ -873,8 +919,7 @@ footer {
   .nav-hamburger { display: flex; }
 
   .hero { padding: 120px 24px 80px; min-height: auto; grid-template-columns: 1fr; gap: 40px; }
-  .hero-image { order: -1; }
-  .hero-image img { max-width: 100%; }
+  .hero-image { display: none; }
 
   .pain-section, .bridge, .contents, .sound,
   .how, .forwhom, .testimonials, .about, .faq, .cta-section { padding: 80px 24px; }
@@ -906,10 +951,16 @@ footer {
     <li><a href="index.html#about">O meni</a></li>
     <li><a href="raspored.html">Kalendar</a></li>
     <li><a href="akal.html">Akal zajednica</a></li>
-    <li><a href="individual.html">Individualni rad</a></li>
-    <li><a href="licna-mapa.html">Lična mapa</a></li>
+    <li class="nav-dropdown">
+      <span style="color:var(--clay)">Individualni rad</span>
+      <ul class="dropdown-menu">
+        <li><a href="individual.html">Inner Shift metoda</a></li>
+        <li><a href="aura-tretman.html">Tretman aure</a></li>
+        <li><a href="licna-mapa.html" class="nav-active">Lična mapa</a></li>
+      </ul>
+    </li>
     <li><a href="index.html#testimonials">Utisci</a></li>
-    <li><a href="mailto:info@vukojenemanja.com?subject=Licna%20mapa%20-%20porudzbina" class="nav-cta">Zelim svoju mapu</a></li>
+    <li><a href="mailto:info@vukojenemanja.com?subject=Zelim%20svoju%20licnu%20mapu&body=Zdravo%2C%0A%0A%C5%BDelim%20da%20naru%C4%8Dim%20li%C4%8Dnu%20mapu.%0A%0AIme%20i%20prezime%3A%20%0ADatum%20rodjenja%3A%20" class="nav-cta">Želim svoju mapu</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Meni">
     <span></span><span></span><span></span>
@@ -917,13 +968,14 @@ footer {
 </nav>
 
 <div class="nav-mobile-menu" id="mobileMenu">
-  <button class="nav-mobile-close" onclick="closeMobileMenu()">x</button>
+  <button class="nav-mobile-close" onclick="closeMobileMenu()">×</button>
   <a href="index.html#about" onclick="closeMobileMenu()">O meni</a>
   <a href="raspored.html" onclick="closeMobileMenu()">Kalendar</a>
   <a href="akal.html" onclick="closeMobileMenu()">Akal zajednica</a>
   <a href="individual.html" onclick="closeMobileMenu()">Individualni rad</a>
+  <a href="licna-mapa.html" onclick="closeMobileMenu()" style="color:var(--clay)">Lična mapa</a>
   <a href="index.html#testimonials" onclick="closeMobileMenu()">Utisci</a>
-  <a href="mailto:info@vukojenemanja.com?subject=Licna%20mapa%20-%20porudzbina" class="mobile-cta" onclick="closeMobileMenu()">Zelim svoju mapu</a>
+  <a href="mailto:info@vukojenemanja.com?subject=Zelim%20svoju%20licnu%20mapu&body=Zdravo%2C%0A%0A%C5%BDelim%20da%20naru%C4%8Dim%20li%C4%8Dnu%20mapu.%0A%0AIme%20i%20prezime%3A%20%0ADatum%20rodjenja%3A%20" class="mobile-cta" onclick="closeMobileMenu()">Želim svoju mapu</a>
 </div>
 
 <!-- ── HERO ── -->
@@ -933,7 +985,7 @@ footer {
     <h1>Tvoja lična <em>mapa.</em></h1>
     <p class="hero-sub">Personalizovana analiza napravljena baš po tvojim brojevima. Razumi svoje obrasce, prepoznaj potencijal i usmeri energiju na ono što ti je zaista važno.</p>
     <div class="hero-actions">
-      <a href="mailto:info@vukojenemanja.com?subject=Zelim%20svoju%20licnu%20mapu&body=Zdravo%2C%0A%0AZelim%20da%20naruci%20licnu%20mapu.%0A%0AIme%20i%20prezime%3A%20%0ADatum%20rodjenja%3A%20" class="btn-main">Zelim svoju mapu</a>
+      <a href="mailto:info@vukojenemanja.com?subject=Zelim%20svoju%20licnu%20mapu&body=Zdravo%2C%0A%0A%C5%BDelim%20da%20naru%C4%8Dim%20li%C4%8Dnu%20mapu.%0A%0AIme%20i%20prezime%3A%20%0ADatum%20rodjenja%3A%20" class="btn-main">Želim svoju mapu</a>
       <div>
         <p class="hero-price-note"><s>55 €</s> &nbsp;→&nbsp; 33 € · Uvodna cena</p>
         <p class="hero-delivery">PDF stiže na mejl u roku od 72 sata · ostaje tvoj zauvek</p>
@@ -980,10 +1032,6 @@ footer {
         <div class="bridge-num-item">
           <span class="num">5</span>
           <span class="num-label">Brojeva</span>
-        </div>
-        <div class="bridge-num-item">
-          <span class="num">13</span>
-          <span class="num-label">Strana</span>
         </div>
         <div class="bridge-num-item">
           <span class="num">72h</span>
@@ -1180,7 +1228,7 @@ footer {
     <span class="new">33 €</span>
     <span class="new-label">Uvodna cena</span>
   </div>
-  <a href="mailto:info@vukojenemanja.com?subject=Zelim%20svoju%20licnu%20mapu&body=Zdravo%2C%0A%0AZelim%20da%20naruci%20licnu%20mapu.%0A%0AIme%20i%20prezime%3A%20%0ADatum%20rodjenja%3A%20" class="btn-main">Zelim svoju mapu</a>
+  <a href="mailto:info@vukojenemanja.com?subject=Zelim%20svoju%20licnu%20mapu&body=Zdravo%2C%0A%0A%C5%BDelim%20da%20naru%C4%8Dim%20li%C4%8Dnu%20mapu.%0A%0AIme%20i%20prezime%3A%20%0ADatum%20rodjenja%3A%20" class="btn-main">Želim svoju mapu</a>
   <p class="cta-note">PDF stiže u narednih 72 sata · ostaje tvoj zauvek</p>
 </section>
 

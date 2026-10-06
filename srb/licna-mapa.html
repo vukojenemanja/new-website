@@ -918,8 +918,19 @@ footer {
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
 
-  .hero { padding: 120px 24px 80px; min-height: auto; grid-template-columns: 1fr; gap: 40px; }
-  .hero-image { display: none; }
+  .hero { padding: 80px 24px 60px; min-height: auto; grid-template-columns: 1fr; gap: 0; }
+  .hero-image {
+    position: relative;
+    left: auto;
+    right: auto;
+    width: 100%;
+    height: 280px;
+    mask-image: none;
+    -webkit-mask-image: none;
+    order: -1;
+    margin-bottom: 40px;
+  }
+  .hero-image img { object-position: center 20%; }
 
   .pain-section, .bridge, .contents, .sound,
   .how, .forwhom, .testimonials, .about, .faq, .cta-section { padding: 80px 24px; }

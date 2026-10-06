@@ -2181,5 +2181,146 @@ function closeMobileMenu() {
   </div>
 </div>
 <script src="../popup.js"></script>
+
+<!-- Akal poklon popup -->
+<style>
+#ag-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(22,17,12,0.78);
+  z-index: 10001;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+#ag-overlay.open { display: flex; }
+#ag-box {
+  background: var(--deep);
+  border: 1px solid rgba(196,168,130,0.2);
+  border-top: 3px solid var(--clay);
+  max-width: 500px;
+  width: 100%;
+  padding: 52px 48px;
+  position: relative;
+  animation: fadeUp 0.4s ease both;
+}
+#ag-close {
+  position: absolute;
+  top: 16px; right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: rgba(232,221,208,0.35);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+#ag-close:hover { color: var(--clay); }
+#ag-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+#ag-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+#ag-title em { font-style: italic; color: var(--clay); }
+#ag-sub {
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(232,221,208,0.65);
+  margin-bottom: 36px;
+}
+#ag-sub strong { color: var(--clay); font-weight: 400; }
+#ag-cta {
+  display: block;
+  padding: 18px 32px;
+  background: var(--clay);
+  color: var(--deep);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+  transition: background 0.3s;
+  margin-bottom: 16px;
+}
+#ag-cta:hover { background: var(--warm); }
+#ag-dismiss {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(232,221,236,0.3);
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 4px;
+}
+#ag-dismiss:hover { color: var(--stone); }
+@media (max-width: 600px) {
+  #ag-box { padding: 40px 24px; }
+}
+</style>
+
+<div id="ag-overlay" role="dialog" aria-modal="true">
+  <div id="ag-box">
+    <button id="ag-close" aria-label="Zatvori">&#215;</button>
+    <div id="ag-label">Poklon dobrodošlice</div>
+    <h2 id="ag-title">Lična mapa —<br><em>besplatno.</em></h2>
+    <p id="ag-sub">Svaki novi član Akal zajednice dobija <strong>besplatnu ličnu numerološku mapu</strong> kao poklon dobrodošlice — vrednost 33€. Priključi se, pošalji mi ime i datum rodjenja, i mapa stiže za 72 sata.</p>
+    <a id="ag-cta" href="mailto:info@vukojenemanja.com?subject=Pridru%C5%BEivanje%20Akal%20zajednici&body=Zdravo%2C%0A%0A%C5%BDelim%20da%20se%20prijavim%20za%20Akal%20zajednicu.%0A%0AIme%3A%20%0ADatum%20rodjenja%3A%20">Pridruži se Akalu &ndash; 77€ mesečno</a>
+    <span id="ag-dismiss">Nije za mene</span>
+  </div>
+</div>
+
+<script>
+(function() {
+  var STORAGE_KEY = 'ag-seen';
+  try { if (sessionStorage.getItem(STORAGE_KEY)) return; } catch(e) {}
+
+  var shown = false;
+
+  function agClose() {
+    document.getElementById('ag-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function agShow() {
+    if (shown) return;
+    var nvOverlay = document.getElementById('nv-popup-overlay');
+    if (nvOverlay && nvOverlay.classList.contains('open')) return;
+    shown = true;
+    try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch(e) {}
+    document.getElementById('ag-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function onScroll() {
+    var scrolled = window.scrollY + window.innerHeight;
+    var total = document.documentElement.scrollHeight;
+    if (total > 0 && scrolled / total >= 0.88) {
+      window.removeEventListener('scroll', onScroll);
+      setTimeout(agShow, 600);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  document.getElementById('ag-close').addEventListener('click', agClose);
+  document.getElementById('ag-dismiss').addEventListener('click', agClose);
+  document.getElementById('ag-overlay').addEventListener('click', function(e) {
+    if (e.target === this) agClose();
+  });
+})();
+</script>
 </body>
 </html>

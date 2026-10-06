@@ -183,6 +183,12 @@ nav.scrolled {
   position: relative;
   opacity: 0;
   animation: fadeUp 1s ease 0.5s both;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%, black 85%, transparent 100%),
+                      linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 18%, black 85%, transparent 100%),
+              linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 .hero-image img {
   width: 100%;

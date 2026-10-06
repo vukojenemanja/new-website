@@ -8,7 +8,7 @@
   var STORAGE_KEY = 'nv_popup_hidden';
   var TRIGGER_SCROLL = 0.50;
   var TRIGGER_SECONDS = 45;
-  var PDF_READY = false; // set to true when Soul_Number_X.pdf files are uploaded
+  var PDF_READY = true;
 
   try {
     if (localStorage.getItem(STORAGE_KEY)) return;

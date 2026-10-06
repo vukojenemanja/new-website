@@ -8,7 +8,7 @@
   var STORAGE_KEY = 'nv_popup_hidden';
   var TRIGGER_SCROLL = 0.50;
   var TRIGGER_SECONDS = 45;
-  var PDF_READY = false; // auf true setzen wenn Seelenzahl_X.pdf Dateien hochgeladen sind
+  var PDF_READY = true;
 
   try {
     if (localStorage.getItem(STORAGE_KEY)) return;

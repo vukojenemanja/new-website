@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Prijava na newsletter – Nemanja Vukoje</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F5F1EC;
+  color: #3D2E1E;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 28px 40px;
+  border-bottom: 1px solid rgba(61,46,30,0.08);
+}
+
+header a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #3D2E1E;
+  text-decoration: none;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px 80px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid rgba(61,46,30,0.1);
+  max-width: 520px;
+  width: 100%;
+  padding: 56px 52px 48px;
+}
+
+.card-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #C4A882;
+  margin-bottom: 16px;
+}
+
+.card h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.card h1 em {
+  font-style: italic;
+  color: #9B6B3A;
+}
+
+.card-sub {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #8A8070;
+  margin-bottom: 32px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="date"] {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #3D2E1E;
+  background: #F5F1EC;
+  border: 1px solid rgba(61,46,30,0.15);
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  color-scheme: light;
+  border-radius: 0;
+}
+
+form input::placeholder { color: #8A8070; }
+form input:focus { border-color: #C4A882; }
+
+.soul-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px 0 2px;
+}
+
+.soul-opt input[type="checkbox"] {
+  width: 16px !important;
+  min-width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0 !important;
+  cursor: pointer;
+  accent-color: #C4A882;
+  flex-shrink: 0;
+  -webkit-appearance: checkbox !important;
+  appearance: checkbox !important;
+}
+
+.soul-opt-label {
+  font-size: 13px;
+  color: #3D2E1E;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dob-wrap { overflow: hidden; }
+
+.dob-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8A8070;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.consent input[type="checkbox"] {
+  width: 16px !important;
+  min-width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  padding: 0 !important;
+  cursor: pointer;
+  accent-color: #C4A882;
+  flex-shrink: 0;
+  -webkit-appearance: checkbox !important;
+  appearance: checkbox !important;
+}
+
+.consent-label {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #8A8070;
+  cursor: pointer;
+  user-select: none;
+}
+
+.consent-label a {
+  color: #9B6B3A;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.submit-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #1E1712;
+  background: #C4A882;
+  border: none;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+  border-radius: 0;
+}
+
+.submit-btn:hover { background: #D4B896; }
+.submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.form-note {
+  font-size: 11px;
+  color: #8A8070;
+  margin-top: 4px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.form-error {
+  display: none;
+  font-size: 12px;
+  color: #9B3A3A;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.success-state {
+  display: none;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.success-state p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: #3D2E1E;
+  line-height: 1.5;
+}
+
+.success-sub {
+  display: block;
+  font-size: 13px;
+  color: #8A8070;
+  margin-top: 10px;
+}
+
+.pdf-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #1E1712;
+  background: #C4A882;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.pdf-link:hover { background: #D4B896; }
+
+@media (max-width: 600px) {
+  header { padding: 20px 20px; }
+  main { padding: 40px 20px 60px; }
+  .card { padding: 40px 28px 36px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">Nemanja Vukoje</a>
+</header>
+
+<main>
+  <div class="card">
+    <div class="card-label">Newsletter + broj duše – besplatno</div>
+    <h1>Pridruži se listi.<br><em>Dobij broj duše.</em></h1>
+    <p class="card-sub" id="card-sub">Prijavi se na moj newsletter i odmah dobij besplatno čitanje svog broja duše po tantičkoj numerologiji.</p>
+
+    <form id="signup-form" novalidate>
+      <input type="text" id="f-name" name="first_name" placeholder="Tvoje ime" autocomplete="given-name">
+      <input type="email" id="f-email" name="email" placeholder="Tvoj email" required autocomplete="email">
+
+      <label class="soul-opt">
+        <input type="checkbox" id="f-soul-check" checked>
+        <span class="soul-opt-label">Želim da saznam i broj duše</span>
+      </label>
+
+      <div class="dob-wrap" id="f-dob-wrap">
+        <span class="dob-label">Datum rođenja</span>
+        <input type="date" id="f-dob" name="dob" autocomplete="bday">
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" id="f-consent" required>
+        <span class="consent-label">Slažem se da primam emailove i razumem da mogu da se odjavim u svakom trenutku. Pročitao/la sam <a href="/srb/datenschutz.html" target="_blank">Politiku privatnosti</a>.</span>
+      </label>
+
+      <button type="submit" class="submit-btn" id="f-submit">Otkrij broj</button>
+      <div class="form-error" id="f-error"></div>
+    </form>
+
+    <p class="form-note">Bez spama. Odjava u svakom trenutku.</p>
+
+    <div class="success-state" id="success-state">
+      <div id="soul-result">
+        <p>Tvoj broj duše je <strong id="soul-num" style="font-style:normal;color:#9B6B3A"></strong>.</p>
+        <span class="success-sub">PDF stiže i na email — ali možeš ga preuzeti odmah:</span>
+        <a class="pdf-link" id="soul-pdf-link" href="#" target="_blank" rel="noopener">Preuzmi PDF</a>
+      </div>
+      <div id="newsletter-result" style="display:none">
+        <p>Hvala na prijavi!</p>
+        <span class="success-sub">Proveri inbox (i spam folder) — stiže za koji trenutak.</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+(function () {
+  var FORM_ID = '10004467';
+  var TAG_ID  = '24330687';
+
+  function calcSoul(dobStr) {
+    var s = dobStr.trim();
+    var day;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) {
+      day = parseInt(s.split('-')[2], 10);
+    } else {
+      day = parseInt(s.split('.')[0], 10);
+    }
+    if (isNaN(day) || day < 1 || day > 31) return null;
+    var n = day;
+    while (n > 11) {
+      var s2 = 0, tmp = n;
+      while (tmp > 0) { s2 += tmp % 10; tmp = Math.floor(tmp / 10); }
+      n = s2;
+    }
+    return n;
+  }
+
+  function wantsSoul() {
+    return document.getElementById('f-soul-check').checked;
+  }
+
+  function updateDobVisibility() {
+    var wrap = document.getElementById('f-dob-wrap');
+    var btn  = document.getElementById('f-submit');
+    if (wantsSoul()) {
+      wrap.style.display = 'block';
+      btn.textContent = 'Otkrij broj';
+    } else {
+      wrap.style.display = 'none';
+      btn.textContent = 'Prijavi se na listu';
+    }
+  }
+
+  function onSubmit(e) {
+    e.preventDefault();
+    var email   = document.getElementById('f-email').value.trim();
+    var name    = document.getElementById('f-name').value.trim();
+    var consent = document.getElementById('f-consent');
+    var btn     = document.getElementById('f-submit');
+    var errEl   = document.getElementById('f-error');
+    var soul    = null;
+
+    errEl.style.display = 'none';
+
+    if (!consent.checked) {
+      errEl.textContent = 'Potrebno je da prihvatiš uslove pre prijave.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errEl.textContent = 'Unesi ispravan email.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    var dob = '';
+    if (wantsSoul()) {
+      var dobEl = document.getElementById('f-dob');
+      dob  = dobEl ? dobEl.value.trim() : '';
+      soul = calcSoul(dob);
+      if (!soul) {
+        errEl.textContent = 'Izaberi datum rođenja.';
+        errEl.style.display = 'block';
+        return;
+      }
+    }
+
+    btn.disabled    = true;
+    btn.textContent = 'Šaljem...';
+
+    var data = new URLSearchParams({ email_address: email });
+    if (name) data.append('fields[first_name]', name);
+    if (dob)  data.append('fields[date_of_birth]', dob);
+    if (soul) data.append('fields[soul_number]', soul);
+    data.append('tags[]', TAG_ID);
+
+    fetch('https://app.convertkit.com/forms/' + FORM_ID + '/subscriptions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: data.toString()
+    })
+      .then(function (res) {
+        if (res.ok || res.status === 200) {
+          showSuccess(soul);
+        } else {
+          throw new Error('server error');
+        }
+      })
+      .catch(function () {
+        btn.disabled    = false;
+        btn.textContent = wantsSoul() ? 'Otkrij broj' : 'Prijavi se na listu';
+        errEl.textContent = 'Došlo je do greške. Pokušaj ponovo ili me kontaktiraj direktno.';
+        errEl.style.display = 'block';
+      });
+  }
+
+  function showSuccess(soul) {
+    document.getElementById('signup-form').style.display = 'none';
+    document.getElementById('card-sub').style.display    = 'none';
+    document.querySelector('.form-note').style.display   = 'none';
+
+    var sEl = document.getElementById('success-state');
+    sEl.style.display = 'block';
+
+    if (soul) {
+      document.getElementById('soul-num').textContent       = soul;
+      document.getElementById('soul-pdf-link').href         = 'https://vukojenemanja.com/pdfs/broj-duse/Broj_Duse_' + soul + '.pdf';
+      document.getElementById('soul-result').style.display  = 'block';
+      document.getElementById('newsletter-result').style.display = 'none';
+    } else {
+      document.getElementById('soul-result').style.display  = 'none';
+      document.getElementById('newsletter-result').style.display = 'block';
+    }
+  }
+
+  document.getElementById('f-soul-check').addEventListener('change', updateDobVisibility);
+  document.getElementById('signup-form').addEventListener('submit', onSubmit);
+  updateDobVisibility();
+})();
+</script>
+
+</body>
+</html>

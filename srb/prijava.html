@@ -384,16 +384,17 @@ form input:focus { border-color: #C4A882; }
     btn.disabled    = true;
     btn.textContent = 'Šaljem...';
 
-    var data = new URLSearchParams({ email_address: email });
-    if (name) data.append('fields[first_name]', name);
-    if (dob)  data.append('fields[date_of_birth]', dob);
-    if (soul) data.append('fields[soul_number]', soul);
-    data.append('tags[]', TAG_ID);
+    var body = { api_key: 'nEJIDKEJbs0n5gTauo6pjQ', email: email, tags: [TAG_ID] };
+    if (name) body.first_name = name;
+    var fields = {};
+    if (dob)  fields.date_of_birth = dob;
+    if (soul) fields.soul_number = String(soul);
+    if (Object.keys(fields).length) body.fields = fields;
 
-    fetch('https://app.convertkit.com/forms/' + FORM_ID + '/subscriptions', {
+    fetch('https://api.convertkit.com/v3/forms/' + FORM_ID + '/subscribe', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: data.toString()
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
     })
       .then(function (res) {
         if (res.ok || res.status === 200) {

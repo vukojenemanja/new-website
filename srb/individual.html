@@ -716,7 +716,7 @@ footer ul a:hover { color: var(--clay); }
     <!-- Stage selector -->
     <div class="arc-stages-wrap reveal">
       <div class="arc-rail"><div class="arc-rail-fill" id="arcRailFill"></div></div>
-      <div class="arc-stages" id="arcStages" role="tablist" aria-label="Stages of change"></div>
+      <div class="arc-stages" id="arcStages" role="tablist" aria-label="Faze promene"></div>
     </div>
 
     <!-- Detail panel -->
@@ -836,7 +836,7 @@ footer ul a:hover { color: var(--clay); }
         <ul class="offer-includes">
           <li>6 Inner Shift sesija</li>
           <li>Čišćenje aure i potpuni energetski reset</li>
-          <li>Soul retrieval - vraćanje izgubljenih delova</li>
+          <li>Vraćanje izgubljenih delova duše (soul retrieval)</li>
           <li>Isceljenje na najdubljem nivou duše</li>
           <li>Personalizovana meditacija kreirana za tebe</li>
           <li>Podrška i zadaci između sesija</li>
@@ -1048,7 +1048,7 @@ function renderArc() {
     btn.className = 'arc-stage-btn' + (i === activeStage ? ' active' : '');
     btn.setAttribute('role', 'tab');
     btn.setAttribute('aria-selected', i === activeStage ? 'true' : 'false');
-    btn.setAttribute('aria-label', 'Stage ' + (i+1) + ': ' + s.label.replace('\n', ' '));
+    btn.setAttribute('aria-label', 'Faza ' + (i+1) + ': ' + s.label.replace('\n', ' '));
     btn.innerHTML = `<div class="arc-dot">${i + 1}</div><div class="arc-stage-name">${s.label}</div>`;
     btn.onclick = function() { setStage(i); };
     stagesEl.appendChild(btn);
@@ -1102,7 +1102,7 @@ function renderPackages() {
       </div>
       <div class="arc-pkg-body">
         <p class="arc-pkg-desc">${p.desc}</p>
-        <a class="arc-pkg-cta" href="${p.href}">Book this →</a>
+        <a class="arc-pkg-cta" href="${p.href}">Zakaži ovo →</a>
       </div>
       <div class="mini-arc">${buildMiniArc(p.from, p.to)}</div>
     `;
@@ -1153,5 +1153,119 @@ renderArc();
   </div>
 </div>
 <script src="../popup.js"></script>
+
+<!-- FREE CALL POPUP -->
+<style>
+#fc-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,8,5,0.72);
+  z-index: 9100;
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+#fc-overlay.open { display: flex; animation: fcFadeIn 0.35s ease both; }
+#fc-box {
+  background: #F5F1EC;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  padding: 52px 48px 44px;
+  animation: fcSlideUp 0.35s ease both;
+  text-align: center;
+}
+#fc-close {
+  position: absolute; top: 16px; right: 20px;
+  background: none; border: none; cursor: pointer;
+  font-size: 22px; color: #8A8070; line-height: 1; padding: 4px;
+  transition: color 0.2s;
+}
+#fc-close:hover { color: #3D2E1E; }
+#fc-eyebrow {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: #C4A882; margin-bottom: 18px;
+}
+#fc-box h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 300; color: #3D2E1E; line-height: 1.2; margin-bottom: 14px;
+}
+#fc-box h2 em { font-style: italic; color: #9B6B3A; }
+#fc-sub {
+  font-size: 14px; line-height: 1.75; color: #8A8070; margin-bottom: 28px;
+}
+#fc-cta {
+  display: inline-block;
+  padding: 15px 32px;
+  background: #C4A882;
+  color: #1E1712;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+  font-weight: 500; text-decoration: none;
+  transition: background 0.3s; margin-bottom: 16px;
+}
+#fc-cta:hover { background: #D4B896; }
+#fc-dismiss {
+  display: block; font-size: 12px; color: #8A8070;
+  cursor: pointer; margin-top: 12px; transition: color 0.2s;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+#fc-dismiss:hover { color: #3D2E1E; }
+@keyframes fcFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fcSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 600px) { #fc-box { padding: 40px 28px 36px; } }
+</style>
+
+<div id="fc-overlay" role="dialog" aria-modal="true" aria-labelledby="fc-title">
+  <div id="fc-box">
+    <button id="fc-close" aria-label="Zatvori">×</button>
+    <div id="fc-eyebrow">Besplatno · 30 minuta</div>
+    <h2 id="fc-title">Nisi siguran/na<br><em>odakle da počneš?</em></h2>
+    <p id="fc-sub">Zakaži besplatni poziv. Pričamo o tome gde si sada, šta te blokira — i da li je ovaj rad pravi sledeći korak za tebe. Bez ikakve obaveze.</p>
+    <a id="fc-cta" href="mailto:info@vukojenemanja.com?subject=Besplatni%20poziv%20-%20Individualni%20rad&body=Zdravo%20Nemanja%2C%0A%0AZelio%2Fla%20bih%20da%20zakažem%20besplatni%20poziv.%0A%0AMoje%20ime%3A%20%0AMoja%20dostupnost%3A%20">Zakaži besplatni poziv</a>
+    <span id="fc-dismiss">Nije za mene</span>
+  </div>
+</div>
+
+<script>
+(function () {
+  var STORAGE_KEY = 'fc-seen';
+  try { if (sessionStorage.getItem(STORAGE_KEY)) return; } catch(e) {}
+
+  var shown = false;
+
+  function showFc() {
+    if (shown) return;
+    var nvPopup = document.getElementById('nv-popup-overlay');
+    if (nvPopup && nvPopup.classList.contains('open')) {
+      setTimeout(showFc, 3000);
+      return;
+    }
+    shown = true;
+    document.getElementById('fc-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hideFc() {
+    document.getElementById('fc-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+    try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch(e) {}
+  }
+
+  setTimeout(showFc, 177000);
+
+  document.getElementById('fc-close').addEventListener('click', hideFc);
+  document.getElementById('fc-dismiss').addEventListener('click', hideFc);
+  document.getElementById('fc-overlay').addEventListener('click', function(e) {
+    if (e.target === this) hideFc();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') hideFc();
+  });
+})();
+</script>
 </body>
 </html>

@@ -1214,6 +1214,16 @@ renderArc();
   text-decoration: underline; text-underline-offset: 3px;
 }
 #fc-dismiss:hover { color: #3D2E1E; }
+#fc-name, #fc-avail {
+  display: block; width: 100%;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300;
+  color: #3D2E1E; background: #fff;
+  border: 1px solid rgba(61,46,30,0.15); padding: 13px 16px;
+  outline: none; transition: border-color 0.2s; margin-bottom: 10px;
+  text-align: left; -webkit-appearance: none; border-radius: 0;
+}
+#fc-name::placeholder, #fc-avail::placeholder { color: #8A8070; }
+#fc-name:focus, #fc-avail:focus { border-color: #C4A882; }
 @keyframes fcFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes fcSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 600px) { #fc-box { padding: 40px 28px 36px; } }
@@ -1224,8 +1234,10 @@ renderArc();
     <button id="fc-close" aria-label="Zatvori">×</button>
     <div id="fc-eyebrow">Besplatno · 30 minuta</div>
     <h2 id="fc-title">Nisi siguran/na<br><em>odakle da počneš?</em></h2>
-    <p id="fc-sub">Zakaži besplatni poziv. Pričamo o tome gde si sada, šta te blokira — i da li je ovaj rad pravi sledeći korak za tebe. Bez ikakve obaveze.</p>
-    <a id="fc-cta" href="mailto:info@vukojenemanja.com?subject=Besplatni%20poziv%20-%20Individualni%20rad&body=Zdravo%20Nemanja%2C%0A%0AZelio%2Fla%20bih%20da%20zakažem%20besplatni%20poziv.%0A%0AMoje%20ime%3A%20%0AMoja%20dostupnost%3A%20">Zakaži besplatni poziv</a>
+    <p id="fc-sub">Zakaži besplatni poziv. Pričamo o tome gde si sada, šta te blokira - i da li je ovaj rad pravi sledeći korak za tebe. Bez ikakve obaveze.</p>
+    <input id="fc-name" type="text" placeholder="Tvoje ime" autocomplete="given-name">
+    <input id="fc-avail" type="text" placeholder="Kada si dostupan/na?">
+    <a id="fc-cta" href="#">Zakaži besplatni poziv</a>
     <span id="fc-dismiss">Nije za mene</span>
   </div>
 </div>
@@ -1257,6 +1269,14 @@ renderArc();
 
   setTimeout(showFc, 177000);
 
+  document.getElementById('fc-cta').addEventListener('click', function(e) {
+    e.preventDefault();
+    var name  = (document.getElementById('fc-name').value.trim()  || 'nije navedeno');
+    var avail = (document.getElementById('fc-avail').value.trim() || 'nije navedena');
+    var body  = 'Zdravo Nemanja,\n\nZelio/la bih da zakažem besplatni poziv.\n\nMoje ime: ' + name + '\nMoja dostupnost: ' + avail + '\n';
+    window.location.href = 'mailto:info@vukojenemanja.com?subject=' + encodeURIComponent('Besplatni poziv - Individualni rad') + '&body=' + encodeURIComponent(body);
+    hideFc();
+  });
   document.getElementById('fc-close').addEventListener('click', hideFc);
   document.getElementById('fc-dismiss').addEventListener('click', hideFc);
   document.getElementById('fc-overlay').addEventListener('click', function(e) {

@@ -1211,6 +1211,16 @@ renderArc();
   text-decoration: underline; text-underline-offset: 3px;
 }
 #fc-dismiss:hover { color: #3D2E1E; }
+#fc-name, #fc-avail {
+  display: block; width: 100%;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300;
+  color: #3D2E1E; background: #fff;
+  border: 1px solid rgba(61,46,30,0.15); padding: 13px 16px;
+  outline: none; transition: border-color 0.2s; margin-bottom: 10px;
+  text-align: left; -webkit-appearance: none; border-radius: 0;
+}
+#fc-name::placeholder, #fc-avail::placeholder { color: #8A8070; }
+#fc-name:focus, #fc-avail:focus { border-color: #C4A882; }
 @keyframes fcFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes fcSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 600px) { #fc-box { padding: 40px 28px 36px; } }
@@ -1221,8 +1231,10 @@ renderArc();
     <button id="fc-close" aria-label="Close">×</button>
     <div id="fc-eyebrow">Free · 30 minutes</div>
     <h2 id="fc-title">Not sure<br><em>where to start?</em></h2>
-    <p id="fc-sub">Book a free call. We talk about where you are now, what is blocking you — and whether this work is the right next step for you. No commitment.</p>
-    <a id="fc-cta" href="mailto:info@vukojenemanja.com?subject=Free%20Call%20-%20Individual%20Work&body=Hi%20Nemanja%2C%0A%0AI%20would%20like%20to%20book%20a%20free%20call.%0A%0AMy%20name%3A%20%0AMy%20availability%3A%20">Book a free call</a>
+    <p id="fc-sub">Book a free call. We talk about where you are now, what is blocking you - and whether this work is the right next step for you. No commitment.</p>
+    <input id="fc-name" type="text" placeholder="Your name" autocomplete="given-name">
+    <input id="fc-avail" type="text" placeholder="When are you available?">
+    <a id="fc-cta" href="#">Book a free call</a>
     <span id="fc-dismiss">Not for me</span>
   </div>
 </div>
@@ -1254,6 +1266,14 @@ renderArc();
 
   setTimeout(showFc, 177000);
 
+  document.getElementById('fc-cta').addEventListener('click', function(e) {
+    e.preventDefault();
+    var name  = (document.getElementById('fc-name').value.trim()  || 'not provided');
+    var avail = (document.getElementById('fc-avail').value.trim() || 'not provided');
+    var body  = 'Hi Nemanja,\n\nI would like to book a free call.\n\nMy name: ' + name + '\nMy availability: ' + avail + '\n';
+    window.location.href = 'mailto:info@vukojenemanja.com?subject=' + encodeURIComponent('Free Call - Individual Work') + '&body=' + encodeURIComponent(body);
+    hideFc();
+  });
   document.getElementById('fc-close').addEventListener('click', hideFc);
   document.getElementById('fc-dismiss').addEventListener('click', hideFc);
   document.getElementById('fc-overlay').addEventListener('click', function(e) {

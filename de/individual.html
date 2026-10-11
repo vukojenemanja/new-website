@@ -1676,6 +1676,16 @@ renderArc();
   text-decoration: underline; text-underline-offset: 3px;
 }
 #fc-dismiss:hover { color: #3D2E1E; }
+#fc-name, #fc-avail {
+  display: block; width: 100%;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300;
+  color: #3D2E1E; background: #fff;
+  border: 1px solid rgba(61,46,30,0.15); padding: 13px 16px;
+  outline: none; transition: border-color 0.2s; margin-bottom: 10px;
+  text-align: left; -webkit-appearance: none; border-radius: 0;
+}
+#fc-name::placeholder, #fc-avail::placeholder { color: #8A8070; }
+#fc-name:focus, #fc-avail:focus { border-color: #C4A882; }
 @keyframes fcFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes fcSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 600px) { #fc-box { padding: 40px 28px 36px; } }
@@ -1686,8 +1696,10 @@ renderArc();
     <button id="fc-close" aria-label="Schließen">×</button>
     <div id="fc-eyebrow">Kostenlos · 30 Minuten</div>
     <h2 id="fc-title">Nicht sicher,<br><em>wo du anfangen sollst?</em></h2>
-    <p id="fc-sub">Buch ein kostenloses Gespräch. Wir reden darüber, wo du gerade stehst, was dich blockiert — und ob diese Arbeit der richtige nächste Schritt für dich ist. Ohne jede Verpflichtung.</p>
-    <a id="fc-cta" href="mailto:info@vukojenemanja.com?subject=Kostenloses%20Gespr%C3%A4ch%20-%201%3A1%20Arbeit&body=Hallo%20Nemanja%2C%0A%0AIch%20m%C3%B6chte%20gerne%20ein%20kostenloses%20Gespr%C3%A4ch%20vereinbaren.%0A%0AMein%20Name%3A%20%0AMeine%20Verf%C3%BCgbarkeit%3A%20">Kostenloses Gespräch buchen</a>
+    <p id="fc-sub">Buch ein kostenloses Gespräch. Wir reden darüber, wo du gerade stehst, was dich blockiert - und ob diese Arbeit der richtige nächste Schritt für dich ist. Ohne jede Verpflichtung.</p>
+    <input id="fc-name" type="text" placeholder="Dein Name" autocomplete="given-name">
+    <input id="fc-avail" type="text" placeholder="Wann bist du verfügbar?">
+    <a id="fc-cta" href="#">Kostenloses Gespräch buchen</a>
     <span id="fc-dismiss">Nicht für mich</span>
   </div>
 </div>
@@ -1719,6 +1731,14 @@ renderArc();
 
   setTimeout(showFc, 177000);
 
+  document.getElementById('fc-cta').addEventListener('click', function(e) {
+    e.preventDefault();
+    var name  = (document.getElementById('fc-name').value.trim()  || 'nicht angegeben');
+    var avail = (document.getElementById('fc-avail').value.trim() || 'nicht angegeben');
+    var body  = 'Hallo Nemanja,\n\nIch möchte gerne ein kostenloses Gespräch vereinbaren.\n\nMein Name: ' + name + '\nMeine Verfügbarkeit: ' + avail + '\n';
+    window.location.href = 'mailto:info@vukojenemanja.com?subject=' + encodeURIComponent('Kostenloses Gespräch - 1:1 Arbeit') + '&body=' + encodeURIComponent(body);
+    hideFc();
+  });
   document.getElementById('fc-close').addEventListener('click', hideFc);
   document.getElementById('fc-dismiss').addEventListener('click', hideFc);
   document.getElementById('fc-overlay').addEventListener('click', function(e) {

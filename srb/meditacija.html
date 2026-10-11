@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Meditacija za aktivaciju intuicije - Nemanja Vukoje</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--fog);
+  color: var(--bark);
+  min-height: 100vh;
+}
+
+header {
+  padding: 28px 40px;
+  border-bottom: 1px solid rgba(61,46,30,0.08);
+}
+
+header a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--bark);
+  text-decoration: none;
+}
+
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 64px 24px 100px;
+}
+
+/* ── EVENT HEADER ── */
+.event-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+
+.event-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 6vw, 48px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.event-title em { font-style: italic; color: var(--accent); }
+
+.event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.event-tag {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--bark);
+  background: var(--sand);
+  padding: 8px 16px;
+}
+
+.event-desc {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--stone);
+  margin-bottom: 12px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(61,46,30,0.1);
+  margin: 36px 0;
+}
+
+/* ── GIFT BOX ── */
+.gift-box {
+  background: #fff;
+  border: 1px solid rgba(196,168,130,0.3);
+  padding: 24px 28px;
+  margin-bottom: 36px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.gift-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.gift-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 6px;
+}
+
+.gift-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--stone);
+}
+
+.gift-text strong { color: var(--bark); font-weight: 500; }
+
+/* ── FORM ── */
+.form-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="date"] {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--bark);
+  background: #fff;
+  border: 1px solid rgba(61,46,30,0.15);
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  color-scheme: light;
+  border-radius: 0;
+}
+
+form input::placeholder { color: var(--stone); }
+form input:focus { border-color: var(--clay); }
+
+.dob-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--stone);
+  display: block;
+  margin-bottom: 6px;
+  margin-top: 4px;
+}
+
+.dob-hint {
+  font-size: 12px;
+  color: var(--stone);
+  margin-top: -4px;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.consent input[type="checkbox"] {
+  width: 16px !important;
+  min-width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: var(--clay);
+  padding: 0 !important;
+  flex-shrink: 0;
+  -webkit-appearance: checkbox !important;
+  appearance: checkbox !important;
+}
+
+.consent-label {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--stone);
+  cursor: pointer;
+  user-select: none;
+}
+
+.consent-label a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+.submit-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--deep);
+  background: var(--clay);
+  border: none;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+  border-radius: 0;
+  margin-top: 4px;
+}
+
+.submit-btn:hover { background: #D4B896; }
+.submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.form-note {
+  font-size: 11px;
+  color: var(--stone);
+  text-align: center;
+  margin-top: 4px;
+}
+
+.form-error {
+  display: none;
+  font-size: 12px;
+  color: #9B3A3A;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* ── SUCCESS ── */
+.success-state {
+  display: none;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.success-check {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--bark);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.success-sub {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--stone);
+  margin-bottom: 24px;
+}
+
+.success-soul {
+  background: #fff;
+  border: 1px solid rgba(196,168,130,0.3);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.success-soul-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.success-soul-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 16px;
+}
+
+.pdf-btn {
+  display: inline-block;
+  padding: 13px 28px;
+  background: var(--clay);
+  color: var(--deep);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.pdf-btn:hover { background: #D4B896; }
+
+@media (max-width: 600px) {
+  header { padding: 20px 20px; }
+  .page { padding: 48px 20px 80px; }
+  .gift-box { flex-direction: column; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">Nemanja Vukoje</a>
+</header>
+
+<div class="page">
+
+  <div class="event-eyebrow">Besplatno online - Zoom</div>
+  <h1 class="event-title">Meditacija za<br><em>aktivaciju intuicije.</em></h1>
+
+  <div class="event-meta">
+    <span class="event-tag">Sreda, 15. oktobar</span>
+    <span class="event-tag">20:00 - 20:31h</span>
+    <span class="event-tag">31 minuta</span>
+    <span class="event-tag">Online · Zoom</span>
+  </div>
+
+  <p class="event-desc">Zajednička meditacija koja te vodi direktno do tvog unutrašnjeg kompasa. 31 minut. Nikakvo prethodno iskustvo nije potrebno - samo dođi onakvim/om kakav/va jesi.</p>
+  <p class="event-desc">Zoom link dobijaš na email posle prijave.</p>
+
+  <hr class="divider">
+
+  <div class="gift-box">
+    <div class="gift-icon">✦</div>
+    <div>
+      <div class="gift-label">Poklon za sve koji se prijave</div>
+      <p class="gift-text"><strong>Besplatno čitanje broja duše.</strong> Unesi datum rođenja pri prijavi i odmah dobijaš PDF sa numerološkim čitanjem svog broja duše po tantričkoj numerologiji.</p>
+    </div>
+  </div>
+
+  <p class="form-title">Prijavi se</p>
+
+  <form id="reg-form" novalidate>
+    <input type="text" id="r-name" placeholder="Tvoje ime" autocomplete="given-name">
+    <input type="email" id="r-email" placeholder="Tvoj email" required autocomplete="email">
+
+    <span class="dob-label">Datum rođenja (za poklon - broj duše)</span>
+    <input type="date" id="r-dob" autocomplete="bday">
+    <span class="dob-hint">Nije obavezno - ali bez toga nema broja duše.</span>
+
+    <label class="consent">
+      <input type="checkbox" id="r-consent" required>
+      <span class="consent-label">Slažem se da primam emailove i razumem da mogu da se odjavim u svakom trenutku. Pročitao/la sam <a href="/srb/datenschutz.html" target="_blank">Politiku privatnosti</a>.</span>
+    </label>
+
+    <button type="submit" class="submit-btn" id="r-submit">Prijavi se na meditaciju</button>
+    <div class="form-error" id="r-error"></div>
+  </form>
+
+  <p class="form-note">Bez spama. Zoom link stiže na email.</p>
+
+  <div class="success-state" id="success-state">
+    <div class="success-check">✓</div>
+    <p class="success-title">Vidimo se u sredu.</p>
+    <p class="success-sub">Zoom link stiže na tvoj email pre meditacije. Pripremi ugodno mesto i malo vode.</p>
+
+    <div class="success-soul" id="soul-section" style="display:none">
+      <div class="success-soul-num" id="soul-num"></div>
+      <div class="success-soul-label">Tvoj broj duše</div>
+      <a class="pdf-btn" id="soul-pdf" href="#" target="_blank" rel="noopener">Preuzmi čitanje</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var FORM_ID = '10004467';
+  var TAG_ID  = 24330687;
+
+  function calcSoul(dobStr) {
+    var s = dobStr.trim();
+    var day;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) {
+      day = parseInt(s.split('-')[2], 10);
+    } else {
+      day = parseInt(s.split('.')[0], 10);
+    }
+    if (isNaN(day) || day < 1 || day > 31) return null;
+    var n = day;
+    while (n > 11) {
+      var s2 = 0, tmp = n;
+      while (tmp > 0) { s2 += tmp % 10; tmp = Math.floor(tmp / 10); }
+      n = s2;
+    }
+    return n;
+  }
+
+  document.getElementById('reg-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name    = document.getElementById('r-name').value.trim();
+    var email   = document.getElementById('r-email').value.trim();
+    var dob     = document.getElementById('r-dob').value.trim();
+    var consent = document.getElementById('r-consent');
+    var btn     = document.getElementById('r-submit');
+    var errEl   = document.getElementById('r-error');
+
+    errEl.style.display = 'none';
+
+    if (!consent.checked) {
+      errEl.textContent = 'Potrebno je da prihvatiš uslove pre prijave.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errEl.textContent = 'Unesi ispravan email.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    btn.disabled    = true;
+    btn.textContent = 'Prijavljujem...';
+
+    var soul = dob ? calcSoul(dob) : null;
+
+    var body = { api_key: 'nEJIDKEJbs0n5gTauo6pjQ', email: email, tags: [TAG_ID] };
+    if (name) body.first_name = name;
+    var fields = {};
+    if (dob)  fields.date_of_birth = dob;
+    if (soul) fields.soul_number = String(soul);
+    if (Object.keys(fields).length) body.fields = fields;
+
+    fetch('https://api.convertkit.com/v3/forms/' + FORM_ID + '/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+      .then(function (res) {
+        if (res.ok || res.status === 200) {
+          showSuccess(soul);
+        } else {
+          throw new Error('error');
+        }
+      })
+      .catch(function () {
+        btn.disabled    = false;
+        btn.textContent = 'Prijavi se na meditaciju';
+        errEl.textContent = 'Došlo je do greške. Pokušaj ponovo ili me kontaktiraj direktno.';
+        errEl.style.display = 'block';
+      });
+  });
+
+  function showSuccess(soul) {
+    document.getElementById('reg-form').style.display    = 'none';
+    document.querySelector('.form-title').style.display  = 'none';
+    document.querySelector('.form-note').style.display   = 'none';
+    document.getElementById('success-state').style.display = 'block';
+
+    if (soul) {
+      document.getElementById('soul-num').textContent = soul;
+      document.getElementById('soul-pdf').href = 'https://vukojenemanja.com/pdfs/broj-duse/Broj_Duse_' + soul + '.pdf';
+      document.getElementById('soul-section').style.display = 'block';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

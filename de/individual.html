@@ -98,6 +98,16 @@ nav.scrolled .nav-logo { color: var(--bark); }
 nav.scrolled .nav-links a { color: var(--stone); }
 .nav-links a:hover { color: var(--clay); }
 
+.nav-dropdown { position: relative; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 0px); left: 50%; transform: translateX(-50%); background: rgba(245,241,236,0.98); backdrop-filter: blur(10px); border: 1px solid rgba(196,168,130,0.2); list-style: none; min-width: 200px; z-index: 999; box-shadow: 0 12px 40px rgba(0,0,0,0.12); padding-top: 8px; }
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.nav-dropdown > span { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,241,236,0.8); cursor: default; padding-bottom: 16px; margin-bottom: -16px; display: inline-block; transition: color 0.3s; }
+.nav-dropdown:hover > span { color: var(--clay); }
+.nav-dropdown > span::after { content: ''; display: block; position: absolute; height: 16px; width: 100%; left: 0; bottom: -16px; }
+.dropdown-menu li a { display: block; padding: 14px 24px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--bark) !important; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.dropdown-menu li a:hover { background: var(--sand); color: var(--accent) !important; }
+.dropdown-menu li a.nav-active { color: var(--accent) !important; font-weight: 500; }
+
 .nav-cta {
   font-size: 11px !important;
   letter-spacing: 2px !important;
@@ -1053,9 +1063,9 @@ footer ul a:hover { color: var(--clay); }
     <li><a href="kalender.html">Kalender</a></li>
     <li><a href="akal.html">Akal Community</a></li>
     <li class="nav-dropdown">
-      <span>1:1 Arbeit</span>
+      <span style="color:var(--clay)">1:1 Arbeit</span>
       <ul class="dropdown-menu">
-        <li><a href="individual.html">Inner Shift Methode</a></li>
+        <li><a href="individual.html" class="nav-active">Inner Shift Methode</a></li>
         <li><a href="aura-treatment.html">Aura-Sitzung</a></li>
         <li><a href="persoenliche-karte.html">Persönliche Karte</a></li>
       </ul>
@@ -1409,14 +1419,9 @@ footer ul a:hover { color: var(--clay); }
     <ul>
       <li><a href="index.html#about">Über mich</a></li>
       <li><a href="akal.html">Akal Community</a></li>
-      <li class="nav-dropdown">
-      <span>1:1 Arbeit</span>
-      <ul class="dropdown-menu">
-        <li><a href="individual.html">Inner Shift Methode</a></li>
-        <li><a href="aura-treatment.html">Aura-Sitzung</a></li>
-        <li><a href="persoenliche-karte.html">Persönliche Karte</a></li>
-      </ul>
-    </li>
+      <li><a href="individual.html">Inner Shift Methode</a></li>
+      <li><a href="aura-treatment.html">Aura-Sitzung</a></li>
+      <li><a href="persoenliche-karte.html">Persönliche Karte</a></li>
       <li><a href="index.html#testimonials">Erfahrungen</a></li>
       <li><a href="mailto:info@vukojenemanja.com?subject=Session%20buchen">Session buchen</a></li>
       <li><a href="agb.html">AGB</a></li>

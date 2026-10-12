@@ -377,7 +377,7 @@ form input:focus { border-color: var(--clay); }
     <div class="gift-icon">✦</div>
     <div>
       <div class="gift-label">Poklon za sve koji se prijave</div>
-      <p class="gift-text"><strong>Besplatno čitanje broja duše.</strong> Unesi datum rođenja pri prijavi i odmah dobijaš PDF sa numerološkim čitanjem svog broja duše po tantričkoj numerologiji.</p>
+      <p class="gift-text">Nakon prijave dobijaš PDF sa numerološkim čitanjem svog broja duše po tantričkoj numerologiji. Mali poklon koji može da promeni dosta.</p>
     </div>
   </div>
 
@@ -393,10 +393,6 @@ form input:focus { border-color: var(--clay); }
     <input type="text" id="r-name" placeholder="Tvoje ime" autocomplete="given-name">
     <input type="email" id="r-email" placeholder="Tvoj email" required autocomplete="email">
 
-    <span class="dob-label">Datum rođenja (za poklon - broj duše)</span>
-    <input type="date" id="r-dob" autocomplete="bday">
-    <span class="dob-hint">Nije obavezno - ali bez toga nema broja duše.</span>
-
     <label class="consent">
       <input type="checkbox" id="r-consent" required>
       <span class="consent-label">Slažem se da primam emailove i razumem da mogu da se odjavim u svakom trenutku. Pročitao/la sam <a href="/srb/datenschutz.html" target="_blank">Politiku privatnosti</a>.</span>
@@ -411,13 +407,7 @@ form input:focus { border-color: var(--clay); }
   <div class="success-state" id="success-state">
     <div class="success-check">✓</div>
     <p class="success-title">Vidimo se u sredu.</p>
-    <p class="success-sub">Zoom link stiže na tvoj email pre meditacije. Pripremi ugodno mesto i malo vode.</p>
-
-    <div class="success-soul" id="soul-section" style="display:none">
-      <div class="success-soul-num" id="soul-num"></div>
-      <div class="success-soul-label">Tvoj broj duše</div>
-      <a class="pdf-btn" id="soul-pdf" href="#" target="_blank" rel="noopener">Preuzmi čitanje</a>
-    </div>
+    <p class="success-sub">Zoom link i link za čitanje broja duše stižu na tvoj email. Pripremi ugodno mesto i malo vode.</p>
   </div>
 
 </div>
@@ -427,30 +417,11 @@ form input:focus { border-color: var(--clay); }
   var FORM_ID = '10033900';
   var TAG_ID  = 24535694;
 
-  function calcSoul(dobStr) {
-    var s = dobStr.trim();
-    var day;
-    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) {
-      day = parseInt(s.split('-')[2], 10);
-    } else {
-      day = parseInt(s.split('.')[0], 10);
-    }
-    if (isNaN(day) || day < 1 || day > 31) return null;
-    var n = day;
-    while (n > 11) {
-      var s2 = 0, tmp = n;
-      while (tmp > 0) { s2 += tmp % 10; tmp = Math.floor(tmp / 10); }
-      n = s2;
-    }
-    return n;
-  }
-
   document.getElementById('reg-form').addEventListener('submit', function (e) {
     e.preventDefault();
 
     var name    = document.getElementById('r-name').value.trim();
     var email   = document.getElementById('r-email').value.trim();
-    var dob     = document.getElementById('r-dob').value.trim();
     var consent = document.getElementById('r-consent');
     var btn     = document.getElementById('r-submit');
     var errEl   = document.getElementById('r-error');
@@ -472,14 +443,8 @@ form input:focus { border-color: var(--clay); }
     btn.disabled    = true;
     btn.textContent = 'Prijavljujem...';
 
-    var soul = dob ? calcSoul(dob) : null;
-
     var body = { api_key: 'nEJIDKEJbs0n5gTauo6pjQ', email: email, tags: [TAG_ID, 24330687] };
     if (name) body.first_name = name;
-    var fields = {};
-    if (dob)  fields.date_of_birth = dob;
-    if (soul) fields.soul_number = String(soul);
-    if (Object.keys(fields).length) body.fields = fields;
 
     fetch('https://api.convertkit.com/v3/forms/' + FORM_ID + '/subscribe', {
       method: 'POST',
@@ -488,7 +453,7 @@ form input:focus { border-color: var(--clay); }
     })
       .then(function (res) {
         if (res.ok || res.status === 200) {
-          showSuccess(soul);
+          showSuccess();
         } else {
           throw new Error('error');
         }
@@ -501,17 +466,11 @@ form input:focus { border-color: var(--clay); }
       });
   });
 
-  function showSuccess(soul) {
+  function showSuccess() {
     document.getElementById('reg-form').style.display    = 'none';
     document.querySelector('.form-title').style.display  = 'none';
     document.querySelector('.form-note').style.display   = 'none';
     document.getElementById('success-state').style.display = 'block';
-
-    if (soul) {
-      document.getElementById('soul-num').textContent = soul;
-      document.getElementById('soul-pdf').href = 'https://vukojenemanja.com/pdfs/broj-duse/Broj_Duse_' + soul + '.pdf';
-      document.getElementById('soul-section').style.display = 'block';
-    }
   }
 })();
 </script>

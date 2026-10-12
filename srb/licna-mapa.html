@@ -489,6 +489,163 @@ nav.scrolled {
   color: var(--stone);
 }
 
+/* ── PREGLED PROIZVODA ── */
+.product-overview {
+  background: var(--sand);
+  padding: 120px 60px;
+}
+.product-overview-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.product-overview h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  color: var(--bark);
+  margin-bottom: 12px;
+}
+.product-overview h2 em { font-style: italic; color: var(--accent); }
+.product-overview-sub {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--stone);
+  margin-bottom: 56px;
+  max-width: 600px;
+}
+.numbers-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(61,46,30,0.12);
+}
+.number-row {
+  display: grid;
+  grid-template-columns: 40px 200px 1fr;
+  gap: 32px;
+  align-items: start;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(61,46,30,0.08);
+}
+.number-row-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--clay);
+  opacity: 0.5;
+  line-height: 1;
+  padding-top: 2px;
+}
+.number-row-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--bark);
+  line-height: 1.3;
+  padding-top: 4px;
+}
+.number-row-name span {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clay);
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+.number-row-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--stone);
+  padding-top: 4px;
+}
+.number-row-example {
+  display: block;
+  font-style: italic;
+  color: var(--bark);
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+/* ── KAKO IZGLEDA U PRAKSI ── */
+.in-practice {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+.in-practice-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.in-practice h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 300;
+  color: var(--bark);
+  margin-bottom: 12px;
+}
+.in-practice h2 em { font-style: italic; color: var(--accent); }
+.in-practice-sub {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--stone);
+  margin-bottom: 48px;
+}
+.practice-example {
+  border-top: 2px solid var(--clay);
+  padding-top: 36px;
+}
+.practice-example-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 8px;
+}
+.practice-example-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--bark);
+  margin-bottom: 32px;
+}
+.practice-blocks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.practice-block {
+  background: #fff;
+  border: 1px solid rgba(61,46,30,0.08);
+  padding: 28px 24px;
+}
+.practice-block-type {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 12px;
+  display: block;
+}
+.practice-block p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--stone);
+}
+.practice-note {
+  font-size: 12px;
+  color: var(--stone);
+  margin-top: 20px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .number-row { grid-template-columns: 32px 1fr; gap: 16px; }
+  .number-row-text { grid-column: 1 / -1; padding-top: 0; }
+  .practice-blocks { grid-template-columns: 1fr; }
+  .product-overview, .in-practice { padding: 80px 24px; }
+}
+
 /* ── SOUND / KAKO ZVUCI ── */
 .sound {
   background: var(--deep);
@@ -1065,6 +1222,70 @@ footer {
   </div>
 </section>
 
+<!-- ── PREGLED PROIZVODA ── -->
+<section class="product-overview">
+  <div class="product-overview-inner">
+    <div class="section-label reveal">Šta dobijaš</div>
+    <h2 class="reveal">Pet brojeva,<br><em>pet prozora u sebe.</em></h2>
+    <p class="product-overview-sub reveal">Svaki broj se računa iz datuma rođenja i opisuje drugi deo tvoje ličnosti. Ispod su svi delovi mape - sa primerima kako izgledaju u praksi.</p>
+    <div class="numbers-list">
+      <div class="number-row reveal">
+        <div class="number-row-num">1</div>
+        <div class="number-row-name"><span>Broj duše</span>Odnos prema sebi</div>
+        <div class="number-row-text">Kako funkcionišeš iznutra - šta te hrani, šta te iscrpljuje i šta ti je potrebno da bi se osećao/la dobro. <em class="number-row-example">"Tvoje prisustvo menja atmosferu. Kada si tu, svađa se lakše smiri."</em></div>
+      </div>
+      <div class="number-row reveal">
+        <div class="number-row-num">2</div>
+        <div class="number-row-name"><span>Broj karme</span>Lekcija u odnosima</div>
+        <div class="number-row-text">Obrazac koji se ponavlja u bliskim odnosima - što god da se promenio partner ili prijatelj. <em class="number-row-example">"Znaš onaj trenutak kada uveče ležiš i po deseti put vrtiš istu odluku?"</em></div>
+      </div>
+      <div class="number-row reveal">
+        <div class="number-row-num">3</div>
+        <div class="number-row-name"><span>Broj dara</span>Talenat koji ti dolazi lako</div>
+        <div class="number-row-text">Ono što ti je prirodno i u čemu si dobar/dobra, čak i kada to sam/a ne primećuješ. Drugi to vide pre tebe.</div>
+      </div>
+      <div class="number-row reveal">
+        <div class="number-row-num">4</div>
+        <div class="number-row-name"><span>Broj sudbine</span>Kako te drugi vide</div>
+        <div class="number-row-text">Energija koju nosiš u prostoru - utisak koji ostavljaš pre nego što izgovoriš i jednu reč.</div>
+      </div>
+      <div class="number-row reveal">
+        <div class="number-row-num">5</div>
+        <div class="number-row-name"><span>Broj puta</span>Pravac ispunjenosti</div>
+        <div class="number-row-text">Gde se osećaš ispunjeno/a na duži rok - u karijeri, načinu života i odlukama koje te vode napred.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── KAKO IZGLEDA U PRAKSI ── -->
+<section class="in-practice">
+  <div class="in-practice-inner">
+    <div class="section-label reveal">Primer iz mape</div>
+    <h2 class="reveal">Kako mapa izgleda<br><em>u praksi</em></h2>
+    <p class="in-practice-sub reveal">Ovo je jedan konkretan primer - tumačenje, izazov i fokus za isti broj, kako bi video/la kako se sve tri stvari povezuju.</p>
+    <div class="practice-example reveal">
+      <div class="practice-example-label">Broj duše · 7</div>
+      <div class="practice-example-title">Aurično telo · Tišina kao oslonac</div>
+      <div class="practice-blocks">
+        <div class="practice-block">
+          <span class="practice-block-type">Tumačenje</span>
+          <p>Sedmica u poziciji Duše nosi energiju Auričnog tela. Tvoj oslonac je u unutrašnjem svetu - kada si u kontaktu sa sobom, nosiš mir koji se vidi spolja. Ljudi to osete čim uđeš u prostoriju, čak i kada ništa ne kažeš.</p>
+        </div>
+        <div class="practice-block">
+          <span class="practice-block-type">Izazov</span>
+          <p>Kada si pod stresom ili u buci, možeš da se povučeš toliko duboko da ljudi oko tebe ne znaju gde si i šta ti treba. Nije da ne voliš - samo te buka izvana iscrpljuje brže nego što misliš.</p>
+        </div>
+        <div class="practice-block">
+          <span class="practice-block-type">Preporučeni fokus</span>
+          <p>Svaki dan odvoji bar deset minuta u tišini, bez telefona. Ne da bi "radio/la na sebi" - nego samo da bi se vratio/la sebi. Iz toga svemu ostalome pristupašs više energije i jasnoće.</p>
+        </div>
+      </div>
+      <p class="practice-note">Svaki od pet brojeva u tvojoj mapi dolazi sa ovakvim čitanjem - napisanim za tvoje konkretne kombinacije, ne za opšte kategorije.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ── MOST ── -->
 <section class="bridge">
   <div class="bridge-inner">
@@ -1236,6 +1457,14 @@ footer {
   <div class="faq-inner">
     <h2 class="reveal">Česta<br>pitanja</h2>
     <div class="faq-list">
+      <div class="faq-item reveal">
+        <p class="faq-q">Da li je mapa stvarno personalizovana?</p>
+        <p class="faq-a">Da. Svaki deo se računa i piše na osnovu tvog datuma rođenja - pet različitih brojeva, njihova kombinacija i priča koja ih povezuje. Nema generičkih odgovora koji važe za sve. Ako dve osobe naruče mapu, dobijaju dva potpuno različita dokumenta.</p>
+      </div>
+      <div class="faq-item reveal">
+        <p class="faq-q">Kako plaćam?</p>
+        <p class="faq-a">Kada pošalješ mejl sa podacima, dogovaramo se o plaćanju - bankovnim transferom ili PayPal-om. Mapa se izrađuje posle potvrde uplate. Cena je 33 € (uvodna cena, bez pretplate).</p>
+      </div>
       <div class="faq-item reveal">
         <p class="faq-q">Da li moram da znam nešto o numerologiji?</p>
         <p class="faq-a">Ne. Mapa je pisana za nekoga ko se sa numerologijom prvi put susreće. Sve je objašnjeno jednostavno, kroz primere iz svakodnevnog života.</p>

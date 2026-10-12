@@ -2314,6 +2314,7 @@ function closeMobileMenu() {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
+  setTimeout(function() { window.removeEventListener('scroll', onScroll); agShow(); }, 150000);
 
   document.getElementById('ag-close').addEventListener('click', agClose);
   document.getElementById('ag-dismiss').addEventListener('click', agClose);

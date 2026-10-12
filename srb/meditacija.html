@@ -424,8 +424,8 @@ form input:focus { border-color: var(--clay); }
 
 <script>
 (function () {
-  var FORM_ID = '10004467';
-  var TAG_ID  = 24330687;
+  var FORM_ID = '10033900';
+  var TAG_ID  = null; // tag "31min_meditacije" — dodaj numerički ID kada ga dobijes iz Kita
 
   function calcSoul(dobStr) {
     var s = dobStr.trim();
@@ -474,7 +474,8 @@ form input:focus { border-color: var(--clay); }
 
     var soul = dob ? calcSoul(dob) : null;
 
-    var body = { api_key: 'nEJIDKEJbs0n5gTauo6pjQ', email: email, tags: [TAG_ID] };
+    var body = { api_key: 'nEJIDKEJbs0n5gTauo6pjQ', email: email };
+    if (TAG_ID) body.tags = [TAG_ID];
     if (name) body.first_name = name;
     var fields = {};
     if (dob)  fields.date_of_birth = dob;

@@ -7,9 +7,12 @@
   var STORAGE_KEY = 'nv_popup_hidden';
   var TRIGGER_SCROLL = 0.50;
   var TRIGGER_SECONDS = 45;
+  var TWO_DAYS_MS = 2 * 24 * 60 * 60 * 1000;
 
   try {
-    if (localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY)) return;
+    var stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === '1') return;
+    if (stored && (Date.now() - parseInt(stored, 10)) < TWO_DAYS_MS) return;
   } catch (e) {}
 
   var triggered = false;
@@ -71,7 +74,7 @@
     if (forever) {
       try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
     } else {
-      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+      try { localStorage.setItem(STORAGE_KEY, String(Date.now())); } catch (e) {}
     }
   }
 

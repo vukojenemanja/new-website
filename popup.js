@@ -18,6 +18,27 @@
   var triggered = false;
   var timer = null;
 
+  var lang = (document.documentElement.lang || 'sr').toLowerCase().slice(0, 2);
+  var L = lang === 'de' ? {
+    btnSoul: 'Seelenzahl entdecken', btnList: 'Anmelden', btnSending: 'Sende...',
+    errConsent: 'Bitte akzeptiere die Bedingungen, um dich anzumelden.',
+    errEmail: 'Bitte gib eine gültige E-Mail-Adresse ein.',
+    errDob: 'Bitte wähle dein Geburtsdatum.',
+    errServer: 'Ein Fehler ist aufgetreten. Bitte versuche es erneut oder kontaktiere mich direkt.'
+  } : lang === 'en' ? {
+    btnSoul: 'Discover my number', btnList: 'Join the list', btnSending: 'Sending...',
+    errConsent: 'Please accept the terms before signing up.',
+    errEmail: 'Please enter a valid email.',
+    errDob: 'Please select your date of birth.',
+    errServer: 'Something went wrong. Please try again or contact me directly.'
+  } : {
+    btnSoul: 'Otkrij broj', btnList: 'Prijavi se na listu', btnSending: 'Saljem...',
+    errConsent: 'Potrebno je da prihvatiš uslove pre prijave.',
+    errEmail: 'Unesi ispravan email.',
+    errDob: 'Izaberi datum rođenja.',
+    errServer: 'Došlo je do greške. Pokušaj ponovo ili me kontaktiraj direktno.'
+  };
+
   // ── Soul broj kalkulacija ──────────────────────────────────────────────
   function calcSoul(dobStr) {
     var s = dobStr.trim();
@@ -48,10 +69,10 @@
     if (!wrap) return;
     if (wantsSoul()) {
       wrap.style.display = 'block';
-      if (btn) btn.textContent = 'Otkrij broj';
+      if (btn) btn.textContent = L.btnSoul;
     } else {
       wrap.style.display = 'none';
-      if (btn) btn.textContent = 'Prijavi se na listu';
+      if (btn) btn.textContent = L.btnList;
     }
   }
 
@@ -99,13 +120,13 @@
     errEl.style.display = 'none';
 
     if (consent && !consent.checked) {
-      errEl.textContent = 'Potrebno je da prihvatiš uslove pre prijave.';
+      errEl.textContent = L.errConsent;
       errEl.style.display = 'block';
       return;
     }
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errEl.textContent = 'Unesi ispravan email.';
+      errEl.textContent = L.errEmail;
       errEl.style.display = 'block';
       return;
     }
@@ -116,14 +137,14 @@
       dob = dobEl ? dobEl.value.trim() : '';
       soul = calcSoul(dob);
       if (!soul) {
-        errEl.textContent = 'Izaberi datum rođenja.';
+        errEl.textContent = L.errDob;
         errEl.style.display = 'block';
         return;
       }
     }
 
     btn.disabled = true;
-    btn.textContent = 'Saljem...';
+    btn.textContent = L.btnSending;
 
     var body = { api_key: 'nEJIDKEJbs0n5gTauo6pjQ', email: email, tags: [24330687] };
     if (name) body.first_name = name;
@@ -146,9 +167,8 @@
       })
       .catch(function () {
         btn.disabled = false;
-        btn.textContent = wantsSoul() ? 'Otkrij broj' : 'Prijavi se na listu';
-        // 'Prijavi se' already correct Serbian
-        errEl.textContent = 'Došlo je do greške. Pokušaj ponovo ili me kontaktiraj direktno.';
+        btn.textContent = wantsSoul() ? L.btnSoul : L.btnList;
+        errEl.textContent = L.errServer;
         errEl.style.display = 'block';
       });
   }

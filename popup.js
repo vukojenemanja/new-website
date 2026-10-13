@@ -9,7 +9,7 @@
   var TRIGGER_SECONDS = 45;
 
   try {
-    if (localStorage.getItem(STORAGE_KEY)) return;
+    if (localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY)) return;
   } catch (e) {}
 
   var triggered = false;
@@ -70,6 +70,8 @@
     hidePopup();
     if (forever) {
       try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+    } else {
+      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
     }
   }
 

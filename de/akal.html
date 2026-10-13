@@ -2315,7 +2315,7 @@ function closeMobileMenu() {
   function onScroll() {
     var scrolled = window.scrollY + window.innerHeight;
     var total = document.documentElement.scrollHeight;
-    if (total > 0 && scrolled / total >= 0.88) {
+    if (total > 0 && scrolled / total >= 0.80) {
       window.removeEventListener('scroll', onScroll);
       setTimeout(agShow, 600);
     }

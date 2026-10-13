@@ -186,7 +186,12 @@
       var numEl = document.getElementById('nv-popup-soul-num');
       var linkEl = document.getElementById('nv-popup-soul-link');
       if (numEl) numEl.textContent = soul;
-      if (linkEl) linkEl.href = 'https://vukojenemanja.com/pdfs/broj-duse/Broj_Duse_' + soul + '.pdf';
+      var pdfPath = lang === 'de'
+        ? 'https://vukojenemanja.com/pdfs/seelenzahl/Seelenzahl_' + soul + '.pdf'
+        : lang === 'en'
+          ? 'https://vukojenemanja.com/pdfs/soul-number/Soul_Number_' + soul + '.pdf'
+          : 'https://vukojenemanja.com/pdfs/broj-duse/Broj_Duse_' + soul + '.pdf';
+      if (linkEl) linkEl.href = pdfPath;
       if (soulResult) soulResult.style.display = 'block';
       if (newsletterResult) newsletterResult.style.display = 'none';
     } else {

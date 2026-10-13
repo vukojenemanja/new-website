@@ -1996,8 +1996,8 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
     <div style="max-width:700px;margin:0 auto;text-align:center;">
       <div class="section-label" style="justify-content:center;">Join Akal Community</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;margin-bottom:16px;"><!--CMS:cta_price-->77€<!--/CMS--> <em style="font-style:italic;color:var(--accent);font-size:0.5em;vertical-align:middle;"><!--CMS:cta_period-->per month<!--/CMS--></em></h2>
-      <p style="color:var(--stone);margin-bottom:12px;"><!--CMS:cta_p1-->Cancel anytime. No long-term commitment required.<!--/CMS--></p>
-      <p style="color:var(--stone);margin-bottom:48px;"><!--CMS:cta_p2-->Classes are held online - you can join from anywhere in the world.<!--/CMS--></p>
+      <p style="color:var(--stone);margin-bottom:12px;"><!--CMS:cta_p1-->Each month you get at least six guided sessions: four Kundalini yoga classes and two meditation evenings, plus recordings and private community support.<!--/CMS--></p>
+      <p style="color:var(--stone);margin-bottom:12px;"><!--CMS:cta_p2-->Cancel anytime. No long-term commitment required. Classes are held online - you can join from anywhere in the world.<!--/CMS--></p>
       <a href="mailto:info@vukojenemanja.com?subject=Booking%20Request%20-%20Akal%20Community" class="btn-primary"><!--CMS:cta_btn-->Join the community<!--/CMS--></a>
     </div>
   </div>
@@ -2110,7 +2110,7 @@ function toggleFaq(btn) {
   </div>
 </footer>
 <div class="footer-bottom">
-  <p>© 2025 Nemanja Vukoje - vukojenemanja.com</p>
+  <p>© 2026 Nemanja Vukoje - vukojenemanja.com</p>
   <p>All sessions online - Worldwide</p>
 </div>
 <script>
@@ -2175,6 +2175,148 @@ function closeMobileMenu() {
     </div>
   </div>
 </div>
-<script src="popup.js"></script>
+<script src="../popup.js"></script>
+
+<!-- Akal welcome gift popup -->
+<style>
+#ag-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(22,17,12,0.78);
+  z-index: 10001;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+#ag-overlay.open { display: flex; }
+#ag-box {
+  background: var(--deep);
+  border: 1px solid rgba(196,168,130,0.2);
+  border-top: 3px solid var(--clay);
+  max-width: 500px;
+  width: 100%;
+  padding: 52px 48px;
+  position: relative;
+  animation: fadeUp 0.4s ease both;
+}
+#ag-close {
+  position: absolute;
+  top: 16px; right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: rgba(232,221,208,0.35);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+#ag-close:hover { color: var(--clay); }
+#ag-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+#ag-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+#ag-title em { font-style: italic; color: var(--clay); }
+#ag-sub {
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(232,221,208,0.65);
+  margin-bottom: 36px;
+}
+#ag-sub strong { color: var(--clay); font-weight: 400; }
+#ag-cta {
+  display: block;
+  padding: 18px 32px;
+  background: var(--clay);
+  color: var(--deep);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+  transition: background 0.3s;
+  margin-bottom: 16px;
+}
+#ag-cta:hover { background: #D4B896; }
+#ag-dismiss {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(232,221,236,0.3);
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 4px;
+}
+#ag-dismiss:hover { color: var(--stone); }
+@media (max-width: 600px) {
+  #ag-box { padding: 40px 24px; }
+}
+</style>
+
+<div id="ag-overlay" role="dialog" aria-modal="true">
+  <div id="ag-box">
+    <button id="ag-close" aria-label="Close">&#215;</button>
+    <div id="ag-label">Welcome gift</div>
+    <h2 id="ag-title">Personal Map -<br><em>free of charge.</em></h2>
+    <p id="ag-sub">Every new Akal Community member receives a <strong>free personal numerological map</strong> as a welcome gift - value 33€. Join, send me your name and date of birth, and the map arrives within 72 hours.</p>
+    <a id="ag-cta" href="mailto:info@vukojenemanja.com?subject=Joining%20Akal%20Community&body=Hello%20Nemanja%2C%0A%0AI%20would%20like%20to%20join%20the%20Akal%20Community.%0A%0AMy%20name%3A%0AMy%20date%20of%20birth%3A%0A%0ABest%20regards">Join Akal - 77€ per month</a>
+    <span id="ag-dismiss">Not for me</span>
+  </div>
+</div>
+
+<script>
+(function() {
+  var STORAGE_KEY = 'ag-seen';
+  try { if (sessionStorage.getItem(STORAGE_KEY)) return; } catch(e) {}
+
+  var shown = false;
+
+  function agClose() {
+    document.getElementById('ag-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function agShow() {
+    if (shown) return;
+    var nvOverlay = document.getElementById('nv-popup-overlay');
+    if (nvOverlay && nvOverlay.classList.contains('open')) return;
+    shown = true;
+    try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch(e) {}
+    document.getElementById('ag-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function onScroll() {
+    var scrolled = window.scrollY + window.innerHeight;
+    var total = document.documentElement.scrollHeight;
+    if (total > 0 && scrolled / total >= 0.88) {
+      window.removeEventListener('scroll', onScroll);
+      setTimeout(agShow, 600);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  setTimeout(function() { window.removeEventListener('scroll', onScroll); agShow(); }, 150000);
+
+  document.getElementById('ag-close').addEventListener('click', agClose);
+  document.getElementById('ag-dismiss').addEventListener('click', agClose);
+  document.getElementById('ag-overlay').addEventListener('click', function(e) {
+    if (e.target === this) agClose();
+  });
+})();
+</script>
 </body>
 </html>

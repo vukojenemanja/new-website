@@ -2102,6 +2102,7 @@ function toggleFaq(btn) {
       <li><a href="agb.html">Uslovi</a></li>
       <li><a href="datenschutz.html">Privatnost</a></li>
       <li><a href="impressum.html">Impresum</a></li>
+      <li><a href="#" onclick="nvShowNewsletter();return false;">Newsletter</a></li>
     </ul>
   </div>
   <div class="footer-contact">
@@ -2314,7 +2315,7 @@ function closeMobileMenu() {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  setTimeout(function() { window.removeEventListener('scroll', onScroll); agShow(); }, 150000);
+  setTimeout(function() { window.removeEventListener('scroll', onScroll); agShow(); }, 144000);
 
   document.getElementById('ag-close').addEventListener('click', agClose);
   document.getElementById('ag-dismiss').addEventListener('click', agClose);

@@ -7,12 +7,12 @@
   var STORAGE_KEY = 'nv_popup_hidden';
   var TRIGGER_SCROLL = 0.50;
   var TRIGGER_SECONDS = 45;
-  var TWO_DAYS_MS = 2 * 24 * 60 * 60 * 1000;
 
+  // Skip auto-trigger if subscribed (permanent) or dismissed this session
+  var skipAuto = false;
   try {
-    var stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === '1') return;
-    if (stored && (Date.now() - parseInt(stored, 10)) < TWO_DAYS_MS) return;
+    if (localStorage.getItem(STORAGE_KEY) === '1') skipAuto = true;
+    else if (sessionStorage.getItem(STORAGE_KEY)) skipAuto = true;
   } catch (e) {}
 
   var triggered = false;
@@ -51,9 +51,9 @@
     if (isNaN(day) || day < 1 || day > 31) return null;
     var n = day;
     while (n > 11) {
-      var s = 0, tmp = n;
-      while (tmp > 0) { s += tmp % 10; tmp = Math.floor(tmp / 10); }
-      n = s;
+      var sum = 0, tmp = n;
+      while (tmp > 0) { sum += tmp % 10; tmp = Math.floor(tmp / 10); }
+      n = sum;
     }
     return n;
   }
@@ -95,7 +95,7 @@
     if (forever) {
       try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
     } else {
-      try { localStorage.setItem(STORAGE_KEY, String(Date.now())); } catch (e) {}
+      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
     }
   }
 
@@ -222,9 +222,20 @@
       updateDobVisibility();
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    timer = setTimeout(showPopup, TRIGGER_SECONDS * 1000);
+    if (!skipAuto) {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      timer = setTimeout(showPopup, TRIGGER_SECONDS * 1000);
+    }
   }
+
+  // Public API: footer link can always open the popup
+  window.nvShowNewsletter = function () {
+    triggered = false;
+    var overlay = document.getElementById('nv-popup-overlay');
+    if (!overlay) return;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

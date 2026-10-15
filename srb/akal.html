@@ -2305,17 +2305,25 @@ function closeMobileMenu() {
     document.body.style.overflow = 'hidden';
   }
 
+  var scrolledEnough = false;
+  var timerDone = false;
+
+  function maybeShow() {
+    if (scrolledEnough && timerDone) agShow();
+  }
+
   function onScroll() {
     var scrolled = window.scrollY + window.innerHeight;
     var total = document.documentElement.scrollHeight;
     if (total > 0 && scrolled / total >= 0.80) {
       window.removeEventListener('scroll', onScroll);
-      setTimeout(agShow, 600);
+      scrolledEnough = true;
+      maybeShow();
     }
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  setTimeout(function() { window.removeEventListener('scroll', onScroll); agShow(); }, 144000);
+  setTimeout(function() { timerDone = true; maybeShow(); }, 144000);
 
   document.getElementById('ag-close').addEventListener('click', agClose);
   document.getElementById('ag-dismiss').addEventListener('click', agClose);

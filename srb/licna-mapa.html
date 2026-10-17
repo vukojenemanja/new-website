@@ -1141,6 +1141,131 @@ footer {
 
   .testi-card { padding: 36px 28px; }
 }
+
+/* ── PAYMENT MODAL ── */
+#pay-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(30,23,18,0.72);
+  z-index: 9000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+#pay-overlay.open { display: flex; }
+#pay-modal {
+  background: var(--fog);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 36px 32px;
+  position: relative;
+}
+#pay-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--stone);
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+.pay-tag {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 10px;
+  font-family: 'DM Sans', sans-serif;
+}
+.pay-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--bark);
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+.pay-sub {
+  font-size: 14px;
+  color: var(--stone);
+  margin: 0 0 28px;
+}
+.pay-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.pay-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border: 1.5px solid rgba(61,46,30,0.12);
+  border-radius: 12px;
+  padding: 18px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+.pay-option.featured { border-color: var(--clay); }
+.pay-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.pay-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--bark);
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+.pay-desc {
+  font-size: 12px;
+  color: var(--stone);
+  margin: 2px 0 0;
+  font-family: 'DM Sans', sans-serif;
+}
+.pay-chevron { margin-left: auto; flex-shrink: 0; }
+#pay-uplatnica-details {
+  display: none;
+  background: #fff;
+  border: 1.5px solid rgba(61,46,30,0.12);
+  border-radius: 12px;
+  padding: 20px 20px 16px;
+}
+.pay-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.pay-row-label { color: var(--stone); }
+.pay-row-val { color: var(--bark); font-weight: 500; }
+.pay-row-val.mono { font-family: monospace; letter-spacing: 0.04em; }
+.pay-note {
+  font-size: 12px;
+  color: var(--stone);
+  line-height: 1.6;
+  border-top: 1px solid rgba(61,46,30,0.08);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+.pay-note a { color: var(--accent); text-decoration: none; }
+.pay-footer {
+  font-size: 12px;
+  color: var(--stone);
+  text-align: center;
+  margin: 0;
+  line-height: 1.6;
+}
+.pay-footer a { color: var(--accent); text-decoration: none; }
 </style>
 </head>
 <body>
@@ -1160,7 +1285,7 @@ footer {
       </ul>
     </li>
     <li><a href="index.html#testimonials">Utisci</a></li>
-    <li><a href="mailto:info@vukojenemanja.com?subject=Zelim%20svoju%20licnu%20mapu&body=Zdravo%2C%0A%0A%C5%BDelim%20da%20naru%C4%8Dim%20li%C4%8Dnu%20mapu.%0A%0AIme%20i%20prezime%3A%20%0ADatum%20rodjenja%3A%20" class="nav-cta">Želim svoju mapu</a></li>
+    <li><a href="#" onclick="openPaymentModal();return false;" class="nav-cta">Želim svoju mapu</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Meni">
     <span></span><span></span><span></span>
@@ -1175,7 +1300,7 @@ footer {
   <a href="individual.html" onclick="closeMobileMenu()">Individualni rad</a>
   <a href="licna-mapa.html" onclick="closeMobileMenu()" style="color:var(--clay)">Lična mapa</a>
   <a href="index.html#testimonials" onclick="closeMobileMenu()">Utisci</a>
-  <a href="mailto:info@vukojenemanja.com?subject=Zelim%20svoju%20licnu%20mapu&body=Zdravo%2C%0A%0A%C5%BDelim%20da%20naru%C4%8Dim%20li%C4%8Dnu%20mapu.%0A%0AIme%20i%20prezime%3A%20%0ADatum%20rodjenja%3A%20" class="mobile-cta" onclick="closeMobileMenu()">Želim svoju mapu</a>
+  <a href="#" onclick="closeMobileMenu();openPaymentModal();return false;" class="mobile-cta">Želim svoju mapu</a>
 </div>
 
 <!-- ── HERO ── -->
@@ -1185,7 +1310,7 @@ footer {
     <h1>Tvoja lična <em>mapa.</em></h1>
     <p class="hero-sub">Personalizovana analiza napravljena baš po tvojim brojevima. Razumi svoje obrasce, prepoznaj potencijal i usmeri energiju na ono što ti je zaista važno.</p>
     <div class="hero-actions">
-      <a href="mailto:info@vukojenemanja.com?subject=Zelim%20svoju%20licnu%20mapu&body=Zdravo%2C%0A%0A%C5%BDelim%20da%20naru%C4%8Dim%20li%C4%8Dnu%20mapu.%0A%0AIme%20i%20prezime%3A%20%0ADatum%20rodjenja%3A%20" class="btn-main">Želim svoju mapu</a>
+      <a href="#" onclick="openPaymentModal();return false;" class="btn-main">Želim svoju mapu</a>
       <div>
         <p class="hero-price-note"><s>55 €</s> &nbsp;→&nbsp; 33 € · Uvodna cena</p>
         <p class="hero-delivery">PDF stiže na mejl u roku od 72 sata · ostaje tvoj zauvek</p>
@@ -1375,7 +1500,7 @@ footer {
         <div class="how-step-num">1</div>
         <div class="how-step-body">
           <h4>Poručiš mapu</h4>
-          <p>Klikneš na dugme, otvori se mejl sa tvojim imenom i datumom rodjenja. Šalješ ga na info@vukojenemanja.com.</p>
+          <p>Klikneš na dugme, izabereš način plaćanja i završiš porudžbinu. Posle pošalješ ime i datum rođenja na info@vukojenemanja.com.</p>
         </div>
       </div>
       <div class="how-step reveal">
@@ -1498,7 +1623,7 @@ footer {
     <span class="new">33 €</span>
     <span class="new-label">Uvodna cena</span>
   </div>
-  <a href="mailto:info@vukojenemanja.com?subject=Zelim%20svoju%20licnu%20mapu&body=Zdravo%2C%0A%0A%C5%BDelim%20da%20naru%C4%8Dim%20li%C4%8Dnu%20mapu.%0A%0AIme%20i%20prezime%3A%20%0ADatum%20rodjenja%3A%20" class="btn-main">Želim svoju mapu</a>
+  <a href="#" onclick="openPaymentModal();return false;" class="btn-main">Želim svoju mapu</a>
   <p class="cta-note">PDF stiže u narednih 72 sata · ostaje tvoj zauvek</p>
 </section>
 
@@ -1603,5 +1728,76 @@ reveals.forEach(el => observer.observe(el));
   </div>
 </div>
 <script src="../popup.js"></script>
+
+<!-- ── PAYMENT MODAL ── -->
+<div id="pay-overlay">
+  <div id="pay-modal">
+    <button id="pay-close" aria-label="Zatvori">&#215;</button>
+    <p class="pay-tag">Porudžbina</p>
+    <h2 class="pay-title">Lična mapa</h2>
+    <p class="pay-sub">Izaberi način plaćanja</p>
+    <div class="pay-options">
+      <a href="https://buy.stripe.com/fZubJ32wDdE5frheak4ow02" target="_blank" class="pay-option featured">
+        <div class="pay-icon" style="background:#635BFF;">
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none"><rect width="20" height="12" rx="2" fill="#635BFF"/><rect x="2" y="3.5" width="6" height="1.8" rx="0.9" fill="white" opacity="0.9"/><rect x="2" y="6.5" width="4" height="1.4" rx="0.7" fill="white" opacity="0.5"/><rect x="12" y="2.5" width="6" height="7" rx="1.5" fill="white" opacity="0.2"/><rect x="13" y="5" width="4" height="1.4" rx="0.7" fill="white" opacity="0.9"/></svg>
+        </div>
+        <div style="flex:1;">
+          <p class="pay-name">Kartica</p>
+          <p class="pay-desc">Visa, Mastercard, Amex &middot; EUR</p>
+        </div>
+        <svg class="pay-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="#C4A882" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://paypal.me/vukojenemanja" target="_blank" class="pay-option">
+        <div class="pay-icon" style="background:#002F86;">
+          <svg width="22" height="22" viewBox="0 0 22 22"><text x="2" y="16" font-size="14" font-family="Arial" font-weight="800" fill="#009CDE">P</text><text x="8" y="16" font-size="14" font-family="Arial" font-weight="800" fill="#fff">P</text></svg>
+        </div>
+        <div style="flex:1;">
+          <p class="pay-name">PayPal</p>
+          <p class="pay-desc">Plati sa PayPal nalogom</p>
+        </div>
+        <svg class="pay-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="#8A8070" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="pay-option" id="pay-uplatnica-btn">
+        <div class="pay-icon" style="background:var(--bark);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="#E8DDD0" stroke-width="1.5"/><path d="M7 9h6M7 12h4" stroke="#C4A882" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <p class="pay-name">Dinarska uplatnica</p>
+          <p class="pay-desc">Uplata u RSD po kursu</p>
+        </div>
+        <svg id="pay-uplatnica-chevron" class="pay-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="transition:transform 0.2s;"><path d="M6 3l5 5-5 5" stroke="#8A8070" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div id="pay-uplatnica-details">
+        <div class="pay-row"><span class="pay-row-label">Primalac</span><span class="pay-row-val">Vukoje Nemanja</span></div>
+        <div class="pay-row"><span class="pay-row-label">Broj računa</span><span class="pay-row-val mono">340-32547384-15</span></div>
+        <p class="pay-note">Iznos po srednjem dnevnom kursu NBS. Nakon uplate pošalji potvrdu na <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
+      </div>
+    </div>
+    <p class="pay-footer">Nakon plaćanja pošalji ime i datum rođenja<br>na <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var overlay = document.getElementById('pay-overlay');
+  function openPay() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePay() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('pay-close').addEventListener('click', closePay);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closePay(); });
+  document.getElementById('pay-uplatnica-btn').addEventListener('click', function() {
+    var d = document.getElementById('pay-uplatnica-details');
+    var open = d.style.display === 'block';
+    d.style.display = open ? 'none' : 'block';
+    document.getElementById('pay-uplatnica-chevron').style.transform = open ? 'rotate(0deg)' : 'rotate(90deg)';
+  });
+  window.openPaymentModal = openPay;
+})();
+</script>
 </body>
 </html>

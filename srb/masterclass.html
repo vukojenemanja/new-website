@@ -2,7 +2,7 @@
 <html lang="sr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kundalini Master Class - Aktiviraj svoju intuiciju | Nemanja Vukoje</title>
 <meta name="description" content="Kundalini Master Class - dva sata prakse za razvijanje intuicije. Vežbe, tehnike disanja i posebne meditacije. Online, nedelja 25. oktobar, 9-11h, 21€.">
 <link rel="canonical" href="https://vukojenemanja.com/srb/masterclass.html" />
@@ -11,293 +11,486 @@
 <meta property="og:url" content="https://vukojenemanja.com/srb/masterclass.html" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Nemanja Vukoje" />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+
 :root {
-  --bg:     #F5F1EC;
-  --bg2:    #EDE7DE;
-  --fg:     #1E1712;
-  --muted:  rgba(30,23,18,0.52);
-  --faint:  rgba(30,23,18,0.1);
-  --clay:   #9B6B3A;
-  --line:   rgba(61,46,30,0.15);
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+  --warm:   #D4B896;
 }
-*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  background: var(--bg);
-  color: var(--fg);
+  background: var(--fog);
+  color: var(--bark);
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
-  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-/* HERO */
+/* ── HERO ── */
 .hero {
+  min-height: 100vh;
   position: relative;
-  width: 100%;
-  height: min(90vh, 820px);
+  display: flex;
+  align-items: flex-end;
   overflow: hidden;
+  background: var(--deep);
 }
-.hero img {
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-photo img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center 20%;
   display: block;
 }
-.hero-overlay {
-  position: absolute; inset: 0;
+
+.hero-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
-    170deg,
-    rgba(16,13,10,0.15) 0%,
-    rgba(16,13,10,0.45) 45%,
-    rgba(16,13,10,0.94) 90%
+    105deg,
+    rgba(30,23,18,0.92) 0%,
+    rgba(30,23,18,0.7) 45%,
+    rgba(30,23,18,0.3) 100%
   );
 }
-.hero-inner {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 0 max(48px, env(safe-area-inset-left, 0px)) 56px;
-  max-width: 1000px;
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 60px 100px;
+  max-width: 680px;
 }
-.hero-eyebrow {
-  font-size: 11px; font-weight: 400;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(196,168,130,0.9); margin-bottom: 16px;
-}
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(60px, 9vw, 110px);
-  font-weight: 300; line-height: 0.9;
-  letter-spacing: -0.02em; color: #F2EDE6;
-  text-wrap: balance;
-}
-.hero-title em {
-  font-style: italic; font-weight: 300;
-  color: #C4A882; display: block;
-  font-size: 0.55em; letter-spacing: 0.01em;
-  margin-top: 10px;
-}
-.hero-info {
-  margin-top: 32px;
-  display: flex; flex-wrap: wrap; gap: 6px 0;
-  align-items: center;
-}
-.hero-tag {
-  font-size: 11px; letter-spacing: 0.14em;
+
+.hero-label {
+  font-size: 10px;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  color: rgba(242,237,230,0.55);
-  padding-right: 20px; margin-right: 20px;
-  border-right: 1px solid rgba(196,168,130,0.25);
+  color: var(--clay);
+  margin-bottom: 32px;
 }
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.0;
+  margin-bottom: 28px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--clay);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(232,221,208,0.65);
+  max-width: 460px;
+  margin-bottom: 48px;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 48px;
+}
+
+.hero-tag {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(196,168,130,0.7);
+  padding-right: 24px;
+  margin-right: 24px;
+  border-right: 1px solid rgba(196,168,130,0.2);
+}
+
 .hero-tag:last-child { border-right: none; }
-.hero-tag strong { color: #F2EDE6; font-weight: 400; }
+.hero-tag strong { color: var(--sand); font-weight: 400; }
 
-/* SHARED */
-.section {
-  padding: 80px max(48px, env(safe-area-inset-left, 0px));
-  max-width: 800px;
+.btn-primary {
+  display: inline-block;
+  padding: 18px 48px;
+  background: var(--clay);
+  color: var(--deep);
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+  font-family: 'DM Sans', sans-serif;
 }
-.section + .section { padding-top: 0; }
-.label {
-  font-size: 10px; font-weight: 500;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--clay); margin-bottom: 24px;
+
+.btn-primary:hover {
+  background: var(--warm);
+  transform: translateY(-2px);
 }
-h2 {
+
+/* ── PAIN / PREPOZNAJES LI SE ── */
+.pain {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+
+.pain-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 32px;
+}
+
+.pain h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(32px, 4.5vw, 46px);
-  font-weight: 300; line-height: 1.15;
-  color: var(--fg); text-wrap: balance;
-}
-h2 em { font-style: italic; color: var(--clay); }
-p.body {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(18px, 2.2vw, 21px);
-  font-weight: 300; line-height: 1.75;
-  color: rgba(30,23,18,0.78);
-}
-p.body + p.body { margin-top: 20px; }
-
-/* DIVIDER */
-.divider {
-  height: 1px; background: var(--line);
-  margin: 0 max(48px, env(safe-area-inset-left, 0px));
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 28px;
 }
 
-/* PITANJA */
-.questions {
-  padding: 72px max(48px, env(safe-area-inset-left, 0px));
+.pain h2 em { font-style: italic; color: var(--accent); }
+
+.pain p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--stone);
+  margin-bottom: 16px;
 }
-.question-list {
-  display: flex; flex-direction: column; gap: 0;
+
+.pain-list {
+  list-style: none;
+  margin-top: 8px;
 }
-.question-item {
-  display: flex; align-items: baseline; gap: 20px;
+
+.pain-item {
   padding: 22px 0;
-  border-bottom: 1px solid var(--faint);
-}
-.question-item:first-child { border-top: 1px solid var(--faint); }
-.q-num {
-  font-size: 11px; letter-spacing: 0.08em;
-  color: var(--clay); flex-shrink: 0; width: 20px;
-}
-.q-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(19px, 2.5vw, 24px);
-  font-style: italic; font-weight: 300;
-  line-height: 1.45; color: var(--fg);
+  border-bottom: 1px solid rgba(61,46,30,0.1);
+  font-size: 15px;
+  color: var(--stone);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  line-height: 1.7;
 }
 
-/* QUESTIONS NOTE */
-.questions-note {
-  margin-top: 36px;
-  padding-top: 32px;
-  border-top: 1px solid var(--faint);
-  display: flex; flex-direction: column; gap: 16px;
-}
-.questions-note p {
+.pain-item:first-child { border-top: 1px solid rgba(61,46,30,0.1); }
+
+.pain-item::before {
+  content: '-';
+  color: var(--clay);
+  flex-shrink: 0;
+  margin-top: 2px;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(17px, 2vw, 20px);
-  font-weight: 300; line-height: 1.75;
-  color: rgba(30,23,18,0.72);
+  font-size: 18px;
 }
 
-/* BRIDGE */
-.bridge-section {
-  padding: 64px max(48px, env(safe-area-inset-left, 0px));
-  background: var(--bg2);
+/* ── PITANJE ── */
+.pitanje {
+  background: var(--deep);
+  padding: 100px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pitanje::before {
+  content: '?';
+  position: absolute;
+  top: -60px; right: 40px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 500px;
+  color: rgba(196,168,130,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.pitanje-inner {
   max-width: 800px;
-}
-.bridge-intro {
-  font-size: 12px; font-weight: 400;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--clay); margin-bottom: 20px;
-}
-.bridge-question {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(22px, 3.2vw, 34px);
-  font-weight: 300; font-style: italic;
-  line-height: 1.4; color: var(--fg);
-  text-wrap: balance;
+  margin: 0 auto;
 }
 
-/* PRACTICE GRID */
-.practice-grid {
-  margin-top: 40px;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--line);
-  border: 1px solid var(--line);
-}
-.practice-card {
-  background: var(--bg);
-  padding: 32px 28px;
-}
-.practice-card-num {
-  font-size: 10px; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--clay);
-  margin-bottom: 14px;
-}
-.practice-card h4 {
+.pitanje .section-label { color: var(--clay); }
+
+.pitanje h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 20px; font-weight: 400;
-  color: var(--fg); margin-bottom: 10px;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--sand);
+  line-height: 1.4;
+}
+
+/* ── O MASTERCLASSU ── */
+.about-mc {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+
+.about-mc-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-mc h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+
+.about-mc h2 em { font-style: italic; color: var(--accent); }
+
+.about-mc p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--stone);
+  margin-bottom: 20px;
+}
+
+.about-mc p:last-child { margin-bottom: 0; }
+
+.about-mc-aside {
+  padding-top: 8px;
+}
+
+.info-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 40px;
+}
+
+.info-row {
+  background: var(--sand);
+  padding: 20px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.info-row-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.info-row-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--bark);
+}
+
+/* ── ŠTA ĆEMO RADITI ── */
+.practice {
+  background: var(--deep);
+  padding: 120px 60px;
+}
+
+.practice-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.practice-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 64px;
+  align-items: end;
+}
+
+.practice h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.1;
+}
+
+.practice h2 em { font-style: italic; color: var(--clay); }
+
+.practice-desc {
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(232,221,208,0.55);
+}
+
+.practice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.practice-card {
+  background: rgba(196,168,130,0.05);
+  padding: 40px 36px;
+  position: relative;
+}
+
+.practice-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 60px;
+  font-weight: 300;
+  color: var(--clay);
+  opacity: 0.15;
+  position: absolute;
+  top: 16px; right: 24px;
+  line-height: 1;
+}
+
+.practice-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--sand);
+  margin-bottom: 12px;
   line-height: 1.2;
 }
-.practice-card p {
-  font-size: 14px; line-height: 1.7;
-  color: var(--muted); font-weight: 300;
+
+.practice-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(232,221,208,0.55);
 }
 
-/* DETALJI */
-.details-section {
-  padding: 80px max(48px, env(safe-area-inset-left, 0px));
-  background: var(--bg2);
-}
-.details-row {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 1px; background: var(--line);
-  border: 1px solid var(--line); margin-top: 36px;
-}
-.detail-cell {
-  background: var(--bg2);
-  padding: 28px 24px;
-}
-.detail-cell-label {
-  font-size: 10px; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--clay);
-  margin-bottom: 8px;
-}
-.detail-cell-val {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px; font-weight: 300; color: var(--fg);
-}
-.detail-cell-sub {
-  font-size: 12px; color: var(--muted);
-  margin-top: 4px; line-height: 1.5;
-}
-
-/* CTA */
-.cta-section {
-  padding: 100px max(48px, env(safe-area-inset-left, 0px));
+/* ── CTA ── */
+.cta {
+  background: var(--fog);
+  padding: 120px 60px;
   text-align: center;
-  display: flex; flex-direction: column;
-  align-items: center; gap: 28px;
-}
-.cta-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 300; font-style: italic;
-  color: var(--fg); text-wrap: balance;
-  max-width: 560px;
-}
-.cta-btn {
-  display: inline-block;
-  background: var(--clay); color: #fff;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  text-decoration: none; padding: 20px 60px;
-  transition: background 0.2s;
-}
-.cta-btn:hover { background: var(--fg); }
-.cta-email {
-  font-size: 13px; color: var(--clay);
-  letter-spacing: 0.04em;
 }
 
-/* FOOTER */
-footer {
-  border-top: 1px solid var(--line);
-  padding: 28px max(48px, env(safe-area-inset-left, 0px));
-  display: flex; justify-content: space-between;
-  align-items: center; flex-wrap: wrap; gap: 8px;
+.cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
 }
+
+.cta .section-label { justify-content: center; margin-bottom: 32px; }
+
+.cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.cta-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 40px;
+}
+
+.cta-email {
+  display: block;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--stone);
+  letter-spacing: 1px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep);
+  border-top: 1px solid rgba(196,168,130,0.1);
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .footer-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 16px; font-weight: 300; font-style: italic;
-  color: var(--muted);
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(232,221,208,0.5);
 }
+
 .footer-link {
-  font-size: 11px; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(196,168,130,0.5);
   text-decoration: none;
+  transition: color 0.3s;
 }
+
 .footer-link:hover { color: var(--clay); }
 
-/* RESPONSIVE */
-@media (max-width: 640px) {
-  .hero-inner { padding: 0 max(24px, env(safe-area-inset-left, 0px)) 40px; }
-  .bridge-section { padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
-  .section, .questions, .details-section, .cta-section {
-    padding-left: max(24px, env(safe-area-inset-left, 0px));
-    padding-right: max(24px, env(safe-area-inset-right, 0px));
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-label  { animation: fadeUp 1s ease 0.2s both; }
+.hero h1     { animation: fadeUp 1s ease 0.4s both; }
+.hero-sub    { animation: fadeUp 1s ease 0.6s both; }
+.hero-tags   { animation: fadeUp 1s ease 0.7s both; }
+.hero-content .btn-primary { animation: fadeUp 1s ease 0.8s both; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .hero-content { padding: 0 24px 72px; }
+  .hero-tags { gap: 8px 0; }
+  .hero-tag {
+    font-size: 10px;
+    padding-right: 16px;
+    margin-right: 16px;
   }
-  .divider { margin: 0 max(24px, env(safe-area-inset-left, 0px)); }
+
+  .pain, .about-mc, .practice, .cta { padding: 72px 24px; }
+  .pitanje { padding: 72px 24px; }
+  footer { padding: 28px 24px; }
+
+  .pain-inner,
+  .about-mc-inner,
+  .practice-header { grid-template-columns: 1fr; gap: 40px; }
+
   .practice-grid { grid-template-columns: 1fr; }
-  .details-row { grid-template-columns: 1fr 1fr; }
-  .hero { height: min(85vh, 600px); }
-  footer { padding: 24px max(24px, env(safe-area-inset-left, 0px)); }
 }
 </style>
 </head>
@@ -305,130 +498,131 @@ footer {
 
 <!-- HERO -->
 <div class="hero">
-  <img src="../assets/images/kundalini-masterclass.jpg" alt="Kundalini Master Class">
-  <div class="hero-overlay"></div>
-  <div class="hero-inner">
-    <p class="hero-eyebrow">Kundalini Master Class</p>
-    <h1 class="hero-title">
-      Aktiviraj<br>svoju<br>
-      <em>intuiciju</em>
-    </h1>
-    <div class="hero-info">
-      <span class="hero-tag"><strong>25. oktobar</strong>&nbsp;· nedelja</span>
+  <div class="hero-photo">
+    <img src="../assets/images/kundalini-masterclass.jpg" alt="Kundalini Master Class">
+  </div>
+  <div class="hero-content">
+    <p class="hero-label">Kundalini Master Class</p>
+    <h1>Aktiviraj<br>svoju<br><em>intuiciju</em></h1>
+    <p class="hero-sub">Dva sata prakse. Kundalini joga vežbe, tehnike disanja i meditacije usmerene na razvijanje intuicije i bolji kontakt sa sopstvenim unutrašnjim osećajem.</p>
+    <div class="hero-tags">
+      <span class="hero-tag"><strong>25. oktobar</strong> · nedelja</span>
       <span class="hero-tag"><strong>9-11h</strong></span>
       <span class="hero-tag"><strong>Online</strong></span>
       <span class="hero-tag"><strong>21 €</strong></span>
     </div>
+    <a href="mailto:info@vukojenemanja.com?subject=Prijava%20za%20Kundalini%20Master%20Class%2025.10.&body=Zdravo%20Nemanja%2C%0A%0APrijavljujem%20se%20za%20Kundalini%20Master%20Class%20-%20Aktiviraj%20svoju%20intuiciju%2C%2025.%20oktobra%20od%209%20do%2011h.%0A%0AIme%20i%20prezime%3A%20%0A%0AVidimo%20se%21" class="btn-primary">Prijavi se</a>
   </div>
 </div>
 
-<!-- PITANJA -->
-<div class="questions">
-  <p class="label">Prepoznaješ li se</p>
-  <div class="question-list">
-    <div class="question-item">
-      <span class="q-num">01</span>
-      <p class="q-text">Imaš osećaj da nešto nije za tebe, ali onda počneš da tražiš razloge zašto možda ipak grešiš.</p>
+<!-- PREPOZNAJEŠ LI SE -->
+<section class="pain">
+  <div class="pain-inner">
+    <div>
+      <p class="section-label">Prepoznaješ li se</p>
+      <h2>Osećaš, ali ne<br><em>veruješ sebi.</em></h2>
+      <p>Možda ti je ovo poznato. Osetiš nešto, a onda počneš da preispituješ sebe. Tražiš racionalno objašnjenje, razmišljaš šta će drugi reći ili pokušavaš da budeš potpuno siguran/na da nećeš pogrešiti.</p>
+      <p>A ponekad se dešava i suprotno - snažan osećaj odmah protumačimo kao znak da treba nešto da uradimo, bez zastajanja i razumevanja onoga što se u nama dešava.</p>
     </div>
-    <div class="question-item">
-      <span class="q-num">02</span>
-      <p class="q-text">Pre nego što doneseš odluku, pitaš nekoliko ljudi za mišljenje, jer ti nije dovoljno da veruješ sopstvenom osećaju.</p>
-    </div>
-    <div class="question-item">
-      <span class="q-num">03</span>
-      <p class="q-text">Vrtiš istu situaciju u glavi, analiziraš sve moguće ishode i na kraju ti je još teže da odlučiš šta želiš.</p>
-    </div>
+    <ul class="pain-list">
+      <li class="pain-item">Imaš osećaj da nešto nije za tebe, ali onda počneš da tražiš razloge zašto možda ipak grešiš.</li>
+      <li class="pain-item">Pre nego što doneseš odluku, pitaš nekoliko ljudi za mišljenje, jer ti nije dovoljno da veruješ sopstvenom osećaju.</li>
+      <li class="pain-item">Vrtiš istu situaciju u glavi, analiziraš sve moguće ishode i na kraju ti je još teže da odlučiš šta želiš.</li>
+    </ul>
   </div>
-  <div class="questions-note">
-    <p>Možda ti je ovo poznato. Osetiš nešto, a onda počneš da preispituješ sebe. Tražiš racionalno objašnjenje, razmišljaš šta će drugi reći ili pokušavaš da budeš potpuno siguran/na da nećeš pogrešiti.</p>
-    <p>A ponekad se dešava i suprotno - snažan osećaj odmah protumačimo kao znak da treba nešto da uradimo, bez zastajanja i razumevanja onoga što se u nama dešava.</p>
+</section>
+
+<!-- KLJUČNO PITANJE -->
+<section class="pitanje">
+  <div class="pitanje-inner">
+    <p class="section-label">Ali tu se često pojavi jedno važno pitanje</p>
+    <h3>Kako da znam da li je to što osećam intuicija ili strah? I mogu li da verujem svom unutrašnjem osećaju?</h3>
   </div>
-</div>
-
-<div class="bridge-section">
-  <p class="bridge-intro">Ali tu se često pojavi jedno važno pitanje:</p>
-  <p class="bridge-question">Kako da znam da li je to što osećam intuicija ili strah? I mogu li da verujem svom unutrašnjem osećaju?</p>
-</div>
-
-<div class="divider"></div>
+</section>
 
 <!-- O MASTER CLASSU -->
-<div class="section">
-  <p class="label">O master classu</p>
-  <h2>Ovo nije predavanje<br><em>o intuiciji.</em></h2>
-  <div style="margin-top:32px;">
-    <p class="body">To su dva sata prakse.</p>
-    <p class="body">Radićemo Kundalini joga vežbe, tehnike disanja i meditacije usmerene na razvijanje intuicije i bolji kontakt sa sopstvenim unutrašnjim osećajem.</p>
-    <p class="body">Sve se održava online, tako da možeš da se priključiš iz svog doma. Treba ti prostirka i dva sata koja ćeš posvetiti sebi.</p>
-    <p class="body">Kroz ove tehnike vežbaćemo da zastanemo, usmerimo pažnju na sebe i bolje oslušnemo ono što se u nama dešava.</p>
+<section class="about-mc">
+  <div class="about-mc-inner">
+    <div>
+      <p class="section-label">O master classu</p>
+      <h2>Ovo nije predavanje<br><em>o intuiciji.</em></h2>
+      <p>To su dva sata prakse. Radićemo Kundalini joga vežbe, tehnike disanja i meditacije usmerene na razvijanje intuicije i bolji kontakt sa sopstvenim unutrašnjim osećajem.</p>
+      <p>Sve se održava online, tako da možeš da se priključiš iz svog doma. Treba ti prostirka i dva sata koja ćeš posvetiti sebi.</p>
+      <p>Kroz ove tehnike vežbaćemo da zastanemo, usmerimo pažnju na sebe i bolje oslušnemo ono što se u nama dešava.</p>
+    </div>
+    <div class="about-mc-aside">
+      <p class="section-label">Detalji</p>
+      <div class="info-strip">
+        <div class="info-row">
+          <span class="info-row-label">Datum</span>
+          <span class="info-row-val">25. oktobar · nedelja</span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Vreme</span>
+          <span class="info-row-val">9-11h</span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Format</span>
+          <span class="info-row-val">Online</span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Cena</span>
+          <span class="info-row-val">21 €</span>
+        </div>
+        <div class="info-row">
+          <span class="info-row-label">Link</span>
+          <span class="info-row-val" style="font-size:15px;">dobijaš pred polazak</span>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="divider"></div>
+</section>
 
 <!-- ŠTA ĆEMO RADITI -->
-<div class="section">
-  <p class="label">Šta ćemo raditi</p>
-  <h2>Dva sata,<br><em>jedna tema.</em></h2>
-  <div class="practice-grid">
-    <div class="practice-card">
-      <p class="practice-card-num">01</p>
-      <h4>Kundalini joga vežbe</h4>
-      <p>Fizička sekvenca koja priprema telo i smiruje nervni sistem pre meditacije.</p>
-    </div>
-    <div class="practice-card">
-      <p class="practice-card-num">02</p>
-      <h4>Tehnike disanja</h4>
-      <p>Pranajama tehnike koje direktno utiču na fokus i sposobnost da ostaneš prisutan/na.</p>
-    </div>
-    <div class="practice-card">
-      <p class="practice-card-num">03</p>
-      <h4>Posebne meditacije</h4>
-      <p>Duge meditacije namenjene za rad sa intuicijom - svaka traje dovoljno dugo da prođeš kroz otpor uma.</p>
-    </div>
-    <div class="practice-card">
-      <p class="practice-card-num">04</p>
-      <h4>Online, od kuće</h4>
-      <p>Treba ti samo mirno mesto. Link dobijaš pred polazak na mejl.</p>
-    </div>
-  </div>
-</div>
-
-<!-- DETALJI -->
-<div class="details-section">
-  <div style="max-width:800px;">
-    <p class="label">Detalji</p>
-    <div class="details-row">
-      <div class="detail-cell">
-        <p class="detail-cell-label">Datum</p>
-        <p class="detail-cell-val">25. oktobar</p>
-        <p class="detail-cell-sub">Nedelja ujutru</p>
+<section class="practice">
+  <div class="practice-inner">
+    <div class="practice-header">
+      <div>
+        <p class="section-label" style="color:var(--clay);">Šta ćemo raditi</p>
+        <h2>Dva sata,<br><em>jedna tema.</em></h2>
       </div>
-      <div class="detail-cell">
-        <p class="detail-cell-label">Vreme</p>
-        <p class="detail-cell-val">9-11h</p>
-        <p class="detail-cell-sub">Dva sata prakse</p>
+      <p class="practice-desc">Svaka tehnika na ovom master classu ima jedan cilj - bolji kontakt sa sopstvenim unutrašnjim osećajem.</p>
+    </div>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <span class="practice-num">01</span>
+        <p class="practice-name">Kundalini joga vežbe</p>
+        <p class="practice-text">Fizička sekvenca koja priprema telo i smiruje nervni sistem pre meditacije.</p>
       </div>
-      <div class="detail-cell">
-        <p class="detail-cell-label">Format</p>
-        <p class="detail-cell-val">Online</p>
-        <p class="detail-cell-sub">Link dobijaš pred polazak</p>
+      <div class="practice-card">
+        <span class="practice-num">02</span>
+        <p class="practice-name">Tehnike disanja</p>
+        <p class="practice-text">Pranajama tehnike koje direktno utiču na fokus i sposobnost da ostaneš prisutan/na.</p>
       </div>
-      <div class="detail-cell">
-        <p class="detail-cell-label">Cena</p>
-        <p class="detail-cell-val">21 €</p>
-        <p class="detail-cell-sub">Plaćanje po prijavi</p>
+      <div class="practice-card">
+        <span class="practice-num">03</span>
+        <p class="practice-name">Posebne meditacije</p>
+        <p class="practice-text">Duge meditacije namenjene za rad sa intuicijom - svaka traje dovoljno dugo da prođeš kroz otpor uma.</p>
+      </div>
+      <div class="practice-card">
+        <span class="practice-num">04</span>
+        <p class="practice-name">Online, od kuće</p>
+        <p class="practice-text">Treba ti samo mirno mesto. Link dobijaš pred polazak na mejl.</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- CTA -->
-<div class="cta-section">
-  <p class="cta-heading">Odvoji nedeljno jutro<br>za sebe i svoju intuiciju.</p>
-  <a href="mailto:info@vukojenemanja.com?subject=Prijava%20za%20Kundalini%20Master%20Class%2025.10.&body=Zdravo%20Nemanja%2C%0A%0APrijavljujem%20se%20za%20Kundalini%20Master%20Class%20-%20Aktiviraj%20svoju%20intuiciju%2C%2025.%20oktobra%20od%209%20do%2011h.%0A%0AIme%20i%20prezime%3A%20%0A%0AVidimo%20se%21" class="cta-btn">Prijavi se</a>
-  <p class="cta-email">info@vukojenemanja.com</p>
-</div>
+<section class="cta">
+  <div class="cta-inner">
+    <p class="section-label">Prijava</p>
+    <h2>Odvoji nedeljno jutro za sebe i svoju intuiciju.</h2>
+    <span class="cta-price">21 €</span>
+    <a href="mailto:info@vukojenemanja.com?subject=Prijava%20za%20Kundalini%20Master%20Class%2025.10.&body=Zdravo%20Nemanja%2C%0A%0APrijavljujem%20se%20za%20Kundalini%20Master%20Class%20-%20Aktiviraj%20svoju%20intuiciju%2C%2025.%20oktobra%20od%209%20do%2011h.%0A%0AIme%20i%20prezime%3A%20%0A%0AVidimo%20se%21" class="btn-primary">Prijavi se</a>
+    <span class="cta-email">info@vukojenemanja.com</span>
+  </div>
+</section>
 
 <footer>
   <span class="footer-name">Nemanja Vukoje</span>

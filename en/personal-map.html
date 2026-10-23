@@ -259,6 +259,129 @@ footer { background: var(--deep); padding: 60px 60px 0; border-top: 1px solid rg
   .footer-bottom { padding: 20px 0; flex-direction: column; gap: 8px; }
   .testi-card { padding: 36px 28px; }
 }
+#pay-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(30,23,18,0.72);
+  z-index: 9000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+#pay-overlay.open { display: flex; }
+#pay-modal {
+  background: var(--fog);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 36px 32px;
+  position: relative;
+}
+#pay-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--stone);
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+.pay-tag {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 10px;
+  font-family: 'DM Sans', sans-serif;
+}
+.pay-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--bark);
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+.pay-sub {
+  font-size: 14px;
+  color: var(--stone);
+  margin: 0 0 28px;
+}
+.pay-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.pay-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border: 1.5px solid rgba(61,46,30,0.12);
+  border-radius: 12px;
+  padding: 18px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+.pay-option.featured { border-color: var(--clay); }
+.pay-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.pay-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--bark);
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+.pay-desc {
+  font-size: 12px;
+  color: var(--stone);
+  margin: 2px 0 0;
+  font-family: 'DM Sans', sans-serif;
+}
+.pay-chevron { margin-left: auto; flex-shrink: 0; }
+#pay-bank-details {
+  display: none;
+  background: #fff;
+  border: 1.5px solid rgba(61,46,30,0.12);
+  border-radius: 12px;
+  padding: 20px 20px 16px;
+}
+.pay-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.pay-row-label { color: var(--stone); }
+.pay-row-val { color: var(--bark); font-weight: 500; }
+.pay-row-val.mono { font-family: monospace; letter-spacing: 0.04em; }
+.pay-note {
+  font-size: 12px;
+  color: var(--stone);
+  line-height: 1.6;
+  border-top: 1px solid rgba(61,46,30,0.08);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+.pay-note a { color: var(--accent); text-decoration: none; }
+.pay-footer {
+  font-size: 12px;
+  color: var(--stone);
+  text-align: center;
+  margin: 0;
+  line-height: 1.6;
+}
+.pay-footer a { color: var(--accent); text-decoration: none; }
 </style>
 <link rel="stylesheet" href="../popup.css">
 </head>
@@ -273,7 +396,7 @@ footer { background: var(--deep); padding: 60px 60px 0; border-top: 1px solid rg
     <li><a href="individual.html">Individual Work</a></li>
     <li><a href="personal-map.html">Personal Map</a></li>
     <li><a href="index.html#testimonials">Testimonials</a></li>
-    <li><a href="mailto:info@vukojenemanja.com?subject=Personal%20Map%20-%20Order" class="nav-cta">I want my map</a></li>
+    <li><a href="#" onclick="openPaymentModal();return false;" class="nav-cta">I want my map</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -287,7 +410,7 @@ footer { background: var(--deep); padding: 60px 60px 0; border-top: 1px solid rg
   <a href="akal.html" onclick="closeMobileMenu()">Akal Community</a>
   <a href="individual.html" onclick="closeMobileMenu()">Individual Work</a>
   <a href="index.html#testimonials" onclick="closeMobileMenu()">Testimonials</a>
-  <a href="mailto:info@vukojenemanja.com?subject=Personal%20Map%20-%20Order" class="mobile-cta" onclick="closeMobileMenu()">I want my map</a>
+  <a href="#" class="mobile-cta" onclick="closeMobileMenu();openPaymentModal();return false;">I want my map</a>
 </div>
 
 <section class="hero">
@@ -297,7 +420,7 @@ footer { background: var(--deep); padding: 60px 60px 0; border-top: 1px solid rg
     <h1>Your personal <em>map.</em></h1>
     <p class="hero-sub">A personalised analysis made from your unique numbers. Understand your patterns, recognise your potential and direct your energy towards what truly matters to you.</p>
     <div class="hero-actions">
-      <a href="mailto:info@vukojenemanja.com?subject=Personal%20Map%20-%20Order&body=Full%20name%3A%0ADate%20of%20birth%3A" class="btn-main">I want my map</a>
+      <a href="#" onclick="openPaymentModal();return false;" class="btn-main">I want my map</a>
       <div>
         <p class="hero-price-note"><s>55 €</s> &nbsp;→&nbsp; 33 € · Introductory price</p>
         <p class="hero-delivery">PDF arrives by email within 72 hours · yours to keep forever</p>
@@ -528,7 +651,7 @@ footer { background: var(--deep); padding: 60px 60px 0; border-top: 1px solid rg
     <span class="new">33 €</span>
     <span class="new-label">Introductory price</span>
   </div>
-  <a href="mailto:info@vukojenemanja.com?subject=Personal%20Map%20-%20Order&body=Full%20name%3A%0ADate%20of%20birth%3A" class="btn-main">I want my map</a>
+  <a href="#" onclick="openPaymentModal();return false;" class="btn-main">I want my map</a>
   <p class="cta-note">PDF arrives within 72 hours · yours to keep forever</p>
 </section>
 
@@ -610,5 +733,75 @@ reveals.forEach(el => observer.observe(el));
   </div>
 </div>
 <script src="popup.js"></script>
+
+<div id="pay-overlay">
+  <div id="pay-modal">
+    <button id="pay-close" aria-label="Close">&#215;</button>
+    <p class="pay-tag">Order</p>
+    <h2 class="pay-title">Personal Map</h2>
+    <p class="pay-sub">Choose your payment method</p>
+    <div class="pay-options">
+      <a href="https://buy.stripe.com/fZubJ32wDdE5frheak4ow02" target="_blank" class="pay-option featured">
+        <div class="pay-icon" style="background:#635BFF;">
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none"><rect width="20" height="12" rx="2" fill="#635BFF"/><rect x="2" y="3.5" width="6" height="1.8" rx="0.9" fill="white" opacity="0.9"/><rect x="2" y="6.5" width="4" height="1.4" rx="0.7" fill="white" opacity="0.5"/><rect x="12" y="2.5" width="6" height="7" rx="1.5" fill="white" opacity="0.2"/><rect x="13" y="5" width="4" height="1.4" rx="0.7" fill="white" opacity="0.9"/></svg>
+        </div>
+        <div style="flex:1;">
+          <p class="pay-name">Card</p>
+          <p class="pay-desc">Visa, Mastercard, Amex &middot; EUR</p>
+        </div>
+        <svg class="pay-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="#C4A882" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://paypal.me/vukojenemanja" target="_blank" class="pay-option">
+        <div class="pay-icon" style="background:#002F86;">
+          <svg width="22" height="22" viewBox="0 0 22 22"><text x="2" y="16" font-size="14" font-family="Arial" font-weight="800" fill="#009CDE">P</text><text x="8" y="16" font-size="14" font-family="Arial" font-weight="800" fill="#fff">P</text></svg>
+        </div>
+        <div style="flex:1;">
+          <p class="pay-name">PayPal</p>
+          <p class="pay-desc">Pay with your PayPal account</p>
+        </div>
+        <svg class="pay-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="#8A8070" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="pay-option" id="pay-bank-btn">
+        <div class="pay-icon" style="background:var(--bark);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="#E8DDD0" stroke-width="1.5"/><path d="M7 9h6M7 12h4" stroke="#C4A882" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;">
+          <p class="pay-name">Bank transfer</p>
+          <p class="pay-desc">Payment in RSD at NBS rate</p>
+        </div>
+        <svg id="pay-bank-chevron" class="pay-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="transition:transform 0.2s;"><path d="M6 3l5 5-5 5" stroke="#8A8070" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div id="pay-bank-details">
+        <div class="pay-row"><span class="pay-row-label">Recipient</span><span class="pay-row-val">Vukoje Nemanja</span></div>
+        <div class="pay-row"><span class="pay-row-label">Account number</span><span class="pay-row-val mono">340-32547384-15</span></div>
+        <p class="pay-note">Amount at the NBS mid-rate. After payment, send the confirmation to <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
+      </div>
+    </div>
+    <p class="pay-footer">After payment, send your full name and date of birth<br>to <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var overlay = document.getElementById('pay-overlay');
+  function openPay() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePay() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('pay-close').addEventListener('click', closePay);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closePay(); });
+  document.getElementById('pay-bank-btn').addEventListener('click', function() {
+    var d = document.getElementById('pay-bank-details');
+    var open = d.style.display === 'block';
+    d.style.display = open ? 'none' : 'block';
+    document.getElementById('pay-bank-chevron').style.transform = open ? 'rotate(0deg)' : 'rotate(90deg)';
+  });
+  window.openPaymentModal = openPay;
+})();
+</script>
 </body>
 </html>

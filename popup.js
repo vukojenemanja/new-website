@@ -8,8 +8,8 @@
   var TRIGGER_SCROLL = 0.50;
   var TRIGGER_SECONDS = 45;
 
-  // Skip auto-trigger if subscribed (permanent) or dismissed this session
-  var skipAuto = false;
+  // Auto-trigger disabled
+  var skipAuto = true;
   try {
     if (localStorage.getItem(STORAGE_KEY) === '1') skipAuto = true;
     else if (sessionStorage.getItem(STORAGE_KEY)) skipAuto = true;

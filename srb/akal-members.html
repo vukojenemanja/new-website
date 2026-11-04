@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akal · Privatni prostor</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js"></script>
+<style>
+/* ─── Tokens ─── */
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+  --warm:   #D4B896;
+  --moss:   #7A8C6E;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--bark); }
+
+/* ─── Password Gate ─── */
+#gate {
+  position: fixed; inset: 0; background: var(--deep);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999; padding: 24px;
+}
+.gate-box {
+  width: 100%; max-width: 420px; text-align: center;
+}
+.gate-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 32px;
+}
+.gate-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 40px); font-weight: 300;
+  color: var(--sand); line-height: 1.25; margin-bottom: 40px;
+}
+.gate-title em { font-style: italic; color: var(--clay); }
+.gate-input {
+  width: 100%; padding: 16px 20px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  color: var(--sand); font-family: 'DM Sans', sans-serif; font-size: 15px;
+  letter-spacing: 2px; outline: none; margin-bottom: 16px;
+}
+.gate-input::placeholder { color: rgba(232,221,208,0.3); letter-spacing: 1px; }
+.gate-input:focus { border-color: var(--clay); }
+.gate-btn {
+  width: 100%; padding: 16px; background: var(--clay); border: none; cursor: pointer;
+  color: var(--bark); font-family: 'DM Sans', sans-serif; font-size: 12px;
+  letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+  transition: background 0.2s;
+}
+.gate-btn:hover { background: var(--warm); }
+.gate-error {
+  font-size: 13px; color: #c0392b; margin-top: 12px;
+  min-height: 20px; letter-spacing: 0.3px;
+}
+
+/* ─── Layout ─── */
+#content { display: none; }
+
+/* ─── Nav ─── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(245,241,236,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+  padding: 0 40px; height: 64px; display: flex; align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif; font-size: 20px;
+  font-weight: 300; color: var(--bark); text-decoration: none;
+}
+.nav-brand em { font-style: italic; color: var(--clay); }
+.nav-tag {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--clay); background: rgba(196,168,130,0.12);
+  padding: 6px 14px;
+}
+@media (max-width: 680px) { .nav { padding: 0 20px; } }
+
+/* ─── Hero ─── */
+.members-hero {
+  background: var(--bark); padding: 80px 60px 64px;
+  border-bottom: 1px solid rgba(196,168,130,0.15);
+}
+.members-hero-inner { max-width: 900px; margin: 0 auto; }
+.section-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 20px;
+}
+.members-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 60px); font-weight: 300;
+  color: var(--sand); line-height: 1.15; margin-bottom: 16px;
+}
+.members-hero h1 em { font-style: italic; color: var(--clay); }
+.members-hero p {
+  font-size: 15px; color: rgba(232,221,208,0.6); line-height: 1.8; max-width: 540px;
+}
+@media (max-width: 680px) { .members-hero { padding: 60px 24px 48px; } }
+
+/* ─── Sections ─── */
+.members-section { padding: 72px 60px; }
+.members-section-inner { max-width: 900px; margin: 0 auto; }
+.members-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 40px); font-weight: 300;
+  color: var(--bark); line-height: 1.25; margin-bottom: 40px;
+}
+.members-section h2 em { font-style: italic; color: var(--clay); }
+@media (max-width: 680px) { .members-section { padding: 56px 24px; } }
+
+/* ─── Topic banner ─── */
+.topic-banner {
+  background: var(--sand); border-left: 3px solid var(--clay);
+  padding: 28px 32px; margin-bottom: 48px;
+}
+.topic-banner .topic-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--stone); margin-bottom: 10px;
+}
+.topic-banner .topic-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: var(--bark);
+}
+
+/* ─── Class Cards ─── */
+.class-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;
+}
+.class-card {
+  background: var(--sand); padding: 32px 28px;
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+}
+.class-week {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--stone); margin-bottom: 12px;
+}
+.class-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 20px;
+  font-weight: 300; color: var(--bark); line-height: 1.35; margin-bottom: 20px; min-height: 56px;
+}
+.class-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); text-decoration: none; font-weight: 500;
+  transition: color 0.2s;
+}
+.class-link:hover { color: var(--bark); }
+.class-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+.class-soon {
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(138,128,112,0.4);
+}
+@media (max-width: 680px) {
+  .class-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── Lunar Section ─── */
+.lunar-section { background: var(--deep); padding: 72px 60px; }
+.lunar-inner { max-width: 900px; margin: 0 auto; }
+.lunar-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 20px;
+}
+.lunar-date {
+  font-size: 13px; color: rgba(232,221,208,0.4);
+  letter-spacing: 1px; margin-bottom: 32px;
+}
+.lunar-phase-row {
+  display: flex; align-items: flex-start; gap: 40px;
+  margin-bottom: 40px;
+}
+.lunar-icon {
+  font-size: 56px; line-height: 1; flex-shrink: 0; margin-top: -4px;
+}
+.lunar-phase-info {}
+.lunar-phase-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3.5vw, 40px); font-weight: 300;
+  color: var(--sand); line-height: 1.2; margin-bottom: 12px;
+}
+.lunar-phase-desc {
+  font-size: 15px; color: rgba(232,221,208,0.6); line-height: 1.85; max-width: 560px;
+}
+.lunar-cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+}
+.lunar-card { background: rgba(255,255,255,0.04); padding: 28px 24px; }
+.lunar-card-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 14px;
+}
+.lunar-card-text {
+  font-size: 14px; color: rgba(232,221,208,0.6); line-height: 1.85;
+}
+@media (max-width: 680px) {
+  .lunar-section { padding: 60px 24px; }
+  .lunar-phase-row { flex-direction: column; gap: 20px; }
+  .lunar-cards { grid-template-columns: 1fr; }
+}
+
+/* ─── Footer ─── */
+.members-footer {
+  padding: 32px 60px; background: var(--bark);
+  font-size: 12px; color: rgba(232,221,208,0.3);
+  letter-spacing: 1px; display: flex; justify-content: space-between;
+  align-items: center; gap: 20px; flex-wrap: wrap;
+}
+@media (max-width: 680px) { .members-footer { padding: 24px; } }
+</style>
+</head>
+<body>
+
+<!-- ═══ PASSWORD GATE ═══ -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-label">Akal zajednica</div>
+    <h2 class="gate-title">Privatni<br><em>prostor članova.</em></h2>
+    <input type="password" class="gate-input" id="gate-input"
+           placeholder="Lozinka" autocomplete="off">
+    <button class="gate-btn" id="gate-btn">Ulaz →</button>
+    <div class="gate-error" id="gate-error"></div>
+  </div>
+</div>
+
+<!-- ═══ MEMBERS CONTENT ═══ -->
+<div id="content">
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="akal.html" class="nav-brand">Akal <em>zajednica</em></a>
+    <span class="nav-tag">Privatno</span>
+  </nav>
+
+  <!-- Hero -->
+  <div class="members-hero">
+    <div class="members-hero-inner">
+      <div class="section-label">Privatni prostor · Novembar 2026</div>
+      <h1>Dobro došli<br><em>nazad.</em></h1>
+      <p>Ovde ćeš naći snimke svih časova ovog meseca, temu sa kojom radimo i dnevnu energetsku smernici prema lunarnom ciklusu.</p>
+    </div>
+  </div>
+
+  <!-- Topic + Classes -->
+  <section class="members-section" style="background: var(--fog);">
+    <div class="members-section-inner">
+
+      <!-- Topic of month -->
+      <div class="topic-banner">
+        <div class="topic-label">Tema meseca</div>
+        <div class="topic-name">Delovanje prema intuiciji</div>
+      </div>
+
+      <!-- Classes -->
+      <div class="section-label" style="margin-bottom: 24px;">Časovi ovog meseca</div>
+      <div class="class-grid" id="class-grid">
+        <!-- filled by JS from CLASSES config below -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Lunar Energy -->
+  <section class="lunar-section">
+    <div class="lunar-inner">
+      <div class="lunar-label">Energija danas</div>
+      <div class="lunar-date" id="lunar-date"></div>
+      <div class="lunar-phase-row">
+        <div class="lunar-icon" id="lunar-icon">🌑</div>
+        <div class="lunar-phase-info">
+          <div class="lunar-phase-name" id="lunar-phase-name">—</div>
+          <div class="lunar-phase-desc" id="lunar-phase-desc">—</div>
+        </div>
+      </div>
+      <div class="lunar-cards">
+        <div class="lunar-card">
+          <div class="lunar-card-label">Preporučeno</div>
+          <div class="lunar-card-text" id="lunar-do">—</div>
+        </div>
+        <div class="lunar-card">
+          <div class="lunar-card-label">Izbegavaj</div>
+          <div class="lunar-card-text" id="lunar-dont">—</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="members-footer">
+    <span>© Nemanja Vukoje · The Art of Connection Vienna</span>
+    <span>Stranica je privatna i namenjena isključivo članovima Akal zajednice.</span>
+  </footer>
+
+</div><!-- /#content -->
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  CONFIG — ovde menjaj svaki mesec
+// ═══════════════════════════════════════════════════════
+var PASSWORD_HASH = 'cf4428bf';
+
+var MONTH_LABEL = 'Novembar 2026';
+
+var CLASSES = [
+  {
+    date: 'Nedelja, 1. novembar',
+    title: 'Uvod u temu meseca — Aktivacija intuicije',
+    link: '' // dodaj YouTube link ovde
+  },
+  {
+    date: 'Nedelja, 8. novembar',
+    title: '',
+    link: ''
+  },
+  {
+    date: 'Nedelja, 15. novembar',
+    title: '',
+    link: ''
+  },
+  {
+    date: 'Nedelja, 22. novembar',
+    title: '',
+    link: ''
+  }
+];
+
+// ═══════════════════════════════════════════════════════
+//  LUNAR GUIDANCE DATA
+// ═══════════════════════════════════════════════════════
+var LUNAR_PHASES = [
+  {
+    name: 'Nova mesečina',
+    icon: '🌑',
+    desc: 'Ovo je vreme novih početaka i postavljanja namera. Energija je tiha i unutrašnja — idealna za meditaciju, introspekciju i vizualizaciju onoga što želiš da stvoriš.',
+    doThis: 'Zapiši nove namere, meditiraj o svojoj viziji, počni nešto što ti odavno leži na srcu.',
+    avoid: 'Preterano trošenje energije, donošenje konačnih odluka, žurba.'
+  },
+  {
+    name: 'Rastući polumesec',
+    icon: '🌒',
+    desc: 'Energija počinje da se diže. Ovo je vreme za akciju — za pokretanje onoga što si zamislio tokom nove mesečine. Inicijativa sada nosi rezultate.',
+    doThis: 'Počni nove projekte, komuniciraj, budi fizički aktivan/na, gradi zamah.',
+    avoid: 'Sumnja i oklevanje — to ti sada ne treba.'
+  },
+  {
+    name: 'Prva četvrt',
+    icon: '🌓',
+    desc: 'Polovina puta. Možeš da naiđeš na prepreke ili unutrašnji otpor — to je normalno. Ovo je vreme da se odlučiš i nastaviš, ne da staješ.',
+    doThis: 'Rešavaj probleme, donosi odluke, radi naporno, ne povlači se pred prvim teškoćama.',
+    avoid: 'Nepotrebne svađe i konflikte — energija je visoka i lako se pal.'
+  },
+  {
+    name: 'Rastući mesec',
+    icon: '🌔',
+    desc: 'Mesec raste ka punom. Energija je bogata ali zahteva preciznost. Ovo je vreme za preispitivanje i dorade — ne za novo pokretanje.',
+    doThis: 'Preispitaj planove, bavi se detaljima, prilagodi pravac, budi strpljiv/a.',
+    avoid: 'Žurbu i preskakanje koraka.'
+  },
+  {
+    name: 'Pun mesec',
+    icon: '🌕',
+    desc: 'Kulminacija. Sve je pojačano — i svetlo i senka. Emocije su blizu površine. Ovo je snažno vreme za zahvalnost, puštanje onoga što više ne služi i intenzivnu meditaciju.',
+    doThis: 'Proslavi, budi zahvalan/na, meditiraj, pusti ono što si odavno trebao/la da pustiš.',
+    avoid: 'Konflikte i važne odluke u trenutku visoke emocije.'
+  },
+  {
+    name: 'Opadajući pun mesec',
+    icon: '🌖',
+    desc: 'Energija se okrenula prema unutra. Ovo je vreme za refleksiju, zahvalnost i deljenje onoga što si naučio/la. Manje akcije, više svesti.',
+    doThis: 'Zahvalnost, deljenje uvida sa drugima, pregled šta si postigao/la, opraštanje.',
+    avoid: 'Pokretanje novih inicijativa — energija sad ide ka unutra.'
+  },
+  {
+    name: 'Poslednja četvrt',
+    icon: '🌗',
+    desc: 'Vreme čišćenja i puštanja. Šta ti više ne koristi? Šta nosiš a ne trebaš? Ovo je idealan trenutak za završavanje starih ciklusa i stvari.',
+    doThis: 'Čišćenje prostora i uma, završavanje nedovršenih projekata, ispitivanje starih uverenja.',
+    avoid: 'Pokretanje nečeg potpuno novog.'
+  },
+  {
+    name: 'Tamni mesec',
+    icon: '🌘',
+    desc: 'Pred novim početkom dolazi odmor. Ovo je najtiše i najdublje vreme mesečnog ciklusa — tvoje telo i um traže mir i introspekciju. Slušaj ih.',
+    doThis: 'Odmor, dubok san, meditacija u tišini, introspekcija, priprema za novo.',
+    avoid: 'Naporan rad, donošenje važnih odluka, gušenje unutrašnjeg glasa brigama.'
+  }
+];
+
+// ═══════════════════════════════════════════════════════
+//  PASSWORD CHECK
+// ═══════════════════════════════════════════════════════
+var SESSION_KEY = 'akal_access';
+
+function hashString(str) {
+  var h = 5381;
+  for (var i = 0; i < str.length; i++) {
+    h = (Math.imul(33, h) ^ str.charCodeAt(i)) | 0;
+  }
+  return (h >>> 0).toString(16);
+}
+
+function unlock() {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+  buildClasses();
+  buildLunar();
+}
+
+function tryUnlock(val) {
+  var hash = hashString(val);
+  if (hash === PASSWORD_HASH) {
+    try { sessionStorage.setItem(SESSION_KEY, hash); } catch(e){}
+    unlock();
+  } else {
+    document.getElementById('gate-error').textContent = 'Pogrešna lozinka. Pokušaj ponovo.';
+    document.getElementById('gate-input').value = '';
+    document.getElementById('gate-input').focus();
+  }
+}
+
+document.getElementById('gate-btn').addEventListener('click', function() {
+  tryUnlock(document.getElementById('gate-input').value.trim());
+});
+document.getElementById('gate-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') tryUnlock(this.value.trim());
+  document.getElementById('gate-error').textContent = '';
+});
+
+// Auto-unlock if same session
+(function() {
+  try {
+    var stored = sessionStorage.getItem(SESSION_KEY);
+    if (stored === PASSWORD_HASH) unlock();
+  } catch(e){}
+})();
+
+// ═══════════════════════════════════════════════════════
+//  BUILD CLASS CARDS
+// ═══════════════════════════════════════════════════════
+function buildClasses() {
+  var grid = document.getElementById('class-grid');
+  grid.innerHTML = CLASSES.map(function(c) {
+    var linkEl = c.link
+      ? '<a href="' + c.link + '" target="_blank" rel="noopener" class="class-link">'
+        + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg>'
+        + 'Pogledaj snimak</a>'
+      : '<span class="class-soon">Uskoro</span>';
+    var title = c.title || '<span style="color:rgba(61,46,30,0.3)">Naslov časa uskoro</span>';
+    return '<div class="class-card">'
+      + '<div class="class-week">' + c.date + '</div>'
+      + '<div class="class-title">' + title + '</div>'
+      + linkEl
+      + '</div>';
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════════════
+//  BUILD LUNAR GUIDANCE
+// ═══════════════════════════════════════════════════════
+var VIENNA_LAT = 48.2082, VIENNA_LNG = 16.3738;
+
+function buildLunar() {
+  var now = new Date();
+  var ill = SunCalc.getMoonIllumination(now);
+  // phase: 0=new, 0.25=first quarter, 0.5=full, 0.75=last quarter
+  var p = ill.phase;
+  var idx;
+  if      (p < 0.0375) idx = 0; // nova
+  else if (p < 0.2125) idx = 1; // rastući polumesec
+  else if (p < 0.2875) idx = 2; // prva četvrt
+  else if (p < 0.4625) idx = 3; // rastući pun
+  else if (p < 0.5375) idx = 4; // pun
+  else if (p < 0.7125) idx = 5; // opadajući pun
+  else if (p < 0.7875) idx = 6; // poslednja četvrt
+  else                 idx = 7; // tamni
+
+  var d = LUNAR_PHASES[idx];
+  var days = ['Nedeljа','Ponedeljak','Utorak','Sreda','Četvrtak','Petak','Subota'];
+  var months = ['januara','februara','marta','aprila','maja','juna','jula','avgusta','septembra','oktobra','novembra','decembra'];
+  var dateStr = days[now.getDay()] + ', ' + now.getDate() + '. ' + months[now.getMonth()] + ' ' + now.getFullYear();
+  var illPct = Math.round(ill.fraction * 100);
+
+  document.getElementById('lunar-date').textContent = dateStr + ' · ' + illPct + '% osvetljenosti';
+  document.getElementById('lunar-icon').textContent = d.icon;
+  document.getElementById('lunar-phase-name').textContent = d.name;
+  document.getElementById('lunar-phase-desc').textContent = d.desc;
+  document.getElementById('lunar-do').textContent = d.doThis;
+  document.getElementById('lunar-dont').textContent = d.avoid;
+}
+</script>
+</body>
+</html>

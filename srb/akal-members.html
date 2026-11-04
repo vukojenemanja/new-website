@@ -119,6 +119,36 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
 .members-section h2 em { font-style: italic; color: var(--clay); }
 @media (max-width: 680px) { .members-section { padding: 56px 24px; } }
 
+/* ─── Zoom banner ─── */
+.zoom-banner {
+  background: var(--bark); border: 1px solid rgba(196,168,130,0.25);
+  padding: 28px 32px; margin-bottom: 48px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  flex-wrap: wrap;
+}
+.zoom-banner-left {}
+.zoom-banner-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 10px;
+}
+.zoom-banner-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 300; color: var(--sand);
+}
+.zoom-link {
+  display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0;
+  background: var(--clay); color: var(--bark);
+  padding: 14px 24px; text-decoration: none;
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+  transition: background 0.2s;
+}
+.zoom-link:hover { background: var(--warm); }
+.zoom-link svg { width: 16px; height: 16px; }
+.zoom-link-placeholder {
+  font-size: 12px; letter-spacing: 1px; color: rgba(138,128,112,0.5);
+  padding: 14px 0;
+}
+
 /* ─── Topic banner ─── */
 .topic-banner {
   background: var(--sand); border-left: 3px solid var(--clay);
@@ -140,6 +170,9 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
 .class-card {
   background: var(--sand); padding: 32px 28px;
   border-bottom: 1px solid rgba(196,168,130,0.2);
+}
+.class-card.meditation {
+  background: rgba(61,46,30,0.06); border-left: 2px solid var(--clay);
 }
 .class-week {
   font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
@@ -255,6 +288,15 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   <section class="members-section" style="background: var(--fog);">
     <div class="members-section-inner">
 
+      <!-- Zoom link -->
+      <div class="zoom-banner">
+        <div class="zoom-banner-left">
+          <div class="zoom-banner-label">Link za sve časove ovog meseca</div>
+          <div class="zoom-banner-title">Isti link važi za svaki termin — Kundalini jogu i večeri meditacije.</div>
+        </div>
+        <div id="zoom-link-slot"></div>
+      </div>
+
       <!-- Topic of month -->
       <div class="topic-banner">
         <div class="topic-label">Tema meseca</div>
@@ -310,24 +352,48 @@ var PASSWORD_HASH = 'cf4428bf';
 
 var MONTH_LABEL = 'Novembar 2026';
 
+var ZOOM_LINK = ''; // dodaj Zoom link ovde
+
 var CLASSES = [
   {
-    date: 'Nedelja, 1. novembar',
+    date: 'Nedelja, 1. novembar · 20:00',
+    type: 'yoga',
     title: 'Uvod u temu meseca — Aktivacija intuicije',
     link: '' // dodaj YouTube link ovde
   },
   {
-    date: 'Nedelja, 8. novembar',
+    date: 'Sreda, 4. novembar',
+    type: 'meditation',
+    title: 'Večer meditacije',
+    link: ''
+  },
+  {
+    date: 'Nedelja, 8. novembar · 20:00',
+    type: 'yoga',
     title: '',
     link: ''
   },
   {
-    date: 'Nedelja, 15. novembar',
+    date: 'Nedelja, 15. novembar · 20:00',
+    type: 'yoga',
     title: '',
     link: ''
   },
   {
-    date: 'Nedelja, 22. novembar',
+    date: 'Nedelja, 22. novembar · 20:00',
+    type: 'yoga',
+    title: '',
+    link: ''
+  },
+  {
+    date: 'Sreda, 25. novembar',
+    type: 'meditation',
+    title: 'Večer meditacije',
+    link: ''
+  },
+  {
+    date: 'Nedelja, 29. novembar · 20:00',
+    type: 'yoga',
     title: '',
     link: ''
   }
@@ -447,17 +513,35 @@ document.getElementById('gate-input').addEventListener('keydown', function(e) {
 //  BUILD CLASS CARDS
 // ═══════════════════════════════════════════════════════
 function buildClasses() {
+  // Zoom banner
+  var zoomEl = document.getElementById('zoom-link-slot');
+  if (ZOOM_LINK) {
+    zoomEl.innerHTML = '<a href="' + ZOOM_LINK + '" target="_blank" rel="noopener" class="zoom-link">'
+      + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.069A1 1 0 0121 8.869v6.262a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>'
+      + 'Otvori Zoom →</a>';
+  } else {
+    zoomEl.innerHTML = '<span class="zoom-link-placeholder">Link stiže pred polazak na mejl</span>';
+  }
+
+  // Class cards
   var grid = document.getElementById('class-grid');
   grid.innerHTML = CLASSES.map(function(c) {
+    var isMed = c.type === 'meditation';
+    var typeTag = isMed
+      ? '<span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--clay);display:block;margin-bottom:6px;">Večer meditacije</span>'
+      : '';
     var linkEl = c.link
       ? '<a href="' + c.link + '" target="_blank" rel="noopener" class="class-link">'
         + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg>'
         + 'Pogledaj snimak</a>'
       : '<span class="class-soon">Uskoro</span>';
-    var title = c.title || '<span style="color:rgba(61,46,30,0.3)">Naslov časa uskoro</span>';
-    return '<div class="class-card">'
+    var title = (c.title && !isMed) ? c.title
+      : isMed ? ''
+      : '<span style="color:rgba(61,46,30,0.3)">Naslov časa uskoro</span>';
+    return '<div class="class-card' + (isMed ? ' meditation' : '') + '">'
       + '<div class="class-week">' + c.date + '</div>'
-      + '<div class="class-title">' + title + '</div>'
+      + typeTag
+      + (title ? '<div class="class-title">' + title + '</div>' : '<div class="class-title" style="min-height:28px"></div>')
       + linkEl
       + '</div>';
   }).join('');

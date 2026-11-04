@@ -273,7 +273,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
     <div class="members-hero-inner">
       <div class="section-label">Privatni prostor · Novembar 2026</div>
       <h1>Dobro došli<br><em>nazad.</em></h1>
-      <p>Ovde ćeš naći snimke svih časova ovog meseca, temu sa kojom radimo i dnevnu energetsku smernici prema lunarnom ciklusu.</p>
+      <p>Ovde ćeš naći snimke svih časova ovog meseca, temu sa kojom radimo i dnevne energetske smernice prema lunarnom ciklusu.</p>
     </div>
   </div>
 
@@ -354,7 +354,7 @@ var CLASSES = [
   {
     date: 'Sreda, 4. novembar',
     type: 'meditation',
-    title: 'Večer meditacije',
+    title: 'Veče meditacije',
     link: ''
   },
   {
@@ -378,7 +378,7 @@ var CLASSES = [
   {
     date: 'Sreda, 25. novembar',
     type: 'meditation',
-    title: 'Večer meditacije',
+    title: 'Veče meditacije',
     link: ''
   },
   {
@@ -516,7 +516,7 @@ function buildClasses() {
   grid.innerHTML = CLASSES.map(function(c) {
     var isMed = c.type === 'meditation';
     var typeTag = isMed
-      ? '<span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--clay);display:block;margin-bottom:6px;">Večer meditacije</span>'
+      ? '<span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--clay);display:block;margin-bottom:6px;">Veče meditacije</span>'
       : '';
     var linkEl = c.link
       ? '<a href="' + c.link + '" target="_blank" rel="noopener" class="class-link">'

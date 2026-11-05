@@ -191,6 +191,70 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   .class-grid { grid-template-columns: 1fr; }
 }
 
+/* ─── Pitanje meseca ─── */
+.pitanje-section { background: var(--bark); padding: 72px 60px; }
+.pitanje-inner { max-width: 900px; margin: 0 auto; }
+.pitanje-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 32px;
+}
+.pitanje-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3.5vw, 44px); font-weight: 300; font-style: italic;
+  color: var(--sand); line-height: 1.4; max-width: 720px;
+}
+@media (max-width: 680px) { .pitanje-section { padding: 60px 24px; } }
+
+/* ─── Praksa + Journal ─── */
+.praksa-section { background: var(--fog); padding: 72px 60px; }
+.praksa-inner { max-width: 900px; margin: 0 auto; }
+.praksa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+.praksa-card { background: var(--sand); padding: 40px 36px; }
+.praksa-card-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 20px;
+}
+.praksa-card h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 24px;
+  font-weight: 300; color: var(--bark); margin-bottom: 20px; line-height: 1.3;
+}
+.praksa-card p {
+  font-size: 14px; line-height: 1.9; color: var(--stone); margin-bottom: 16px;
+}
+.praksa-card p:last-child { margin-bottom: 0; }
+.praksa-steps { list-style: none; padding: 0; }
+.praksa-steps li {
+  font-size: 14px; line-height: 1.8; color: var(--stone);
+  padding: 10px 0; border-bottom: 1px solid rgba(196,168,130,0.2);
+  display: flex; gap: 14px;
+}
+.praksa-steps li:last-child { border-bottom: none; }
+.praksa-step-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 16px;
+  color: var(--clay); flex-shrink: 0; min-width: 20px;
+}
+.journal-questions { list-style: none; padding: 0; }
+.journal-questions li {
+  font-size: 15px; line-height: 1.75; color: var(--stone);
+  padding: 14px 0 14px 20px; border-bottom: 1px solid rgba(196,168,130,0.2);
+  position: relative;
+}
+.journal-questions li:last-child { border-bottom: none; }
+.journal-questions li::before {
+  content: '-'; color: var(--clay); position: absolute; left: 0;
+  font-family: 'Cormorant Garamond', serif;
+}
+.praksa-link {
+  display: inline-block; margin-top: 20px;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+}
+.praksa-link:hover { color: var(--bark); }
+@media (max-width: 680px) {
+  .praksa-section { padding: 60px 24px; }
+  .praksa-grid { grid-template-columns: 1fr; }
+}
+
 /* ─── Lunar Section ─── */
 .lunar-section { background: var(--deep); padding: 72px 60px; }
 .lunar-inner { max-width: 900px; margin: 0 auto; }
@@ -297,6 +361,53 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
       <div class="section-label" style="margin-bottom: 24px;">Časovi ovog meseca</div>
       <div class="class-grid" id="class-grid">
         <!-- filled by JS from CLASSES config below -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Pitanje meseca -->
+  <section class="pitanje-section">
+    <div class="pitanje-inner">
+      <div class="pitanje-label">Pitanje meseca</div>
+      <p class="pitanje-text">"Koja odluka čeka da je doneseš, a u sebi već znaš odgovor?"</p>
+    </div>
+  </section>
+
+  <!-- Praksa + Journal -->
+  <section class="praksa-section">
+    <div class="praksa-inner">
+      <div class="section-label">Alati za mesec</div>
+      <div class="praksa-grid">
+
+        <!-- Praksa meseca -->
+        <div class="praksa-card">
+          <div class="praksa-card-label">Praksa meseca</div>
+          <h3>Long Ek Ong Kar<br><em style="font-style:italic;color:var(--clay);font-size:0.85em;">Jutarnja meditacija</em></h3>
+          <p>Ovo je osnovna meditacija jutarnje prakse u Kundalini jogi. Inicira kundalini energiju, balansira sve chakre i uspostavlja vezu između tvoje duše i Univerzalne duše.</p>
+          <ul class="praksa-steps">
+            <li><span class="praksa-step-num">1</span>Sedni u lak položaj, kičma ravna. Ruke u Gyan mudri na kolenima.</li>
+            <li><span class="praksa-step-num">2</span>Oči zatvorene ili 1/10 otvorene, fokus na tački između obrva.</li>
+            <li><span class="praksa-step-num">3</span>Duboko udahni. Na izdahu poj: <strong style="color:var(--bark);">Ek Ong Kar, Sat Nam, Siri Wahe Guru</strong></li>
+            <li><span class="praksa-step-num">4</span>Na "Ek" - kratko, snažno, povuci pupak prema unutra. Na "Ong Kar" - dugo, vibrira kroz lobanju.</li>
+            <li><span class="praksa-step-num">5</span>Trajanje: 7 do 31 minut.</li>
+          </ul>
+          <a href="https://www.3ho.org/kundalini-yoga/meditation/long-ek-ong-kars/" target="_blank" rel="noopener" class="praksa-link">Puni opis na 3HO →</a>
+        </div>
+
+        <!-- Pitanja za journaling -->
+        <div class="praksa-card">
+          <div class="praksa-card-label">Pitanja za pisanje</div>
+          <h3>Dnevnik ovog meseca</h3>
+          <p>Uzmi 10-15 minuta, papir i olovku. Bez ispravljanja, bez razmišljanja - samo piši šta se pojavi.</p>
+          <ul class="journal-questions">
+            <li>Kada sam poslednji put osetio/la nešto u telu što mi je jasno nešto govorilo - i nisam poslušao/la. Šta se desilo?</li>
+            <li>Šta je razlika između glasa straha i glasa intuicije u meni? Kako ih prepoznajem?</li>
+            <li>Ima li nešto što mi intuicija govori već neko vreme, a ja to odlažem?</li>
+            <li>U kojoj oblasti života najviše sumnjam u sebe - i šta bi se promenilo kada bih sebi verovao/la?</li>
+            <li>Ako bih znao/la da ne mogu da pogrešim, šta bih uradio/la sledeće nedelje?</li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </section>

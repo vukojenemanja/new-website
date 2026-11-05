@@ -80,6 +80,20 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   font-weight: 300; color: var(--bark); text-decoration: none;
 }
 .nav-brand em { font-style: italic; color: var(--clay); }
+.nav-links {
+  display: flex; align-items: center; gap: 32px;
+}
+.nav-link {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--stone); text-decoration: none; font-weight: 400;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--bark); }
+@media (max-width: 680px) {
+  .nav { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+  .nav-link { font-size: 10px; letter-spacing: 1px; }
+}
 .nav-tag {
   font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
   color: var(--clay); background: rgba(196,168,130,0.12);
@@ -389,7 +403,11 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   <!-- Nav -->
   <nav class="nav">
     <a href="akal.html" class="nav-brand">Akal <em>zajednica</em></a>
-    <span class="nav-tag">Privatno</span>
+    <div class="nav-links">
+      <a href="#sec-pitanje" class="nav-link">Pitanje meseca</a>
+      <a href="#sec-casovi" class="nav-link">Časovi</a>
+      <a href="#sec-smernice" class="nav-link">Smernice</a>
+    </div>
   </nav>
 
   <!-- Hero -->
@@ -402,7 +420,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   </div>
 
   <!-- Topic + Classes -->
-  <section class="members-section" style="background: var(--fog);">
+  <section id="sec-casovi" class="members-section" style="background: var(--fog);">
     <div class="members-section-inner">
 
       <!-- Zoom link -->
@@ -426,7 +444,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   </section>
 
   <!-- Pitanje meseca -->
-  <section class="pitanje-section">
+  <section id="sec-pitanje" class="pitanje-section">
     <div class="pitanje-inner">
       <div class="pitanje-label">Pitanje meseca</div>
       <p class="pitanje-text">"Koja odluka čeka da je doneseš, a u sebi već znaš odgovor?"</p>
@@ -473,7 +491,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   </section>
 
   <!-- Lunarni dan -->
-  <section class="lunar-section">
+  <section id="sec-smernice" class="lunar-section">
     <div class="lunar-inner">
       <div class="lunar-label">Lunarni dan</div>
       <div class="lunar-date" id="lunar-date"></div>

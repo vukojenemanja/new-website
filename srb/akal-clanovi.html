@@ -90,9 +90,13 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
 }
 .nav-link:hover { color: var(--bark); }
 @media (max-width: 680px) {
-  .nav { padding: 0 20px; }
-  .nav-links { gap: 16px; }
-  .nav-link { font-size: 10px; letter-spacing: 1px; }
+  .nav {
+    padding: 0 20px; height: auto;
+    flex-direction: column; align-items: flex-start;
+    gap: 0; padding-top: 14px; padding-bottom: 12px;
+  }
+  .nav-links { gap: 20px; margin-top: 10px; }
+  .nav-link { font-size: 10px; letter-spacing: 1.5px; }
 }
 .nav-tag {
   font-size: 10px; letter-spacing: 3px; text-transform: uppercase;

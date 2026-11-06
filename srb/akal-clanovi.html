@@ -353,6 +353,10 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   line-height: 1.8; max-width: 600px; padding-left: 16px;
   border-left: 1px solid rgba(196,168,130,0.3);
 }
+.lunar-next {
+  margin-top: 20px; font-size: 12px; letter-spacing: 1px;
+  color: rgba(196,168,130,0.5);
+}
 .lunar-cards {
   display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
 }
@@ -527,6 +531,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
         <div class="lunar-question-text" id="lunar-question">-</div>
       </div>
       <div class="lunar-reminder" id="lunar-reminder">-</div>
+      <div class="lunar-next" id="lunar-next"></div>
     </div>
   </section>
 
@@ -994,6 +999,28 @@ function buildLunar() {
   document.getElementById('lunar-dont').innerHTML = '<ul>' + d.avoid.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>';
   document.getElementById('lunar-question').textContent = d.question;
   document.getElementById('lunar-reminder').textContent = d.reminder;
+
+  // Pronađi sledeću promenu lunarnog dana (binarna pretraga do 48h)
+  var step = 60 * 1000; // 1 minuta
+  var t = now.getTime();
+  var end = t + 48 * 3600 * 1000;
+  var nextTime = null;
+  var nextDay = lunarDay;
+  while (t < end) {
+    t += step;
+    var ph = SunCalc.getMoonIllumination(new Date(t)).phase;
+    var nd = Math.max(1, Math.min(30, Math.floor(ph * 29.53) + 1));
+    if (nd !== lunarDay) { nextTime = new Date(t); nextDay = nd; break; }
+  }
+  if (nextTime) {
+    var isTomorrow = nextTime.getDate() !== now.getDate();
+    var h = nextTime.getHours().toString().padStart(2, '0');
+    var m = nextTime.getMinutes().toString().padStart(2, '0');
+    var nextD = LUNAR_DAYS[nextDay - 1];
+    var whenStr = isTomorrow ? 'Sutra u ' + h + ':' + m : 'Danas u ' + h + ':' + m;
+    document.getElementById('lunar-next').textContent =
+      whenStr + ' → Dan ' + nextDay + ' · ' + nextD.name + ' ' + nextD.icon;
+  }
 }
 </script>
 </body>

@@ -385,6 +385,59 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   .lunar-cards { grid-template-columns: 1fr; }
 }
 
+/* ─── Timer ─── */
+.timer-section { background: var(--fog); padding: 72px 60px; }
+.timer-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+.timer-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 32px; display: block;
+}
+.timer-ring-wrap { position: relative; display: inline-block; margin-bottom: 40px; }
+.timer-ring { transform: rotate(-90deg); }
+.timer-ring-bg { fill: none; stroke: rgba(196,168,130,0.12); stroke-width: 3; }
+.timer-ring-progress {
+  fill: none; stroke: var(--clay); stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear;
+}
+.timer-display {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300;
+  color: var(--bark); letter-spacing: -1px; line-height: 1;
+}
+.timer-display.running { color: var(--accent); }
+.timer-display.done { color: var(--clay); }
+.timer-durations {
+  display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; flex-wrap: wrap;
+}
+.timer-dur-btn {
+  padding: 10px 20px; border: 1px solid rgba(196,168,130,0.3);
+  background: none; color: var(--stone); font-family: 'DM Sans', sans-serif;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.15s;
+}
+.timer-dur-btn:hover { border-color: var(--clay); color: var(--bark); }
+.timer-dur-btn.active { background: var(--clay); color: var(--bark); border-color: var(--clay); }
+.timer-controls { display: flex; justify-content: center; gap: 12px; }
+.timer-start-btn {
+  padding: 14px 40px; background: var(--bark); color: var(--sand);
+  border: none; font-family: 'DM Sans', sans-serif; font-size: 12px;
+  letter-spacing: 3px; text-transform: uppercase; cursor: pointer;
+  transition: background 0.15s;
+}
+.timer-start-btn:hover { background: var(--deep); }
+.timer-reset-btn {
+  padding: 14px 20px; background: none; color: var(--stone);
+  border: 1px solid rgba(196,168,130,0.2); font-family: 'DM Sans', sans-serif;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.15s;
+}
+.timer-reset-btn:hover { color: var(--bark); border-color: var(--clay); }
+@media (max-width: 680px) {
+  .timer-section { padding: 60px 24px; }
+  .timer-display { font-size: 40px; }
+}
+
 /* ─── Footer ─── */
 .members-footer {
   padding: 32px 60px; background: var(--bark);
@@ -532,6 +585,30 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
       </div>
       <div class="lunar-reminder" id="lunar-reminder">-</div>
       <div class="lunar-next" id="lunar-next"></div>
+    </div>
+  </section>
+
+  <!-- Timer -->
+  <section class="timer-section">
+    <div class="timer-inner">
+      <span class="timer-label">Timer za meditaciju</span>
+      <div class="timer-ring-wrap">
+        <svg class="timer-ring" id="timer-svg" width="220" height="220" viewBox="0 0 220 220">
+          <circle class="timer-ring-bg" cx="110" cy="110" r="100"/>
+          <circle class="timer-ring-progress" id="timer-progress" cx="110" cy="110" r="100"/>
+        </svg>
+        <div class="timer-display" id="timer-display">7:00</div>
+      </div>
+      <div class="timer-durations">
+        <button class="timer-dur-btn" data-min="3">3 min</button>
+        <button class="timer-dur-btn active" data-min="7">7 min</button>
+        <button class="timer-dur-btn" data-min="11">11 min</button>
+        <button class="timer-dur-btn" data-min="31">31 min</button>
+      </div>
+      <div class="timer-controls">
+        <button class="timer-start-btn" id="timer-start-btn">Počni</button>
+        <button class="timer-reset-btn" id="timer-reset-btn">Reset</button>
+      </div>
     </div>
   </section>
 
@@ -892,6 +969,7 @@ function unlock() {
   document.getElementById('content').style.display = 'block';
   buildClasses();
   buildLunar();
+  initTimer();
 }
 
 function tryUnlock(val) {
@@ -976,6 +1054,121 @@ function toggleClass(i) {
 //  BUILD LUNAR GUIDANCE
 // ═══════════════════════════════════════════════════════
 var VIENNA_LAT = 48.2082, VIENNA_LNG = 16.3738;
+
+// ─── Timer ──────────────────────────────────────────────────────────────────
+function initTimer() {
+  var CIRCUMFERENCE = 2 * Math.PI * 100;
+  var progress = document.getElementById('timer-progress');
+  progress.style.strokeDasharray = CIRCUMFERENCE;
+  progress.style.strokeDashoffset = 0;
+
+  var selectedMin = 7;
+  var totalSec = selectedMin * 60;
+  var remainSec = totalSec;
+  var interval = null;
+  var running = false;
+
+  var display = document.getElementById('timer-display');
+  var startBtn = document.getElementById('timer-start-btn');
+  var resetBtn = document.getElementById('timer-reset-btn');
+  var durBtns = document.querySelectorAll('.timer-dur-btn');
+
+  function playBell(freq, duration) {
+    try {
+      var ctx = new (window.AudioContext || window.webkitAudioContext)();
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      var osc2 = ctx.createOscillator();
+      var gain2 = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc2.connect(gain2); gain2.connect(ctx.destination);
+      osc.type = 'sine'; osc.frequency.value = freq || 432;
+      osc2.type = 'sine'; osc2.frequency.value = (freq || 432) * 1.5;
+      gain.gain.setValueAtTime(0.5, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (duration || 3));
+      gain2.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (duration || 3));
+      osc.start(); osc2.start();
+      osc.stop(ctx.currentTime + (duration || 3));
+      osc2.stop(ctx.currentTime + (duration || 3));
+    } catch(e) {}
+  }
+
+  function formatTime(s) {
+    var m = Math.floor(s / 60);
+    var sec = s % 60;
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  function updateRing() {
+    var fraction = remainSec / totalSec;
+    progress.style.strokeDashoffset = CIRCUMFERENCE * (1 - fraction);
+  }
+
+  function setDisplay(s, cls) {
+    display.textContent = formatTime(s);
+    display.className = 'timer-display' + (cls ? ' ' + cls : '');
+  }
+
+  function stop() {
+    clearInterval(interval);
+    interval = null;
+    running = false;
+    startBtn.textContent = 'Nastavi';
+  }
+
+  function reset() {
+    stop();
+    remainSec = totalSec;
+    setDisplay(remainSec);
+    progress.style.transition = 'none';
+    progress.style.strokeDashoffset = 0;
+    setTimeout(function() { progress.style.transition = 'stroke-dashoffset 1s linear'; }, 50);
+    startBtn.textContent = 'Počni';
+  }
+
+  function tick() {
+    remainSec--;
+    setDisplay(remainSec, 'running');
+    updateRing();
+    if (remainSec <= 0) {
+      clearInterval(interval);
+      interval = null;
+      running = false;
+      setDisplay(0, 'done');
+      playBell(528, 4);
+      startBtn.textContent = 'Počni';
+    }
+  }
+
+  startBtn.addEventListener('click', function() {
+    if (running) { stop(); return; }
+    if (remainSec <= 0) { reset(); return; }
+    playBell(432, 2);
+    running = true;
+    startBtn.textContent = 'Pauza';
+    progress.style.transition = 'stroke-dashoffset 1s linear';
+    interval = setInterval(tick, 1000);
+  });
+
+  resetBtn.addEventListener('click', reset);
+
+  durBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (running) return;
+      durBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      selectedMin = parseInt(btn.getAttribute('data-min'));
+      totalSec = selectedMin * 60;
+      remainSec = totalSec;
+      setDisplay(remainSec);
+      progress.style.transition = 'none';
+      progress.style.strokeDashoffset = 0;
+    });
+  });
+
+  setDisplay(totalSec);
+}
 
 function buildLunar() {
   var now = new Date();

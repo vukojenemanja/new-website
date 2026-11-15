@@ -41,7 +41,7 @@
     '#nv-cb-actions{width:100%;}#nv-cb-accept,#nv-cb-reject{flex:1;text-align:center;}}';
 
   var path = window.location.pathname;
-  var lang = /^\/de\//.test(path) ? 'de' : /^\/en\//.test(path) ? 'en' : 'srb';
+  var lang = /^\/de\//.test(path) ? 'de' : /^\/en\//.test(path) ? 'en' : /^\/srb\//.test(path) ? 'srb' : 'en';
   var texts = {
     srb: { msg: 'Koristimo kolačiće za analitiku kako bismo razumeli kako koristiš sajt i poboljšali iskustvo.', policy: 'Politika privatnosti', accept: 'Prihvatam', reject: 'Odbijam' },
     de:  { msg: 'Wir verwenden Analyse-Cookies, um zu verstehen, wie du die Website nutzt und das Erlebnis zu verbessern.', policy: 'Datenschutz', accept: 'Akzeptieren', reject: 'Ablehnen' },

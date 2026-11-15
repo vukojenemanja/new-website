@@ -40,15 +40,25 @@
     '@media(max-width:600px){#nv-cb-inner{flex-direction:column;gap:14px;}' +
     '#nv-cb-actions{width:100%;}#nv-cb-accept,#nv-cb-reject{flex:1;text-align:center;}}';
 
+  var path = window.location.pathname;
+  var lang = /^\/de\//.test(path) ? 'de' : /^\/en\//.test(path) ? 'en' : 'srb';
+  var texts = {
+    srb: { msg: 'Koristimo kolačiće za analitiku kako bismo razumeli kako koristiš sajt i poboljšali iskustvo.', policy: 'Politika privatnosti', accept: 'Prihvatam', reject: 'Odbijam' },
+    de:  { msg: 'Wir verwenden Analyse-Cookies, um zu verstehen, wie du die Website nutzt und das Erlebnis zu verbessern.', policy: 'Datenschutz', accept: 'Akzeptieren', reject: 'Ablehnen' },
+    en:  { msg: 'We use analytics cookies to understand how you use the site and improve your experience.', policy: 'Privacy Policy', accept: 'Accept', reject: 'Decline' }
+  };
+  var t = texts[lang];
+  var policyUrl = '/' + lang + '/datenschutz.html';
+
   var banner = document.createElement('div');
   banner.id = 'nv-cb';
   banner.innerHTML =
     '<div id="nv-cb-inner">' +
-      '<div id="nv-cb-text">Koristimo kolačiće za analitiku kako bismo razumeli kako koristiš sajt i poboljšali iskustvo.' +
-      ' <a href="/srb/datenschutz.html">Politika privatnosti</a></div>' +
+      '<div id="nv-cb-text">' + t.msg +
+      ' <a href="' + policyUrl + '">' + t.policy + '</a></div>' +
       '<div id="nv-cb-actions">' +
-        '<button id="nv-cb-accept">Prihvatam</button>' +
-        '<button id="nv-cb-reject">Odbijam</button>' +
+        '<button id="nv-cb-accept">' + t.accept + '</button>' +
+        '<button id="nv-cb-reject">' + t.reject + '</button>' +
       '</div>' +
     '</div>';
 

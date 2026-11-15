@@ -63,6 +63,14 @@ nav.scrolled .nav-logo { color: var(--bark); }
 .nav-links a { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,241,236,0.8); text-decoration: none; transition: color 0.3s; }
 nav.scrolled .nav-links a { color: var(--stone); }
 .nav-links a:hover { color: var(--clay); }
+.nav-dropdown { position: relative; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 0px); left: 50%; transform: translateX(-50%); background: rgba(245,241,236,0.98); backdrop-filter: blur(10px); border: 1px solid rgba(196,168,130,0.2); list-style: none; min-width: 200px; z-index: 999; box-shadow: 0 12px 40px rgba(0,0,0,0.12); padding-top: 8px; }
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.nav-dropdown > span { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,241,236,0.8); cursor: pointer; transition: color 0.3s; padding-bottom: 16px; margin-bottom: -16px; display: inline-block; }
+.nav-dropdown > span:hover { color: var(--clay); }
+.nav-dropdown > span::after { content: ''; display: block; position: absolute; height: 16px; width: 100%; left: 0; bottom: -16px; }
+.dropdown-menu li a { display: block; padding: 14px 24px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--bark) !important; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.dropdown-menu li a:hover { background: var(--sand); color: var(--accent) !important; }
 .nav-cta { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--clay) !important; border: 1px solid rgba(196,168,130,0.5); padding: 8px 20px; border-radius: 1px; transition: all 0.3s !important; }
 .nav-cta:hover { background: var(--clay) !important; color: var(--deep) !important; }
 .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; z-index: 1001; }
@@ -412,7 +420,13 @@ footer {
   <ul class="nav-links">
     <li><a href="index.html#about">O meni</a></li>
     <li><a href="raspored.html">Kalendar</a></li>
-    <li><a href="akal.html">Akal zajednica</a></li>
+    <li class="nav-dropdown">
+      <span>Akal zajednica</span>
+      <ul class="dropdown-menu">
+        <li><a href="akal.html">O zajednici</a></li>
+        <li><a href="akal-clanovi.html">Prostor za članove</a></li>
+      </ul>
+    </li>
     <li><a href="individual.html">Individualni rad</a></li>
     <li><a href="licna-mapa.html">Lična mapa</a></li>
     <li><a href="index.html#testimonials">Utisci</a></li>
@@ -425,6 +439,7 @@ footer {
   <a href="index.html#about" onclick="closeMobileMenu()">O meni</a>
   <a href="raspored.html" onclick="closeMobileMenu()">Kalendar</a>
   <a href="akal.html" onclick="closeMobileMenu()">Akal zajednica</a>
+  <a href="akal-clanovi.html" onclick="closeMobileMenu()">Prostor za članove</a>
   <a href="individual.html" onclick="closeMobileMenu()">Individualni rad</a>
   <a href="index.html#testimonials" onclick="closeMobileMenu()">Utisci</a>
   <a href="index.html#booking" class="mobile-cta" onclick="closeMobileMenu()">Zakazi sesiju</a>

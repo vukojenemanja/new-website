@@ -94,6 +94,14 @@ nav.scrolled {
   transition: color 0.3s;
 }
 .nav-links a:hover { color: var(--clay); }
+.nav-dropdown { position: relative; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 0px); left: 50%; transform: translateX(-50%); background: rgba(245,241,236,0.98); backdrop-filter: blur(10px); border: 1px solid rgba(196,168,130,0.2); list-style: none; min-width: 200px; z-index: 999; box-shadow: 0 12px 40px rgba(0,0,0,0.12); padding-top: 8px; }
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.nav-dropdown > span { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,241,236,0.8); cursor: pointer; transition: color 0.3s; padding-bottom: 16px; margin-bottom: -16px; display: inline-block; }
+.nav-dropdown > span:hover { color: var(--clay); }
+.nav-dropdown > span::after { content: ''; display: block; position: absolute; height: 16px; width: 100%; left: 0; bottom: -16px; }
+.dropdown-menu li a { display: block; padding: 14px 24px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--bark) !important; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.dropdown-menu li a:hover { background: var(--sand); color: var(--accent) !important; }
 .nav-cta {
   color: var(--clay) !important;
   border: 1px solid rgba(196,168,130,0.5);
@@ -1046,7 +1054,13 @@ nav.scrolled {
   <ul class="nav-links">
     <li><a href="index.html#about">O meni</a></li>
     <li><a href="raspored.html">Kalendar</a></li>
-    <li><a href="akal.html">Akal zajednica</a></li>
+    <li class="nav-dropdown">
+      <span>Akal zajednica</span>
+      <ul class="dropdown-menu">
+        <li><a href="akal.html">O zajednici</a></li>
+        <li><a href="akal-clanovi.html">Prostor za članove</a></li>
+      </ul>
+    </li>
     <li><a href="individual.html">Individualni rad</a></li>
     <li><a href="licna-mapa.html">Lična mapa</a></li>
     <li><a href="https://book.stripe.com/5kQ5kF5IP0Rjfrhfeo4ow01" class="nav-cta">Rezerviši mesto</a></li>

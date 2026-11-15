@@ -557,7 +557,13 @@ footer ul a:hover { color: var(--clay); }
   <ul class="nav-links">
     <li><a href="index.html#about">O meni</a></li>
     <li><a href="raspored.html">Kalendar</a></li>
-    <li><a href="akal.html">Akal zajednica</a></li>
+    <li class="nav-dropdown">
+      <span>Akal zajednica</span>
+      <ul class="dropdown-menu">
+        <li><a href="akal.html">O zajednici</a></li>
+        <li><a href="akal-clanovi.html">Prostor za članove</a></li>
+      </ul>
+    </li>
     <li class="nav-dropdown">
       <span style="color:var(--clay)">Individualni rad</span>
       <ul class="dropdown-menu">
@@ -579,6 +585,7 @@ footer ul a:hover { color: var(--clay); }
   <a href="index.html#about" onclick="closeMobileMenu()">O meni</a>
   <a href="raspored.html" onclick="closeMobileMenu()">Kalendar</a>
   <a href="akal.html" onclick="closeMobileMenu()">Akal zajednica</a>
+  <a href="akal-clanovi.html" onclick="closeMobileMenu()">Prostor za članove</a>
   <a href="individual.html" onclick="closeMobileMenu()" style="color:var(--clay)">Individualni rad</a>
   <a href="index.html#testimonials" onclick="closeMobileMenu()">Utisci</a>
   <a href="mailto:info@vukojenemanja.com?subject=Zakazivanje%20-%20Inner%20Shift" class="mobile-cta" onclick="closeMobileMenu()">Zakaži sesiju</a>

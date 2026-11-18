@@ -2,6 +2,14 @@
   var CLARITY_ID = 'ze0v1a5lx7';
   var KEY = 'nv_cookie_consent';
 
+  function grantConsent() {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted'
+      });
+    }
+  }
+
   function loadClarity() {
     if (window._clarityLoaded) return;
     window._clarityLoaded = true;
@@ -15,7 +23,7 @@
   var consent;
   try { consent = localStorage.getItem(KEY); } catch(e) {}
 
-  if (consent === 'accepted') { loadClarity(); return; }
+  if (consent === 'accepted') { grantConsent(); loadClarity(); return; }
   if (consent === 'rejected') { return; }
 
   var style = document.createElement('style');
@@ -33,10 +41,10 @@
     'letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:background 0.2s;}' +
     '#nv-cb-accept:hover{background:var(--warm,#D4B896);}' +
     '#nv-cb-reject{padding:10px 24px;background:transparent;' +
-    'color:rgba(232,221,208,0.45);border:1px solid rgba(232,221,208,0.2);cursor:pointer;' +
+    'color:rgba(232,221,208,0.75);border:1px solid rgba(232,221,208,0.4);cursor:pointer;' +
     'font-family:"DM Sans",sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;' +
     'transition:color 0.2s,border-color 0.2s;}' +
-    '#nv-cb-reject:hover{color:rgba(232,221,208,0.75);border-color:rgba(232,221,208,0.4);}' +
+    '#nv-cb-reject:hover{color:rgba(232,221,208,1);border-color:rgba(232,221,208,0.7);}' +
     '@media(max-width:600px){#nv-cb-inner{flex-direction:column;gap:14px;}' +
     '#nv-cb-actions{width:100%;}#nv-cb-accept,#nv-cb-reject{flex:1;text-align:center;}}';
 
@@ -57,8 +65,8 @@
       '<div id="nv-cb-text">' + t.msg +
       ' <a href="' + policyUrl + '">' + t.policy + '</a></div>' +
       '<div id="nv-cb-actions">' +
-        '<button id="nv-cb-accept">' + t.accept + '</button>' +
         '<button id="nv-cb-reject">' + t.reject + '</button>' +
+        '<button id="nv-cb-accept">' + t.accept + '</button>' +
       '</div>' +
     '</div>';
 
@@ -67,6 +75,7 @@
 
   document.getElementById('nv-cb-accept').addEventListener('click', function () {
     try { localStorage.setItem(KEY, 'accepted'); } catch(e) {}
+    grantConsent();
     loadClarity();
     banner.style.display = 'none';
   });

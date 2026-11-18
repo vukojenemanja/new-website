@@ -33,7 +33,7 @@
 <link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--clay:#C4A882;--sand:#E8DDD0;--bark:#3D2E1E;--fog:#F5F1EC;--deep:#1E1712;--stone:#8A8070}
+:root{--clay:#C4A882;--sand:#E8DDD0;--bark:#3D2E1E;--fog:#F5F1EC;--deep:#1E1712;--stone:#8A8070;--accent:#9B6B3A}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--fog);color:var(--bark);line-height:1.7}
 nav{padding:22px 40px;background:var(--deep);display:flex;justify-content:space-between;align-items:center}
@@ -41,16 +41,21 @@ nav a{color:var(--sand);text-decoration:none;font-size:12px;letter-spacing:2px;t
 nav a:hover{color:var(--clay)}
 main{max-width:760px;margin:0 auto;padding:80px 28px 100px}
 .eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--stone);margin-bottom:16px}
-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5vw,58px);font-weight:300;line-height:1.1;margin-bottom:48px}
-.card{background:#fff;border:1px solid rgba(61,46,30,.08);padding:36px 40px;margin-bottom:2px}
-.card:first-of-type{border-radius:4px 4px 0 0}
-.card:last-of-type{border-radius:0 0 4px 4px;margin-bottom:0}
-.card p{font-size:15px;line-height:1.85;color:var(--stone);margin-bottom:16px}
-.card p:last-child{margin-bottom:0}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,52px);font-weight:300;line-height:1.1;margin-bottom:12px}
+.updated{font-size:12px;color:var(--stone);margin-bottom:56px}
+.section{margin-bottom:40px}
+.section h2{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--bark);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(61,46,30,.1)}
+.section p{font-size:14px;line-height:1.85;color:var(--stone);margin-bottom:12px}
+.section p:last-child{margin-bottom:0}
+.section ul{font-size:14px;line-height:1.85;color:var(--stone);margin:8px 0 12px 20px}
+.section ul li{margin-bottom:6px}
+.section a{color:var(--accent);text-decoration:none}
+.section a:hover{text-decoration:underline}
+.highlight{background:#fff;border-left:3px solid var(--clay);padding:16px 20px;margin:16px 0;font-size:14px;line-height:1.8;color:var(--stone)}
 footer{margin-top:64px;padding-top:28px;border-top:1px solid rgba(61,46,30,.1);font-size:12px;color:var(--stone);display:flex;gap:24px;flex-wrap:wrap}
 footer a{color:var(--clay);text-decoration:none}
 footer a:hover{text-decoration:underline}
-@media(max-width:600px){main{padding:60px 20px 80px}nav{padding:18px 20px}.card{padding:24px 20px}}
+@media(max-width:600px){main{padding:60px 20px 80px}nav{padding:18px 20px}}
 </style>
 </head>
 <body>
@@ -61,18 +66,106 @@ footer a:hover{text-decoration:underline}
 <main>
   <div class="eyebrow">Legal</div>
   <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: November 2026</p>
 
-  <div class="card">
-    <p>The protection of your personal data is important to us. The processing of personal data is carried out in accordance with applicable data protection regulations, in particular the General Data Protection Regulation (GDPR).</p>
+  <div class="section">
+    <h2>1. Data Controller</h2>
+    <p>The data controller for the processing of personal data within the meaning of the General Data Protection Regulation (GDPR, Regulation (EU) 2016/679) and the Austrian Data Protection Act (DSG 2018) is:</p>
+    <div class="highlight">
+      The Art of Connection Vienna<br>
+      Represented by: Nemanja Vukoje<br>
+      Sachsenplatz 9, 1200 Vienna, Austria<br>
+      Email: <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a>
+    </div>
   </div>
-  <div class="card">
-    <p>Personal data is processed exclusively for the purpose of organising and conducting association activities, communication, and administration.</p>
+
+  <div class="section">
+    <h2>2. Data We Collect</h2>
+    <p>We collect the following categories of personal data:</p>
+    <ul>
+      <li><strong>Contact data:</strong> name, email address</li>
+      <li><strong>Date of birth</strong> (day and month) – solely for calculating the soul number according to Tantric numerology, if the user chooses this option</li>
+      <li><strong>Usage data:</strong> IP address (anonymised), browser type, pages visited, time of visit</li>
+    </ul>
+    <p>Data is collected only to the extent necessary for the stated purposes.</p>
   </div>
-  <div class="card">
-    <p>By participating in our offerings, participants consent to the use of photographs taken during events for association purposes (e.g. website, social media).</p>
+
+  <div class="section">
+    <h2>3. Purpose and Legal Basis of Processing</h2>
+
+    <p><strong>Email list and newsletter</strong></p>
+    <p>Legal basis: consent (Art. 6(1)(a) GDPR). If you sign up for the email list via the form on the website, your email address and name are stored to send you newsletters and information about our services. Consent can be withdrawn at any time by clicking the unsubscribe link in any email.</p>
+
+    <p><strong>Soul number – personalised reading</strong></p>
+    <p>Legal basis: consent (Art. 6(1)(a) GDPR). The date of birth (day) is collected solely for calculating the soul number according to Tantric numerology, if the user explicitly chooses this option. This data is stored as part of the subscriber profile and used only for this purpose.</p>
+
+    <p><strong>Website analytics</strong></p>
+    <p>Legal basis: consent (Art. 6(1)(a) GDPR). We use Google Analytics and Microsoft Clarity for anonymised analysis of website visits in order to improve our content. These tools are loaded only after your explicit consent via the cookie banner displayed on your first visit. IP addresses are anonymised before storage. Data is not used to identify individuals. Consent can be withdrawn at any time via the cookie banner or by contacting us at the address above.</p>
   </div>
-  <div class="card">
-    <p>You have the right at any time to request access to, correction, deletion, or restriction of processing of your data. Any consent given may also be withdrawn at any time.</p>
+
+  <div class="section">
+    <h2>4. Recipients and Third Parties</h2>
+    <p>We share your data exclusively with the following third parties to the extent necessary to provide our services:</p>
+    <ul>
+      <li><strong>Kit (ConvertKit, Inc.)</strong> – email marketing platform, USA. Data transfers to the USA are made on the basis of EU Standard Contractual Clauses (SCC). Kit's privacy policy is available at <a href="https://kit.com/privacy" target="_blank" rel="noopener">kit.com/privacy</a>.</li>
+      <li><strong>Google LLC</strong> – Google Analytics for website analysis, USA. Data transfers to the USA are made on the basis of EU Standard Contractual Clauses (SCC). Google's privacy policy is available at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</li>
+      <li><strong>Microsoft Corporation</strong> – Microsoft Clarity for website usage analysis (session recording, heatmaps), USA. Data transfers to the USA are made on the basis of EU Standard Contractual Clauses (SCC). Microsoft's privacy policy is available at <a href="https://privacy.microsoft.com" target="_blank" rel="noopener">privacy.microsoft.com</a>.</li>
+      <li><strong>GitHub, Inc.</strong> – website hosting via GitHub Pages, USA. GitHub's privacy policy is available at <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">docs.github.com</a>.</li>
+    </ul>
+    <p>We do not sell your data or share it with third parties for commercial purposes.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. Data Retention</h2>
+    <p>We retain your data only for as long as necessary to fulfil the stated purposes:</p>
+    <ul>
+      <li><strong>Email subscribers:</strong> until consent is withdrawn and you unsubscribe from the list</li>
+      <li><strong>Date of birth and soul number:</strong> stored together with the subscription; deleted upon request or upon unsubscription</li>
+      <li><strong>Website visit data (Google Analytics):</strong> anonymised data, retained for 14 months</li>
+      <li><strong>Website usage data (Microsoft Clarity):</strong> anonymised data, retained for 13 months</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>6. Your Rights</h2>
+    <p>Under GDPR and the Austrian DSG 2018, you have the following rights:</p>
+    <ul>
+      <li><strong>Right of access</strong> (Art. 15 GDPR) – you may request information about the data we process</li>
+      <li><strong>Right to rectification</strong> (Art. 16 GDPR) – you may request correction of inaccurate data</li>
+      <li><strong>Right to erasure</strong> (Art. 17 GDPR) – you may request deletion of your data</li>
+      <li><strong>Right to restriction of processing</strong> (Art. 18 GDPR)</li>
+      <li><strong>Right to data portability</strong> (Art. 20 GDPR)</li>
+      <li><strong>Right to object</strong> (Art. 21 GDPR) – to processing based on legitimate interests</li>
+      <li><strong>Right to withdraw consent</strong> – at any time, without affecting the lawfulness of processing carried out before withdrawal</li>
+    </ul>
+    <p>Requests can be sent to: <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
+  </div>
+
+  <div class="section">
+    <h2>7. Right to Lodge a Complaint</h2>
+    <p>You have the right to lodge a complaint with the Austrian data protection supervisory authority:</p>
+    <div class="highlight">
+      Datenschutzbehörde (DSB)<br>
+      Barichgasse 40–42, 1030 Vienna, Austria<br>
+      Web: <a href="https://www.dsb.gv.at" target="_blank" rel="noopener">dsb.gv.at</a><br>
+      Email: dsb@dsb.gv.at
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>8. Cookies</h2>
+    <p>This website uses cookies for basic functionality (e.g. remembering that you have closed a notice) and – with your consent – for analytics purposes. We do not use cookies for advertising purposes.</p>
+    <p>Google Analytics is configured with IP anonymisation. Microsoft Clarity uses cookies to record anonymous usage data (clicks, scroll depth, visit duration). Neither of these tools creates a personalised user profile. Both analytics tools are loaded only after your explicit consent via the cookie banner displayed on your first visit.</p>
+  </div>
+
+  <div class="section">
+    <h2>9. Data Security</h2>
+    <p>The website uses SSL/TLS encryption (HTTPS) for all communication. We implement appropriate technical and organisational security measures in accordance with Art. 32 GDPR.</p>
+  </div>
+
+  <div class="section">
+    <h2>10. Changes to This Privacy Policy</h2>
+    <p>We reserve the right to update this privacy policy in line with changes in legislation or our services. The current version is always available on this page with the date of the last update.</p>
   </div>
 
   <footer>

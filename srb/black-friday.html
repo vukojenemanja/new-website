@@ -169,7 +169,7 @@ nav a:hover { color: var(--clay); }
   line-height: 1.5;
 }
 .offer-includes li::before {
-  content: '—';
+  content: '-';
   color: var(--clay);
   flex-shrink: 0;
   margin-top: 1px;
@@ -241,6 +241,19 @@ footer {
 footer a { color: var(--clay); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
+/* ITEM LINKS */
+.item-link {
+  color: var(--bark);
+  text-decoration: underline;
+  text-decoration-color: rgba(61,46,30,.3);
+  text-underline-offset: 3px;
+  transition: color .2s, text-decoration-color .2s;
+}
+.item-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
 /* MOBILE */
 @media (max-width: 680px) {
   nav { padding: 18px 20px; }
@@ -261,7 +274,7 @@ footer a:hover { text-decoration: underline; }
 <div class="hero">
   <div class="bf-badge">Black Friday 2026</div>
   <h1>Dve ponude.<br><em>Ograničeno vreme.</em></h1>
-  <p class="hero-sub">Dve kombinacije koje inače ne postoje zajedno — dostupne samo ovog vikenda.</p>
+  <p class="hero-sub">Dve kombinacije koje inače ne postoje zajedno - dostupne samo ovog vikenda.</p>
   <div class="deadline">Ponuda ističe 30. novembra u ponoć</div>
 </div>
 
@@ -271,14 +284,14 @@ footer a:hover { text-decoration: underline; }
   <div class="offer-card">
     <div class="offer-label">Ponuda 1</div>
     <div class="offer-title">Mapa<br><em>+ Aura tretman</em></div>
-    <p class="offer-desc">Lična numerološka mapa i energetska sesija u jednom paketu — saznaš ko si i oslobodis se onoga što nosiš.</p>
+    <p class="offer-desc">Lična numerološka mapa i energetska sesija u jednom paketu - saznaš ko si i oslobodiš se onoga što nosiš.</p>
     <ul class="offer-includes">
       <li>
-        Lična numerološka mapa (PDF, 72h)
+        <a href="licna-mapa.html" class="item-link">Lična numerološka mapa</a>
         <span class="value">€55</span>
       </li>
       <li>
-        Aura tretman – 30-min energetska sesija
+        <a href="individual.html" class="item-link">Aura tretman</a> - 30-min energetska sesija
         <span class="value">€66</span>
       </li>
     </ul>
@@ -295,10 +308,10 @@ footer a:hover { text-decoration: underline; }
     <div class="featured-tag">Najveća vrednost</div>
     <div class="offer-label">Ponuda 2</div>
     <div class="offer-title">Akal zajednica<br><em>+ Mapa gratis</em></div>
-    <p class="offer-desc">Mesečno Akal članstvo sa svim pristupima — i lična mapa uz to, bez doplate.</p>
+    <p class="offer-desc">Mesečno Akal članstvo sa svim pristupima - i lična mapa uz to, bez doplate.</p>
     <ul class="offer-includes">
       <li>
-        Nedeljna Kundalini joga (online, uživo)
+        <a href="akal.html" class="item-link">Nedeljna Kundalini joga</a> (online, uživo)
       </li>
       <li>
         2 večeri meditacije mesečno
@@ -313,7 +326,7 @@ footer a:hover { text-decoration: underline; }
         Radionica: Šta me blokira?
       </li>
       <li>
-        Lična numerološka mapa – gratis
+        <a href="licna-mapa.html" class="item-link">Lična numerološka mapa</a> - gratis
         <span class="value">€55</span>
       </li>
     </ul>

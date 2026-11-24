@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<!-- Consent Mode v2 default (must be before gtag loads) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': 500
+  });
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSMHMQD13N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NSMHMQD13N', { 'anonymize_ip': true });
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Crni petak – Nemanja Vukoje</title>
+<meta name="description" content="Dve ponude, ograničeno vreme. Lična mapa + aura tretman ili Akal zajednica sa mapom gratis.">
+<link rel="canonical" href="https://vukojenemanja.com/srb/black-friday.html" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --clay: #C4A882;
+  --sand: #E8DDD0;
+  --bark: #3D2E1E;
+  --fog:  #F5F1EC;
+  --deep: #1E1712;
+  --stone:#8A8070;
+  --accent:#9B6B3A;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--bark); line-height: 1.7; }
+
+/* NAV */
+nav { padding: 20px 40px; background: var(--deep); display: flex; justify-content: space-between; align-items: center; }
+nav a { color: var(--sand); text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: color .2s; }
+nav a:hover { color: var(--clay); }
+
+/* HERO */
+.hero {
+  background: var(--deep);
+  padding: 72px 28px 80px;
+  text-align: center;
+}
+.bf-badge {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  border: 1px solid rgba(196,168,130,.4);
+  padding: 6px 16px;
+  margin-bottom: 28px;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.hero h1 em { font-style: italic; color: var(--clay); }
+.hero-sub {
+  font-size: 15px;
+  color: rgba(232,221,208,.65);
+  max-width: 480px;
+  margin: 0 auto 32px;
+  line-height: 1.75;
+}
+.deadline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(232,221,208,.5);
+}
+.deadline::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--clay);
+}
+
+/* OFFERS */
+.offers {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 72px 28px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.offer-card {
+  background: #fff;
+  border: 1px solid rgba(61,46,30,.1);
+  padding: 40px 36px 36px;
+  display: flex;
+  flex-direction: column;
+}
+.offer-card.featured {
+  border-color: var(--clay);
+  position: relative;
+}
+.featured-tag {
+  position: absolute;
+  top: -1px; right: 24px;
+  background: var(--clay);
+  color: var(--deep);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  font-weight: 500;
+}
+
+.offer-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 14px;
+}
+.offer-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--bark);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.offer-title em { font-style: italic; color: var(--accent); }
+
+.offer-desc {
+  font-size: 13px;
+  color: var(--stone);
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+
+.offer-includes {
+  list-style: none;
+  margin-bottom: 32px;
+  flex: 1;
+}
+.offer-includes li {
+  font-size: 13px;
+  color: var(--bark);
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(61,46,30,.07);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+.offer-includes li::before {
+  content: '—';
+  color: var(--clay);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.offer-includes .value {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--stone);
+  white-space: nowrap;
+  padding-left: 8px;
+}
+
+.offer-pricing {
+  margin-bottom: 24px;
+}
+.offer-was {
+  font-size: 13px;
+  color: var(--stone);
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+.offer-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--bark);
+  line-height: 1;
+}
+.offer-price sup { font-size: 22px; vertical-align: super; }
+.offer-note {
+  font-size: 11px;
+  color: var(--stone);
+  margin-top: 6px;
+  letter-spacing: .5px;
+}
+
+.offer-cta {
+  display: block;
+  text-align: center;
+  background: var(--bark);
+  color: var(--sand);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 15px 24px;
+  transition: background .25s;
+}
+.offer-cta:hover { background: var(--accent); }
+.offer-card.featured .offer-cta {
+  background: var(--clay);
+  color: var(--deep);
+}
+.offer-card.featured .offer-cta:hover { background: var(--sand); }
+
+/* FOOTER */
+footer {
+  background: var(--deep);
+  padding: 28px 40px;
+  font-size: 12px;
+  color: rgba(232,221,208,.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+footer a { color: var(--clay); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* MOBILE */
+@media (max-width: 680px) {
+  nav { padding: 18px 20px; }
+  .hero { padding: 56px 20px 64px; }
+  .offers { grid-template-columns: 1fr; padding: 48px 20px 72px; }
+  .offer-card { padding: 32px 24px 28px; }
+  footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Nemanja Vukoje</a>
+  <a href="../index.html">Odaberi jezik</a>
+</nav>
+
+<div class="hero">
+  <div class="bf-badge">Crni petak 2026</div>
+  <h1>Dve ponude.<br><em>Ograničeno vreme.</em></h1>
+  <p class="hero-sub">Dve kombinacije koje inače ne postoje zajedno — dostupne samo ovog vikenda.</p>
+  <div class="deadline">Ponuda ističe 30. novembra u ponoć</div>
+</div>
+
+<div class="offers">
+
+  <!-- OFFER 1 -->
+  <div class="offer-card">
+    <div class="offer-label">Ponuda 1</div>
+    <div class="offer-title">Mapa<br><em>+ Aura tretman</em></div>
+    <p class="offer-desc">Lična numerološka mapa i energetska sesija u jednom paketu — saznaš ko si i oslobodis se onoga što nosiš.</p>
+    <ul class="offer-includes">
+      <li>
+        Lična numerološka mapa (PDF, 72h)
+        <span class="value">€55</span>
+      </li>
+      <li>
+        Aura tretman – 30-min energetska sesija
+        <span class="value">€66</span>
+      </li>
+    </ul>
+    <div class="offer-pricing">
+      <div class="offer-was">Redovna cena: €121</div>
+      <div class="offer-price"><sup>€</sup>55</div>
+      <div class="offer-note">Jednokratno · bez pretplate</div>
+    </div>
+    <a href="mailto:info@vukojenemanja.com?subject=Crni%20petak%20-%20Mapa%20%2B%20Aura&body=Zdravo%2C%0A%0AZelim%20da%20porucim%20paket%20Mapa%20%2B%20Aura%20tretman%20(55%E2%82%AC).%0A%0AMoje%20ime%3A%20%0ADatum%20rodjenja%3A%20" class="offer-cta">Uzimam ovo →</a>
+  </div>
+
+  <!-- OFFER 2 -->
+  <div class="offer-card featured">
+    <div class="featured-tag">Najveća vrednost</div>
+    <div class="offer-label">Ponuda 2</div>
+    <div class="offer-title">Akal zajednica<br><em>+ Mapa gratis</em></div>
+    <p class="offer-desc">Mesečno Akal članstvo sa svim pristupima — i lična mapa uz to, bez doplate.</p>
+    <ul class="offer-includes">
+      <li>
+        Nedeljna Kundalini joga (online, uživo)
+      </li>
+      <li>
+        2 večeri meditacije mesečno
+      </li>
+      <li>
+        Privatna WhatsApp zajednica
+      </li>
+      <li>
+        Masterclass: Aktivacija intuicije
+      </li>
+      <li>
+        Radionica: Šta me blokira?
+      </li>
+      <li>
+        Lična numerološka mapa – gratis
+        <span class="value">€55</span>
+      </li>
+    </ul>
+    <div class="offer-pricing">
+      <div class="offer-was">Redovna cena Akala: €77 · mapa: €55</div>
+      <div class="offer-price"><sup>€</sup>77<span style="font-size:18px;color:var(--stone)">/mes</span></div>
+      <div class="offer-note">Mesec po mesec · otkaži kada hoćeš · mapa uključena</div>
+    </div>
+    <a href="mailto:info@vukojenemanja.com?subject=Crni%20petak%20-%20Akal%20%2B%20Mapa&body=Zdravo%2C%0A%0AZelim%20da%20se%20pridru%C5%BEim%20Akal%20zajednici%20i%20iskoristim%20Black%20Friday%20ponudu%20(mapa%20gratis).%0A%0AMoje%20ime%3A%20%0ADatum%20rodjenja%3A%20" class="offer-cta">Pristupam Akalu →</a>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 The Art of Connection Vienna – Nemanja Vukoje</span>
+  <div style="display:flex;gap:20px;">
+    <a href="datenschutz.html">Privatnost</a>
+    <a href="impressum.html">Impresum</a>
+  </div>
+</footer>
+
+<script src="../cookie-banner.js"></script>
+</body>
+</html>

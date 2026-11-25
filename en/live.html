@@ -325,28 +325,26 @@ function connectFirebase() {
 let isMutedLocally = false;
 
 function handleSessionUpdate(data) {
-  if (isMutedLocally) return;
-
   if (data.status === 'waiting' || data.status === 'stopped') {
     audio.pause();
-    show('screen-waiting');
+    if (!isMutedLocally) show('screen-waiting');
     return;
   }
 
   if (data.status === 'playing' && data.songUrl) {
-    document.getElementById('playing-song-name').textContent = data.songName || '—';
-    document.getElementById('waveform').classList.remove('paused');
-    show('screen-playing');
-
-    // Capture timestamps now — seek position recalculated at play time
     const sessionStartedAt = data.startedAt;
-    const sessionPausedAt = data.pausedAt || 0;
 
     function seekAndPlay() {
       const elapsed = sessionStartedAt ? (Date.now() - sessionStartedAt) / 1000 : 0;
-      const seekTo = Math.max(0, elapsed + sessionPausedAt);
-      audio.currentTime = Math.min(seekTo, audio.duration || 999);
+      audio.currentTime = Math.min(Math.max(0, elapsed), audio.duration || 999);
+      audio.muted = isMutedLocally;
       audio.play().catch(err => console.log('Play error:', err));
+    }
+
+    if (!isMutedLocally) {
+      document.getElementById('playing-song-name').textContent = data.songName || '—';
+      document.getElementById('waveform').classList.remove('paused');
+      show('screen-playing');
     }
 
     if (audio.src !== data.songUrl) {
@@ -359,12 +357,6 @@ function handleSessionUpdate(data) {
       audio.addEventListener('canplay', seekAndPlay, { once: true });
     }
   }
-
-  if (data.status === 'paused') {
-    audio.pause();
-    document.getElementById('waveform').classList.add('paused');
-    show('screen-playing');
-  }
 }
 
 // ─── Listen for individual mute changes ──────────────
@@ -374,11 +366,17 @@ function listenForMute() {
     const muted = snap.val();
     if (muted === true) {
       isMutedLocally = true;
-      audio.pause();
+      audio.muted = true;
       show('screen-muted');
     } else if (muted === false && isMutedLocally) {
       isMutedLocally = false;
-      get(sessionRef).then(s => { if (s.val()) handleSessionUpdate(s.val()); });
+      audio.muted = false;
+      // Resync if browser paused background audio (e.g. phone lock screen)
+      if (audio.paused) {
+        get(sessionRef).then(s => { if (s.val()) handleSessionUpdate(s.val()); });
+      } else {
+        show('screen-playing');
+      }
     }
   });
 }

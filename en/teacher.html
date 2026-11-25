@@ -327,12 +327,9 @@ function selectSong(i) {
 }
 
 // ─── Transport ────────────────────────────────────────
-let playStartedAt = 0;
-let pausedAtPosition = 0;
-
 function togglePlay() {
   if (sessionStatus === 'playing') {
-    pauseSession();
+    stopSession();
   } else {
     playNow();
   }
@@ -341,40 +338,20 @@ function togglePlay() {
 function playNow() {
   if (currentSongIndex < 0) return;
   const song = SONGS[currentSongIndex];
-  playStartedAt = Date.now();
 
   set(sessionRef, {
     status: 'playing',
     songIndex: currentSongIndex,
     songName: song.name,
     songUrl: song.url,
-    startedAt: playStartedAt,
-    pausedAt: pausedAtPosition
+    startedAt: Date.now()
   });
 
   sessionStatus = 'playing';
   updateUI();
 }
 
-function pauseSession() {
-  // Save position so resume starts from the right place
-  pausedAtPosition = playStartedAt ? (Date.now() - playStartedAt) / 1000 + pausedAtPosition : 0;
-
-  set(sessionRef, {
-    status: 'paused',
-    songIndex: currentSongIndex,
-    songName: SONGS[currentSongIndex]?.name || '',
-    songUrl: SONGS[currentSongIndex]?.url || '',
-    startedAt: null,
-    pausedAt: pausedAtPosition
-  });
-  sessionStatus = 'paused';
-  updateUI();
-}
-
 function stopSession() {
-  pausedAtPosition = 0;
-  playStartedAt = 0;
   set(sessionRef, { status: 'waiting' });
   sessionStatus = 'waiting';
   updateUI();
@@ -386,10 +363,7 @@ function updateUI() {
   pill.className = 'status-pill ' + sessionStatus;
   if (sessionStatus === 'playing') {
     pill.textContent = '● Playing';
-    playBtn.textContent = '⏸ Pause';
-  } else if (sessionStatus === 'paused') {
-    pill.textContent = 'Paused';
-    playBtn.textContent = '▶ Resume';
+    playBtn.textContent = '■ Stop';
   } else {
     pill.textContent = 'Waiting';
     playBtn.textContent = '▶ Play';

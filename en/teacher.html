@@ -344,14 +344,15 @@ function initApp() {
   document.getElementById('end-day-btn').addEventListener('click', endOfDay);
 }
 
-function endOfDay() {
+async function endOfDay() {
   if (!confirm('Clear all session data? This will disconnect all students.')) return;
   stopSession();
-  remove(ref(db, 'live-class'));
-}
-
-function clearDatabase() {
-  remove(ref(db, 'live-class'));
+  try {
+    await remove(ref(db, 'live-class/session'));
+    await remove(ref(db, 'live-class/students'));
+  } catch (err) {
+    alert('Could not clear: ' + err.message);
+  }
 }
 
 function toggleRepeat() {

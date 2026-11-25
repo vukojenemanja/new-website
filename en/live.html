@@ -239,6 +239,9 @@ body {
   <div class="muted-sub">Music is paused for you.<br>Others continue listening.</div>
 </div>
 
+<!-- Hidden audio output for teacher voice (WebRTC) -->
+<audio id="voice-output" autoplay playsinline style="display:none"></audio>
+
 <!-- 6. Error / no Firebase -->
 <div class="screen" id="screen-error">
   <div class="gate-label">Connection error</div>
@@ -511,7 +514,7 @@ const RTC_CONFIG = { iceServers: [
   { urls: 'stun:stun1.l.google.com:19302' }
 ]};
 let studentPc = null;
-let speakerEl = null;
+const voiceOutput = document.getElementById('voice-output');
 
 function listenForVoiceOffer() {
   onValue(ref(db, `live-class/students/${studentId}/rtc/offer`), async snap => {
@@ -531,8 +534,9 @@ async function answerVoiceCall(offer) {
     studentPc = pc;
 
     pc.ontrack = e => {
-      if (!speakerEl) { speakerEl = new Audio(); speakerEl.autoplay = true; }
-      speakerEl.srcObject = e.streams[0];
+      const stream = e.streams[0] || new MediaStream([e.track]);
+      voiceOutput.srcObject = stream;
+      voiceOutput.play().catch(() => {});
     };
 
     pc.onicecandidate = ({ candidate }) => {
@@ -555,7 +559,7 @@ async function answerVoiceCall(offer) {
 
 function endVoiceCall() {
   if (studentPc) { studentPc.close(); studentPc = null; }
-  if (speakerEl) { speakerEl.srcObject = null; speakerEl = null; }
+  voiceOutput.srcObject = null;
 }
 
 // ─── Listen for individual mute changes ──────────────

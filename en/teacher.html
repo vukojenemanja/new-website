@@ -388,6 +388,7 @@ function updateUI() {
 
 // ─── Students ─────────────────────────────────────────
 let studentsCache = {};
+const noStudentsMsg = document.getElementById('no-students-msg');
 
 function listenToStudents() {
   onValue(studentsRef, snap => {
@@ -399,19 +400,16 @@ function listenToStudents() {
 
 function renderStudents() {
   const container = document.getElementById('student-list');
-  const noMsg = document.getElementById('no-students-msg');
   const active = Object.entries(studentsCache).filter(([id, s]) => s.active);
 
   document.getElementById('students-count').textContent = active.length;
 
+  container.innerHTML = '';
+
   if (!active.length) {
-    container.innerHTML = '';
-    container.appendChild(noMsg);
+    container.appendChild(noStudentsMsg);
     return;
   }
-
-  if (noMsg.parentNode) noMsg.parentNode.removeChild(noMsg);
-  container.innerHTML = '';
 
   active.forEach(([id, student]) => {
     const isMuted = student.muted === true;

@@ -154,6 +154,15 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   font-size: 13px; color: var(--stone); font-style: italic;
   padding: 24px 0; text-align: center; line-height: 1.8;
 }
+.end-day-btn {
+  display: block; width: 100%; margin-top: 32px;
+  padding: 12px; border: 1px solid rgba(61,46,30,0.12);
+  background: transparent; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(138,128,112,0.6); transition: all 0.2s;
+}
+.end-day-btn:hover { border-color: #c0392b; color: #c0392b; }
 
 /* ─── MOBILE ─── */
 @media (max-width: 800px) {
@@ -216,6 +225,8 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
       <div class="student-list" id="student-list">
         <div class="no-students" id="no-students-msg">No students connected yet.</div>
       </div>
+
+      <button class="end-day-btn" id="end-day-btn">End of day — clear all data</button>
     </div>
 
   </div>
@@ -322,6 +333,13 @@ function initApp() {
   document.getElementById('play-btn').addEventListener('click', togglePlay);
   document.getElementById('stop-btn').addEventListener('click', stopSession);
   document.getElementById('repeat-btn').addEventListener('click', toggleRepeat);
+  document.getElementById('end-day-btn').addEventListener('click', endOfDay);
+}
+
+function endOfDay() {
+  if (!confirm('Clear all session data? This will disconnect all students.')) return;
+  stopSession();
+  remove(ref(db, 'live-class'));
 }
 
 function clearDatabase() {

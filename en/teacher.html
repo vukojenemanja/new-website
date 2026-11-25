@@ -560,8 +560,18 @@ const voiceListeners = {}; // { sid: { unsubAnswer, unsubCandidates } }
 
 async function ensureMic() {
   if (teacherStream) return teacherStream;
-  teacherStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
-  return teacherStream;
+  try {
+    teacherStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+    return teacherStream;
+  } catch (err) {
+    const msg = err.name === 'NotAllowedError'
+      ? 'Microphone blocked — please allow mic access in browser settings and reload.'
+      : err.name === 'NotFoundError'
+      ? 'No microphone found on this device.'
+      : 'Mic error: ' + err.message;
+    alert(msg);
+    throw err;
+  }
 }
 
 function cleanVoiceListeners(sid) {
@@ -604,6 +614,9 @@ async function startVoiceWith(sid) {
 
   } catch (err) {
     console.warn('Voice error:', err);
+    if (err.name !== 'NotAllowedError' && err.name !== 'NotFoundError') {
+      alert('Voice call failed: ' + err.message);
+    }
   }
 }
 

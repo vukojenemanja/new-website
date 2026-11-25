@@ -237,6 +237,9 @@ body {
   <div class="muted-icon">🤫</div>
   <div class="muted-title">Nemanja is<br>speaking with you</div>
   <div class="muted-sub">Music is paused for you.<br>Others continue listening.</div>
+  <button id="tap-to-hear-btn" class="gate-btn" style="display:none; max-width:280px; margin-top:32px;">
+    Tap to hear teacher
+  </button>
 </div>
 
 <!-- Hidden audio output for teacher voice (WebRTC) -->
@@ -557,7 +560,11 @@ async function answerVoiceCall(offer) {
     pc.ontrack = e => {
       const stream = e.streams[0] || new MediaStream([e.track]);
       voiceOutput.srcObject = stream;
-      voiceOutput.play().catch(() => {});
+      voiceOutput.play().catch(() => {
+        const btn = document.getElementById('tap-to-hear-btn');
+        btn.style.display = 'block';
+        btn.onclick = () => { btn.style.display = 'none'; voiceOutput.play().catch(() => {}); };
+      });
     };
 
     pc.onicecandidate = ({ candidate }) => {
@@ -585,6 +592,7 @@ function endVoiceCall() {
   if (unsubTeacherCandidates) { unsubTeacherCandidates(); unsubTeacherCandidates = null; }
   if (studentPc) { studentPc.close(); studentPc = null; }
   voiceOutput.srcObject = null;
+  document.getElementById('tap-to-hear-btn').style.display = 'none';
 }
 
 // ─── Listen for individual mute changes ──────────────

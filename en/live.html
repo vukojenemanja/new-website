@@ -375,7 +375,7 @@ const FIREBASE_CONFIG = {
 const FIREBASE_READY = FIREBASE_CONFIG.apiKey !== "PASTE_HERE";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
-import { getDatabase, ref, set, onValue, serverTimestamp, get } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-database.js";
+import { getDatabase, ref, set, onValue, onChildAdded, push, serverTimestamp, get } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-database.js";
 
 // ─── State ───────────────────────────────────────────
 let studentName = '';
@@ -505,9 +505,63 @@ function handleSessionUpdate(data) {
   }
 }
 
+// ─── WebRTC Voice (student side) ─────────────────────
+const RTC_CONFIG = { iceServers: [
+  { urls: 'stun:stun.l.google.com:19302' },
+  { urls: 'stun:stun1.l.google.com:19302' }
+]};
+let studentPc = null;
+let speakerEl = null;
+
+function listenForVoiceOffer() {
+  onValue(ref(db, `live-class/students/${studentId}/rtc/offer`), async snap => {
+    const offer = snap.val();
+    if (offer) {
+      await answerVoiceCall(offer);
+    } else {
+      endVoiceCall();
+    }
+  });
+}
+
+async function answerVoiceCall(offer) {
+  endVoiceCall();
+  try {
+    const pc = new RTCPeerConnection(RTC_CONFIG);
+    studentPc = pc;
+
+    pc.ontrack = e => {
+      if (!speakerEl) { speakerEl = new Audio(); speakerEl.autoplay = true; }
+      speakerEl.srcObject = e.streams[0];
+    };
+
+    pc.onicecandidate = ({ candidate }) => {
+      if (candidate) push(ref(db, `live-class/students/${studentId}/rtc/studentCandidates`), candidate.toJSON());
+    };
+
+    await pc.setRemoteDescription(new RTCSessionDescription(offer));
+    const answer = await pc.createAnswer();
+    await pc.setLocalDescription(answer);
+    await set(ref(db, `live-class/students/${studentId}/rtc/answer`), { type: answer.type, sdp: answer.sdp });
+
+    onChildAdded(ref(db, `live-class/students/${studentId}/rtc/teacherCandidates`), snap => {
+      const c = snap.val();
+      if (c) pc.addIceCandidate(new RTCIceCandidate(c)).catch(() => {});
+    });
+  } catch (err) {
+    console.warn('Voice answer error:', err);
+  }
+}
+
+function endVoiceCall() {
+  if (studentPc) { studentPc.close(); studentPc = null; }
+  if (speakerEl) { speakerEl.srcObject = null; speakerEl = null; }
+}
+
 // ─── Listen for individual mute changes ──────────────
 function listenForMute() {
   if (!db) return;
+  listenForVoiceOffer();
   onValue(ref(db, 'live-class/students/' + studentId + '/muted'), snap => {
     const muted = snap.val();
     if (muted === true) {
@@ -517,6 +571,7 @@ function listenForMute() {
     } else if (muted === false && isMutedLocally) {
       isMutedLocally = false;
       audio.muted = false;
+      endVoiceCall();
       // Resync if browser paused background audio (e.g. phone lock screen)
       if (audio.paused) {
         get(sessionRef).then(s => { if (s.val()) handleSessionUpdate(s.val()); });

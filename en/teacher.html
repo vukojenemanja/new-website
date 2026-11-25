@@ -154,6 +154,14 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   font-size: 13px; color: var(--stone); font-style: italic;
   padding: 24px 0; text-align: center; line-height: 1.8;
 }
+.mic-indicator {
+  font-size: 13px; margin-right: 2px; opacity: 0.85;
+  animation: mic-pulse 1.5s ease-in-out infinite;
+}
+@keyframes mic-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
 .end-day-btn {
   display: block; width: 100%; margin-top: 32px;
   padding: 12px; border: 1px solid rgba(61,46,30,0.12);
@@ -268,7 +276,7 @@ const SONGS = [
 const TEACHER_HASH = 'ab365860'; // test123
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
-import { getDatabase, ref, set, remove, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-database.js";
+import { getDatabase, ref, set, remove, push, onValue, onChildAdded, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-database.js";
 
 // ─── Password gate ────────────────────────────────────
 function hashStr(s) {
@@ -461,6 +469,63 @@ function updateUI() {
   }
 }
 
+// ─── WebRTC Voice ─────────────────────────────────────
+const RTC_CONFIG = { iceServers: [
+  { urls: 'stun:stun.l.google.com:19302' },
+  { urls: 'stun:stun1.l.google.com:19302' }
+]};
+let teacherStream = null;
+const peerConnections = {};
+
+async function ensureMic() {
+  if (teacherStream) return teacherStream;
+  teacherStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+  return teacherStream;
+}
+
+async function startVoiceWith(sid) {
+  try {
+    const stream = await ensureMic();
+    const pc = new RTCPeerConnection(RTC_CONFIG);
+    peerConnections[sid] = pc;
+
+    stream.getTracks().forEach(t => pc.addTrack(t, stream));
+
+    pc.onicecandidate = ({ candidate }) => {
+      if (candidate) push(ref(db, `live-class/students/${sid}/rtc/teacherCandidates`), candidate.toJSON());
+    };
+
+    pc.onconnectionstatechange = () => renderStudents();
+
+    const offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+    await set(ref(db, `live-class/students/${sid}/rtc/offer`), { type: offer.type, sdp: offer.sdp });
+
+    // Listen for student's answer
+    onValue(ref(db, `live-class/students/${sid}/rtc/answer`), async snap => {
+      const ans = snap.val();
+      if (ans && pc.signalingState === 'have-local-offer') {
+        await pc.setRemoteDescription(new RTCSessionDescription(ans));
+      }
+    });
+
+    // Listen for student's ICE candidates
+    onChildAdded(ref(db, `live-class/students/${sid}/rtc/studentCandidates`), snap => {
+      const c = snap.val();
+      if (c) pc.addIceCandidate(new RTCIceCandidate(c)).catch(() => {});
+    });
+
+  } catch (err) {
+    console.warn('Voice error:', err);
+  }
+}
+
+function endVoiceWith(sid) {
+  const pc = peerConnections[sid];
+  if (pc) { pc.close(); delete peerConnections[sid]; }
+  remove(ref(db, `live-class/students/${sid}/rtc`));
+}
+
 // ─── Students ─────────────────────────────────────────
 let studentsCache = {};
 const noStudentsMsg = document.getElementById('no-students-msg');
@@ -488,11 +553,13 @@ function renderStudents() {
 
   active.forEach(([id, student]) => {
     const isMuted = student.muted === true;
+    const hasVoice = !!peerConnections[id];
     const card = document.createElement('div');
     card.className = 'student-card' + (isMuted ? ' muted-card' : '');
     card.innerHTML = `
       <div class="student-name-row">
         <div class="student-dot"></div>
+        ${hasVoice ? '<span class="mic-indicator">🎙</span>' : ''}
         <div class="student-name">${escHtml(student.name || 'Student')}</div>
       </div>
       <button class="mute-btn ${isMuted ? 'muted' : 'unmuted'}" data-id="${id}" data-muted="${isMuted}">
@@ -504,7 +571,13 @@ function renderStudents() {
 }
 
 function toggleMute(studentId, currentlyMuted) {
-  set(ref(db, 'live-class/students/' + studentId + '/muted'), !currentlyMuted);
+  if (currentlyMuted) {
+    endVoiceWith(studentId);
+    set(ref(db, 'live-class/students/' + studentId + '/muted'), false);
+  } else {
+    set(ref(db, 'live-class/students/' + studentId + '/muted'), true);
+    startVoiceWith(studentId);
+  }
 }
 
 function escHtml(str) {

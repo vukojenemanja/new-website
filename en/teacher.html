@@ -600,6 +600,21 @@ async function startVoiceWith(sid) {
       if (candidate) push(ref(db, `live-class/students/${sid}/rtc/teacherCandidates`), candidate.toJSON());
     };
     pc.onconnectionstatechange = () => renderStudents();
+    pc.oniceconnectionstatechange = () => {
+      renderStudents();
+      // Auto-restart ICE if stuck checking for 15 seconds
+      if (pc.iceConnectionState === 'checking') {
+        clearTimeout(pc._iceTimer);
+        pc._iceTimer = setTimeout(() => {
+          if (pc.iceConnectionState === 'checking') {
+            console.log('ICE stuck - restarting');
+            pc.restartIce();
+          }
+        }, 15000);
+      } else {
+        clearTimeout(pc._iceTimer);
+      }
+    };
 
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
@@ -660,13 +675,13 @@ function renderStudents() {
   active.forEach(([id, student]) => {
     const isMuted = student.muted === true;
     const pc = peerConnections[id];
-    const connState = pc ? pc.connectionState : null;
+    const iceState = pc ? pc.iceConnectionState : null;
     const card = document.createElement('div');
     card.className = 'student-card' + (isMuted ? ' muted-card' : '');
     let voiceBadge = '';
-    if (connState === 'connecting' || connState === 'new') voiceBadge = '<span class="voice-state connecting">connecting…</span>';
-    else if (connState === 'connected') voiceBadge = '<span class="voice-state connected">🎙 live</span>';
-    else if (connState === 'failed' || connState === 'disconnected') voiceBadge = '<span class="voice-state failed">failed</span>';
+    if (iceState === 'new' || iceState === 'checking') voiceBadge = `<span class="voice-state connecting">${iceState}…</span>`;
+    else if (iceState === 'connected' || iceState === 'completed') voiceBadge = '<span class="voice-state connected">🎙 live</span>';
+    else if (iceState === 'failed' || iceState === 'disconnected') voiceBadge = `<span class="voice-state failed">${iceState}</span>`;
     card.innerHTML = `
       <div class="student-name-row">
         <div class="student-dot"></div>

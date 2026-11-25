@@ -101,6 +101,33 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
 .transport-btn.repeat:hover { background: rgba(255,255,255,0.14); color: rgba(232,221,208,0.6); }
 .transport-btn.repeat.on { background: rgba(196,168,130,0.18); color: var(--clay); }
 
+.progress-row {
+  margin-top: 20px;
+}
+.progress-times {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: rgba(232,221,208,0.5);
+  letter-spacing: 1px; margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.progress-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 4px; border-radius: 2px; outline: none; cursor: pointer;
+  background: rgba(255,255,255,0.12);
+}
+.progress-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--clay); cursor: pointer;
+}
+.progress-slider::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--clay); cursor: pointer; border: none;
+}
+.progress-slider::-webkit-slider-runnable-track {
+  height: 4px; border-radius: 2px;
+}
+
 /* Song library */
 .song-list { display: flex; flex-direction: column; gap: 2px; }
 .song-item {
@@ -214,6 +241,13 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
           <button class="transport-btn play" id="play-btn">▶ Play</button>
           <button class="transport-btn stop" id="stop-btn">■ Stop</button>
           <button class="transport-btn repeat" id="repeat-btn" title="Repeat current song">↺</button>
+        </div>
+        <div class="progress-row">
+          <div class="progress-times">
+            <span id="time-current">0:00</span>
+            <span id="time-total">0:00</span>
+          </div>
+          <input type="range" class="progress-slider" id="progress-slider" min="0" max="100" value="0" step="0.1">
         </div>
       </div>
 
@@ -341,6 +375,28 @@ function initApp() {
   document.getElementById('stop-btn').addEventListener('click', stopSession);
   document.getElementById('repeat-btn').addEventListener('click', toggleRepeat);
   document.getElementById('end-day-btn').addEventListener('click', endOfDay);
+
+  const slider = document.getElementById('progress-slider');
+  teacherAudio.addEventListener('timeupdate', updateProgress);
+  teacherAudio.addEventListener('loadedmetadata', updateProgress);
+  slider.addEventListener('input', () => {
+    if (!teacherAudio.duration) return;
+    const newTime = (slider.value / 100) * teacherAudio.duration;
+    teacherAudio.currentTime = newTime;
+    pausedAtPosition = newTime;
+    if (sessionStatus === 'playing') {
+      playStartedAt = Date.now() - newTime * 1000;
+      set(sessionRef, {
+        status: 'playing',
+        songIndex: currentSongIndex,
+        songName: SONGS[currentSongIndex]?.name || '',
+        songUrl: SONGS[currentSongIndex]?.url || '',
+        orchestra: SONGS[currentSongIndex]?.orchestra || null,
+        startedAt: playStartedAt,
+        pausedAt: pausedAtPosition
+      });
+    }
+  });
 }
 
 async function endOfDay() {
@@ -448,6 +504,27 @@ function stopSession() {
   set(sessionRef, { status: 'waiting' });
   sessionStatus = 'waiting';
   updateUI();
+  updateProgress();
+}
+
+function formatTime(s) {
+  if (!isFinite(s)) return '0:00';
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return m + ':' + String(sec).padStart(2, '0');
+}
+
+function updateProgress() {
+  const slider = document.getElementById('progress-slider');
+  const cur = document.getElementById('time-current');
+  const tot = document.getElementById('time-total');
+  const duration = teacherAudio.duration || 0;
+  const current = teacherAudio.currentTime || 0;
+  const pct = duration ? (current / duration) * 100 : 0;
+  slider.value = pct;
+  slider.style.background = `linear-gradient(to right, var(--clay) ${pct}%, rgba(255,255,255,0.12) ${pct}%)`;
+  cur.textContent = formatTime(current);
+  tot.textContent = formatTime(duration);
 }
 
 function updateUI() {

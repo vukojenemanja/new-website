@@ -316,9 +316,6 @@ function initApp() {
   sessionRef = ref(db, 'live-class/session');
   studentsRef = ref(db, 'live-class/students');
 
-  // Clean slate at start of every class
-  clearDatabase();
-
   buildSongList();
   listenToStudents();
 
@@ -422,7 +419,7 @@ function stopSession() {
   playStartedAt = 0;
   teacherAudio.pause();
   teacherAudio.src = '';
-  clearDatabase();
+  set(sessionRef, { status: 'waiting' });
   sessionStatus = 'waiting';
   updateUI();
 }

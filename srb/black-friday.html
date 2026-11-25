@@ -254,6 +254,65 @@ footer a:hover { text-decoration: underline; }
   text-decoration-color: var(--accent);
 }
 
+/* SURPRISE */
+.surprise {
+  background: var(--deep);
+  padding: 80px 28px 88px;
+  text-align: center;
+}
+.surprise-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 20px;
+}
+.surprise-icon {
+  font-size: 36px;
+  margin-bottom: 24px;
+  display: block;
+}
+.surprise h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 300;
+  color: var(--sand);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.surprise h2 em { font-style: italic; color: var(--clay); }
+.surprise-desc {
+  font-size: 15px;
+  color: rgba(232,221,208,.65);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.8;
+}
+.surprise-prize {
+  display: inline-block;
+  border: 1px solid rgba(196,168,130,.35);
+  padding: 20px 40px;
+  margin-bottom: 28px;
+}
+.surprise-prize-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--sand);
+  margin-bottom: 6px;
+}
+.surprise-prize-value {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+.surprise-note {
+  font-size: 12px;
+  color: rgba(232,221,208,.4);
+  letter-spacing: .5px;
+}
+
 /* MOBILE */
 @media (max-width: 680px) {
   nav { padding: 18px 20px; }
@@ -272,9 +331,9 @@ footer a:hover { text-decoration: underline; }
 </nav>
 
 <div class="hero">
-  <div class="bf-badge">Black Friday 2026</div>
+  <div class="bf-badge">Moj prvi Black Friday</div>
   <h1>Dve ponude.<br><em>Ograničeno vreme.</em></h1>
-  <p class="hero-sub">Dve kombinacije koje inače ne postoje zajedno - dostupne samo ovog vikenda.</p>
+  <p class="hero-sub">Dve kombinacije koje inače ne postoje zajedno - dostupne samo ovog vikenda. I da — postoji i jedno iznenađenje.</p>
   <div class="deadline">Ponuda ističe 30. novembra u ponoć</div>
 </div>
 
@@ -338,6 +397,18 @@ footer a:hover { text-decoration: underline; }
     <a href="mailto:info@vukojenemanja.com?subject=Black%20Friday%20-%20Akal%20%2B%20Mapa&body=Zdravo%2C%0A%0AZelim%20da%20se%20pridru%C5%BEim%20Akal%20zajednici%20i%20iskoristim%20Black%20Friday%20ponudu%20(mapa%20gratis).%0A%0AMoje%20ime%3A%20%0ADatum%20rodjenja%3A%20" class="offer-cta">Pristupam Akalu →</a>
   </div>
 
+</div>
+
+<div class="surprise">
+  <div class="surprise-eyebrow">Iznenađenje</div>
+  <span class="surprise-icon">🎁</span>
+  <h2>Između svih koji kupe<br><em>jedan dobija sve.</em></h2>
+  <p class="surprise-desc">Odlučio sam da ovaj prvi Black Friday obeležim na poseban način. Između svih koji kupe bilo koju od dve ponude, izvučem jednu osobu koja osvaja ceo program.</p>
+  <div class="surprise-prize">
+    <div class="surprise-prize-name">Inner Shift Reset — ceo program</div>
+    <div class="surprise-prize-value">Vrednost €999 · potpuno besplatno</div>
+  </div>
+  <p class="surprise-note">Izvlačenje se vrši nakon zatvaranja ponude, 1. decembra · Svi kupci automatski učestvuju</p>
 </div>
 
 <footer>

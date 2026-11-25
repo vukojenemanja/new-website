@@ -322,19 +322,10 @@ function connectFirebase() {
 }
 
 // ─── Handle state changes ─────────────────────────────
-let serverTimeOffset = 0;
+let isMutedLocally = false;
 
-async function handleSessionUpdate(data) {
-  // Check if this student is muted
-  const studentSnap = await get(studentRef);
-  const studentData = studentSnap.val() || {};
-  const isMuted = studentData.muted === true;
-
-  if (isMuted) {
-    audio.pause();
-    show('screen-muted');
-    return;
-  }
+function handleSessionUpdate(data) {
+  if (isMutedLocally) return;
 
   if (data.status === 'waiting' || data.status === 'stopped') {
     audio.pause();
@@ -343,28 +334,29 @@ async function handleSessionUpdate(data) {
   }
 
   if (data.status === 'playing' && data.songUrl) {
-    // Update song name
     document.getElementById('playing-song-name').textContent = data.songName || '—';
     document.getElementById('waveform').classList.remove('paused');
     show('screen-playing');
 
-    // Sync audio
+    // Capture timestamps now — seek position recalculated at play time
+    const sessionStartedAt = data.startedAt;
+    const sessionPausedAt = data.pausedAt || 0;
+
+    function seekAndPlay() {
+      const elapsed = sessionStartedAt ? (Date.now() - sessionStartedAt) / 1000 : 0;
+      const seekTo = Math.max(0, elapsed + sessionPausedAt);
+      audio.currentTime = Math.min(seekTo, audio.duration || 999);
+      audio.play().catch(err => console.log('Play error:', err));
+    }
+
     if (audio.src !== data.songUrl) {
       audio.src = data.songUrl;
       audio.load();
-    }
-
-    const elapsed = data.startedAt ? (Date.now() - data.startedAt) / 1000 : 0;
-    const seekTo = Math.max(0, elapsed + (data.pausedAt || 0));
-
-    audio.addEventListener('canplay', () => {
-      audio.currentTime = Math.min(seekTo, audio.duration || 0);
-      audio.play().catch(err => console.log('Play error:', err));
-    }, { once: true });
-
-    if (audio.readyState >= 3) {
-      audio.currentTime = Math.min(seekTo, audio.duration || 0);
-      audio.play().catch(err => console.log('Play error:', err));
+      audio.addEventListener('canplay', seekAndPlay, { once: true });
+    } else if (audio.readyState >= 3) {
+      seekAndPlay();
+    } else {
+      audio.addEventListener('canplay', seekAndPlay, { once: true });
     }
   }
 
@@ -381,10 +373,11 @@ function listenForMute() {
   onValue(ref(db, 'live-class/students/' + studentId + '/muted'), snap => {
     const muted = snap.val();
     if (muted === true) {
+      isMutedLocally = true;
       audio.pause();
       show('screen-muted');
-    } else if (muted === false && currentState === 'screen-muted') {
-      // Unmuted - go back to session state
+    } else if (muted === false && isMutedLocally) {
+      isMutedLocally = false;
       get(sessionRef).then(s => { if (s.val()) handleSessionUpdate(s.val()); });
     }
   });

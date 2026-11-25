@@ -312,6 +312,7 @@ function buildSongList() {
 
 function selectSong(i) {
   currentSongIndex = i;
+  pausedAtPosition = 0; // reset position for new song
   document.querySelectorAll('.song-item').forEach((el, idx) => {
     el.classList.toggle('active', idx === i);
   });
@@ -326,6 +327,9 @@ function selectSong(i) {
 }
 
 // ─── Transport ────────────────────────────────────────
+let playStartedAt = 0;
+let pausedAtPosition = 0;
+
 function togglePlay() {
   if (sessionStatus === 'playing') {
     pauseSession();
@@ -337,14 +341,15 @@ function togglePlay() {
 function playNow() {
   if (currentSongIndex < 0) return;
   const song = SONGS[currentSongIndex];
+  playStartedAt = Date.now();
 
   set(sessionRef, {
     status: 'playing',
     songIndex: currentSongIndex,
     songName: song.name,
     songUrl: song.url,
-    startedAt: Date.now(),
-    pausedAt: 0
+    startedAt: playStartedAt,
+    pausedAt: pausedAtPosition
   });
 
   sessionStatus = 'playing';
@@ -352,19 +357,24 @@ function playNow() {
 }
 
 function pauseSession() {
+  // Save position so resume starts from the right place
+  pausedAtPosition = playStartedAt ? (Date.now() - playStartedAt) / 1000 + pausedAtPosition : 0;
+
   set(sessionRef, {
     status: 'paused',
     songIndex: currentSongIndex,
     songName: SONGS[currentSongIndex]?.name || '',
     songUrl: SONGS[currentSongIndex]?.url || '',
     startedAt: null,
-    pausedAt: 0
+    pausedAt: pausedAtPosition
   });
   sessionStatus = 'paused';
   updateUI();
 }
 
 function stopSession() {
+  pausedAtPosition = 0;
+  playStartedAt = 0;
   set(sessionRef, { status: 'waiting' });
   sessionStatus = 'waiting';
   updateUI();

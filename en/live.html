@@ -485,6 +485,14 @@ function handleSessionUpdate(data) {
       audio.addEventListener('canplay', seekAndPlay, { once: true });
     }
   }
+
+  if (data.status === 'paused') {
+    audio.pause();
+    if (!isMutedLocally) {
+      document.getElementById('waveform').classList.add('paused');
+      show('screen-playing');
+    }
+  }
 }
 
 // ─── Listen for individual mute changes ──────────────

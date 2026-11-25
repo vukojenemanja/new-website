@@ -257,7 +257,7 @@ const SONGS = [
 const TEACHER_HASH = 'ab365860'; // test123
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
-import { getDatabase, ref, set, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-database.js";
+import { getDatabase, ref, set, remove, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-database.js";
 
 // ─── Password gate ────────────────────────────────────
 function hashStr(s) {
@@ -316,12 +316,19 @@ function initApp() {
   sessionRef = ref(db, 'live-class/session');
   studentsRef = ref(db, 'live-class/students');
 
+  // Clean slate at start of every class
+  clearDatabase();
+
   buildSongList();
   listenToStudents();
 
   document.getElementById('play-btn').addEventListener('click', togglePlay);
   document.getElementById('stop-btn').addEventListener('click', stopSession);
   document.getElementById('repeat-btn').addEventListener('click', toggleRepeat);
+}
+
+function clearDatabase() {
+  remove(ref(db, 'live-class'));
 }
 
 function toggleRepeat() {
@@ -415,7 +422,7 @@ function stopSession() {
   playStartedAt = 0;
   teacherAudio.pause();
   teacherAudio.src = '';
-  set(sessionRef, { status: 'waiting' });
+  clearDatabase();
   sessionStatus = 'waiting';
   updateUI();
 }

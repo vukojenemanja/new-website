@@ -268,29 +268,28 @@ const SONGS = [
 ];
 
 // ═══════════════════════════════════════════════════════
-//  TEACHER PASSWORD  (hash of your password)
-//  To generate: open browser console and run:
-//  function h(s){var x=0;for(var i=0;i<s.length;i++){x=(Math.imul(31,x)+s.charCodeAt(i))|0;}return(x>>>0).toString(16).slice(0,8);}
-//  then: h("yourpassword")
+//  TEACHER PASSWORD  (SHA-256 hash — never store the real password here)
+//  To generate a new hash, open any browser console and run:
+//  async function h(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
+//  then: h("yournewpassword").then(console.log)
 // ═══════════════════════════════════════════════════════
-const TEACHER_HASH = 'ab365860'; // test123
+const TEACHER_HASH = 'ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae';
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
 import { getDatabase, ref, set, remove, push, onValue, onChildAdded, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-database.js";
 
 // ─── Password gate ────────────────────────────────────
-function hashStr(s) {
-  var h = 0;
-  for (var i = 0; i < s.length; i++) { h = (Math.imul(31, h) + s.charCodeAt(i)) | 0; }
-  return (h >>> 0).toString(16).slice(0, 8);
+async function hashStr(s) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 document.getElementById('gate-btn').addEventListener('click', tryUnlock);
 document.getElementById('gate-input').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
 
-function tryUnlock() {
+async function tryUnlock() {
   const val = document.getElementById('gate-input').value.trim();
-  if (hashStr(val) === TEACHER_HASH) {
+  if (await hashStr(val) === TEACHER_HASH) {
     document.getElementById('gate').style.display = 'none';
     document.getElementById('app').style.display = 'block';
     initApp();

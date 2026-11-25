@@ -422,10 +422,15 @@ document.getElementById('unlock-btn').addEventListener('click', async () => {
   try { await audio.play(); } catch(e) {}
   audio.pause();
 
-  // Unlock Web Audio API — stays unlocked for the full session
+  // Unlock Web Audio API — play silent buffer so iOS allows later audio.play() calls
   try {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     if (audioCtx.state === 'suspended') await audioCtx.resume();
+    const buf = audioCtx.createBuffer(1, 1, 22050);
+    const src = audioCtx.createBufferSource();
+    src.buffer = buf;
+    src.connect(audioCtx.destination);
+    src.start();
   } catch(e) {}
 
   audioUnlocked = true;
@@ -567,21 +572,20 @@ async function answerVoiceCall(offer) {
     if (myGen !== voiceGen) { pc.close(); return; }
     studentPc = pc;
 
-    pc.ontrack = async e => {
+    pc.ontrack = e => {
       const stream = e.streams[0] || new MediaStream([e.track]);
       if (voiceSourceNode) { voiceSourceNode.disconnect(); voiceSourceNode = null; }
-      // Try AudioContext (required on iOS, also works on desktop)
-      if (audioCtx) {
-        try {
-          if (audioCtx.state !== 'running') await audioCtx.resume();
-          voiceSourceNode = audioCtx.createMediaStreamSource(stream);
-          voiceSourceNode.connect(audioCtx.destination);
-          return;
-        } catch(err) { console.warn('AudioContext voice error:', err); }
-      }
-      // Fallback: HTMLAudioElement
+      // Primary: HTMLAudioElement (reliable on desktop + iOS after silent-buffer unlock)
       voiceOutput.srcObject = stream;
-      voiceOutput.play().catch(err => console.warn('voiceOutput.play failed:', err));
+      voiceOutput.play().catch(() => {
+        // Fallback: AudioContext routing (iOS if silent-buffer unlock wasn't enough)
+        if (audioCtx) {
+          try {
+            voiceSourceNode = audioCtx.createMediaStreamSource(stream);
+            voiceSourceNode.connect(audioCtx.destination);
+          } catch(err) { console.warn('Voice audio error:', err); }
+        }
+      });
     };
 
     pc.onicecandidate = ({ candidate }) => {

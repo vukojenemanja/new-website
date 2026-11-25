@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Consent Mode v2 default (must be before gtag loads) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': 500
+  });
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSMHMQD13N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NSMHMQD13N', { 'anonymize_ip': true });
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Art of Connection · Members</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js"></script>
+<style>
+/* ─── Tokens ─── */
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+  --warm:   #D4B896;
+  --tango:  #8C5E3C;
+  --kundalini: #7A8C6E;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--bark); }
+
+/* ─── Password Gate ─── */
+#gate {
+  position: fixed; inset: 0; background: var(--deep);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999; padding: 24px;
+}
+.gate-box {
+  width: 100%; max-width: 420px; text-align: center;
+}
+.gate-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 32px;
+}
+.gate-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 40px); font-weight: 300;
+  color: var(--sand); line-height: 1.25; margin-bottom: 40px;
+}
+.gate-title em { font-style: italic; color: var(--clay); }
+.gate-input {
+  width: 100%; padding: 16px 20px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  color: var(--sand); font-family: 'DM Sans', sans-serif; font-size: 15px;
+  letter-spacing: 2px; outline: none; margin-bottom: 16px;
+}
+.gate-input::placeholder { color: rgba(232,221,208,0.3); letter-spacing: 1px; }
+.gate-input:focus { border-color: var(--clay); }
+.gate-btn {
+  width: 100%; padding: 16px; background: var(--clay); border: none; cursor: pointer;
+  color: var(--bark); font-family: 'DM Sans', sans-serif; font-size: 12px;
+  letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+  transition: background 0.2s;
+}
+.gate-btn:hover { background: var(--warm); }
+.gate-error {
+  font-size: 13px; color: #c0392b; margin-top: 12px;
+  min-height: 20px; letter-spacing: 0.3px;
+}
+
+/* ─── Layout ─── */
+#content { display: none; }
+
+/* ─── Nav ─── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(245,241,236,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+  padding: 0 40px; height: 64px; display: flex; align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif; font-size: 20px;
+  font-weight: 300; color: var(--bark); text-decoration: none;
+}
+.nav-brand em { font-style: italic; color: var(--clay); }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-link {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--stone); text-decoration: none; font-weight: 400;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--bark); }
+@media (max-width: 680px) {
+  .nav { padding: 0 20px; height: auto; flex-direction: column; align-items: flex-start; gap: 0; padding-top: 14px; padding-bottom: 12px; }
+  .nav-links { gap: 20px; margin-top: 10px; }
+  .nav-link { font-size: 10px; letter-spacing: 1.5px; }
+}
+
+/* ─── Hero ─── */
+.members-hero { background: var(--bark); padding: 80px 60px 64px; border-bottom: 1px solid rgba(196,168,130,0.15); }
+.members-hero-inner { max-width: 900px; margin: 0 auto; }
+.section-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 20px;
+}
+.members-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 60px); font-weight: 300;
+  color: var(--sand); line-height: 1.15; margin-bottom: 16px;
+}
+.members-hero h1 em { font-style: italic; color: var(--clay); }
+.members-hero p { font-size: 15px; color: rgba(232,221,208,0.6); line-height: 1.8; max-width: 540px; }
+@media (max-width: 680px) { .members-hero { padding: 60px 24px 48px; } }
+
+/* ─── Sections ─── */
+.members-section { padding: 72px 60px; }
+.members-section-inner { max-width: 900px; margin: 0 auto; }
+.members-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 40px); font-weight: 300;
+  color: var(--bark); line-height: 1.25; margin-bottom: 40px;
+}
+.members-section h2 em { font-style: italic; color: var(--clay); }
+@media (max-width: 680px) { .members-section { padding: 56px 24px; } }
+
+/* ─── Zoom banner ─── */
+.zoom-banner {
+  background: var(--bark); border: 1px solid rgba(196,168,130,0.25);
+  padding: 28px 32px; margin-bottom: 32px;
+}
+.zoom-banner-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 12px;
+}
+.zoom-link {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 300; color: var(--sand);
+  text-decoration: underline; text-underline-offset: 4px;
+  text-decoration-color: rgba(196,168,130,0.4); word-break: break-all;
+}
+.zoom-link:hover { color: var(--clay); }
+.zoom-link-placeholder {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 300; font-style: italic;
+  color: rgba(232,221,208,0.3);
+}
+
+/* ─── Topic banner ─── */
+.topic-banner {
+  background: var(--sand); border-left: 3px solid var(--clay);
+  padding: 28px 32px; margin-bottom: 40px;
+}
+.topic-banner .topic-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--stone); margin-bottom: 10px;
+}
+.topic-banner .topic-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: var(--bark);
+}
+
+/* ─── CLASS TABS ─── */
+.class-tabs {
+  display: flex; gap: 2px; margin-bottom: 28px;
+}
+.class-tab {
+  flex: 1; padding: 14px 20px; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 11px;
+  letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500;
+  background: rgba(61,46,30,0.07); color: var(--stone);
+  transition: background 0.2s, color 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.class-tab:hover { background: rgba(196,168,130,0.2); color: var(--bark); }
+.class-tab.active { background: var(--bark); color: var(--sand); }
+.class-tab .tab-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.class-tab[data-tab="tango"] .tab-dot { background: var(--tango); }
+.class-tab[data-tab="kundalini"] .tab-dot { background: var(--kundalini); }
+.class-tab.active .tab-dot { background: var(--clay); }
+
+.class-panel { display: none; }
+.class-panel.active { display: block; }
+
+/* ─── Class Accordion ─── */
+.class-list { display: flex; flex-direction: column; gap: 2px; }
+.class-item { background: var(--sand); overflow: hidden; }
+.class-item.kundalini-type { background: rgba(61,46,30,0.06); border-left: 2px solid var(--kundalini); }
+.class-item.tango-type { background: rgba(140,94,60,0.05); border-left: 2px solid var(--tango); }
+.class-item-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 28px; cursor: pointer; gap: 16px;
+  transition: background 0.15s; user-select: none;
+}
+.class-item-header:hover { background: rgba(196,168,130,0.12); }
+.class-item.open .class-item-header { background: rgba(196,168,130,0.08); }
+.class-item-left { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.class-week { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--stone); }
+.class-type-tag { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--clay); }
+.class-item-chevron { width: 20px; height: 20px; flex-shrink: 0; color: var(--clay); transition: transform 0.25s ease; }
+.class-item.open .class-item-chevron { transform: rotate(180deg); }
+.class-item-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 28px; }
+.class-item.open .class-item-body { max-height: 200px; padding: 0 28px 24px; }
+.class-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--bark); line-height: 1.35; margin-bottom: 16px; }
+.class-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); text-decoration: none; font-weight: 500; transition: color 0.2s;
+}
+.class-link:hover { color: var(--bark); }
+.class-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+.class-soon { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(138,128,112,0.4); }
+
+/* ─── Monthly Question ─── */
+.pitanje-section { background: var(--bark); padding: 72px 60px; }
+.pitanje-inner { max-width: 900px; margin: 0 auto; }
+.pitanje-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 32px; }
+.pitanje-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3.5vw, 44px); font-weight: 300; font-style: italic;
+  color: var(--sand); line-height: 1.4; max-width: 720px;
+}
+@media (max-width: 680px) { .pitanje-section { padding: 60px 24px; } }
+
+/* ─── Practice + Journal ─── */
+.praksa-section { background: var(--fog); padding: 72px 60px; }
+.praksa-inner { max-width: 900px; margin: 0 auto; }
+.praksa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+.praksa-card { background: var(--sand); padding: 40px 36px; }
+.praksa-card-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--clay); margin-bottom: 20px; }
+.praksa-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; color: var(--bark); margin-bottom: 20px; line-height: 1.3; }
+.praksa-card p { font-size: 14px; line-height: 1.9; color: var(--stone); margin-bottom: 16px; }
+.journal-questions { list-style: none; padding: 0; }
+.journal-questions li {
+  font-size: 15px; line-height: 1.75; color: var(--stone);
+  padding: 14px 0 14px 20px; border-bottom: 1px solid rgba(196,168,130,0.2);
+  position: relative;
+}
+.journal-questions li:last-child { border-bottom: none; }
+.journal-questions li::before { content: '-'; color: var(--clay); position: absolute; left: 0; font-family: 'Cormorant Garamond', serif; }
+@media (max-width: 680px) {
+  .praksa-section { padding: 48px 20px; }
+  .praksa-grid { grid-template-columns: 1fr; gap: 2px; }
+  .praksa-card { padding: 28px 20px; }
+}
+
+/* ─── Timer ─── */
+.timer-section { background: var(--fog); padding: 72px 60px; border-top: 1px solid rgba(196,168,130,0.15); }
+.timer-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+.timer-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 32px; display: block; }
+.timer-ring-wrap { position: relative; display: inline-block; margin-bottom: 40px; }
+.timer-ring { transform: rotate(-90deg); }
+.timer-ring-bg { fill: none; stroke: rgba(196,168,130,0.12); stroke-width: 3; }
+.timer-ring-progress { fill: none; stroke: var(--clay); stroke-width: 3; stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
+.timer-display {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300;
+  color: var(--bark); letter-spacing: -1px; line-height: 1;
+}
+.timer-display.running { color: var(--accent); }
+.timer-display.done { color: var(--clay); }
+.timer-durations { display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+.timer-dur-btn {
+  padding: 10px 20px; border: 1px solid rgba(196,168,130,0.3);
+  background: none; color: var(--stone); font-family: 'DM Sans', sans-serif;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.15s;
+}
+.timer-dur-btn:hover { border-color: var(--clay); color: var(--bark); }
+.timer-dur-btn.active { background: var(--clay); color: var(--bark); border-color: var(--clay); }
+.timer-controls { display: flex; justify-content: center; gap: 12px; }
+.timer-start-btn {
+  padding: 14px 40px; background: var(--bark); color: var(--sand);
+  border: none; font-family: 'DM Sans', sans-serif; font-size: 12px;
+  letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: background 0.15s;
+}
+.timer-start-btn:hover { background: var(--deep); }
+.timer-reset-btn {
+  padding: 14px 20px; background: none; color: var(--stone);
+  border: 1px solid rgba(196,168,130,0.2); font-family: 'DM Sans', sans-serif;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.15s;
+}
+.timer-reset-btn:hover { color: var(--bark); border-color: var(--clay); }
+@media (max-width: 680px) { .timer-section { padding: 60px 24px; } .timer-display { font-size: 40px; } }
+
+/* ─── Footer ─── */
+.members-footer {
+  padding: 32px 60px; background: var(--bark);
+  font-size: 12px; color: rgba(232,221,208,0.3);
+  letter-spacing: 1px; display: flex; justify-content: space-between;
+  align-items: center; gap: 20px; flex-wrap: wrap;
+}
+@media (max-width: 680px) { .members-footer { padding: 24px; flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+
+<!-- ═══ PASSWORD GATE ═══ -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-label">The Art of Connection</div>
+    <h2 class="gate-title">Members<br><em>private space.</em></h2>
+    <input type="password" class="gate-input" id="gate-input"
+           placeholder="Password" autocomplete="off">
+    <button class="gate-btn" id="gate-btn">Enter →</button>
+    <div class="gate-error" id="gate-error"></div>
+  </div>
+</div>
+
+<!-- ═══ MEMBERS CONTENT ═══ -->
+<div id="content">
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">The Art of <em>Connection</em></a>
+    <div class="nav-links">
+      <a href="#sec-question" class="nav-link">Monthly theme</a>
+      <a href="#sec-classes" class="nav-link">Classes</a>
+      <a href="#sec-practice" class="nav-link">Practice</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="members-hero">
+    <div class="members-hero-inner">
+      <div class="section-label">Members space · December 2026</div>
+      <h1>Welcome back to your<br><em>private space.</em></h1>
+      <p>Here you'll find recordings of all classes this month, the theme we're working with, and tools for your personal practice.</p>
+    </div>
+  </div>
+
+  <!-- Classes -->
+  <section id="sec-classes" class="members-section" style="background: var(--fog);">
+    <div class="members-section-inner">
+
+      <!-- Zoom link -->
+      <div class="zoom-banner">
+        <div class="zoom-banner-label">Zoom link for all classes this month</div>
+        <div id="zoom-link-slot">
+          <span class="zoom-link-placeholder">Link will appear here</span>
+        </div>
+      </div>
+
+      <!-- Topic of month -->
+      <div class="topic-banner">
+        <div class="topic-label">Monthly theme</div>
+        <div class="topic-name">Placeholder - add topic here</div>
+      </div>
+
+      <!-- Class type tabs -->
+      <div class="section-label" style="margin-bottom: 20px;">Classes this month</div>
+      <div class="class-tabs">
+        <button class="class-tab active" data-tab="tango">
+          <span class="tab-dot"></span>
+          Tango
+        </button>
+        <button class="class-tab" data-tab="kundalini">
+          <span class="tab-dot"></span>
+          Kundalini Yoga
+        </button>
+      </div>
+
+      <!-- Tango classes -->
+      <div class="class-panel active" id="panel-tango">
+        <div class="class-list" id="tango-grid"></div>
+      </div>
+
+      <!-- Kundalini classes -->
+      <div class="class-panel" id="panel-kundalini">
+        <div class="class-list" id="kundalini-grid"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Monthly question -->
+  <section id="sec-question" class="pitanje-section">
+    <div class="pitanje-inner">
+      <div class="pitanje-label">Monthly question</div>
+      <p class="pitanje-text">"Placeholder - add your monthly question here."</p>
+    </div>
+  </section>
+
+  <!-- Practice + Journal -->
+  <section id="sec-practice" class="praksa-section">
+    <div class="praksa-inner">
+      <div class="section-label">Monthly tools</div>
+      <div class="praksa-grid">
+
+        <div class="praksa-card">
+          <div class="praksa-card-label">Monthly practice</div>
+          <h3>Placeholder<br><em style="font-style:italic;color:var(--clay);font-size:0.85em;">Practice name</em></h3>
+          <p>Add the monthly practice description here. Include what it is, what it does, and step-by-step instructions.</p>
+        </div>
+
+        <div class="praksa-card">
+          <div class="praksa-card-label">Journal prompts</div>
+          <h3>This month's journal</h3>
+          <p>Take 10-15 minutes, pen and paper. Write without correcting - just let it flow.</p>
+          <ul class="journal-questions">
+            <li>Placeholder journal question 1</li>
+            <li>Placeholder journal question 2</li>
+            <li>Placeholder journal question 3</li>
+            <li>Placeholder journal question 4</li>
+            <li>Placeholder journal question 5</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Timer -->
+  <section class="timer-section">
+    <div class="timer-inner">
+      <span class="timer-label">Meditation timer</span>
+      <div class="timer-ring-wrap">
+        <svg class="timer-ring" id="timer-svg" width="220" height="220" viewBox="0 0 220 220">
+          <circle class="timer-ring-bg" cx="110" cy="110" r="100"/>
+          <circle class="timer-ring-progress" id="timer-progress" cx="110" cy="110" r="100"/>
+        </svg>
+        <div class="timer-display" id="timer-display">7:00</div>
+      </div>
+      <div class="timer-durations">
+        <button class="timer-dur-btn" data-min="3">3 min</button>
+        <button class="timer-dur-btn active" data-min="7">7 min</button>
+        <button class="timer-dur-btn" data-min="11">11 min</button>
+        <button class="timer-dur-btn" data-min="31">31 min</button>
+      </div>
+      <div class="timer-controls">
+        <button class="timer-start-btn" id="timer-start-btn">Start</button>
+        <button class="timer-reset-btn" id="timer-reset-btn">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="members-footer">
+    <span>© Nemanja Vukoje · The Art of Connection Vienna</span>
+    <span>This page is private and intended exclusively for members.</span>
+  </footer>
+
+</div><!-- /#content -->
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  CONFIG - update each month
+// ═══════════════════════════════════════════════════════
+var PASSWORD_HASH = 'ab365860'; // test123
+
+var MONTH_LABEL = 'December 2026';
+
+var ZOOM_LINK = ''; // paste Zoom link here
+
+var TANGO_CLASSES = [
+  { date: 'Monday, December 1 · 19:00', title: 'Placeholder - Tango class', link: '' },
+  { date: 'Monday, December 8 · 19:00', title: 'Placeholder - Tango class', link: '' },
+  { date: 'Monday, December 15 · 19:00', title: 'Placeholder - Tango class', link: '' },
+  { date: 'Monday, December 22 · 19:00', title: 'Placeholder - Tango class', link: '' }
+];
+
+var KUNDALINI_CLASSES = [
+  { date: 'Wednesday, December 3 · 20:00', title: 'Placeholder - Kundalini class', link: '' },
+  { date: 'Wednesday, December 10 · 20:00', title: 'Placeholder - Kundalini class', link: '' },
+  { date: 'Wednesday, December 17 · 20:00', title: 'Placeholder - Kundalini class', link: '' },
+  { date: 'Wednesday, December 24 · 20:00', title: 'Placeholder - Kundalini class', link: '' }
+];
+
+// ═══════════════════════════════════════════════════════
+//  PASSWORD GATE
+// ═══════════════════════════════════════════════════════
+function hashStr(s) {
+  var h = 0;
+  for (var i = 0; i < s.length; i++) { h = (Math.imul(31, h) + s.charCodeAt(i)) | 0; }
+  return (h >>> 0).toString(16).slice(0, 8);
+}
+
+function tryUnlock() {
+  var val = document.getElementById('gate-input').value.trim();
+  if (hashStr(val) === PASSWORD_HASH) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    sessionStorage.setItem('aoc_unlocked', '1');
+  } else {
+    document.getElementById('gate-error').textContent = 'Incorrect password. Please try again.';
+    document.getElementById('gate-input').value = '';
+    document.getElementById('gate-input').focus();
+  }
+}
+
+if (sessionStorage.getItem('aoc_unlocked') === '1') {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+}
+document.getElementById('gate-btn').addEventListener('click', tryUnlock);
+document.getElementById('gate-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') tryUnlock();
+});
+
+// ═══════════════════════════════════════════════════════
+//  ZOOM LINK
+// ═══════════════════════════════════════════════════════
+(function() {
+  var slot = document.getElementById('zoom-link-slot');
+  if (ZOOM_LINK) {
+    slot.innerHTML = '<a href="' + ZOOM_LINK + '" target="_blank" rel="noopener" class="zoom-link">' + ZOOM_LINK + '</a>';
+  } else {
+    slot.innerHTML = '<span class="zoom-link-placeholder">Zoom link coming soon</span>';
+  }
+})();
+
+// ═══════════════════════════════════════════════════════
+//  BUILD CLASS LISTS
+// ═══════════════════════════════════════════════════════
+var PLAY_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg>';
+var CHEVRON = '<svg class="class-item-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6,9 12,15 18,9"/></svg>';
+
+function buildClassList(classes, container, typeClass, typeLabel) {
+  classes.forEach(function(cls, i) {
+    var hasLink = cls.link && cls.link.length > 0;
+    var bodyContent = cls.title
+      ? '<div class="class-title">' + cls.title + '</div>'
+      : '';
+    bodyContent += hasLink
+      ? '<a href="' + cls.link + '" target="_blank" rel="noopener" class="class-link">' + PLAY_ICON + 'Watch recording</a>'
+      : '<span class="class-soon">Recording coming soon</span>';
+
+    var item = document.createElement('div');
+    item.className = 'class-item ' + typeClass;
+    item.innerHTML =
+      '<div class="class-item-header">' +
+        '<div class="class-item-left">' +
+          '<div class="class-week">' + cls.date + '</div>' +
+          '<div class="class-type-tag">' + typeLabel + '</div>' +
+        '</div>' +
+        CHEVRON +
+      '</div>' +
+      '<div class="class-item-body">' + bodyContent + '</div>';
+
+    item.querySelector('.class-item-header').addEventListener('click', function() {
+      item.classList.toggle('open');
+    });
+    container.appendChild(item);
+  });
+}
+
+buildClassList(TANGO_CLASSES, document.getElementById('tango-grid'), 'tango-type', 'Tango');
+buildClassList(KUNDALINI_CLASSES, document.getElementById('kundalini-grid'), 'kundalini-type', 'Kundalini Yoga');
+
+// ═══════════════════════════════════════════════════════
+//  TABS
+// ═══════════════════════════════════════════════════════
+document.querySelectorAll('.class-tab').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.class-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.class-panel').forEach(function(p) { p.classList.remove('active'); });
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// ═══════════════════════════════════════════════════════
+//  MEDITATION TIMER
+// ═══════════════════════════════════════════════════════
+var timerInterval = null;
+var timerRunning = false;
+var timerSeconds = 7 * 60;
+var timerTotal = 7 * 60;
+var circumference = 2 * Math.PI * 100;
+
+document.getElementById('timer-progress').style.strokeDasharray = circumference;
+document.getElementById('timer-progress').style.strokeDashoffset = 0;
+
+function formatTime(s) {
+  var m = Math.floor(s / 60);
+  var sec = s % 60;
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function updateTimerDisplay() {
+  document.getElementById('timer-display').textContent = formatTime(timerSeconds);
+  var progress = timerSeconds / timerTotal;
+  document.getElementById('timer-progress').style.strokeDashoffset = circumference * (1 - progress);
+}
+
+document.querySelectorAll('.timer-dur-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    if (timerRunning) return;
+    document.querySelectorAll('.timer-dur-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    timerSeconds = parseInt(btn.dataset.min) * 60;
+    timerTotal = timerSeconds;
+    var disp = document.getElementById('timer-display');
+    disp.className = 'timer-display';
+    disp.textContent = formatTime(timerSeconds);
+    document.getElementById('timer-progress').style.strokeDashoffset = 0;
+  });
+});
+
+document.getElementById('timer-start-btn').addEventListener('click', function() {
+  if (timerRunning) {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    this.textContent = 'Start';
+    document.getElementById('timer-display').classList.remove('running');
+  } else {
+    if (timerSeconds === 0) return;
+    timerRunning = true;
+    this.textContent = 'Pause';
+    document.getElementById('timer-display').classList.add('running');
+    timerInterval = setInterval(function() {
+      timerSeconds--;
+      updateTimerDisplay();
+      if (timerSeconds <= 0) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        document.getElementById('timer-start-btn').textContent = 'Start';
+        document.getElementById('timer-display').className = 'timer-display done';
+        document.getElementById('timer-display').textContent = '✓';
+      }
+    }, 1000);
+  }
+});
+
+document.getElementById('timer-reset-btn').addEventListener('click', function() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  document.getElementById('timer-start-btn').textContent = 'Start';
+  timerSeconds = timerTotal;
+  var disp = document.getElementById('timer-display');
+  disp.className = 'timer-display';
+  updateTimerDisplay();
+});
+</script>
+
+<script src="../cookie-banner.js"></script>
+</body>
+</html>

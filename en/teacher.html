@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Art of Connection · Teacher</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--bark); min-height: 100vh; }
+
+/* ─── Gate ─── */
+#gate {
+  position: fixed; inset: 0; background: var(--deep);
+  display: flex; align-items: center; justify-content: center; z-index: 999; padding: 24px;
+}
+.gate-box { width: 100%; max-width: 380px; text-align: center; }
+.gate-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 28px; }
+.gate-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--sand); line-height: 1.2; margin-bottom: 36px; }
+.gate-title em { font-style: italic; color: var(--clay); }
+.gate-input {
+  width: 100%; padding: 16px 20px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  color: var(--sand); font-family: 'DM Sans', sans-serif; font-size: 15px;
+  letter-spacing: 2px; outline: none; margin-bottom: 14px; text-align: center;
+}
+.gate-input:focus { border-color: var(--clay); }
+.gate-btn {
+  width: 100%; padding: 16px; background: var(--clay); border: none; cursor: pointer;
+  color: var(--bark); font-family: 'DM Sans', sans-serif; font-size: 12px;
+  letter-spacing: 3px; text-transform: uppercase; font-weight: 500; transition: background 0.2s;
+}
+.gate-btn:hover { background: var(--sand); }
+.gate-error { font-size: 13px; color: #c0392b; margin-top: 12px; min-height: 20px; }
+
+/* ─── Layout ─── */
+#app { display: none; }
+.top-bar {
+  background: var(--bark); padding: 16px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 10;
+}
+.top-bar-brand { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; color: var(--sand); }
+.top-bar-brand em { font-style: italic; color: var(--clay); }
+.status-pill {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 0;
+}
+.status-pill.waiting { background: rgba(255,255,255,0.08); color: rgba(232,221,208,0.5); }
+.status-pill.playing { background: var(--clay); color: var(--bark); }
+.status-pill.paused  { background: rgba(196,168,130,0.2); color: var(--clay); }
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2px;
+  min-height: calc(100vh - 56px);
+}
+
+/* ─── LEFT: Player + Songs ─── */
+.left-panel { background: var(--fog); padding: 40px; }
+.section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--stone); margin-bottom: 20px; }
+
+/* Player */
+.player-box {
+  background: var(--bark); padding: 32px; margin-bottom: 32px;
+}
+.now-playing-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--clay); margin-bottom: 12px; }
+.now-playing-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300;
+  color: var(--sand); line-height: 1.3; margin-bottom: 24px; min-height: 36px;
+}
+.now-playing-name.empty { font-style: italic; color: rgba(232,221,208,0.3); }
+
+.transport {
+  display: flex; gap: 10px; align-items: center;
+}
+.transport-btn {
+  padding: 14px 28px; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 12px;
+  letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500;
+  transition: all 0.2s;
+}
+.transport-btn.play { background: var(--clay); color: var(--bark); flex: 1; }
+.transport-btn.play:hover { background: var(--sand); }
+.transport-btn.stop { background: rgba(255,255,255,0.08); color: rgba(232,221,208,0.5); }
+.transport-btn.stop:hover { background: rgba(255,255,255,0.14); color: var(--sand); }
+
+/* Song library */
+.song-list { display: flex; flex-direction: column; gap: 2px; }
+.song-item {
+  background: var(--sand); padding: 18px 22px;
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; transition: background 0.15s; gap: 12px;
+}
+.song-item:hover { background: rgba(196,168,130,0.25); }
+.song-item.active { background: rgba(196,168,130,0.2); border-left: 3px solid var(--clay); }
+.song-item-name { font-size: 15px; color: var(--bark); line-height: 1.3; }
+.song-item-idx {
+  font-family: 'Cormorant Garamond', serif; font-size: 20px;
+  color: var(--clay); min-width: 24px; text-align: right;
+}
+.no-songs {
+  font-size: 13px; color: var(--stone); font-style: italic;
+  padding: 24px; background: var(--sand); line-height: 1.8;
+}
+
+/* ─── RIGHT: Students ─── */
+.right-panel { background: white; padding: 32px 24px; }
+.students-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;
+}
+.students-count {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--stone);
+}
+.student-list { display: flex; flex-direction: column; gap: 2px; }
+.student-card {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 18px; background: var(--fog);
+  transition: background 0.15s;
+}
+.student-card.muted-card { background: rgba(196,168,130,0.12); }
+.student-name-row { display: flex; align-items: center; gap: 10px; }
+.student-dot { width: 8px; height: 8px; border-radius: 50%; background: #7cb47c; flex-shrink: 0; }
+.student-card.muted-card .student-dot { background: var(--clay); }
+.student-name { font-size: 14px; color: var(--bark); }
+.student-card.muted-card .student-name { color: var(--stone); }
+.mute-btn {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 7px 14px; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all 0.15s;
+}
+.mute-btn.unmuted { background: rgba(61,46,30,0.07); color: var(--stone); }
+.mute-btn.unmuted:hover { background: var(--bark); color: var(--sand); }
+.mute-btn.muted { background: var(--clay); color: var(--bark); }
+.mute-btn.muted:hover { background: var(--sand); }
+
+.no-students {
+  font-size: 13px; color: var(--stone); font-style: italic;
+  padding: 24px 0; text-align: center; line-height: 1.8;
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 800px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .left-panel { padding: 24px; }
+  .right-panel { padding: 24px; }
+  .top-bar { padding: 14px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Gate -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-label">The Art of Connection</div>
+    <h2 class="gate-title">Teacher<br><em>control panel.</em></h2>
+    <input type="password" class="gate-input" id="gate-input"
+           placeholder="Teacher password" autocomplete="off">
+    <button class="gate-btn" id="gate-btn">Enter →</button>
+    <div class="gate-error" id="gate-error"></div>
+  </div>
+</div>
+
+<!-- App -->
+<div id="app">
+  <div class="top-bar">
+    <div class="top-bar-brand">The Art of <em>Connection</em> · Teacher</div>
+    <div class="status-pill waiting" id="status-pill">Waiting</div>
+  </div>
+
+  <div class="main-grid">
+
+    <!-- Left: player + song library -->
+    <div class="left-panel">
+
+      <div class="player-box">
+        <div class="now-playing-label">Now playing</div>
+        <div class="now-playing-name empty" id="now-playing-name">Select a song below</div>
+        <div class="transport">
+          <button class="transport-btn play" id="play-btn">▶ Play</button>
+          <button class="transport-btn stop" id="stop-btn">■ Stop</button>
+        </div>
+      </div>
+
+      <div class="section-label">Song library</div>
+      <div class="song-list" id="song-list">
+        <!-- filled by JS -->
+      </div>
+
+    </div>
+
+    <!-- Right: students -->
+    <div class="right-panel">
+      <div class="students-header">
+        <div class="section-label" style="margin-bottom:0">Students online</div>
+        <div class="students-count" id="students-count">0</div>
+      </div>
+      <div class="student-list" id="student-list">
+        <div class="no-students" id="no-students-msg">No students connected yet.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="module">
+// ═══════════════════════════════════════════════════════
+//  FIREBASE CONFIG  (same as live.html)
+// ═══════════════════════════════════════════════════════
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAC9Maho2fkws5SiDsxE5ti1icM0ZPNaVI",
+  authDomain: "online-tango-classes.firebaseapp.com",
+  databaseURL: "https://online-tango-classes-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "online-tango-classes",
+  storageBucket: "online-tango-classes.firebasestorage.app",
+  messagingSenderId: "621833588559",
+  appId: "1:621833588559:web:80036f309f732f5a1bff3a"
+};
+
+// ═══════════════════════════════════════════════════════
+//  SONG LIBRARY
+//  - Put MP3 files in /en/audio/ folder on the site
+//  - Add entries here: { name: "Song Title", url: "audio/song.mp3" }
+// ═══════════════════════════════════════════════════════
+const SONGS = [
+  { name: "Primer A – Lo-fi", url: "audio/primer_A_lofi.mp3" },
+];
+
+// ═══════════════════════════════════════════════════════
+//  TEACHER PASSWORD  (hash of your password)
+//  To generate: open browser console and run:
+//  function h(s){var x=0;for(var i=0;i<s.length;i++){x=(Math.imul(31,x)+s.charCodeAt(i))|0;}return(x>>>0).toString(16).slice(0,8);}
+//  then: h("yourpassword")
+// ═══════════════════════════════════════════════════════
+const TEACHER_HASH = 'e5ca1234'; // placeholder - change this
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+import { getDatabase, ref, set, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-database.js";
+
+// ─── Password gate ────────────────────────────────────
+function hashStr(s) {
+  var h = 0;
+  for (var i = 0; i < s.length; i++) { h = (Math.imul(31, h) + s.charCodeAt(i)) | 0; }
+  return (h >>> 0).toString(16).slice(0, 8);
+}
+
+document.getElementById('gate-btn').addEventListener('click', tryUnlock);
+document.getElementById('gate-input').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
+
+function tryUnlock() {
+  const val = document.getElementById('gate-input').value.trim();
+  if (hashStr(val) === TEACHER_HASH) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    initApp();
+  } else {
+    document.getElementById('gate-error').textContent = 'Incorrect password.';
+    document.getElementById('gate-input').value = '';
+    document.getElementById('gate-input').focus();
+  }
+}
+
+// ─── App state ────────────────────────────────────────
+let db, sessionRef, studentsRef;
+let currentSongIndex = -1;
+let sessionStatus = 'waiting';
+let playStartedAt = null;
+let pausedAtSeconds = 0;
+
+// ─── Init ─────────────────────────────────────────────
+function initApp() {
+  const app = initializeApp(FIREBASE_CONFIG);
+  db = getDatabase(app);
+  sessionRef = ref(db, 'live-class/session');
+  studentsRef = ref(db, 'live-class/students');
+
+  buildSongList();
+  listenToStudents();
+
+  document.getElementById('play-btn').addEventListener('click', togglePlay);
+  document.getElementById('stop-btn').addEventListener('click', stopSession);
+}
+
+// ─── Song list ────────────────────────────────────────
+function buildSongList() {
+  const container = document.getElementById('song-list');
+  if (!SONGS.length) {
+    container.innerHTML = '<div class="no-songs">Add MP3 files to /en/audio/ and update the SONGS list in teacher.html</div>';
+    return;
+  }
+  SONGS.forEach((song, i) => {
+    const el = document.createElement('div');
+    el.className = 'song-item';
+    el.dataset.index = i;
+    el.innerHTML = `<div class="song-item-name">${song.name}</div><div class="song-item-idx">${i + 1}</div>`;
+    el.addEventListener('click', () => selectSong(i));
+    container.appendChild(el);
+  });
+}
+
+function selectSong(i) {
+  currentSongIndex = i;
+  document.querySelectorAll('.song-item').forEach((el, idx) => {
+    el.classList.toggle('active', idx === i);
+  });
+  const nameEl = document.getElementById('now-playing-name');
+  nameEl.textContent = SONGS[i].name;
+  nameEl.classList.remove('empty');
+
+  // If already playing, switch to new song immediately
+  if (sessionStatus === 'playing') {
+    playNow();
+  }
+}
+
+// ─── Transport ────────────────────────────────────────
+function togglePlay() {
+  if (sessionStatus === 'playing') {
+    pauseSession();
+  } else {
+    playNow();
+  }
+}
+
+function playNow() {
+  if (currentSongIndex < 0) return;
+  const song = SONGS[currentSongIndex];
+
+  set(sessionRef, {
+    status: 'playing',
+    songIndex: currentSongIndex,
+    songName: song.name,
+    songUrl: song.url,
+    startedAt: Date.now(),
+    pausedAt: 0
+  });
+
+  sessionStatus = 'playing';
+  updateUI();
+}
+
+function pauseSession() {
+  set(sessionRef, {
+    status: 'paused',
+    songIndex: currentSongIndex,
+    songName: SONGS[currentSongIndex]?.name || '',
+    songUrl: SONGS[currentSongIndex]?.url || '',
+    startedAt: null,
+    pausedAt: 0
+  });
+  sessionStatus = 'paused';
+  updateUI();
+}
+
+function stopSession() {
+  set(sessionRef, { status: 'waiting' });
+  sessionStatus = 'waiting';
+  updateUI();
+}
+
+function updateUI() {
+  const pill = document.getElementById('status-pill');
+  const playBtn = document.getElementById('play-btn');
+  pill.className = 'status-pill ' + sessionStatus;
+  if (sessionStatus === 'playing') {
+    pill.textContent = '● Playing';
+    playBtn.textContent = '⏸ Pause';
+  } else if (sessionStatus === 'paused') {
+    pill.textContent = 'Paused';
+    playBtn.textContent = '▶ Resume';
+  } else {
+    pill.textContent = 'Waiting';
+    playBtn.textContent = '▶ Play';
+  }
+}
+
+// ─── Students ─────────────────────────────────────────
+let studentsCache = {};
+
+function listenToStudents() {
+  onValue(studentsRef, snap => {
+    const data = snap.val() || {};
+    studentsCache = data;
+    renderStudents();
+  });
+}
+
+function renderStudents() {
+  const container = document.getElementById('student-list');
+  const noMsg = document.getElementById('no-students-msg');
+  const active = Object.entries(studentsCache).filter(([id, s]) => s.active);
+
+  document.getElementById('students-count').textContent = active.length;
+
+  if (!active.length) {
+    container.innerHTML = '';
+    container.appendChild(noMsg);
+    return;
+  }
+
+  if (noMsg.parentNode) noMsg.parentNode.removeChild(noMsg);
+  container.innerHTML = '';
+
+  active.forEach(([id, student]) => {
+    const isMuted = student.muted === true;
+    const card = document.createElement('div');
+    card.className = 'student-card' + (isMuted ? ' muted-card' : '');
+    card.innerHTML = `
+      <div class="student-name-row">
+        <div class="student-dot"></div>
+        <div class="student-name">${escHtml(student.name || 'Student')}</div>
+      </div>
+      <button class="mute-btn ${isMuted ? 'muted' : 'unmuted'}" data-id="${id}" data-muted="${isMuted}">
+        ${isMuted ? 'Unmute' : 'Mute'}
+      </button>`;
+    card.querySelector('.mute-btn').addEventListener('click', () => toggleMute(id, isMuted));
+    container.appendChild(card);
+  });
+}
+
+function toggleMute(studentId, currentlyMuted) {
+  set(ref(db, 'live-class/students/' + studentId + '/muted'), !currentlyMuted);
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+</body>
+</html>

@@ -237,9 +237,6 @@ body {
   <div class="muted-icon">🤫</div>
   <div class="muted-title">Nemanja is<br>speaking with you</div>
   <div class="muted-sub">Music is paused for you.<br>Others continue listening.</div>
-  <button id="tap-to-hear-btn" class="gate-btn" style="display:none; max-width:280px; margin-top:32px;">
-    Tap to hear teacher
-  </button>
 </div>
 
 <!-- Hidden audio output for teacher voice (WebRTC) -->
@@ -418,10 +415,19 @@ function submitName() {
 }
 
 // ─── Audio unlock (required by iOS/Safari) ───────────
+let audioCtx = null;
+
 document.getElementById('unlock-btn').addEventListener('click', async () => {
   audio.src = '';
   try { await audio.play(); } catch(e) {}
   audio.pause();
+
+  // Unlock Web Audio API — stays unlocked for the full session
+  try {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') await audioCtx.resume();
+  } catch(e) {}
+
   audioUnlocked = true;
 
   if (!FIREBASE_READY) {
@@ -535,6 +541,7 @@ const RTC_CONFIG = { iceServers: [
 let studentPc = null;
 let unsubTeacherCandidates = null;
 let voiceGen = 0;
+let voiceSourceNode = null;
 const voiceOutput = document.getElementById('voice-output');
 
 function listenForVoiceOffer() {
@@ -559,12 +566,18 @@ async function answerVoiceCall(offer) {
 
     pc.ontrack = e => {
       const stream = e.streams[0] || new MediaStream([e.track]);
+      if (voiceSourceNode) { voiceSourceNode.disconnect(); voiceSourceNode = null; }
+      if (audioCtx && audioCtx.state === 'running') {
+        // Web Audio path — works on iOS without a second user gesture
+        try {
+          voiceSourceNode = audioCtx.createMediaStreamSource(stream);
+          voiceSourceNode.connect(audioCtx.destination);
+          return;
+        } catch(err) {}
+      }
+      // Fallback: HTMLAudioElement (Android / desktop)
       voiceOutput.srcObject = stream;
-      voiceOutput.play().catch(() => {
-        const btn = document.getElementById('tap-to-hear-btn');
-        btn.style.display = 'block';
-        btn.onclick = () => { btn.style.display = 'none'; voiceOutput.play().catch(() => {}); };
-      });
+      voiceOutput.play().catch(() => {});
     };
 
     pc.onicecandidate = ({ candidate }) => {
@@ -591,8 +604,8 @@ function endVoiceCall() {
   voiceGen++;
   if (unsubTeacherCandidates) { unsubTeacherCandidates(); unsubTeacherCandidates = null; }
   if (studentPc) { studentPc.close(); studentPc = null; }
+  if (voiceSourceNode) { voiceSourceNode.disconnect(); voiceSourceNode = null; }
   voiceOutput.srcObject = null;
-  document.getElementById('tap-to-hear-btn').style.display = 'none';
 }
 
 // ─── Listen for individual mute changes ──────────────

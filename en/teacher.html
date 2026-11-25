@@ -91,10 +91,15 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500;
   transition: all 0.2s;
 }
-.transport-btn.play { background: var(--clay); color: var(--bark); flex: 1; }
-.transport-btn.play:hover { background: var(--sand); }
-.transport-btn.stop { background: rgba(255,255,255,0.08); color: rgba(232,221,208,0.5); }
-.transport-btn.stop:hover { background: rgba(255,255,255,0.14); color: var(--sand); }
+.transport-btn.play  { background: var(--clay); color: var(--bark); flex: 1; }
+.transport-btn.play:hover  { background: var(--sand); }
+.transport-btn.pause { background: rgba(196,168,130,0.2); color: var(--clay); flex: 1; }
+.transport-btn.pause:hover { background: rgba(196,168,130,0.35); }
+.transport-btn.stop  { background: rgba(255,255,255,0.08); color: rgba(232,221,208,0.5); }
+.transport-btn.stop:hover  { background: rgba(255,255,255,0.14); color: var(--sand); }
+.transport-btn.repeat { background: rgba(255,255,255,0.08); color: rgba(232,221,208,0.35); font-size: 17px; padding: 14px 16px; }
+.transport-btn.repeat:hover { background: rgba(255,255,255,0.14); color: rgba(232,221,208,0.6); }
+.transport-btn.repeat.on { background: rgba(196,168,130,0.18); color: var(--clay); }
 
 /* Song library */
 .song-list { display: flex; flex-direction: column; gap: 2px; }
@@ -191,6 +196,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
         <div class="transport">
           <button class="transport-btn play" id="play-btn">▶ Play</button>
           <button class="transport-btn stop" id="stop-btn">■ Stop</button>
+          <button class="transport-btn repeat" id="repeat-btn" title="Repeat current song">↺</button>
         </div>
       </div>
 
@@ -232,10 +238,14 @@ const FIREBASE_CONFIG = {
 // ═══════════════════════════════════════════════════════
 //  SONG LIBRARY
 //  - Put MP3 files in /en/audio/ folder on the site
-//  - Add entries here: { name: "Song Title", url: "audio/song.mp3" }
+//  - Add entries here: { name: "Song Title", url: "audio/song.mp3", orchestra: "key" }
+//  - Orchestra keys: 'di_sarli' | 'd_arienzo' | 'pugliese' | 'troilo' | 'canaro' | 'biagi'
+//  - Leave orchestra out (or null) for non-tango music (Kundalini, etc.)
 // ═══════════════════════════════════════════════════════
 const SONGS = [
-  { name: "Primer A – Lo-fi", url: "audio/primer_A_lofi.mp3" },
+  { name: "Primer A – Lo-fi", url: "audio/primer_A_lofi.mp3", orchestra: null },
+  // { name: "Di Sarli – Bahía Blanca", url: "audio/di_sarli_bahia_blanca.mp3", orchestra: "di_sarli" },
+  // { name: "D'Arienzo – El Flete", url: "audio/darienzo_el_flete.mp3", orchestra: "d_arienzo" },
 ];
 
 // ═══════════════════════════════════════════════════════
@@ -276,8 +286,28 @@ function tryUnlock() {
 let db, sessionRef, studentsRef;
 let currentSongIndex = -1;
 let sessionStatus = 'waiting';
-let playStartedAt = null;
-let pausedAtSeconds = 0;
+let playStartedAt = 0;
+let pausedAtPosition = 0;
+let repeatMode = false;
+
+// Hidden audio for duration tracking + ended event
+const teacherAudio = new Audio();
+teacherAudio.muted = true;
+teacherAudio.addEventListener('ended', onSongEnded);
+
+function onSongEnded() {
+  if (repeatMode) {
+    pausedAtPosition = 0;
+    playNow();
+  } else {
+    const next = currentSongIndex + 1;
+    if (next < SONGS.length) {
+      selectSong(next);
+    } else {
+      stopSession();
+    }
+  }
+}
 
 // ─── Init ─────────────────────────────────────────────
 function initApp() {
@@ -291,6 +321,12 @@ function initApp() {
 
   document.getElementById('play-btn').addEventListener('click', togglePlay);
   document.getElementById('stop-btn').addEventListener('click', stopSession);
+  document.getElementById('repeat-btn').addEventListener('click', toggleRepeat);
+}
+
+function toggleRepeat() {
+  repeatMode = !repeatMode;
+  document.getElementById('repeat-btn').classList.toggle('on', repeatMode);
 }
 
 // ─── Song list ────────────────────────────────────────
@@ -312,7 +348,7 @@ function buildSongList() {
 
 function selectSong(i) {
   currentSongIndex = i;
-  pausedAtPosition = 0; // reset position for new song
+  pausedAtPosition = 0;
   document.querySelectorAll('.song-item').forEach((el, idx) => {
     el.classList.toggle('active', idx === i);
   });
@@ -320,7 +356,6 @@ function selectSong(i) {
   nameEl.textContent = SONGS[i].name;
   nameEl.classList.remove('empty');
 
-  // If already playing, switch to new song immediately
   if (sessionStatus === 'playing') {
     playNow();
   }
@@ -329,7 +364,7 @@ function selectSong(i) {
 // ─── Transport ────────────────────────────────────────
 function togglePlay() {
   if (sessionStatus === 'playing') {
-    stopSession();
+    pauseSession();
   } else {
     playNow();
   }
@@ -338,20 +373,48 @@ function togglePlay() {
 function playNow() {
   if (currentSongIndex < 0) return;
   const song = SONGS[currentSongIndex];
+  playStartedAt = Date.now();
+
+  teacherAudio.src = song.url;
+  teacherAudio.currentTime = pausedAtPosition;
+  teacherAudio.play().catch(() => {});
 
   set(sessionRef, {
     status: 'playing',
     songIndex: currentSongIndex,
     songName: song.name,
     songUrl: song.url,
-    startedAt: Date.now()
+    orchestra: song.orchestra || null,
+    startedAt: playStartedAt,
+    pausedAt: pausedAtPosition
   });
 
   sessionStatus = 'playing';
   updateUI();
 }
 
+function pauseSession() {
+  pausedAtPosition = playStartedAt ? (Date.now() - playStartedAt) / 1000 + pausedAtPosition : 0;
+  teacherAudio.pause();
+
+  set(sessionRef, {
+    status: 'paused',
+    songIndex: currentSongIndex,
+    songName: SONGS[currentSongIndex]?.name || '',
+    songUrl: SONGS[currentSongIndex]?.url || '',
+    orchestra: SONGS[currentSongIndex]?.orchestra || null,
+    startedAt: null,
+    pausedAt: pausedAtPosition
+  });
+  sessionStatus = 'paused';
+  updateUI();
+}
+
 function stopSession() {
+  pausedAtPosition = 0;
+  playStartedAt = 0;
+  teacherAudio.pause();
+  teacherAudio.src = '';
   set(sessionRef, { status: 'waiting' });
   sessionStatus = 'waiting';
   updateUI();
@@ -363,10 +426,16 @@ function updateUI() {
   pill.className = 'status-pill ' + sessionStatus;
   if (sessionStatus === 'playing') {
     pill.textContent = '● Playing';
-    playBtn.textContent = '■ Stop';
+    playBtn.textContent = '⏸ Pause';
+    playBtn.className = 'transport-btn pause';
+  } else if (sessionStatus === 'paused') {
+    pill.textContent = 'Paused';
+    playBtn.textContent = '▶ Resume';
+    playBtn.className = 'transport-btn play';
   } else {
     pill.textContent = 'Waiting';
     playBtn.textContent = '▶ Play';
+    playBtn.className = 'transport-btn play';
   }
 }
 

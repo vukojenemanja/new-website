@@ -136,6 +136,27 @@ body {
   color: rgba(196,168,130,0.5);
 }
 
+/* ─── Orchestra info ─── */
+.orchestra-info {
+  margin-top: 36px;
+  max-width: 320px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+.orchestra-info.visible { opacity: 1; }
+.orchestra-name-tag {
+  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+  color: rgba(196,168,130,0.45); margin-bottom: 12px;
+}
+.orchestra-fact {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(14px, 3.5vw, 17px); font-weight: 300; font-style: italic;
+  color: rgba(232,221,208,0.55); line-height: 1.65;
+  transition: opacity 0.6s;
+}
+.orchestra-fact.fading { opacity: 0; }
+
 /* ─── Muted overlay ─── */
 #screen-muted {
   background: var(--deep);
@@ -185,7 +206,7 @@ body {
 <div class="screen" id="screen-waiting">
   <div class="waiting-pulse"></div>
   <div class="waiting-name" id="waiting-name"></div>
-  <div class="waiting-status">Waiting for class to start...</div>
+  <div class="waiting-status">Waiting for music...</div>
 </div>
 
 <!-- 4. Music playing -->
@@ -205,6 +226,10 @@ body {
   </div>
   <div class="song-name" id="playing-song-name">—</div>
   <div class="playing-student-name" id="playing-student-name"></div>
+  <div class="orchestra-info" id="orchestra-info">
+    <div class="orchestra-name-tag" id="orchestra-name-tag"></div>
+    <div class="orchestra-fact" id="orchestra-fact"></div>
+  </div>
 </div>
 
 <!-- 5. Muted by teacher -->
@@ -223,6 +248,104 @@ body {
 
 <!-- Firebase SDK -->
 <script type="module">
+// ═══════════════════════════════════════════════════════
+//  TANGO ORCHESTRA DATA
+// ═══════════════════════════════════════════════════════
+const ORCHESTRAS = {
+  di_sarli: {
+    name: 'Carlos di Sarli',
+    facts: [
+      '"El Señor del Tango" — The Gentleman of Tango. He earned the name not just for his music, but for how he carried himself: impeccably dressed, reserved, aristocratic.',
+      'In di Sarli\'s orchestra, the bandoneon is almost inaudible. He gave the melody entirely to the violins — an unusual choice that became his unmistakable signature.',
+      'He was born in Bahía Blanca, Argentina — a city that now holds a national tango festival in his name every year.',
+      'He walked away from tango in 1949 to run a real estate business. Two years later, the dance floors pulled him back and he reformed his orchestra.',
+      'Teachers recommend his music for beginners: the beat is unhurried and clear, like a metronome wrapped in silk.',
+    ]
+  },
+  d_arienzo: {
+    name: 'Juan D\'Arienzo',
+    facts: [
+      '"El Rey del Compás" — King of the Beat. The nickname was given by a radio announcer while D\'Arienzo was filling in for another orchestra. It stuck for 50 years.',
+      'By 1935 tango was losing ground to jazz. D\'Arienzo\'s fast, insistent rhythm revived the dance floor almost overnight — historians call it the "D\'Arienzo rescue of tango."',
+      'He appeared with his orchestra in the 1933 film *Tango* — the first Argentine film ever recorded with sound.',
+      'D\'Arienzo famously blamed singers for tango\'s decline: "Orchestras became a mere frame for a star." For him, the rhythm was always the main event.',
+      'His orchestra was one of the "Big Four" of tango\'s Golden Age — alongside di Sarli, Troilo, and Pugliese.',
+    ]
+  },
+  pugliese: {
+    name: 'Osvaldo Pugliese',
+    facts: [
+      '"La Yumba," his most famous piece, was inspired by the sound of metalworking — the rhythmic hammering of workers in Buenos Aires.',
+      'Pugliese was a committed communist and was arrested multiple times under the Perón government. While he sat in prison, his orchestra placed a red carnation on his empty piano chair in solidarity.',
+      'He kept performing into his 80s. At one of his last concerts, the entire audience stood in complete silence as he took the stage — not applause, but reverence.',
+      'Dancers say Pugliese is "advanced tango" — the shifting dynamics and unpredictable phrasing require a close, responsive embrace and years of experience.',
+      'He had a 50-year working relationship with many of the same musicians. Violinist Oscar Herrero played with the orchestra from 1943 to 1978.',
+    ]
+  },
+  troilo: {
+    name: 'Aníbal Troilo',
+    facts: [
+      'His nickname "Pichuco" came from his father — a family term of affection with no clear meaning. He carried it his entire career.',
+      'At ten he convinced his mother to buy him a bandoneon. By fourteen he was already forming his own quintet.',
+      'Astor Piazzolla — who would later revolutionize tango — played bandoneon in Troilo\'s orchestra in 1939. Troilo was his teacher and greatest influence.',
+      '11 July, Troilo\'s birthday, is now National Bandoneon Day in Argentina. The instrument and the man became inseparable in the national memory.',
+      'His orchestra recorded 449 tangos over its career. The last session was 24 June 1971. Buenos Aires gave him a state funeral four years later.',
+    ]
+  },
+  canaro: {
+    name: 'Francisco Canaro',
+    facts: [
+      'Canaro was born in poverty in Uruguay and was entirely self-taught. He made his very first violin out of a tin can and wooden sticks as a child.',
+      'He made over 3,700 recordings across five decades — more than any other tango artist in history. Somewhere in the world, a Canaro recording is probably playing right now.',
+      'He managed multiple orchestras simultaneously, owned a record company, and ran dance venues. He understood tango as business before anyone else did.',
+      'Canaro led the first recording ever made by an "orquesta típica" — the classic tango ensemble — cementing the standard lineup of bandoneons, violins, piano, and double bass.',
+      'He performed for over 50 years without stopping. At 70, he was still leading orchestras at milongas in Buenos Aires as if nothing had changed.',
+    ]
+  },
+  biagi: {
+    name: 'Rodolfo Biagi',
+    facts: [
+      '"Manos Brujas" means Magical Hands. The nickname came from a radio advertising executive who heard Biagi play and couldn\'t think of another way to describe what his fingers did.',
+      'At 13 he gave his first public piano concert. By his early 20s he was accompanying silent films in Buenos Aires cinemas — playing live music to match the action on screen.',
+      'He played piano for Carlos Gardel — the most legendary voice in all of tango — on several recordings in 1930.',
+      'Before leading his own orchestra, Biagi was the pianist for Juan D\'Arienzo. The two men created one of the most recognizable piano-rhythm partnerships in tango history.',
+      'Biagi\'s orchestra was the first tango ensemble to appear on Argentine television, in the early 1950s — when television itself was brand new in the country.',
+    ]
+  }
+};
+
+let orchestraFactTimer = null;
+let orchestraFactIndex = 0;
+
+function showOrchestraInfo(key) {
+  const info = ORCHESTRAS[key];
+  const el = document.getElementById('orchestra-info');
+  const nameTag = document.getElementById('orchestra-name-tag');
+  const factEl = document.getElementById('orchestra-fact');
+
+  if (!info) { el.classList.remove('visible'); return; }
+
+  nameTag.textContent = info.name;
+  orchestraFactIndex = Math.floor(Math.random() * info.facts.length);
+  factEl.textContent = info.facts[orchestraFactIndex];
+  el.classList.add('visible');
+
+  if (orchestraFactTimer) clearInterval(orchestraFactTimer);
+  orchestraFactTimer = setInterval(() => {
+    factEl.classList.add('fading');
+    setTimeout(() => {
+      orchestraFactIndex = (orchestraFactIndex + 1) % info.facts.length;
+      factEl.textContent = info.facts[orchestraFactIndex];
+      factEl.classList.remove('fading');
+    }, 600);
+  }, 30000);
+}
+
+function hideOrchestraInfo() {
+  document.getElementById('orchestra-info').classList.remove('visible');
+  if (orchestraFactTimer) { clearInterval(orchestraFactTimer); orchestraFactTimer = null; }
+}
+
 // ═══════════════════════════════════════════════════════
 //  FIREBASE CONFIG
 //  1. Go to https://firebase.google.com and create a free project
@@ -327,16 +450,19 @@ let isMutedLocally = false;
 function handleSessionUpdate(data) {
   if (data.status === 'waiting' || data.status === 'stopped') {
     audio.pause();
+    hideOrchestraInfo();
     if (!isMutedLocally) show('screen-waiting');
     return;
   }
 
   if (data.status === 'playing' && data.songUrl) {
     const sessionStartedAt = data.startedAt;
+    const sessionPausedAt = data.pausedAt || 0;
 
     function seekAndPlay() {
       const elapsed = sessionStartedAt ? (Date.now() - sessionStartedAt) / 1000 : 0;
-      audio.currentTime = Math.min(Math.max(0, elapsed), audio.duration || 999);
+      const seekTo = Math.max(0, elapsed + sessionPausedAt);
+      audio.currentTime = Math.min(seekTo, audio.duration || 999);
       audio.muted = isMutedLocally;
       audio.play().catch(err => console.log('Play error:', err));
     }
@@ -345,6 +471,8 @@ function handleSessionUpdate(data) {
       document.getElementById('playing-song-name').textContent = data.songName || '—';
       document.getElementById('waveform').classList.remove('paused');
       show('screen-playing');
+      if (data.orchestra) showOrchestraInfo(data.orchestra);
+      else hideOrchestraInfo();
     }
 
     if (audio.src !== data.songUrl) {

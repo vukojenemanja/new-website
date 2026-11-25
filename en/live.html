@@ -242,6 +242,12 @@ body {
 <!-- Hidden audio output for teacher voice (WebRTC) -->
 <audio id="voice-output" autoplay playsinline style="display:none"></audio>
 
+<!-- Tap-to-resume overlay (shown when iOS blocks autoplay after unmute) -->
+<div id="resume-overlay" style="display:none; position:fixed; inset:0; background:rgba(30,23,18,0.85); z-index:50; align-items:center; justify-content:center; flex-direction:column; gap:24px; cursor:pointer;">
+  <div style="font-size:32px;">▶</div>
+  <div style="font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--clay);">Tap to resume music</div>
+</div>
+
 <!-- 6. Error / no Firebase -->
 <div class="screen" id="screen-error">
   <div class="gate-label">Connection error</div>
@@ -508,12 +514,24 @@ function handleSessionUpdate(data) {
   }
 }
 
+// ─── Resume overlay (iOS autoplay fallback) ──────────
+function showResumeOverlay(playFn) {
+  const el = document.getElementById('resume-overlay');
+  el.style.display = 'flex';
+  el.addEventListener('click', () => {
+    el.style.display = 'none';
+    playFn().catch(() => {});
+  }, { once: true });
+}
+
 // ─── WebRTC Voice (student side) ─────────────────────
 const RTC_CONFIG = { iceServers: [
   { urls: 'stun:stun.l.google.com:19302' },
   { urls: 'stun:stun1.l.google.com:19302' }
 ]};
 let studentPc = null;
+let unsubTeacherCandidates = null;
+let voiceGen = 0;
 const voiceOutput = document.getElementById('voice-output');
 
 function listenForVoiceOffer() {
@@ -529,8 +547,11 @@ function listenForVoiceOffer() {
 
 async function answerVoiceCall(offer) {
   endVoiceCall();
+  voiceGen++;
+  const myGen = voiceGen;
   try {
     const pc = new RTCPeerConnection(RTC_CONFIG);
+    if (myGen !== voiceGen) { pc.close(); return; }
     studentPc = pc;
 
     pc.ontrack = e => {
@@ -544,11 +565,13 @@ async function answerVoiceCall(offer) {
     };
 
     await pc.setRemoteDescription(new RTCSessionDescription(offer));
+    if (myGen !== voiceGen) return;
     const answer = await pc.createAnswer();
     await pc.setLocalDescription(answer);
+    if (myGen !== voiceGen) return;
     await set(ref(db, `live-class/students/${studentId}/rtc/answer`), { type: answer.type, sdp: answer.sdp });
 
-    onChildAdded(ref(db, `live-class/students/${studentId}/rtc/teacherCandidates`), snap => {
+    unsubTeacherCandidates = onChildAdded(ref(db, `live-class/students/${studentId}/rtc/teacherCandidates`), snap => {
       const c = snap.val();
       if (c) pc.addIceCandidate(new RTCIceCandidate(c)).catch(() => {});
     });
@@ -558,6 +581,8 @@ async function answerVoiceCall(offer) {
 }
 
 function endVoiceCall() {
+  voiceGen++;
+  if (unsubTeacherCandidates) { unsubTeacherCandidates(); unsubTeacherCandidates = null; }
   if (studentPc) { studentPc.close(); studentPc = null; }
   voiceOutput.srcObject = null;
 }
@@ -576,12 +601,33 @@ function listenForMute() {
       isMutedLocally = false;
       audio.muted = false;
       endVoiceCall();
-      // Resync if browser paused background audio (e.g. phone lock screen)
-      if (audio.paused) {
-        get(sessionRef).then(s => { if (s.val()) handleSessionUpdate(s.val()); });
-      } else {
+      get(sessionRef).then(s => {
+        const data = s.val();
+        if (!data || data.status !== 'playing') { show('screen-waiting'); return; }
+        document.getElementById('playing-song-name').textContent = data.songName || '—';
+        document.getElementById('waveform').classList.remove('paused');
         show('screen-playing');
-      }
+        if (data.orchestra) showOrchestraInfo(data.orchestra);
+        const sessionStartedAt = data.startedAt;
+        const sessionPausedAt = data.pausedAt || 0;
+        function doPlay() {
+          const elapsed = sessionStartedAt ? (Date.now() - sessionStartedAt) / 1000 : 0;
+          const seekTo = Math.max(0, elapsed + sessionPausedAt);
+          if (audio.src !== data.songUrl) { audio.src = data.songUrl; audio.load(); }
+          audio.currentTime = Math.min(seekTo, audio.duration || 999);
+          audio.muted = false;
+          return audio.play();
+        }
+        if (audio.readyState >= 3) {
+          doPlay().catch(() => showResumeOverlay(doPlay));
+        } else {
+          audio.src = data.songUrl;
+          audio.load();
+          audio.addEventListener('canplay', () => {
+            doPlay().catch(() => showResumeOverlay(doPlay));
+          }, { once: true });
+        }
+      });
     }
   });
 }

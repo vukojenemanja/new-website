@@ -477,6 +477,7 @@ const RTC_CONFIG = { iceServers: [
 ]};
 let teacherStream = null;
 const peerConnections = {};
+const voiceListeners = {}; // { sid: { unsubAnswer, unsubCandidates } }
 
 async function ensureMic() {
   if (teacherStream) return teacherStream;
@@ -484,7 +485,16 @@ async function ensureMic() {
   return teacherStream;
 }
 
+function cleanVoiceListeners(sid) {
+  if (voiceListeners[sid]) {
+    voiceListeners[sid].unsubAnswer();
+    voiceListeners[sid].unsubCandidates();
+    delete voiceListeners[sid];
+  }
+}
+
 async function startVoiceWith(sid) {
+  cleanVoiceListeners(sid);
   try {
     const stream = await ensureMic();
     const pc = new RTCPeerConnection(RTC_CONFIG);
@@ -495,26 +505,23 @@ async function startVoiceWith(sid) {
     pc.onicecandidate = ({ candidate }) => {
       if (candidate) push(ref(db, `live-class/students/${sid}/rtc/teacherCandidates`), candidate.toJSON());
     };
-
     pc.onconnectionstatechange = () => renderStudents();
 
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
     await set(ref(db, `live-class/students/${sid}/rtc/offer`), { type: offer.type, sdp: offer.sdp });
 
-    // Listen for student's answer
-    onValue(ref(db, `live-class/students/${sid}/rtc/answer`), async snap => {
+    const unsubAnswer = onValue(ref(db, `live-class/students/${sid}/rtc/answer`), async snap => {
       const ans = snap.val();
       if (ans && pc.signalingState === 'have-local-offer') {
         await pc.setRemoteDescription(new RTCSessionDescription(ans));
       }
     });
-
-    // Listen for student's ICE candidates
-    onChildAdded(ref(db, `live-class/students/${sid}/rtc/studentCandidates`), snap => {
+    const unsubCandidates = onChildAdded(ref(db, `live-class/students/${sid}/rtc/studentCandidates`), snap => {
       const c = snap.val();
       if (c) pc.addIceCandidate(new RTCIceCandidate(c)).catch(() => {});
     });
+    voiceListeners[sid] = { unsubAnswer, unsubCandidates };
 
   } catch (err) {
     console.warn('Voice error:', err);
@@ -522,6 +529,7 @@ async function startVoiceWith(sid) {
 }
 
 function endVoiceWith(sid) {
+  cleanVoiceListeners(sid);
   const pc = peerConnections[sid];
   if (pc) { pc.close(); delete peerConnections[sid]; }
   remove(ref(db, `live-class/students/${sid}/rtc`));

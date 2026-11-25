@@ -166,6 +166,10 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
 .student-dot { width: 8px; height: 8px; border-radius: 50%; background: #7cb47c; flex-shrink: 0; }
 .student-card.muted-card .student-dot { background: var(--clay); }
 .student-name { font-size: 14px; color: var(--bark); }
+.voice-state { font-size: 10px; letter-spacing: 1px; padding: 2px 7px; border-radius: 2px; }
+.voice-state.connecting { background: rgba(255,200,0,0.15); color: #a07800; }
+.voice-state.connected  { background: rgba(100,180,100,0.15); color: #3a7a3a; }
+.voice-state.failed     { background: rgba(220,50,50,0.12);  color: #b03030; }
 .student-card.muted-card .student-name { color: var(--stone); }
 .mute-btn {
   font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
@@ -584,6 +588,7 @@ function cleanVoiceListeners(sid) {
 
 async function startVoiceWith(sid) {
   cleanVoiceListeners(sid);
+  if (peerConnections[sid]) { peerConnections[sid].close(); delete peerConnections[sid]; }
   try {
     const stream = await ensureMic();
     const pc = new RTCPeerConnection(RTC_CONFIG);
@@ -654,14 +659,19 @@ function renderStudents() {
 
   active.forEach(([id, student]) => {
     const isMuted = student.muted === true;
-    const hasVoice = !!peerConnections[id];
+    const pc = peerConnections[id];
+    const connState = pc ? pc.connectionState : null;
     const card = document.createElement('div');
     card.className = 'student-card' + (isMuted ? ' muted-card' : '');
+    let voiceBadge = '';
+    if (connState === 'connecting' || connState === 'new') voiceBadge = '<span class="voice-state connecting">connecting…</span>';
+    else if (connState === 'connected') voiceBadge = '<span class="voice-state connected">🎙 live</span>';
+    else if (connState === 'failed' || connState === 'disconnected') voiceBadge = '<span class="voice-state failed">failed</span>';
     card.innerHTML = `
       <div class="student-name-row">
         <div class="student-dot"></div>
-        ${hasVoice ? '<span class="mic-indicator">🎙</span>' : ''}
         <div class="student-name">${escHtml(student.name || 'Student')}</div>
+        ${voiceBadge}
       </div>
       <button class="mute-btn ${isMuted ? 'muted' : 'unmuted'}" data-id="${id}" data-muted="${isMuted}">
         ${isMuted ? 'Unmute' : 'Mute'}

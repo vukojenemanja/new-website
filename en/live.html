@@ -567,20 +567,21 @@ async function answerVoiceCall(offer) {
     if (myGen !== voiceGen) { pc.close(); return; }
     studentPc = pc;
 
-    pc.ontrack = e => {
+    pc.ontrack = async e => {
       const stream = e.streams[0] || new MediaStream([e.track]);
       if (voiceSourceNode) { voiceSourceNode.disconnect(); voiceSourceNode = null; }
-      if (audioCtx && audioCtx.state === 'running') {
-        // Web Audio path — works on iOS without a second user gesture
+      // Try AudioContext (required on iOS, also works on desktop)
+      if (audioCtx) {
         try {
+          if (audioCtx.state !== 'running') await audioCtx.resume();
           voiceSourceNode = audioCtx.createMediaStreamSource(stream);
           voiceSourceNode.connect(audioCtx.destination);
           return;
-        } catch(err) {}
+        } catch(err) { console.warn('AudioContext voice error:', err); }
       }
-      // Fallback: HTMLAudioElement (Android / desktop)
+      // Fallback: HTMLAudioElement
       voiceOutput.srcObject = stream;
-      voiceOutput.play().catch(() => {});
+      voiceOutput.play().catch(err => console.warn('voiceOutput.play failed:', err));
     };
 
     pc.onicecandidate = ({ candidate }) => {

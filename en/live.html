@@ -422,22 +422,15 @@ document.getElementById('unlock-btn').addEventListener('click', async () => {
   try { await audio.play(); } catch(e) {}
   audio.pause();
 
-  // Unlock Web Audio API and boost voice volume
+  // Unlock Web Audio API — silent buffer unlocks iOS audio session
   try {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     if (audioCtx.state === 'suspended') await audioCtx.resume();
-    // Silent buffer — unlocks iOS audio session
     const buf = audioCtx.createBuffer(1, 1, 22050);
     const src = audioCtx.createBufferSource();
     src.buffer = buf;
     src.connect(audioCtx.destination);
     src.start();
-    // Route voiceOutput through a gain node (2.5× boost)
-    const voiceSrc = audioCtx.createMediaElementSource(voiceOutput);
-    const voiceGain = audioCtx.createGain();
-    voiceGain.gain.value = 2.5;
-    voiceSrc.connect(voiceGain);
-    voiceGain.connect(audioCtx.destination);
   } catch(e) {}
 
   audioUnlocked = true;

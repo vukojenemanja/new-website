@@ -240,7 +240,7 @@ body {
 </div>
 
 <!-- Hidden audio output for teacher voice (WebRTC) -->
-<audio id="voice-output" autoplay playsinline style="display:none"></audio>
+<audio id="voice-output" playsinline style="position:absolute;width:0;height:0;opacity:0;pointer-events:none"></audio>
 
 <!-- Tap-to-resume overlay (shown when iOS blocks autoplay after unmute) -->
 <div id="resume-overlay" style="display:none; position:fixed; inset:0; background:rgba(30,23,18,0.85); z-index:50; align-items:center; justify-content:center; flex-direction:column; gap:24px; cursor:pointer;">
@@ -577,6 +577,7 @@ async function answerVoiceCall(offer) {
       if (voiceSourceNode) { voiceSourceNode.disconnect(); voiceSourceNode = null; }
       // Primary: HTMLAudioElement (reliable on desktop + iOS after silent-buffer unlock)
       voiceOutput.srcObject = stream;
+      voiceOutput.volume = 1.0;
       voiceOutput.play().catch(() => {
         // Fallback: AudioContext routing (iOS if silent-buffer unlock wasn't enough)
         if (audioCtx) {

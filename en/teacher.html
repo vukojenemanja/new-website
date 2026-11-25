@@ -602,15 +602,19 @@ async function startVoiceWith(sid) {
     pc.onconnectionstatechange = () => renderStudents();
     pc.oniceconnectionstatechange = () => {
       renderStudents();
-      // Auto-restart ICE if stuck checking for 15 seconds
-      if (pc.iceConnectionState === 'checking') {
+      const s = pc.iceConnectionState;
+      if (s === 'checking') {
+        // Auto-restart ICE if stuck for 15 seconds
         clearTimeout(pc._iceTimer);
         pc._iceTimer = setTimeout(() => {
-          if (pc.iceConnectionState === 'checking') {
-            console.log('ICE stuck - restarting');
-            pc.restartIce();
-          }
+          if (pc.iceConnectionState === 'checking') pc.restartIce();
         }, 15000);
+      } else if (s === 'disconnected' || s === 'failed') {
+        // Reconnect after 3 seconds
+        clearTimeout(pc._iceTimer);
+        pc._iceTimer = setTimeout(() => {
+          if (peerConnections[sid] === pc) startVoiceWith(sid);
+        }, 3000);
       } else {
         clearTimeout(pc._iceTimer);
       }

@@ -347,7 +347,7 @@ nav.scrolled .nav-links span { color: var(--stone); }
 /* ── PAIN SECTION ── */
 .pain {
   background: var(--fog);
-  padding: 120px 60px;
+  padding: 120px 60px 48px;
 }
 
 .pain-inner {
@@ -412,15 +412,16 @@ nav.scrolled .nav-links span { color: var(--stone); }
 /* ── BRIDGE ── */
 .bridge-section {
   background: var(--fog);
-  padding: 100px 60px;
+  padding: 48px 60px 100px;
   text-align: center;
 }
 .bridge-question {
-  font-size: 10px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--clay);
-  margin: 0 auto 28px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  margin: 0 auto 24px;
 }
 .bridge-answer {
   font-family: 'Cormorant Garamond', serif;
@@ -433,7 +434,7 @@ nav.scrolled .nav-links span { color: var(--stone); }
 }
 .bridge-answer em { font-style: italic; color: var(--accent); font-weight: 400; }
 @media (max-width: 768px) {
-  .bridge-section { padding: 72px 24px; }
+  .bridge-section { padding: 40px 24px 72px; }
   .bridge-answer { font-size: 1.75rem; }
 }
 
@@ -2269,7 +2270,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <section class="bridge-section">
   <div class="reveal">
     <p class="bridge-question">A kakve to veze ima sa mnom?</p>
-    <p class="bridge-answer">Sve ovo što si upravo pročitao/la - <em>bio je i deo mog puta.</em></p>
+    <p class="bridge-answer">Sve ovo što si upravo pročitao/la - <em>bilo je i deo mog puta.</em></p>
   </div>
 </section>
 

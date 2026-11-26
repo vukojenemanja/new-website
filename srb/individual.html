@@ -150,13 +150,24 @@ nav.scrolled { background: rgba(26,18,8,0.95); padding: 14px 60px; border-bottom
 .method h2 em { font-style: italic; color: var(--clay); }
 .method-intro { font-size: 15px; line-height: 1.9; color: rgba(232,221,208,0.6); }
 .method-steps { display: flex; flex-direction: column; }
-.phase-group { }
-.phase-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); opacity: 0.7; padding: 32px 0 0; display: block; }
-.phase-group:first-child .phase-label { padding-top: 0; }
-.method-step { display: grid; grid-template-columns: 100px 1fr; gap: 48px; padding: 52px 0; border-top: 1px solid rgba(196,168,130,0.12); }
-.method-step:last-child { border-bottom: 1px solid rgba(196,168,130,0.12); }
-.step-number { font-family: 'Cormorant Garamond', serif; font-size: 68px; font-weight: 300; font-style: italic; color: var(--clay); opacity: 0.35; line-height: 1; padding-top: 4px; }
-.step-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--sand); margin-bottom: 12px; }
+.phase-group { margin-bottom: 0; }
+.phase-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 2.8vw, 3.4rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--clay);
+  display: block;
+  border-top: 2px solid var(--clay);
+  padding: 48px 0 32px;
+  letter-spacing: normal;
+  text-transform: none;
+  opacity: 1;
+}
+.phase-group:first-child .phase-label { border-top: none; padding-top: 0; }
+.method-step { display: block; padding: 24px 0; border-top: 1px solid rgba(196,168,130,0.08); }
+.method-step:last-child { border-bottom: none; margin-bottom: 48px; }
+.step-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--sand); margin-bottom: 10px; }
 .step-body { font-size: 14px; line-height: 1.85; color: rgba(232,221,208,0.55); }
 .method-quote { margin-top: 2px; background: rgba(196,168,130,0.06); border: 1px solid rgba(196,168,130,0.12); padding: 48px; }
 .method-quote-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 300; font-style: italic; color: var(--clay); line-height: 1.4; }
@@ -535,9 +546,8 @@ footer ul a:hover { color: var(--clay); }
   .about-me-grid { grid-template-columns: 1fr; gap: 40px; }
   .method { padding: 80px 24px; }
   .method-header { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
-  .method-step { grid-template-columns: 56px 1fr; gap: 20px; padding: 36px 0; }
-  .step-number { font-size: 44px; }
-  .phase-label { padding: 24px 0 0; font-size: 9px; letter-spacing: 4px; }
+  .method-step { padding: 20px 0; }
+  .phase-label { font-size: clamp(1.8rem, 5vw, 2.4rem); padding: 36px 0 24px; }
   .arc-of-change { padding: 80px 24px; }
   .arc-stages { overflow-x: auto; padding-bottom: 8px; }
   .arc-stage-btn { min-width: 80px; }
@@ -681,45 +691,30 @@ footer ul a:hover { color: var(--clay); }
       <div class="phase-group">
         <span class="phase-label">Prepoznaj</span>
         <div class="method-step reveal">
-          <div class="step-number">01</div>
-          <div>
-            <div class="step-title">Definišemo cilj</div>
-            <p class="step-body">Pre nego što krenemo bilo gde, jasno definišemo gde zaista želiš da stigneš. Ne nejasna želja - stvaran, opipljiv osećaj života prema kome se krećeš. Ta jasnoća postaje smer za sve što sledi.</p>
-          </div>
+          <div class="step-title">Definišemo cilj</div>
+          <p class="step-body">Pre nego što krenemo bilo gde, jasno definišemo gde zaista želiš da stigneš. Ne nejasna želja - stvaran, opipljiv osećaj života prema kome se krećeš. Ta jasnoća postaje smer za sve što sledi.</p>
         </div>
         <div class="method-step reveal">
-          <div class="step-number">02</div>
-          <div>
-            <div class="step-title">Nalazimo koren blokada</div>
-            <p class="step-body">Kroz razgovor i meditativne tehnike, idemo ispod površinske priče da pronađemo gde je obrazac koji te blokira zapravo počeo - ne samo na mentalnom nivou, već gde se to i danas drži unutar tebe.</p>
-          </div>
+          <div class="step-title">Nalazimo koren blokada</div>
+          <p class="step-body">Kroz razgovor i meditativne tehnike, idemo ispod površinske priče da pronađemo gde je obrazac koji te blokira zapravo počeo - ne samo na mentalnom nivou, već gde se to i danas drži unutar tebe.</p>
         </div>
       </div>
       <div class="phase-group">
         <span class="phase-label">Otpusti</span>
         <div class="method-step reveal">
-          <div class="step-number">03</div>
-          <div>
-            <div class="step-title">Radimo na oslobađanju</div>
-            <p class="step-body">Energetskim radom i tehnikama pristupamo onome što smo pronašli - na emocionalnom, fizičkom i energetskom nivou. Ovaj deo procesa mnogi opisuju kao najdublji i najneočekivaniji.</p>
-          </div>
+          <div class="step-title">Radimo na oslobađanju</div>
+          <p class="step-body">Energetskim radom i tehnikama pristupamo onome što smo pronašli - na emocionalnom, fizičkom i energetskom nivou. Ovaj deo procesa mnogi opisuju kao najdublji i najneočekivaniji.</p>
         </div>
         <div class="method-step reveal">
-          <div class="step-number">04</div>
-          <div>
-            <div class="step-title">Usmeravamo slobodnu energiju u stvarnu akciju</div>
-            <p class="step-body">Ono što se pomeri - postaje ti dostupno. Tu energiju koristimo za izgradnju jasnoće i prvih stvarnih koraka prema životu koji smo definisali u prvom koraku.</p>
-          </div>
+          <div class="step-title">Usmeravamo slobodnu energiju u stvarnu akciju</div>
+          <p class="step-body">Ono što se pomeri - postaje ti dostupno. Tu energiju koristimo za izgradnju jasnoće i prvih stvarnih koraka prema životu koji smo definisali u prvom koraku.</p>
         </div>
       </div>
       <div class="phase-group">
         <span class="phase-label">Usmeri</span>
         <div class="method-step reveal">
-          <div class="step-number">05</div>
-          <div>
-            <div class="step-title">TI postaješ više TI</div>
-            <p class="step-body">Ne drugačija osoba. Više ko si ti istinski, ispod svega onoga što te je blokiralo i štitilo. Osećaš se lakše, jasnije - i ideš fokusiranije prema životu koji je celo vreme čekao na tebe.</p>
-          </div>
+          <div class="step-title">TI postaješ više TI</div>
+          <p class="step-body">Ne drugačija osoba. Više ko si ti istinski, ispod svega onoga što te je blokiralo i štitilo. Osećaš se lakše, jasnije - i ideš fokusiranije prema životu koji je celo vreme čekao na tebe.</p>
         </div>
       </div>
     </div>

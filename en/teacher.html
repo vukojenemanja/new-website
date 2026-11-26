@@ -418,7 +418,10 @@ function initApp() {
 
 async function endOfDay() {
   if (!confirm('Clear all session data? This will disconnect all students.')) return;
-  stopSession();
+  pausedAtPosition = 0; playStartedAt = 0;
+  teacherAudio.pause(); teacherAudio.src = '';
+  sessionStatus = 'waiting';
+  updateUI(); updateProgress();
   try {
     await remove(ref(db, 'live-class/session'));
     await remove(ref(db, 'live-class/students'));

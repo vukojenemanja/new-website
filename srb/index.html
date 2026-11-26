@@ -411,35 +411,30 @@ nav.scrolled .nav-links span { color: var(--stone); }
 
 /* ── BRIDGE ── */
 .bridge-section {
-  background: var(--deep);
-  padding: 100px 40px;
+  background: var(--fog);
+  padding: 100px 60px;
   text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.06);
 }
 .bridge-question {
-  font-family: var(--font-body, var(--font-display));
-  font-size: 0.95rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
+  font-size: 10px;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  color: var(--sand);
-  opacity: 0.4;
-  margin: 0 auto 32px;
-  max-width: 480px;
+  color: var(--clay);
+  margin: 0 auto 28px;
 }
 .bridge-answer {
-  font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3vw, 2.6rem);
-  font-weight: 400;
-  color: var(--sand);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  color: var(--bark);
   margin: 0 auto;
-  max-width: 680px;
-  line-height: 1.4;
+  max-width: 760px;
+  line-height: 1.3;
 }
-.bridge-answer em { font-style: italic; color: var(--clay); font-weight: 500; }
+.bridge-answer em { font-style: italic; color: var(--accent); font-weight: 400; }
 @media (max-width: 768px) {
   .bridge-section { padding: 72px 24px; }
-  .bridge-answer { font-size: 1.5rem; }
+  .bridge-answer { font-size: 1.75rem; }
 }
 
 /* ── ABOUT ── */

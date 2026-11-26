@@ -185,6 +185,19 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--
   font-size: 13px; color: var(--stone); font-style: italic;
   padding: 24px 0; text-align: center; line-height: 1.8;
 }
+.hand-badge {
+  font-size: 18px;
+  animation: hand-wave 0.6s ease-in-out infinite alternate;
+  cursor: default;
+  margin-left: 4px;
+}
+@keyframes hand-wave {
+  from { transform: rotate(-10deg); }
+  to   { transform: rotate(10deg); }
+}
+.student-card.hand-raised {
+  border-left: 3px solid var(--clay);
+}
 .mic-indicator {
   font-size: 13px; margin-right: 2px; opacity: 0.85;
   animation: mic-pulse 1.5s ease-in-out infinite;
@@ -658,6 +671,7 @@ const noStudentsMsg = document.getElementById('no-students-msg');
 function listenToStudents() {
   onValue(studentsRef, snap => {
     const data = snap.val() || {};
+    checkHandRaises(data);
     studentsCache = data;
     renderStudents();
   });
@@ -678,18 +692,21 @@ function renderStudents() {
 
   active.forEach(([id, student]) => {
     const isMuted = student.muted === true;
+    const hasHand = student.handRaised === true;
     const pc = peerConnections[id];
     const iceState = pc ? pc.iceConnectionState : null;
     const card = document.createElement('div');
-    card.className = 'student-card' + (isMuted ? ' muted-card' : '');
+    card.className = 'student-card' + (isMuted ? ' muted-card' : '') + (hasHand ? ' hand-raised' : '');
     let voiceBadge = '';
     if (iceState === 'new' || iceState === 'checking') voiceBadge = `<span class="voice-state connecting">${iceState}…</span>`;
     else if (iceState === 'connected' || iceState === 'completed') voiceBadge = '<span class="voice-state connected">🎙 live</span>';
     else if (iceState === 'failed' || iceState === 'disconnected') voiceBadge = `<span class="voice-state failed">${iceState}</span>`;
+    const handBadge = hasHand ? '<span class="hand-badge" title="Hand raised">✋</span>' : '';
     card.innerHTML = `
       <div class="student-name-row">
         <div class="student-dot"></div>
         <div class="student-name">${escHtml(student.name || 'Student')}</div>
+        ${handBadge}
         ${voiceBadge}
       </div>
       <button class="mute-btn ${isMuted ? 'muted' : 'unmuted'}" data-id="${id}" data-muted="${isMuted}">
@@ -704,10 +721,36 @@ function toggleMute(studentId, currentlyMuted) {
   if (currentlyMuted) {
     endVoiceWith(studentId);
     set(ref(db, 'live-class/students/' + studentId + '/muted'), false);
+    set(ref(db, 'live-class/students/' + studentId + '/handRaised'), false);
   } else {
     set(ref(db, 'live-class/students/' + studentId + '/muted'), true);
     startVoiceWith(studentId);
   }
+}
+
+// ─── Hand raise notification ──────────────────────────
+let prevHandStates = {};
+function checkHandRaises(data) {
+  if (!data) return;
+  Object.entries(data).forEach(([id, student]) => {
+    if (!student.active) return;
+    const wasRaised = prevHandStates[id];
+    const isRaised = student.handRaised === true;
+    if (isRaised && !wasRaised) playHandSound();
+    prevHandStates[id] = isRaised;
+  });
+}
+function playHandSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.frequency.value = 880;
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+    osc.start(); osc.stop(ctx.currentTime + 0.4);
+  } catch(e) {}
 }
 
 function escHtml(str) {

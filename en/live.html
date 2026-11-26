@@ -135,6 +135,30 @@ body {
   font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
   color: rgba(196,168,130,0.5);
 }
+#raise-hand-btn {
+  margin-top: 40px;
+  background: none;
+  border: 1.5px solid rgba(196,168,130,0.3);
+  border-radius: 50px;
+  color: rgba(232,221,208,0.6);
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#raise-hand-btn:hover {
+  border-color: var(--clay);
+  color: var(--sand);
+}
+#raise-hand-btn.raised {
+  background: var(--clay);
+  border-color: var(--clay);
+  color: var(--bark);
+}
 
 /* ─── Orchestra info ─── */
 .orchestra-info {
@@ -230,6 +254,7 @@ body {
     <div class="orchestra-name-tag" id="orchestra-name-tag"></div>
     <div class="orchestra-fact" id="orchestra-fact"></div>
   </div>
+  <button id="raise-hand-btn" onclick="toggleHandRaise()">✋ Raise hand</button>
 </div>
 
 <!-- 5. Muted by teacher -->
@@ -630,6 +655,7 @@ function listenForMute() {
     } else if (muted === false && isMutedLocally) {
       isMutedLocally = false;
       audio.muted = false;
+      lowerHand();
       endVoiceCall();
       get(sessionRef).then(s => {
         const data = s.val();
@@ -666,6 +692,26 @@ function listenForMute() {
 document.getElementById('unlock-btn').addEventListener('click', () => {
   setTimeout(listenForMute, 2000);
 }, { once: true });
+
+// ─── Raise hand ──────────────────────────────────────
+let handRaised = false;
+function toggleHandRaise() {
+  handRaised = !handRaised;
+  updateHandBtn();
+  if (studentRef) set(ref(db, 'live-class/students/' + studentId + '/handRaised'), handRaised);
+}
+function lowerHand() {
+  if (!handRaised) return;
+  handRaised = false;
+  updateHandBtn();
+  if (studentRef) set(ref(db, 'live-class/students/' + studentId + '/handRaised'), false);
+}
+function updateHandBtn() {
+  const btn = document.getElementById('raise-hand-btn');
+  if (!btn) return;
+  btn.classList.toggle('raised', handRaised);
+  btn.textContent = handRaised ? '✋ Hand raised' : '✋ Raise hand';
+}
 </script>
 </body>
 </html>

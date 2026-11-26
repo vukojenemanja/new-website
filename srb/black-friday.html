@@ -225,6 +225,16 @@ nav a:hover { color: var(--clay); }
   color: var(--deep);
 }
 .offer-card.featured .offer-cta:hover { background: var(--sand); }
+.offer-gift {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: var(--stone);
+  text-decoration: none;
+  margin-top: 8px;
+  letter-spacing: .3px;
+}
+.offer-gift:hover { color: var(--bark); }
 .offer-contact {
   display: block; text-align: center; margin-top: 12px;
   font-size: 11px; color: var(--stone); letter-spacing: 1px;
@@ -492,6 +502,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <a href="#" class="offer-cta" onclick="openPayModal('https://buy.stripe.com/5kQ4gBc7d7fH7YP3vG4ow05','Mapa + Aura tretman');return false;">Plati odmah -</a>
     <a href="mailto:info@vukojenemanja.com?subject=Black%20Friday%20-%20Mapa%20%2B%20Aura" class="offer-contact">ili pošalji poruku</a>
+    <a href="#" class="offer-gift" onclick="openPayModal('https://buy.stripe.com/5kQ4gBc7d7fH7YP3vG4ow05','Mapa + Aura tretman · Poklon');return false;">🎁 Pokloni nekome</a>
   </div>
 
   <!-- OFFER 2 -->
@@ -528,6 +539,7 @@ footer a:hover { text-decoration: underline; }
     </div>
     <a href="#" class="offer-cta" onclick="openPayModal('https://buy.stripe.com/7sY14p4ELarT0wn8Q04ow04','Akal zajednica + Mapa');return false;">Plati odmah -</a>
     <a href="mailto:info@vukojenemanja.com?subject=Black%20Friday%20-%20Akal%20%2B%20Mapa" class="offer-contact">ili pošalji poruku</a>
+    <a href="#" class="offer-gift" onclick="openPayModal('https://buy.stripe.com/7sY14p4ELarT0wn8Q04ow04','Akal zajednica + Mapa · Poklon');return false;">🎁 Pokloni nekome</a>
   </div>
 
 </div>
@@ -588,7 +600,7 @@ footer a:hover { text-decoration: underline; }
         <p class="pay-note">Iznos po srednjem dnevnom kursu NBS. Nakon uplate pošalji potvrdu na <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
       </div>
     </div>
-    <p class="pay-footer">Nakon plaćanja pošalji potvrdu<br>na <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
+    <p class="pay-footer" id="pay-footer-text">Nakon plaćanja pošalji potvrdu<br>na <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></p>
   </div>
 </div>
 
@@ -598,6 +610,10 @@ footer a:hover { text-decoration: underline; }
   function openPay(stripeUrl, title) {
     document.getElementById('pay-stripe-link').href = stripeUrl;
     if (title) document.getElementById('pay-modal-title').textContent = title;
+    var isGift = title && title.indexOf('Poklon') !== -1;
+    document.getElementById('pay-footer-text').innerHTML = isGift
+      ? 'Nakon plaćanja pošalji ime primaoca poklona<br>na <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a>'
+      : 'Nakon plaćanja pošalji potvrdu<br>na <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a>';
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }

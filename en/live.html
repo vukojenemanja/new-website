@@ -254,7 +254,7 @@ body {
     <div class="orchestra-name-tag" id="orchestra-name-tag"></div>
     <div class="orchestra-fact" id="orchestra-fact"></div>
   </div>
-  <button id="raise-hand-btn" onclick="toggleHandRaise()">✋ Raise hand</button>
+  <button id="raise-hand-btn">✋ Raise hand</button>
 </div>
 
 <!-- 5. Muted by teacher -->
@@ -698,13 +698,13 @@ let handRaised = false;
 function toggleHandRaise() {
   handRaised = !handRaised;
   updateHandBtn();
-  if (studentRef) set(ref(db, 'live-class/students/' + studentId + '/handRaised'), handRaised);
+  if (db) set(ref(db, 'live-class/students/' + studentId + '/handRaised'), handRaised);
 }
 function lowerHand() {
   if (!handRaised) return;
   handRaised = false;
   updateHandBtn();
-  if (studentRef) set(ref(db, 'live-class/students/' + studentId + '/handRaised'), false);
+  if (db) set(ref(db, 'live-class/students/' + studentId + '/handRaised'), false);
 }
 function updateHandBtn() {
   const btn = document.getElementById('raise-hand-btn');
@@ -712,6 +712,7 @@ function updateHandBtn() {
   btn.classList.toggle('raised', handRaised);
   btn.textContent = handRaised ? '✋ Hand raised' : '✋ Raise hand';
 }
+document.getElementById('raise-hand-btn').addEventListener('click', toggleHandRaise);
 </script>
 </body>
 </html>

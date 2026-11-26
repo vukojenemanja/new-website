@@ -1331,11 +1331,12 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
   nav.scrolled { padding: 12px 24px; }
   .nav-links { display: none; }
 
-  .hero { min-height: 100vh; display: flex; align-items: flex-end; position: relative; }
+  .hero { min-height: 80vh; display: flex; align-items: flex-end; position: relative; }
   .hero-image-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.45; }
   .hero-image-placeholder img { object-position: center 20%; }
   .hero-image-placeholder::after { background: linear-gradient(to top, var(--deep) 30%, rgba(10,8,5,0.5) 100%); }
   .hero-content { padding: 0 24px 80px; position: relative; z-index: 10; max-width: 100%; }
+  .hero-label { display: none; }
 
   .pain, .about, .offers, .testimonials, .booking, .instagram { padding: 80px 24px; }
   .process { padding: 80px 0 0; }
@@ -1602,8 +1603,8 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
   </div>
   <div class="hero-content">
     <div class="hero-label"><!--CMS:hero_label-->Transformations-Coach · Inner Shift Methode<!--/CMS--></div>
-    <h1><!--CMS:hero_h1-->Von dem Wissen, das dich aufhält<br><em>zu den Schritten, die dich dorthin führen, wo du wirklich hinwillst.</em><!--/CMS--></h1>
-    <p class="hero-sub"><!--CMS:hero_sub-->Nach außen scheint alles in Ordnung. Aber innerlich fühlt sich etwas festgefahren, müde oder verloren an. Ich helfe dir, das zu lösen, was deine Energie blockiert - damit du in ein wirklich lebendiges Leben zurückfindest.<!--/CMS--></p>
+    <h1><!--CMS:hero_h1-->Spürst du, dass etwas in deinem Leben<br><em>anders sein sollte?</em><!--/CMS--></h1>
+    <p class="hero-sub"><!--CMS:hero_sub-->Ich verbinde Gespräch, Körperarbeit und energetische Ansätze. Gemeinsam erforschen wir, was dich aufhält - und arbeiten an den Veränderungen, die du dir wünschst.<!--/CMS--></p>
     <div class="hero-actions">
       <a href="individual.html" class="btn-primary"><!--CMS:hero_btn_primary-->Inner Shift entdecken<!--/CMS--></a>
       <a href="#nacin" class="btn-ghost"><!--CMS:hero_btn_ghost-->Meinen Ansatz entdecken<!--/CMS--></a>
@@ -1623,7 +1624,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
       <h2><!--CMS:pain_h2-->Kommt dir<br><em>etwas davon bekannt vor?</em><!--/CMS--></h2>
       <p><!--CMS:pain_p1-->Die meisten Menschen, die zu mir finden, haben stabile Jobs, funktionierende Leben und alles, was man ihnen beigebracht hat zu wollen. Und trotzdem fühlt sich etwas nicht richtig an.<!--/CMS--></p>
       <p><!--CMS:pain_p2-->Sie haben Therapie ausprobiert. Sie haben die Bücher gelesen. Aber etwas Tieferes hat sich noch nicht verändert und dieselben Muster wiederholen sich immer wieder.<!--/CMS--></p>
-      <p><!--CMS:pain_p3-->Hast du einen dieser Sätze in den letzten paar Wochen gesagt oder gedacht?<!--/CMS--></p>
+      <p><!--CMS:pain_p3-->Kommt dir einer dieser Gedanken bekannt vor?<!--/CMS--></p>
     </div>
     <div class="pain-quotes reveal">
       <div class="pain-quote">
@@ -1686,7 +1687,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <!-- PROCESS -->
 <section class="process" id="nacin">
   <div class="process-inner">
-    <h2 class="reveal">Wie sich die<br><em>Arbeit entfaltet</em></h2>
+    <h2 class="reveal">Drei Schritte,<br><em>durch die ich dich führe.</em></h2>
     <div class="process-steps">
       <div class="step">
         <div class="step-num">01</div>
@@ -1860,14 +1861,14 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
   <div class="instagram-inner reveal">
     <div class="instagram-label">Begleite die Reise</div>
     <h2>Tägliche Impulse zu<br><em>Energie und Selbstverbindung</em></h2>
-    <p>Gedanken zu emotionalen Mustern, geführte Praktiken und ehrliche Impulse darüber, was es bedeutet, wirklich lebendig zu leben. Auf Englisch, Serbisch und Deutsch.</p>
+    <p>Gedanken zu emotionalen Mustern, geführte Praktiken und ehrliche Impulse darüber, was es bedeutet, wirklich lebendig zu leben.</p>
     <div class="insta-handles">
-      <a href="https://www.instagram.com/vukoje.nemanja.world/" target="_blank" class="insta-handle">
-        📷 @vukoje.nemanja.world
-      </a>
       <a href="https://www.instagram.com/vukoje.nemanja/" target="_blank" class="insta-handle">
         📷 @vukoje.nemanja
       </a>
+    </div>
+    <div style="margin-top:32px;">
+      <button onclick="showPopup()" class="btn-primary" style="cursor:pointer;font-family:inherit;">Newsletter abonnieren</button>
     </div>
   </div>
 </section>

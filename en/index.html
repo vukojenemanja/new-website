@@ -1511,11 +1511,12 @@ footer {
   nav.scrolled { padding: 12px 24px; }
   .nav-links { display: none; }
 
-  .hero { min-height: 100vh; display: flex; align-items: flex-end; position: relative; }
+  .hero { min-height: 80vh; display: flex; align-items: flex-end; position: relative; }
   .hero-image-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.45; }
   .hero-image-placeholder img { object-position: center 20%; }
   .hero-image-placeholder::after { background: linear-gradient(to top, var(--deep) 30%, rgba(10,8,5,0.5) 100%); }
   .hero-content { padding: 0 24px 80px; position: relative; z-index: 10; max-width: 100%; }
+  .hero-label { display: none; }
 
   .pain, .about, .offers, .testimonials, .booking, .instagram { padding: 80px 24px; }
   .process { padding: 80px 0 0; }
@@ -2237,8 +2238,8 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
   </div>
   <div class="hero-content">
     <div class="hero-label"><!--CMS:hero_label-->Transformational Coach · Creator of the Inner Shift Method<!--/CMS--></div>
-    <h1><!--CMS:hero_h1-->From the knowledge that holds you back<br><em>to the steps that take you where you truly want to go.</em><!--/CMS--></h1>
-    <p class="hero-sub"><!--CMS:hero_sub-->You feel fine on the outside. But something inside feels stuck, tired, or lost. I help you release what's blocking your energy - and return to a life that feels fully alive.<!--/CMS--></p>
+    <h1><!--CMS:hero_h1-->Do you feel like something in your life<br><em>needs to be different?</em><!--/CMS--></h1>
+    <p class="hero-sub"><!--CMS:hero_sub-->I combine conversation, body work and energy approaches. Together we explore what holds you back and work on the changes you want to make.<!--/CMS--></p>
     <div class="hero-actions">
       <a href="individual.html" class="btn-primary"><!--CMS:hero_btn_primary-->Discover Inner Shift<!--/CMS--></a>
       <a href="#nacin" class="btn-ghost"><!--CMS:hero_btn_ghost-->Explore my approach<!--/CMS--></a>
@@ -2258,7 +2259,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
       <h2><!--CMS:pain_h2-->Does any of this<br><em>sound familiar?</em><!--/CMS--></h2>
       <p><!--CMS:pain_p1-->Most people who find me have stable jobs, functioning lives, and everything they were told to want. And yet something feels wrong.<!--/CMS--></p>
       <p><!--CMS:pain_p2-->They've tried therapy. They've read the books. But something deeper hasn't shifted and the same patterns keep repeating.<!--/CMS--></p>
-      <p><!--CMS:pain_p3-->Have you said or thought any of these things in the last few weeks?<!--/CMS--></p>
+      <p><!--CMS:pain_p3-->Do any of these feel familiar?<!--/CMS--></p>
     </div>
     <div class="pain-quotes reveal">
       <div class="pain-quote">
@@ -2321,7 +2322,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <!-- PROCESS -->
 <section class="process" id="nacin">
   <div class="process-inner">
-    <h2 class="reveal">How the<br><em>work unfolds</em></h2>
+    <h2 class="reveal">Three steps<br><em>I guide you through.</em></h2>
     <div class="process-steps">
       <div class="step">
         <div class="step-num">01</div>
@@ -2495,14 +2496,14 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
   <div class="instagram-inner reveal">
     <div class="instagram-label">Follow the journey</div>
     <h2>Daily insights on<br><em>energy and self-connection</em></h2>
-    <p>Reflections on emotional patterns, guided practices, and honest thoughts on what it means to live a fully alive life. In English, Serbian and German.</p>
+    <p>Reflections on emotional patterns, guided practices, and honest thoughts on what it means to live a fully alive life.</p>
     <div class="insta-handles">
-      <a href="https://www.instagram.com/vukoje.nemanja.world/" target="_blank" class="insta-handle">
-        📷 @vukoje.nemanja.world
-      </a>
       <a href="https://www.instagram.com/vukoje.nemanja/" target="_blank" class="insta-handle">
         📷 @vukoje.nemanja
       </a>
+    </div>
+    <div style="margin-top:32px;">
+      <button onclick="showPopup()" class="btn-primary" style="cursor:pointer;font-family:inherit;">Subscribe to newsletter</button>
     </div>
   </div>
 </section>

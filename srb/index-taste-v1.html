@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<!-- LOCAL ONLY — trial redesign srb/index.html -->
+<!-- Ne pushuj u git bez dozvole -->
+<html lang="sr" data-palette="lan">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nemanja Vukoje — Iscelitelj, Coach, Inner Shift</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ── PALETTES ───────────────────────────────────────────── */
+/* 1. Lan — plavo-sivi (moj izbor) */
+:root, [data-palette="lan"] {
+  --p-bg:         #F2F1EE;
+  --p-ink:        #1C2B3A;
+  --p-accent:     #2c5877;
+  --p-surface:    #E6E4DF;
+  --p-muted:      #728394;
+  --p-dark-bg:    #1C2B3A;
+  --p-dark-ink:   #E6E4DF;
+  --p-dark-muted: rgba(230,228,223,0.55);
+  --p-name: "Lan";
+  --p-dot: #2c5877;
+}
+
+/* 2. Blato — topla zemlja */
+[data-palette="blato"] {
+  --p-bg:         #F5F1EC;
+  --p-ink:        #2D1F0F;
+  --p-accent:     #9B6B3A;
+  --p-surface:    #EAE0D3;
+  --p-muted:      #8A7560;
+  --p-dark-bg:    #2D1F0F;
+  --p-dark-ink:   #EAE0D3;
+  --p-dark-muted: rgba(234,224,211,0.55);
+  --p-dot: #9B6B3A;
+}
+
+/* 3. Oluja — tamno sivo, autoritet */
+[data-palette="oluja"] {
+  --p-bg:         #ECECE9;
+  --p-ink:        #1A1F28;
+  --p-accent:     #3A4A5C;
+  --p-surface:    #E0E0DC;
+  --p-muted:      #697180;
+  --p-dark-bg:    #1A1F28;
+  --p-dark-ink:   #E0E0DC;
+  --p-dark-muted: rgba(224,224,220,0.55);
+  --p-dot: #3A4A5C;
+}
+
+/* 4. Mahovina — šumsko zelena */
+[data-palette="mahovina"] {
+  --p-bg:         #EDEEE9;
+  --p-ink:        #1F2B1F;
+  --p-accent:     #4A6741;
+  --p-surface:    #E3E6DE;
+  --p-muted:      #6B7860;
+  --p-dark-bg:    #1F2B1F;
+  --p-dark-ink:   #E3E6DE;
+  --p-dark-muted: rgba(227,230,222,0.55);
+  --p-dot: #4A6741;
+}
+
+/* ── BASE ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+body {
+  background: var(--p-bg);
+  color: var(--p-ink);
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+*, *::before, *::after {
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+}
+
+/* ── NAV ────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 24px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: normal;
+}
+
+.nav.light { }
+.nav.dark-mode {
+  color: var(--p-dark-ink);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--p-bg);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.nav.scrolled .nav-logo {
+  color: var(--p-ink);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav.scrolled .nav-links a {
+  color: var(--p-muted);
+}
+
+.nav-links a:hover { color: var(--p-accent); }
+
+.nav-cta {
+  color: var(--p-accent) !important;
+  border: 1px solid color-mix(in srgb, var(--p-accent) 50%, transparent) !important;
+  padding: 8px 20px;
+}
+
+.nav-cta:hover {
+  background: var(--p-accent) !important;
+  color: var(--p-bg) !important;
+  border-color: var(--p-accent) !important;
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+}
+
+/* ── HERO ───────────────────────────────────────────────── */
+.s-hero {
+  height: 100vh;
+  min-height: 640px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  background: var(--p-dark-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px 60px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-left::after {
+  content: '';
+  position: absolute;
+  top: 0; right: -60px; bottom: 0;
+  width: 120px;
+  background: var(--p-dark-bg);
+  clip-path: polygon(0 0, 50% 0, 100% 100%, 0 100%);
+}
+
+.hero-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--p-accent);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.3s forwards;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 3.5vw, 56px);
+  font-weight: 300;
+  color: var(--p-dark-ink);
+  line-height: 1.0;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.5s forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--p-accent);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--p-dark-muted);
+  max-width: 400px;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.7s forwards;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.9s forwards;
+}
+
+.hero-right {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.hero-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--p-dark-bg) 0%, transparent 25%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .s-hero { grid-template-columns: 1fr; grid-template-rows: auto 1fr; height: auto; }
+  .hero-left { padding: 100px 24px 48px; }
+  .hero-left::after { display: none; }
+  .hero-right { height: 320px; }
+}
+
+/* ── PAIN ───────────────────────────────────────────────── */
+.s-pain {
+  background: var(--p-bg);
+  padding: 100px 60px;
+}
+
+.s-pain .wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.pain-head .s-label {
+  margin-bottom: 20px;
+}
+
+.pain-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 28px;
+}
+
+.pain-head h2 em { font-style: italic; color: var(--p-accent); }
+
+.pain-head p {
+  font-size: 15px;
+  color: var(--p-muted);
+  line-height: 1.8;
+  max-width: 400px;
+}
+
+.pain-head p + p { margin-top: 12px; }
+
+.pain-quotes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.pain-q {
+  background: var(--p-surface);
+  padding: 24px 20px;
+  position: relative;
+}
+
+.pain-q::before {
+  content: '"';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--p-accent);
+  opacity: 0.4;
+  line-height: 1;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.pain-q span {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--p-muted);
+}
+
+@media (max-width: 768px) {
+  .s-pain { padding: 80px 24px; }
+  .s-pain .wrap { grid-template-columns: 1fr; gap: 48px; }
+  .pain-quotes { grid-template-columns: 1fr; }
+}
+
+/* ── STATEMENT (word-highlight) ─────────────────────────── */
+.s-statement {
+  padding: 120px 60px;
+  background: var(--p-surface);
+}
+
+.s-statement .wrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mo-wh__text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.mo-wh .mo-w {
+  color: color-mix(in srgb, var(--p-ink) 30%, var(--p-bg));
+  transition: color 160ms ease;
+}
+
+.mo-wh .mo-w.on {
+  color: var(--p-ink);
+}
+
+.mo-wh strong .mo-w.on {
+  color: var(--p-accent);
+}
+
+@media (max-width: 768px) {
+  .s-statement { padding: 80px 24px; }
+}
+
+/* ── ABOUT ──────────────────────────────────────────────── */
+.s-about {
+  padding: 100px 60px;
+  background: var(--p-bg);
+}
+
+.s-about .wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-photo {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--p-surface);
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.about-photo:hover img { transform: scale(1.03); }
+
+.about-text .s-label { margin-bottom: 20px; }
+
+.about-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 2.8vw, 40px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+
+.about-text h2 em { font-style: italic; color: var(--p-accent); }
+
+.about-text p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--p-muted);
+  margin-bottom: 16px;
+  max-width: 500px;
+}
+
+.about-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid color-mix(in srgb, var(--p-ink) 10%, transparent);
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--p-accent);
+  display: block;
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--p-muted);
+  margin-top: 4px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .s-about { padding: 80px 24px; }
+  .s-about .wrap { grid-template-columns: 1fr; gap: 48px; }
+  .about-photo { aspect-ratio: 4/3; }
+}
+
+/* ── OFFERS ─────────────────────────────────────────────── */
+.s-offers {
+  padding: 100px 60px;
+  background: var(--p-surface);
+}
+
+.s-offers .wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.offers-head {
+  margin-bottom: 60px;
+}
+
+.offers-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.offers-head h2 em { font-style: italic; color: var(--p-accent); }
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.offer-card {
+  background: var(--p-bg);
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.offer-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--p-accent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s ease;
+}
+
+.offer-card:hover::before { transform: scaleY(1); }
+.offer-card:hover { transform: translateY(-2px); }
+
+.offer-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 60px;
+  font-weight: 300;
+  color: var(--p-accent);
+  opacity: 0.15;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.offer-eye {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--p-accent);
+  margin-bottom: 12px;
+}
+
+.offer-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.0;
+  margin-bottom: 20px;
+}
+
+.offer-card h3 em { font-style: italic; }
+
+.offer-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--p-muted);
+  margin-bottom: 36px;
+  flex-grow: 1;
+  max-width: 400px;
+}
+
+@media (max-width: 768px) {
+  .s-offers { padding: 80px 24px; }
+  .offers-grid { grid-template-columns: 1fr; }
+}
+
+/* ── PROCESS ─────────────────────────────────────────────── */
+.s-process {
+  padding: 100px 60px;
+  background: var(--p-bg);
+}
+
+.s-process .wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.s-process h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 64px;
+}
+
+.s-process h2 em { font-style: italic; color: var(--p-accent); }
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+}
+
+.p-step {
+  background: var(--p-surface);
+  padding: 36px 24px;
+  position: relative;
+}
+
+.p-step::after {
+  content: '';
+  position: absolute;
+  right: -2px; top: 20%; bottom: 20%;
+  width: 2px;
+  background: var(--p-bg);
+}
+.p-step:last-child::after { display: none; }
+
+.p-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--p-accent);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.p-step h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: var(--p-ink);
+}
+
+.p-step p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--p-muted);
+}
+
+@media (max-width: 768px) {
+  .s-process { padding: 80px 24px; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .p-step::after { display: none; }
+}
+
+/* ── CTA DARK ────────────────────────────────────────────── */
+.s-cta {
+  background: var(--p-dark-bg);
+  padding: 100px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.s-cta::before {
+  content: '';
+  position: absolute;
+  top: -40%; right: -20%;
+  width: 80%;
+  padding-bottom: 80%;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--p-accent) 12%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.s-cta .wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.cta-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 300;
+  color: var(--p-dark-ink);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.cta-text h2 em { font-style: italic; color: var(--p-accent); }
+
+.cta-text p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--p-dark-muted);
+  margin-bottom: 36px;
+  max-width: 440px;
+}
+
+.cta-card {
+  background: color-mix(in srgb, var(--p-dark-ink) 0%, transparent);
+  border: 1px solid color-mix(in srgb, var(--p-accent) 30%, transparent);
+  padding: 40px;
+}
+
+.cta-card-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--p-accent);
+  margin-bottom: 20px;
+}
+
+.cta-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--p-dark-ink);
+  margin-bottom: 12px;
+}
+
+.cta-card-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--p-dark-muted);
+  margin-bottom: 28px;
+}
+
+.cta-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 300;
+  color: var(--p-accent);
+  display: block;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+  .s-cta { padding: 80px 24px; }
+  .s-cta .wrap { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.site-footer {
+  background: color-mix(in srgb, var(--p-dark-bg) 95%, transparent);
+  color: var(--p-dark-ink);
+  padding: 60px 60px 40px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 60px;
+  align-items: start;
+  padding-bottom: 40px;
+  border-bottom: 1px solid color-mix(in srgb, var(--p-dark-ink) 12%, transparent);
+  margin-bottom: 32px;
+}
+
+.footer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--p-dark-ink);
+  margin-bottom: 8px;
+}
+
+.footer-tagline {
+  font-size: 12px;
+  color: var(--p-dark-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.footer-col-title {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--p-accent);
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--p-dark-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--p-dark-ink); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: color-mix(in srgb, var(--p-dark-muted) 60%, transparent);
+}
+
+@media (max-width: 768px) {
+  .site-footer { padding: 60px 24px 40px; }
+  .footer-top { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ── SHARED ELEMENTS ─────────────────────────────────────── */
+.s-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--p-accent);
+  display: block;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 36px;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-solid {
+  background: var(--p-accent);
+  color: var(--p-bg);
+}
+
+.btn-solid:hover {
+  background: color-mix(in srgb, var(--p-accent) 80%, var(--p-ink));
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--p-dark-ink);
+  border: 1px solid color-mix(in srgb, var(--p-dark-ink) 30%, transparent);
+}
+
+.btn-outline:hover {
+  border-color: var(--p-dark-ink);
+  background: color-mix(in srgb, var(--p-dark-ink) 8%, transparent);
+}
+
+.btn-outline-accent {
+  background: transparent;
+  color: var(--p-accent);
+  border: 1px solid color-mix(in srgb, var(--p-accent) 50%, transparent);
+}
+
+.btn-outline-accent:hover {
+  background: var(--p-accent);
+  color: var(--p-bg);
+  border-color: var(--p-accent);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PALETTE SWITCHER ────────────────────────────────────── */
+.palette-sw {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.psw-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--p-muted);
+  text-align: right;
+  margin-bottom: 4px;
+}
+
+.psw-dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--p-bg);
+  border: 1px solid color-mix(in srgb, var(--p-ink) 10%, transparent);
+  padding: 10px 14px;
+  backdrop-filter: blur(8px);
+}
+
+.psw-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s, border-color 0.2s;
+  position: relative;
+}
+
+.psw-dot:hover { transform: scale(1.3); }
+
+.psw-dot[data-p="lan"]      { background: #2c5877; }
+.psw-dot[data-p="blato"]    { background: #9B6B3A; }
+.psw-dot[data-p="oluja"]    { background: #3A4A5C; }
+.psw-dot[data-p="mahovina"] { background: #4A6741; }
+
+.psw-dot.active { border-color: var(--p-ink); transform: scale(1.2); }
+
+.psw-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--p-ink);
+  color: var(--p-bg);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.psw-dot:hover .psw-tooltip { opacity: 1; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">Nemanja Vukoje</a>
+  <ul class="nav-links">
+    <li><a href="individual.html">Individual</a></li>
+    <li><a href="akal.html">Akal</a></li>
+    <li><a href="licna-mapa.html">Lična mapa</a></li>
+    <li><a href="individual.html#booking" class="nav-cta">Rezerviši</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="s-hero">
+  <div class="hero-left">
+    <div class="hero-label">Iscelitelj · Coach · Kreator Inner Shift Metode</div>
+    <h1>Od saznanja koja blokiraju<br><em>do konkretnih koraka.</em></h1>
+    <p class="hero-sub">Spolja deluje kao da je sve u redu. Ali iznutra se osećaš zaglavljeno, umorno ili izgubljeno. Pomažem ti da oslobodiš tu energiju.</p>
+    <div class="hero-actions">
+      <a href="individual.html#booking" class="btn btn-solid">Počni danas</a>
+      <a href="#about" class="btn btn-outline">Saznaj više</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="../assets/images/index-13193d019fa51249.jpg" alt="Nemanja Vukoje — Iscelitelj i coach">
+  </div>
+</section>
+
+<!-- ── PAIN ── -->
+<section class="s-pain" id="pain">
+  <div class="wrap">
+    <div class="pain-head">
+      <span class="s-label">Nisi sam/a</span>
+      <h2 style="margin-top:16px">Da li ti<br><em>nešto od ovoga zvuči poznato?</em></h2>
+      <p style="margin-top:20px">Većina ljudi koji dođu do mene imaju stabilne poslove, funkcionalan život i sve ono što im je rečeno da treba da žele. I ipak, nešto nije kako treba.</p>
+      <p>Probali su terapiju. Čitali su knjige. Ali nešto dublje se još nije promenilo.</p>
+    </div>
+    <div class="pain-quotes">
+      <div class="pain-q"><span>Stalno se osećam umorno i preplavljeno.</span></div>
+      <div class="pain-q"><span>Previše razmišljam i ne mogu da umirim um.</span></div>
+      <div class="pain-q"><span>Osećam se zaglavljeno, ali ne znam zašto.</span></div>
+      <div class="pain-q"><span>Kao da je nešto u meni blokirano.</span></div>
+      <div class="pain-q"><span>Više se ne osećam povezano sa sobom.</span></div>
+      <div class="pain-q"><span>Stalno ponavljam iste obrasce.</span></div>
+      <div class="pain-q"><span>Osećam emocije kojih ne mogu da se oslobodim.</span></div>
+      <div class="pain-q" style="background:transparent;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATEMENT (word-highlight) ── -->
+<section class="s-statement" data-moment="word-highlight">
+  <div class="wrap">
+    <p class="mo-wh__text">
+      Iznutra znaš da postoji više od ovoga. Zaglavljenost nije tvoj prirodni stav — to je energija koja čeka da se oslobodi.
+      <strong>Inner Shift</strong> postoji upravo za to: da te podrži dok napraviš taj korak.
+    </p>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="s-about" id="about">
+  <div class="wrap">
+    <div class="about-photo">
+      <img src="../assets/images/index-13193d019fa51249.jpg" alt="Nemanja Vukoje">
+    </div>
+    <div class="about-text">
+      <span class="s-label">O meni</span>
+      <h2 style="margin-top:16px">Napustio sam karijeru da bih izgradio nešto<br><em>sa smislom.</em></h2>
+      <p>Ranije sam radio u IT-u i pomagao kompanijama da rade bolje. Imao sam stabilnost, dobru platu i put koji je na papiru imao smisla. Ali osećao sam da vreme prolazi, a i život isto tako.</p>
+      <p>Sve sam to ostavio iza sebe. Putovao sam svetom, učio od duhovnih učitelja, istraživao tradicije isceljenja u različitim kulturama. Tokom više od jedne decenije završio sam brojne edukacije iz isceljenja i coachinga.</p>
+      <p>Danas kroz energetsko isceljenje, Kundalini jogu i profesionalni coaching pomažem ljudima da oslobode svoju energiju i vrate se životu koji je zaista njihov — online, na srpskom, engleskom i nemačkom.</p>
+      <div class="about-stats">
+        <div>
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Godina prakse</span>
+        </div>
+        <div>
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Godina podučavanja</span>
+        </div>
+        <div>
+          <span class="stat-num">100s</span>
+          <span class="stat-label">Zadovoljnih klijenata</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OFFERS ── -->
+<section class="s-offers" id="offers">
+  <div class="wrap">
+    <div class="offers-head">
+      <span class="s-label">Radi sa mnom</span>
+      <h2 style="margin-top:16px">Izaberi način koji odgovara<br><em>tebi i tvojim potrebama.</em></h2>
+    </div>
+    <div class="offers-grid">
+      <div class="offer-card">
+        <div class="offer-num">I</div>
+        <div class="offer-eye">Individualni rad</div>
+        <h3>Inner<br><em>Shift</em></h3>
+        <p>Duboki 1:1 rad koji kombinuje coaching, energetsko isceljenje i rad sa telom. Radimo na konkretnoj blokadi, obrascu ili strahu koji te drži na mestu — i otpuštamo ga.</p>
+        <a href="individual.html" class="btn btn-outline-accent">Saznaj više →</a>
+      </div>
+      <div class="offer-card">
+        <div class="offer-num">G</div>
+        <div class="offer-eye">Grupni rad</div>
+        <h3>Zajednica<br><em>i radionice</em></h3>
+        <p>Redovna Kundalini joga praksa u zajednici, ili tematska radionica — sigurno mesto za tvoj rast gde nisi sama. Online, svake nedelje.</p>
+        <a href="akal.html" class="btn btn-outline-accent">Pogledaj Akal →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="s-process">
+  <div class="wrap">
+    <h2>Kako se<br><em>rad odvija</em></h2>
+    <div class="process-steps">
+      <div class="p-step">
+        <div class="p-num">01</div>
+        <h3>Identifikacija</h3>
+        <p>Lociramo tačno šta te drži zaglavljeno — blokadu, obrazac ili strah.</p>
+      </div>
+      <div class="p-step">
+        <div class="p-num">02</div>
+        <h3>Prepoznavanje</h3>
+        <p>Razumemo koren tog obrasca i zašto se ponavlja.</p>
+      </div>
+      <div class="p-step">
+        <div class="p-num">03</div>
+        <h3>Otpuštanje</h3>
+        <p>Kroz rad sa energijom i telom oslobađamo ono što je blokirano.</p>
+      </div>
+      <div class="p-step">
+        <div class="p-num">04</div>
+        <h3>Vraćanje sebi</h3>
+        <p>Ponovo se povezuješ sa sopstvenom energijom i osećajem za sebe.</p>
+      </div>
+      <div class="p-step">
+        <div class="p-num">05</div>
+        <h3>Usmeravanje</h3>
+        <p>Konkretni koraci prema životu koji zaista želiš.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA DARK ── -->
+<section class="s-cta" id="booking">
+  <div class="wrap">
+    <div class="cta-text">
+      <span class="s-label" style="color:var(--p-accent)">Početak</span>
+      <h2 style="margin-top:16px">Spreman/na da<br><em>počneš?</em></h2>
+      <p>Najjednostavniji način da počneš je kratka uvodna sesija — 30 minuta u kojima razgovaramo o tome gde si sada i kuda ideš.</p>
+      <a href="individual.html#booking" class="btn btn-solid">Rezerviši sesiju</a>
+    </div>
+    <div class="cta-card">
+      <div class="cta-card-label">Uvodna sesija</div>
+      <div class="cta-card-title">Energy Reset · 30 min</div>
+      <div class="cta-card-desc">Online sesija za čišćenje tvog energetskog polja, otpuštanje nagomilanog stresa i vraćanje prirodnog toka energije. Najednostavniji način da počneš sa energetskim radom.</div>
+      <span class="cta-price">€55</span>
+      <a href="individual.html#booking" class="btn btn-solid">Rezerviši →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-name">Nemanja Vukoje</div>
+        <div class="footer-tagline">Iscelitelj · Coach · KRI Certified Kundalini Yoga Teacher</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Usluge</div>
+        <ul class="footer-links">
+          <li><a href="individual.html">Inner Shift (1:1)</a></li>
+          <li><a href="akal.html">Akal — grupna praksa</a></li>
+          <li><a href="radionica.html">Radionice</a></li>
+          <li><a href="licna-mapa.html">Lična mapa</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Kontakt</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></li>
+          <li><a href="https://www.instagram.com/vukojenemanja" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Nemanja Vukoje</span>
+      <span>Beč · Online</span>
+    </div>
+  </div>
+</footer>
+
+<!-- PALETTE SWITCHER -->
+<div class="palette-sw">
+  <div class="psw-label">Paleta</div>
+  <div class="psw-dots">
+    <div class="psw-dot active" data-p="lan">
+      <div class="psw-tooltip">Lan</div>
+    </div>
+    <div class="psw-dot" data-p="blato">
+      <div class="psw-tooltip">Blato</div>
+    </div>
+    <div class="psw-dot" data-p="oluja">
+      <div class="psw-tooltip">Oluja</div>
+    </div>
+    <div class="psw-dot" data-p="mahovina">
+      <div class="psw-tooltip">Mahovina</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* NAV scroll behavior */
+(function () {
+  var nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+})();
+
+/* Palette switcher */
+(function () {
+  var root = document.documentElement;
+  var dots = document.querySelectorAll('.psw-dot');
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      var p = dot.getAttribute('data-p');
+      root.setAttribute('data-palette', p);
+      dots.forEach(function (d) { d.classList.remove('active'); });
+      dot.classList.add('active');
+    });
+  });
+})();
+
+/* Word-highlight moment */
+(function () {
+  var section = document.querySelector('[data-moment="word-highlight"]');
+  if (!section) return;
+
+  var text = section.querySelector('.mo-wh__text');
+  if (!text) return;
+
+  section.classList.add('mo-wh');
+
+  /* Wrap every word (preserve strong tags) */
+  function wrapWords(node) {
+    if (node.nodeType === 3) {
+      var fragment = document.createDocumentFragment();
+      var words = node.textContent.split(/(\s+)/);
+      words.forEach(function (w) {
+        if (/^\s+$/.test(w)) {
+          fragment.appendChild(document.createTextNode(w));
+        } else if (w.length > 0) {
+          var span = document.createElement('span');
+          span.className = 'mo-w';
+          span.textContent = w;
+          fragment.appendChild(span);
+        }
+      });
+      node.parentNode.replaceChild(fragment, node);
+    } else if (node.nodeType === 1 && node.nodeName !== 'SPAN') {
+      Array.from(node.childNodes).forEach(wrapWords);
+    }
+  }
+
+  wrapWords(text);
+
+  var spans = text.querySelectorAll('.mo-w');
+  var total = spans.length;
+
+  function update() {
+    var rect = text.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var start = vh * 0.85;
+    var end   = vh * 0.35;
+    var t = Math.max(0, Math.min(1, (start - rect.top) / Math.max(1, (start - end) + rect.height)));
+    var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    var k = atBottom ? total : Math.round(t * total);
+    spans.forEach(function (w, i) {
+      w.classList.toggle('on', i < k);
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+
+</body>
+</html>

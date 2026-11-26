@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="sr" data-type="service" data-radius="soft" data-buttons="block" data-motion="" class="m-enter mo-js m-enter-done mo-safe" data-tone="light" data-moments-ready="2" data-ready="1"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lična mapa – Tantrička numerološka analiza | Nemanja Vukoje</title>
+<meta name="description" content="Personalizovana analiza napisana samo za tvoje brojeve. Razumi obrasce, prepoznaj potencijal. 33 € · PDF za 72 sata.">
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<meta property="og:title" content="Lična mapa – Tantrička numerološka analiza | Nemanja Vukoje">
+<meta property="og:description" content="Personalizovana analiza napisana samo za tvoje brojeve. 33 €, PDF za 72 sata.">
+<meta property="og:image" content="https://vukojenemanja.com/srb/licna-mapa-share.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f7f9f8">
+<link rel="canonical" href="https://vukojenemanja.com/srb/licna-mapa.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&amp;family=Libre+Franklin:wght@400..600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/system.css">
+<link rel="stylesheet" href="../assets/motion/motion.css">
+<link rel="stylesheet" href="../assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="../assets/layout/layout.css">
+<style>
+:root {
+  --p-bg: #f7f9f8; --p-surface: #ebf0ee; --p-ink: #06525c; --p-muted: #2f737d;
+  --p-accent: #06525c; --p-accent-ink: #f7f9f8; --p-action: #06525c; --p-action-ink: #f7f9f8;
+  --p-inv-bg: #06525c; --p-inv-surface: #205d66; --p-inv-ink: #f7f9f8; --p-inv-muted: #c1d0d2;
+  --p-inv-accent: #f7f9f8; --p-inv-accent-ink: #06525c; --p-inv-action: #f7f9f8; --p-inv-action-ink: #06525c;
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-text: "Libre Franklin", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+  --display-tracking-xl: -0.026em;
+}
+/* photo frame used in splits (plain, no moment) */
+.photo-frame { border-radius: var(--r-lg); overflow: hidden; }
+.photo-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 1024px) { .photo-frame { height: min(560px, var(--ly-fit)); } }
+@media (max-width: 1023px) { .photo-frame { aspect-ratio: 4/3; margin-top: var(--s-7); } }
+/* people row photo */
+.people-photo { border-radius: var(--r-lg); overflow: hidden; }
+.people-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+@media (min-width: 1024px) { .people-photo { height: min(500px, var(--ly-fit)); } }
+@media (max-width: 1023px) { .people-photo { aspect-ratio: 4/3; margin-top: var(--s-7); } }
+/* rows price list */
+.rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
+/* steps — span-4 columns land on grid lines */
+.step { display: flex; flex-direction: column; gap: var(--s-3); }
+.step__num { font: 400 48px/1 var(--font-display); color: var(--p-accent); opacity: 0.3; letter-spacing: -0.02em; }
+.step h3 { font: 500 var(--t-body)/1.3 var(--font-text); }
+/* for-whom list */
+.forwhom-list { display: grid; gap: var(--s-3); margin-top: var(--s-5); }
+.forwhom-list li { display: flex; align-items: baseline; gap: var(--s-3); line-height: 1.6; }
+.forwhom-list li::before { content: "–"; color: var(--accent); flex-shrink: 0; }
+/* testimonial inside section */
+.inline-quote { margin-top: var(--s-7); padding-top: var(--s-6); border-top: 1px solid var(--line); }
+.inline-quote p { font: 400 var(--t-body)/1.7 var(--font-display); font-style: italic; }
+.inline-quote cite { display: block; margin-top: var(--s-3); font-size: var(--t-small); color: var(--muted); font-style: normal; }
+/* faq accordion */
+.faq-list { display: grid; gap: 0; margin-top: var(--s-6); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--s-4); padding: var(--s-5) 0; cursor: pointer; font: 500 var(--t-body)/1.4 var(--font-text); }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; font-size: 20px; font-weight: 300; flex-shrink: 0; color: var(--accent); transition: transform 0.2s; }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { padding-bottom: var(--s-5); line-height: 1.7; color: var(--muted); }
+/* nav at 320px: shrink CTA text */
+@media (max-width: 360px) {
+  .nav__actions .btn { font-size: 10px; padding-inline: var(--s-3); }
+}
+/* extra bottom padding on #za-koga at mobile so the next section doesn't peek */
+@media (max-width: 450px) {
+  section#za-koga { padding-block-end: 160px; }
+}
+/* reduce gap between faq and footer at narrow viewports */
+@media (max-width: 450px) {
+  section#faq { padding-block-end: 48px; }
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="../assets/moments/moments.js">
+<link rel="modulepreload" href="../assets/moments/lib.js">
+<link rel="modulepreload" href="../assets/moments/photo-chapters/moment.js">
+<link rel="modulepreload" href="../assets/moments/word-highlight/moment.js">
+<link rel="stylesheet" href="http://127.0.0.1:5200/assets/moments/photo-chapters/moment.css"><link rel="stylesheet" href="http://127.0.0.1:5200/assets/moments/word-highlight/moment.css"></head>
+<body>
+
+<header class="nav nav--centre" data-m-nav="1">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Preskoči na sadržaj</a>
+    <a class="nav__logo" href="../srb/index.html"><span class="mark" data-mark="ring" aria-hidden="true"></span>Nemanja Vukoje</a>
+    <nav class="nav__links" aria-label="Navigacija">
+      <div class="nav__item"><a class="nav__link" href="../srb/index.html#about">O meni</a></div>
+      <div class="nav__item"><a class="nav__link" href="../srb/akal.html">Akal zajednica</a></div>
+      <div class="nav__item"><a class="nav__link" href="../srb/individual.html">Individualni rad</a></div>
+      <div class="nav__item"><a class="nav__link" aria-current="page" href="#top">Lična mapa</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="mailto:info@vukojenemanja.com?subject=Licna mapa - porudzbina">Poruci mapu</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Meni">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO: split, text left, photo right -->
+  <section class="hero hero--split is-still is-entered" data-enter="" aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>Tantricka numerologija · 33 €</p>
+        <h1 id="hero-h">Tvoja tantricka numerolaska analiza</h1>
+        <p class="hero__lead">Neke stvari ti idu same od sebe, oko drugih uvek zapinjes. Deo tebe to zna, ali ne znas odakle dolazi. Mapa ti daje uvid u to, napisan samo za tebe.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="mailto:info@vukojenemanja.com?subject=Licna mapa - porudzbina">Poruci svoju mapu</a>
+          <a class="btn btn--secondary" href="#sta-je-u-mapi">Sta je u mapi</a>
+        </div>
+      </div>
+      <div class="hero__media span-6 start-7">
+        <img src="../assets/images/individual-65173910094e184d.jpg" alt="Nemanja Vukoje u individualnoj sesiji" style="--ly-pos: 50% 25%" fetchpriority="high" width="1200" height="800">
+        <div class="ly-float">
+          <div class="ly-float__row"><span>PDF</span><span>u roku od 72 sata</span></div>
+          <div class="ly-float__title">Ostaje tvoj zauvek</div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- STA JE U MAPI: services-list + photo, ground-surface (surface-pairs rhythm) -->
+  <section class="section ground-surface" id="sta-je-u-mapi" aria-labelledby="sta-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <h2 id="sta-h">Sta je u tvojoj mapi</h2>
+          <p>Svaki deo je napisan bas za tvoje brojeve. Nije ti potrebno nikakvo predznanje.</p>
+        </div>
+        <ul class="rows">
+          <li>
+            <span class="rows__name">Pet licnih brojeva
+              <small>Broj duse, karme, dara, sudbine i puta, svaki sa kvalitetima, izazovima i lekcijom</small>
+            </span>
+          </li>
+          <li>
+            <span class="rows__name">Tvoja prica
+              <small>Svi tvoji brojevi procitani zajedno kao jedna celina, napisana specijalno za tebe</small>
+            </span>
+          </li>
+          <li>
+            <span class="rows__name">Zivotni ciklus
+              <small>U kom ciklusu se sada nalazis i sta donosi ovo poglavlje</small>
+            </span>
+          </li>
+          <li>
+            <span class="rows__name">Licna godina
+              <small>Tekuca i sledeca godina uz objasnjenje zasto ti je bas sada to tema</small>
+            </span>
+          </li>
+          <li>
+            <span class="rows__name">Tri konkretna saveta
+              <small>Izabrani za kombinaciju tvojih brojeva, mali koraci za svakodnevni zivot</small>
+            </span>
+          </li>
+          <li>
+            <span class="rows__name">Pitanja za dnevnik
+              <small>Za trenutke kada pozelis da odes dublje u ono sto si prepoznao</small>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <figure class="photo-frame span-6 start-7">
+        <img src="../assets/images/personal-map-mockup.webp" alt="Licna mapa otvorena na stranici sa numeroloskom analizom" width="800" height="600" loading="eager">
+      </figure>
+    </div>
+  </section>
+
+  <!-- PHOTO-CHAPTERS MOMENT: kako izgleda mapa u praksi -->
+  <section class="section is-live" id="kako-izgleda" data-moment="photo-chapters" aria-labelledby="ch-h" data-moment-mounted="1" style="--mo-hold: 2;">
+    <div class="wrap mo-ph" data-edge-free="">
+      <div class="mo-ph__head">
+        <h2 id="ch-h">Kako mapa izgleda u praksi</h2>
+        <p>Svaki broj dolazi sa pet blokova, za tvoju konkretnu kombinaciju.</p>
+      </div>
+      
+    <div class="mo-ph__stage"><figure class="mo-ph__pic" style="--mo-c: 0.00%; --mo-z: 1.0000;">
+            <img src="../assets/images/akal-305fc09ad124f225.jpg" alt="Sesija Kundalini joge u grupi, praksa u zajednici" width="1800" height="1200">
+          </figure><figure class="mo-ph__pic" style="--mo-c: 0.00%; --mo-z: 1.0000;">
+            <img src="../assets/images/akal-62fadc9f3dfa0bcf.jpg" alt="Individualna sesija, rad jedan na jedan" width="724" height="1086">
+          </figure><figure class="mo-ph__pic" style="--mo-c: 0.00%; --mo-z: 1.0000;">
+            <img src="../assets/images/akal-68958111b4e9ad4f.jpg" alt="Meditacija u tisini, unutrasnji rad" width="1800" height="1200">
+          </figure><div class="mo-ph__panel"><p class="mo-ph__count" aria-hidden="true">03 / 03</p><ol class="mo-ph__list">
+        <li class="mo-ph__ch">
+          
+          
+          
+        <div class="mo-ph__words"><h3>Tvoji kvaliteti</h3><p>Sta ti prirodno ide, zasto ti to ide i kako to mozes da iskoristis svesno. Konkretno, ne opste.</p></div></li>
+        <li class="mo-ph__ch">
+          
+          
+          
+        <div class="mo-ph__words"><h3>Izazovi i lekcija</h3><p>Gde zapinjes, zasto se odredjene dinamike ponavljaju i sta ti to telo zapravo trazi da naucis.</p></div></li>
+        <li class="mo-ph__ch is-on">
+          
+          
+          
+        <div class="mo-ph__words"><h3>U svakodnevnom zivotu</h3><p>Kako se ovaj broj manifestuje u odnosima, poslu i odlukama, kroz situacije iz stvarnog zivota.</p></div></li>
+      </ol></div></div></div>
+  </section>
+
+  <!-- WORD-HIGHLIGHT MOMENT: statement -->
+  <section class="section statement mo-wh" id="izjava" data-moment="word-highlight" aria-label="O mapi" data-moment-mounted="1">
+    <div class="wrap">
+      <p class="t-label">O mapi</p>
+      <p class="mo-wh__text" aria-label="Mapa ti ne govori sta da radis. Govori ti ko si — i kada to jasno vidis, mnoge stvari se same razrese."><span class="mo-w is-on" aria-hidden="true"><span class="mo-i">Mapa</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">ti</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">ne</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">govori</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">sta</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">da</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">radis.</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">Govori</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">ti</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">ko</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">si</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">—</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">i</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">kada</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">to</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">jasno</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">vidis,</span></span> <strong><span class="mo-w is-on" aria-hidden="true"><span class="mo-i">mnoge</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">stvari</span></span></strong> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">se</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">same</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">razrese.</span></span></p>
+    </div>
+  </section>
+
+  <!-- ZA KOGA: for-whom + photo + inline testimonial -->
+  <section class="section ground-surface" id="za-koga" aria-labelledby="zk-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <h2 id="zk-h">Mapa je za tebe ako</h2>
+        </div>
+        <ul class="forwhom-list">
+          <li>Zelis da bolje razumes sebe: kako funkcionises, sta ti prirodno ide i gde zapinjes.</li>
+          <li>Osecas da se neke dinamike ponavljaju u odnosima ili poslu, i pitas se odakle to dolazi.</li>
+          <li>Prolazis kroz period promene i trazis oslonac koji nije savet spolja, vec uvid iznutra.</li>
+          <li>Zanima te numerologija, ali hoces nesto konkretno: licno citanje pisano samo za tebe.</li>
+        </ul>
+        <blockquote class="inline-quote">
+          <p>"Krenula sam iz radoznalosti, a onda sam nekoliko puta zastala i pomislila: pa ovo stvarno objasnjava neke dinamike koje kod sebe primecujem."</p>
+          <cite>Citaocica mape</cite>
+        </blockquote>
+        <div class="btn-row" style="margin-top: var(--s-7); padding-bottom: var(--s-7)">
+          <a class="btn btn--primary" href="mailto:info@vukojenemanja.com?subject=Licna mapa - porudzbina">Poruci svoju mapu · 33 €</a>
+        </div>
+      </div>
+      <figure class="photo-frame span-6 start-7">
+        <img src="../assets/images/IMG_9617.jpg" alt="Sesija u tisini, prostor za unutrasnji uvid" width="800" height="600" loading="eager">
+      </figure>
+    </div>
+  </section>
+
+  <!-- KAKO SE DOBIJA: steps left, photo right -->
+  <section class="section" id="kako-dobiti" aria-labelledby="how-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <h2 id="how-h">Kako se mapa dobija</h2>
+          <p>Tri koraka, PDF na mejlu za 72 sata.</p>
+        </div>
+        <div style="margin-top: var(--s-7); display: flex; flex-direction: column; gap: var(--s-6);">
+          <div class="step">
+            <span class="step__num" aria-hidden="true">1</span>
+            <h3>Porudzbina</h3>
+            <p>Klknjes na dugme i posaljes ime i datum rodjenja na <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a>.</p>
+          </div>
+          <div class="step">
+            <span class="step__num" aria-hidden="true">2</span>
+            <h3>Pisanje mape</h3>
+            <p>Na osnovu tvojih podataka pisem analizu. Svaka mapa se radi posebno, za tvoju konkretnu kombinaciju brojeva.</p>
+          </div>
+          <div class="step">
+            <span class="step__num" aria-hidden="true">3</span>
+            <h3>Tvoj PDF</h3>
+            <p>Na mejl stize licna mapa. Ostaje tvoja zauvek. Mozes joj se vracati kad god pozelis.</p>
+          </div>
+        </div>
+      </div>
+      <figure class="photo-frame span-6 start-7">
+        <img src="../assets/images/akal-35ba747072485c73.jpg" alt="Sesija Kundalini joge, grupni rad u zajednici" width="768" height="1024" loading="eager">
+      </figure>
+    </div>
+  </section>
+
+  <!-- NEMANJA: people-row -->
+  <section class="section ground-surface" id="nemanja" aria-labelledby="ab-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <h2 id="ab-h">Nemanja Vukoje</h2>
+          <p class="t-lead">Transformacioni coach, energetski isceljitelj, KRI sertifikovani ucitelj Kundalini joge.</p>
+        </div>
+        <p style="line-height: 1.8; margin-top: var(--s-5);">Vise od deset godina praktikujem jogu i meditaciju, a vec sest godina radim direktno sa ljudima kroz individualne sesije i energetski rad. Razvio sam Inner Shift metodu, pristup koji kombinuje coaching i energetski rad, da pomognem ljudima da ono sto ih blokira pretvore u konkretne korake napred.</p>
+        <p style="line-height: 1.8; margin-top: var(--s-4);">Licna mapa je deo tog rada: uvid koji dolazi pre svakog razgovora, napisan samo za tebe.</p>
+        <div class="btn-row" style="margin-top: var(--s-7)">
+          <a class="btn btn--primary" href="mailto:info@vukojenemanja.com?subject=Licna mapa - porudzbina">Poruci svoju mapu · 33 €</a>
+        </div>
+      </div>
+      <figure class="people-photo span-6 start-7">
+        <img src="../assets/images/nemanja-photo.jpg" alt="Nemanja Vukoje" width="800" height="1000" loading="eager">
+      </figure>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="faq-h">Cesta pitanja</h2>
+      </div>
+      <dl class="faq-list">
+        <details class="faq-item">
+          <summary>Da li je mapa stvarno personalizovana?</summary>
+          <p>Da. Svaki deo se racuna i pise na osnovu tvog datuma rodjenja: pet razlicitih brojeva, njihova kombinacija i prica koja ih povezuje. Ako dve osobe naruce mapu, dobijaju dva potpuno razlicita dokumenta.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Kako placam?</summary>
+          <p>Klikni na dugme i izaberi nacin placanja: karticom, PayPal-om ili dinarskom uplatnicom. Potom posalji ime i datum rodjenja na <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a>. Mapa se pravi cim stignu tvoji podaci. Cena je 33 € bez pretplate.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Da li moram da znam nesto o numerologiji?</summary>
+          <p>Ne. Mapa je pisana za nekoga ko se sa numerologijom prvi put susrece. Sve je objasnjeno jednostavno, kroz primere iz svakodnevnog zivota.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Da li je ovo predvidjanje buducnosti?</summary>
+          <p>Ne. Mapa opisuje energetske obrasce koje nosiS: tvoje kvalitete, izazove i lekcije. Sta ces sa tim znanjem uraditi, ostaje tvoj izbor.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Za koliko vremena stize mapa?</summary>
+          <p>U roku od 72 sata od kada stignu tvoji podaci. PDF ostaje tvoj zauvek. Mozes mu se vracati kad god pozelis.</p>
+        </details>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer closing footer--columns" id="pridruzise" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">Poruci svoju mapu</h2>
+        <p class="t-lead">33 € · PDF za 72 sata · ostaje tvoja zauvek</p>
+      </div>
+      <a class="btn btn--primary btn--xl" href="mailto:info@vukojenemanja.com?subject=Licna mapa - porudzbina">
+        Poruci svoju mapu
+        <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"></path><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"></path></svg>
+      </a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-5 stack-5">
+          <a class="nav__logo" href="../srb/index.html"><span class="mark" data-mark="ring" aria-hidden="true"></span>Nemanja Vukoje</a>
+          <p class="footer__lede">Transformacioni coach · energetski isceljitelj · ucitelj Kundalini joge · Bec, Austrija</p>
+        </div>
+        <div class="span-3 start-7 footer__col">
+          <h4>Navigacija</h4>
+          <ul>
+            <li><a href="../srb/index.html#about">O meni</a></li>
+            <li><a href="../srb/akal.html">Akal zajednica</a></li>
+            <li><a href="../srb/individual.html">Inner Shift metoda</a></li>
+            <li><a href="../srb/aura-tretman.html">Tretman aure</a></li>
+            <li><a href="../srb/licna-mapa.html">Licna mapa</a></li>
+          </ul>
+        </div>
+        <div class="span-4 footer__col">
+          <h4>Kontakt</h4>
+          <ul>
+            <li><a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></li>
+            <li>Sachsenplatz, Bec</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <span>© 2026 The Art of Connection Vienna – Nemanja Vukoje · Sachsenplatz, Bec</span>
+        <a href="../srb/agb.html">Uslovi</a>
+        <a href="../srb/datenschutz.html">Privatnost</a>
+        <a href="../srb/impressum.html">Impresum</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="../assets/system.js"></script>
+<script type="module" src="../assets/motion/motion.js"></script>
+<script type="module" src="../assets/layout/layout.js"></script>
+<script type="module">
+  import { mount } from '../assets/moments/moments.js';
+  mount();
+</script>
+
+
+</body></html>

@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akal · Privatni prostor</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js"></script>
+<style>
+/* ─── Tokens · Deep Ocean paleta ─── */
+:root {
+  --clay:   #0F969C;   /* vivid teal - glavni akcent, dugmad, linkovi */
+  --sand:   #D6EDF5;   /* svetli ledeno-plavi tint - sekundarne sekcije */
+  --bark:   #072E33;   /* tamni ocean - primarni tekst */
+  --fog:    #EBF6FA;   /* najlakša pozadina - plavo-bela */
+  --stone:  #294D61;   /* tamni steel-blue - sekundarni tekst */
+  --deep:   #05161A;   /* najdublji okean - nav, gate */
+  --accent: #0C7075;   /* srednji teal - hover stanja */
+  --warm:   #6DA5C0;   /* svetli steel-blue - svetli akcent */
+  --moss:   #0C7075;   /* medium teal */
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--bark); }
+
+/* ─── Password Gate ─── */
+#gate {
+  position: fixed; inset: 0; background: var(--deep);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999; padding: 24px;
+}
+.gate-box {
+  width: 100%; max-width: 420px; text-align: center;
+}
+.gate-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 32px;
+}
+.gate-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 40px); font-weight: 300;
+  color: var(--sand); line-height: 1.25; margin-bottom: 40px;
+}
+.gate-title em { font-style: italic; color: var(--clay); }
+.gate-input {
+  width: 100%; padding: 16px 20px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  color: var(--sand); font-family: 'DM Sans', sans-serif; font-size: 15px;
+  letter-spacing: 2px; outline: none; margin-bottom: 16px;
+}
+.gate-input::placeholder { color: rgba(232,221,208,0.3); letter-spacing: 1px; }
+.gate-input:focus { border-color: var(--clay); }
+.gate-btn {
+  width: 100%; padding: 16px; background: var(--clay); border: none; cursor: pointer;
+  color: var(--bark); font-family: 'DM Sans', sans-serif; font-size: 12px;
+  letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+  transition: background 0.2s;
+}
+.gate-btn:hover { background: var(--warm); }
+.gate-error {
+  font-size: 13px; color: #c0392b; margin-top: 12px;
+  min-height: 20px; letter-spacing: 0.3px;
+}
+
+/* ─── Layout ─── */
+#content { display: none; }
+
+/* ─── Nav ─── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(245,241,236,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.2);
+  padding: 0 40px; height: 64px; display: flex; align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif; font-size: 20px;
+  font-weight: 300; color: var(--bark); text-decoration: none;
+}
+.nav-brand em { font-style: italic; color: var(--clay); }
+.nav-links {
+  display: flex; align-items: center; gap: 32px;
+}
+.nav-link {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--stone); text-decoration: none; font-weight: 400;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--bark); }
+@media (max-width: 680px) {
+  .nav {
+    padding: 0 20px; height: auto;
+    flex-direction: column; align-items: flex-start;
+    gap: 0; padding-top: 14px; padding-bottom: 12px;
+  }
+  .nav-links { gap: 20px; margin-top: 10px; }
+  .nav-link { font-size: 10px; letter-spacing: 1.5px; }
+}
+.nav-tag {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--clay); background: rgba(196,168,130,0.12);
+  padding: 6px 14px;
+}
+@media (max-width: 680px) { .nav { padding: 0 20px; } }
+
+/* ─── Hero ─── */
+.members-hero {
+  background: var(--bark); padding: 80px 60px 64px;
+  border-bottom: 1px solid rgba(196,168,130,0.15);
+}
+.members-hero-inner { max-width: 900px; margin: 0 auto; }
+.section-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 20px;
+}
+.members-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 60px); font-weight: 300;
+  color: var(--sand); line-height: 1.15; margin-bottom: 16px;
+}
+.members-hero h1 em { font-style: italic; color: var(--clay); }
+.members-hero p {
+  font-size: 15px; color: rgba(232,221,208,0.6); line-height: 1.8; max-width: 540px;
+}
+@media (max-width: 680px) { .members-hero { padding: 60px 24px 48px; } }
+
+/* ─── Sections ─── */
+.members-section { padding: 72px 60px; }
+.members-section-inner { max-width: 900px; margin: 0 auto; }
+.members-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 40px); font-weight: 300;
+  color: var(--bark); line-height: 1.25; margin-bottom: 40px;
+}
+.members-section h2 em { font-style: italic; color: var(--clay); }
+@media (max-width: 680px) { .members-section { padding: 56px 24px; } }
+
+/* ─── Zoom banner ─── */
+.zoom-banner {
+  background: var(--bark); border: 1px solid rgba(196,168,130,0.25);
+  padding: 28px 32px; margin-bottom: 48px;
+}
+.zoom-banner-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 12px;
+}
+.zoom-link {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 300; color: var(--sand);
+  text-decoration: underline; text-underline-offset: 4px;
+  text-decoration-color: rgba(196,168,130,0.4);
+  word-break: break-all;
+}
+.zoom-link:hover { color: var(--clay); }
+.zoom-link-placeholder {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 300; font-style: italic;
+  color: rgba(232,221,208,0.3);
+}
+
+/* ─── Topic banner ─── */
+.topic-banner {
+  background: var(--sand); border-left: 3px solid var(--clay);
+  padding: 28px 32px; margin-bottom: 48px;
+}
+.topic-banner .topic-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--stone); margin-bottom: 10px;
+}
+.topic-banner .topic-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: var(--bark);
+}
+
+/* ─── Class Accordion ─── */
+.class-list {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.class-item {
+  background: var(--sand); overflow: hidden;
+}
+.class-item.meditation {
+  background: rgba(61,46,30,0.06); border-left: 2px solid var(--clay);
+}
+.class-item-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 28px; cursor: pointer; gap: 16px;
+  transition: background 0.15s;
+  user-select: none;
+}
+.class-item-header:hover { background: rgba(196,168,130,0.12); }
+.class-item.open .class-item-header { background: rgba(196,168,130,0.08); }
+.class-item-left { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.class-week {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--stone);
+}
+.class-type-tag {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--clay);
+}
+.class-item-chevron {
+  width: 20px; height: 20px; flex-shrink: 0;
+  color: var(--clay); transition: transform 0.25s ease;
+}
+.class-item.open .class-item-chevron { transform: rotate(180deg); }
+.class-item-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 28px;
+}
+.class-item.open .class-item-body {
+  max-height: 200px;
+  padding: 0 28px 24px;
+}
+.class-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 20px;
+  font-weight: 300; color: var(--bark); line-height: 1.35; margin-bottom: 16px;
+}
+.class-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); text-decoration: none; font-weight: 500;
+  transition: color 0.2s;
+}
+.class-link:hover { color: var(--bark); }
+.class-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+.class-soon {
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(138,128,112,0.4);
+}
+
+/* ─── Pitanje meseca ─── */
+.pitanje-section { background: var(--bark); padding: 72px 60px; }
+.pitanje-inner { max-width: 900px; margin: 0 auto; }
+.pitanje-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 32px;
+}
+.pitanje-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3.5vw, 44px); font-weight: 300; font-style: italic;
+  color: var(--sand); line-height: 1.4; max-width: 720px;
+}
+@media (max-width: 680px) { .pitanje-section { padding: 60px 24px; } }
+
+/* ─── Praksa + Journal ─── */
+.praksa-section { background: var(--fog); padding: 72px 60px; }
+.praksa-inner { max-width: 900px; margin: 0 auto; }
+.praksa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+.praksa-card { background: var(--sand); padding: 40px 36px; }
+.praksa-card-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 20px;
+}
+.praksa-card h3 {
+  font-family: 'Cormorant Garamond', serif; font-size: 24px;
+  font-weight: 300; color: var(--bark); margin-bottom: 20px; line-height: 1.3;
+}
+.praksa-card p {
+  font-size: 14px; line-height: 1.9; color: var(--stone); margin-bottom: 16px;
+}
+.praksa-card p:last-child { margin-bottom: 0; }
+.praksa-steps { list-style: none; padding: 0; }
+.praksa-steps li {
+  font-size: 14px; line-height: 1.8; color: var(--stone);
+  padding: 10px 0; border-bottom: 1px solid rgba(196,168,130,0.2);
+  display: flex; gap: 14px;
+}
+.praksa-steps li:last-child { border-bottom: none; }
+.praksa-step-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 16px;
+  color: var(--clay); flex-shrink: 0; min-width: 20px;
+}
+.journal-questions { list-style: none; padding: 0; }
+.journal-questions li {
+  font-size: 15px; line-height: 1.75; color: var(--stone);
+  padding: 14px 0 14px 20px; border-bottom: 1px solid rgba(196,168,130,0.2);
+  position: relative;
+}
+.journal-questions li:last-child { border-bottom: none; }
+.journal-questions li::before {
+  content: '-'; color: var(--clay); position: absolute; left: 0;
+  font-family: 'Cormorant Garamond', serif;
+}
+.praksa-link {
+  display: inline-block; margin-top: 20px;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+}
+.praksa-link:hover { color: var(--bark); }
+@media (max-width: 680px) {
+  .praksa-section { padding: 48px 20px; }
+  .praksa-grid { grid-template-columns: 1fr; gap: 2px; }
+  .praksa-card { padding: 28px 20px; }
+  .praksa-steps li { display: block; font-size: 13px; padding: 12px 0; }
+  .praksa-step-num { display: inline; margin-right: 6px; }
+  .journal-questions li { font-size: 14px; }
+}
+
+/* ─── Lunar Section ─── */
+.lunar-section { background: var(--deep); padding: 72px 60px; }
+.lunar-inner { max-width: 900px; margin: 0 auto; }
+.lunar-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 20px;
+}
+.lunar-date {
+  font-size: 13px; color: rgba(232,221,208,0.4);
+  letter-spacing: 1px; margin-bottom: 32px;
+}
+.lunar-phase-row {
+  display: flex; align-items: flex-start; gap: 40px;
+  margin-bottom: 40px;
+}
+.lunar-icon {
+  font-size: 56px; line-height: 1; flex-shrink: 0; margin-top: -4px;
+}
+.lunar-phase-info {}
+.lunar-day-num {
+  font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 10px;
+}
+.lunar-phase-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3.5vw, 40px); font-weight: 300;
+  color: var(--sand); line-height: 1.2; margin-bottom: 8px;
+}
+.lunar-subtitle {
+  font-size: 13px; color: rgba(196,168,130,0.7); letter-spacing: 0.5px; line-height: 1.5;
+}
+.lunar-phase-desc {
+  font-size: 15px; color: rgba(232,221,208,0.65); line-height: 1.9;
+  max-width: 700px; margin-bottom: 32px; padding-top: 8px;
+}
+.lunar-question-row {
+  margin-top: 32px; padding-top: 32px;
+  border-top: 1px solid rgba(196,168,130,0.15);
+}
+.lunar-question-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 16px;
+}
+.lunar-question-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2.5vw, 24px); font-weight: 300; font-style: italic;
+  color: rgba(232,221,208,0.85); line-height: 1.5; max-width: 640px;
+}
+.lunar-reminder {
+  margin-top: 24px; font-size: 13px; color: rgba(232,221,208,0.4);
+  line-height: 1.8; max-width: 600px; padding-left: 16px;
+  border-left: 1px solid rgba(196,168,130,0.3);
+}
+.lunar-next {
+  margin-top: 24px; font-size: 14px; letter-spacing: 0.5px;
+  color: var(--clay); font-weight: 400;
+}
+.lunar-cards {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+}
+.lunar-card { background: rgba(255,255,255,0.04); padding: 28px 24px; }
+.lunar-card-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 14px;
+}
+.lunar-card-text {
+  font-size: 14px; color: rgba(232,221,208,0.6); line-height: 1.85;
+}
+.lunar-card-text ul { list-style: none; padding: 0; margin: 0; }
+.lunar-card-text ul li {
+  padding: 6px 0 6px 16px; position: relative;
+  border-bottom: 1px solid rgba(196,168,130,0.1);
+}
+.lunar-card-text ul li:last-child { border-bottom: none; }
+.lunar-card-text ul li::before {
+  content: '-'; color: var(--clay);
+  position: absolute; left: 0;
+  font-family: 'Cormorant Garamond', serif;
+}
+@media (max-width: 680px) {
+  .lunar-section { padding: 60px 24px; }
+  .lunar-phase-row { flex-direction: column; gap: 20px; }
+  .lunar-cards { grid-template-columns: 1fr; }
+}
+
+/* ─── Timer ─── */
+.timer-section { background: var(--fog); padding: 72px 60px; }
+.timer-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+.timer-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 32px; display: block;
+}
+.timer-ring-wrap { position: relative; display: inline-block; margin-bottom: 40px; }
+.timer-ring { transform: rotate(-90deg); }
+.timer-ring-bg { fill: none; stroke: rgba(196,168,130,0.12); stroke-width: 3; }
+.timer-ring-progress {
+  fill: none; stroke: var(--clay); stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear;
+}
+.timer-display {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300;
+  color: var(--bark); letter-spacing: -1px; line-height: 1;
+}
+.timer-display.running { color: var(--accent); }
+.timer-display.done { color: var(--clay); }
+.timer-durations {
+  display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; flex-wrap: wrap;
+}
+.timer-dur-btn {
+  padding: 10px 20px; border: 1px solid rgba(196,168,130,0.3);
+  background: none; color: var(--stone); font-family: 'DM Sans', sans-serif;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.15s;
+}
+.timer-dur-btn:hover { border-color: var(--clay); color: var(--bark); }
+.timer-dur-btn.active { background: var(--clay); color: var(--bark); border-color: var(--clay); }
+.timer-controls { display: flex; justify-content: center; gap: 12px; }
+.timer-start-btn {
+  padding: 14px 40px; background: var(--bark); color: var(--sand);
+  border: none; font-family: 'DM Sans', sans-serif; font-size: 12px;
+  letter-spacing: 3px; text-transform: uppercase; cursor: pointer;
+  transition: background 0.15s;
+}
+.timer-start-btn:hover { background: var(--deep); }
+.timer-reset-btn {
+  padding: 14px 20px; background: none; color: var(--stone);
+  border: 1px solid rgba(196,168,130,0.2); font-family: 'DM Sans', sans-serif;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.15s;
+}
+.timer-reset-btn:hover { color: var(--bark); border-color: var(--clay); }
+@media (max-width: 680px) {
+  .timer-section { padding: 60px 24px; }
+  .timer-display { font-size: 40px; }
+}
+
+/* ─── Footer ─── */
+.members-footer {
+  padding: 32px 60px; background: var(--bark);
+  font-size: 12px; color: rgba(232,221,208,0.3);
+  letter-spacing: 1px; display: flex; justify-content: space-between;
+  align-items: center; gap: 20px; flex-wrap: wrap;
+}
+@media (max-width: 680px) { .members-footer { padding: 24px; } }
+</style>
+</head>
+<body>
+
+<!-- ═══ PASSWORD GATE ═══ -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-label">Akal zajednica</div>
+    <h2 class="gate-title">Privatni<br><em>prostor članova.</em></h2>
+    <input type="password" class="gate-input" id="gate-input"
+           placeholder="Lozinka" autocomplete="off">
+    <button class="gate-btn" id="gate-btn">Ulaz →</button>
+    <div class="gate-error" id="gate-error"></div>
+  </div>
+</div>
+
+<!-- ═══ MEMBERS CONTENT ═══ -->
+<div id="content">
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="akal.html" class="nav-brand">Akal <em>zajednica</em></a>
+    <div class="nav-links">
+      <a href="#sec-pitanje" class="nav-link">Pitanje meseca</a>
+      <a href="#sec-casovi" class="nav-link">Časovi</a>
+      <a href="#sec-smernice" class="nav-link">Lunarni dan</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="members-hero">
+    <div class="members-hero-inner">
+      <div class="section-label">Privatni prostor · Novembar 2026</div>
+      <h1>Dobro došli nazad u <em>prostor za članove.</em></h1>
+      <p>Ovde ćeš naći snimke svih časova ovog meseca, temu sa kojom radimo i dnevne energetske smernice prema lunarnom ciklusu.</p>
+    </div>
+  </div>
+
+  <!-- Topic + Classes -->
+  <section id="sec-casovi" class="members-section" style="background: var(--fog);">
+    <div class="members-section-inner">
+
+      <!-- Zoom link -->
+      <div class="zoom-banner">
+        <div class="zoom-banner-label">Zoom link za sve časove ovog meseca</div>
+        <div id="zoom-link-slot"></div>
+      </div>
+
+      <!-- Topic of month -->
+      <div class="topic-banner">
+        <div class="topic-label">Tema meseca</div>
+        <div class="topic-name">Delovanje prema intuiciji</div>
+      </div>
+
+      <!-- Classes -->
+      <div class="section-label" style="margin-bottom: 24px;">Časovi ovog meseca</div>
+      <div class="class-list" id="class-grid">
+        <!-- filled by JS from CLASSES config below -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Pitanje meseca -->
+  <section id="sec-pitanje" class="pitanje-section">
+    <div class="pitanje-inner">
+      <div class="pitanje-label">Pitanje meseca</div>
+      <p class="pitanje-text">"Koja odluka čeka da je doneseš, a u sebi već znaš odgovor?"</p>
+    </div>
+  </section>
+
+  <!-- Praksa + Journal -->
+  <section class="praksa-section">
+    <div class="praksa-inner">
+      <div class="section-label">Alati za mesec</div>
+      <div class="praksa-grid">
+
+        <!-- Praksa meseca -->
+        <div class="praksa-card">
+          <div class="praksa-card-label">Praksa meseca</div>
+          <h3>Long Ek Ong Kar<br><em style="font-style:italic;color:var(--clay);font-size:0.85em;">Jutarnja meditacija</em></h3>
+          <p>Ovo je osnovna meditacija jutarnje prakse u Kundalini jogi. Inicira kundalini energiju, balansira sve chakre i uspostavlja vezu između tvoje duše i Univerzalne duše.</p>
+          <ul class="praksa-steps">
+            <li><span class="praksa-step-num">1</span>Sedni u lak položaj, kičma ravna. Ruke u Gyan mudri na kolenima. Oči zatvorene ili 1/10 otvorene, fokus na tački između obrva.</li>
+            <li><span class="praksa-step-num">2</span>Duboko udahni i dok povlačiš pupak prema unutra, kratko i snažno zapevaj <strong>Ek</strong>. Zatim <strong>Ong Kaar</strong> izvuci dugo - jednako vreme za Ong i Kaar. Na Ong zatvori zadnji deo grla i vibrira gornje nepce, zvuk prolazi kroz nos i odzvanja u gornjoj šupljini glave.</li>
+            <li><span class="praksa-step-num">3</span>Duboko udahni, povuci pupak i kratko zapevaj <strong>Sat</strong>. Zatim <strong>Naam</strong> izvuci dugo. Na samom kraju daha dodaj brzo <strong>Siree</strong> (izgovara se S'ri).</li>
+            <li><span class="praksa-step-num">4</span>Udahni pola daha, povuci pupak i kratko zapevaj <strong>Whaa</strong>. Zatim <strong>Hay Guroo</strong> - Hay kratko, Guroo (izgovara se G'ru) izvuci, ali ne previše dugo.</li>
+            <li><span class="praksa-step-num">5</span>Trajanje: 7 do 31 minut.</li>
+          </ul>
+          <a href="https://www.3ho.org/kundalini-yoga/meditation/long-ek-ong-kars/" target="_blank" rel="noopener" class="praksa-link">Puni opis na 3HO →</a>
+        </div>
+
+        <!-- Pitanja za journaling -->
+        <div class="praksa-card">
+          <div class="praksa-card-label">Pitanja za pisanje</div>
+          <h3>Dnevnik ovog meseca</h3>
+          <p>Uzmi 10-15 minuta, papir i olovku. Bez ispravljanja, bez razmišljanja - samo piši šta se pojavi.</p>
+          <ul class="journal-questions">
+            <li>Kada sam poslednji put osetio/la nešto u telu što mi je jasno nešto govorilo - i nisam poslušao/la. Šta se desilo?</li>
+            <li>Šta je razlika između glasa straha i glasa intuicije u meni? Kako ih prepoznajem?</li>
+            <li>Ima li nešto što mi intuicija govori već neko vreme, a ja to odlažem?</li>
+            <li>U kojoj oblasti života najviše sumnjam u sebe - i šta bi se promenilo kada bih sebi verovao/la?</li>
+            <li>Ako bih znao/la da ne mogu da pogrešim, šta bih uradio/la sledeće nedelje?</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lunarni dan -->
+  <section id="sec-smernice" class="lunar-section">
+    <div class="lunar-inner">
+      <div class="lunar-label">Lunarni dan</div>
+      <div class="lunar-date" id="lunar-date"></div>
+      <div class="lunar-phase-row">
+        <div class="lunar-icon" id="lunar-icon">🌑</div>
+        <div class="lunar-phase-info">
+          <div class="lunar-day-num" id="lunar-day-num">-</div>
+          <div class="lunar-phase-name" id="lunar-phase-name">-</div>
+          <div class="lunar-subtitle" id="lunar-subtitle">-</div>
+        </div>
+      </div>
+      <div class="lunar-phase-desc" id="lunar-phase-desc">-</div>
+      <div class="lunar-cards">
+        <div class="lunar-card">
+          <div class="lunar-card-label">Šta je podržano danas</div>
+          <div class="lunar-card-text" id="lunar-do">-</div>
+        </div>
+        <div class="lunar-card">
+          <div class="lunar-card-label">Šta je bolje izbegavati</div>
+          <div class="lunar-card-text" id="lunar-dont">-</div>
+        </div>
+      </div>
+      <div class="lunar-question-row">
+        <div class="lunar-question-label">Pitanje za razmišljanje</div>
+        <div class="lunar-question-text" id="lunar-question">-</div>
+      </div>
+      <div class="lunar-reminder" id="lunar-reminder">-</div>
+      <div class="lunar-next" id="lunar-next"></div>
+    </div>
+  </section>
+
+  <!-- Timer -->
+  <section class="timer-section">
+    <div class="timer-inner">
+      <span class="timer-label">Timer za meditaciju</span>
+      <div class="timer-ring-wrap">
+        <svg class="timer-ring" id="timer-svg" width="220" height="220" viewBox="0 0 220 220">
+          <circle class="timer-ring-bg" cx="110" cy="110" r="100"/>
+          <circle class="timer-ring-progress" id="timer-progress" cx="110" cy="110" r="100"/>
+        </svg>
+        <div class="timer-display" id="timer-display">7:00</div>
+      </div>
+      <div class="timer-durations">
+        <button class="timer-dur-btn" data-min="3">3 min</button>
+        <button class="timer-dur-btn active" data-min="7">7 min</button>
+        <button class="timer-dur-btn" data-min="11">11 min</button>
+        <button class="timer-dur-btn" data-min="31">31 min</button>
+      </div>
+      <div class="timer-controls">
+        <button class="timer-start-btn" id="timer-start-btn">Počni</button>
+        <button class="timer-reset-btn" id="timer-reset-btn">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="members-footer">
+    <span>© Nemanja Vukoje · The Art of Connection Vienna</span>
+    <span>Stranica je privatna i namenjena isključivo članovima Akal zajednice.</span>
+  </footer>
+
+</div><!-- /#content -->
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  CONFIG - ovde menjaj svaki mesec
+// ═══════════════════════════════════════════════════════
+var PASSWORD_HASH = '6d8241a1';
+
+var MONTH_LABEL = 'Novembar 2026';
+
+var ZOOM_LINK = 'https://us06web.zoom.us/j/83670630481?pwd=tdOx32UaFladWtEsbFxM6xtExXxCJT.1';
+
+var CLASSES = [
+  {
+    date: 'Nedelja, 1. novembar · 20:00',
+    type: 'yoga',
+    title: 'Uvod u temu meseca - Aktivacija intuicije',
+    link: 'https://youtu.be/9dKCqG88KSk?si=NjUhX2sBvMESE2BG&t=133'
+  },
+  {
+    date: 'Sreda, 4. novembar',
+    type: 'meditation',
+    title: 'Veče meditacije',
+    link: 'https://youtu.be/khSKQTCWXdM?si=95x1T67mEO6WgVEG&t=188'
+  },
+  {
+    date: 'Nedelja, 8. novembar · 20:00',
+    type: 'yoga',
+    title: '',
+    link: 'https://youtu.be/aPw4OjJGwPU?si=iuf_U37IPFIaBSRf&t=167'
+  },
+  {
+    date: 'Nedelja, 15. novembar · 20:00',
+    type: 'yoga',
+    title: '',
+    link: ''
+  },
+  {
+    date: 'Nedelja, 22. novembar · 20:00',
+    type: 'yoga',
+    title: '',
+    link: ''
+  },
+  {
+    date: 'Sreda, 25. novembar',
+    type: 'meditation',
+    title: 'Veče meditacije',
+    link: ''
+  },
+  {
+    date: 'Nedelja, 29. novembar · 20:00',
+    type: 'yoga',
+    title: '',
+    link: ''
+  }
+];
+
+// ═══════════════════════════════════════════════════════
+//  LUNARNI VODIC - 30 DANA
+// ═══════════════════════════════════════════════════════
+var LUNAR_DAYS = [
+  {
+    name: 'Lampa', icon: '🪔',
+    subtitle: 'Novi počeci, namere i unutrašnja jasnoća',
+    desc: 'Danas je dan za početak, ali ne nužno za velike i nagle poteze. Lampa simbolizuje svetlost koja se tek pali - ideju, nameru ili želju kojoj počinjemo da posvećujemo pažnju. Dobro je da zastaneš i razmisliš šta želiš da razvijaš u narednom periodu.',
+    doThis: ['Zapiši nameru ili ideju kojoj želiš da posvetiš više pažnje.', 'Odvoji vreme za tišinu, meditaciju ili mirno planiranje.', 'Započni nešto jednostavno što možeš postepeno da razvijaš.', 'Obrati pažnju na misli i inspiraciju koje ti se javljaju.'],
+    avoid: ['Žurbu i potrebu da odmah vidiš rezultat.', 'Preuzimanje previše obaveza odjednom.', 'Očekivanje da sve mora biti jasno od samog početka.'],
+    question: 'Šta želim da započnem i čemu želim da dam više prostora u svom životu?',
+    reminder: 'Ne moraš odmah da vidiš ceo put. Dovoljno je da upališ svetlo i napraviš prvi korak.'
+  },
+  {
+    name: 'Rog obilja', icon: '🌽',
+    subtitle: 'Resursi, primanje i zahvalnost',
+    desc: 'Današnji simbol nas podseća na ono što već imamo i na način na koji koristimo svoje resurse. To nisu samo novac i materijalne stvari, već i vreme, pažnja, znanje, energija i podrška ljudi oko nas.',
+    doThis: ['Prepoznaj šta već imaš i na čemu možeš da budeš zahvalan.', 'Organizuj svoje vreme, novac ili obaveze.', 'Podeli nešto sa drugima - pažnju, znanje ili podršku.', 'Dozvoli sebi da primiš pomoć kada ti je potrebna.'],
+    avoid: ['Pohlepu i impulsivnu kupovinu.', 'Poređenje svog života sa životom drugih.', 'Uverenje da moraš sve sam.'],
+    question: 'Koje resurse već imam, a ne koristim ih dovoljno dobro?',
+    reminder: 'Obilje ne počinje tek onda kada dobiješ nešto novo. Počinje i kada prepoznaš vrednost onoga što već imaš.'
+  },
+  {
+    name: 'Leopard', icon: '🐆',
+    subtitle: 'Hrabrost, inicijativa i suočavanje sa otporom',
+    desc: 'Leopard simbolizuje spremnost da se pokreneš i suočiš sa onim što odlažeš. Danas možeš primetiti gde te strah, nesigurnost ili navika zadržavaju na istom mestu. Nije potrebno da reaguješ naglo ili da ulaziš u sukobe.',
+    doThis: ['Započni zadatak koji već neko vreme odlažeš.', 'Zauzmi se za sebe i jasno izrazi svoje potrebe.', 'Pokreni telo kroz šetnju, trening ili ples.', 'Izaberi jedan izazov i posveti mu punu pažnju.'],
+    avoid: ['Agresivnost i dokazivanje po svaku cenu.', 'Impulsivne odluke i nepotrebne rasprave.', 'Odustajanje čim naiđeš na prvu prepreku.'],
+    question: 'Koji korak bih napravio kada ne bih dozvolio da me strah zaustavi?',
+    reminder: 'Hrabrost ne znači da nemaš strah. Hrabrost znači da možeš da napraviš korak i kada je strah prisutan.'
+  },
+  {
+    name: 'Drvo znanja', icon: '🌳',
+    subtitle: 'Temelji, stabilnost i povezivanje sa sobom',
+    desc: 'Drvo nas podseća na važnost korena i temelja. Sve što želimo da izgradimo traži vreme, negu i stabilnost. Danas je dobar trenutak da pogledaš na čemu zasnivaš svoje odluke i da li tvoje svakodnevne navike podržavaju ono što želiš da postigneš.',
+    doThis: ['Uredi planove i postavi realne prioritete.', 'Posveti pažnju navikama koje ti daju stabilnost.', 'Provedi vreme u prirodi ili se poveži sa svojim telom.', 'Uči i produbljuj znanje koje ti je važno.'],
+    avoid: ['Nestrpljenje i očekivanje brzih rezultata.', 'Zanemarivanje osnovnih potreba zbog obaveza.', 'Donošenje odluka bez razmišljanja o dugoročnim posledicama.'],
+    question: 'Koje temelje trenutno gradim i šta mogu da učinim da budu stabilniji?',
+    reminder: 'Velike promene ne nastaju samo velikim potezima. Često ih grade mali koraci koje ponavljamo svakog dana.'
+  },
+  {
+    name: 'Jednorog', icon: '🦄',
+    subtitle: 'Autentičnost, intuicija i lične vrednosti',
+    desc: 'Jednorog simbolizuje autentičnost i povezanost sa onim što je za nas istinski važno. Danas obrati pažnju na situacije u kojima govoriš ili radiš nešto samo da bi ispunio očekivanja drugih.',
+    doThis: ['Zastani pre nego što pristaneš na nešto i proveri da li ti to odgovara.', 'Izrazi svoje mišljenje mirno i iskreno.', 'Zapiši vrednosti koje želiš da poštuješ u svakodnevnom životu.', 'Daj sebi prostor da čuješ sopstveni osećaj.'],
+    avoid: ['Traženje odobravanja po svaku cenu.', 'Pretvaranje da si neko drugi da bi se uklopio.', 'Ignorisanje svojih potreba zbog tuđih očekivanja.'],
+    question: 'U kojoj situaciji ne pokazujem sebe onakvim kakav zaista jesam?',
+    reminder: 'Ne moraš da se uklopiš u svaku sliku koju drugi imaju o tebi. Važno je da ne izgubiš kontakt sa sobom.'
+  },
+  {
+    name: 'Ždral', icon: '🕊️',
+    subtitle: 'Ravnoteža, dah i sklad u odnosima',
+    desc: 'Ždral se povezuje sa ravnotežom, lakoćom i sposobnošću da pronađemo mirniji ritam. Danas obrati pažnju na odnose, komunikaciju i način na koji raspoređuješ svoju energiju.',
+    doThis: ['Uspori disanje i napravi nekoliko svesnih pauza tokom dana.', 'Razgovaraj otvoreno, ali bez potrebe da pobediš u raspravi.', 'Uskladi obaveze sa vremenom za odmor.', 'Potraži rešenje koje uvažava i tvoje i tuđe potrebe.'],
+    avoid: ['Preterivanje i emocionalne krajnosti.', 'Reagovanje iz povređenosti ili nestrpljenja.', 'Zanemarivanje sopstvenog mira da bi svima udovoljio.'],
+    question: 'Gde mi je trenutno potrebno više ravnoteže?',
+    reminder: 'Ravnoteža ne znači da je sve savršeno. Znači da primećuješ kada si se udaljio od sebe i umeš da se vratiš.'
+  },
+  {
+    name: 'Ruža vetrova', icon: '🧭',
+    subtitle: 'Reči, pravac i svesna komunikacija',
+    desc: 'Ruža vetrova simbolizuje pravac, a ovaj dan nas podseća i na snagu reči. Način na koji govorimo može da približi ljude, ali i da stvori nepotrebnu udaljenost. Danas obrati pažnju na ono što izgovaraš, obećavaš i prećutkuješ.',
+    doThis: ['Govori jasno i promišljeno.', 'Završi važan razgovor koji odlažeš.', 'Zapiši ideje i planove kako bi dobili konkretniji pravac.', 'Saslušaj sagovornika bez prekidanja.'],
+    avoid: ['Ogovaranje, preuveličavanje i prazna obećanja.', 'Reči izgovorene u ljutnji.', 'Prihvatanje tuđeg pravca bez provere šta ti želiš.'],
+    question: 'Kakve posledice ostavljaju moje reči na mene i ljude oko mene?',
+    reminder: 'Reči imaju težinu. Biraj ih tako da budu u skladu sa onim što zaista misliš i želiš da gradiš.'
+  },
+  {
+    name: 'Feniks', icon: '🔥',
+    subtitle: 'Obnova, promena i oslobađanje od starog',
+    desc: 'Feniks simbolizuje obnovu i mogućnost da iz iskustva izađemo drugačiji. Danas možeš da pogledaš šta je u tvom životu završilo svoju ulogu - navika, način razmišljanja ili odnos prema nekoj situaciji.',
+    doThis: ['Očisti prostor i skloni stvari koje ti više nisu potrebne.', 'Prepoznaj jednu naviku koju želiš da promeniš.', 'Oprosti sebi za nešto što sada vidiš drugačije.', 'Napravi mali korak ka novom načinu ponašanja.'],
+    avoid: ['Vraćanje starim obrascima iz navike.', 'Držanje za ono što je već završeno.', 'Forsiranje promene bez razumevanja šta ti je potrebno.'],
+    question: 'Šta je u mom životu spremno da se završi kako bi napravilo prostor za novo?',
+    reminder: 'Promena ne traži da izbrišeš prošlost. Traži da iz nje nešto naučiš i da ne moraš stalno da je ponavljaš.'
+  },
+  {
+    name: 'Šišmiš', icon: '🦇',
+    subtitle: 'Strahovi, sumnje i prepoznavanje projekcija',
+    desc: 'Ovaj simbol nas poziva da obratimo pažnju na ono što se dešava ispod površine - na strahove, sumnje i pretpostavke koje utiču na naše reakcije. Danas nije potrebno da veruješ svakoj misli koja ti se pojavi.',
+    doThis: ['Zapiši šta te brine i razdvoji činjenice od pretpostavki.', 'Posmatraj svoje reakcije bez osuđivanja.', 'Razgovaraj sa osobom kojoj veruješ ako ti je potrebna perspektiva.', 'Vrati pažnju na ono što zaista možeš da uradiš.'],
+    avoid: ['Hranjenje sumnji bez provere činjenica.', 'Donošenje odluka iz panike.', 'Traženje skrivenog značenja u svakoj sitnici.'],
+    question: 'Da li reagujem na ono što se zaista dešava ili na ono čega se plašim?',
+    reminder: 'Misao nije uvek činjenica. Daj sebi vremena da proveriš šta je stvarno, a šta je samo strah.'
+  },
+  {
+    name: 'Fontana', icon: '⛲',
+    subtitle: 'Životna energija, kreativnost i porodični koreni',
+    desc: 'Fontana simbolizuje izvor i protok energije. Danas obrati pažnju na ono što te obnavlja, inspiriše i vraća u kontakt sa sobom. Može biti korisno da se povežeš sa porodicom, ljudima koji su ti važni ili aktivnostima koje ti daju osećaj pripadnosti.',
+    doThis: ['Bavi se aktivnošću koja ti vraća energiju.', 'Pokreni kreativnu ideju ili podeli nešto što znaš.', 'Provedi kvalitetno vreme sa bliskim ljudima.', 'Uredi porodične ili lične obaveze koje su ostale otvorene.'],
+    avoid: ['Rasipanje pažnje na previše strana.', 'Zanemarivanje odmora.', 'Vraćanje u porodične rasprave koje ne vode razumevanju.'],
+    question: 'Šta je moj izvor energije i kako mogu češće da mu se vratim?',
+    reminder: 'Da bi mogao da daješ drugima, važno je da prepoznaš šta tebe obnavlja.'
+  },
+  {
+    name: 'Kruna i vatreni mač', icon: '👑',
+    subtitle: 'Lična snaga, disciplina i odgovornost',
+    desc: 'Jedanaesti lunarni dan se u ovom simboličkom sistemu povezuje sa snažnom energijom i potrebom da je koristimo svesno. Danas je važno da ne rasipaš snagu na sve strane. Izaberi ono što ti je zaista važno i posveti mu pažnju.',
+    doThis: ['Usmeri energiju na jedan važan zadatak.', 'Završi ono što si započeo.', 'Pokreni telo kroz fizičku aktivnost koja ti prija.', 'Preuzmi odgovornost za odluku koju već znaš da treba da doneseš.'],
+    avoid: ['Impulsivnost i nepotrebne sukobe.', 'Dokazivanje sopstvene snage kroz kontrolu drugih.', 'Preuzimanje više nego što realno možeš da izneseš.'],
+    question: 'Kako danas mogu da koristim svoju snagu odgovorno i konstruktivno?',
+    reminder: 'Prava snaga nije u tome da kontrolišeš sve oko sebe, već da umeš da usmeriš sebe.'
+  },
+  {
+    name: 'Srce i pehar', icon: '❤️',
+    subtitle: 'Saosećanje, zahvalnost i otvorenost',
+    desc: 'Današnji dan nas podseća na važnost dobrote, zahvalnosti i odnosa koje gradimo. Srce ne znači da treba da zanemarimo svoje granice ili da svima udovoljimo. Znači da pokušamo da razumemo sebe i druge.',
+    doThis: ['Pokaži nekome da ti je važan.', 'Izrazi zahvalnost za podršku koju dobijaš.', 'Saslušaj nekoga bez žurbe da ponudiš rešenje.', 'Pokaži sebi razumevanje tamo gde si obično prestrog.'],
+    avoid: ['Očekivanje da drugi pogode šta ti je potrebno.', 'Potiskivanje sopstvenih granica u ime mira.', 'Vraćanje na stare povrede bez želje za razumevanjem.'],
+    question: 'Kako mogu da pokažem više razumevanja, a da pritom ne zanemarim sebe?',
+    reminder: 'Otvoreno srce ne znači odsustvo granica. Možeš biti pažljiv prema drugima i istovremeno čuvati sebe.'
+  },
+  {
+    name: 'Točak', icon: '🔄',
+    subtitle: 'Obnavljanje energije i izlazak iz ponavljajućih obrazaca',
+    desc: 'Točak simbolizuje kretanje, promenu i cikluse koji se ponavljaju. Danas obrati pažnju na situacije koje ti se vraćaju - isti tip razgovora, ista reakcija ili isti problem. Umesto da sebe osuđuješ, pokušaj da prepoznaš šta održava taj obrazac.',
+    doThis: ['Uoči obrazac koji ti se ponavlja.', 'Vrati se učenju ili veštini koju želiš da razviješ.', 'Sredi beleške, planove ili informacije koje su se nagomilale.', 'Isprobaj drugačiji odgovor u poznatoj situaciji.'],
+    avoid: ['Ponavljanje istih postupaka uz očekivanje drugačijeg rezultata.', 'Preopterećivanje informacijama.', 'Odustajanje zato što promena ne dolazi odmah.'],
+    question: 'Koji obrazac mi se ponavlja i šta mogu ovog puta da uradim drugačije?',
+    reminder: 'Ne moraš promeniti sve odjednom. Dovoljno je da u jednom poznatom trenutku napraviš drugačiji izbor.'
+  },
+  {
+    name: 'Dve trube', icon: '🎺',
+    subtitle: 'Odlučnost, jasnoća i usmerena akcija',
+    desc: 'Četrnaesti lunarni dan simbolički se povezuje sa snažnom voljom i pokretanjem stvari. Danas je korisno da prepoznaš šta ti je prioritet i da prestaneš da odlažeš prvi konkretan korak.',
+    doThis: ['Donesi odluku koju već neko vreme odlažeš.', 'Započni važan zadatak ili projekat.', 'Postavi jasan cilj i odredi prvi korak.', 'Posveti se praksi ili navici koju želiš da učvrstiš.'],
+    avoid: ['Rasipanje energije na nebitne stvari.', 'Oklevanje zbog potrebe da sve bude savršeno.', 'Preterivanje i forsiranje sebe.'],
+    question: 'Koji konkretan korak danas mogu da napravim ka onome što mi je važno?',
+    reminder: 'Jasna namera dobija smisao tek kada je prati konkretan postupak.'
+  },
+  {
+    name: 'Vatrena zmija', icon: '🐍',
+    subtitle: 'Instinkti, iskušenja i svesno upravljanje impulsima',
+    desc: 'Petnaesti lunarni dan povezuje se sa snažnim instinktima i iskušenjima. Danas možeš primetiti da su želje, reakcije ili emocije intenzivnije nego inače. Umesto da ih potiskuješ ili da im odmah prepustiš kontrolu, napravi prostor da ih razumeš.',
+    doThis: ['Posmatraj svoje želje i reakcije bez osuđivanja.', 'Napravi pauzu pre važne odluke.', 'Biraj aktivnosti koje ti pomažu da ostaneš prisutan.', 'Postavi jasne granice tamo gde osećaš pritisak.'],
+    avoid: ['Impulsivno ponašanje i preterivanje.', 'Ulazak u rasprave iz potrebe da budeš u pravu.', 'Donošenje odluka pod uticajem trenutnog uzbuđenja.'],
+    question: 'Koji impuls danas mogu da primetim, a da ne moram odmah da ga sledim?',
+    reminder: 'Ne moraš da reaguješ na svaku želju ili misao. Između impulsa i postupka postoji prostor za izbor.'
+  },
+  {
+    name: 'Leptir', icon: '🦋',
+    subtitle: 'Lakoća, promena i unutrašnja harmonija',
+    desc: 'Leptir simbolizuje promenu koja se odvija postepeno. Ovaj dan nas podseća da rast ne mora uvek da bude težak i naporan. Ponekad je potrebno da otpustimo pritisak, vratimo se jednostavnosti i dozvolimo sebi da stvari sagledamo iz drugačijeg ugla.',
+    doThis: ['Provedi vreme u aktivnostima koje te smiruju.', 'Napravi prostor za kreativnost, prirodu ili ples.', 'Prihvati promenu koju ne možeš da kontrolišeš.', 'Pojednostavi jednu obavezu ili situaciju.'],
+    avoid: ['Stvaranje drame oko stvari koje mogu biti jednostavnije.', 'Forsiranje promena.', 'Poređenje svog razvoja sa tuđim.'],
+    question: 'Gde sebi mogu da dozvolim više lakoće i manje pritiska?',
+    reminder: 'Ne mora svaki korak napred da bude borba. Ponekad rasteš upravo onda kada sebi dozvoliš da se opustiš.'
+  },
+  {
+    name: 'Šakti', icon: '🔔',
+    subtitle: 'Radost, životna snaga i kreativno izražavanje',
+    desc: 'Sedamnaesti lunarni dan povezuje se sa Šakti - stvaralačkom i pokretačkom energijom. U praktičnom smislu, ovo je dobar trenutak da se povežeš sa radošću, kreativnošću i ljudima uz koje možeš da budeš spontan.',
+    doThis: ['Pusti muziku, pleši ili se pokreni na način koji ti prija.', 'Podeli radost i provedi vreme sa ljudima koji te inspirišu.', 'Daj prostor kreativnoj ideji.', 'Primeti šta ti vraća osećaj živosti.'],
+    avoid: ['Potiskivanje radosti zbog stalnih obaveza.', 'Traženje potvrde kroz tuđu pažnju.', 'Preterivanje i gubljenje mere.'],
+    question: 'Kada se osećam najživlje i kako mogu da unesem više toga u svakodnevicu?',
+    reminder: 'Radost nije nagrada koju dobijaš tek kada sve završiš. Ona može biti deo samog puta.'
+  },
+  {
+    name: 'Ogledalo', icon: '🪞',
+    subtitle: 'Samoposmatranje i prepoznavanje sopstvenih reakcija',
+    desc: 'Ogledalo nas poziva da pogledamo sebe iskreno, bez osuđivanja. Ljudi i situacije oko nas ponekad pokrenu reakcije koje nam govore nešto o našim očekivanjima, strahovima i granicama.',
+    doThis: ['Posmatraj svoje reakcije u razgovorima.', 'Zapiši šta te je danas posebno pogodilo ili obradovalo.', 'Prepoznaj gde možeš da preuzmeš svoj deo odgovornosti.', 'Pitaj se šta ti je u određenoj situaciji bilo potrebno.'],
+    avoid: ['Brzo okrivljavanje drugih.', 'Preterana samokritika.', 'Tumačenje tuđeg ponašanja bez razgovora i provere.'],
+    question: 'Šta mi moje reakcije danas pokazuju o mojim potrebama i očekivanjima?',
+    reminder: 'Samoposmatranje nije traženje krivice u sebi. To je način da bolje razumeš sebe i dobiješ više izbora.'
+  },
+  {
+    name: 'Pauk', icon: '🕷️',
+    subtitle: 'Mentalni obrasci, zamršene situacije i strpljenje',
+    desc: 'Pauk simbolizuje mrežu - veze između misli, odluka i postupaka. Danas obrati pažnju na situacije u kojima se osećaš zapetljano ili stalno vraćaš istim mislima. Umesto da pokušavaš da rešiš sve odjednom, izdvoji jednu nit i kreni od nje.',
+    doThis: ['Zapiši misli koje ti se stalno vraćaju.', 'Razdvoji ono što možeš da rešiš od onoga što nije pod tvojom kontrolom.', 'Završi jedan otvoren zadatak.', 'Postavi granicu u odnosu ili situaciji koja te iscrpljuje.'],
+    avoid: ['Preterano analiziranje bez konkretnog koraka.', 'Manipulaciju i igranje tuđim očekivanjima.', 'Ulaženje u više komplikacija istovremeno.'],
+    question: 'U kojoj situaciji sam se zapetljao i koji je prvi jednostavan korak ka razrešenju?',
+    reminder: 'Ne moraš odmah da raspleteš celu mrežu. Pronađi jednu nit i počni od nje.'
+  },
+  {
+    name: 'Orao', icon: '🦅',
+    subtitle: 'Šira perspektiva, jasnoća i unutrašnja snaga',
+    desc: 'Orao simbolizuje sposobnost da se odmaknemo od svakodnevnih detalja i sagledamo širu sliku. Kada smo previše blizu problema, lako izgubimo perspektivu. Danas pokušaj da pogledaš situaciju iz više uglova.',
+    doThis: ['Napravi pauzu pre nego što reaguješ na problem.', 'Sagledaj situaciju iz perspektive druge osobe.', 'Vrati se dugoročnom cilju koji ti je važan.', 'Donesi odluku na osnovu činjenica, a ne samo trenutnog osećaja.'],
+    avoid: ['Gubljenje u sitnim detaljima.', 'Brze zaključke i osuđivanje.', 'Potrebu da sve kontrolišeš.'],
+    question: 'Šta bih drugačije video kada bih ovu situaciju sagledao iz šire perspektive?',
+    reminder: 'Ponekad se odgovor ne menja - menja se ugao iz kog gledamo problem.'
+  },
+  {
+    name: 'Krdo konja', icon: '🐎',
+    subtitle: 'Sloboda, kretanje i zajednička snaga',
+    desc: 'Krdo konja simbolizuje kretanje, slobodu i snagu koja nastaje kada se ljudi povežu. Danas obrati pažnju na odnos između svoje potrebe za samostalnošću i sposobnosti da sarađuješ sa drugima.',
+    doThis: ['Pokreni telo kroz šetnju, ples ili fizičku aktivnost.', 'Poveži se sa ljudima i razmeni ideje.', 'Započni zajednički zadatak ili napravi dogovor.', 'Prepoznaj gde ti je potrebno više slobode.'],
+    avoid: ['Pokušaj da kontrolišeš druge.', 'Odricanje od svojih potreba samo da bi pripadao grupi.', 'Nemir i stalno menjanje pravca.'],
+    question: 'Kako mogu da budem deo zajednice, a da pritom ostanem veran sebi?',
+    reminder: 'Sloboda i povezanost ne moraju da budu suprotnosti. Možemo pripadati, a ipak ostati svoji.'
+  },
+  {
+    name: 'Ganeša', icon: '🐘',
+    subtitle: 'Mudrost, znanje i prevazilaženje prepreka',
+    desc: 'Ganeša simbolizuje mudrost i sposobnost da prepreke sagledamo kao priliku za učenje. Danas je dobar trenutak da se vratiš znanju, iskustvu i lekcijama koje si već stekao.',
+    doThis: ['Uči, čitaj ili prenesi svoje znanje drugima.', 'Potraži jednostavnije rešenje za problem koji te muči.', 'Organizuj dokumente, beleške ili planove.', 'Zatraži savet od nekoga ko ima više iskustva.'],
+    avoid: ['Tvrdoglavost i insistiranje na jednom rešenju.', 'Ignorisanje lekcija iz prethodnih iskustava.', 'Odustajanje bez pokušaja da sagledaš druge mogućnosti.'],
+    question: 'Koju lekciju mogu da prepoznam u prepreci na koju trenutno nailazim?',
+    reminder: 'Prepreka ne mora da bude kraj puta. Ponekad je poziv da promeniš pristup.'
+  },
+  {
+    name: 'Krokodil', icon: '🐊',
+    subtitle: 'Snažni instinkti, granice i kontrola reakcija',
+    desc: 'Krokodil simbolizuje snažne instinkte i duboke emocionalne reakcije. Danas obrati pažnju na trenutke kada se osećaš ugroženo, napadnuto ili pod pritiskom. Prvi impuls možda neće biti najbolji odgovor.',
+    doThis: ['Primeti šta u tebi pokreće ljutnju ili odbrambenu reakciju.', 'Postavi granice jasno i mirno.', 'Napravi pauzu pre odgovora u napetoj situaciji.', 'Usmeri višak energije kroz kretanje ili fizičku aktivnost.'],
+    avoid: ['Agresivne reakcije i potrebu za osvetom.', 'Ulazak u sukobe samo da bi dokazao da si u pravu.', 'Potiskivanje emocija dok ne postanu previše intenzivne.'],
+    question: 'Šta pokušavam da zaštitim kada reagujem tako snažno?',
+    reminder: 'Možeš da zaštitiš svoje granice bez napada na druge. Snaga je i u sposobnosti da biraš reakciju.'
+  },
+  {
+    name: 'Šiva i medved', icon: '🐻',
+    subtitle: 'Unutrašnja snaga, povlačenje i obnova',
+    desc: 'Ovaj dan povezuje simboliku Šive sa snagom, tišinom i unutrašnjom transformacijom, dok medved podseća na potrebu za odmorom i povezivanjem sa telom. Danas ne moraš da budeš stalno dostupan i aktivan.',
+    doThis: ['Odvoji vreme za odmor i regeneraciju.', 'Provedi vreme u prirodi ili u mirnom okruženju.', 'Posveti pažnju telu i njegovim potrebama.', 'Razmisli šta je vreme da promeniš ili ostaviš iza sebe.'],
+    avoid: ['Preopterećivanje obavezama.', 'Ignorisanje umora i signala tela.', 'Povlačenje iz odnosa bez objašnjenja kada je razgovor potreban.'],
+    question: 'Šta treba da otpustim ili promenim kako bih povratio svoju snagu?',
+    reminder: 'Ne moraš stalno da budeš u akciji. Odmor je deo procesa, a ne prepreka napretku.'
+  },
+  {
+    name: 'Kornjača', icon: '🐢',
+    subtitle: 'Strpljenje, unutrašnje slušanje i tiha mudrost',
+    desc: 'Kornjača nas podseća da ne moramo uvek da žurimo, dokazujemo se ili budemo u pokretu da bismo napredovali. Ponekad je potrebno da zastanemo, napravimo prostor za sebe i oslušnemo šta se zaista dešava u nama.',
+    doThis: ['Odvoji vreme za sebe, tišinu i meditaciju.', 'Obrati pažnju na signale koje ti šalje telo.', 'Završavaj obaveze bez nepotrebne žurbe.', 'Slušaj intuiciju, ali joj daj prostor da se jasno izrazi.'],
+    avoid: ['Donošenje odluka na brzinu.', 'Forsiranje rezultata i pokušaj da sve završiš odjednom.', 'Previše buke, informacija i spoljašnjih uticaja.', 'Ignorisanje umora i sopstvenih potreba.'],
+    question: 'Šta mogu da čujem i prepoznam u sebi kada prestanem da žurim?',
+    reminder: 'Ne moraš uvek da ideš brže da bi stigao dalje. Ponekad je najvažniji korak upravo onaj u kojem zastaneš.'
+  },
+  {
+    name: 'Močvara i žaba', icon: '🐸',
+    subtitle: 'Pročišćenje, rasterećenje i prepoznavanje onoga što nas opterećuje',
+    desc: 'Simbol močvare nas poziva da pogledamo šta se u nama ili oko nas nagomilalo. To mogu biti nedovršene obaveze, stare emocije, odnosi koji nas iscrpljuju ili misli kojima se stalno vraćamo.',
+    doThis: ['Sredi deo prostora ili završi jednu zaostalu obavezu.', 'Zapiši šta te trenutno opterećuje.', 'Prepoznaj naviku ili odnos koji ti više ne prija.', 'Napravi pauzu i dozvoli sebi da se emocionalno rasteretiš.'],
+    avoid: ['Gomilanje obaveza i odlaganje važnih razgovora.', 'Vraćanje u stare priče bez namere da nešto promeniš.', 'Okrivljavanje sebe zbog svega što još nije rešeno.'],
+    question: 'Šta se u mom životu nagomilalo i šta mogu da počnem da raščišćavam?',
+    reminder: 'Rasterećenje počinje onda kada iskreno pogledaš šta nosiš sa sobom i odlučiš šta više ne moraš.'
+  },
+  {
+    name: 'Trozubac', icon: '🔱',
+    subtitle: 'Pravac, izbori i usmeravanje energije',
+    desc: 'Trozubac simbolizuje pravac i potrebu da razlikujemo ono što je važno od onoga što nam odvlači pažnju. Danas može biti korisno da sagledaš svoje prioritete i razmisliš da li energiju ulažeš u pravcu koji želiš.',
+    doThis: ['Odredi tri prioriteta za naredni period.', 'Donesi odluku koju odlažeš, ako imaš dovoljno informacija.', 'Pojednostavi plan i ukloni ono što nije važno.', 'Usmeri pažnju na jedan konkretan cilj.'],
+    avoid: ['Pokušaj da radiš sve istovremeno.', 'Neodlučnost iz straha da ćeš nešto propustiti.', 'Menjanje pravca svaki put kada se pojavi nova mogućnost.'],
+    question: 'U kom pravcu želim da usmerim svoju energiju i šta mi trenutno odvlači pažnju?',
+    reminder: 'Jasan pravac ne znači da znaš svaki detalj puta. Znači da znaš šta ti je sada važno.'
+  },
+  {
+    name: 'Lotos', icon: '🪷',
+    subtitle: 'Mir, jasnoća i unutrašnji razvoj',
+    desc: 'Lotos raste iz mulja, ali se otvara na površini vode. Zato nas podseća da i kroz zahtevna iskustva možemo da razvijemo više razumevanja i unutrašnjeg mira. Danas obrati pažnju na ono što ti pomaže da se vratiš sebi.',
+    doThis: ['Praktikuj meditaciju ili nekoliko minuta svesnog disanja.', 'Zahvali se za nešto što često uzimaš zdravo za gotovo.', 'Provedi vreme u aktivnosti koja ti donosi mir.', 'Sagledaj iskustvo iz kog si nešto naučio.'],
+    avoid: ['Perfekcionizam i osuđivanje sebe.', 'Pokušaj da izbegneš svaku neprijatnu emociju.', 'Nametanje sebi ideje da moraš stalno biti pozitivan.'],
+    question: 'Šta mi pomaže da pronađem mir čak i kada okolnosti nisu savršene?',
+    reminder: 'Unutrašnji mir ne znači da nema izazova. Znači da učimo kako da ostanemo povezani sa sobom dok kroz njih prolazimo.'
+  },
+  {
+    name: 'Hidra', icon: '🐉',
+    subtitle: 'Duboki strahovi, izazovi i suočavanje sa sobom',
+    desc: 'Hidra simbolizuje složene izazove i ono što se čini da se vraća svaki put kada pokušamo da ga rešimo. Danas možeš da obratiš pažnju na strahove, napetosti ili obrasce koji se ponavljaju.',
+    doThis: ['Prepoznaj jednu brigu koju stalno nosiš sa sobom.', 'Razdvoji činjenice od zamišljenih scenarija.', 'Potraži podršku ili razgovor ako ti je potreban.', 'Odredi jedan mali korak koji možeš da preduzmeš.'],
+    avoid: ['Donošenje odluka u stanju panike.', 'Produbljivanje sukoba i negativnih misli.', 'Pokušaj da sve rešiš sam i odmah.'],
+    question: 'Koji strah ili obrazac mi se vraća i šta bi bio jedan zdrav korak ka njegovom razumevanju?',
+    reminder: 'I kada je nešto komplikovano, ne moraš rešiti sve odjednom. Počni od onoga što danas možeš da razumeš i promeniš.'
+  },
+  {
+    name: 'Zlatni labud', icon: '🦢',
+    subtitle: 'Zaokruživanje, zahvalnost i integracija iskustva',
+    desc: 'Zlatni labud simbolizuje završetak ciklusa, smirenost i mudrost koja dolazi iz iskustva. Danas je dobar trenutak da pogledaš šta se promenilo, šta si naučio i šta želiš da poneseš sa sobom u naredni period.',
+    doThis: ['Osvrni se na protekli period i zapiši šta si naučio.', 'Zahvali se sebi za trud i korake koje si napravio.', 'Završi jednu otvorenu stvar ako je moguće.', 'Razmisli šta želiš da nastaviš, a šta da ostaviš iza sebe.'],
+    avoid: ['Preteranu samokritiku zbog onoga što nije ostvareno.', 'Započinjanje svega iznova bez osvrtanja na iskustvo.', 'Zanemarivanje sopstvenog napretka.'],
+    question: 'Šta sam naučio tokom ovog ciklusa i šta želim da ponesem u sledeći?',
+    reminder: 'Svaki ciklus ostavlja iskustvo. Zastani da ga prepoznaš pre nego što kreneš dalje.'
+  }
+];
+
+// ═══════════════════════════════════════════════════════
+//  PASSWORD CHECK
+// ═══════════════════════════════════════════════════════
+var SESSION_KEY = 'akal_access';
+
+function hashString(str) {
+  var h = 5381;
+  for (var i = 0; i < str.length; i++) {
+    h = (Math.imul(33, h) ^ str.charCodeAt(i)) | 0;
+  }
+  return (h >>> 0).toString(16);
+}
+
+function unlock() {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+  buildClasses();
+  buildLunar();
+  initTimer();
+}
+
+function tryUnlock(val) {
+  var hash = hashString(val);
+  if (hash === PASSWORD_HASH) {
+    try { sessionStorage.setItem(SESSION_KEY, hash); } catch(e){}
+    unlock();
+  } else {
+    document.getElementById('gate-error').textContent = 'Pogrešna lozinka. Pokušaj ponovo.';
+    document.getElementById('gate-input').value = '';
+    document.getElementById('gate-input').focus();
+  }
+}
+
+document.getElementById('gate-btn').addEventListener('click', function() {
+  tryUnlock(document.getElementById('gate-input').value.trim());
+});
+document.getElementById('gate-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') tryUnlock(this.value.trim());
+  document.getElementById('gate-error').textContent = '';
+});
+
+// Auto-unlock if same session
+(function() {
+  try {
+    var stored = sessionStorage.getItem(SESSION_KEY);
+    if (stored === PASSWORD_HASH) unlock();
+  } catch(e){}
+})();
+
+// ═══════════════════════════════════════════════════════
+//  BUILD CLASS CARDS
+// ═══════════════════════════════════════════════════════
+function buildClasses() {
+  // Zoom banner
+  var zoomEl = document.getElementById('zoom-link-slot');
+  if (ZOOM_LINK) {
+    zoomEl.innerHTML = '<a href="' + ZOOM_LINK + '" target="_blank" rel="noopener" class="zoom-link">' + ZOOM_LINK + '</a>';
+  } else {
+    zoomEl.innerHTML = '<span class="zoom-link-placeholder">Link stiže pred polazak na mejl.</span>';
+  }
+
+  // Class accordion
+  var grid = document.getElementById('class-grid');
+  grid.innerHTML = CLASSES.map(function(c, i) {
+    var isMed = c.type === 'meditation';
+    var typeTag = isMed
+      ? '<span class="class-type-tag">Veče meditacije</span>'
+      : '';
+    var linkEl = c.link
+      ? '<a href="' + c.link + '" target="_blank" rel="noopener" class="class-link">'
+        + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5,3 19,12 5,21"/></svg>'
+        + 'Pogledaj snimak</a>'
+      : '<span class="class-soon">Uskoro</span>';
+    var title = (c.title && !isMed) ? c.title
+      : isMed ? 'Veče meditacije'
+      : '';
+    var chevron = '<svg class="class-item-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6,9 12,15 18,9"/></svg>';
+    return '<div class="class-item' + (isMed ? ' meditation' : '') + '" id="ci-' + i + '">'
+      + '<div class="class-item-header" onclick="toggleClass(' + i + ')">'
+        + '<div class="class-item-left">'
+          + '<span class="class-week">' + c.date + '</span>'
+          + typeTag
+        + '</div>'
+        + chevron
+      + '</div>'
+      + '<div class="class-item-body">'
+        + (title ? '<div class="class-title">' + title + '</div>' : '')
+        + linkEl
+      + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+function toggleClass(i) {
+  var item = document.getElementById('ci-' + i);
+  if (!item) return;
+  item.classList.toggle('open');
+}
+
+// ═══════════════════════════════════════════════════════
+//  BUILD LUNAR GUIDANCE
+// ═══════════════════════════════════════════════════════
+var VIENNA_LAT = 48.2082, VIENNA_LNG = 16.3738;
+
+// ─── Timer ──────────────────────────────────────────────────────────────────
+function initTimer() {
+  var CIRCUMFERENCE = 2 * Math.PI * 100;
+  var progress = document.getElementById('timer-progress');
+  progress.style.strokeDasharray = CIRCUMFERENCE;
+  progress.style.strokeDashoffset = 0;
+
+  var selectedMin = 7;
+  var totalSec = selectedMin * 60;
+  var remainSec = totalSec;
+  var interval = null;
+  var running = false;
+
+  var display = document.getElementById('timer-display');
+  var startBtn = document.getElementById('timer-start-btn');
+  var resetBtn = document.getElementById('timer-reset-btn');
+  var durBtns = document.querySelectorAll('.timer-dur-btn');
+
+  function playBell(freq, duration) {
+    try {
+      var ctx = new (window.AudioContext || window.webkitAudioContext)();
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      var osc2 = ctx.createOscillator();
+      var gain2 = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc2.connect(gain2); gain2.connect(ctx.destination);
+      osc.type = 'sine'; osc.frequency.value = freq || 432;
+      osc2.type = 'sine'; osc2.frequency.value = (freq || 432) * 1.5;
+      gain.gain.setValueAtTime(0.5, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (duration || 3));
+      gain2.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (duration || 3));
+      osc.start(); osc2.start();
+      osc.stop(ctx.currentTime + (duration || 3));
+      osc2.stop(ctx.currentTime + (duration || 3));
+    } catch(e) {}
+  }
+
+  function formatTime(s) {
+    var m = Math.floor(s / 60);
+    var sec = s % 60;
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  function updateRing() {
+    var fraction = remainSec / totalSec;
+    progress.style.strokeDashoffset = CIRCUMFERENCE * (1 - fraction);
+  }
+
+  function setDisplay(s, cls) {
+    display.textContent = formatTime(s);
+    display.className = 'timer-display' + (cls ? ' ' + cls : '');
+  }
+
+  function stop() {
+    clearInterval(interval);
+    interval = null;
+    running = false;
+    startBtn.textContent = 'Nastavi';
+  }
+
+  function reset() {
+    stop();
+    remainSec = totalSec;
+    setDisplay(remainSec);
+    progress.style.transition = 'none';
+    progress.style.strokeDashoffset = 0;
+    setTimeout(function() { progress.style.transition = 'stroke-dashoffset 1s linear'; }, 50);
+    startBtn.textContent = 'Počni';
+  }
+
+  function tick() {
+    remainSec--;
+    setDisplay(remainSec, 'running');
+    updateRing();
+    if (remainSec <= 0) {
+      clearInterval(interval);
+      interval = null;
+      running = false;
+      setDisplay(0, 'done');
+      playBell(528, 4);
+      startBtn.textContent = 'Počni';
+    }
+  }
+
+  startBtn.addEventListener('click', function() {
+    if (running) { stop(); return; }
+    if (remainSec <= 0) { reset(); return; }
+    playBell(432, 2);
+    running = true;
+    startBtn.textContent = 'Pauza';
+    progress.style.transition = 'stroke-dashoffset 1s linear';
+    interval = setInterval(tick, 1000);
+  });
+
+  resetBtn.addEventListener('click', reset);
+
+  durBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (running) return;
+      durBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      selectedMin = parseInt(btn.getAttribute('data-min'));
+      totalSec = selectedMin * 60;
+      remainSec = totalSec;
+      setDisplay(remainSec);
+      progress.style.transition = 'none';
+      progress.style.strokeDashoffset = 0;
+    });
+  });
+
+  setDisplay(totalSec);
+}
+
+function buildLunar() {
+  var now = new Date();
+  var ill = SunCalc.getMoonIllumination(now);
+  // phase 0-1: 0=nova mesečina, 0.5=pun mesec
+  var lunarDay = Math.max(1, Math.min(30, Math.floor(ill.phase * 29.53) + 1));
+  var d = LUNAR_DAYS[lunarDay - 1];
+
+  var days = ['Nedelja','Ponedeljak','Utorak','Sreda','Četvrtak','Petak','Subota'];
+  var months = ['januara','februara','marta','aprila','maja','juna','jula','avgusta','septembra','oktobra','novembra','decembra'];
+  var dateStr = days[now.getDay()] + ', ' + now.getDate() + '. ' + months[now.getMonth()] + ' ' + now.getFullYear();
+
+  document.getElementById('lunar-date').textContent = dateStr;
+  document.getElementById('lunar-day-num').textContent = 'Dan ' + lunarDay + ' od 30';
+  document.getElementById('lunar-icon').textContent = d.icon;
+  document.getElementById('lunar-phase-name').textContent = d.name;
+  document.getElementById('lunar-subtitle').textContent = d.subtitle;
+  document.getElementById('lunar-phase-desc').textContent = d.desc;
+
+  document.getElementById('lunar-do').innerHTML = '<ul>' + d.doThis.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>';
+  document.getElementById('lunar-dont').innerHTML = '<ul>' + d.avoid.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>';
+  document.getElementById('lunar-question').textContent = d.question;
+  document.getElementById('lunar-reminder').textContent = d.reminder;
+
+  // Pronađi sledeću promenu lunarnog dana (binarna pretraga do 48h)
+  var step = 60 * 1000; // 1 minuta
+  var t = now.getTime();
+  var end = t + 48 * 3600 * 1000;
+  var nextTime = null;
+  var nextDay = lunarDay;
+  while (t < end) {
+    t += step;
+    var ph = SunCalc.getMoonIllumination(new Date(t)).phase;
+    var nd = Math.max(1, Math.min(30, Math.floor(ph * 29.53) + 1));
+    if (nd !== lunarDay) { nextTime = new Date(t); nextDay = nd; break; }
+  }
+  if (nextTime) {
+    var isTomorrow = nextTime.getDate() !== now.getDate();
+    var h = nextTime.getHours().toString().padStart(2, '0');
+    var m = nextTime.getMinutes().toString().padStart(2, '0');
+    var nextD = LUNAR_DAYS[nextDay - 1];
+    var whenStr = isTomorrow ? 'Sutra u ' + h + ':' + m : 'Danas u ' + h + ':' + m;
+    document.getElementById('lunar-next').textContent =
+      whenStr + ' → Dan ' + nextDay + ' · ' + nextD.name + ' ' + nextD.icon;
+  }
+}
+</script>
+</body>
+</html>

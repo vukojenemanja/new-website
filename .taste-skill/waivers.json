@@ -1,0 +1,7 @@
+[
+  {"check": "button-styles", "target": "(one screen)", "reason": "PRIHVATAM button (square, fill #c4a882) is injected by cookie-banner.js external script; shape/style is entirely outside page author control"},
+  {"check": "button-styles", "target": "(the page)", "reason": "PRIHVATAM button (square, fill #c4a882) is injected by cookie-banner.js external script; shape/style is entirely outside page author control"},
+  {"check": "card-layout", "target": "section#galerija > div.wrap.grid > div.span-6 > div.gallery-grid", "reason": "gallery-grid is a photo grid for lightbox browsing, not a component card layout"},
+  {"check": "links", "target": "a#nv-popup-soul-link \"Preuzmi PDF\"", "reason": "href is set dynamically by JS before user interaction; initial href is intentionally empty placeholder"},
+  {"check": "container-edges", "target": "div#nv-cb \"Koristimo kolačiće za analitiku kako bis\"", "reason": "cookie banner (#nv-cb) is injected by cookie-banner.js external script; placement outside header/main/footer is intentional for a fixed-position overlay"},
+]

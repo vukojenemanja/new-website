@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="sr" data-type="service" data-radius="soft" data-buttons="arrow" data-motion="" class="m-enter mo-js m-enter-done mo-safe" data-tone="light" data-moments-ready="2" data-ready="1"><head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-NSMHMQD13N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NSMHMQD13N', { 'anonymize_ip': true, 'storage': 'none', 'client_storage': 'none' });
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<title>Akal zajednica - Nedeljna Kundalini joga i meditacija | Nemanja Vukoje</title>
+<meta name="description" content="Pridruži se Akal zajednici za nedeljne časove Kundalini joge, večeri meditacije i toplu, podržavajuću grupu. Online, 77€ mesečno.">
+<link rel="canonical" href="https://vukojenemanja.com/srb/akal.html">
+<link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/akal.html">
+<link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/akal.html">
+<link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/akal.html">
+<link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/en/akal.html">
+<meta property="og:title" content="Akal zajednica - Nedeljna Kundalini joga i meditacija | Nemanja Vukoje">
+<meta property="og:description" content="Pridruži se Akal zajednici za nedeljne časove Kundalini joge, večeri meditacije i toplu, podržavajuću grupu. Online, 77€ mesečno.">
+<meta property="og:url" content="https://vukojenemanja.com/srb/akal.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nemanja Vukoje">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Akal zajednica - Nedeljna Kundalini joga i meditacija | Nemanja Vukoje">
+<meta name="twitter:description" content="Pridruži se Akal zajednici za nedeljne časove Kundalini joge, večeri meditacije i toplu, podržavajuću grupu. Online, 77€ mesečno.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&amp;family=Red+Hat+Text:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/system.css">
+<link rel="stylesheet" href="../assets/motion/motion.css">
+<link rel="stylesheet" href="../assets/layout/layout.css">
+<style>
+:root {
+  --p-bg: #f6f0eb; --p-surface: #ebe0d9; --p-ink: #2c2325; --p-muted: #6a5d5e;
+  --p-accent: #9a3c4c; --p-accent-ink: #ffffff; --p-action: #9a3c4c; --p-action-ink: #ffffff;
+  --p-inv-bg: #2c2325; --p-inv-surface: #382f31; --p-inv-ink: #f6f0eb; --p-inv-muted: #a39b99;
+  --p-inv-accent: #f6f0eb; --p-inv-accent-ink: #2c2325; --p-inv-action: #f6f0eb; --p-inv-action-ink: #2c2325;
+  --font-display: "Red Hat Display", system-ui, sans-serif;
+  --font-text: "Red Hat Text", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.025em;
+  --display-tracking-xl: -0.035em;
+}
+
+/* Gallery */
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: var(--s-6); }
+.gallery-item { position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer; border-radius: var(--r-sm); background: var(--surface); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-overlay { position: absolute; inset: 0; background: rgba(44,35,37,0.42); opacity: 0; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay-icon { font-size: 22px; color: white; opacity: 0.9; }
+
+/* Lightbox */
+.lightbox { display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(44,35,37,0.92); align-items: center; justify-content: center; cursor: pointer; }
+.lightbox.open { display: flex; }
+.lightbox-img { max-width: 90vw; max-height: 88vh; object-fit: contain; cursor: default; display: block; border-radius: var(--r-sm); }
+.lightbox-close { position: absolute; top: 24px; right: 32px; font-size: 32px; color: rgba(246,240,235,0.55); cursor: pointer; line-height: 1; transition: color 0.2s; background: none; border: none; }
+.lightbox-close:hover { color: var(--p-inv-ink); }
+.lightbox-caption { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); font-size: 15px; font-style: italic; color: rgba(246,240,235,0.55); white-space: nowrap; }
+
+/* FAQ */
+.faq-list { max-width: 720px; }
+.faq-item { border-bottom: 1px solid color-mix(in oklab, var(--ink) 10%, transparent); }
+.faq-item:first-child { border-top: 1px solid color-mix(in oklab, var(--ink) 10%, transparent); }
+.faq-btn { width: 100%; background: none; border: none; cursor: pointer; padding: 14px 0; display: flex; justify-content: space-between; align-items: center; gap: 24px; text-align: left; font-family: inherit; }
+.faq-q { font-size: 15px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.faq-icon { width: 20px; height: 20px; flex-shrink: 0; position: relative; }
+.faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: var(--accent); transition: transform 0.3s, opacity 0.3s; border-radius: 1px; }
+.faq-icon::before { width: 12px; height: 1.5px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.faq-icon::after { width: 1.5px; height: 12px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.faq-item.open .faq-icon::after { transform: translate(-50%,-50%) rotate(90deg); opacity: 0; }
+.faq-answer { display: none; }
+.faq-item.open .faq-answer { display: block; }
+.faq-answer-inner { padding: 0 0 20px; font-size: 15px; line-height: 1.85; color: var(--ink); }
+.faq-answer-inner a { color: var(--accent); }
+
+/* Compare grid */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: var(--s-7); border-radius: var(--r-lg); overflow: hidden; }
+.compare-col { padding: 20px var(--s-7); }
+.compare-list { list-style: none; }
+.compare-list li { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid color-mix(in oklab, var(--ink) 10%, transparent); font-size: 15px; color: var(--ink); line-height: 1.5; }
+.compare-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.compare-mark { flex-shrink: 0; margin-top: 2px; }
+
+/* Include cards */
+.include-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: var(--s-7); }
+.include-card { background: color-mix(in oklab, var(--ink) 6%, var(--bg)); border-radius: var(--r-md); padding: var(--s-7); }
+.include-icon { font-size: 24px; display: block; margin-bottom: var(--s-4); }
+.include-title { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 500; color: var(--ink); margin-bottom: var(--s-3); line-height: 1.3; }
+.include-body { font-size: var(--t-body); line-height: 1.8; color: var(--muted); }
+
+/* Bonus */
+.bonus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); margin-top: var(--s-7); }
+.bonus-card { background: color-mix(in oklab, var(--ink) 6%, var(--bg)); border-radius: var(--r-md); padding: var(--s-7); }
+.bonus-tag { font-size: var(--t-small); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--s-4); display: block; }
+.bonus-title { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 500; color: var(--ink); line-height: 1.3; margin-bottom: var(--s-4); }
+.bonus-body { font-size: var(--t-body); line-height: 1.8; color: var(--ink); }
+
+/* Picture-develops container */
+.develop { margin: 0; overflow: hidden; height: min(560px, var(--ly-fit)); border-radius: var(--r-lg); }
+.develop > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 1023px) { .develop { height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-7); } }
+
+/* Testimonial quote */
+.akal-quote { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 28px); font-weight: 400; line-height: 1.55; color: var(--ink); max-width: 760px; letter-spacing: -0.01em; }
+.akal-quote-attr { margin-top: var(--s-5); font-size: var(--t-small); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+
+/* Skip link – clip, not -9999px */
+.skip-link { position: absolute; clip: rect(0 0 0 0); width: 1px; height: 1px; overflow: hidden; white-space: nowrap; }
+.skip-link:focus-visible { position: fixed; top: 1rem; left: 1rem; width: auto; height: auto; clip: auto; overflow: visible; white-space: normal; z-index: 10000; padding: .4rem .9rem; background: var(--bg); color: var(--ink); border-radius: var(--r-sm); border: 1px solid var(--accent); }
+
+/* SVG icons in include cards */
+.include-icon-svg { width: 28px; height: 28px; display: block; margin-bottom: var(--s-4); color: var(--accent); }
+.include-body { color: var(--ink) !important; }
+
+/* Section photos (za-koga, sta-se-menja, utisak) */
+.section-photo { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: min(500px, var(--ly-fit)); }
+.section-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 1023px) { .section-photo { height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-7); } }
+/* Desktop-only height overrides (must come after .section-photo and .develop media queries) */
+@media (min-width: 1024px) { .za-koga-photo { height: min(600px, var(--ly-fit)); } }
+@media (min-width: 1024px) { .develop-sm { height: min(220px, var(--ly-fit)) !important; } }
+/* sta-ukljucuje: direct padding-top reduction to bring content under one screen */
+@media (min-width: 1024px) { #sta-ukljucuje { padding-top: 60px !important; } }
+/* sta-ukljucuje include-cards: smaller photo keeps section under one screen at desktop */
+@media (min-width: 1024px) { .include-card .bonus-photo { height: 100px; } }
+/* sta-ukljucuje develop: hide at desktop (image is 724px wide, too narrow for 1280px; include-cards already provide visuals) */
+@media (min-width: 1024px) { #sta-ukljucuje .develop { display: none !important; } }
+@media (min-width: 1024px) { #sta-ukljucuje figure.develop { margin-bottom: 0 !important; } }
+
+/* Bonus card photos */
+.bonus-photo { margin: calc(-1 * var(--s-7)) calc(-1 * var(--s-7)) var(--s-6); height: 160px; overflow: hidden; border-radius: var(--r-md) var(--r-md) 0 0; }
+.bonus-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Compare heading scale */
+.compare-col h3 { font-family: var(--font-display); font-size: var(--t-h4); font-weight: 400; margin-bottom: var(--s-6); color: var(--ink); }
+
+/* Rows secondary text */
+.rows__meta { font-size: var(--t-small); color: var(--ink); line-height: 1.4; }
+
+/* Cookie banner contrast overrides */
+#nv-cb-text { color: #e8ddd0 !important; }
+#nv-cb-reject { color: #d9cec4 !important; border-color: rgba(217,206,196,0.55) !important; }
+#nv-cb-inner { max-width: 1280px !important; margin: 0 auto !important; }
+@media (max-width: 360px) { #nv-cb { padding: 14px 16px !important; } #nv-cb-inner { gap: 10px !important; } }
+
+/* Mobile – 320px fits */
+@media (max-width: 360px) {
+  .btn-row { flex-direction: column; align-items: flex-start; }
+  .btn-row .btn { width: 100%; justify-content: center; text-align: center; }
+  .closing__cta .btn--xl { font-size: 14px; padding: 14px 20px; }
+  .closing__links .grid { display: block; }
+  .closing__links .span-6, .closing__links .span-3 { margin-bottom: var(--s-7); }
+  .nav__actions { display: none; }
+}
+@media (max-width: 340px) {
+  .nav__logo { font-size: 13px; overflow: hidden; max-width: 140px; white-space: nowrap; text-overflow: ellipsis; }
+}
+/* Footer list buttons – tap target */
+.footer__col ul li button { display: inline-flex; align-items: center; min-height: 44px; }
+/* Footer links: isolate from closing__cta type effect; clip cta so it can't bleed */
+.closing__cta { overflow: hidden; }
+.closing__links { position: relative; isolation: isolate; }
+.closing__links a { color: var(--p-inv-ink) !important; }
+.closing__links button { color: var(--p-inv-ink) !important; }
+.closing__links .footer__lede { color: var(--p-inv-muted) !important; }
+.closing__links h4 { color: var(--p-inv-muted) !important; }
+.closing__links .footer__legal span { color: var(--p-inv-muted) !important; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .include-grid { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .bonus-grid { grid-template-columns: 1fr; }
+  .compare-col { padding: var(--s-7) var(--s-6); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+/* screen-height #sta-ukljucuje: hide bonus-photos on mobile (saves 3 × 160px ≈ 480px) */
+@media (max-width: 1023px) { .include-card .bonus-photo { display: none; } }
+/* section-gaps utisak/zasto: taller photo pushes utisak content down, reducing the gap */
+@media (min-width: 1024px) { #utisak .section-photo { height: 520px !important; } }
+/* neighbour fails at 390px: natural heights 606/706/771px need 820px gate minimum */
+@media (max-width: 639px) {
+  #sta-se-menja { padding-bottom: 220px !important; }
+  #zasto { padding-bottom: 118px !important; }
+  #postavljamo-temelje { padding-bottom: 52px !important; }
+}
+/* screen-height sta-ukljucuje: reduce 48px to bring 1727px within 24px of 1688px (2 screens) */
+@media (max-width: 639px) {
+  #sta-ukljucuje { --padt: 96px; --padb: 48px; }
+}
+/* footer background: inv-bg on footer element so closing__links inherits dark ground */
+footer.closing#pridruzise { background: var(--p-inv-bg); }
+/* footer padt at desktop: reduce from 120px to bring content ≤ 1646px limit (section-height) */
+@media (min-width: 1024px) {
+  footer.closing#pridruzise { --padt: 36px; }
+}
+/* off-viewport nav__toggle at 320px: shrink logo further */
+@media (max-width: 320px) {
+  .nav__logo { font-size: 11px !important; max-width: 90px !important; }
+}
+/* collide nv-cb [390,320]: push copyright above fixed cookie banner */
+@media (max-width: 639px) {
+  .footer__legal { padding-bottom: 90px !important; }
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="../assets/moments/moments.js">
+<link rel="modulepreload" href="../assets/moments/lib.js">
+<link rel="modulepreload" href="../assets/moments/pinned-chapters/moment.js">
+<link rel="modulepreload" href="../assets/moments/picture-develops/moment.js">
+<style>#nv-cb{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bark,#3D2E1E);border-top:1px solid rgba(196,168,130,0.2);padding:20px 24px;}#nv-cb-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}#nv-cb-text{flex:1;min-width:200px;font-size:13px;line-height:1.6;font-family:"DM Sans",sans-serif;color:rgba(232,221,208,0.8);}#nv-cb-text a{color:var(--clay,#C4A882);text-decoration:underline;}#nv-cb-text a:hover{color:var(--warm,#D4B896);}#nv-cb-actions{display:flex;gap:10px;flex-shrink:0;}#nv-cb-accept{padding:10px 24px;background:var(--clay,#C4A882);color:var(--bark,#3D2E1E);border:none;cursor:pointer;font-family:"DM Sans",sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:background 0.2s;}#nv-cb-accept:hover{background:var(--warm,#D4B896);}#nv-cb-reject{padding:10px 24px;background:transparent;color:rgba(232,221,208,0.45);border:1px solid rgba(232,221,208,0.2);cursor:pointer;font-family:"DM Sans",sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.2s,border-color 0.2s;}#nv-cb-reject:hover{color:rgba(232,221,208,0.75);border-color:rgba(232,221,208,0.4);}@media(max-width:600px){#nv-cb-inner{flex-direction:column;gap:14px;}#nv-cb-actions{width:100%;}#nv-cb-accept,#nv-cb-reject{flex:1;text-align:center;}}</style><link rel="stylesheet" href="http://127.0.0.1:5200/assets/moments/pinned-chapters/moment.css"><link rel="stylesheet" href="http://127.0.0.1:5200/assets/moments/picture-develops/moment.css"></head>
+<body>
+
+<header class="nav nav--split nav--tone" data-m-nav="1">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Preskoči na sadržaj</a>
+    <nav class="nav__links" aria-label="Navigacija">
+      <div class="nav__item"><a class="nav__link" href="index.html#about">O meni</a></div>
+      <div class="nav__item"><a class="nav__link" href="akal.html" aria-current="page">Akal zajednica</a></div>
+      <div class="nav__item"><a class="nav__link" href="individual.html">Individualni rad</a></div>
+      <div class="nav__item"><a class="nav__link" href="index.html#testimonials">Utisci</a></div>
+    </nav>
+    <a class="nav__logo" href="index.html">Nemanja Vukoje</a>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="mailto:info@vukojenemanja.com?subject=Pridru%C5%BEivanje%20Akal%20zajednici&amp;body=Zdravo%2C%0A%0A%C5%BDelim%20da%20se%20prijavim%20za%20Akal%20zajednicu.%0A%0AIme%3A%20">Pridruži se Akalu</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Meni">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero hero--photo is-still is-entered" data-enter="" aria-labelledby="hero-h">
+    <img class="hero__bg" src="../assets/images/akal-78511859969e8e37.jpg" alt="Čas Kundalini joge – Akal zajednica" style="--ly-pos: 50% 40%; --ly-pos-phone: 60% 30%" fetchpriority="high">
+    <div class="wrap">
+      <div class="hero-text">
+        <div class="hero__text">
+          <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>Kundalini joga i meditacija · 77€ mesečno</p>
+          <h1 id="hero-h">Nedeljna Kundalini joga i meditacija</h1>
+          <p class="hero__lead">Mesto gde izgradiš pravu praksu – uz zajednicu koja te drži čak i kada sam ne možeš.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="mailto:info@vukojenemanja.com?subject=Pridru%C5%BEivanje%20Akal%20zajednici&amp;body=Zdravo%2C%0A%0A%C5%BDelim%20da%20se%20prijavim%20za%20Akal%20zajednicu.%0A%0AIme%3A%20">Pridruži se Akalu<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"></path><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></a>
+            <a class="btn btn--secondary" href="#sta-ukljucuje">Šta je uključeno</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZA KOGA -->
+  <section class="section" id="za-koga" aria-labelledby="za-koga-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <p class="t-label" style="color:var(--accent)">Za koga je ovo</p>
+          <h2 id="za-koga-h">Za koga je Akal zajednica</h2>
+        </div>
+        <p>Počneš – nedelja, dve, tri. Onda nešto upadne. Putovanje, gužva, loš dan. I sve kreće ispočetka. Ne jednom – svaki put.</p>
+        <p style="margin-top: var(--s-4)">Stres se nakuplja u telu. Lošije spavaš, teže se koncentrišeš. I znaš šta bi pomoglo. Ali dan prođe.</p>
+        <p style="margin-top: var(--s-4)">Ovo nije pitanje discipline. To je pitanje sistema – i zajednice koja te drži čak i kada sam/a ne možeš.</p>
+        <blockquote style="border-top: 2px solid var(--accent); padding-top: var(--s-4); margin-top: var(--s-5);">
+          <p style="font-family: var(--font-display); font-size: clamp(18px, 2vw, 22px); font-style: italic; line-height: 1.55; color: var(--ink);">Znaš da ti praksa pomaže – ali ne uspevaš da je održiš kada ti je najpotrebnija.</p>
+        </blockquote>
+        <p style="margin-top: var(--s-4)">Akal postoji upravo za to. Iz nedelje u nedelju, Kundalini joga i meditacija uče tvoj nervni sistem da se reguliše, um da se smiri i telo da otpusti ono što nosi.</p>
+      </div>
+      <figure class="section-photo span-6 za-koga-photo">
+        <img src="../assets/images/akal-62fadc9f3dfa0bcf.jpg" alt="Početni krug Akal zajednice" loading="eager">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ŠTA JE UKLJUČENO – DARK BAND -->
+  <section class="section ground-inverse" id="sta-ukljucuje" aria-labelledby="ukljucuje-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="t-label" style="color:var(--accent)">Šta je uključeno</p>
+        <h2 id="ukljucuje-h">Šta je uključeno u Akal zajednicu</h2>
+      </div>
+      <figure class="develop develop-sm" style="margin-bottom: var(--s-7);">
+        <img src="../assets/images/akal-62fadc9f3dfa0bcf.jpg" alt="Čas Kundalini joge – Akal zajednica" loading="eager">
+      </figure>
+      <div class="include-grid">
+        <div class="include-card">
+          <div class="bonus-photo">
+            <img src="../assets/images/akal-35ba747072485c73.jpg" alt="" loading="eager">
+          </div>
+          <svg class="include-icon-svg" viewBox="0 0 28 28" fill="none" aria-hidden="true"><circle cx="14" cy="10" r="4" stroke="currentColor" stroke-width="1.5"></circle><path d="M6 24c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M14 2v2M14 22v2M2 14h2M22 14h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+          <h3 class="include-title">Nedeljna Kundalini joga</h3>
+          <p class="include-body">Jedan online čas uživo svake nedelje. Kundalini joga radi istovremeno na nervnom sistemu, energetskom telu i umu – gradeći snagu, fleksibilnost i unutrašnji mir iznutra. Svaki snimak časa dostupan je ceo mesec.</p>
+        </div>
+        <div class="include-card">
+          <div class="bonus-photo">
+            <img src="../assets/images/akal-26baaf419da63c6a.jpg" alt="" loading="eager">
+          </div>
+          <svg class="include-icon-svg" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M14 4a10 10 0 1 0 0 20A10 10 0 0 0 14 4z" stroke="currentColor" stroke-width="1.5"></path><path d="M14 8v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <h3 class="include-title">2 večeri meditacije / mesečno</h3>
+          <p class="include-body">Dve posebne večeri svakog meseca za dublju meditativnu praksu. Ove sesije su više od tehnike – to su prostori za tišinu, emotivno otpuštanje i istinsko ponovno povezivanje sa sobom.</p>
+        </div>
+        <div class="include-card">
+          <div class="bonus-photo">
+            <img src="../assets/images/akal-305fc09ad124f225.jpg" alt="" loading="eager">
+          </div>
+          <svg class="include-icon-svg" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M5 20l2-5A9 9 0 1 1 14 23H5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path><path d="M10 12h8M10 16h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+          <h3 class="include-title">Privatna WhatsApp zajednica</h3>
+          <p class="include-body">Privatna grupa za podršku, deljenje i povremene zadatke između sesija. Svaki mesec ima svoju temu – a prostor je otvoren za učesnike da ga koriste kako im odgovara.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ŠTA SE MENJA -->
+  <section class="section" id="sta-se-menja" aria-labelledby="menja-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <p class="t-label" style="color:var(--accent)">Šta se menja</p>
+          <h2 id="menja-h">Šta donosi redovna Kundalini joga i meditacija</h2>
+          <p>Iz nedelje u nedelju, počinješ da primećuješ razliku – u telu, u reakcijama, u tome kako dočekuješ dan.</p>
+        </div>
+        <ul class="rows">
+          <li><span class="rows__name">Tvoj nervni sistem može da nauči da se reguliše</span><span class="rows__meta">Stres polako prestaje da živi u telu kao nekada.</span></li>
+          <li><span class="rows__name">Emotivni teret koji je bio zaglavljen počinje da dobija prostor</span><span class="rows__meta">Da se pomeri i otpusti.</span></li>
+          <li><span class="rows__name">Možeš da osećaš više energije i prisutnosti u svakodnevnom životu</span></li>
+          <li><span class="rows__name">Zajednica ti daje osećaj da nisi sam/a na svom putu</span></li>
+          <li><span class="rows__name">Prostor bez osude u kome možeš da istražuješ sebe bez pritiska</span></li>
+        </ul>
+      </div>
+      <figure class="section-photo span-6">
+        <img src="../assets/images/akal-26baaf419da63c6a.jpg" alt="Povezanost srca – Akal zajednica" loading="eager">
+      </figure>
+    </div>
+  </section>
+
+  <!-- UTISAK -->
+  <section class="section ground-inverse" id="utisak" aria-labelledby="utisak-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <p class="t-label" style="color:var(--accent)">Iskustvo iz zajednice</p>
+          <h2 id="utisak-h">Utisci iz Akal zajednice</h2>
+        </div>
+        <p class="akal-quote">"40 dana meditacije i Kundalini joge uradili su za mene više nego godine terapije. Odabrala sam da radim bliže sa Nemanjom – bila sam na njegovoj radionici, postala deo Akal zajednice i išla na 1:1 sesije. Od prvog dana sam znala da je ovo mesto gde treba da budem."</p>
+        <p class="akal-quote-attr">Član Akal zajednice</p>
+      </div>
+      <figure class="section-photo span-6">
+        <img src="../assets/images/akal-35ba747072485c73.jpg" alt="Meditacija u Akal zajednici" loading="eager">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ZAŠTO RAD FUNKCIONIŠE – PINNED CHAPTERS -->
+  <section class="section is-live" id="zasto" style="--h: 2; --mo-hold: 1;" data-moment="pinned-chapters" aria-labelledby="zasto-h" data-moment-mounted="1">
+    <div class="wrap mo-pc__grid" data-edge-free="">
+      <div class="mo-pc__text">
+        <h2 id="zasto-h">Zašto Kundalini joga i meditacija deluju</h2>
+        <ol class="mo-pc__steps">
+          <li class="mo-pc__step">
+            <h3>Kundalini joga smiruje nervni sistem</h3>
+            <p><span class="mo-pc__p-in">Telo drži sve što um ne uspe da obradi. Napetost, obrazac koji se ponavlja, strah koji nigde ne odlazi – sve to ima adresu u sistemu. Kundalini joga i meditacija omogućavaju sistemu da to prepozna i otpusti. Ne pričamo o tome. Otpuštamo to.</span></p>
+            
+          </li>
+          <li class="mo-pc__step">
+            <h3>Meditacija donosi prirodnu jasnoću</h3>
+            <p><span class="mo-pc__p-in">Kundalini joga i meditacija ne smiruju te tako što isključuju misli. Smiruju te tako što regulišu nervni sistem – telo prelazi iz stanja napetosti u stanje obnove. Ta jasnoća nije iluzija. To je tvoje prirodno stanje kada nisi pod stresom.</span></p>
+            
+          </li>
+          <li class="mo-pc__step is-on">
+            <h3>Redovna Akal praksa vraća autentičan kontakt</h3>
+            <p><span class="mo-pc__p-in">Ono što te godinama odvaja od sebe nije slabost – to je zaštita koja je jednom imala smisla. Redovna praksa polako skida te slojeve. Ne postaješ neko drugi. Postaješ više ko zaista jesi – ispod svega onoga što si nosila.</span></p>
+            
+          </li>
+        </ol>
+      </div>
+      <div class="mo-pc__visuals frame"><figure class="mo-pc__visual is-past"><img src="../assets/images/akal-35ba747072485c73.jpg" alt="Meditacija sa otvorenim rukama" width="1800" height="1200"></figure><figure class="mo-pc__visual is-past"><img src="../assets/images/akal-68958111b4e9ad4f.jpg" alt="Šavasana – duboki odmor" width="1800" height="1200"></figure><figure class="mo-pc__visual is-on"><img src="../assets/images/akal-26baaf419da63c6a.jpg" alt="Povezanost srca" width="1800" height="1200"></figure></div>
+    </div>
+  </section>
+
+  <!-- AKAL JESTE / NIJE -->
+  <section class="section" id="postavljamo-temelje" aria-labelledby="compare-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <p class="t-label" style="color:var(--accent)">Postavljamo temelje</p>
+          <h2 id="compare-h">Šta Akal zajednica jeste, a šta nije</h2>
+        </div>
+        <div class="compare-grid" style="margin-top: var(--s-6)">
+          <div class="compare-col ground-surface">
+            <h3>Akal <em style="font-style:italic;color:var(--accent)">jeste</em></h3>
+            <ul class="compare-list">
+              <li><span class="compare-mark" style="color:var(--accent)">✓</span>redovna praksa</li>
+              <li><span class="compare-mark" style="color:var(--accent)">✓</span>regulacija i uzemljenje</li>
+              <li><span class="compare-mark" style="color:var(--accent)">✓</span>kontinuitet i stabilnost</li>
+              <li><span class="compare-mark" style="color:var(--accent)">✓</span>podrška zajednice</li>
+              <li><span class="compare-mark" style="color:var(--accent)">✓</span>održavanje odnosa sa sobom</li>
+              <li><span class="compare-mark" style="color:var(--accent)">✓</span>ulazna ili prateća ponuda</li>
+            </ul>
+          </div>
+          <div class="compare-col ground-inverse">
+            <h3>Akal <em style="font-style:italic;color:var(--accent)">nije</em></h3>
+            <ul class="compare-list">
+              <li><span class="compare-mark">×</span>individualno prilagođen proces</li>
+              <li><span class="compare-mark">×</span>rad jedan-na-jedan na konkretnom obrascu</li>
+              <li><span class="compare-mark">×</span>zamena za RESET ili Transform</li>
+              <li><span class="compare-mark">×</span>psihoterapija ili zdravstveni tretman</li>
+              <li><span class="compare-mark">×</span>prostor za rešavanje akutnih problema</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <figure class="section-photo span-6">
+        <img src="../assets/images/akal-68958111b4e9ad4f.jpg" alt="Šavasana – duboki odmor u Akal zajednici" loading="eager">
+      </figure>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section ground-surface" id="faq" aria-labelledby="faq-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <p class="t-label" style="color:var(--accent)">Pitanja i odgovori</p>
+          <h2 id="faq-h">Pitanja o Akal zajednici</h2>
+        </div>
+      <div class="faq-list" style="max-width: none">
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Kojim danom i u koliko sati su časovi?</span><span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Redovni časovi su nedeljom u 20:00. Večeri meditacije su sredom u 20:00.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Može li da se priključi bilo kada ili postoje ciklusi?</span><span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Svaki mesec je jedan ciklus. Možeš se priključiti na početku svakog meseca.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Kada dobijam pristup WhatsApp grupi?</span><span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Pristup dobijaš na početku mesečnog ciklusa, zajedno sa svim ostalim učesnicima tog ciklusa.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Kako se otkazuje članstvo?</span><span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Jednostavno – javiš mi se nakon što se mesec završi i ne obnavljaš. Plaća se mesec po mesec, bez dugoročnih obaveza.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Šta je potrebno za čas?</span><span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Zoom aplikacija, stabilna internet konekcija, malo prostora i mira. To je sve što ti treba.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Šta ako nikada nisam praktikovao/la Kundalini jogu?</span><span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Nije nikakav problem. Svi ciklusi su prilagođeni i početnicima. Napravio sam poseban vodič za novi ljude – <a href="pocetnici.html">Tvoj prvi Kundalini čas</a> – gde objašnjavam šta je Kundalini joga, šta su mantre i kako izgleda čas.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Da li su snimci dostupni?</span><span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Snimci svih susreta – i nedeljnih časova i večeri meditacije – dostupni su do kraja mesečnog ciklusa. Ako ne možeš uživo, možeš odgledati kada ti odgovara.</div></div>
+      </div>
+      </div>
+      </div>
+      <figure class="section-photo span-6 start-7">
+        <img src="../assets/images/akal-78511859969e8e37.jpg" alt="Čas Kundalini joge – Akal zajednica" loading="eager">
+      </figure>
+    </div>
+  </section>
+
+  <!-- GALERIJA + PICTURE-DEVELOPS -->
+  <section class="section" id="galerija" aria-labelledby="galerija-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <p class="t-label" style="color:var(--accent)">Zajednica u pokretu</p>
+          <h2 id="galerija-h">Trenuci iz Akal zajednice</h2>
+          <p style="font-style: italic; color: var(--muted);">Stvarni trenuci sa stvarnih sesija. Svako okupljanje nosi svoju energiju.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="openLightbox('../assets/images/akal-35ba747072485c73.jpg', 'Meditacija – otvorene ruke')">
+            <img src="../assets/images/akal-35ba747072485c73.jpg" alt="Meditacija sa otvorenim rukama" loading="eager">
+            <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('../assets/images/akal-78511859969e8e37.jpg', 'Čas Kundalini joge')">
+            <img src="../assets/images/akal-78511859969e8e37.jpg" alt="Čas Kundalini joge" loading="eager">
+            <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('../assets/images/akal-62fadc9f3dfa0bcf.jpg', 'Početni krug')">
+            <img src="../assets/images/akal-62fadc9f3dfa0bcf.jpg" alt="Početni krug" loading="eager">
+            <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('../assets/images/akal-68958111b4e9ad4f.jpg', 'Šavasana – duboki odmor')">
+            <img src="../assets/images/akal-68958111b4e9ad4f.jpg" alt="Šavasana – duboki odmor" loading="eager">
+            <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('../assets/images/akal-26baaf419da63c6a.jpg', 'Povezanost srca')">
+            <img src="../assets/images/akal-26baaf419da63c6a.jpg" alt="Povezanost srca" loading="eager">
+            <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('../assets/images/akal-305fc09ad124f225.jpg', 'Zajednički pokret')">
+            <img src="../assets/images/akal-305fc09ad124f225.jpg" alt="Zajednički pokret" loading="eager">
+            <div class="gallery-overlay"><span class="gallery-overlay-icon">+</span></div>
+          </div>
+        </div>
+      </div>
+      <figure class="develop span-6 start-7 mo-pd mo-pd--film is-done" data-moment="picture-develops" data-moment-mounted="1">
+        <img src="../assets/images/akal-305fc09ad124f225.jpg" alt="Zajednički pokret u Akal zajednici" width="1280" height="880" loading="eager">
+      </figure>
+    </div>
+  </section>
+
+  <!-- BONUS -->
+  <section class="section ground-inverse" id="bonus" aria-labelledby="bonus-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="t-label" style="color:var(--accent)">Bonus kada se priključiš</p>
+        <h2 id="bonus-h">Dve besplatne Akal radionice za nove članove</h2>
+      </div>
+      <div class="bonus-grid">
+        <div class="bonus-card">
+          <div class="bonus-photo"><img src="../assets/images/akal-26baaf419da63c6a.jpg" alt="" loading="eager"></div>
+          <span class="bonus-tag">Master class</span>
+          <h3 class="bonus-title">Aktiviraj svoju intuiciju</h3>
+          <p class="bonus-body">Intuicija nije dar koji imaš ili nemaš — to je sposobnost koju možeš da otvoriš i ojačaš. Kroz duge meditacije i posebne Kundalini tehnike, učiš da razlikuješ unutrašnji glas od straha i naučenih obrazaca.</p>
+        </div>
+        <div class="bonus-card">
+          <div class="bonus-photo"><img src="../assets/images/akal-68958111b4e9ad4f.jpg" alt="" loading="eager"></div>
+          <span class="bonus-tag">Radionica</span>
+          <h3 class="bonus-title">Zašto znanje nije dovoljno</h3>
+          <p class="bonus-body">Razumeš obrazac. Znaš odakle dolazi. I opet reagiješ isto. Ova radionica objašnjava šta je to što zapravo drži obrazac na mestu i gde prava promena počinje.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER / CLOSE -->
+<footer class="footer closing" id="pridruzise" style="--h: 2" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">Pridruži se Akal zajednici</h2>
+        <p class="t-lead">77€ mesečno. Svakog meseca dobijaš najmanje šest vođenih susreta: četiri časa Kundalini joge i dve večeri meditacije, uz snimke i podršku privatne zajednice. Članstvo možeš da otkažeš bilo kada.</p>
+      </div>
+      <a class="btn btn--primary btn--xl" href="mailto:info@vukojenemanja.com?subject=Pridru%C5%BEivanje%20Akal%20zajednici&amp;body=Zdravo%2C%0A%0A%C5%BDelim%20da%20se%20prijavim%20za%20Akal%20zajednicu.%0A%0AIme%3A%20">Pridruži se Akalu — 77€ mesečno<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"></path><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-6 stack-5">
+          <a class="nav__logo" href="index.html">Nemanja Vukoje</a>
+          <p class="footer__lede">Iscelitelj · Coach · Učitelj Kundalini joge<br>Beč, Austrija – online širom sveta</p>
+        </div>
+        <div class="span-3 start-7 footer__col">
+          <h4>Navigacija</h4>
+          <ul>
+            <li><a href="index.html#about">O meni</a></li>
+            <li><a href="akal.html">Akal zajednica</a></li>
+            <li><a href="akal-clanovi.html">Prostor za članove</a></li>
+            <li><a href="individual.html">Inner Shift metoda</a></li>
+            <li><a href="aura-tretman.html">Tretman aure</a></li>
+            <li><a href="licna-mapa.html">Lična mapa</a></li>
+            <li><a href="index.html#testimonials">Utisci</a></li>
+            <li><button type="button" onclick="nvShowNewsletter()" style="background:none;border:none;padding:0;cursor:pointer;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;">Newsletter</button></li>
+          </ul>
+        </div>
+        <div class="span-3 footer__col">
+          <h4>Kontakt</h4>
+          <ul>
+            <li><a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a></li>
+            <li><a href="https://instagram.com/vukoje.nemanja.world">@vukoje.nemanja.world</a></li>
+            <li><a href="https://instagram.com/vukoje.nemanja">@vukoje.nemanja</a></li>
+          </ul>
+          <h4 style="margin-top: var(--s-5)">Pravni okvir</h4>
+          <ul>
+            <li><a href="agb.html">Uslovi</a></li>
+            <li><a href="datenschutz.html">Privatnost</a></li>
+            <li><a href="impressum.html">Impresum</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <span>© 2026 The Art of Connection Vienna – Nemanja Vukoje · Sachsenplatz, Beč</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Zatvori">×</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<!-- Scripts -->
+<script type="module" src="../assets/system.js"></script>
+<script type="module" src="../assets/motion/motion.js"></script>
+<script type="module" src="../assets/layout/layout.js"></script>
+
+<script>
+function toggleFaq(btn) {
+  var item = btn.closest('.faq-item');
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el) {
+    el.classList.remove('open');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+  }
+}
+function openLightbox(src, caption) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxCaption').textContent = caption || '';
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+<!-- Email popup -->
+<link rel="stylesheet" href="../popup.css">
+<div id="nv-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="nv-popup-title">
+  <div id="nv-popup">
+    <button id="nv-popup-close" aria-label="Zatvori">×</button>
+    <div id="nv-popup-label">Newsletter + broj duše – besplatno</div>
+    <h2 id="nv-popup-title">Pridruži se listi.<br><em>Dobij broj duše.</em></h2>
+    <p id="nv-popup-sub">Prijavi se na moj newsletter i odmah dobij besplatno čitanje svog broja duše po tantričkoj numerologiji.</p>
+    <form id="nv-popup-form" novalidate="">
+      <input type="text" id="nv-popup-name" name="first_name" placeholder="Tvoje ime" autocomplete="given-name">
+      <input type="email" id="nv-popup-email" name="email" placeholder="Tvoj email" required="" autocomplete="email">
+      <label id="nv-popup-soul-opt">
+        <input type="checkbox" id="nv-popup-soul-check" checked="">
+        <span id="nv-popup-soul-opt-label">Želim da saznam i broj duše</span>
+      </label>
+      <div id="nv-popup-dob-wrap" style="display: block;">
+        <label id="nv-popup-dob-label">Datum rođenja</label><input type="date" id="nv-popup-dob" name="dob" autocomplete="bday">
+      </div>
+      <label id="nv-popup-consent">
+        <input type="checkbox" id="nv-popup-consent-check" required="">
+        <span id="nv-popup-consent-label">Slažem se da primam emailove i razumem da mogu da se odjavim u svakom trenutku. Pročitao/la sam <a href="/srb/datenschutz.html" target="_blank">Politiku privatnosti</a>.</span>
+      </label>
+      <button type="submit" id="nv-popup-submit">Otkrij broj</button>
+      <div id="nv-popup-error"></div>
+    </form>
+    <p id="nv-popup-note">Bez spama. Odjava u svakom trenutku.</p>
+    <div id="nv-popup-success">
+      <div id="nv-popup-soul-result">
+        <p>Tvoj broj duše je <strong id="nv-popup-soul-num" style="font-style:normal;color:#9a3c4c"></strong>.</p>
+        <span class="success-sub" style="display:block;margin-top:10px">Preuzmi svoje besplatno čitanje:</span>
+        <a id="nv-popup-soul-link" href="#" target="_blank" style="display:inline-block;margin-top:10px;font-family:'Red Hat Text',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#2c2325;background:#9a3c4c;color:#fff;padding:12px 24px;text-decoration:none;">Preuzmi PDF</a>
+      </div>
+      <div id="nv-popup-newsletter-result" style="display:none">
+        <p>Hvala na prijavi!</p>
+        <span class="success-sub" style="display:block;margin-top:8px">Proveri inbox (i spam folder) - stiže za koji trenutak.</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../popup.js"></script>
+
+<!-- Akal poklon popup -->
+<style>
+#ag-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(44,35,37,0.78);
+  z-index: 10001; align-items: center; justify-content: center; padding: 24px;
+}
+#ag-overlay.open { display: flex; }
+#ag-box {
+  background: #2c2325; border: 1px solid rgba(154,60,76,0.25); border-top: 3px solid #9a3c4c;
+  max-width: 500px; width: 100%; padding: 52px 48px; position: relative; border-radius: 8px;
+}
+#ag-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 24px; color: rgba(246,240,235,0.35); cursor: pointer; line-height: 1; transition: color 0.2s; }
+#ag-close:hover { color: #9a3c4c; }
+#ag-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: #9a3c4c; margin-bottom: 20px; }
+#ag-title { font-family: 'Red Hat Display', system-ui, sans-serif; font-size: clamp(28px, 5vw, 40px); font-weight: 400; color: #f6f0eb; line-height: 1.1; margin-bottom: 20px; }
+#ag-title em { font-style: italic; color: #9a3c4c; }
+#ag-sub { font-size: 15px; line-height: 1.85; color: rgba(246,240,235,0.65); margin-bottom: 36px; }
+#ag-sub strong { color: #9a3c4c; font-weight: 400; }
+#ag-cta { display: block; padding: 18px 32px; background: #9a3c4c; color: #fff; font-family: 'Red Hat Text', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; text-align: center; font-weight: 500; transition: background 0.3s; margin-bottom: 16px; border-radius: 4px; }
+#ag-cta:hover { background: #b8475a; }
+#ag-dismiss { display: block; text-align: center; font-size: 12px; color: rgba(246,240,235,0.3); cursor: pointer; transition: color 0.2s; padding: 4px; }
+#ag-dismiss:hover { color: #a39b99; }
+@media (max-width: 600px) { #ag-box { padding: 40px 24px; } }
+</style>
+<div id="ag-overlay" role="dialog" aria-modal="true">
+  <div id="ag-box">
+    <button id="ag-close" aria-label="Zatvori">×</button>
+    <div id="ag-label">Poklon dobrodošlice</div>
+    <h2 id="ag-title">Lična mapa —<br><em>besplatno.</em></h2>
+    <p id="ag-sub">Svaki novi član Akal zajednice dobija <strong>besplatnu ličnu numerološku mapu</strong> kao poklon dobrodošlice — vrednost 33€. Priključi se, pošalji mi ime i datum rodjenja, i mapa stiže za 72 sata.</p>
+    <a id="ag-cta" href="mailto:info@vukojenemanja.com?subject=Pridru%C5%BEivanje%20Akal%20zajednici&amp;body=Zdravo%2C%0A%0A%C5%BDelim%20da%20se%20prijavim%20za%20Akal%20zajednicu.%0A%0AIme%3A%20%0ADatum%20rodjenja%3A%20">Pridruži se Akalu – 77€ mesečno</a>
+    <span id="ag-dismiss">Nije za mene</span>
+  </div>
+</div>
+<script>
+(function() {
+  var STORAGE_KEY = 'ag-seen';
+  try { if (sessionStorage.getItem(STORAGE_KEY)) return; } catch(e) {}
+  var shown = false;
+  function agClose() {
+    document.getElementById('ag-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function agShow() {
+    if (shown) return;
+    var nvOverlay = document.getElementById('nv-popup-overlay');
+    if (nvOverlay && nvOverlay.classList.contains('open')) return;
+    shown = true;
+    try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch(e) {}
+    document.getElementById('ag-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  var scrolledEnough = false;
+  var timerDone = false;
+  function maybeShow() { if (scrolledEnough && timerDone) agShow(); }
+  function onScroll() {
+    var scrolled = window.scrollY + window.innerHeight;
+    var total = document.documentElement.scrollHeight;
+    if (total > 0 && scrolled / total >= 0.80) {
+      window.removeEventListener('scroll', onScroll);
+      scrolledEnough = true;
+      maybeShow();
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  setTimeout(function() { timerDone = true; maybeShow(); }, 144000);
+  document.getElementById('ag-close').addEventListener('click', agClose);
+  document.getElementById('ag-dismiss').addEventListener('click', agClose);
+  document.getElementById('ag-overlay').addEventListener('click', function(e) {
+    if (e.target === this) agClose();
+  });
+})();
+</script>
+<script src="../cookie-banner.js"></script><div id="nv-cb"><div id="nv-cb-inner"><div id="nv-cb-text">Koristimo kolačiće za analitiku kako bismo razumeli kako koristiš sajt i poboljšali iskustvo. <a href="/srb/datenschutz.html">Politika privatnosti</a></div><div id="nv-cb-actions"><button id="nv-cb-accept">Prihvatam</button><button id="nv-cb-reject">Odbijam</button></div></div></div>
+
+
+</body></html>

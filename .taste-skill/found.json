@@ -1,0 +1,47 @@
+{
+ "note": "Live search results (photos.mjs search): candidates, each looked at full size before use and listed in the build report as a stand-in.",
+ "photos": [
+  {
+   "id": "f191947113",
+   "source": "commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Woman_enjoying_a_quiet_afternoon_reading_a_book_in_a_cozy_camper_interior.jpg",
+   "width": 6048,
+   "height": 4024,
+   "ratio": 1.5,
+   "orientation": "landscape",
+   "by": "Shixart1985",
+   "licence": "CC BY 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Woman_enjoying_a_quiet_afternoon_reading_a_book_in_a_cozy_camper_interior.jpg",
+   "alt": "Woman enjoying a quiet afternoon reading a book in a cozy camper interior",
+   "subject": "stand-in",
+   "tone": "mid",
+   "calm": "none",
+   "standIn": true,
+   "query": "woman reading book calm",
+   "series": "woman enjoying a",
+   "at": "2026-11-18T07:55:13.479Z"
+  },
+  {
+   "id": "f156725021",
+   "source": "commons",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Letter_signed_Sara%2C_New_York_City%2C_to_%28Ernst_Filsinger%29%2C_Havana%2C_Cuba%2C_April_28%2C_1924_-_DPLA_-_0237bf00aae50b8bbcbf29a7220248bd_%28page_6%29.jpg",
+   "width": 1692,
+   "height": 2000,
+   "ratio": 0.85,
+   "orientation": "portrait",
+   "by": "Teasdale, Sara, 1884-1933",
+   "licence": "Public domain",
+   "licenceUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+   "page": "https://commons.wikimedia.org/wiki/File:Letter_signed_Sara,_New_York_City,_to_(Ernst_Filsinger),_Havana,_Cuba,_April_28,_1924_-_DPLA_-_0237bf00aae50b8bbcbf29a7220248bd_(page_6).jpg",
+   "alt": "Letter signed Sara, New York City, to [Ernst Filsinger], Havana, Cuba, April 28, 1924",
+   "subject": "stand-in",
+   "tone": "mid",
+   "calm": "none",
+   "standIn": true,
+   "query": "woman reading book calm",
+   "series": "letter signed sara",
+   "at": "2026-11-18T07:55:13.480Z"
+  }
+ ]
+}

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="sr" data-type="service" data-radius="soft" data-palette="topla">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akal zajednica — Kundalini joga i meditacija · trial v2</title>
+<meta name="page-type" content="service">
+<meta name="site-kind" content="other">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════
+   PALETTES
+   Applied as [data-palette="..."] on <html>
+   ════════════════════════════════════════════════════════ */
+
+/* 1 · Topla — original warm */
+:root,
+[data-palette="topla"] {
+  --p-bg:        #F5F1EC;
+  --p-surface:   #E8DDD0;
+  --p-ink:       #3D2E1E;
+  --p-muted:     #8A8070;
+  --p-accent:    #9B6B3A;
+  --p-action:    #C4A882;
+  --p-action-ink:#1E1712;
+
+  --p-inv-bg:      #1E1712;
+  --p-inv-surface: #3D2E1E;
+  --p-inv-ink:     #E8DDD0;
+  --p-inv-muted:   rgba(232,221,208,0.45);
+  --p-inv-accent:  #C4A882;
+  --p-inv-action:  #C4A882;
+  --p-inv-act-ink: #1E1712;
+
+  --p-swatch: #C4A882;
+  --p-name: "Topla";
+}
+
+/* 2 · Mahovina — moss-sand (earthy olive) */
+[data-palette="mahovina"] {
+  --p-bg:        #ddd6c6;
+  --p-surface:   #d2cab8;
+  --p-ink:       #2a2a26;
+  --p-muted:     #55534b;
+  --p-accent:    #4f6238;
+  --p-action:    #4f6238;
+  --p-action-ink:#ffffff;
+
+  --p-inv-bg:      #2a2a26;
+  --p-inv-surface: #353430;
+  --p-inv-ink:     #ddd6c6;
+  --p-inv-muted:   rgba(221,214,198,0.45);
+  --p-inv-accent:  #8da875;
+  --p-inv-action:  #ddd6c6;
+  --p-inv-act-ink: #2a2a26;
+
+  --p-swatch: #4f6238;
+  --p-name: "Mahovina";
+}
+
+/* 3 · Lan — linen + harbour blue */
+[data-palette="lan"] {
+  --p-bg:        #f3f1ec;
+  --p-surface:   #e6e2d9;
+  --p-ink:       #1d2530;
+  --p-muted:     #5a6270;
+  --p-accent:    #2c5877;
+  --p-action:    #2c5877;
+  --p-action-ink:#ffffff;
+
+  --p-inv-bg:      #1d2530;
+  --p-inv-surface: #29313b;
+  --p-inv-ink:     #f3f1ec;
+  --p-inv-muted:   rgba(243,241,236,0.45);
+  --p-inv-accent:  #7aafc9;
+  --p-inv-action:  #f3f1ec;
+  --p-inv-act-ink: #1d2530;
+
+  --p-swatch: #2c5877;
+  --p-name: "Lan";
+}
+
+/* 4 · Kamen — three stones (sage) */
+[data-palette="kamen"] {
+  --p-bg:        #eeecea;
+  --p-surface:   #e4e1dd;
+  --p-ink:       #333231;
+  --p-muted:     #625f5b;
+  --p-accent:    #5c6b54;
+  --p-action:    #5c6b54;
+  --p-action-ink:#ffffff;
+
+  --p-inv-bg:      #333231;
+  --p-inv-surface: #3e3d3c;
+  --p-inv-ink:     #eeecea;
+  --p-inv-muted:   rgba(238,236,234,0.45);
+  --p-inv-accent:  #8da885;
+  --p-inv-action:  #eeecea;
+  --p-inv-act-ink: #333231;
+
+  --p-swatch: #5c6b54;
+  --p-name: "Kamen";
+}
+
+/* ════════════════════════════════════════════════════════
+   BASE
+   ════════════════════════════════════════════════════════ */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--p-bg);
+  color: var(--p-ink);
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.5s, color 0.5s;
+}
+img { max-width:100%; display:block; }
+
+.skip {
+  position:absolute; left:24px; top:24px; z-index:1000;
+  padding:8px 16px; background:var(--p-ink); color:var(--p-bg);
+  font-size:12px; letter-spacing:1px; text-decoration:none;
+  transform:translateY(-200%); transition:transform 0.2s;
+}
+.skip:focus { transform:translateY(0); }
+
+/* ════════════════════════════════════════════════════════
+   LAYOUT
+   ════════════════════════════════════════════════════════ */
+.wrap { max-width:1200px; margin:0 auto; padding:0 clamp(24px,6vw,80px); }
+section.--v { padding-block: clamp(88px,11vw,130px); }
+
+/* ════════════════════════════════════════════════════════
+   NAV
+   ════════════════════════════════════════════════════════ */
+.nav {
+  position:fixed; inset:0 0 auto; z-index:100;
+  padding:28px clamp(24px,6vw,80px);
+  display:flex; align-items:center; justify-content:space-between;
+  transition: background 0.4s, padding 0.3s, border-color 0.5s;
+  border-bottom:1px solid transparent;
+}
+.nav.on {
+  background:color-mix(in srgb, var(--p-inv-bg) 96%, transparent);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  padding-block:16px;
+  border-bottom-color:color-mix(in srgb, var(--p-inv-accent) 18%, transparent);
+}
+.nav-logo {
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px; font-weight:400; letter-spacing:0.5px;
+  color:var(--p-inv-ink); text-decoration:none;
+  transition:opacity 0.2s;
+}
+.nav-logo:hover { opacity:0.65; }
+.nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
+.nav-links a {
+  font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+  color:color-mix(in srgb, var(--p-inv-ink) 50%, transparent);
+  text-decoration:none; transition:color 0.2s;
+}
+.nav-links a:hover { color:var(--p-inv-ink); }
+.nav-cta {
+  font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:500;
+  padding:11px 26px; border-radius:2px; text-decoration:none;
+  background:var(--p-inv-action); color:var(--p-inv-act-ink);
+  transition:opacity 0.2s, transform 0.15s;
+  display:inline-block;
+}
+.nav-cta:hover  { opacity:0.85; transform:translateY(-1px); }
+.nav-cta:active { transform:scale(0.98); }
+
+/* ════════════════════════════════════════════════════════
+   TYPOGRAPHY
+   ════════════════════════════════════════════════════════ */
+.lbl {
+  display:block; font-size:11px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--p-accent); margin-bottom:24px;
+}
+.lbl--inv { color:var(--p-inv-accent); }
+
+h2.display {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4vw,54px); font-weight:300; line-height:1.18;
+  color:var(--p-ink); letter-spacing:-0.01em; text-wrap:balance;
+}
+h2.display em { font-style:italic; color:var(--p-accent); }
+h2.display--inv { color:var(--p-inv-ink); }
+h2.display--inv em { color:var(--p-inv-accent); }
+
+/* ════════════════════════════════════════════════════════
+   BUTTONS
+   ════════════════════════════════════════════════════════ */
+.btn {
+  display:inline-flex; align-items:center; gap:10px; cursor:pointer;
+  font-family:'Hanken Grotesk',sans-serif;
+  font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:500;
+  text-decoration:none; border-radius:2px;
+  padding:14px 32px; border:1px solid transparent;
+  transition: transform 0.15s, opacity 0.2s, border-color 0.3s, color 0.3s, background 0.3s;
+}
+.btn:active { transform:scale(0.98); }
+.btn--fill {
+  background:var(--p-action); color:var(--p-action-ink);
+  border-color:var(--p-action);
+}
+.btn--fill:hover  { opacity:0.85; transform:translateY(-1px); }
+.btn--inv {
+  background:var(--p-inv-action); color:var(--p-inv-act-ink);
+  border-color:var(--p-inv-action);
+}
+.btn--inv:hover   { opacity:0.85; transform:translateY(-1px); }
+.btn--outline {
+  background:transparent; color:var(--p-ink);
+  border-color:color-mix(in srgb, var(--p-ink) 20%, transparent);
+}
+.btn--outline:hover {
+  border-color:color-mix(in srgb, var(--p-ink) 45%, transparent);
+  transform:translateY(-1px);
+}
+
+/* ════════════════════════════════════════════════════════
+   HERO
+   ════════════════════════════════════════════════════════ */
+.hero {
+  position:relative; height:100svh; min-height:620px;
+  display:flex; align-items:flex-end; overflow:hidden;
+}
+.hero-bg {
+  position:absolute; inset:0;
+  background-image:url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1920&h=1080&fit=crop&q=80');
+  background-size:cover; background-position:center 40%;
+  transform:scale(1.05);
+  transition:transform 10s cubic-bezier(0,0,0.2,1);
+}
+.hero.in .hero-bg { transform:scale(1); }
+.hero-ov {
+  position:absolute; inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(10,7,4,0.82) 0%,
+    rgba(10,7,4,0.45) 45%,
+    rgba(10,7,4,0.15) 100%
+  );
+}
+.hero-content {
+  position:relative; z-index:1;
+  width:100%; padding:0 clamp(24px,6vw,80px) clamp(60px,8vw,96px);
+  max-width:1200px; margin:0 auto;
+}
+.hero-inner { max-width:760px; }
+
+/* entrance */
+.hero-label,.hero h1,.hero-sub,.hero-row {
+  opacity:0; transform:translateY(22px);
+}
+.hero-label { transition:opacity 0.65s 0.1s, transform 0.65s 0.1s; }
+.hero h1    { transition:opacity 0.9s  0.25s, transform 0.9s  0.25s; }
+.hero-sub   { transition:opacity 0.75s 0.4s,  transform 0.75s 0.4s; }
+.hero-row   { transition:opacity 0.65s 0.55s, transform 0.65s 0.55s; }
+.hero.in .hero-label,
+.hero.in h1,
+.hero.in .hero-sub,
+.hero.in .hero-row { opacity:1; transform:none; }
+
+.hero-label {
+  font-size:11px; letter-spacing:5px; text-transform:uppercase;
+  color:color-mix(in srgb, #C4A882 70%, transparent); margin-bottom:28px;
+}
+.hero h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,8vw,104px); font-weight:300; line-height:1.03;
+  color:#EDE4D6; letter-spacing:-0.02em; text-wrap:balance;
+  margin-bottom:20px;
+}
+.hero h1 em { font-style:italic; color:#D4B896; }
+.hero-sub {
+  font-size:clamp(15px,1.4vw,17px); line-height:1.75;
+  color:rgba(237,228,214,0.6); max-width:520px; margin-bottom:36px;
+}
+.hero-row { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+.hero-note {
+  font-size:12px; letter-spacing:0.5px;
+  color:rgba(237,228,214,0.3);
+}
+
+/* ════════════════════════════════════════════════════════
+   PAIN
+   ════════════════════════════════════════════════════════ */
+.s-pain { background:var(--p-bg); transition:background 0.5s; }
+
+.pain-intro { max-width:600px; margin-bottom:60px; }
+.pain-intro p {
+  font-size:15px; line-height:1.9; color:var(--p-muted);
+  margin-top:18px;
+}
+
+.pain-grid {
+  display:grid; grid-template-columns:repeat(2,1fr); gap:3px;
+  margin-bottom:56px;
+}
+.pain-card {
+  background:var(--p-surface); padding:40px 36px 36px;
+  border-left:3px solid color-mix(in srgb, var(--p-accent) 25%, transparent);
+  transition:border-color 0.25s, transform 0.2s, background 0.5s;
+}
+.pain-card:hover {
+  border-left-color:var(--p-accent);
+  transform:translateY(-2px);
+}
+.pain-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px; letter-spacing:3px; color:var(--p-accent);
+  opacity:0.6; margin-bottom:16px; display:block;
+}
+.pain-card q {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,1.8vw,22px); font-weight:300; font-style:italic;
+  color:var(--p-ink); line-height:1.55; quotes:none;
+}
+
+.pain-bridge {
+  max-width:600px;
+  font-size:15px; line-height:1.9; color:var(--p-muted);
+  padding-top:48px; border-top:1px solid color-mix(in srgb, var(--p-ink) 10%, transparent);
+  font-style:italic;
+}
+
+/* ════════════════════════════════════════════════════════
+   WORD-HIGHLIGHT MOMENT
+   ════════════════════════════════════════════════════════ */
+.s-statement {
+  background:var(--p-bg);
+  padding-block:clamp(72px,9vw,110px);
+  transition:background 0.5s;
+}
+.s-statement .wrap { max-width:1000px; }
+
+/* word highlight CSS (from taste skill) */
+.mo-wh__text {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,3.5vw,46px); font-weight:300; line-height:1.22;
+  letter-spacing:-0.01em; text-wrap:pretty;
+  color:var(--p-ink); /* fallback: full ink when no JS */
+}
+.mo-wh .mo-w {
+  color:color-mix(in srgb, var(--p-ink) 30%, var(--p-bg));
+  transition:color 140ms ease;
+}
+.mo-wh .mo-w.on { color:var(--p-ink); }
+.mo-wh strong .mo-w.on { color:var(--p-accent); }
+@media (prefers-reduced-motion:reduce) {
+  .mo-wh .mo-w { color:var(--p-ink); transition:none; }
+  .mo-wh strong .mo-w { color:var(--p-accent); }
+}
+
+/* ════════════════════════════════════════════════════════
+   INCLUDED (dark)
+   ════════════════════════════════════════════════════════ */
+.s-included {
+  background:var(--p-inv-bg); transition:background 0.5s;
+}
+.inc-h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,3.5vw,50px); font-weight:300; line-height:1.2;
+  color:var(--p-inv-ink); max-width:560px; text-wrap:balance;
+  margin-bottom:56px; letter-spacing:-0.01em;
+}
+.inc-h2 em { font-style:italic; color:var(--p-inv-accent); }
+
+.inc-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:3px;
+}
+.inc-card {
+  background:color-mix(in srgb, var(--p-inv-surface) 60%, transparent);
+  border-top:1px solid color-mix(in srgb, var(--p-inv-accent) 18%, transparent);
+  padding:40px 32px 36px;
+  transition:background 0.2s, transform 0.2s;
+}
+.inc-card:hover {
+  background:color-mix(in srgb, var(--p-inv-surface) 90%, transparent);
+  transform:translateY(-2px);
+}
+.inc-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:40px; font-weight:300; line-height:1;
+  color:color-mix(in srgb, var(--p-inv-accent) 25%, transparent);
+  margin-bottom:20px; display:block; letter-spacing:-0.02em;
+}
+.inc-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:21px; font-weight:400;
+  color:var(--p-inv-ink); margin-bottom:14px; line-height:1.3;
+}
+.inc-body {
+  font-size:14px; line-height:1.9;
+  color:var(--p-inv-muted);
+}
+
+/* ════════════════════════════════════════════════════════
+   PHOTO MOMENT
+   ════════════════════════════════════════════════════════ */
+.s-moment {
+  position:relative; min-height:72vh;
+  display:flex; align-items:center; overflow:hidden;
+}
+.moment-bg {
+  position:absolute; inset:0;
+  background-image:url('https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=1920&h=900&fit=crop&q=80');
+  background-size:cover; background-position:center 30%;
+  transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.s-moment:hover .moment-bg { transform:scale(1.025); }
+.moment-ov {
+  position:absolute; inset:0;
+  background:linear-gradient(
+    to right,
+    rgba(8,5,2,0.90) 0%,
+    rgba(8,5,2,0.62) 45%,
+    rgba(8,5,2,0.18) 100%
+  );
+}
+.moment-wrap {
+  position:relative; z-index:1;
+  width:100%; max-width:1200px; margin:0 auto;
+  padding:clamp(72px,9vw,120px) clamp(24px,6vw,80px);
+}
+.moment-inner { max-width:560px; }
+.moment-q {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(24px,2.8vw,38px); font-weight:300; font-style:italic;
+  color:#EDE4D6; line-height:1.45; margin-bottom:28px;
+}
+.moment-q::before { content:'\201E'; }
+.moment-q::after  { content:'\201C'; }
+.moment-attr {
+  font-size:11px; letter-spacing:3px; text-transform:uppercase;
+  color:#C4A882;
+}
+
+/* ════════════════════════════════════════════════════════
+   CTA CLOSE
+   ════════════════════════════════════════════════════════ */
+.s-close {
+  background:var(--p-bg); transition:background 0.5s;
+}
+.close-grid {
+  display:grid; grid-template-columns:5fr 7fr; gap:88px; align-items:start;
+}
+.close-left .lbl { margin-bottom:20px; }
+.close-left h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4vw,54px); font-weight:300; line-height:1.18;
+  color:var(--p-ink); text-wrap:balance; margin-bottom:20px; letter-spacing:-0.01em;
+}
+.close-left h2 em { font-style:italic; color:var(--p-accent); }
+.close-left p {
+  font-size:15px; line-height:1.9; color:var(--p-muted); margin-bottom:40px;
+}
+.price-row {
+  display:flex; align-items:baseline; gap:6px; margin-bottom:32px;
+  line-height:1;
+}
+.price-big {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(64px,8vw,88px); font-weight:300; color:var(--p-ink);
+  letter-spacing:-0.03em;
+}
+.price-unit { font-size:24px; color:var(--p-muted); font-weight:300; }
+.price-per  {
+  font-size:12px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--p-muted); align-self:flex-end; padding-bottom:6px;
+}
+.price-cancel {
+  font-size:12px; color:var(--p-muted); letter-spacing:0.5px; margin-top:14px;
+}
+
+.inc-list { list-style:none; margin-bottom:40px; }
+.inc-list li {
+  font-size:14px; line-height:1.75; color:var(--p-muted);
+  padding:12px 0; border-bottom:1px solid color-mix(in srgb, var(--p-ink) 7%, transparent);
+  display:flex; gap:14px; align-items:flex-start;
+}
+.inc-list li::before {
+  content:''; flex-shrink:0; margin-top:8px;
+  width:4px; height:4px; border-radius:50%; background:var(--p-accent);
+}
+
+/* ════════════════════════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════════════════════════ */
+.footer {
+  background:var(--p-inv-bg); padding:64px 0 40px;
+  border-top:1px solid color-mix(in srgb, var(--p-inv-accent) 8%, transparent);
+  transition:background 0.5s;
+}
+.footer-row {
+  display:flex; justify-content:space-between; align-items:start;
+  flex-wrap:wrap; gap:40px; margin-bottom:48px;
+}
+.footer-logo {
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px; color:var(--p-inv-ink); text-decoration:none; letter-spacing:0.5px;
+  transition:opacity 0.2s;
+}
+.footer-logo:hover { opacity:0.6; }
+.footer-links { display:flex; gap:28px; list-style:none; flex-wrap:wrap; }
+.footer-links a {
+  font-size:11px; letter-spacing:2px; text-transform:uppercase;
+  color:color-mix(in srgb, var(--p-inv-ink) 35%, transparent);
+  text-decoration:none; transition:color 0.2s;
+}
+.footer-links a:hover { color:color-mix(in srgb, var(--p-inv-ink) 75%, transparent); }
+.footer-bottom {
+  font-size:11px; color:color-mix(in srgb, var(--p-inv-ink) 20%, transparent);
+  letter-spacing:0.5px; padding-top:24px;
+  border-top:1px solid color-mix(in srgb, var(--p-inv-accent) 6%, transparent);
+  display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+
+/* ════════════════════════════════════════════════════════
+   PALETTE SWITCHER
+   ════════════════════════════════════════════════════════ */
+.pal-sw {
+  position:fixed; bottom:28px; right:28px; z-index:200;
+  display:flex; flex-direction:column; gap:8px; align-items:flex-end;
+}
+.pal-sw-label {
+  font-size:9px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--p-muted); margin-bottom:4px; text-align:right;
+  opacity:0.7; transition:color 0.4s;
+}
+.pal-btn {
+  width:32px; height:32px; border-radius:50%;
+  border:2px solid transparent; cursor:pointer;
+  transition:transform 0.2s, border-color 0.2s;
+  position:relative;
+}
+.pal-btn:hover { transform:scale(1.15); }
+.pal-btn.active { border-color:var(--p-ink); }
+.pal-btn[data-p="topla"]    { background:#C4A882; }
+.pal-btn[data-p="mahovina"] { background:#4f6238; }
+.pal-btn[data-p="lan"]      { background:#2c5877; }
+.pal-btn[data-p="kamen"]    { background:#5c6b54; }
+
+.pal-tooltip {
+  position:absolute; right:42px; top:50%; transform:translateY(-50%);
+  background:var(--p-inv-bg); color:var(--p-inv-ink);
+  font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  padding:5px 10px; border-radius:2px; white-space:nowrap;
+  opacity:0; pointer-events:none;
+  transition:opacity 0.15s, background 0.4s, color 0.4s;
+}
+.pal-btn:hover .pal-tooltip { opacity:1; }
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media (max-width:1024px) {
+  .inc-grid { grid-template-columns:1fr 1fr; }
+  .close-grid { gap:60px; }
+}
+@media (max-width:768px) {
+  .nav-links { display:none; }
+  .pain-grid { grid-template-columns:1fr; }
+  .inc-grid  { grid-template-columns:1fr; }
+  .close-grid { grid-template-columns:1fr; gap:48px; }
+  .footer-row { flex-direction:column; }
+}
+@media (max-width:480px) {
+  .btn { width:100%; justify-content:center; }
+  .pal-sw { bottom:16px; right:16px; }
+}
+
+/* ════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion:reduce) {
+  .hero-bg,.moment-bg { transition:none; transform:none !important; }
+  .hero-label,.hero h1,.hero-sub,.hero-row {
+    transition:none; opacity:1 !important; transform:none !important;
+  }
+  .pain-card,.inc-card,.btn { transition:none; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip">Preskoči navigaciju</a>
+
+<!-- Nav -->
+<nav class="nav" id="nav" aria-label="Glavna navigacija">
+  <a href="index.html" class="nav-logo" aria-label="Nemanja Vukoje — početna">Nemanja Vukoje</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">O meni</a></li>
+    <li><a href="individual.html">Individualni rad</a></li>
+    <li><a href="licna-mapa.html">Lična mapa</a></li>
+  </ul>
+  <a href="mailto:info@vukojenemanja.com?subject=Pridruzivanje%20Akal%20zajednici&body=Zdravo%2C%0A%0AZelim%20da%20se%20pridružim%20Akal%20zajednici.%0A%0AIme%3A%20"
+     class="nav-cta">Pridruži se Akalu</a>
+</nav>
+
+<main id="main">
+
+<!-- ── Hero ── -->
+<section class="hero" id="hero" data-enter>
+  <div class="hero-bg" role="img" aria-label="Sesija meditacije"></div>
+  <div class="hero-ov" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <span class="hero-label">Akal zajednica · Kundalini joga i meditacija</span>
+      <h1>Redovna praksa —<br><em>koja obnavlja</em><br>tvoju energiju.</h1>
+      <p class="hero-sub">Znaš da ti je potrebno mesto samo za tebe — gde možeš da zastaneš i umiriš se. Akal je to mesto.</p>
+      <div class="hero-row">
+        <a href="mailto:info@vukojenemanja.com?subject=Pridruzivanje%20Akal%20zajednici&body=Zdravo%2C%0A%0AZelim%20da%20se%20pridružim%20Akal%20zajednici.%0A%0AIme%3A%20"
+           class="btn btn--inv">Pridruži se Akalu · 77 € mesečno</a>
+        <span class="hero-note">Otkažeš bilo kada.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Pain ── -->
+<section class="s-pain --v" id="za-koga" aria-labelledby="pain-h2">
+  <div class="wrap">
+    <div class="pain-intro">
+      <span class="lbl">Za koga je ovo</span>
+      <h2 class="display" id="pain-h2">Možda prepoznaješ<br><em>nešto od ovoga.</em></h2>
+      <p>Imaš periode kada si iscrpljen/a, razdražljiv/a, van sebe. Znaš da ti praksa pomaže — ali baš tada, kada ti je najpotrebnija, teže je nego ikad da počneš.</p>
+    </div>
+    <div class="pain-grid">
+      <article class="pain-card">
+        <span class="pain-num">01</span>
+        <q>Počneš — nedelja, dve, tri. Onda nešto upadne. Putovanje, gužva, loš dan. I sve kreće ispočetka.</q>
+      </article>
+      <article class="pain-card">
+        <span class="pain-num">02</span>
+        <q>Stres se nakuplja u telu. Lošije spavaš, teže se koncentrišeš, primećuješ da si reaktivniji/ja nego što bi hteo/la.</q>
+      </article>
+      <article class="pain-card">
+        <span class="pain-num">03</span>
+        <q>Ponekad se osećaš odsečeno od sebe. Ideš kroz pokrete, ali nisi zaista tu.</q>
+      </article>
+      <article class="pain-card">
+        <span class="pain-num">04</span>
+        <q>Znaš šta bi pomoglo. Ali dan prođe.</q>
+      </article>
+    </div>
+    <p class="pain-bridge">
+      Ovo nije pitanje discipline — to je pitanje sistema i zajednice koja te drži čak i kada sam/a ne možeš.
+    </p>
+  </div>
+</section>
+
+<!-- ── Word-highlight moment ── -->
+<section class="s-statement" data-moment="word-highlight" id="kljucna-poruka">
+  <div class="wrap">
+    <p class="mo-wh__text">
+      Znaš da ti praksa pomaže — ali bez sistema i zajednice, sama disciplina nije dovoljna.
+      <strong>Akal</strong> postoji upravo za to: redovni časovi, pravi ritam i ljudi koji idu istim putem.
+    </p>
+  </div>
+</section>
+
+<!-- ── Included ── -->
+<section class="s-included --v" id="sta-je-ukljuceno" aria-labelledby="inc-h2">
+  <div class="wrap">
+    <span class="lbl lbl--inv">Šta je uključeno</span>
+    <h2 class="inc-h2" id="inc-h2">Sve što ti je potrebno<br><em>da izgradiš pravu praksu.</em></h2>
+    <div class="inc-grid">
+      <article class="inc-card">
+        <span class="inc-num">01</span>
+        <h3 class="inc-title">Nedeljna Kundalini joga</h3>
+        <p class="inc-body">Jedan čas uživo svake nedelje. Kundalini joga radi istovremeno na nervnom sistemu, energetskom telu i umu. Ne možeš uživo — svaki snimak časa je dostupan ceo mesec.</p>
+      </article>
+      <article class="inc-card">
+        <span class="inc-num">02</span>
+        <h3 class="inc-title">2 večeri meditacije mesečno</h3>
+        <p class="inc-body">Dve posebne večeri svakog meseca za dublju praksu — prostori za tišinu, emotivno otpuštanje i istinsko ponovno povezivanje sa sobom.</p>
+      </article>
+      <article class="inc-card">
+        <span class="inc-num">03</span>
+        <h3 class="inc-title">Privatna WhatsApp zajednica</h3>
+        <p class="inc-body">Privatna grupa za podršku, deljenje i povremene zadatke između sesija. Svaki mesec ima svoju temu — prostor koji učesnici koriste kako im odgovara.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── Photo moment ── -->
+<section class="s-moment" id="utisci">
+  <div class="moment-bg" role="img" aria-label="Praksa Kundalini joge"></div>
+  <div class="moment-ov" aria-hidden="true"></div>
+  <div class="moment-wrap">
+    <div class="moment-inner">
+      <blockquote>
+        <p class="moment-q">40 dana meditacije i Kundalini joge uradili su za mene više nego godine terapije. Od prvog dana sam znala da je ovo mesto gde treba da budem.</p>
+        <footer><cite class="moment-attr">Član Akal zajednice</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA close ── -->
+<section class="s-close --v" id="clanstvo" aria-labelledby="close-h2">
+  <div class="wrap">
+    <div class="close-grid">
+      <div class="close-left">
+        <span class="lbl">Članstvo</span>
+        <h2 id="close-h2">Mesto samo<br><em>za tebe.</em></h2>
+        <p>Iz nedelje u nedelju, Kundalini joga i meditacija uče tvoj nervni sistem da se reguliše, um da se smiri i telo da otpusti ono što nosi.</p>
+        <div class="price-row">
+          <span class="price-big">77</span>
+          <span class="price-unit">€</span>
+          <span class="price-per">mesečno</span>
+        </div>
+        <a href="mailto:info@vukojenemanja.com?subject=Pridruzivanje%20Akal%20zajednici&body=Zdravo%2C%0A%0AZelim%20da%20se%20pridružim%20Akal%20zajednici.%0A%0AIme%3A%20"
+           class="btn btn--fill">Pridruži se Akalu</a>
+        <p class="price-cancel">Otkažeš bilo kada, bez uslova.</p>
+      </div>
+      <div class="close-right" style="padding-top:68px;">
+        <ul class="inc-list" aria-label="Šta je uključeno u članstvo">
+          <li>Nedeljna Kundalini joga — 1 čas uživo</li>
+          <li>Snimci svakog časa, dostupni ceo mesec</li>
+          <li>2 večeri meditacije mesečno</li>
+          <li>Privatna WhatsApp zajednica</li>
+          <li>Otkažeš bez uslova, bilo kada</li>
+        </ul>
+        <a href="akal-clanovi.html" class="btn btn--outline">Pogledaj prostor za članove</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <a href="index.html" class="footer-logo">Nemanja Vukoje</a>
+      <ul class="footer-links">
+        <li><a href="index.html#about">O meni</a></li>
+        <li><a href="akal.html">Akal zajednica</a></li>
+        <li><a href="individual.html">Individualni rad</a></li>
+        <li><a href="licna-mapa.html">Lična mapa</a></li>
+        <li><a href="datenschutz.html">Privatnost</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Nemanja Vukoje · KRI Certified Kundalini Yoga Teacher</span>
+      <span>Fotografije: Unsplash (stand-in)</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Palette switcher -->
+<div class="pal-sw" role="group" aria-label="Odaberi paletu boja">
+  <span class="pal-sw-label">Paleta</span>
+  <button class="pal-btn active" data-p="topla"    aria-label="Topla — originalna topla paleta" aria-pressed="true">
+    <span class="pal-tooltip">Topla</span>
+  </button>
+  <button class="pal-btn" data-p="mahovina" aria-label="Mahovina — maslinasto zelena" aria-pressed="false">
+    <span class="pal-tooltip">Mahovina</span>
+  </button>
+  <button class="pal-btn" data-p="lan"      aria-label="Lan — plava primorska" aria-pressed="false">
+    <span class="pal-tooltip">Lan</span>
+  </button>
+  <button class="pal-btn" data-p="kamen"    aria-label="Kamen — kadulja siva" aria-pressed="false">
+    <span class="pal-tooltip">Kamen</span>
+  </button>
+</div>
+
+<script>
+// Nav scroll
+(function(){
+  var n=document.getElementById('nav');
+  function u(){n.classList.toggle('on',scrollY>40);}
+  addEventListener('scroll',u,{passive:true}); u();
+})();
+
+// Hero entrance
+(function(){
+  var h=document.getElementById('hero');
+  if(!h) return;
+  requestAnimationFrame(function(){setTimeout(function(){h.classList.add('in');},80);});
+})();
+
+// Palette switcher
+(function(){
+  var btns=document.querySelectorAll('.pal-btn');
+  btns.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var p=btn.dataset.p;
+      document.documentElement.dataset.palette=p;
+      btns.forEach(function(b){
+        b.classList.toggle('active',b.dataset.p===p);
+        b.setAttribute('aria-pressed', b.dataset.p===p ? 'true' : 'false');
+      });
+    });
+  });
+})();
+
+// Word-highlight moment
+(function(){
+  var section=document.querySelector('[data-moment="word-highlight"]');
+  if(!section) return;
+  var text=section.querySelector('.mo-wh__text');
+  if(!text) return;
+  section.classList.add('mo-wh');
+
+  // Wrap words in spans, respecting <strong> tags
+  function wrapNode(node){
+    if(node.nodeType===3){
+      var parts=node.textContent.split(/(\s+)/);
+      var frag=document.createDocumentFragment();
+      parts.forEach(function(p){
+        if(p.trim()){
+          var sp=document.createElement('span');
+          sp.className='mo-w'; sp.textContent=p;
+          frag.appendChild(sp);
+        } else if(p){
+          frag.appendChild(document.createTextNode(p));
+        }
+      });
+      node.parentNode.replaceChild(frag,node);
+    } else if(node.nodeType===1 && node.nodeName!=='SCRIPT' && node.nodeName!=='STYLE'){
+      Array.from(node.childNodes).forEach(wrapNode);
+    }
+  }
+  wrapNode(text);
+
+  var words=Array.from(section.querySelectorAll('.mo-w'));
+  var n=-1;
+
+  function update(){
+    var r=text.getBoundingClientRect();
+    var vh=innerHeight;
+    var from=vh*0.88, to=vh*0.42;
+    var atBottom=innerHeight+scrollY>=document.documentElement.scrollHeight-2;
+    var t=Math.max(0,Math.min(1,(from-r.top)/Math.max(1,(from-to)+r.height)));
+    var k=atBottom ? words.length : Math.round(t*words.length);
+    if(k===n) return;
+    n=k;
+    words.forEach(function(w,i){ w.classList.toggle('on',i<k); });
+  }
+  addEventListener('scroll',update,{passive:true});
+  update();
+})();
+</script>
+
+</body>
+</html>

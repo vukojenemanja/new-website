@@ -1,0 +1,59 @@
+{
+ "palettes": [
+  "moss-sand",
+  "linen-harbour",
+  "three-stones",
+  "plaster-rose",
+  "teal-on-paper"
+ ],
+ "types": [
+  "hanken",
+  "figtree",
+  "hanken",
+  "red-hat",
+  "source-serif"
+ ],
+ "dealt": [
+  "hanken",
+  "figtree",
+  "schibsted",
+  "red-hat",
+  "newsreader",
+  "zilla",
+  "plex",
+  "zilla",
+  "source-serif"
+ ],
+ "moments": [
+  {
+   "id": "word-highlight",
+   "at": "2026-11-17T21:26:18.243Z",
+   "seed": "77fd48d0"
+  },
+  {
+   "id": "photo-chapters",
+   "at": "2026-11-17T21:26:18.243Z",
+   "seed": "77fd48d0"
+  },
+  {
+   "id": "pinned-chapters",
+   "at": "2026-11-17T22:06:33.485Z",
+   "seed": "96f63334"
+  },
+  {
+   "id": "picture-develops",
+   "at": "2026-11-17T22:06:33.485Z",
+   "seed": "96f63334"
+  },
+  {
+   "id": "photo-chapters",
+   "at": "2026-11-18T07:55:03.037Z",
+   "seed": "43e28928"
+  },
+  {
+   "id": "word-highlight",
+   "at": "2026-11-18T07:55:03.037Z",
+   "seed": "43e28928"
+  }
+ ]
+}

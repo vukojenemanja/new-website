@@ -23,20 +23,20 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nemanja Vukoje - Healer, Coach & Kundalini Yoga Teacher</title>
+<title>Nemanja Vukoje - Transformational Coach · Creator of the Inner Shift Method</title>
 <meta name="description" content="Release emotional blocks, reconnect with your energy and return to a life that feels fully alive. Online sessions in English and Serbian.">
 <link rel="canonical" href="https://vukojenemanja.com/en/index.html" />
 <link rel="alternate" hreflang="en" href="https://vukojenemanja.com/en/index.html" />
 <link rel="alternate" hreflang="de" href="https://vukojenemanja.com/de/index.html" />
 <link rel="alternate" hreflang="sr" href="https://vukojenemanja.com/srb/index.html" />
 <link rel="alternate" hreflang="x-default" href="https://vukojenemanja.com/" />
-<meta property="og:title" content="Nemanja Vukoje - Healer, Coach & Kundalini Yoga Teacher" />
+<meta property="og:title" content="Nemanja Vukoje - Transformational Coach · Creator of the Inner Shift Method" />
 <meta property="og:description" content="Release emotional blocks, reconnect with your energy and return to a life that feels fully alive. Online sessions in English and Serbian." />
 <meta property="og:url" content="https://vukojenemanja.com/en/index.html" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Nemanja Vukoje" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Nemanja Vukoje - Healer, Coach & Kundalini Yoga Teacher" />
+<meta name="twitter:title" content="Nemanja Vukoje - Transformational Coach · Creator of the Inner Shift Method" />
 <meta name="twitter:description" content="Release emotional blocks, reconnect with your energy and return to a life that feels fully alive. Online sessions in English and Serbian." />
 <script type="application/ld+json">
 {
@@ -347,7 +347,7 @@ nav.scrolled .nav-links span { color: var(--stone); }
 /* ── PAIN SECTION ── */
 .pain {
   background: var(--fog);
-  padding: 120px 60px;
+  padding: 120px 60px 48px;
 }
 
 .pain-inner {
@@ -407,6 +407,35 @@ nav.scrolled .nav-links span { color: var(--stone); }
   color: var(--clay);
   flex-shrink: 0;
   margin-top: 2px;
+}
+
+/* ── BRIDGE ── */
+.bridge-section {
+  background: var(--fog);
+  padding: 48px 60px 100px;
+  text-align: center;
+}
+.bridge-question {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  margin: 0 auto 24px;
+}
+.bridge-answer {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  color: var(--bark);
+  margin: 0 auto;
+  max-width: 760px;
+  line-height: 1.3;
+}
+.bridge-answer em { font-style: italic; color: var(--accent); font-weight: 400; }
+@media (max-width: 768px) {
+  .bridge-section { padding: 40px 24px 72px; }
+  .bridge-answer { font-size: 1.75rem; }
 }
 
 /* ── ABOUT ── */
@@ -795,59 +824,67 @@ nav.scrolled .nav-links span { color: var(--stone); }
 
 /* ── PROCESS ── */
 .process {
-  background: var(--fog);
-  padding: 120px 60px;
+  background: var(--deep);
+  padding: 120px 0 0;
 }
 
 .process-inner {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 0 80px;
 }
 
 .process h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(36px, 4vw, 52px);
   font-weight: 300;
-  margin-bottom: 80px;
+  color: var(--sand);
+  margin-bottom: 0;
   max-width: 600px;
 }
 
-.process h2 em { font-style: italic; color: var(--accent); }
+.process h2 em { font-style: italic; color: var(--clay); }
 
 .process-steps {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 80px;
+  border-top: 1px solid rgba(196,168,130,0.2);
 }
 
 .step {
-  padding: 40px 28px;
-  background: var(--sand);
+  padding: 80px 60px;
   position: relative;
+  border-right: 1px solid rgba(196,168,130,0.12);
 }
+
+.step:last-child { border-right: none; }
 
 .step-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 56px;
+  font-size: 140px;
   font-weight: 300;
   color: var(--clay);
-  opacity: 0.25;
-  line-height: 1;
-  margin-bottom: 20px;
+  opacity: 0.18;
+  line-height: 0.9;
+  margin-bottom: 28px;
+  display: block;
+  letter-spacing: -4px;
 }
 
 .step h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
+  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
   font-weight: 400;
-  margin-bottom: 12px;
-  color: var(--bark);
+  margin-bottom: 20px;
+  color: var(--sand);
 }
 
 .step p {
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.9;
   color: var(--stone);
+  max-width: 340px;
 }
 
 /* ── BOOKING ── */
@@ -1480,7 +1517,9 @@ footer {
   .hero-image-placeholder::after { background: linear-gradient(to top, var(--deep) 30%, rgba(10,8,5,0.5) 100%); }
   .hero-content { padding: 0 24px 80px; position: relative; z-index: 10; max-width: 100%; }
 
-  .pain, .about, .offers, .testimonials, .process, .booking, .instagram { padding: 80px 24px; }
+  .pain, .about, .offers, .testimonials, .booking, .instagram { padding: 80px 24px; }
+  .process { padding: 80px 0 0; }
+  .process-inner { padding: 0 24px; }
 
   .pain-inner, .about-inner, .booking-inner { grid-template-columns: 1fr; gap: 48px; }
   .about-image-box { aspect-ratio: 4/3; display: block; overflow: hidden; }
@@ -1488,6 +1527,9 @@ footer {
   .testi-grid { grid-template-columns: 1fr; }
   .testi-featured { grid-column: span 1; }
   .process-steps { grid-template-columns: 1fr; }
+  .step { padding: 48px 24px; border-right: none; border-bottom: 1px solid rgba(196,168,130,0.12); }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-size: 90px; }
   .offer-full { grid-template-columns: 1fr; text-align: left; }
   .community-price { text-align: left; }
   .offers-header { grid-template-columns: 1fr; gap: 24px; }
@@ -2194,12 +2236,12 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
     <img src="../assets/images/index-49f1958691a03ef5.jpg" alt="Nemanja Vukoje - Healer and Coach" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;">
   </div>
   <div class="hero-content">
-    <div class="hero-label"><!--CMS:hero_label-->Healer · Coach · Creator of the Inner Shift Method<!--/CMS--></div>
+    <div class="hero-label"><!--CMS:hero_label-->Transformational Coach · Creator of the Inner Shift Method<!--/CMS--></div>
     <h1><!--CMS:hero_h1-->From the knowledge that holds you back<br><em>to the steps that take you where you truly want to go.</em><!--/CMS--></h1>
     <p class="hero-sub"><!--CMS:hero_sub-->You feel fine on the outside. But something inside feels stuck, tired, or lost. I help you release what's blocking your energy - and return to a life that feels fully alive.<!--/CMS--></p>
     <div class="hero-actions">
-      <a href="#booking" class="btn-primary"><!--CMS:hero_btn_primary-->Contact me<!--/CMS--></a>
-      <a href="#offers" class="btn-ghost"><!--CMS:hero_btn_ghost-->Explore the work<!--/CMS--></a>
+      <a href="individual.html" class="btn-primary"><!--CMS:hero_btn_primary-->Discover Inner Shift<!--/CMS--></a>
+      <a href="#nacin" class="btn-ghost"><!--CMS:hero_btn_ghost-->Explore my approach<!--/CMS--></a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -2216,6 +2258,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
       <h2><!--CMS:pain_h2-->Does any of this<br><em>sound familiar?</em><!--/CMS--></h2>
       <p><!--CMS:pain_p1-->Most people who find me have stable jobs, functioning lives, and everything they were told to want. And yet something feels wrong.<!--/CMS--></p>
       <p><!--CMS:pain_p2-->They've tried therapy. They've read the books. But something deeper hasn't shifted and the same patterns keep repeating.<!--/CMS--></p>
+      <p><!--CMS:pain_p3-->Have you said or thought any of these things in the last few weeks?<!--/CMS--></p>
     </div>
     <div class="pain-quotes reveal">
       <div class="pain-quote">
@@ -2232,7 +2275,7 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
       </div>
       <div class="pain-quote">
         <span class="pq-mark">"</span>
-        <span class="pq-text"><!--CMS:pain_q4-->Something feels blocked inside me.<!--/CMS--></span>
+        <span class="pq-text"><!--CMS:pain_q4-->My surroundings don't understand me and I don't get support.<!--/CMS--></span>
       </div>
       <div class="pain-quote">
         <span class="pq-mark">"</span>
@@ -2240,13 +2283,21 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
       </div>
       <div class="pain-quote">
         <span class="pq-mark">"</span>
-        <span class="pq-text"><!--CMS:pain_q6-->I keep repeating the same patterns.<!--/CMS--></span>
+        <span class="pq-text"><!--CMS:pain_q6-->I'm constantly on the go, I just can't stop.<!--/CMS--></span>
       </div>
       <div class="pain-quote">
         <span class="pq-mark">"</span>
         <span class="pq-text"><!--CMS:pain_q7-->I feel emotions I just can't get rid of.<!--/CMS--></span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- BRIDGE -->
+<section class="bridge-section">
+  <div class="reveal">
+    <p class="bridge-question">And what does this have to do with me?</p>
+    <p class="bridge-answer">Everything you just read - <em>was part of my journey too.</em></p>
   </div>
 </section>
 
@@ -2263,19 +2314,29 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
       <p><!--CMS:about_p2-->I left it all. I travelled the world, learned from spiritual teachers, visited holy places, and explored healing traditions across cultures. Over a decade, I completed numerous healing modalities and coaching trainings - not as a collection, but as a calling.<!--/CMS--></p>
       <p><!--CMS:about_p3-->Today, through energy healing, Kundalini Yoga, and professional coaching, I've helped hundreds of people unlock their energy, release emotional blockages, and return to a life that feels genuinely theirs.<!--/CMS--></p>
       <p><!--CMS:about_p4-->I work in English, Serbian and German with clients from Vienna and internationally - all online.<!--/CMS--></p>
-      <div class="about-stats">
-        <div class="stat">
-          <span class="stat-num">10+</span>
-          <span class="stat-label">Years of practice</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">5+</span>
-          <span class="stat-label">Years teaching</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">100s</span>
-          <span class="stat-label">People helped</span>
-        </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="nacin">
+  <div class="process-inner">
+    <h2 class="reveal">How the<br><em>work unfolds</em></h2>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Recognize</h3>
+        <p>We name what is really happening - not the surface story, but the repeating pattern and where it lives in the body.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Release</h3>
+        <p>Through energy work and direct body work, we release what we found - from the whole system.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Direct</h3>
+        <p>We direct the freed energy toward clarity. You receive concrete steps that follow the change.</p>
       </div>
     </div>
   </div>
@@ -2380,40 +2441,6 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
         <p class="testi-text"><!--CMS:t10_text-->"I had peace I haven't felt in a long time. I hadn't realized how disconnected I had become. Something opened up - and it is still there."<!--/CMS--></p>
         <div class="testi-author"><!--CMS:t10_author-->Nina P., Novi Sad<!--/CMS--></div>
         <div class="testi-source"><!--CMS:t10_source-->After Inner Shift session<!--/CMS--></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process">
-  <div class="process-inner">
-    <h2 class="reveal">How the<br><em>work unfolds</em></h2>
-    <div class="process-steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>Identification</h3>
-        <p>We name what is really happening - the repeating pattern, not the surface story.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3>Recognition</h3>
-        <p>We go deeper - where this pattern lives in the body and the energy field.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>Release</h3>
-        <p>Through energy work and body techniques, we release what we found - from the whole system.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <h3>Returning to yourself</h3>
-        <p>When the block lifts, space remains. That space is you - clearer and more present.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">05</div>
-        <h3>Direction</h3>
-        <p>We direct the freed energy toward clarity and the first real steps forward.</p>
       </div>
     </div>
   </div>

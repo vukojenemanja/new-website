@@ -803,59 +803,67 @@ nav.scrolled .nav-links span { color: var(--stone); }
 
 /* ── PROCESS ── */
 .process {
-  background: var(--fog);
-  padding: 120px 60px;
+  background: var(--deep);
+  padding: 120px 0 0;
 }
 
 .process-inner {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 0 80px;
 }
 
 .process h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(36px, 4vw, 52px);
   font-weight: 300;
-  margin-bottom: 80px;
+  color: var(--sand);
+  margin-bottom: 0;
   max-width: 600px;
 }
 
-.process h2 em { font-style: italic; color: var(--accent); }
+.process h2 em { font-style: italic; color: var(--clay); }
 
 .process-steps {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 80px;
+  border-top: 1px solid rgba(196,168,130,0.2);
 }
 
 .step {
-  padding: 40px 28px;
-  background: var(--sand);
+  padding: 80px 60px;
   position: relative;
+  border-right: 1px solid rgba(196,168,130,0.12);
 }
+
+.step:last-child { border-right: none; }
 
 .step-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 56px;
+  font-size: 140px;
   font-weight: 300;
   color: var(--clay);
-  opacity: 0.25;
-  line-height: 1;
-  margin-bottom: 20px;
+  opacity: 0.18;
+  line-height: 0.9;
+  margin-bottom: 28px;
+  display: block;
+  letter-spacing: -4px;
 }
 
 .step h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
+  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
   font-weight: 400;
-  margin-bottom: 12px;
-  color: var(--bark);
+  margin-bottom: 20px;
+  color: var(--sand);
 }
 
 .step p {
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.9;
   color: var(--stone);
+  max-width: 340px;
 }
 
 /* ── BOOKING ── */
@@ -1488,7 +1496,9 @@ footer {
   .hero-image-placeholder::after { background: linear-gradient(to top, var(--deep) 30%, rgba(10,8,5,0.5) 100%); }
   .hero-content { padding: 0 24px 80px; position: relative; z-index: 10; max-width: 100%; }
 
-  .pain, .about, .offers, .testimonials, .process, .booking, .instagram { padding: 80px 24px; }
+  .pain, .about, .offers, .testimonials, .booking, .instagram { padding: 80px 24px; }
+  .process { padding: 80px 0 0; }
+  .process-inner { padding: 0 24px; }
 
   .pain-inner, .about-inner, .booking-inner { grid-template-columns: 1fr; gap: 48px; }
   .about-image-box { aspect-ratio: 4/3; display: block; overflow: hidden; }
@@ -1496,6 +1506,9 @@ footer {
   .testi-grid { grid-template-columns: 1fr; }
   .testi-featured { grid-column: span 1; }
   .process-steps { grid-template-columns: 1fr; }
+  .step { padding: 48px 24px; border-right: none; border-bottom: 1px solid rgba(196,168,130,0.12); }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-size: 90px; }
   .offer-full { grid-template-columns: 1fr; text-align: left; }
   .community-price { text-align: left; }
   .offers-header { grid-template-columns: 1fr; gap: 24px; }

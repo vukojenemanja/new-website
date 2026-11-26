@@ -96,6 +96,10 @@ body {
 /* ─── Playing ─── */
 #screen-playing {
   background: var(--bark);
+  overflow-y: auto;
+  justify-content: flex-start;
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
 .playing-label {
   font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
@@ -136,19 +140,21 @@ body {
   color: rgba(196,168,130,0.5);
 }
 #raise-hand-btn {
-  margin-top: 40px;
+  margin-top: 32px;
   background: none;
   border: 1.5px solid rgba(196,168,130,0.3);
   border-radius: 50px;
   color: rgba(232,221,208,0.6);
   font-size: 13px;
   letter-spacing: 1px;
-  padding: 12px 28px;
+  padding: 14px 32px;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
   gap: 8px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 #raise-hand-btn:hover {
   border-color: var(--clay);

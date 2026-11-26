@@ -412,31 +412,34 @@ nav.scrolled .nav-links span { color: var(--stone); }
 /* ── BRIDGE ── */
 .bridge-section {
   background: var(--deep);
-  padding: 80px 60px;
+  padding: 100px 40px;
   text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 .bridge-question {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-family: var(--font-body, var(--font-display));
+  font-size: 0.95rem;
   font-weight: 400;
-  font-style: italic;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--sand);
-  opacity: 0.55;
-  margin: 0 auto 20px;
-  max-width: 640px;
+  opacity: 0.4;
+  margin: 0 auto 32px;
+  max-width: 480px;
 }
 .bridge-answer {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-  font-weight: 500;
+  font-size: clamp(1.75rem, 3vw, 2.6rem);
+  font-weight: 400;
   color: var(--sand);
   margin: 0 auto;
-  max-width: 700px;
-  line-height: 1.35;
+  max-width: 680px;
+  line-height: 1.4;
 }
-.bridge-answer em { font-style: italic; color: var(--clay); }
+.bridge-answer em { font-style: italic; color: var(--clay); font-weight: 500; }
 @media (max-width: 768px) {
-  .bridge-section { padding: 60px 24px; }
+  .bridge-section { padding: 72px 24px; }
+  .bridge-answer { font-size: 1.5rem; }
 }
 
 /* ── ABOUT ── */

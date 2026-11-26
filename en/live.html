@@ -652,6 +652,7 @@ function endVoiceCall() {
 function listenForMute() {
   if (!db) return;
   listenForVoiceOffer();
+  listenForHandRaised();
   onValue(ref(db, 'live-class/students/' + studentId + '/muted'), snap => {
     const muted = snap.val();
     if (muted === true) {
@@ -661,7 +662,6 @@ function listenForMute() {
     } else if (muted === false && isMutedLocally) {
       isMutedLocally = false;
       audio.muted = false;
-      lowerHand();
       endVoiceCall();
       get(sessionRef).then(s => {
         const data = s.val();
@@ -701,23 +701,30 @@ document.getElementById('unlock-btn').addEventListener('click', () => {
 
 // ─── Raise hand ──────────────────────────────────────
 let handRaised = false;
+
 function toggleHandRaise() {
   handRaised = !handRaised;
   updateHandBtn();
   if (db) set(ref(db, 'live-class/students/' + studentId + '/handRaised'), handRaised);
 }
-function lowerHand() {
-  if (!handRaised) return;
-  handRaised = false;
-  updateHandBtn();
-  if (db) set(ref(db, 'live-class/students/' + studentId + '/handRaised'), false);
-}
+
 function updateHandBtn() {
   const btn = document.getElementById('raise-hand-btn');
   if (!btn) return;
   btn.classList.toggle('raised', handRaised);
   btn.textContent = handRaised ? '✋ Hand raised' : '✋ Raise hand';
 }
+
+function listenForHandRaised() {
+  onValue(ref(db, 'live-class/students/' + studentId + '/handRaised'), snap => {
+    const val = snap.val();
+    if (val === false && handRaised) {
+      handRaised = false;
+      updateHandBtn();
+    }
+  });
+}
+
 document.getElementById('raise-hand-btn').addEventListener('click', toggleHandRaise);
 </script>
 </body>

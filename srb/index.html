@@ -803,60 +803,60 @@ nav.scrolled .nav-links span { color: var(--stone); }
 
 /* ── PROCESS ── */
 .process {
-  background: var(--deep);
-  padding: 120px 0 0;
+  background: var(--fog);
+  padding: 0;
 }
 
 .process-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 80px;
+  padding: 100px 80px 0;
 }
 
 .process h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(36px, 4vw, 52px);
   font-weight: 300;
-  color: var(--sand);
+  color: var(--deep);
   margin-bottom: 0;
   max-width: 600px;
 }
 
-.process h2 em { font-style: italic; color: var(--clay); }
+.process h2 em { font-style: italic; color: var(--accent); }
 
 .process-steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 80px;
-  border-top: 1px solid rgba(196,168,130,0.2);
+  margin-top: 60px;
 }
 
 .step {
-  padding: 80px 60px;
+  padding: 56px 60px 100px;
   position: relative;
-  border-right: 1px solid rgba(196,168,130,0.12);
+  border-top: 2px solid var(--clay);
+  border-right: 1px solid rgba(61,46,30,0.08);
 }
 
 .step:last-child { border-right: none; }
 
 .step-num {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 140px;
+  font-size: 160px;
   font-weight: 300;
   color: var(--clay);
-  opacity: 0.18;
-  line-height: 0.9;
+  opacity: 0.28;
+  line-height: 0.85;
   margin-bottom: 28px;
   display: block;
-  letter-spacing: -4px;
+  letter-spacing: -6px;
 }
 
 .step h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
+  font-size: clamp(1.8rem, 2.2vw, 2.6rem);
   font-weight: 400;
   margin-bottom: 20px;
-  color: var(--sand);
+  color: var(--bark);
 }
 
 .step p {

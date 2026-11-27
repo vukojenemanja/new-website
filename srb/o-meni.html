@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': 500
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSMHMQD13N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NSMHMQD13N', { 'anonymize_ip': true });
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O meni - Nemanja Vukoje | Coach, Učitelj joge, Inner Shift</title>
+<meta name="description" content="Moj put od IT karijere do coachinga i energetskog rada. Godinama sam istraživao kako da povežem racionalnost i intuiciju - sada taj princip prenosim u rad sa ljudima.">
+<link rel="canonical" href="https://vukojenemanja.com/srb/o-meni.html">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --clay:   #C4A882;
+  --sand:   #E8DDD0;
+  --moss:   #6B7B5E;
+  --bark:   #3D2E1E;
+  --fog:    #F5F1EC;
+  --stone:  #8A8070;
+  --deep:   #1E1712;
+  --accent: #9B6B3A;
+  --warm:   #D4B896;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--fog);
+  color: var(--bark);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,8,5,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.12);
+  transition: background 0.4s, padding 0.4s;
+}
+nav.scrolled { background: rgba(26,18,8,0.95); padding: 14px 60px; border-bottom: 1px solid rgba(196,168,130,0.2); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--fog); text-decoration: none; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,241,236,0.8); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover { color: var(--clay); }
+.nav-links span { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,241,236,0.8); cursor: pointer; transition: color 0.3s; }
+.nav-links span:hover { color: var(--clay); }
+.nav-dropdown { position: relative; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 0px); left: 50%; transform: translateX(-50%); background: rgba(245,241,236,0.98); backdrop-filter: blur(10px); border: 1px solid rgba(196,168,130,0.2); list-style: none; min-width: 200px; z-index: 999; box-shadow: 0 12px 40px rgba(0,0,0,0.12); padding-top: 8px; }
+.nav-dropdown:hover .dropdown-menu { display: block; }
+.nav-dropdown > span { padding-bottom: 16px; margin-bottom: -16px; display: inline-block; }
+.nav-dropdown > span::after { content: ''; display: block; position: absolute; height: 16px; width: 100%; left: 0; bottom: -16px; }
+.dropdown-menu li a { display: block; padding: 14px 24px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--bark) !important; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.dropdown-menu li a:hover { background: var(--sand); color: var(--accent) !important; }
+.nav-cta { font-size: 11px !important; letter-spacing: 2px !important; color: var(--clay) !important; border: 1px solid rgba(196,168,130,0.5); padding: 8px 20px; transition: all 0.3s !important; }
+.nav-cta:hover { background: var(--clay) !important; color: var(--deep) !important; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-hamburger span { width: 22px; height: 1px; background: var(--fog); display: block; transition: all 0.3s; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav-mobile-menu { display: none; position: fixed; inset: 0; background: var(--fog); z-index: 99; flex-direction: column; padding: 100px 40px 40px; }
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu a { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--bark); text-decoration: none; padding: 20px 0; border-bottom: 1px solid rgba(196,168,130,0.15); transition: color 0.3s; }
+.nav-mobile-menu a:hover { color: var(--clay); }
+.nav-mobile-menu a.mobile-cta { color: var(--clay); }
+.nav-mobile-close { position: absolute; top: 24px; right: 24px; background: none; border: none; font-size: 28px; color: var(--bark); cursor: pointer; }
+
+/* ── BUTTONS ── */
+.btn-primary { display: inline-block; padding: 16px 40px; background: var(--clay); color: var(--deep); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: all 0.3s; }
+.btn-primary:hover { background: var(--warm); transform: translateY(-1px); }
+.btn-ghost { display: inline-block; padding: 16px 40px; border: 1px solid rgba(196,168,130,0.4); color: var(--clay); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all 0.3s; }
+.btn-ghost:hover { border-color: var(--clay); background: rgba(196,168,130,0.08); }
+.section-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--clay); margin-bottom: 32px; }
+
+/* ── REVEAL ── */
+.js-loaded .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.js-loaded .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--deep);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 140px 60px 100px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 15% 70%, rgba(196,168,130,0.10) 0%, transparent 55%),
+              radial-gradient(ellipse at 75% 25%, rgba(107,123,94,0.05) 0%, transparent 50%);
+}
+.hero-photo {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 44%;
+  overflow: hidden;
+}
+.hero-photo::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--deep) 0%, rgba(30,23,18,0.3) 60%, transparent 100%);
+  z-index: 1;
+}
+.hero-content { position: relative; z-index: 10; max-width: 580px; }
+.hero-eyebrow {
+  font-size: 10px; letter-spacing: 6px; text-transform: uppercase;
+  color: var(--clay); margin-bottom: 32px;
+  opacity: 0; animation: fadeUp 1s ease 0.2s both;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 300; color: var(--sand); line-height: 1.1; margin-bottom: 36px;
+  opacity: 0; animation: fadeUp 1s ease 0.4s both;
+}
+.hero h1 em { font-style: italic; color: var(--clay); display: block; }
+.hero-actions {
+  display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 1s ease 0.8s both;
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── STORY ── */
+.story {
+  background: var(--fog);
+  padding: 120px 60px;
+}
+.story-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start;
+}
+.story-photo-col { position: sticky; top: 120px; }
+.story-photo {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  position: relative;
+}
+.story-photo::after {
+  content: ''; position: absolute;
+  top: 16px; left: 16px; right: -16px; bottom: -16px;
+  border: 1px solid rgba(61,46,30,0.15);
+  pointer-events: none; z-index: 0;
+}
+.story-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center top; display: block;
+  position: relative; z-index: 1;
+}
+.story-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 300; line-height: 1.15; margin-bottom: 40px;
+}
+.story-text h2 em { font-style: italic; color: var(--accent); display: block; }
+.story-text p {
+  font-size: 15px; line-height: 1.95; color: var(--stone); margin-bottom: 24px;
+}
+.story-text p strong {
+  font-weight: 500; color: var(--bark);
+}
+.story-text p:last-of-type { margin-bottom: 0; }
+.story-closing {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 20px !important; font-style: italic;
+  color: var(--bark) !important; margin-top: 40px !important;
+  line-height: 1.5 !important;
+}
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--deep);
+  padding: 120px 60px; text-align: center;
+}
+.cta-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300; color: var(--sand); line-height: 1.15; margin-bottom: 24px;
+}
+.cta-section h2 em { font-style: italic; color: var(--clay); }
+.cta-section p {
+  font-size: 15px; line-height: 1.85; color: rgba(232,221,208,0.5);
+  max-width: 520px; margin: 0 auto 48px;
+}
+.cta-note {
+  display: block; margin-top: 20px;
+  font-size: 11px; letter-spacing: 2px; color: rgba(196,168,130,0.4);
+  text-transform: uppercase;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep);
+  padding: 80px 60px 60px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
+  border-top: 1px solid rgba(196,168,130,0.08);
+}
+footer h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: var(--clay); line-height: 1.2; margin-bottom: 16px; }
+footer h3 em { font-style: italic; display: block; }
+footer h4 { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--clay); margin-bottom: 20px; }
+.footer-brand p { font-size: 13px; line-height: 1.8; color: rgba(232,221,208,0.3); }
+footer ul { list-style: none; }
+footer ul li { margin-bottom: 10px; }
+footer ul a { font-size: 13px; color: rgba(232,221,208,0.3); text-decoration: none; transition: color 0.3s; }
+footer ul a:hover { color: var(--clay); }
+.footer-contact p { font-size: 13px; line-height: 1.8; color: rgba(232,221,208,0.3); }
+.footer-contact a { color: rgba(232,221,208,0.3); text-decoration: none; transition: color 0.3s; }
+.footer-contact a:hover { color: var(--clay); }
+.footer-bottom { background: var(--deep); padding: 20px 60px; border-top: 1px solid rgba(196,168,130,0.06); display: flex; justify-content: space-between; align-items: center; }
+.footer-bottom p { font-size: 11px; letter-spacing: 1px; color: var(--stone); }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  nav.scrolled { padding: 12px 24px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .hero { padding: 120px 24px 80px; min-height: 80vh; }
+  .hero-photo { width: 100%; opacity: 0.25; }
+
+  .story { padding: 80px 24px; }
+  .story-inner { grid-template-columns: 1fr; gap: 48px; }
+  .story-photo-col { position: static; }
+  .story-photo::after { display: none; }
+
+  .cta-section { padding: 80px 24px; }
+
+  footer { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px 40px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Nemanja Vukoje</a>
+  <ul class="nav-links">
+    <li><a href="o-meni.html" style="color:var(--clay)">O meni</a></li>
+    <li class="nav-dropdown">
+      <span>Akal zajednica</span>
+      <ul class="dropdown-menu">
+        <li><a href="akal.html">O zajednici</a></li>
+        <li><a href="akal-clanovi.html">Prostor za članove</a></li>
+      </ul>
+    </li>
+    <li class="nav-dropdown">
+      <span>Individualni rad</span>
+      <ul class="dropdown-menu">
+        <li><a href="individual.html">Inner Shift metoda</a></li>
+        <li><a href="aura-tretman.html">Tretman aure</a></li>
+        <li><a href="licna-mapa.html">Lična mapa</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#testimonials">Utisci</a></li>
+    <li><a href="mailto:info@vukojenemanja.com?subject=Zakazivanje" class="nav-cta">Zakaži sesiju</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Meni"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="nav-mobile-menu" id="mobileMenu">
+  <button class="nav-mobile-close" onclick="closeMobileMenu()">×</button>
+  <a href="o-meni.html" onclick="closeMobileMenu()" style="color:var(--clay)">O meni</a>
+  <a href="akal.html" onclick="closeMobileMenu()">Akal zajednica</a>
+  <a href="akal-clanovi.html" onclick="closeMobileMenu()">Prostor za članove</a>
+  <a href="individual.html" onclick="closeMobileMenu()">Individualni rad</a>
+  <a href="index.html#testimonials" onclick="closeMobileMenu()">Utisci</a>
+  <a href="mailto:info@vukojenemanja.com?subject=Zakazivanje" class="mobile-cta" onclick="closeMobileMenu()">Zakaži sesiju</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-photo">
+    <img src="../assets/images/nemanja-photo.jpg" alt="Nemanja Vukoje" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Transformacioni Coach · Učitelj Kundalini joge</div>
+    <h1>Nisam želeo da biram između uspeha<em>i onoga što me ispunjava.</em></h1>
+    <div class="hero-actions">
+      <a href="#prица" class="btn-primary">Moj put</a>
+      <a href="individual.html" class="btn-ghost">Individualni rad</a>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="prica">
+  <div class="story-inner">
+
+    <div class="story-photo-col reveal">
+      <div class="story-photo">
+        <img src="../assets/images/index-13193d019fa51249.jpg" alt="Nemanja Vukoje">
+      </div>
+    </div>
+
+    <div class="story-text">
+      <div class="section-label reveal">Moj put</div>
+      <h2 class="reveal">Godinama sam imao osećaj<em>kao da u meni postoje dve različite osobe.</em></h2>
+
+      <p class="reveal">Jedna je bila racionalna, poslovno orijentisana, usmerena na sisteme, optimizaciju i unapređenje načina rada. Radio sam u IT-u, pomagao kompanijama da funkcionišu bolje i gradio karijeru koja je, gledano spolja, izgledala veoma uspešno.</p>
+
+      <p class="reveal">Druga strana mene bila je okrenuta duhovnosti, meditaciji, plesu, umetnosti i istraživanju smisla. Privlačili su me ljudi koji rade ono što vole, koji su povezani sa sobom i kod kojih se vidi ona iskra, vatra u očima.</p>
+
+      <p class="reveal">Nisam želeo da se odreknem nijedne od te dve strane. Ipak, dugo nisam znao kako da ih povežem. Imao sam osećaj da moram da biram između uspeha i ispunjenosti, između onoga što se očekuje od mene i onoga što zaista želim.</p>
+
+      <p class="reveal">Zato sam godinama istraživao. Više od jedne decenije posvetio sam ličnom razvoju, učenju i radu na sebi. Putovao sam svetom, upoznavao različite kulture, učio od duhovnih učitelja, posećivao sveta mesta i istraživao različite tradicije rada sa energijom i ljudskim unutrašnjim svetom.</p>
+
+      <p class="reveal">Paralelno sa svojom IT karijerom, razvijao sam i taj deo sebe. Već šest godina vodim časove joge i individualne sesije, a kroz različite edukacije iz coachinga i energetskog rada produbljivao sam svoje znanje i iskustvo.</p>
+
+      <p class="reveal"><strong>Vremenom sam shvatio nešto što mi je promenilo pogled na život: ne moram da biram. Ne moram da isključim jedan deo sebe da bih drugom dao prostor.</strong></p>
+
+      <p class="reveal">Racionalnost i intuicija, struktura i kreativnost, poslovni uspeh i duhovno ispunjenje ne moraju da budu suprotnosti. Mogu da se dopunjuju.</p>
+
+      <p class="reveal">Tada sam odlučio da napustim IT karijeru i posvetim se izgradnji sopstvenog posla, u kojem mogu da povežem sve ono što jesam i što sam godinama učio. Ne zato što je jedan život bio pogrešan, već zato što sam želeo da napravim prostor za sve njegove važne delove.</p>
+
+      <p class="reveal">Danas upravo taj princip prenosim u svoj rad sa ljudima. Kombinujem strukturiran coaching, postavljanje pravih pitanja i vežbe za istraživanje vrednosti, definisanje pravca i ciljeva sa meditacijom, radom sa telom i energetskim tehnikama.</p>
+
+      <p class="reveal">Zajedno istražujemo šta ih zadržava, koje se situacije, emocionalne reakcije i obrasci ponavljaju i šta stoji između onoga što žele i života koji trenutno žive. Radimo na emocionalnom opterećenju, stvaranju prostora za drugačije izbore i pretvaranju novih uvida u konkretne korake.</p>
+
+      <p class="reveal">Iz tog pristupa nastao je i Inner Shift - proces koji povezuje razumevanje, unutrašnji rad i usmeravanje ka promeni.</p>
+
+      <p class="story-closing reveal"><strong>Možemo da izgradimo život u kojem ima mesta za sve ono što nam je važno. Život u kojem ne moramo samo da funkcionišemo, već možemo da budemo prisutni, uživamo i osećamo da zaista živimo.</strong></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="reveal">Istražujemo zajedno.<em>Javi mi se.</em></h2>
+  <p class="reveal">Popričaćemo o tome gde si sada i zajedno pronađemo pravi prvi korak.</p>
+  <a href="mailto:info@vukojenemanja.com?subject=Zakazivanje" class="btn-primary reveal">Pošalji poruku</a>
+  <span class="cta-note reveal">Sesije su online · Srpski, Engleski i Nemački</span>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <h3>Nemanja<br><em>Vukoje</em></h3>
+    <p>Isceljitelj - Kouč - Učitelj Kundalini joge<br>Beč, Austrija - Online širom sveta<br>Engleski, Srpski &amp; Nemački</p>
+  </div>
+  <div>
+    <h4>Navigacija</h4>
+    <ul>
+      <li><a href="o-meni.html">O meni</a></li>
+      <li><a href="akal.html">Akal Zajednica</a></li>
+      <li><a href="individual.html">Individualni rad</a></li>
+      <li><a href="licna-mapa.html">Lična mapa</a></li>
+      <li><a href="index.html#testimonials">Utisci</a></li>
+      <li><a href="mailto:info@vukojenemanja.com">Zakaži sesiju</a></li>
+    </ul>
+  </div>
+  <div class="footer-contact">
+    <h4>Kontakt</h4>
+    <p>
+      <a href="mailto:info@vukojenemanja.com">info@vukojenemanja.com</a><br><br>
+      <a href="https://instagram.com/vukoje.nemanja.world">@vukoje.nemanja.world</a>
+    </p>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 The Art of Connection Vienna - Nemanja Vukoje &middot; Sachsenplatz 9, 1200 Beč</p>
+  <p><a href="agb.html" style="color:var(--stone);text-decoration:none;">Uslovi</a> &middot; <a href="datenschutz.html" style="color:var(--stone);text-decoration:none;">Privatnost</a> &middot; <a href="impressum.html" style="color:var(--stone);text-decoration:none;">Impresum</a></p>
+</div>
+
+<script>
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+function toggleMobileMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.getElementById('hamburgerBtn').classList.toggle('open');
+  document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburgerBtn').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.body.classList.add('js-loaded');
+const revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+</script>
+<script src="../cookie-banner.js"></script>
+</body>
+</html>

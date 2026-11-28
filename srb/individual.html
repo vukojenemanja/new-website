@@ -142,13 +142,12 @@ nav.scrolled { background: rgba(26,18,8,0.95); padding: 14px 60px; border-bottom
 .about-me-closing { font-family: 'Cormorant Garamond', serif !important; font-size: 21px !important; font-style: italic; color: var(--bark) !important; }
 
 /* ── METHOD ── */
-.method { background: var(--deep); padding: 120px 60px; position: relative; overflow: hidden; }
-.method::before { content: ''; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(196,168,130,0.04) 0%, transparent 70%); pointer-events: none; }
+.method { background: var(--fog); padding: 120px 60px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(196,168,130,0.2); }
 .method-inner { max-width: 1100px; margin: 0 auto; }
 .method-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 80px; align-items: end; }
-.method h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 3.5vw, 48px); font-weight: 300; color: var(--sand); line-height: 1.15; }
+.method h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 3.5vw, 48px); font-weight: 300; color: var(--bark); line-height: 1.15; }
 .method h2 em { font-style: italic; color: var(--clay); }
-.method-intro { font-size: 15px; line-height: 1.9; color: rgba(232,221,208,0.6); }
+.method-intro { font-size: 15px; line-height: 1.9; color: var(--stone); }
 .method-steps { display: flex; flex-direction: column; }
 .phase-group { margin-bottom: 0; }
 .phase-label {
@@ -165,10 +164,10 @@ nav.scrolled { background: rgba(26,18,8,0.95); padding: 14px 60px; border-bottom
   opacity: 1;
 }
 .phase-group:first-child .phase-label { border-top: none; padding-top: 0; }
-.method-step { display: block; padding: 24px 0; border-top: 1px solid rgba(196,168,130,0.08); }
+.method-step { display: block; padding: 24px 0; border-top: 1px solid rgba(61,46,30,0.1); }
 .method-step:last-child { border-bottom: none; margin-bottom: 48px; }
-.step-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--sand); margin-bottom: 10px; }
-.step-body { font-size: 14px; line-height: 1.85; color: rgba(232,221,208,0.55); }
+.step-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--bark); margin-bottom: 10px; }
+.step-body { font-size: 14px; line-height: 1.85; color: var(--stone); }
 .method-quote { margin-top: 2px; background: rgba(196,168,130,0.06); border: 1px solid rgba(196,168,130,0.12); padding: 48px; }
 .method-quote-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 300; font-style: italic; color: var(--clay); line-height: 1.4; }
 

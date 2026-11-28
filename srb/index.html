@@ -411,11 +411,12 @@ nav.scrolled .nav-links span { color: var(--stone); }
 
 /* ── BRIDGE ── */
 .bridge-section {
-  background: var(--deep);
+  background: var(--fog);
   padding: 100px 60px;
   text-align: center;
   position: relative;
-  border-top: 1px solid rgba(196,168,130,0.12);
+  border-top: 1px solid rgba(196,168,130,0.2);
+  border-bottom: 1px solid rgba(196,168,130,0.2);
 }
 .bridge-section::before {
   content: '';
@@ -423,21 +424,31 @@ nav.scrolled .nav-links span { color: var(--stone); }
   width: 48px;
   height: 2px;
   background: var(--clay);
-  margin: 0 auto 48px;
+  margin: 0 auto 56px;
 }
 .bridge-answer {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(1.9rem, 3vw, 2.8rem);
   font-weight: 300;
-  color: var(--sand);
+  color: var(--bark);
   margin: 0 auto;
-  max-width: 720px;
-  line-height: 1.35;
+  max-width: 680px;
+  line-height: 1.5;
 }
-.bridge-answer em { font-style: italic; color: var(--clay); font-weight: 300; }
+.bridge-line {
+  display: block;
+  margin-bottom: 0.15em;
+}
+.bridge-line:last-child { margin-bottom: 0; }
+.bridge-line-accent {
+  display: block;
+  color: var(--clay);
+  font-style: italic;
+  margin-top: 0.4em;
+}
 @media (max-width: 768px) {
   .bridge-section { padding: 72px 24px; }
-  .bridge-answer { font-size: 1.65rem; }
+  .bridge-answer { font-size: 1.7rem; }
 }
 
 /* ── ABOUT ── */
@@ -2297,7 +2308,11 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <!-- BRIDGE -->
 <section class="bridge-section">
   <div class="reveal">
-    <p class="bridge-answer">Ako jesi, onda u potpunosti razumem tvoju situaciju. Te rečenice su i mene pratile na mom putu.<em> I sada radim sa ljudima na tome.</em></p>
+    <p class="bridge-answer">
+      <span class="bridge-line">Ako jesi, onda u potpunosti razumem tvoju situaciju.</span>
+      <span class="bridge-line">Te rečenice su i mene pratile na mom putu.</span>
+      <span class="bridge-line-accent">I sada radim sa ljudima na tome.</span>
+    </p>
   </div>
 </section>
 

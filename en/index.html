@@ -412,30 +412,44 @@ nav.scrolled .nav-links span { color: var(--stone); }
 /* ── BRIDGE ── */
 .bridge-section {
   background: var(--fog);
-  padding: 48px 60px 100px;
+  padding: 100px 60px;
   text-align: center;
+  position: relative;
+  border-top: 1px solid rgba(196,168,130,0.2);
+  border-bottom: 1px solid rgba(196,168,130,0.2);
 }
-.bridge-question {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.3rem, 2vw, 1.7rem);
-  font-weight: 400;
-  font-style: italic;
-  color: var(--accent);
-  margin: 0 auto 24px;
+.bridge-section::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--clay);
+  margin: 0 auto 56px;
 }
 .bridge-answer {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
   font-weight: 300;
   color: var(--bark);
   margin: 0 auto;
-  max-width: 760px;
-  line-height: 1.3;
+  max-width: 680px;
+  line-height: 1.5;
 }
-.bridge-answer em { font-style: italic; color: var(--accent); font-weight: 400; }
+.bridge-line {
+  display: block;
+  margin-bottom: 0.15em;
+}
+.bridge-line:last-child { margin-bottom: 0; }
+.bridge-line-accent {
+  display: block;
+  color: var(--clay);
+  font-style: italic;
+  margin-top: 0.4em;
+}
 @media (max-width: 768px) {
-  .bridge-section { padding: 40px 24px 72px; }
-  .bridge-answer { font-size: 1.75rem; }
+  .bridge-section { padding: 48px 24px; }
+  .bridge-answer { font-size: 1.45rem; line-height: 1.45; }
+  .bridge-line-accent { margin-top: 0.3em; }
 }
 
 /* ── ABOUT ── */
@@ -878,6 +892,16 @@ nav.scrolled .nav-links span { color: var(--stone); }
   font-weight: 400;
   margin-bottom: 20px;
   color: var(--sand);
+}
+
+.step-sub {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  font-weight: 400;
+  color: var(--clay);
+  letter-spacing: 0.01em;
+  margin-top: 6px;
 }
 
 .step p {
@@ -2297,8 +2321,11 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
 <!-- BRIDGE -->
 <section class="bridge-section">
   <div class="reveal">
-    <p class="bridge-question">And what does this have to do with me?</p>
-    <p class="bridge-answer">Everything you just read - <em>was part of my journey too.</em></p>
+    <p class="bridge-answer">
+      <span class="bridge-line">If you recognize yourself in any of this, I understand completely.</span>
+      <span class="bridge-line">These sentences were part of my journey too.</span>
+      <span class="bridge-line-accent">And now I work with people on exactly this.</span>
+    </p>
   </div>
 </section>
 
@@ -2326,18 +2353,18 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
     <div class="process-steps">
       <div class="step">
         <div class="step-num">01</div>
-        <h3>Recognize</h3>
-        <p>We name what is really happening - not the surface story, but the repeating pattern and where it lives in the body.</p>
+        <h3>Recognize<br><span class="step-sub">Understand what's holding you back.</span></h3>
+        <p>Together we explore what lies beneath the situation you want to change. Through conversation, structured questions and exercises, we identify patterns, beliefs and reactions that shape your decisions, emotions and behaviour.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
-        <h3>Release</h3>
-        <p>Through energy work and direct body work, we release what we found - from the whole system.</p>
+        <h3>Release<br><span class="step-sub">Turn your attention inward.</span></h3>
+        <p>Through meditation, body work and energy techniques, we give attention to emotions and inner tension, creating space for a different experience and response.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <h3>Direct</h3>
-        <p>We direct the freed energy toward clarity. You receive concrete steps that follow the change.</p>
+        <h3>Direct<br><span class="step-sub">Turn insights into concrete steps.</span></h3>
+        <p>We clarify what truly matters to you and define concrete steps and decisions you can apply in everyday life, so your choices are more aligned with who you are.</p>
       </div>
     </div>
   </div>
@@ -2353,9 +2380,9 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
     <div class="work-panel active" id="panelInner" onclick="activatePanel('panelInner')" role="button" tabindex="0">
       <span class="work-panel-letter">I</span>
       <div class="work-panel-content">
-        <p class="work-panel-eyebrow">Individual work</p>
+        <p class="work-panel-eyebrow">Individual work · Inner Shift</p>
         <h3 class="work-panel-title">Inner<br><em>Shift</em></h3>
-        <p class="work-panel-desc">Deep 1:1 work combining coaching, energy healing and body work. We address the specific block, pattern or fear holding you back - and release it.</p>
+        <p class="work-panel-desc">Individual work tailored to your situation and what you want to change. Through coaching, conversation, meditation, body work and energy techniques, we explore what holds you back, work on inner patterns and define concrete steps toward the changes you want to make.</p>
         <div class="work-panel-spacer"></div>
         <a href="individual.html" class="work-panel-cta" onclick="event.stopPropagation()">Learn more</a>
       </div>
@@ -2363,9 +2390,9 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
     <div class="work-panel" id="panelGroup" onclick="activatePanel('panelGroup')" role="button" tabindex="0">
       <span class="work-panel-letter">G</span>
       <div class="work-panel-content">
-        <p class="work-panel-eyebrow">Group work</p>
+        <p class="work-panel-eyebrow">Group work · Akal Community &amp; workshops</p>
         <h3 class="work-panel-title">Community<br>and <em>workshops</em></h3>
-        <p class="work-panel-desc">Regular practice or a themed workshop - a safe place for your growth where you're not alone.</p>
+        <p class="work-panel-desc">Through Kundalini yoga, meditation and themed workshops, you get space for regular practice, self-exploration and connection with others. With the structure and support of a community, personal growth becomes part of your everyday life.</p>
         <div class="work-panel-spacer"></div>
         <div class="work-subitems">
           <a href="akal.html" class="work-subitem" onclick="event.stopPropagation()">
@@ -2483,10 +2510,9 @@ nav.scrolled .nav-hamburger span { background: var(--bark); }
     </div>
     <div class="booking-entry reveal">
       <div class="entry-label">Start here</div>
-      <div class="entry-title"><!--CMS:entry_title-->Aura Treatment<!--/CMS--></div>
-      <p class="entry-desc"><!--CMS:entry_desc-->A 20-minute online session to cleanse your energy field, release accumulated stress, and restore your natural flow. The gentlest way to begin.<!--/CMS--></p>
-      <span class="entry-price"><!--CMS:entry_price-->44€<!--/CMS--></span>
-      <a href="mailto:info@vukojenemanja.com?subject=Website%20Enquiry" class="btn-primary"><!--CMS:entry_btn-->Book this session<!--/CMS--></a>
+      <div class="entry-title">Inner Shift</div>
+      <p class="entry-desc">You don't need to know in advance what's holding you back or have all the answers. What matters is the desire to understand yourself better and make changes that are truly aligned with who you are.</p>
+      <a href="individual.html" class="btn-primary">Discover Inner Shift</a>
     </div>
   </div>
 </section>
